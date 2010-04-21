@@ -1,9 +1,13 @@
-#ifndef POLINOMIOS_H_
-
-#define POLINOMIOS_H_
-
-// Copyright 2010 Thiago Ferreira de Noronha.
+// Copyright 2010, Natã Goulart da Silva - Curso ARL UFLA
+// Copyright 2010, Thiago Ferreira de Noronha - DCC UFMG
 //
+// This file is part of EasyTesting.
+//
+// EasyTesting is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License // as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+// EasyTesting is distributed in the hope that it will be useful,but WITHOUT ANY WARRANTY; without even the implied warranty // of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+// You should have received a copy of the GNU General Public License along with Foobar.  If not, see 
+
+// <http://www.gnu.org/licenses/>.
 //  Algoritmos e Estruturas de Dados II
 //
 // Lista 2: Tipos Abstratos de Dados.
@@ -16,6 +20,9 @@
 // ai, i  {0, ..., n}. Por exemplo: o polinômio de grau 4,
 // Q(x) = 5 + 3x2 + 2x4 = 5x0 + 0x1 + 3x2 + 0x3 + 2x4,
 // pode ser representado pelo vetor "float q[5] = {5, 0, 3, 0, 2};"
+
+#ifndef POLINOMIOS_H_
+#define POLINOMIOS_H_
 
 #define GRAU_MAXIMO 1000
 
