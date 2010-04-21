@@ -1,13 +1,7 @@
-#summary One-sentence summary of this page.
-Objetivos e descrição do projeto
-= Introduction =
+*Objetivos e descrição do projeto*
+
 Uso de testes de unidade para correção de exercícios de linguagem de programação.
-Add your content here.
-= Details =
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+
 Este projeto tem o objetivo criar listas de exercícios de linguagem de programação com o uso de testes de unidade, partindo de um conjunto de exercícios descritos em enunciados que são normalmente utilizados pelos cursos de graduação, criando para cada problema desta lista, um conjunto de testes que irão verificar se a codificação criada pelos alunos apresentam os resultados esperados. Para a construção dos testes de unidade serão utilizados frameworks Google Test utilizado na codificação da linguagem C++.
 
 Após a construção do enunciado das listas de exercícios os testes são codificados para verificar os códigos dos alunos. Estas listas são utilizadas em aulas práticas de laboratório e após a utilização, os arquivos serão disponibilizadas no site do projeto Easy Testing, criado para armazenar os arquivos das listas de exercício. A utilização da lista em uma aula prática permite verificar se os testes estão codificados corretamente e possibilita também que os alunos avaliem a cobertura das várias possibilidades de entrada e saída para cada caso de teste.
