@@ -1,8 +1,10 @@
 *Objetivos e descrição do projeto*
 
-Uso de testes de unidade para correção de exercícios de linguagem de programação.
+Criação de listas de exercício que possam ser automaticamente corrigidas através de testes de unidade.
 
-Este projeto tem o objetivo criar listas de exercícios de linguagem de programação com o uso de testes de unidade, partindo de um conjunto de exercícios descritos em enunciados que são normalmente utilizados pelos cursos de graduação, criando para cada problema desta lista, um conjunto de testes que irão verificar se a codificação criada pelos alunos apresentam os resultados esperados. Para a construção dos testes de unidade serão utilizados frameworks Google Test utilizado na codificação da linguagem C++.
+Este projeto tem o objetivo criar listas de exercícios de linguagem de programação com o uso de testes de unidade, partindo de um conjunto de exercícios descritos em enunciados que são normalmente utilizados pelos cursos de graduação, criando para cada problema desta lista, um conjunto de testes que irão verificar se a codificação criada pelos alunos apresentam os resultados esperados. 
+Para a construção dos testes de unidade deverão ser utilizados frameworks. 
+Para criar uma padronização, todos os códigos desenvolvidos em C++ devem utilizar o  [http://code.google.com/p/googletest/ Google Test]. Para a linguagem Java deve-se utilizar o JUnit.
 
 Após a construção do enunciado das listas de exercícios os testes são codificados para verificar os códigos dos alunos. Estas listas são utilizadas em aulas práticas de laboratório e após a utilização, os arquivos serão disponibilizadas no site do projeto Easy Testing, criado para armazenar os arquivos das listas de exercício. A utilização da lista em uma aula prática permite verificar se os testes estão codificados corretamente e possibilita também que os alunos avaliem a cobertura das várias possibilidades de entrada e saída para cada caso de teste.
 Caso algum caso de teste básico não esteja sendo tratado, é provável que alguns dos alunos possa identificar a falha. No site do projeto, para cada lista, serão disponibilizados os arquivos com o enunciados dos exercícios, a biblioteca do Google
