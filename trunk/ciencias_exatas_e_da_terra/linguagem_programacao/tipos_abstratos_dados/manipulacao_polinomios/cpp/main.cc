@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
   ExecutarTodosOsTestes();
 
   // Descomente se estiver usando o DevC++.
-  system("pause");  
+  //system("pause");  
   
   return 0;
 }
