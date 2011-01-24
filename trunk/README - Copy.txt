@@ -1,1 +1,0 @@
-Neste projeto estão armazenadas listas de exercícios dividas por área e por tópicos. Estas listas podem estar codificadas nas mais variadas linguagem.
