@@ -44,10 +44,10 @@ void Polinomio::Atribuir(Polinomio& q) {
 }
 
 void Polinomio::Somar(Polinomio& p1, Polinomio &p2) {
-   n = p1.grau() + 1;
-   for (int i = 0; i < n; i++) {
-      a[i] = p1.get(i) + p2.get(i);
-   }
+  n = p1.grau() + 1;
+  for (int i = 0; i < n; i++) {
+    a[i] = p1.get(i) + p2.get(i);
+  }
 }
 
 void Polinomio::Derivar(Polinomio& q) {
