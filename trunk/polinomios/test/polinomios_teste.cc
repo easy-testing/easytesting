@@ -1,4 +1,4 @@
-#include "polinomios_teste.h"
+#include "easytesting/polinomios/test/polinomios_teste.h"
 
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);

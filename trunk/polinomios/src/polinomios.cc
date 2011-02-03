@@ -1,4 +1,4 @@
-#include "easytesting/polinomios/polinomios.h"
+#include "easytesting/polinomios/src/polinomios.h"
 
 #include <stdio.h>
 #include <math.h>

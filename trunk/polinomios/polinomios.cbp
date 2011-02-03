@@ -39,11 +39,11 @@
 		<Unit filename="..\gtest\gtest.h">
 			<Option target="Debug" />
 		</Unit>
-		<Unit filename="main.cc">
+		<Unit filename="src\main.cc">
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="polinomios.cc" />
-		<Unit filename="polinomios.h" />
+		<Unit filename="src\polinomios.cc" />
+		<Unit filename="src\polinomios.h" />
 		<Unit filename="test\polinomios_teste.cc">
 			<Option target="Debug" />
 		</Unit>

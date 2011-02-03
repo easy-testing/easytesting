@@ -1,8 +1,8 @@
 #ifndef TEST_H_
 #define TEST_H_
 
-#include "../polinomios.h"
-#include "../../gtest/gtest.h"
+#include "easytesting/polinomios/src/polinomios.h"
+#include "easytesting/gtest/gtest.h"
 
 #include <sstream>
 #include <string>

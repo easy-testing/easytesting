@@ -1,4 +1,4 @@
-#include "polinomios.h"
+#include "easytesting/polinomios/src/polinomios.h"
 
 #include <iostream>
 #include <fstream>
