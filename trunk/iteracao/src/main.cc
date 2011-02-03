@@ -6,7 +6,7 @@
 // QUESTÃO 2:
 // Escreva um programa que (i) apresenta um menu com as funções que você
 // programaou na questão anterior e após o usuário escolher uma das funções
-// (ii) lê o valor dos parâmetros e (ii) exible o resultado da função.
+// (ii) lê o valor dos parâmetros e (iii) exibe o resultado da função.
 
 #include "easytesting/iteracao/src/iteracao.h"
 #include <stdio.h>
