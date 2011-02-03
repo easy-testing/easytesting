@@ -1,8 +1,9 @@
 #ifndef RECURSAO_TESTE_H_
 #define RECURSAO_TESTE_H_
 
-#include "../recursao.h"
-#include "../../gtest/gtest.h"
+#include "easytesting/recursao/src/recursao.h"
+
+#include "easytesting/gtest/gtest.h"
 
 #include <sstream>
 #include <string>

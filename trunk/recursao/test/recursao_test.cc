@@ -1,4 +1,4 @@
-#include "recursao_teste.h"
+#include "easytesting/recursao/test/recursao_test.h"
 
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="recursao" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/debug/recursao" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/release/recursao" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add directory="../.." />
+		</Compiler>
+		<Unit filename="../gtest/gtest.cc">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="../gtest/gtest.h">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/main.cc">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/recursao.cc" />
+		<Unit filename="src/recursao.h" />
+		<Unit filename="test/recursao_test.cc">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="test/recursao_test.h">
+			<Option target="Debug" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

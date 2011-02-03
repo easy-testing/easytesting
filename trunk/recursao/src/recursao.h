@@ -1,10 +1,5 @@
-/*****************************************************************
-* Algoritmos e Estruturas de Dados II
-*
-* Lista 1: Recursao
-*
-* Escreva as seguintes funções recursivas em C++:
-*******************************************************************/
+//TODO(matheus): Fazer um merge destes exercícios e os de iteração.
+//  Devem ser os mesmos nas duas listas.
 
 #ifndef RECURSAO_H_
 
