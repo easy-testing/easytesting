@@ -4,7 +4,7 @@
 	<iostream>
 	<fstream>
 
-1295915324 
+1296735802 
 
 1295915324 /home/thiago/Dropbox/projetos/peg/easytesting/polinomios/polinomios.h
 
@@ -13,8 +13,6 @@
 	<stdio.h>
 	<math.h>
 	<stdlib.h>
-
-1296735802 
 
 1288803778 source:/home/thiago/Dropbox/projetos/peg/easytesting/gtest/gtest.cc
 	"gtest.h"
@@ -279,6 +277,19 @@
 1296738864 /home/thiago/ttt/easytesting/polinomios/src/polinomios.h
 
 1296738212 source:/home/thiago/ttt/easytesting/polinomios/src/polinomios.cc
+	"easytesting/polinomios/src/polinomios.h"
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+
+1296736042 source:/home/thiago/Dropbox/projetos/peg/easytesting/polinomios/src/main.cc
+	"easytesting/polinomios/src/polinomios.h"
+	<iostream>
+	<fstream>
+
+1296739582 /home/thiago/Dropbox/projetos/peg/easytesting/polinomios/src/polinomios.h
+
+1296735802 source:/home/thiago/Dropbox/projetos/peg/easytesting/polinomios/src/polinomios.cc
 	"easytesting/polinomios/src/polinomios.h"
 	<stdio.h>
 	<math.h>
