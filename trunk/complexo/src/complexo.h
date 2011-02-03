@@ -1,4 +1,4 @@
-// Copyright 2010 Thiago Ferreira de Noronha
+// Copyright 2010 Thiago Ferreira de Noronha.
 
 #ifndef COMPLEXO_H_
 #define COMPLEXO_H_
