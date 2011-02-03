@@ -12,7 +12,7 @@
 // Questão 1.
 // Implemente em polinomio.h e polinomio.cc um TAD Polinomio.
 //
-// Questão 2. Escreva um programa em main.cc que lê um polinomio P(x)
+// Questão 2. Escreva um programa que lê um polinomio P(x)
 // de um arquivo input.txt e indefinidamente lê um número x do teclado e exibe
 // na tela o valor de P(x). O primeiro número do arquivo n representa o grau do
 // polinômio e é seguido por n + 1 número reais que representam os
