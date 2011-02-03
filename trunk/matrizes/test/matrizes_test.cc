@@ -1,9 +1,4 @@
-// Testes da lista de exercicios sobre estruturas de dados
-// homogenias - Matrizes.
-//
-// Executa todos os testes
-
-#include "matrizes_teste.h"
+#include "easytesting/matrizes/test/matrizes_test.h"
 
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);

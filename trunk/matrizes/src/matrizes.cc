@@ -1,4 +1,5 @@
-#include "matrizes.h"
+#include "easytesting/matrizes/src//matrizes.h"
+
 #include<stdio.h>
 
 float media_matriz(int n, float mat[][100]) {
@@ -63,11 +64,6 @@ void mult_matriz(int n, float A[][100], float B[][100], float P[][100]) {
    }
 }
 
-void mostra_matriz(int n,int m, float mat[][100]) {
-   for (int i = 0; i < n; i++) {
-      for (int j = 0; j < m; j++) {
-         printf("%.2f ", mat[i][j]);
-      }
-      printf("\n");
-   }
+void mostra_matriz(int n,int m, float a[][100]) {
+  // TODO(gabriel): implementar esta função.
 }

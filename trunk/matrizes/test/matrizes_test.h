@@ -1,9 +1,9 @@
 #ifndef MATRIZES_TESTE_H_
 #define MATRIZES_TESTE_H_
 
-#include "../matrizes.h"
+#include "easytesting/matrizes/src/matrizes.h"
 
-#include "../../gtest/gtest.h"
+#include "easytesting/gtest/gtest.h"
 
 #include <sstream>
 #include <string>
