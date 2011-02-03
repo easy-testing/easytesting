@@ -1,4 +1,4 @@
-#include "iteracao_teste.h"
+#include "easytesting/iteracao/test/iteracao_test.h"
 
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);

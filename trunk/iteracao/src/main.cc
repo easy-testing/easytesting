@@ -1,19 +1,19 @@
-#include "iteracao.h"
+// Lista de exercícios sobre algoritmos iterativos.
+//
+// QUESTÃO 1:
+// Implemente em iteracao.cc as funções descritas em iteracao.h.
+//
+// QUESTÃO 2:
+// Escreva um programa que (i) apresenta um menu com as funções que você
+// programaou na questão anterior e após o usuário escolher uma das funções
+// (ii) lê o valor dos parâmetros e (ii) exible o resultado da função.
+
+#include "easytesting/iteracao/src/iteracao.h"
 #include <stdio.h>
 
-// TODO(matheus): Trocar o printf por cout.
+// Executa diversar funções iterativas.
 int main() {
-   printf("%d\n", fat(5));
-   printf("%d\n", mdc(42,24));
-   printf("%d\n", mmc(5,12));
-   printf("%d\n", fib(8));
-   printf("%d\n", primo(5));
-   printf("%d\n", resto(12, 4));
-   printf("%d\n", div_(12, 4));
-   printf("%f\n", sqrt_(2.0));
-   printf("%d\n", dig(123));
-   decrescente(5);
-   crescente(4);
-   return 0;
+  // TODO(matheus): implementar este main().
+  return 0;
 }
 

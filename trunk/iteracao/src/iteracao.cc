@@ -1,3 +1,5 @@
+#include "easytesting/iteracao/src/iteracao.h"
+
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>

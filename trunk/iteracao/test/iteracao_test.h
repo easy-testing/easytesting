@@ -1,9 +1,9 @@
 #ifndef ITERACAO_TESTE_H_
 #define ITERACAO_TESTE_H_
 
-#include "../iteracao.h"
+#include "easytesting/iteracao/src/iteracao.h"
 
-#include "../../gtest/gtest.h"
+#include "easytesting/gtest/gtest.h"
 
 #include <sstream>
 #include <string>
