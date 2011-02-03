@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
-	<ActiveTarget name="Debug" />
+	<ActiveTarget name="Release" />
 	<File name="..\gtest\gtest.cc" open="1" top="0" tabpos="3">
 		<Cursor position="103573" topLine="2741" />
 	</File>
