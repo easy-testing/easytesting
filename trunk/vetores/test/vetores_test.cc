@@ -1,9 +1,4 @@
-// Testes da lista de exercicios sobre estruturas de dados
-// homogenias - Vetores.
-//
-// Executa todos os testes
-
-#include "vetores_teste.h"
+#include "easytesting/vetores/test/vetores_test.h"
 
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);

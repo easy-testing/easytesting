@@ -1,13 +1,9 @@
-// Lista de exercicio sobre estruturas de dados homogenias - Vetores.
-//
-// Implementa os casos de teste.
-
 #ifndef VETORES_TESTE_H_
 #define VETORES_TESTE_H_
 
-#include "../vetores.h"
+#include "easytesting/vetores/src/vetores.h"
 
-#include "../../gtest/gtest.h"
+#include "easytesting/gtest/gtest.h"
 
 #include <sstream>
 #include <string>

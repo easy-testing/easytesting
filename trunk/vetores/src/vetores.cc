@@ -1,5 +1,3 @@
-// Lista de exercicio sobre estruturas de dados homogenias - Vetores.
-
 #include "vetores.h"
 
 float Media(float v[], int n) {

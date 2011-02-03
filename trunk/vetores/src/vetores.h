@@ -1,5 +1,3 @@
-// Lista de exercicio sobre estruturas de dados homogenias - Vetores.
-
 #ifndef VETORES_H_
 #define VETORES_H_
 
@@ -17,5 +15,10 @@ float Menor(float v[], int n);
 
 // Calcula o produto escalar dos vetores v e u
 float ProdutoEscalar(float u[], float v[], int n);
+
+// Mostra os coeficientes de um vetor na tela
+// no formato {v[0], v[1], ..., v[n-1]}.
+// TODO(gabriel): Implementar esta função.
+void MostraVetor(float v[], int n);
 
 #endif // VETORES_H_
