@@ -18,7 +18,7 @@
 // polinômio e é seguido por n + 1 número reais que representam os
 // cooeficientes de P(x).
 
-#include "easytesting/polinomios/src/polinomios.h"
+#include "easytesting/polinomio/src/polinomio.h"
 
 #include <iostream>
 #include <fstream>
