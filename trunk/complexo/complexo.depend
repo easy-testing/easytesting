@@ -4,7 +4,7 @@
 	<iostream>
 	<math.h>
 
-1288121985 
+1286398743 
 
 1286393034 source:c:\users\tfn\documents\my dropbox\disciplinas\aeds2\2010.2\gabaritos\complexo\comlexo.cc
 	"complexo.h"
@@ -26,7 +26,7 @@
 1286485092 source:c:\users\tfn\documents\my dropbox\projetos\peg\complexo\test\complexo_teste.cc
 	"complexo_teste.h"
 
-1286485092 teste.h"
+1286481492 teste.h"
 
 1288799473 c:\users\tfn\documents\my dropbox\projetos\peg\complexo\test\complexo_teste.h
 	"../complexo.h"
@@ -454,4 +454,10 @@
 	<math.h>
 
 1286399076 c:\users\tfn\documents\my dropbox\projetos\peg\easytesting\complexo\complexo.h
+
+1296737042 source:/home/thiago/Dropbox/projetos/peg/easytesting/complexo/src/complexo.cc
+	"easytesting/complexo/src/complexo.h"
+	<math.h>
+
+1296736860 /home/thiago/Dropbox/projetos/peg/easytesting/complexo/src/complexo.h
 

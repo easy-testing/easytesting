@@ -1,8 +1,8 @@
 #ifndef COMPLEXO_TESTE_H_
 #define COMPLEXO_TESTE_H_
 
-#include "../complexo.h"
-#include "../../gtest/gtest.h"
+#include "easytesting/complexo/src/complexo.h"
+#include "easytesting/gtest/gtest.h"
 
 #include <sstream>
 #include <string>

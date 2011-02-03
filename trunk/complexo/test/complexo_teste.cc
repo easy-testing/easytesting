@@ -1,4 +1,4 @@
-#include "complexo_teste.h"
+#include "easytesting/complexo/test/complexo_teste.h"
 
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);
