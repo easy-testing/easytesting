@@ -31,8 +31,25 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add directory="../.." />
 		</Compiler>
-		<Unit filename="main.cpp" />
+		<Unit filename="../gtest/gtest.cc">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="../gtest/gtest.h">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/main.cc">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="src/polinomio.cc" />
+		<Unit filename="src/polinomio.h" />
+		<Unit filename="test/polinomio_test.cc">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="test/polinomio_test.h">
+			<Option target="Debug" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />
