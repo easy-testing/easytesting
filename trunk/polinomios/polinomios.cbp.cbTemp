@@ -31,7 +31,6 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add directory="..\.." />
 		</Compiler>
 		<Unit filename="..\gtest\gtest.cc">
 			<Option target="Debug" />
