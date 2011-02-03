@@ -4,6 +4,8 @@
 	<iostream>
 	<fstream>
 
+1295915324 
+
 1295915324 /home/thiago/Dropbox/projetos/peg/easytesting/polinomios/polinomios.h
 
 1295915324 source:/home/thiago/Dropbox/projetos/peg/easytesting/polinomios/polinomios.cc
@@ -11,6 +13,8 @@
 	<stdio.h>
 	<math.h>
 	<stdlib.h>
+
+1296735802 
 
 1288803778 source:/home/thiago/Dropbox/projetos/peg/easytesting/gtest/gtest.cc
 	"gtest.h"
@@ -76,6 +80,8 @@
 	<mach/task.h>
 	<mach/vm_map.h>
 
+1296736001 ap.h>
+
 1288121985 /home/thiago/Dropbox/projetos/peg/easytesting/gtest/gtest.h
 	<limits>
 	<stddef.h>
@@ -124,6 +130,8 @@
 1295915324 source:/home/thiago/Dropbox/projetos/peg/easytesting/polinomios/test/polinomios_teste.cc
 	"polinomios_teste.h"
 
+1295915324 s_teste.h"
+
 1295915324 /home/thiago/Dropbox/projetos/peg/easytesting/polinomios/test/polinomios_teste.h
 	"../polinomios.h"
 	"../../gtest/gtest.h"
@@ -132,6 +140,8 @@
 
 1296735931 source:c:\users\tfn\documents\my dropbox\projetos\peg\easytesting\polinomios\test\polinomios_teste.cc
 	"easytesting/polinomios/test/polinomios_teste.h"
+
+1296735931 ng/polinomios/test/polinomios_teste.h"
 
 1296735974 c:\users\tfn\documents\my dropbox\projetos\peg\easytesting\polinomios\test\polinomios_teste.h
 	"easytesting/polinomios/src/polinomios.h"
@@ -256,6 +266,19 @@
 1295915324 c:\users\tfn\documents\my dropbox\projetos\peg\easytesting\polinomios\src\polinomios.h
 
 1296735802 source:c:\users\tfn\documents\my dropbox\projetos\peg\easytesting\polinomios\src\polinomios.cc
+	"easytesting/polinomios/src/polinomios.h"
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+
+1296738212 source:/home/thiago/ttt/easytesting/polinomios/src/main.cc
+	"easytesting/polinomios/src/polinomios.h"
+	<iostream>
+	<fstream>
+
+1296738864 /home/thiago/ttt/easytesting/polinomios/src/polinomios.h
+
+1296738212 source:/home/thiago/ttt/easytesting/polinomios/src/polinomios.cc
 	"easytesting/polinomios/src/polinomios.h"
 	<stdio.h>
 	<math.h>

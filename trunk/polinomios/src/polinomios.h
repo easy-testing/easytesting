@@ -1,10 +1,6 @@
-#ifndef POLINOMIOS_H_
-
-#define POLINOMIOS_H_
-
 // Copyright 2010 Thiago Ferreira de Noronha.
 //
-//  Algoritmos e Estruturas de Dados II
+// Algoritmos e Estruturas de Dados II
 //
 // Lista sobre Tipos Abstratos de Dados - TAD.
 //
@@ -17,9 +13,14 @@
 // Q(x) = 5 + 3x2 + 2x4 = 5x0 + 0x1 + 3x2 + 0x3 + 2x4,
 // pode ser representado pelo vetor "float q[5] = {5, 0, 3, 0, 2};"
 
+
+#ifndef POLINOMIOS_H_
+
+#define POLINOMIOS_H_
+
 #define GRAU_MAXIMO 1000
 
-struct Polinomio {
+class Polinomio {
 private:
   int n;  // Numero de elementos no vetor 'a'. O grau do polinomio eh n - 1.
   float a[GRAU_MAXIMO + 1];  // Vetor com os coeficientes do polinomio.
