@@ -31,8 +31,9 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add directory="..\.." />
 		</Compiler>
-		<Unit filename="comlexo.cc" />
+		<Unit filename="complexo.cc" />
 		<Unit filename="complexo.h" />
 		<Unit filename="main.cc">
 			<Option target="Release" />
