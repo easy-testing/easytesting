@@ -38,10 +38,10 @@
 		<Unit filename="src/main.cc">
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="test/complexo_teste.cc">
+		<Unit filename="test/complexo_test.cc">
 			<Option target="Debug" />
 		</Unit>
-		<Unit filename="test/complexo_teste.h">
+		<Unit filename="test/complexo_test.h">
 			<Option target="Debug" />
 		</Unit>
 		<Unit filename="../gtest/gtest.cc">
