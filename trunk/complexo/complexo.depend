@@ -1,0 +1,457 @@
+# depslib dependency file v1.0
+1286395143 source:c:\users\tfn\documents\my dropbox\disciplinas\aeds2\2010.2\gabaritos\complexo\main.cpp
+	"complexo.h"
+	<iostream>
+	<math.h>
+
+1288121985 
+
+1286393034 source:c:\users\tfn\documents\my dropbox\disciplinas\aeds2\2010.2\gabaritos\complexo\comlexo.cc
+	"complexo.h"
+	<math.h>
+
+1286395476 c:\users\tfn\documents\my dropbox\disciplinas\aeds2\2010.2\gabaritos\complexo\complexo.h
+
+1286398743 source:c:\users\tfn\documents\my dropbox\projetos\peg\complexo\main.cpp
+	"complexo.h"
+	<iostream>
+	<math.h>
+
+1286399076 c:\users\tfn\documents\my dropbox\projetos\peg\complexo\complexo.h
+
+1286399078 source:c:\users\tfn\documents\my dropbox\projetos\peg\complexo\comlexo.cc
+	"complexo.h"
+	<math.h>
+
+1286485092 source:c:\users\tfn\documents\my dropbox\projetos\peg\complexo\test\complexo_teste.cc
+	"complexo_teste.h"
+
+1286485092 teste.h"
+
+1288799473 c:\users\tfn\documents\my dropbox\projetos\peg\complexo\test\complexo_teste.h
+	"../complexo.h"
+	"../../gtest/gtest.h"
+	<sstream>
+	<string>
+
+1268938906 c:\users\tfn\documents\my dropbox\projetos\peg\complexo\test\gtest.h
+	<limits>
+	<stddef.h>
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<sys/stat.h>
+	<iostream>
+	<regex.h>
+	<strings.h>
+	<sys/types.h>
+	<unistd.h>
+	<direct.h>
+	<io.h>
+	<string>
+	<sstream>
+	<strstream>
+	<utility>
+	<tuple>
+	<tr1/tuple>
+	<tr1/tuple>
+	<tuple>
+	<vector>
+	<stdlib.h>
+	<sys/types.h>
+	<sys/wait.h>
+	<unistd.h>
+	<ctype.h>
+	<string.h>
+	<iomanip>
+	<limits>
+	<set>
+	<string.h>
+	<string>
+	<cxxabi.h>
+	<typeinfo>
+	<utility>
+	<iterator>
+	<utility>
+	<vector>
+	<typeinfo>
+	<stdlib.h>
+	<assert.h>
+	<iosfwd>
+
+1268939740 source:c:\users\tfn\documents\my dropbox\projetos\peg\complexo\test\gtest.cc
+	"gtest.h"
+	<ctype.h>
+	<math.h>
+	<stdarg.h>
+	<stdio.h>
+	<stdlib.h>
+	<wchar.h>
+	<wctype.h>
+	<ostream>
+	<fcntl.h>
+	<limits.h>
+	<sched.h>
+	<strings.h>
+	<sys/mman.h>
+	<sys/time.h>
+	<unistd.h>
+	<string>
+	<vector>
+	<sys/time.h>
+	<sys/time.h>
+	<strings.h>
+	<windows.h>
+	<io.h>
+	<sys/timeb.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<sys/time.h>
+	<windows.h>
+	<sys/time.h>
+	<unistd.h>
+	<stdexcept>
+	<errno.h>
+	<stddef.h>
+	<stdlib.h>
+	<string.h>
+	<string>
+	<windows.h>
+	<crt_externs.h>
+	<errno.h>
+	<fcntl.h>
+	<limits.h>
+	<stdarg.h>
+	<windows.h>
+	<sys/mman.h>
+	<sys/wait.h>
+	<stdlib.h>
+	<windows.h>
+	<direct.h>
+	<io.h>
+	<sys/syslimits.h>
+	<limits.h>
+	<climits>
+	<limits.h>
+	<stdlib.h>
+	<stdio.h>
+	<windows.h>
+	<io.h>
+	<sys/stat.h>
+	<unistd.h>
+	<mach/mach_init.h>
+	<mach/task.h>
+	<mach/vm_map.h>
+
+1288803778 ap.h>
+
+1288121985 c:\users\tfn\documents\my dropbox\projetos\peg\gtest\gtest.h
+	<limits>
+	<stddef.h>
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<sys/stat.h>
+	<iostream>
+	<regex.h>
+	<strings.h>
+	<sys/types.h>
+	<unistd.h>
+	<direct.h>
+	<io.h>
+	<string>
+	<sstream>
+	<strstream>
+	<utility>
+	<tuple>
+	<tr1/tuple>
+	<tr1/tuple>
+	<tuple>
+	<vector>
+	<stdlib.h>
+	<sys/types.h>
+	<sys/wait.h>
+	<unistd.h>
+	<ctype.h>
+	<string.h>
+	<iomanip>
+	<limits>
+	<set>
+	<string.h>
+	<string>
+	<cxxabi.h>
+	<typeinfo>
+	<utility>
+	<iterator>
+	<utility>
+	<vector>
+	<typeinfo>
+	<stdlib.h>
+	<assert.h>
+	<iosfwd>
+
+1286398743 source:c:\users\tfn\documents\my dropbox\projetos\peg\complexo\main.cc
+	"complexo.h"
+	<iostream>
+	<math.h>
+
+1286485092 source:c:\documents and settings\thiago\meus documentos\my dropbox\projetos\peg\complexo\test\complexo_teste.cc
+	"complexo_teste.h"
+
+1292188854 c:\documents and settings\thiago\meus documentos\my dropbox\projetos\peg\complexo\test\complexo_teste.h
+	"../complexo.h"
+	"../../gtest/gtest.h"
+	<sstream>
+	<string>
+
+1286399076 c:\documents and settings\thiago\meus documentos\my dropbox\projetos\peg\complexo\complexo.h
+
+1286399078 source:c:\documents and settings\thiago\meus documentos\my dropbox\projetos\peg\complexo\comlexo.cc
+	"complexo.h"
+	<math.h>
+
+1286398743 source:c:\documents and settings\thiago\meus documentos\my dropbox\projetos\peg\complexo\main.cc
+	"complexo.h"
+	<iostream>
+	<math.h>
+
+1288121985 c:\documents and settings\thiago\meus documentos\my dropbox\projetos\peg\gtest\gtest.h
+	<limits>
+	<stddef.h>
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<sys/stat.h>
+	<iostream>
+	<regex.h>
+	<strings.h>
+	<sys/types.h>
+	<unistd.h>
+	<direct.h>
+	<io.h>
+	<string>
+	<sstream>
+	<strstream>
+	<utility>
+	<tuple>
+	<tr1/tuple>
+	<tr1/tuple>
+	<tuple>
+	<vector>
+	<stdlib.h>
+	<sys/types.h>
+	<sys/wait.h>
+	<unistd.h>
+	<ctype.h>
+	<string.h>
+	<iomanip>
+	<limits>
+	<set>
+	<string.h>
+	<string>
+	<cxxabi.h>
+	<typeinfo>
+	<utility>
+	<iterator>
+	<utility>
+	<vector>
+	<typeinfo>
+	<stdlib.h>
+	<assert.h>
+	<iosfwd>
+
+1288803778 source:c:\documents and settings\thiago\meus documentos\my dropbox\projetos\peg\gtest\gtest.cc
+	"gtest.h"
+	<ctype.h>
+	<math.h>
+	<stdarg.h>
+	<stdio.h>
+	<stdlib.h>
+	<wchar.h>
+	<wctype.h>
+	<ostream>
+	<fcntl.h>
+	<limits.h>
+	<sched.h>
+	<strings.h>
+	<sys/mman.h>
+	<sys/time.h>
+	<unistd.h>
+	<string>
+	<vector>
+	<sys/time.h>
+	<sys/time.h>
+	<strings.h>
+	<windows.h>
+	<io.h>
+	<sys/timeb.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<sys/time.h>
+	<windows.h>
+	<sys/time.h>
+	<unistd.h>
+	<stdexcept>
+	<errno.h>
+	<stddef.h>
+	<stdlib.h>
+	<string.h>
+	<string>
+	<windows.h>
+	<crt_externs.h>
+	<errno.h>
+	<fcntl.h>
+	<limits.h>
+	<stdarg.h>
+	<windows.h>
+	<sys/mman.h>
+	<sys/wait.h>
+	<stdlib.h>
+	<windows.h>
+	<direct.h>
+	<io.h>
+	<sys/syslimits.h>
+	<limits.h>
+	<climits>
+	<limits.h>
+	<stdlib.h>
+	<stdio.h>
+	<windows.h>
+	<io.h>
+	<sys/stat.h>
+	<unistd.h>
+	<mach/mach_init.h>
+	<mach/task.h>
+	<mach/vm_map.h>
+
+1286395478 source:/home/lapo/matheuspacheco/Dropbox/PEG/aeds2/complexo/comlexo.cc
+	"complexo.h"
+	<math.h>
+
+1286395476 /home/lapo/matheuspacheco/Dropbox/PEG/aeds2/complexo/complexo.h
+
+1286481492 source:/home/lapo/matheuspacheco/Dropbox/PEG/aeds2/complexo/test/complexo_teste.cc
+	"complexo_teste.h"
+
+1292188854 /home/lapo/matheuspacheco/Dropbox/PEG/aeds2/complexo/test/complexo_teste.h
+	"../complexo.h"
+	"../../gtest/gtest.h"
+	<sstream>
+	<string>
+
+1288121985 /home/lapo/matheuspacheco/Dropbox/PEG/aeds2/gtest/gtest.h
+	<limits>
+	<stddef.h>
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<sys/stat.h>
+	<iostream>
+	<regex.h>
+	<strings.h>
+	<sys/types.h>
+	<unistd.h>
+	<direct.h>
+	<io.h>
+	<string>
+	<sstream>
+	<strstream>
+	<utility>
+	<tuple>
+	<tr1/tuple>
+	<tr1/tuple>
+	<tuple>
+	<vector>
+	<stdlib.h>
+	<sys/types.h>
+	<sys/wait.h>
+	<unistd.h>
+	<ctype.h>
+	<string.h>
+	<iomanip>
+	<limits>
+	<set>
+	<string.h>
+	<string>
+	<cxxabi.h>
+	<typeinfo>
+	<utility>
+	<iterator>
+	<utility>
+	<vector>
+	<typeinfo>
+	<stdlib.h>
+	<assert.h>
+	<iosfwd>
+
+1288803778 source:/home/lapo/matheuspacheco/Dropbox/PEG/aeds2/gtest/gtest.cc
+	"gtest.h"
+	<ctype.h>
+	<math.h>
+	<stdarg.h>
+	<stdio.h>
+	<stdlib.h>
+	<wchar.h>
+	<wctype.h>
+	<ostream>
+	<fcntl.h>
+	<limits.h>
+	<sched.h>
+	<strings.h>
+	<sys/mman.h>
+	<sys/time.h>
+	<unistd.h>
+	<string>
+	<vector>
+	<sys/time.h>
+	<sys/time.h>
+	<strings.h>
+	<windows.h>
+	<io.h>
+	<sys/timeb.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<sys/time.h>
+	<windows.h>
+	<sys/time.h>
+	<unistd.h>
+	<stdexcept>
+	<errno.h>
+	<stddef.h>
+	<stdlib.h>
+	<string.h>
+	<string>
+	<windows.h>
+	<crt_externs.h>
+	<errno.h>
+	<fcntl.h>
+	<limits.h>
+	<stdarg.h>
+	<windows.h>
+	<sys/mman.h>
+	<sys/wait.h>
+	<stdlib.h>
+	<windows.h>
+	<direct.h>
+	<io.h>
+	<sys/syslimits.h>
+	<limits.h>
+	<climits>
+	<limits.h>
+	<stdlib.h>
+	<stdio.h>
+	<windows.h>
+	<io.h>
+	<sys/stat.h>
+	<unistd.h>
+	<mach/mach_init.h>
+	<mach/task.h>
+	<mach/vm_map.h>
+
+1286398743 source:c:\users\tfn\documents\my dropbox\projetos\peg\easytesting\complexo\main.cc
+	"complexo.h"
+	<iostream>
+	<math.h>
+
+1286399076 c:\users\tfn\documents\my dropbox\projetos\peg\easytesting\complexo\complexo.h
+
