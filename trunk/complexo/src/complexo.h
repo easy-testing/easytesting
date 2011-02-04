@@ -1,7 +1,6 @@
-// Copyright 2010 Thiago Ferreira de Noronha.
-
-#ifndef COMPLEXO_H_
-#define COMPLEXO_H_
+// Copyright 2010 Thiago Noronha
+#ifndef COMPLEXO_SRC_COMPLEXO_H_
+#define COMPLEXO_SRC_COMPLEXO_H_
 
 // Representa um numero complexo.
 struct Complexo {
@@ -10,7 +9,7 @@ struct Complexo {
   float imag_;  // Parte imaginaria.
 
  public:
-   // Cria o numero complexo 0 + 0i.
+  // Cria o numero complexo 0 + 0i.
   Complexo();
 
   // Cria o numero complexo a + 0i.
@@ -56,4 +55,4 @@ struct Complexo {
   void Dividir(Complexo x, Complexo y);
 };
 
-#endif // COMPLEXO_H_
+#endif  // COMPLEXO_SRC_COMPLEXO_H_
