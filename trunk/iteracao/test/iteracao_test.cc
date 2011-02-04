@@ -1,3 +1,5 @@
+// copyright 2010 Thiago Ferreira de Noronha
+
 #include "easytesting/iteracao/test/iteracao_test.h"
 
 int main(int argc, char** argv) {
