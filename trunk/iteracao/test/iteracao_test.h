@@ -1,17 +1,19 @@
-#ifndef ITERACAO_TESTE_H_
-#define ITERACAO_TESTE_H_
+// copyright 2010 Thiago Ferreira de Noronha
+
+#ifndef ITERACAO_TEST_ITERACAO_TEST_H_
+#define ITERACAO_TEST_ITERACAO_TEST_H_
 
 #include "easytesting/iteracao/src/iteracao.h"
-
-#include "easytesting/gtest/gtest.h"
 
 #include <sstream>
 #include <string>
 
+#include "easytesting/gtest/gtest.h"
+
 using std::string;
 using std::stringstream;
 
-namespace {
+namespace Teste {
 
 // Classe base dos casos de teste.
 class Teste : public testing::Test {
@@ -246,4 +248,4 @@ TEST_F(Teste, Calculo_da_Soma_dos_digitos) {
 
 }  // end namespace
 
-#endif // ITERACAO_TESTE_H_
+#endif  // ITERACAO_TEST_ITERACAO_TEST_H_
