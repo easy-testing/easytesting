@@ -1,3 +1,4 @@
+// Copyright 2010 Thiago Noronha
 #include "easytesting/complexo/test/complexo_test.h"
 
 int main(int argc, char** argv) {
