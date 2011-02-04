@@ -1,26 +1,40 @@
+// Lista de exercicio sobre estruturas de dados heterogêneas - Registros.
 //
-// Algoritmos e Estruturas de Dados I
+// QUESTÃO 1:
+// Implemente em registros.cc o struct Ponto que está em registros.h.
 //
-// Lista 10: Registros.
+// QUESTÃO 2:
+// Implemente em registros.cc o struct Triangulo que está em registros.h.
 //
-// Estruturas são tipo de dados criados pelo programador
-// utilizados para melhorar a organização do código. É
-// utilizada para unificar dados que possuem uma proximidade
-// por exemplo, um aluno possui uma matrícula, seu nome e seu
-// curso. Pode - se criar uma estrutura que possui um inteiro
-// para armazenar sua matrícula, um char, para armazenar seu nome
-// e um outro char para armazenar seu curso.
-// Uma estrutura possui também seus métodos, funções que alteram
-// os dados registrados na estrutura sem precisar incluí - los nos
-// parâmetros. Nesse programa, entre várias estruturas a serem
-// utilizadas, usaremos uma chamada Ponto, em que possui informações
-// do x e y de um ponto, e possui por exemplo, o método distância, que
-// calcula a distânia entre o ponto armazenado na estrutura e um outro
-// dado por parâmetro.
+// QUESTÃO 3:
+// Implemente em registros.cc o struct Retangulo que está em registros.h.
+//
+// QUESTÃO 4:
+// Implemente em registros.cc o struct Circunferencia que está em registros.h.
+//
+// QUESTÃO 5:
+// Resolva o seguinte problema: imagine que você está no centro de BH e procura
+// um restaurante para almoçar. Você gostaria de saber quais são todos os
+// restaurantes que estão a menos de uma determinada distância de onde você está.
+// Escreva um programa em C++ que lê de um arquivo o nome e as coordenadas x e y
+// de todos os restaurantes da cidade. O programa deve iterativamente perguntar
+// qual é a coordenada (x, y) em que você se encontra e a distância máxima que
+// você está disposto a caminhar para chegar em algum restaurante. Para cada
+// valor de x, y e d que o usuário digitar, o seu programa deve retornar a lista
+// com o o nome e a distância entre você e todos os restaurantes que estão a
+// menos de d Km da sua posição atual. Assuma que BH não tem mais do 4.000 bares.
+// Por favor, use os structs Ponto e Circunferencia definidos acima.
+//
+// QUESTÃO 6:
+// Resolva o mesmo problema da questão 6, mas imprima os bares ordenados,
+// começando do mais próximo da posição em que o usuário está e terminando com o
+// bar mais distante.
 
 #include "registros.h"
 #include <stdio.h>
 
+// TODO(gabriel): reimplementar usando iostream e fstream.
+// TODO(gabriel): trocar CNPJ (int) por nome (string).
 int main() {
   FILE* arq;
   Ponto bar[4000];
@@ -36,7 +50,7 @@ int main() {
   printf("\nAgora digite a distancia maxima que esta disposta a caminhar: ");
   scanf("%f", &dist_max);
 
-  arq = fopen("Bares.txt", "r");
+  arq = fopen("input.txt", "r");
   while (fscanf(arq , "%s %f %f" , CNPJ , &a , &b) == 3) {
     bar[num_bares].atribuir(a , b);
     if (dist_max >= bar[num_bares].distancia(centro)) {
@@ -45,7 +59,5 @@ int main() {
     }
     num_bares++;
   }
-
   fclose(arq);
-
 }

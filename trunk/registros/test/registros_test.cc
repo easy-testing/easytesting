@@ -1,8 +1,4 @@
-// Lista de exercicio sobre estruturas de dados heterogeneas - Registros.
-//
-// Executa todos os testes.
-
-#include "registros_teste.h"
+#include "easytesting/registros/test/registros_test.h"
 
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);

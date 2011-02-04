@@ -1,5 +1,3 @@
-// Lista de exercicio sobre estruturas de dados heterogeneas - Registros.
-
 #ifndef REGISTROS_H_
 #define REGISTROS_H_
 

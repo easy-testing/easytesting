@@ -1,11 +1,9 @@
-// Lista de exercicio sobre estruturas de dados heterogeneas - Registros.
-
 #ifndef REGISTROS_TESTE_H_
 #define REGISTROS_TESTE_H_
 
-#include "../registros.h"
+#include "easytesting/registros/src/registros.h"
 
-#include "../../gtest/gtest.h"
+#include "easytesting/gtest/gtest.h"
 #include <math.h>
 
 

@@ -1,6 +1,4 @@
-// Lista de exercicio sobre estruturas de dados heterogeneas - Registros.
-
-#include "registros.h"
+#include "easytesting/registros/src/registros.h"
 
 #include <math.h>
 
