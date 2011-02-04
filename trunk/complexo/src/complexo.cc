@@ -1,3 +1,4 @@
+// Copyright 2010 Thiago Noronha
 #include "easytesting/complexo/src/complexo.h"
 
 #include <math.h>
@@ -44,7 +45,7 @@ void Complexo::Conjugar(Complexo x) {
 }
 
 void Complexo::Inverter(Complexo x) {
-  float mod2 = pow(modulo(), 2.0);
+  float mod2 = pow(x.modulo(), 2.0);
   Atribuir(x.real_ / mod2, -x.imag_ / mod2);
 }
 
