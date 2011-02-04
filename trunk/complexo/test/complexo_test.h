@@ -1,30 +1,35 @@
-#ifndef COMPLEXO_TESTE_H_
-#define COMPLEXO_TESTE_H_
+// Copyright 2010 Matheus Pacheco
+#ifndef COMPLEXO_TEST_COMPLEXO_TEST_H_
+#define COMPLEXO_TEST_COMPLEXO_TEST_H_
 
 #include "easytesting/complexo/src/complexo.h"
-#include "easytesting/gtest/gtest.h"
 
 #include <sstream>
 #include <string>
 
+#include "easytesting/gtest/gtest.h"
+
 using std::string;
 using std::stringstream;
 
-namespace {
+namespace Teste {
 
 // Classe base dos testes.
 class Teste : public testing::Test {
  protected:
-   // Retorna string no formato [x + yi]
+  // Retorna string no formato [x + yi]
   string MostrarComplexo(Complexo& z) {
     stringstream output;
     output << "[";
-    if (z.imag() == 0) output << z.real();
-    else if (z.real() == 0)output << z.imag() << "i";
-    else {
+    if (z.imag() == 0) {
       output << z.real();
-      if (z.imag() > 0)output << " + " << z.imag();
-      else output << " -" << -z.imag();
+    } else if (z.real() == 0) {
+      output << z.imag() << "i";
+    } else {
+      output << z.real();
+      if (z.imag() > 0) output << " + " << z.imag();
+      else
+        output << " -" << -z.imag();
       output << "i";
     }
     output << "]";
@@ -867,4 +872,4 @@ TEST_F(Teste, Dividir_Numeros_Complexos_sinais_contrarios) {
 
 }  // end namespace
 
-#endif  // COMPLEXO_TESTE_H_
+#endif  // COMPLEXO_TEST_COMPLEXO_TEST_H_
