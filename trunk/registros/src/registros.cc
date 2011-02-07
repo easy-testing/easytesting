@@ -1,8 +1,10 @@
+// Copyright 2010 Thiago Ferreira de Noronha
+
 #include "easytesting/registros/src/registros.h"
 
 #include <math.h>
 
-float Ponto::distancia(Ponto& p) {
+float Ponto::distancia(const Ponto& p) {
   return sqrt((x - p.x) * (x - p.x) + (y - p.y) * (y - p.y));
 }
 
@@ -32,17 +34,17 @@ bool Triangulo::equilatero() {
          p2.distancia(p3) == p3.distancia(p1);
 }
 
-float Maior(float a, float b){
+float Maior(float a, float b) {
   return a > b ? a : b;
 }
 
-float Menor(float a, float b){
+float Menor(float a, float b) {
   return a < b ? a : b;
 }
 
 // Dois triangulos sao semelhantes s.s.s. a razao entre o maior e o menor
 // lado de cada triangulo eh igual.
-bool Triangulo::semelhante(Triangulo& t) {
+bool Triangulo::semelhante(const Triangulo& t) {
     // 'a', 'b', e 'c' armazenam o comprimento os lados do triangulo corrente.
     float a = p1.distancia(p2);
     float b = p2.distancia(p3);
@@ -83,14 +85,14 @@ bool Retangulo::quadrado() {
   return d1 == d2;
 }
 
-bool Retangulo::contem(Ponto& p) {
+bool Retangulo::contem(const Ponto& p) {
   return p.x >= se.x &&
          p.y <= se.y &&
          p.y >= id.y &&
          p.x <= id.x;
 }
 
-bool Retangulo::contem(Triangulo& t) {
+bool Retangulo::contem(const Triangulo& t) {
   return contem(t.p1) && contem(t.p2) && contem(t.p3);
 }
 
@@ -104,26 +106,26 @@ float Circunferencia::area() {
   return raio * raio * kPi;
 }
 
-bool Circunferencia::contem(Ponto& p) {
+bool Circunferencia::contem(const Ponto& p) {
   return p.distancia(centro) <= raio;
 }
 
-bool Circunferencia::contem(Triangulo& t) {
+bool Circunferencia::contem(const Triangulo& t) {
   return contem(t.p1) && contem(t.p2) && contem(t.p3);
 }
 
-bool Circunferencia::contem(Retangulo& r) {
+bool Circunferencia::contem(const Retangulo& r) {
   return contem(r.se) && contem(r.id);
 }
 
-bool Circunferencia::pertence(Ponto& p) {
+bool Circunferencia::pertence(const Ponto& p) {
   return p.distancia(centro) == raio;
 }
 
-bool Circunferencia::circunscrita(Triangulo& t) {
+bool Circunferencia::circunscrita(const Triangulo& t) {
   return pertence(t.p1) && pertence(t.p2) && pertence(t.p3);
 }
 
-bool Circunferencia::circunscrita(Retangulo& r) {
+bool Circunferencia::circunscrita(const Retangulo& r) {
   return pertence(r.se) && pertence(r.id);
 }
