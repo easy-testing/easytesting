@@ -1,7 +1,7 @@
 // Copyright 2010 Thiago Ferreira de Noronha
 
-#ifndef VETORES_H_
-#define VETORES_H_
+#ifndef VETORES_SRC_VETORES_H_
+#define VETORES_SRC_VETORES_H_
 
 // Calcula a media dos numeros de um vetor
 float Media(float v[], int n);
@@ -23,4 +23,4 @@ float ProdutoEscalar(float u[], float v[], int n);
 // TODO(gabriel): Implementar esta função.
 void MostraVetor(float v[], int n);
 
-#endif // VETORES_H_
+#endif  // VETORES_SRC_VETORES_H_
