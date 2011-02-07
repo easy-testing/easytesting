@@ -1,3 +1,5 @@
+// Copyright 2010 Thiago Ferreira de Noronha
+
 #include "vetores.h"
 
 float Media(float v[], int n) {

@@ -1,3 +1,5 @@
+// Copyright 2010 Thiago Ferreira de Noronha
+
 #ifndef VETORES_H_
 #define VETORES_H_
 
