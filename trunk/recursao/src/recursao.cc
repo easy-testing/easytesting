@@ -1,3 +1,4 @@
+// Copyright 2010 Thiago Noronha
 #include "easytesting/recursao/src/recursao.h"
 
 #include <math.h>
@@ -49,7 +50,7 @@ int resto(int a, int b) {
 }
 
 int div_(int a, int b) {
-  if(a < b)
+  if (a < b)
     return 0;
   else
     return 1 + div_(a - b, b);
@@ -63,7 +64,7 @@ int dig(int n) {
 }
 
 // Utilizada por 'double sqrt(double n)'.
-// Procura o ponto 'x' onde f(x) = X^2 - n é menor que 0.001.
+// Procura o ponto 'x' onde f(x) = X*X - n e menor que 0.001.
 double bissecao(double n, double a, double b) {
   double x = (a + b) / 2;
   if (fabs(a - b) < 0.001)
