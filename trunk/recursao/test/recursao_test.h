@@ -1,17 +1,18 @@
-#ifndef RECURSAO_TESTE_H_
-#define RECURSAO_TESTE_H_
+// Copyright 2010 Matheus Pacheco
+#ifndef RECURSAO_TEST_RECURSAO_TEST_H_
+#define RECURSAO_TEST_RECURSAO_TEST_H_
 
 #include "easytesting/recursao/src/recursao.h"
-
-#include "easytesting/gtest/gtest.h"
 
 #include <sstream>
 #include <string>
 
+#include "easytesting/gtest/gtest.h"
+
 using std::string;
 using std::stringstream;
 
-namespace {
+namespace Teste {
 
 // Classe base dos testes.
 class TestaRecurcao : public testing::Test {
@@ -278,4 +279,4 @@ TEST_F(TestaRecurcao, Calculo_da_Raiz_quadrada) {
 
 }  // end namespace
 
-#endif  // RECURSAO_TESTE_H_
+#endif  // RECURSAO_TEST_RECURSAO_TEST_H_
