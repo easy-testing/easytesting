@@ -1,3 +1,4 @@
+// Copyright 2010 Thiago Noronha
 #include "easytesting/recursao/test/recursao_test.h"
 
 int main(int argc, char** argv) {
