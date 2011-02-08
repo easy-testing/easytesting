@@ -27,7 +27,6 @@ TEST_F(Teste, Calculo_do_Fatorial) {
 
   for (int i = 0; i < num_testes; i ++) {
   ASSERT_EQ(esperado[i], fat(entrada[i]))
-
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
     << "* int fat(int) *\n"
@@ -41,7 +40,6 @@ TEST_F(Teste, Calculo_do_Fatorial) {
 
 TEST_F(Teste, Calculo_do_MDC) {
   // Casos analisados:
-  //
   // a e b iguais
   // a e b proporcionais (a = k*b)
   // a e b primos, em que mdc = 1
@@ -50,10 +48,8 @@ TEST_F(Teste, Calculo_do_MDC) {
   int entrada1[] = {11,  9, 11, 28};
   int entrada2[] = {11, 27, 13, 20};
   int num_testes = 4;
-
   for (int i = 0; i < num_testes; i ++) {
   ASSERT_EQ(esperado[i], mdc(entrada1[i], entrada2[i]))
-
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
     << "* int mdc(int, int) *\n"
@@ -68,7 +64,6 @@ TEST_F(Teste, Calculo_do_MDC) {
 
 TEST_F(Teste, Calculo_do_MMC) {
   // Casos analisados:
-  //
   // a e b iguais
   // a e b proporcionais (a = k*b)
   // a igual a 1
@@ -77,10 +72,8 @@ TEST_F(Teste, Calculo_do_MMC) {
   int entrada1[] = {10,  3,  1,  6};
   int entrada2[] = {10, 27, 21, 10};
   int num_testes = 4;
-
   for (int i = 0; i < num_testes; i ++) {
   ASSERT_EQ(esperado[i], mmc(entrada1[i], entrada2[i]))
-
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
     << "* int mmc(int, int) *\n"
@@ -95,14 +88,12 @@ TEST_F(Teste, Calculo_do_MMC) {
 
 TEST_F(Teste, Calculo_da_sequencia_de_Fibonacci) {
   // Casos analisados:
-  //
   // n igual a 0
   // n igual a 1
   // valor qualquer
   int esperado[] = {0, 1, 3};
   int  entrada[] = {0, 1, 4};
   int num_testes = 3;
-
   for (int i = 0; i < num_testes; i ++) {
   ASSERT_EQ(esperado[i], fib(entrada[i]))
     << "\n"
@@ -119,19 +110,16 @@ TEST_F(Teste, Calculo_da_sequencia_de_Fibonacci) {
 
 TEST_F(Teste, Numero_Primo) {
   // Casos analisados:
-  //
   // n igual a 1
   // n igual a primo
   // n igual a nao primo
   bool esperado[] = {false, true, false};
   int  entrada[] = {1, 2, 10};
   int num_testes = 3;
-
   for (int i = 0; i < num_testes; i ++) {
   ASSERT_EQ(esperado[i], primo(entrada[i]))
-    << "\n"
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
+    << "\n-------------------------------------------------------------------"
+    << "\nErro na funcao:  "
     << "* bool primo(int) *\n"
     << "-------------------------------------------------------------------\n"
     << " Valores de entrada : " << entrada[i] << "\n\n"
@@ -143,7 +131,6 @@ TEST_F(Teste, Numero_Primo) {
 
 TEST_F(Teste, Calculo_do_Resto) {
   // Casos analisados:
-  //
   // a menor que b
   // a igual a b (resto 0)
   // a proporcional a b (resto 0)
@@ -152,12 +139,10 @@ TEST_F(Teste, Calculo_do_Resto) {
   int entrada1[] = {3, 4, 9, 15};
   int entrada2[] = {4, 4, 3, 10};
   int num_testes = 4;
-
   for (int i = 0; i < num_testes; i ++) {
   ASSERT_EQ(esperado[i], resto(entrada1[i], entrada2[i]))
-    << "\n"
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
+  << "\n-------------------------------------------------------------------"
+  << "\nErro na funcao:  "
     << "* int resto(int, int) *\n"
     << "-------------------------------------------------------------------\n"
     << " Valores de entrada : " << entrada1[i]
@@ -170,7 +155,6 @@ TEST_F(Teste, Calculo_do_Resto) {
 
 TEST_F(Teste, Calculo_da_Divisao_inteira) {
   // Casos analisados:
-  //
   // a menor que b
   // a igual a b
   // a proporcional a b (a = k*b)
@@ -179,12 +163,10 @@ TEST_F(Teste, Calculo_da_Divisao_inteira) {
   int entrada1[] = {3, 4, 9, 15};
   int entrada2[] = {4, 4, 3, 10};
   int num_testes = 4;
-
   for (int i = 0; i < num_testes; i ++) {
   ASSERT_EQ(esperado[i], div_(entrada1[i], entrada2[i]))
-    << "\n"
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
+  << "\n-------------------------------------------------------------------"
+  << "\nErro na funcao:  "
     << "* int div_(int, int) *\n"
     << "-------------------------------------------------------------------\n"
     << " Valores de entrada : " << entrada1[i]
@@ -197,7 +179,6 @@ TEST_F(Teste, Calculo_da_Divisao_inteira) {
 
 TEST_F(Teste, Calculo_da_Raiz_quadrada) {
   // Casos analisados:
-  //
   // raiz de 0
   // raiz de 1
   // raiz exata
@@ -206,12 +187,10 @@ TEST_F(Teste, Calculo_da_Raiz_quadrada) {
   double esperado[] = {0, 1,  9,  4.795,   3.937};
   double  entrada[] = {0, 1, 81, 23,      15.5};
   int num_testes = 5;
-
   for (int i = 0; i < num_testes; i ++) {
   ASSERT_NEAR(esperado[i], sqrt_(entrada[i]), 0.001)
-    << "\n"
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
+  << "\n-------------------------------------------------------------------"
+  << "\nErro na funcao:  "
     << "* double sqrt_double) *\n"
     << "-------------------------------------------------------------------\n"
     << " Valores de entrada : " << entrada[i] << "\n\n"
@@ -223,7 +202,6 @@ TEST_F(Teste, Calculo_da_Raiz_quadrada) {
 
 TEST_F(Teste, Calculo_da_Soma_dos_digitos) {
   // Casos analisados:
-  //
   // numero igual a 0
   // numeros menores que 10
   // numeros maiores que 10 e menor que 100
@@ -231,12 +209,10 @@ TEST_F(Teste, Calculo_da_Soma_dos_digitos) {
   int esperado[] = {0, 7, 9,  9, 10,  14,  17};
   int  entrada[] = {0, 7, 9, 45, 82, 428, 980};
   int num_testes = 7;
-
   for (int i = 0; i < num_testes; i ++) {
   ASSERT_EQ(esperado[i], dig(entrada[i]))
-    << "\n"
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
+  << "\n-------------------------------------------------------------------"
+  << "\nErro na funcao:  "
     << "* int dig(int) *\n"
     << "-------------------------------------------------------------------\n"
     << " Valores de entrada : " << entrada[i] << "\n\n"
@@ -245,7 +221,6 @@ TEST_F(Teste, Calculo_da_Soma_dos_digitos) {
     << "-------------------------------------------------------------------\n";
   }
 }
-
 }  // end namespace
 
 #endif  // ITERACAO_TEST_ITERACAO_TEST_H_
