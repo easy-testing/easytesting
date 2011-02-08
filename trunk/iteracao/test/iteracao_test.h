@@ -96,9 +96,8 @@ TEST_F(Teste, Calculo_da_sequencia_de_Fibonacci) {
   int num_testes = 3;
   for (int i = 0; i < num_testes; i ++) {
   ASSERT_EQ(esperado[i], fib(entrada[i]))
-    << "\n"
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
+    << "\n-------------------------------------------------------------------"
+    << "\nErro na funcao:  "
     << "* int fib(int) *\n"
     << "-------------------------------------------------------------------\n"
     << " Valores de entrada : " << entrada[i] << "\n\n"
