@@ -8,7 +8,6 @@ using namespace std;
 
 // Imprime os elementos da lista entre chaves.
 void Print(list<int>& l) {
-  string s;
   cout << "{ ";
   for (list<int>::iterator i = l.begin(); i != l.end() ; ++i) {
     cout << *i << " ";
