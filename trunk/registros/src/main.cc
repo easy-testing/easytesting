@@ -38,32 +38,26 @@
 
 #include "easytesting/registros/src/registros.h"
 
-// TODO(gabriel): reimplementar usando iostream e fstream.
-// TODO(gabriel): trocar CNPJ (int) por nome (string).
-
 int main() {
-  FILE* arq;
+  std::ifstream input;
   Ponto bar[4000];
-  char CNPJ[14];
+  std::string CNPJ;
   int num_bares = 0;
-  float a , b;
+  float a, b, dist_max;
   Ponto centro;
-  float dist_max;
-
-  printf("Digite as coordenadas x e y de onde voce se encontra: ");
-  scanf("%f %f", &a, &b);
+  std::cout << "Digite as coordenadas x e y de onde voce se encontra: ";
+  std::cin >> a >> b;
   centro.atribuir(a, b);
-  printf("\nAgora digite a distancia maxima que esta disposta a caminhar: ");
-  scanf("%f", &dist_max);
-
-  arq = fopen("input.txt", "r");
-  while (fscanf(arq , "%s %f %f" , CNPJ , &a , &b) == 3) {
-    bar[num_bares].atribuir(a , b);
+  std::cout << std::endl << "Digite a distancia maxima a caminhar: ";
+  std::cin >> dist_max;
+  input.open("input.txt");
+  while (!input.eof()) {
+    input >> CNPJ >> a >> b;
+    bar[num_bares].atribuir(a, b);
     if (dist_max >= bar[num_bares].distancia(centro)) {
-      printf("CNPJ: ");
-      puts(CNPJ);
+      std::cout << "CNPJ: " << CNPJ << std::endl;
     }
     num_bares++;
   }
-  fclose(arq);
+  input.close();
 }

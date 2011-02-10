@@ -10,7 +10,7 @@ struct Ponto {
   float y;
 
   // Retorna a distancia euclidiana entre o ponto 'p' e o ponto corrente.
-  float distancia(const Ponto& p);
+  float distancia(Ponto& p);
 
   // Redefine as coordenadas do ponto corrente para (a, b).
   void atribuir(float a, float b);
@@ -31,7 +31,7 @@ struct Triangulo {
   bool equilatero();
 
   // Testa se o triango corrente eh semelhante a 't'.
-  bool semelhante(const Triangulo& t);
+  bool semelhante(Triangulo& t);
 };
 
 // Representa um retangulo no espaco euclidiano.
@@ -50,10 +50,10 @@ struct Retangulo {
   bool quadrado();
 
   // Testa se o ponto 'p' esta dentro do retangulo corrente.
-  bool contem(const Ponto& p);
+  bool contem(Ponto& p);
 
   // Testa se o triangulo 't' esta dentro do retangulo corrente.
-  bool contem(const Triangulo& t);
+  bool contem(Triangulo& t);
 };
 
 // Representa ua circunferencia no espaco euclidiano.
@@ -71,22 +71,22 @@ struct Circunferencia {
   float area();
 
   // Testa se o ponto 'p' esta dentro da circunferencia corrente.
-  bool contem(const Ponto& p);
+  bool contem(Ponto& p);
 
   // Testa se o triangulo 't' esta dentro da circunferencia corrente.
-  bool contem(const Triangulo& t);
+  bool contem(Triangulo& t);
 
   // Testa se o retangulo 'r' esta dentro da circunferencia corrente.
-  bool contem(const Retangulo& r);
+  bool contem(Retangulo& r);
 
   // Testa se o ponto 'p' esta na linha definida pela circunferencia corrente.
-  bool pertence(const Ponto& p);
+  bool pertence(Ponto& p);
 
   // Testa se a circunferencia corrente eh circunscrita ao triangulo t.
-  bool circunscrita(const Triangulo& t);
+  bool circunscrita(Triangulo& t);
 
   // Testa se a circunferencia corrente eh circunscrita ao retangulo r.
-  bool circunscrita(const Retangulo& r);
+  bool circunscrita(Retangulo& r);
 };
 
 #endif  // REGISTROS_SRC_REGISTROS_H_

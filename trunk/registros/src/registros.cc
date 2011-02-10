@@ -4,7 +4,7 @@
 
 #include <math.h>
 
-float Ponto::distancia(const Ponto& p) {
+float Ponto::distancia(Ponto& p) {
   return sqrt((x - p.x) * (x - p.x) + (y - p.y) * (y - p.y));
 }
 
@@ -44,7 +44,7 @@ float Menor(float a, float b) {
 
 // Dois triangulos sao semelhantes s.s.s. a razao entre o maior e o menor
 // lado de cada triangulo eh igual.
-bool Triangulo::semelhante(const Triangulo& t) {
+bool Triangulo::semelhante(Triangulo& t) {
     // 'a', 'b', e 'c' armazenam o comprimento os lados do triangulo corrente.
     float a = p1.distancia(p2);
     float b = p2.distancia(p3);
@@ -85,14 +85,14 @@ bool Retangulo::quadrado() {
   return d1 == d2;
 }
 
-bool Retangulo::contem(const Ponto& p) {
+bool Retangulo::contem(Ponto& p) {
   return p.x >= se.x &&
          p.y <= se.y &&
          p.y >= id.y &&
          p.x <= id.x;
 }
 
-bool Retangulo::contem(const Triangulo& t) {
+bool Retangulo::contem(Triangulo& t) {
   return contem(t.p1) && contem(t.p2) && contem(t.p3);
 }
 
@@ -106,26 +106,26 @@ float Circunferencia::area() {
   return raio * raio * kPi;
 }
 
-bool Circunferencia::contem(const Ponto& p) {
+bool Circunferencia::contem(Ponto& p) {
   return p.distancia(centro) <= raio;
 }
 
-bool Circunferencia::contem(const Triangulo& t) {
+bool Circunferencia::contem(Triangulo& t) {
   return contem(t.p1) && contem(t.p2) && contem(t.p3);
 }
 
-bool Circunferencia::contem(const Retangulo& r) {
+bool Circunferencia::contem(Retangulo& r) {
   return contem(r.se) && contem(r.id);
 }
 
-bool Circunferencia::pertence(const Ponto& p) {
+bool Circunferencia::pertence(Ponto& p) {
   return p.distancia(centro) == raio;
 }
 
-bool Circunferencia::circunscrita(const Triangulo& t) {
+bool Circunferencia::circunscrita(Triangulo& t) {
   return pertence(t.p1) && pertence(t.p2) && pertence(t.p3);
 }
 
-bool Circunferencia::circunscrita(const Retangulo& r) {
+bool Circunferencia::circunscrita(Retangulo& r) {
   return pertence(r.se) && pertence(r.id);
 }
