@@ -1,6 +1,8 @@
 // Copyright 2010 Thiago Ferreira de Noronha
 
-#include "/easytesting/vetores/src/vetores.h"
+#include <iostream>
+
+#include "easytesting/vetores/src/vetores.h"
 
 float Media(float v[], int n) {
   float soma = 0;
@@ -45,4 +47,16 @@ float ProdutoEscalar(float u[], float v[], int n) {
     pe += u[i] * v[i];
   }
   return pe;
+}
+
+void MostraVetor(float v[], int n) {
+  std::cout << "{";
+  for (int i = 0 ; i < n-1 ; i++) {
+    std::cout << v[i] << ", ";
+  }
+  if (n > 0) {
+    std::cout << v[n-1] << "}";
+  } else {
+    std::cout << " }";
+  }
 }

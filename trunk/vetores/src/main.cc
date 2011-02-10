@@ -9,14 +9,22 @@
 // e armazena em um vetor. Assuma que a quantidade de numeros no arquivo
 // nao ultrapassa o limite maximo de elementos do vetor (e.g. 1000).
 
-#include <iostream>
+#include <fstream>
 
 #include "easytesting/vetores/src/vetores.h"
 
 // Lê uma sequencia de números de um arquivo
 // e armazena em um vetor. Assuma que a quantidade de números no arquivo
 // não ultrapassa o limite máximo de elementos do vetor (e.g. 1000).
+
 int main() {
-  // TODO(gabriel): Implementar este funcao com iostream.
+  std::ifstream input;
+  float numero_arq;
+  int v[1000];
+  input.open("numeros.txt");
+  for (int i = 0 ; input >> numero_arq ; i++) {
+    v[i] = numero_arq;
+  }
+  input.close();
   return 0;
 }
