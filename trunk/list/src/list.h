@@ -4,7 +4,8 @@
 #include "easytesting/list/src/list_iterator.h"
 #include "easytesting/list/src/list_node.h"
 
-template<class Type> class list {
+template<class Type>
+class list {
  public:
   typedef ListNode<Type> Node;  // Tipo dos nós da lista.
   typedef ListIterator<Type> iterator;  // Tipo do iterador da lista.
@@ -25,7 +26,7 @@ template<class Type> class list {
     return iterator(end_->right);
   }
 
-  // Retorna um iterador para depois do ultimo elemento da lista em O(1).
+  // Retorna um iterador para "depois" do ultimo elemento da lista em O(1).
   iterator end() {
     return iterator(end_);
   }

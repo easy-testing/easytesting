@@ -3,6 +3,10 @@
 
 template<class Type>
 struct ListNode {
+  Type key;  // Valor associado ao no da lista.
+  ListNode* left;  // Ponteiro para o proximo no da lista.
+  ListNode* right;  // Ponteiro para o no anterior da lista.
+
   // Cria um no sentinela em O(1).
   ListNode() {
     left = right = this;
@@ -14,10 +18,6 @@ struct ListNode {
     left = l;
     right = r;
   }
-
-  Type key;  // Valor associado ao no da lista.
-  ListNode* left;  // Ponteiro para o proximo no da lista.
-  ListNode* right;  // Ponteiro para o no anterior da lista.
 };  // end struct Node;
 
 

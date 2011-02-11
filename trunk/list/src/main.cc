@@ -1,6 +1,7 @@
 // TODO(thiago): Escrever enunciado desta lista.
 
 #include "easytesting/list/src/list.h"
+//#include <list>
 
 #include <iostream>
 
@@ -25,6 +26,7 @@ int main() {
     l.push_front(-i);
     l.pop_front();
   }
+  l.front() = -8;
   Print(l);
   return 0;
 }
