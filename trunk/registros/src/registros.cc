@@ -19,8 +19,8 @@ float Triangulo::perimetro() {
          p3.distancia(p1);
 }
 
-// Calcula a area em funcao do semi-perimetro s.
-// Area = sqrt(s * (s - a) * (s - b) * (s - c)).
+// Calcula a área em função do semi-perímetro s.
+// Área = sqrt(s * (s - a) * (s - b) * (s - c)).
 float Triangulo::area() {
   float a = p1.distancia(p2);
   float b = p2.distancia(p3);
@@ -42,24 +42,24 @@ float Menor(float a, float b) {
   return a < b ? a : b;
 }
 
-// Dois triangulos sao semelhantes s.s.s. a razao entre o maior e o menor
-// lado de cada triangulo eh igual.
+// Dois triângulos são semelhantes s.s.s. a razão entre o maior e o menor
+// lado de cada triângulo é igual.
 bool Triangulo::semelhante(Triangulo& t) {
-    // 'a', 'b', e 'c' armazenam o comprimento os lados do triangulo corrente.
+    // 'a', 'b', e 'c' armazenam o comprimento os lados do triângulo corrente.
     float a = p1.distancia(p2);
     float b = p2.distancia(p3);
     float c = p3.distancia(p1);
 
-    // 'ta', 'tb', e 'tc' armazenam o comprimento dos lados do triangulo 't'.
+    // 'ta', 'tb', e 'tc' armazenam o comprimento dos lados do triângulo 't'.
     float ta = t.p1.distancia(t.p2);
     float tb = t.p2.distancia(t.p3);
     float tc = t.p3.distancia(t.p1);
 
-    // Seleciona o maior lado de cada triangulo.
+    // Seleciona o maior lado de cada triângulo.
     float maiorLado = Maior(Maior(a, b),  c);
     float MaiorLadoDeT = Maior(Maior(ta, tb), tc);
 
-    // Seleciona o menor lado de cada triangulo.
+    // Seleciona o menor lado de cada triângulo.
     float menorLado = Menor(Menor(a, b),  c);
     float MenorLadoDeT = Menor(Menor(ta, tb), tc);
 
@@ -69,8 +69,7 @@ bool Triangulo::semelhante(Triangulo& t) {
 float Retangulo::perimetro() {
   float d1 = se.y - id.y;
   float d2 = id.x - se.x;
-  return 2 * d1 +
-         2 * d2;
+  return 2 * d1 + 2 * d2;
 }
 
 float Retangulo::area() {

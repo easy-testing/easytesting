@@ -51,8 +51,7 @@ int main() {
   std::cout << std::endl << "Digite a distancia maxima a caminhar: ";
   std::cin >> dist_max;
   input.open("input.txt");
-  while (!input.eof()) {
-    input >> CNPJ >> a >> b;
+  while (input >> CNPJ >> a >> b) {
     bar[num_bares].atribuir(a, b);
     if (dist_max >= bar[num_bares].distancia(centro)) {
       std::cout << "CNPJ: " << CNPJ << std::endl;

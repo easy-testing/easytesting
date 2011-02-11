@@ -3,89 +3,89 @@
 #ifndef REGISTROS_SRC_REGISTROS_H_
 #define REGISTROS_SRC_REGISTROS_H_
 
-// Representa um ponto no espaco euclidiano.
+// Representa um ponto no espaço euclidiano.
 struct Ponto {
   // Coordenadas x e y de um ponto no espaço euclidiano.
   float x;
   float y;
 
-  // Retorna a distancia euclidiana entre o ponto 'p' e o ponto corrente.
+  // Retorna a distância euclidiana entre o ponto 'p' e o ponto corrente.
   float distancia(Ponto& p);
 
   // Redefine as coordenadas do ponto corrente para (a, b).
   void atribuir(float a, float b);
 };
 
-// Representa um triangulo no espaco euclidiano.
+// Representa um triângulo no espaço euclidiano.
 struct Triangulo {
-  // Tres pontos que definem o triângulo.
+  // Três pontos que definem o triângulo.
   Ponto p1, p2, p3;
 
-  // Retorna o perimetro do triangulo.
+  // Retorna o perímetro do triângulo.
   float perimetro();
 
-  // Retorna a area do triângulo.
+  // Retorna a área do triângulo.
   float area();
 
-  // Testa se o triangulo corrente eh equilatero.
+  // Testa se o triângulo corrente é equilatero.
   bool equilatero();
 
-  // Testa se o triango corrente eh semelhante a 't'.
+  // Testa se o triângulo corrente é semelhante a 't'.
   bool semelhante(Triangulo& t);
 };
 
-// Representa um retangulo no espaco euclidiano.
+// Representa um retângulo no espaço euclidiano.
 struct Retangulo {
-  // Pontos superior esquerdo (se) e inferior direito (id) do retangulo.
+  // Pontos superior esquerdo (se) e inferior direito (id) do retângulo.
   // Ponto se, id.
   Ponto se, id;
 
-  // Retorna o perimetro do retangulo.
+  // Retorna o perímetro do retângulo.
   float perimetro();
 
-  // Retorna a area do retangulo.
+  // Retorna a área do retângulo.
   float area();
 
-  // Testa se o retangulo corrente eh um quadrado.
+  // Testa se o retângulo corrente é um quadrado.
   bool quadrado();
 
-  // Testa se o ponto 'p' esta dentro do retangulo corrente.
+  // Testa se o ponto 'p' está dentro do retângulo corrente.
   bool contem(Ponto& p);
 
-  // Testa se o triangulo 't' esta dentro do retangulo corrente.
+  // Testa se o triângulo 't' esta dentro do retângulo corrente.
   bool contem(Triangulo& t);
 };
 
-// Representa ua circunferencia no espaco euclidiano.
+// Representa uma circunferência no espaco euclidiano.
 struct Circunferencia {
-  // A circunferencia eh definida pelo seu ponto central e o valor do raio.
+  // A circunferência é definida pelo seu ponto central e o valor do raio.
   Ponto centro;
   float raio;
 
   static const float kPi = 3.1416;
 
-  // Retorna o perimetro da circunferencia.
+  // Retorna o perímetro da circunferência.
   float perimetro();
 
-  // Retorna a area da circunferencia.
+  // Retorna a área da circunferência.
   float area();
 
-  // Testa se o ponto 'p' esta dentro da circunferencia corrente.
+  // Testa se o ponto 'p' está dentro da circunferência corrente.
   bool contem(Ponto& p);
 
-  // Testa se o triangulo 't' esta dentro da circunferencia corrente.
+  // Testa se o triângulo 't' está dentro da circunferência corrente.
   bool contem(Triangulo& t);
 
-  // Testa se o retangulo 'r' esta dentro da circunferencia corrente.
+  // Testa se o retângulo 'r' está dentro da circunferência corrente.
   bool contem(Retangulo& r);
 
-  // Testa se o ponto 'p' esta na linha definida pela circunferencia corrente.
+  // Testa se o ponto 'p' está na linha definida pela circunferência corrente.
   bool pertence(Ponto& p);
 
-  // Testa se a circunferencia corrente eh circunscrita ao triangulo t.
+  // Testa se a circunferência corrente é circunscrita ao triângulo t.
   bool circunscrita(Triangulo& t);
 
-  // Testa se a circunferencia corrente eh circunscrita ao retangulo r.
+  // Testa se a circunferência corrente é circunscrita ao retângulo r.
   bool circunscrita(Retangulo& r);
 };
 
