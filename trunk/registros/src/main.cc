@@ -38,23 +38,26 @@
 
 #include "easytesting/registros/src/registros.h"
 
+using std::cout;
+using std::endl;
+
 int main() {
-  std::ifstream input;
+  ifstream input;
   Ponto bar[4000];
-  std::string CNPJ;
+  string CNPJ;
   int num_bares = 0;
   float a, b, dist_max;
   Ponto centro;
-  std::cout << "Digite as coordenadas x e y de onde voce se encontra: ";
-  std::cin >> a >> b;
+  cout << "Digite as coordenadas x e y de onde voce se encontra: ";
+  cin >> a >> b;
   centro.atribuir(a, b);
-  std::cout << std::endl << "Digite a distancia maxima a caminhar: ";
-  std::cin >> dist_max;
+  cout << endl << "Digite a distancia maxima a caminhar: ";
+  cin >> dist_max;
   input.open("input.txt");
   while (input >> CNPJ >> a >> b) {
     bar[num_bares].atribuir(a, b);
     if (dist_max >= bar[num_bares].distancia(centro)) {
-      std::cout << "CNPJ: " << CNPJ << std::endl;
+      cout << "CNPJ: " << CNPJ << endl;
     }
     num_bares++;
   }
