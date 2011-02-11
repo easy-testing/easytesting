@@ -1,8 +1,15 @@
-#include "easytesting/matrizes/src//matrizes.h"
+// Copyright 2010 Thiago Ferreira de Noronha
+
+#include <iostream>
 
 #include<stdio.h>
 
-float media_matriz(int n, float mat[][100]) {
+#include "easytesting/matrizes/src/matrizes.h"
+
+using std::cout ;
+using std::endl;
+
+float MediaMatriz(int n, float mat[][100]) {
    float soma=0;
    for (int i = 0; i < n; i++) {
       for (int j = 0; j < n; j++) {
@@ -12,8 +19,7 @@ float media_matriz(int n, float mat[][100]) {
    return soma /(n*n);
 }
 
-void identidade(int n, float A[][100]) {
-   float soma=0;
+void Identidade(int n, float A[][100]) {
    for (int i = 0; i < n; i++) {
       for (int j = 0; j < n; j++) {
          A[i][j] = 0;
@@ -24,8 +30,7 @@ void identidade(int n, float A[][100]) {
    }
 }
 
-void transposta(int n, float A[][100], float T[][100]) {
-   float soma=0;
+void Transposta(int n, float A[][100], float T[][100]) {
    for (int i = 0; i < n; i++) {
       for (int j = 0; j < n; j++) {
          T[i][j] = A[j][i];
@@ -33,8 +38,7 @@ void transposta(int n, float A[][100], float T[][100]) {
    }
 }
 
-bool simetrica(int n, float A[][100]) {
-   float soma=0;
+bool Simetrica(int n, float A[][100]) {
    for (int i = 0; i < n; i++) {
       for (int j = 0; j < n; j++) {
          if(A[i][j]!=A[j][i]) {
@@ -45,7 +49,7 @@ bool simetrica(int n, float A[][100]) {
    return true;
 }
 
-void soma_matriz(int n, float A[][100], float B[][100], float S[][100]) {
+void SomaMatriz(int n, float A[][100], float B[][100], float S[][100]) {
    for (int i = 0; i < n; i++) {
       for (int j = 0; j < n; j++) {
          S[i][j] = A[i][j] + B[i][j];
@@ -53,7 +57,7 @@ void soma_matriz(int n, float A[][100], float B[][100], float S[][100]) {
    }
 }
 
-void mult_matriz(int n, float A[][100], float B[][100], float P[][100]) {
+void MultMatriz(int n, float A[][100], float B[][100], float P[][100]) {
    for (int i = 0; i < n; i++) {
       for (int j = 0; j < n; j++) {
          P[i][j]=0.0;
@@ -64,6 +68,12 @@ void mult_matriz(int n, float A[][100], float B[][100], float P[][100]) {
    }
 }
 
-void mostra_matriz(int n,int m, float a[][100]) {
-  // TODO(gabriel): implementar esta função.
+void MostraMatriz(int n,int m, float a[][100]) {
+  for (int i = 0 ; i < n ; i++) {
+    cout << "| ";
+    for (int j = 0 ; j < m ; j++) {
+      cout << a[i][j] << " ";
+    }
+    cout << "| " << endl;
+  }
 }
