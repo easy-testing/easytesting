@@ -79,13 +79,13 @@ class list {
 
   // Insere x antes do elemento identificado por posision em O(1).
   iterator insert(iterator position, Type x) {
-    Node* node = position.current();
+    Node* node = position.node();
     node->left = node->left->right = new Node(x, node->left, node);
   }
 
   // Apaga o elemento indicado por posision em O(1).
   void erase(iterator position) {
-    Node* node = position.current();
+    Node* node = position.node();
     node->left->right = node->right;
     node->right->left = node->left;
     delete node;

@@ -34,7 +34,7 @@ template<class Type> class ListIterator {
     return current_ != i.current_;
   }
 
-  Node* current() {
+  Node* node() {
     return current_;
   }
 
