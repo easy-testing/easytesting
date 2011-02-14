@@ -1,5 +1,6 @@
 // Copyright 2010 Matheus Pacheco
 #include<math.h>
+#include "easytesting/funcoes/src/funcoes.h"
 
 #define PI 3.1415
 
