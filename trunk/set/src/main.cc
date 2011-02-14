@@ -15,14 +15,6 @@ void Print(set<int>& l) {
   cout << "} = " << l.size() << endl;
 }
 
-void Print(BinaryTree<int>* t) {
-  if (!t->empty()) {
-    Print(t->left());
-    cout << t->key() << endl;
-    Print(t->right());
-  }
-}
-
 int main() {
   set<int> s;
   for (int i = 0; i < 5; ++i) {
@@ -31,7 +23,7 @@ int main() {
   }
 
   for (int i = -4; i <= 4; ++i) {
-    if (abs(i) % 2 == 1) {
+    if (i % 2 == 1 || -i % 2 == 1) {
       s.erase(s.find(i));
     }
   }
