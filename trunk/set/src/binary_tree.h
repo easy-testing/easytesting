@@ -39,7 +39,7 @@ class BinaryTree {
     return parent_;
   }
 
-  // Retorna a chave da raiz da árvore.
+  // Retorna a chave da raiz da árvore em O(1).
   Type key() {
     return key_;
   }
@@ -63,7 +63,7 @@ class BinaryTree {
     }
   }
 
-  // Libera toda a memória alocada para a árvore.
+  // Libera toda a memória alocada para a árvore em O(n).
   ~BinaryTree() {
     clear();
   }
@@ -82,62 +82,3 @@ class BinaryTree {
   BinaryTree* parent_;
 };
 #endif  // BINARY_TREE_H_
-
-//  // Testa se a árvore é uma folha em O(1).
-//  bool leaf() {
-//    return left()->empty() && right()->empty();
-//  }
-//
-//  // Retorna uma subarvore cujo valor da raiz eh x,
-//  // ou NULL caso x nao esteja na arvore em O(log n).
-//  BinaryTree* find(Type x) {
-//    if (empty()) {
-//      return NULL;
-//    } else if (x == root()) {
-//      return this;
-//    } else if (x < root()) {
-//      return left()->find(x);
-//    } else {
-//      return right()->find(x);
-//    }
-//  }
-//
-//  // Retorna o menor elemento da arvore em O(log n).
-//  BinaryTree* min() {
-//    if (left()->empty()) {
-//      return this;
-//    } else {
-//      return left()->min();
-//    }
-//  }
-//
-//  // Retorna o menor elemento da arvore em O(log n).
-//  BinaryTree* max() {
-//    if (right()->empty()) {
-//      return this;
-//    } else {
-//      return right()->max();
-//    }
-//  }
-//
-//  // Insere o elemento 'x' na arvore em O(log n).
-//  BinaryTree* insert(Type x) {
-//    if (empty()) {
-//      set_root(x);
-//    } else if (x < root()) {
-//      return left()->insert(x);
-//    } else {
-//      return right()->insert(x);
-//    }
-//  }
-//
-//  // Apaga a raiz da arvore em O(log n).
-//  void erase() {
-//    if (leaf()) {
-//      clear();
-//    } else {
-//      BinaryTree* node = left()->empty() ? right()->min() : left()->max();
-//      set_root(node->root());
-//      node->erase();
-//    }
-//  }

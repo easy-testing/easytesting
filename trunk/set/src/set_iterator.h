@@ -8,8 +8,8 @@ template<class Type> class BinaryTree;
 // Implementa um iterador de árvore do tipo in-order.
 template<class Type>
 class SetIterator {
-  typedef BinaryTree<Type> Tree;  // Tipo da árvore no qual o iterador itera.
  public:
+  typedef BinaryTree<Type> Tree;  // Tipo da árvore no qual o iterador itera.
 
   SetIterator<Type>(Tree* t) {
     if (t == NULL || t->empty()) {
