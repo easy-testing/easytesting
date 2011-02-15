@@ -10,7 +10,6 @@
 // (ii) lê o valor dos parâmetros e (iii) exibe o resultado da função.
 
 #include <iostream>
-
 #include "easytesting/recursao/src/recursao.h"
 
 using namespace std;
@@ -31,10 +30,11 @@ int Menu() {
   cout << "7.  Resto da Divisao\n";
   cout << "8.  Divisao Inteira\n";
   cout << "9.  Soma dos Digitos\n";
-  cout << "10. Raiz Quadrada\n\n";
+  cout << "10. Raiz Quadrada\n";
+  cout << "11. Determinar se numero e primo\n\n";
   cout << "Escolha a operacao que deseja fazer: ";
   cin >> op;
-  while (op < 1 || op > 10) {
+  while (op < 1 || op > 11) {
     cout << "Opcao invalida. Escolha uma das opcoes acima: ";
     cin >> op;
   }
@@ -112,6 +112,15 @@ void Operacao(int op) {
       cout << "Digite um valor para que se calcule a raiz quadrada: ";
       cin >> d;
       cout << "\nResposta: " << sqrt_(d) << endl;
+      break;
+    case 11:  // Determinar se numero e primo
+      cout << "Digite um valor para determinar se e primo ou nao: ";
+      cin >> n;
+      cout << "\nResposta: ";
+      if (primo(n))
+        cout << "Primo\n";
+      else
+        cout << "Nao Primo\n";
       break;
   }
 }
