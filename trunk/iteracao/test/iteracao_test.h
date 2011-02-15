@@ -1,5 +1,4 @@
 // copyright 2010 Thiago Ferreira de Noronha
-
 #ifndef ITERACAO_TEST_ITERACAO_TEST_H_
 #define ITERACAO_TEST_ITERACAO_TEST_H_
 
@@ -38,7 +37,31 @@ TEST_F(Teste, Calculo_do_Fatorial) {
   }
 }
 
-TEST_F(Teste, Calculo_do_MDC) {
+TEST_F(Teste, Calculo_da_Potenciacao) {
+  // Casos analisados:
+  // Expoente igual a 0
+  // Base negativa com expoente par
+  // Base negativa com expoente impar
+  // Base positiva com expoente nao nulo
+  int esperado[] = {1, 16, -1, 9};
+  int entrada1[] = {5, -2, -1, 3};
+  int entrada2[] = {0,  4,  3, 2};
+  int num_testes = 4;
+  for (int i = 0; i < num_testes; i ++) {
+  ASSERT_EQ(esperado[i], pow(entrada1[i], entrada2[i]))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* int pow(int, int) *\n"
+    << "-------------------------------------------------------------------\n"
+    << " Valores de entrada : " << entrada1[i]
+    << " elevado a " << entrada2[i] << "\n\n"
+    << "   Resultado esperado : " << esperado[i] << "\n"
+    << "  Resultado retornado : " << pow(entrada1[i], entrada2[i]) << "\n\n"
+    << "-------------------------------------------------------------------\n";
+  }
+}
+
+TEST_F(Teste, Calculo_do_MDC_entre_dois_numeros) {
   // Casos analisados:
   // a e b iguais
   // a e b proporcionais (a = k*b)
@@ -58,6 +81,33 @@ TEST_F(Teste, Calculo_do_MDC) {
     << " e " << entrada2[i] << "\n\n"
     << "   Resultado esperado : " << esperado[i] << "\n"
     << "  Resultado retornado : " << mdc(entrada1[i], entrada2[i]) << "\n\n"
+    << "-------------------------------------------------------------------\n";
+  }
+}
+
+TEST_F(Teste, Calculo_do_MDC_entre_tres_numeros) {
+  // Casos analisados:
+  // a, b e c iguais
+  // a e b iguais e c proporcional a um deles (c = k*b)
+  // a, b e c primos, em que mdc = 1
+  // a primo e b e c com divisor comum
+  // valores comuns
+  int esperado[] = {10, 10,  1,  1,  3};
+  int entrada1[] = {10, 10, 17, 23,  9};
+  int entrada2[] = {10, 10, 41, 27,  6};
+  int entrada3[] = {10, 50, 13, 45, 12};
+  int num_testes = 5;
+  for (int i = 0; i < num_testes; i ++) {
+  ASSERT_EQ(esperado[i], mdc3(entrada1[i], entrada2[i], entrada3[i]))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* int mdc3(int, int, int) *\n"
+    << "-------------------------------------------------------------------\n"
+    << " Valores de entrada : " << entrada1[i]
+    << ",  " << entrada2[i] << " e " << entrada3[i] << "\n\n"
+    << "   Resultado esperado : " << esperado[i] << "\n"
+    << "  Resultado retornado : "
+    << mdc3(entrada1[i], entrada2[i], entrada3[i]) << "\n\n"
     << "-------------------------------------------------------------------\n";
   }
 }
@@ -107,27 +157,6 @@ TEST_F(Teste, Calculo_da_sequencia_de_Fibonacci) {
   }
 }
 
-TEST_F(Teste, Numero_Primo) {
-  // Casos analisados:
-  // n igual a 1
-  // n igual a primo
-  // n igual a nao primo
-  bool esperado[] = {false, true, false};
-  int  entrada[] = {1, 2, 10};
-  int num_testes = 3;
-  for (int i = 0; i < num_testes; i ++) {
-  ASSERT_EQ(esperado[i], primo(entrada[i]))
-    << "\n-------------------------------------------------------------------"
-    << "\nErro na funcao:  "
-    << "* bool primo(int) *\n"
-    << "-------------------------------------------------------------------\n"
-    << " Valores de entrada : " << entrada[i] << "\n\n"
-    << "   Resultado esperado : " << esperado[i] << "\n"
-    << "  Resultado retornado : " << primo(entrada[i]) << "\n\n"
-    << "-------------------------------------------------------------------\n";
-  }
-}
-
 TEST_F(Teste, Calculo_do_Resto) {
   // Casos analisados:
   // a menor que b
@@ -140,8 +169,8 @@ TEST_F(Teste, Calculo_do_Resto) {
   int num_testes = 4;
   for (int i = 0; i < num_testes; i ++) {
   ASSERT_EQ(esperado[i], resto(entrada1[i], entrada2[i]))
-  << "\n-------------------------------------------------------------------"
-  << "\nErro na funcao:  "
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
     << "* int resto(int, int) *\n"
     << "-------------------------------------------------------------------\n"
     << " Valores de entrada : " << entrada1[i]
@@ -164,14 +193,57 @@ TEST_F(Teste, Calculo_da_Divisao_inteira) {
   int num_testes = 4;
   for (int i = 0; i < num_testes; i ++) {
   ASSERT_EQ(esperado[i], div_(entrada1[i], entrada2[i]))
-  << "\n-------------------------------------------------------------------"
-  << "\nErro na funcao:  "
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
     << "* int div_(int, int) *\n"
     << "-------------------------------------------------------------------\n"
     << " Valores de entrada : " << entrada1[i]
     << " dividido por " << entrada2[i] << "\n\n"
     << "   Resultado esperado : " << esperado[i] << "\n"
     << "  Resultado retornado : " << div_(entrada1[i], entrada2[i]) << "\n\n"
+    << "-------------------------------------------------------------------\n";
+  }
+}
+
+TEST_F(Teste, Calculo_da_Soma_dos_digitos) {
+  // Casos analisados:
+  // numero igual a 0
+  // numeros menores que 10
+  // numeros maiores que 10 e menor que 100
+  // numeros maiores que 100
+  int esperado[] = {0, 7, 9,  9, 10,  14,  17};
+  int entrada[] = {0, 7, 9, 45, 82, 428, 980};
+  int num_testes = 7;
+  for (int i = 0; i < num_testes; i ++) {
+  ASSERT_EQ(esperado[i], dig(entrada[i]))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* int dig(int) *\n"
+    << "-------------------------------------------------------------------\n"
+    << " Valores de entrada : " << entrada[i] << "\n\n"
+    << "   Resultado esperado : " << esperado[i] << "\n"
+    << "  Resultado retornado : " << dig(entrada[i]) << "\n\n"
+    << "-------------------------------------------------------------------\n";
+  }
+}
+
+TEST_F(Teste, Numero_Primo) {
+  // Casos analisados:
+  // n igual a 1
+  // n igual a primo
+  // n igual a nao primo
+  bool esperado[] = {false, true, false};
+  int  entrada[] = {1, 2, 10};
+  int num_testes = 3;
+  for (int i = 0; i < num_testes; i ++) {
+    ASSERT_EQ(esperado[i], primo(entrada[i]))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* bool primo(int) *\n"
+    << "-------------------------------------------------------------------\n"
+    << " Valores de entrada : " << entrada[i] << "\n\n"
+    << "   Resultado esperado : " << esperado[i] << "\n"
+    << "  Resultado retornado : " << primo(entrada[i]) << "\n\n"
     << "-------------------------------------------------------------------\n";
   }
 }
@@ -188,35 +260,13 @@ TEST_F(Teste, Calculo_da_Raiz_quadrada) {
   int num_testes = 5;
   for (int i = 0; i < num_testes; i ++) {
   ASSERT_NEAR(esperado[i], sqrt_(entrada[i]), 0.001)
-  << "\n-------------------------------------------------------------------"
-  << "\nErro na funcao:  "
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
     << "* double sqrt_double) *\n"
     << "-------------------------------------------------------------------\n"
     << " Valores de entrada : " << entrada[i] << "\n\n"
     << "   Resultado esperado : " << esperado[i] << "\n"
     << "  Resultado retornado : " << sqrt_(entrada[i]) << "\n\n"
-    << "-------------------------------------------------------------------\n";
-  }
-}
-
-TEST_F(Teste, Calculo_da_Soma_dos_digitos) {
-  // Casos analisados:
-  // numero igual a 0
-  // numeros menores que 10
-  // numeros maiores que 10 e menor que 100
-  // numeros maiores que 100
-  int esperado[] = {0, 7, 9,  9, 10,  14,  17};
-  int  entrada[] = {0, 7, 9, 45, 82, 428, 980};
-  int num_testes = 7;
-  for (int i = 0; i < num_testes; i ++) {
-  ASSERT_EQ(esperado[i], dig(entrada[i]))
-  << "\n-------------------------------------------------------------------"
-  << "\nErro na funcao:  "
-    << "* int dig(int) *\n"
-    << "-------------------------------------------------------------------\n"
-    << " Valores de entrada : " << entrada[i] << "\n\n"
-    << "   Resultado esperado : " << esperado[i] << "\n"
-    << "  Resultado retornado : " << dig(entrada[i]) << "\n\n"
     << "-------------------------------------------------------------------\n";
   }
 }

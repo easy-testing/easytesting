@@ -1,3 +1,5 @@
+// copyright 2010 Thiago Ferreira de Noronha
+
 // Lista de exercícios sobre algoritmos iterativos.
 //
 // QUESTÃO 1:

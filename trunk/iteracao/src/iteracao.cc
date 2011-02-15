@@ -13,14 +13,27 @@ int fat(int n) {
   return f;
 }
 
-int mdc(int x, int y) {
-  int r = x%y;
-  while (r != 0) {
-    x = y;
-    y = r;
-    r = x%y;
+int pow(int k, int n) {
+  int p = 1;
+  while (n > 0) {
+    p *= k;
+    n--;
   }
-  return y;
+  return p;
+}
+
+int mdc(int a, int b) {
+  int r = a%b;
+  while (r != 0) {
+    a = b;
+    b = r;
+    r = a%b;
+  }
+  return b;
+}
+
+int mdc3(int a, int b, int c) {
+  return mdc(mdc(a, b), c);
 }
 
 int mmc(int a, int b) {
@@ -43,19 +56,6 @@ int fib(int n) {
   }
 }
 
-bool primo(int n) {
-  if (n < 2) {
-    return false;
-  } else {
-      for (int i = 2; i < n; i++) {
-         if (n % i == 0) {
-            return 0;
-         }
-      }
-      return true;
-  }
-}
-
 int resto(int a, int b) {
   while (a >= b) {
     a = a - b;
@@ -72,7 +72,29 @@ int div_(int a, int b) {
   return soma;
 }
 
-float sqrt_(float n) {
+int dig(int n) {
+  int soma = 0;
+  while (n > 0) {
+    soma = soma + n % 10;
+    n = n / 10;
+  }
+  return soma;
+}
+
+bool primo(int n) {
+  if (n < 2) {
+    return false;
+  } else {
+      for (int i = 2; i < n; i++) {
+         if (n % i == 0) {
+            return false;
+         }
+      }
+      return true;
+  }
+}
+
+double sqrt_(double n) {
   float a = 0;
   float b = n;
   float m = (a + b) / 2;
@@ -84,25 +106,4 @@ float sqrt_(float n) {
     m = (a + b) / 2;
   }
   return m;
-}
-
-int dig(int n) {
-  int soma = 0;
-  while (n > 0) {
-    soma = soma + n % 10;
-    n = n / 10;
-  }
-  return soma;
-}
-
-void decrescente(int x) {
-  for (int i = x - 1; i > 0; i--) {
-    printf("%d\n", i);
-  }
-}
-
-void crescente(int x) {
-  for (int i = 1; i <= x; i++) {
-    printf("%d\n", i);
-  }
 }
