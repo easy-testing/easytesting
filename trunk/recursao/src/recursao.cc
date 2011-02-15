@@ -1,6 +1,5 @@
 // Copyright 2010 Thiago Noronha
 #include "easytesting/recursao/src/recursao.h"
-
 #include <math.h>
 
 int fat(int n) {
@@ -61,6 +60,21 @@ int dig(int n) {
     return n;
   else
     return n % 10 + dig(n / 10);
+}
+
+// Utilizado por "bool primo(int n)"
+// Verifica se o resto da divisao de n por k tem resto diferente de zero
+bool resto_nzero(int n, int k) {
+  if (k < 2) return true;
+  else if (n % k == 0) return false;
+  else
+    return resto_nzero(n, k - 1);
+}
+
+bool primo(int n) {
+  if (n == 1) return false;
+  else if (n == 2) return true;
+    return resto_nzero(n, n - 1);
 }
 
 // Utilizada por 'double sqrt(double n)'.

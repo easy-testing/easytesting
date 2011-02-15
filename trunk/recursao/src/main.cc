@@ -9,32 +9,34 @@
 // programou na questão anterior e após o usuário escolher uma das funções
 // (ii) lê o valor dos parâmetros e (iii) exibe o resultado da função.
 
-#include <stdio.h>
+#include <iostream>
 
 #include "easytesting/recursao/src/recursao.h"
+
+using namespace std;
 
 // Retorna um numero inteiro indicando a opcao escolhida pelo usuario
 int Menu() {
   int op;
-  printf("*****************************************************************");
-  printf("\n                        MENU PRINCIPAL\n");
-  printf("*****************************************************************");
-  printf("\n Opcoes:\n\n");
-  printf("1.  Fatoracao\n");
-  printf("2.  Potenciacao\n");
-  printf("3.  MMC\n");
-  printf("4.  MDC entre dois numeros\n");
-  printf("5.  MDC entre tres numeros\n");
-  printf("6.  Serie de Fibonacci\n");
-  printf("7.  Resto da Divisao\n");
-  printf("8.  Divisao Inteira\n");
-  printf("9.  Soma dos Digitos\n");
-  printf("10. Raiz Quadrada\n\n");
-  printf("Escolha a operacao que deseja fazer: ");
-  scanf("%d", &op);
+  cout << "*****************************************************************";
+  cout << "\n                        MENU PRINCIPAL\n";
+  cout << "*****************************************************************";
+  cout << "\n Opcoes:\n\n";
+  cout << "1.  Fatoracao\n";
+  cout << "2.  Potenciacao\n";
+  cout << "3.  MMC\n";
+  cout << "4.  MDC entre dois numeros\n";
+  cout << "5.  MDC entre tres numeros\n";
+  cout << "6.  Serie de Fibonacci\n";
+  cout << "7.  Resto da Divisao\n";
+  cout << "8.  Divisao Inteira\n";
+  cout << "9.  Soma dos Digitos\n";
+  cout << "10. Raiz Quadrada\n\n";
+  cout << "Escolha a operacao que deseja fazer: ";
+  cin >> op;
   while (op < 1 || op > 10) {
-    printf("Opcao invalida. Escolha uma das opcoes acima: ");
-    scanf("%d", &op);
+    cout << "Opcao invalida. Escolha uma das opcoes acima: ";
+    cin >> op;
   }
   return op;
 }
@@ -47,69 +49,69 @@ void Operacao(int op) {
   int a, b, c;
   switch (op) {
     case 1:  // Fatoracao
-      printf("Digite o valor de um numero para o calculo do seu fatorial: ");
-      scanf("%d", &n);
-      printf("\nFatorial de %d: %d\n", n, fat(n));
+      cout << "Digite o valor de um numero para o calculo do seu fatorial: ";
+      cin >> n;
+      cout << "\nResposta: " << fat(n) << endl;
       break;
     case 2:  // Potenciacao
-      printf("Digite o valor da base da potencia: ");
-      scanf("%d", &k);
-      printf("Digite o valor do expoente da potencia: ");
-      scanf("%d", &n);
-      printf("\n%d elevado a %d: %d\n", k, n, pow(k, n));
+      cout << "Digite o valor da base da potencia: ";
+      cin >> k;
+      cout << "Digite o valor do expoente da potencia: ";
+      cin >> n;
+      cout << "\nResposta: " << pow(k, n) << endl;
       break;
     case 3:  // MMC
-      printf("Digite o primeiro numero: ");
-      scanf("%d", &a);
-      printf("Digite o segundo numero: ");
-      scanf("%d", &b);
-      printf("\nMMC entre %d e %d: %d\n", a, b, mmc(a, b));
+      cout << "Digite o primeiro numero: ";
+      cin >> a;
+      cout << "Digite o segundo numero: ";
+      cin >> b;
+      cout << "\nResposta: " << mmc(a, b) << endl;
       break;
     case 4:  // MDC entre dois numeros
-      printf("Digite o primeiro numero: ");
-      scanf("%d", &a);
-      printf("Digite o segundo numero: ");
-      scanf("%d", &b);
-      printf("\nMDC entre %d e %d: %d\n", a, b, mdc(a, b));
+      cout << "Digite o primeiro numero: ";
+      cin >> a;
+      cout << "Digite o segundo numero: ";
+      cin >> b;
+      cout << "\nResposta: " << mdc(a, b) << endl;
       break;
     case 5:  // MDC entre tres numeros
-      printf("Digite o primeiro numero: ");
-      scanf("%d", &a);
-      printf("Digite o segundo numero: ");
-      scanf("%d", &b);
-      printf("Digite o terceiro numero: ");
-      scanf("%d", &c);
-      printf("\nMDC entre %d ,%d e %d: %d\n", a, b, c, mdc3(a, b, c));
+      cout << "Digite o primeiro numero: ";
+      cin >> a;
+      cout << "Digite o segundo numero: ";
+      cin >> b;
+      cout << "Digite o terceiro numero: ";
+      cin >> c;
+      cout << "\nResposta: " << mdc3(a, b, c) << endl;
       break;
     case 6:  // Serie de Fibonacci
-      printf("Digite o numero do termo da serie de Fibonacci: ");
-      scanf("%d", &n);
-      printf("Termo numero %d da serie de Fibonacci: %d\n", n, fib(n));
+      cout << "Digite o numero do termo da serie de Fibonacci: ";
+      cin >> n;
+      cout << "\nResposta: " << fib(n) << endl;
       break;
     case 7:  // Resto da divisao
-      printf("Digite o valor do dividendo: ");
-      scanf("%d", &a);
-      printf("Digite o valor do divisor: ");
-      scanf("%d", &b);
-      printf("Resto da divisao de %d por %d: %d\n", a, b, resto(a, b));
+      cout << "Digite o valor do dividendo: ";
+      cin >> a;
+      cout << "Digite o valor do divisor: ";
+      cin >> b;
+      cout << "\nResposta: " << resto(a, b) << endl;
       break;
     case 8:  // Divisao inteira
-      printf("Digite o valor do dividendo: ");
-      scanf("%d", &a);
-      printf("Digite o valor do divisor: ");
-      scanf("%d", &b);
-      printf("Valor da divisao inteira de %d por %d: %d\n", a, b, div_(a, b));
+      cout << "Digite o valor do dividendo: ";
+      cin >> a;
+      cout << "Digite o valor do divisor: ";
+      cin >> b;
+      cout << "\nResposta: " << div_(a, b) << endl;
       break;
     case 9:  // Soma dos digitos
-      printf("Digite um numero: ");
-      scanf("%d", &n);
-      printf("Soma dos algarismos de %d: %d\n", n, dig(n));
+      cout << "Digite um numero: ";
+      cin >> n;
+      cout << "\nResposta: " << dig(n) << endl;
       break;
     case 10:  // Raiz quadrada
       double d;
-      printf("Digite um valor para que se calcule a raiz quadrada: ");
-      scanf("%lf", &d);
-      printf("Raiz quadrada: %.2lf\n", sqrt_(d));
+      cout << "Digite um valor para que se calcule a raiz quadrada: ";
+      cin >> d;
+      cout << "\nResposta: " << sqrt_(d) << endl;
       break;
   }
 }
