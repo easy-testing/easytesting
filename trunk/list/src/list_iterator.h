@@ -1,9 +1,8 @@
 #ifndef LIST_ITERATOR_H_
 #define LIST_ITERATOR_H_
 
-//#include "easytesting/list/src/list.h"
-
 template<class Type> struct ListNode;
+template<class Type> struct list;
 
 // Implementa um iterador para list<Type>.
 template<class Type> class ListIterator {
@@ -34,11 +33,9 @@ template<class Type> class ListIterator {
     return current_ != i.current_;
   }
 
-  Node* node() {
-    return current_;
-  }
-
  private:
+  friend class list<Type>;
+
   Node* current_;  // Posicao corrente do iterador.
 };  // end class ListIterator;
 
