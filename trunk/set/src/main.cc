@@ -7,16 +7,18 @@
 using namespace std;
 
 // Imprime os elementos da lista entre chaves.
-void Print(set<int>& l) {
+void Print(set<float>& set) {
+  list<float> l;
+  set.ToList(&l);
   cout << "{ ";
-  for (set<int>::iterator i = l.begin(); i != l.end() ; ++i) {
+  for (list<float>::iterator i = l.begin(); i != l.end() ; ++i) {
     cout << *i << " ";
   }
   cout << "} = " << l.size() << endl;
 }
 
 int main() {
-  set<int> s;
+  set<float> s;
   for (int i = 0; i < 5; ++i) {
     s.insert(i);
     s.insert(-i);
@@ -24,16 +26,20 @@ int main() {
 
   for (int i = -4; i <= 4; ++i) {
     if (i % 2 == 1 || -i % 2 == 1) {
-      s.erase(s.find(i));
+      s.erase(i);
     }
   }
 
-  for (set<int>::iterator i = s.begin(); i != s.end() ; ++i) {
+  list<float> l;
+  s.ToList(&l);
+  for (list<float>::iterator i = l.begin(); i != l.end() ; ++i) {
     if (*i == 0) {
-      s.erase(i);
+      s.erase(*i);
       break;
     }
   }
+
+  s.insert(3.14);
 
   Print(s);
   return 0;

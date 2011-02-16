@@ -35,12 +35,11 @@
 		</Compiler>
 		<Unit filename="../gtest/gtest.cc" />
 		<Unit filename="../gtest/gtest.h" />
-		<Unit filename="src/binary_tree.h" />
+		<Unit filename="src/binary_search_tree.h" />
 		<Unit filename="src/main.cc">
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="src/set.h" />
-		<Unit filename="src/set_iterator.h" />
 		<Unit filename="test/set_test.cc">
 			<Option target="Debug" />
 		</Unit>

@@ -1,106 +1,74 @@
 #ifndef BINARY_SEARCH_TREE_SET_H_
 #define BINARY_SEARCH_TREE_SET_H_
 
-#include "easytesting/set/src/set.h"
-#include "easytesting/set/src/binary_tree.h"
-#include "easytesting/set/src/set_iterator.h"
+#include "easytesting/set/src/binary_search_tree.h"
 
-template<class Type> class BinaryTree;
+template<class Type> class BinarySearchTree;
 
-// Implementa um conjunto. O calculo da complexidade das funÃ§Ãµes assume que a
-// Ã¡rvore esta sempre balanceada, o que nÃ£o Ã© garantido nesta implentaÃ§Ã£o.
+// Implementa um conjunto. O calculo da complexidade das funções assume que a
+// árvore esta sempre balanceada, o que não é garantido nesta implentação.
 // Ou seja, considera-se que a altura da arvore eh O(log n),
 // onde n eh o numero de elementos no conjunto.
 template<class Type>
 class set {
  public:
-  typedef BinaryTree<Type> Tree;  // Tipo da Ã¡rvore que representa o conjunto.
-  typedef SetIterator<Type> iterator;  // Tipo do iterador de conjuntos.
+  typedef BinarySearchTree<Type> Tree;  // Tipo da árvore que representa o conjunto.
 
   // Cria um conjunto vazio em O(1).
   set() {
+    size_ = 0;
   }
 
   // Testa se o cojunto esta vazio em O(1).
   bool empty() {
-    return tree_->empty();
+    return tree_.empty();
   }
 
-  // Retorna o nÃºmero de elementos no cojunto em O(n).
+  // Retorna o número de elementos no cojunto em O(1).
   int size() {
-    int s = 0;
-    for (iterator i = begin(); i != end(); ++i) {
-      s++;
-    }
-    return s;
+    return size_;
   }
 
-  iterator begin() {
-    Tree* node = tree_.root();
-    while(!node->left()->empty()) {
-      node = node->left();
-    }
-    return iterator(node);
+  // Testa se x pertece ao conjunto em O(log n).
+  bool find(Type x) {
+    return !tree_.find(x)->empty();
   }
 
-  // Retorna um iterados para "depois" do Ãºltimo elemento do conjunto em O(1).
-  iterator end() {
-    return iterator(NULL);
-  }
-
-  // Retorna um iterador para x em O(log n).
-  // Caso x nÃ£o pertenÃ§a ao conjunto, retora set::end();
-  iterator find(Type x) {
-    Tree* node = tree_.root();
-    while (!node->empty()) {
-      if (node->key() == x) {
-        return iterator(node);
-      }
-      node = x < node->key() ? node->left() : node->right();
-    }
-    return end();
-  }
-
-  // Insere x no conjunto e retorna um iterador para x em O(log n).
-  iterator insert(Type x) {
-    Tree* node = tree_.root();
-    while (!node->empty() && node->key() != x) {
-      node = x < node->key() ? node->left() : node->right();
-    }
-    node->set_key(x);
-    return iterator(node);
-  }
-
-  // Apaga o elemento identificado por position em O(log n).
-  // position deve ser um iterador vÃ¡lido para o conjunto.
-  // ApÃ³s esta operaÃ§Ã£o, position Ã© um iterador invÃ¡lido.
-  void erase(iterator position) {
-    Tree* node = position.node();
-    if (node->left()->empty() && node->right()->empty()) {
-      node->clear();
-    } else if (node->left()->empty()) {
-      Tree* min = node->right();
-      while(!min->left()->empty()) {
-        min = min->left();
-      }
-      node->set_key(min->key());
-      erase(iterator(min));
-    } else {  // node->right()->empty() == true
-      Tree* max = node->left();
-      while(!max->right()->empty()) {
-        max = max->right();
-      }
-      node->set_key(max->key());
-      erase(iterator(max));
+  // Insere x no conjunto em O(log n). Retorna false se x já estava no conjunto
+  // r true caso contrário.
+  bool insert(Type x) {
+    if (tree_.find(x)->empty()) {
+      tree_.insert(x);
+      size_++;
+      return true;
+    } else {
+      return false;
     }
   }
 
-  // Remove todos os elementos do conjunto corrente em O(n).
+  // Remove x do conjunto em O(log n). x deve pertencer ao conjunto.
+  void erase(Type x) {
+    if (!tree_.find(x)->empty()) {
+      tree_.find(x)->erase();
+      size_--;
+    }
+  }
+
+  // Insere todos os elementos do conjunto no final de l em O(n)
+  void ToList(list<Type>* l) {
+    tree_.ListInOrder(l);
+  }
+
+  // Remove todos os elementos do conjunto em O(n).
   void clear() {
     tree_.clear();
   }
 
  private:
+  // Número de elementos no conjunto.
+  int size_;
+
+  // Árvore binária de busca que representa o conjunto.
   Tree tree_;
 };  // end class set.
 
