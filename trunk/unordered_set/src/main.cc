@@ -1,8 +1,7 @@
-#include "easytesting/unordered_set/src/unordered_set.h"
-
+// Copyright 2011 Thiago Noronha
 #include <math.h>
-
 #include <iostream>
+#include "easytesting/unordered_set/src/unordered_set.h"
 
 using namespace std;
 

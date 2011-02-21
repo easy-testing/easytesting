@@ -1,5 +1,6 @@
-#ifndef BINARY_SEARCH_TREE_SET_H_
-#define BINARY_SEARCH_TREE_SET_H_
+// Copyright 2011 Thiago Noronha
+#ifndef UNORDERED_SET_SRC_UNORDERED_SET_H_
+#define UNORDERED_SET_SRC_UNORDERED_SET_H_
 
 #include "easytesting/list/src/list.h"
 #include "easytesting/unordered_set/src/hash_function.h"
@@ -79,6 +80,7 @@ class unordered_set {
   void clear() {
     for (int i = 0; i < table_size_; ++i) {
       table_[i].clear();
+      size_ = 0;
     }
   }
 
@@ -117,4 +119,4 @@ class unordered_set {
   List* table_;
 };  // end class unordered_set.
 
-#endif  // BINARY_SEARCH_TREE_SET_H_
+#endif  // UNORDERED_SET_SRC_UNORDERED_SET_H_
