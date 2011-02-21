@@ -16,7 +16,7 @@ using std::stringstream;
 class Teste : public testing::Test {
  protected:
   // Insere em um conjunto c, n elementos contidos no vetor v
-  void CriaSet(set<int> &c, int n, int v[]){
+  void CriaSet(set<int> &c, int n, int v[]) {
     for (int i = 0; i < n; ++i) {
       c.insert(v[i]);
     }
@@ -29,8 +29,7 @@ class Teste : public testing::Test {
     list<int> l;
     if (c.empty()) {
       return "Conjunto Vazio";
-    }
-    else {
+    } else {
       c.ToList(&l);
       out << "{ ";
       for (list<int>::iterator it = l.begin(); it != l.end(); ++it) {
@@ -47,8 +46,7 @@ class Teste : public testing::Test {
     stringstream out;
     if (l.empty()) {
       return "Lista Vazia";
-    }
-    else {
+    } else {
       out << "[ ";
       for (list<int>::iterator it = l.begin(); it != l.end(); ++it) {
         out << *it << " ";
