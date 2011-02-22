@@ -193,7 +193,7 @@ TEST_F(Teste, Testar_metodo_insert_em_conjunto_vazio) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void set<Type>::insert(Type x) *\n"
+    << "* void unordered_set<Type>::insert(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto esperado: " << esperado << "\n"
     << "  Conjunto formado: " << atual << "\n"
@@ -203,7 +203,7 @@ TEST_F(Teste, Testar_metodo_insert_em_conjunto_vazio) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void set<Type>::insert(Type x) *\n"
+    << "* void unordered_set<Type>::insert(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função inseriu corretamente um elemento no conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
@@ -223,7 +223,7 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_nao_contido_em_conjunto) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void set<Type>::insert(Type x) *\n"
+    << "* void unordered_set<Type>::insert(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto esperado: " << esperado << "\n"
     << "  Conjunto formado: " << atual << "\n"
@@ -234,7 +234,7 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_nao_contido_em_conjunto) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void set<Type>::insert(Type x) *\n"
+    << "* void unordered_set<Type>::insert(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função inseriu corretamente um elemento no conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
@@ -254,7 +254,7 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_contido_em_conjunto) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void set<Type>::insert(Type x) *\n"
+    << "* void unordered_set<Type>::insert(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto esperado: " << esperado << "\n"
     << "  Conjunto formado: " << atual << "\n"
@@ -265,7 +265,7 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_contido_em_conjunto) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void set<Type>::insert(Type x) *\n"
+    << "* void unordered_set<Type>::insert(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função corretamente nao inseriu um elemento no conjunto pois ja\n"
     << " possuia o elemento porem alterou o valor do tamanho do conjunto\n\n"
@@ -285,7 +285,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_unitario) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void set<Type>::erase(Type x) *\n"
+    << "* void unordered_set<Type>::erase(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto esperado: " << esperado << "\n"
     << "  Conjunto formado: " << atual << "\n"
@@ -296,7 +296,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_unitario) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void set<Type>::insert(Type x) *\n"
+    << "* void unordered_set<Type>::insert(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função removeu corretamente um elemento no conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
@@ -316,7 +316,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_com_varios_elementos) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void set<Type>::erase(Type x) *\n"
+    << "* void unordered_set<Type>::erase(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto esperado: " << esperado << "\n"
     << "  Conjunto formado: " << atual << "\n"
@@ -328,7 +328,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_com_varios_elementos) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void set<Type>::insert(Type x) *\n"
+    << "* void unordered_set<Type>::insert(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função removeu corretamente um elemento no conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
@@ -399,7 +399,7 @@ TEST_F(Teste, Testar_metodo_clear_em_conjunto_vazio) {
   ASSERT_TRUE(atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void set<Type>::clear() *\n"
+    << "* void unordered_set<Type>::clear() *\n"
     << "-------------------------------------------------------------------\n"
     << "Apos executar a funcao clear() o teste acusou haver\n"
     << "um ou mais elementos no conjunto\n"
@@ -409,7 +409,7 @@ TEST_F(Teste, Testar_metodo_clear_em_conjunto_vazio) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void set<Type>::insert(Type x) *\n"
+    << "* void unordered_set<Type>::insert(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função limpou corretamente o conteudo do conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
@@ -427,7 +427,7 @@ TEST_F(Teste, Testar_metodo_clear_em_conjunto_com_varios_elementos) {
   ASSERT_TRUE(atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void set<Type>::clear() *\n"
+    << "* void unordered_set<Type>::clear() *\n"
     << "-------------------------------------------------------------------\n"
     << "Apos executar a funcao clear() o teste acusou haver\n"
     << "um ou mais elementos no conjunto\n"
@@ -437,7 +437,7 @@ TEST_F(Teste, Testar_metodo_clear_em_conjunto_com_varios_elementos) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void set<Type>::insert(Type x) *\n"
+    << "* void unordered_set<Type>::insert(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função limpou corretamente o conteudo do conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
