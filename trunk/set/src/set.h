@@ -1,5 +1,6 @@
-#ifndef BINARY_SEARCH_TREE_SET_H_
-#define BINARY_SEARCH_TREE_SET_H_
+// Copyright 2011 Thiago Noronha
+#ifndef SET_SRC_SET_H_
+#define SET_SRC_SET_H_
 
 #include "easytesting/set/src/binary_search_tree.h"
 
@@ -12,7 +13,8 @@ template<class Type> class BinarySearchTree;
 template<class Type>
 class set {
  public:
-  typedef BinarySearchTree<Type> Tree;  // Tipo da árvore que representa o conjunto.
+  // Tipo da árvore que representa o conjunto.
+  typedef BinarySearchTree<Type> Tree;
 
   // Cria um conjunto vazio em O(1).
   set() {
@@ -62,6 +64,7 @@ class set {
   // Remove todos os elementos do conjunto em O(n).
   void clear() {
     tree_.clear();
+    size_ = 0;
   }
 
  private:
@@ -72,4 +75,4 @@ class set {
   Tree tree_;
 };  // end class set.
 
-#endif  // BINARY_SEARCH_TREE_SET_H_
+#endif  // SET_SRC_SET_H_
