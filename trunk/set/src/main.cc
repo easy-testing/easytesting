@@ -1,8 +1,7 @@
-#include "easytesting/set/src/set.h"
-
+// Copyright 2011 Thiago Noronha
 #include <math.h>
-
 #include <iostream>
+#include "easytesting/set/src/set.h"
 
 using namespace std;
 

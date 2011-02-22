@@ -1,3 +1,4 @@
+// Copyright 2011 Thiago Noronha
 #include "easytesting/set/test/set_test.h"
 
 int main(int argc, char** argv) {

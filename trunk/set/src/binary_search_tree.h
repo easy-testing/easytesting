@@ -1,5 +1,6 @@
-#ifndef BINARY_TREE_H_
-#define BINARY_TREE_H_
+// Copyright 2011 Thiago Noronha
+#ifndef SET_SRC_BINARY_SEARCH_TREE_H_
+#define SET_SRC_BINARY_SEARCH_TREE_H_
 
 #include <stdlib.h>
 
@@ -152,4 +153,4 @@ class BinarySearchTree {
   // Subarvore direita.
   BinarySearchTree* right_;
 };
-#endif  // BINARY_TREE_H_
+#endif  // SET_SRC_BINARY_SEARCH_TREE_H_
