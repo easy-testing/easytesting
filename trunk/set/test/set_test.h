@@ -198,6 +198,18 @@ TEST_F(Teste, Testar_metodo_insert_em_conjunto_vazio) {
     << " Conjunto esperado: " << esperado << "\n"
     << "  Conjunto formado: " << atual << "\n"
     << "-------------------------------------------------------------------\n";
+  int size_esperado = 1;
+  int size_atual = c.size();
+  ASSERT_EQ(size_esperado, size_atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* void set<Type>::insert(Type x) *\n"
+    << "-------------------------------------------------------------------\n"
+    << " A função inseriu corretamente um elemento no conjunto porem\n"
+    << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
+    << "  Tamanho Esperado: " << size_esperado << "\n"
+    << " Tamanho Retornado: " << size_atual << "\n"
+    << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testar_metodo_insert_para_elemento_nao_contido_em_conjunto) {
@@ -216,6 +228,18 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_nao_contido_em_conjunto) {
     << " Conjunto esperado: " << esperado << "\n"
     << "  Conjunto formado: " << atual << "\n"
     << " Elemento inserido: " << inserir << "\n"
+    << "-------------------------------------------------------------------\n";
+  int size_esperado = 4;
+  int size_atual = c.size();
+  ASSERT_EQ(size_esperado, size_atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* void set<Type>::insert(Type x) *\n"
+    << "-------------------------------------------------------------------\n"
+    << " A função removeu corretamente um elemento no conjunto porem\n"
+    << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
+    << "  Tamanho Esperado: " << size_esperado << "\n"
+    << " Tamanho Retornado: " << size_atual << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -236,6 +260,18 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_contido_em_conjunto) {
     << "  Conjunto formado: " << atual << "\n"
     << " Elemento inserido: " << inserir << "\n"
     << "-------------------------------------------------------------------\n";
+  int size_esperado = 4;
+  int size_atual = c.size();
+  ASSERT_EQ(size_esperado, size_atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* void set<Type>::insert(Type x) *\n"
+    << "-------------------------------------------------------------------\n"
+    << " A função corretamente nao inseriu um elemento no conjunto pois ja\n"
+    << " possuia o elemento porem alterou o valor do tamanho do conjunto\n\n"
+    << "  Tamanho Esperado: " << size_esperado << "\n"
+    << " Tamanho Retornado: " << size_atual << "\n"
+    << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testar_metodo_erase_em_conjunto_unitario) {
@@ -255,6 +291,18 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_unitario) {
     << "  Conjunto formado: " << atual << "\n"
     << "  Elemento apagado: " << apagar << "\n"
     << "-------------------------------------------------------------------\n";
+  int size_esperado = 0;
+  int size_atual = c.size();
+  ASSERT_EQ(size_esperado, size_atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* void set<Type>::insert(Type x) *\n"
+    << "-------------------------------------------------------------------\n"
+    << " A função removeu corretamente um elemento no conjunto porem\n"
+    << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
+    << "  Tamanho Esperado: " << size_esperado << "\n"
+    << " Tamanho Retornado: " << size_atual << "\n"
+    << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testar_metodo_erase_em_conjunto_com_varios_elementos) {
@@ -273,6 +321,19 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_com_varios_elementos) {
     << " Conjunto esperado: " << esperado << "\n"
     << "  Conjunto formado: " << atual << "\n"
     << "  Elemento apagado: " << apagar << "\n"
+    << "-------------------------------------------------------------------\n";
+
+  int size_esperado = 3;
+  int size_atual = c.size();
+  ASSERT_EQ(size_esperado, size_atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* void set<Type>::insert(Type x) *\n"
+    << "-------------------------------------------------------------------\n"
+    << " A função removeu corretamente um elemento no conjunto porem\n"
+    << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
+    << "  Tamanho Esperado: " << size_esperado << "\n"
+    << " Tamanho Retornado: " << size_atual << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -343,6 +404,18 @@ TEST_F(Teste, Testar_metodo_clear_em_conjunto_vazio) {
     << "Apos executar a funcao clear() o teste acusou haver\n"
     << "um ou mais elementos no conjunto\n"
     << "-------------------------------------------------------------------\n";
+  int size_esperado = 0;
+  int size_atual = c.size();
+  ASSERT_EQ(size_esperado, size_atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* void set<Type>::insert(Type x) *\n"
+    << "-------------------------------------------------------------------\n"
+    << " A função limpou corretamente o conteudo do conjunto porem\n"
+    << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
+    << "  Tamanho Esperado: " << size_esperado << "\n"
+    << " Tamanho Retornado: " << size_atual << "\n"
+    << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testar_metodo_clear_em_conjunto_com_varios_elementos) {
@@ -358,6 +431,18 @@ TEST_F(Teste, Testar_metodo_clear_em_conjunto_com_varios_elementos) {
     << "-------------------------------------------------------------------\n"
     << "Apos executar a funcao clear() o teste acusou haver\n"
     << "um ou mais elementos no conjunto\n"
+    << "-------------------------------------------------------------------\n";
+  int size_esperado = 0;
+  int size_atual = c.size();
+  ASSERT_EQ(size_esperado, size_atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* void set<Type>::insert(Type x) *\n"
+    << "-------------------------------------------------------------------\n"
+    << " A função limpou corretamente o conteudo do conjunto porem\n"
+    << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
+    << "  Tamanho Esperado: " << size_esperado << "\n"
+    << " Tamanho Retornado: " << size_atual << "\n"
     << "-------------------------------------------------------------------\n";
 }
 #endif  // SET_TEST_SET_TEST_H_
