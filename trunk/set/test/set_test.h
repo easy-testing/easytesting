@@ -236,7 +236,7 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_nao_contido_em_conjunto) {
     << "Erro na funcao:  "
     << "* void set<Type>::insert(Type x) *\n"
     << "-------------------------------------------------------------------\n"
-    << " A função removeu corretamente um elemento no conjunto porem\n"
+    << " A função inseriu corretamente um elemento no conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
     << "  Tamanho Esperado: " << size_esperado << "\n"
     << " Tamanho Retornado: " << size_atual << "\n"
