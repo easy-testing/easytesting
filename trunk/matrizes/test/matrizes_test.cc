@@ -1,3 +1,4 @@
+// Copyright 2010 Thiago Noronha
 #include "easytesting/matrizes/test/matrizes_test.h"
 
 int main(int argc, char** argv) {

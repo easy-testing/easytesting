@@ -1,12 +1,11 @@
-#ifndef MATRIZES_TESTE_H_
-#define MATRIZES_TESTE_H_
-
-#include "easytesting/matrizes/src/matrizes.h"
-
-#include "easytesting/gtest/gtest.h"
+// Copyright 2010 Matheus Pacheco
+#ifndef MATRIZES_TEST_MATRIZES_TEST_H_
+#define MATRIZES_TEST_MATRIZES_TEST_H_
 
 #include <sstream>
 #include <string>
+#include "easytesting/matrizes/src/matrizes.h"
+#include "easytesting/gtest/gtest.h"
 
 // Definir dimensao maxima da matriz quadrada
 #define DM 100
@@ -14,7 +13,7 @@
 using std::string;
 using std::stringstream;
 
-namespace {
+namespace Teste {
 
 // Classe base dos casos de teste.
 class Teste : public testing::Test {
@@ -35,7 +34,8 @@ class Teste : public testing::Test {
     return output.str();
   }
   // Imprime duas Matrizes determinadas
-  string Imprime_2_Matrizes(int n, int m, int espacos, float A[][DM], float B[][DM]) {
+  string Imprime_2_Matrizes(int n, int m, int espacos,
+                            float A[][DM], float B[][DM]) {
     stringstream output;
     int i;
     int j;
@@ -67,7 +67,7 @@ class Teste : public testing::Test {
 };
 
 TEST_F(Teste, Media_Matriz_1x1) {
-  float mat[DM][DM] = {{3.52}};
+  float mat[DM][DM] = { {3.52} };
   float resultado = media_matriz(1, mat);
   float esperado = 3.52;
 
@@ -83,8 +83,8 @@ TEST_F(Teste, Media_Matriz_1x1) {
 }
 
 TEST_F(Teste, Media_Matriz_Quadrada_elementos_positivos) {
-  float mat[DM][DM] = {{0.1, 1.5, 2.4, 3.1}, {1.1, 2.5, 3.3, 4.1},
-                      {2.2, 3.2, 4.7, 5.8}, {3.9, 4.1, 5.5, 6.4}};
+  float mat[DM][DM] = { {0.1, 1.5, 2.4, 3.1}, {1.1, 2.5, 3.3, 4.1},
+                      {2.2, 3.2, 4.7, 5.8}, {3.9, 4.1, 5.5, 6.4} };
   float soma = 53.9;  // Soma dos elementos
   float esperado = 3.36875;
   float resultado = media_matriz(4, mat);
@@ -110,8 +110,8 @@ TEST_F(Teste, Media_Matriz_Quadrada_elementos_positivos) {
 }
 
 TEST_F(Teste, Media_Matriz_Quadrada_elementos_negativos) {
-  float mat[DM][DM] = {{-1.4, -1.1, -1.4, -1.3}, {-2.6, -1.2, -3.4, -4.5},
-                       {-2.8, -1.1, -3.1, -4.6}, {-3.2, -5.5, -4.4, -6.4}};
+  float mat[DM][DM] = { {-1.4, -1.1, -1.4, -1.3}, {-2.6, -1.2, -3.4, -4.5},
+                       {-2.8, -1.1, -3.1, -4.6}, {-3.2, -5.5, -4.4, -6.4} };
   float esperado = -3;
   float resultado = media_matriz(4, mat);
   ASSERT_FLOAT_EQ(esperado, resultado)
@@ -127,7 +127,7 @@ TEST_F(Teste, Media_Matriz_Quadrada_elementos_negativos) {
 
 TEST_F(Teste, Identidade_Matriz_1x1) {
   float mat[DM][DM];
-  float mat_esperada[DM][DM] = {{1}};
+  float mat_esperada[DM][DM] = { {1} };
 
   identidade(1, mat);
 
@@ -147,8 +147,8 @@ TEST_F(Teste, Identidade_Matriz_1x1) {
 
 TEST_F(Teste, Identidade_Matriz_Quadrada) {
   float mat[DM][DM];
-  float mat_esperada[DM][DM] = {{1, 0, 0, 0}, {0, 1, 0, 0},
-                                {0, 0, 1, 0}, {0, 0, 0, 1}};
+  float mat_esperada[DM][DM] = { {1, 0, 0, 0}, {0, 1, 0, 0},
+                                {0, 0, 1, 0}, {0, 0, 0, 1} };
 
   identidade(4, mat);
 
@@ -165,7 +165,7 @@ TEST_F(Teste, Identidade_Matriz_Quadrada) {
 }
 
 TEST_F(Teste, Transposta_Matriz_1x1) {
-  float mat[DM][DM] = {{5}};
+  float mat[DM][DM] = { {5} };
   float mat_resultado[DM][DM];
 
   transposta(1, mat,  mat_resultado);
@@ -185,10 +185,10 @@ TEST_F(Teste, Transposta_Matriz_1x1) {
 }
 
 TEST_F(Teste, Transposta_Matriz_Quadrada) {
-  float mat[DM][DM] = {{3.2, 2.1, 1.4, 0.5}, {4.6, 3.2, 2.1, 1.1},
-                       {5.2, 4.3, 3.4, 2.5}, {6.6, 5.7, 4.8, 3.9}};
-  float mat_esperada[DM][DM] = {{3.2, 4.6, 5.2, 6.6}, {2.1, 3.2, 4.3, 5.7},
-                                {1.4, 2.1, 3.4, 4.8}, {0.5, 1.1, 2.5, 3.9}};
+  float mat[DM][DM] = { {3.2, 2.1, 1.4, 0.5}, {4.6, 3.2, 2.1, 1.1},
+                       {5.2, 4.3, 3.4, 2.5}, {6.6, 5.7, 4.8, 3.9} };
+  float mat_esperada[DM][DM] = { {3.2, 4.6, 5.2, 6.6}, {2.1, 3.2, 4.3, 5.7},
+                                {1.4, 2.1, 3.4, 4.8}, {0.5, 1.1, 2.5, 3.9} };
   float mat_resultado[DM][DM];
 
   transposta(4, mat, mat_resultado);
@@ -208,7 +208,8 @@ TEST_F(Teste, Transposta_Matriz_Quadrada) {
 }
 
 TEST_F(Teste, Simetria_matriz_nao_simetrica) {
-  float mat[DM][DM] = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 5, 0, 0}, {0, 0, 0, 0}};
+  float mat[DM][DM] = { {0, 0, 0, 0}, {0, 0, 0, 0},
+                      {0, 5, 0, 0}, {0, 0, 0, 0} };
   bool resultado = simetrica(4, mat);
 
   ASSERT_FALSE(resultado)
@@ -223,8 +224,8 @@ TEST_F(Teste, Simetria_matriz_nao_simetrica) {
 }
 
 TEST_F(Teste, Simetria_matriz_simetrica) {
-  float mat[DM][DM] = {{1.5, 7.4, 3.2, 0.1}, {7.4, 2.2, 0.1, 0.2},
-                       {3.2, 0.1, 3.4, 6.5}, {0.1, 0.2, 6.5, 4.8}};
+  float mat[DM][DM] = { {1.5, 7.4, 3.2, 0.1}, {7.4, 2.2, 0.1, 0.2},
+                       {3.2, 0.1, 3.4, 6.5}, {0.1, 0.2, 6.5, 4.8} };
   bool resultado = simetrica(4, mat);
 
   ASSERT_TRUE(resultado)
@@ -238,12 +239,12 @@ TEST_F(Teste, Simetria_matriz_simetrica) {
 }
 
 TEST_F(Teste, Soma_matrizes_positivas) {
-  float mat1[DM][DM] = {{1.2, 7.4, 3.1, 0.1}, {7.2, 2.3, 0.4, 0.1},
-                      {3.2, 0.8, 3.2, 6.7}, {0.4, 0.5, 6.6, 4.1}};
-  float mat2[DM][DM] = {{2.1, 1.3, 4.3, 3.5}, {0.6, 2.4, 1.1, 3.8},
-                      {1.9, 2.7, 6.5, 2.6}, {1.4, 2.2, 2.3, 3.1}};
-  float mat_esp[DM][DM] = {{3.3, 8.7, 7.4, 3.6}, {7.8, 4.7, 1.5, 3.9},
-                           {5.1, 3.5, 9.7, 9.3}, {1.8, 2.7, 8.9, 7.2}};
+  float mat1[DM][DM] = { {1.2, 7.4, 3.1, 0.1}, {7.2, 2.3, 0.4, 0.1},
+                      {3.2, 0.8, 3.2, 6.7}, {0.4, 0.5, 6.6, 4.1} };
+  float mat2[DM][DM] = { {2.1, 1.3, 4.3, 3.5}, {0.6, 2.4, 1.1, 3.8},
+                      {1.9, 2.7, 6.5, 2.6}, {1.4, 2.2, 2.3, 3.1} };
+  float mat_esp[DM][DM] = { {3.3, 8.7, 7.4, 3.6}, {7.8, 4.7, 1.5, 3.9},
+                           {5.1, 3.5, 9.7, 9.3}, {1.8, 2.7, 8.9, 7.2} };
   float mat_resultado[DM][DM];
 
   soma_matriz(4, mat1, mat2, mat_resultado);
@@ -264,12 +265,12 @@ TEST_F(Teste, Soma_matrizes_positivas) {
 }
 
 TEST_F(Teste, Soma_matrizes_com_uma_nula) {
-  float mat1[DM][DM] = {{1.2, 7.1, 3.2, 0.1}, {7.6, 2.4, 0.5, 0.4},
-                        {3.3, 0.8, 3.4, 6.5}, {0.9, 0.7, 6.8, 4.9}};
-  float mat2[DM][DM] = {{0, 0, 0, 0}, {0, 0, 0, 0},
-                        {0, 0, 0, 0}, {0, 0, 0, 0}};
-  float mat_esperada[DM][DM] = {{1.2, 7.1, 3.2, 0.1}, {7.6, 2.4, 0.5, 0.4},
-                           {3.3, 0.8, 3.4, 6.5}, {0.9, 0.7, 6.8, 4.9}};
+  float mat1[DM][DM] = { {1.2, 7.1, 3.2, 0.1}, {7.6, 2.4, 0.5, 0.4},
+                        {3.3, 0.8, 3.4, 6.5}, {0.9, 0.7, 6.8, 4.9} };
+  float mat2[DM][DM] = { {0, 0, 0, 0}, {0, 0, 0, 0},
+                        {0, 0, 0, 0}, {0, 0, 0, 0} };
+  float mat_esperada[DM][DM] = { {1.2, 7.1, 3.2, 0.1}, {7.6, 2.4, 0.5, 0.4},
+                           {3.3, 0.8, 3.4, 6.5}, {0.9, 0.7, 6.8, 4.9} };
   float mat_resultado[DM][DM];
 
   soma_matriz(4, mat1, mat2, mat_resultado);
@@ -290,15 +291,15 @@ TEST_F(Teste, Soma_matrizes_com_uma_nula) {
 }
 
 TEST_F(Teste, Multiplicacao_Matrizes_diversas) {
-  float mat1[DM][DM] = {{1.3, 1.4, 2.5, 0.1}, {1.2, 2.3, 0.4, 1.6},
-                        {1.7, 2.5, 0.4, 0.5}, {1.2, 0.1, 2.6, 0.4}};
-  float mat2[DM][DM] = {{2.4, 1.1, 0.2, 0.8}, {1.7, 1.4, 1.5, 1.2},
-                        {2.1, 2.3, 1.2, 1.4}, {0.9, 0.6, 2.2, 0.1}};
+  float mat1[DM][DM] = { {1.3, 1.4, 2.5, 0.1}, {1.2, 2.3, 0.4, 1.6},
+                        {1.7, 2.5, 0.4, 0.5}, {1.2, 0.1, 2.6, 0.4} };
+  float mat2[DM][DM] = { {2.4, 1.1, 0.2, 0.8}, {1.7, 1.4, 1.5, 1.2},
+                        {2.1, 2.3, 1.2, 1.4}, {0.9, 0.6, 2.2, 0.1} };
   float mat_resultado[DM][DM];
-  float mat_esperada[DM][DM] = {{10.84, 9.2, 5.58, 6.23},
+  float mat_esperada[DM][DM] = { {10.84, 9.2, 5.58, 6.23},
                                 {9.07, 6.42, 7.69, 4.44},
                                 {9.62, 6.59, 5.67, 4.97},
-                                {8.87, 7.68, 4.39, 4.76}};
+                                {8.87, 7.68, 4.39, 4.76} };
 
   mult_matriz(4, mat1, mat2, mat_resultado);
 
@@ -318,13 +319,13 @@ TEST_F(Teste, Multiplicacao_Matrizes_diversas) {
 }
 
 TEST_F(Teste, Multiplicacao_Matrizes_resposta_nula) {
-  float mat1[DM][DM] = {{2, 0, 0, 4}, {1, 0, 0, 0},
-                        {5, 0, 0, 7}, {4, 0, 0, 7}};
-  float mat2[DM][DM] = {{0, 0, 0, 0}, {0, 0, 0, 5},
-                        {8, 4, 3, 9}, {0, 0, 0, 0}};
+  float mat1[DM][DM] = { {2, 0, 0, 4}, {1, 0, 0, 0},
+                        {5, 0, 0, 7}, {4, 0, 0, 7} };
+  float mat2[DM][DM] = { {0, 0, 0, 0}, {0, 0, 0, 5},
+                        {8, 4, 3, 9}, {0, 0, 0, 0} };
   float mat_resultado[DM][DM];
-  float mat_esperada[DM][DM] = {{0, 0, 0, 0}, {0, 0, 0, 0},
-                                {0, 0, 0, 0}, {0, 0, 0, 0}};
+  float mat_esperada[DM][DM] = { {0, 0, 0, 0}, {0, 0, 0, 0},
+                                {0, 0, 0, 0}, {0, 0, 0, 0} };
 
   mult_matriz(4, mat1, mat2, mat_resultado);
 
@@ -344,4 +345,4 @@ TEST_F(Teste, Multiplicacao_Matrizes_resposta_nula) {
 }
 }  // Fim do namespace vazio.
 
-#endif // MATRIZES_TESTE_H_
+#endif  // MATRIZES_TEST_MATRIZES_TEST_H_

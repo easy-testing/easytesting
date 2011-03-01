@@ -13,10 +13,10 @@
 
 #include "easytesting/matrizes/src/matrizes.h"
 
-//1. Escreva um programa que lê de um arquivo o número de linhas, o número de
-//colunas e todos os coeficientes de uma matriz.
+// 1. Escreva um programa que lê de um arquivo o número de linhas, o número de
+// colunas e todos os coeficientes de uma matriz.
 int main(void) {
-  std::ifstream input ;
+  std::ifstream input;
   float a[100][100], entrada_arq;
   int n, m;
   input.open("matriz.txt");

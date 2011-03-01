@@ -1,11 +1,11 @@
 // Copyright 2010 Thiago Ferreira de Noronha
 
-#ifndef MATRIZES_H_
-#define MATRIZES_H_
+#ifndef MATRIZES_SRC_MATRIZES_H_
+#define MATRIZES_SRC_MATRIZES_H_
 
 // Recebe uma matriz quadrada de dimensão n e
 // retorna a média dos elementos armazenados na matriz.
-float MediaMatriz(int n, float mat[][100]) ;
+float MediaMatriz(int n, float mat[][100]);
 
 // Retorna através de A uma matriz identidade de dimensão n.
 void Identidade(int n, float A[][100]);
@@ -31,4 +31,4 @@ void MultMatriz(int n, float A[][100], float B[][100], float P[][100]);
 // | a[2][0] a[2][1] a[2][2] a[2][3] |
 void MostraMatriz(int n, int m, float a[][100]);
 
-#endif // MATRIZES_H_
+#endif  // MATRIZES_SRC_MATRIZES_H_
