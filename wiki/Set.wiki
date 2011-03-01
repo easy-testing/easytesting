@@ -18,9 +18,34 @@ A lista SET é constituida de sete funções:
   * void Clear()
     - Remove todos os elementos do conjunto
 
-= Details =
+= Casos de Teste =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Para criação do corretor desta lista de exercícios foram levadas em conta
+varias entradas diferentes, com o intuito de cobrir todos os erros possíveis de serem ocorridos. Os casos de teste analisados são os seguintes:
+
+- *bool Empty()*
+  * Conjunto vazio
+  * Conjunto unitário
+  * Conjunto com vários elementos
+- *int Size()*
+  * Conjunto vazio
+  * Conjunto unitário
+  * Conjunto com vários elementos
+- *bool Find(x)*
+  * Conjunto contendo x
+  * Conjunto não contendo x
+  * Conjunto vazio
+- *bool Insert(x)*
+  * Conjunto vazio
+  * Conjunto não vazio e sem x
+  * Conjunto contendo x
+- *void Erase(x)*
+  * Conjunto unitário
+  * Conjunto com mais de um elemento
+- *void ToList(list)*
+  * Conjunto vazio
+  * Conjunto unitário
+  * Conjunto com vários elementos
+- *void Clear()*
+  * Conjunto com vários elementos
+  * Conjunto vazio
