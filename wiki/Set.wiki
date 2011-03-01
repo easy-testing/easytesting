@@ -1,0 +1,26 @@
+#summary Casos de Teste da lista SET
+= Funções =
+
+A lista SET é constituida de sete funções:
+
+  * bool Empty()
+    - Retorna _true_ se o conjunto for vazio e _false_ caso não seja.
+  * int Size()
+    - Retorna o número de elementos pertencentes ao conjunto.
+  * bool Find(x)
+    - Retorna _true_ se x pertencer ao conjunto e _false_ caso contrário.
+  * bool Insert(x)
+    - Se não houver o elemento x no conjunto, a função insere x a ele e retorna _true_. Caso haja x, retorna _false_.
+  * void Erase(x)
+    - Deleta x do conjunto. Neste caso, x obrigatoriamente deve pertencer ao conjunto
+  * void ToList(list)
+    - Copia todos os elementos do conjunto para uma lista, em ordem crescente
+  * void Clear()
+    - Remove todos os elementos do conjunto
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
