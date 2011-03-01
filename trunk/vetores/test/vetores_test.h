@@ -1,17 +1,16 @@
-#ifndef VETORES_TESTE_H_
-#define VETORES_TESTE_H_
-
-#include "easytesting/vetores/src/vetores.h"
-
-#include "easytesting/gtest/gtest.h"
+// copyright 2010 Matheus Pacheco
+#ifndef VETORES_TEST_VETORES_TEST_H_
+#define VETORES_TEST_VETORES_TEST_H_
 
 #include <sstream>
 #include <string>
+#include "easytesting/vetores/src/vetores.h"
+#include "easytesting/gtest/gtest.h"
 
 using std::string;
 using std::stringstream;
 
-namespace {
+namespace Teste {
 
 // Classe base dos casos de teste.
 class Teste : public testing::Test {
@@ -508,4 +507,4 @@ TEST_F(Teste, Testa_funcao_ProdutoEscalar_vetores_perpendiculares) {
 
 }  // Fim do namespace vazio.
 
-#endif // VETORES_TESTE_H_
+#endif  // VETORES_TEST_VETORES_TEST_H_

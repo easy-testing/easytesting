@@ -1,8 +1,7 @@
 // Copyright 2010 Thiago Ferreira de Noronha
 
-#include <iostream>
-
 #include "easytesting/vetores/src/vetores.h"
+#include <iostream>
 
 float Media(float v[], int n) {
   float soma = 0;

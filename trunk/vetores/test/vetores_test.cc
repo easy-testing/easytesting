@@ -1,3 +1,4 @@
+// copyright 2010 Thiago Noronha
 #include "easytesting/vetores/test/vetores_test.h"
 
 int main(int argc, char** argv) {
