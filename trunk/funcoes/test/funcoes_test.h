@@ -3,12 +3,10 @@
 #ifndef FUNCOES_TEST_FUNCOES_TEST_H_
 #define FUNCOES_TEST_FUNCOES_TEST_H_
 
-#include "easytesting/funcoes/src/funcoes.h"
-
 #include <math.h>
 #include <sstream>
 #include <string>
-
+#include "easytesting/funcoes/src/funcoes.h"
 #include "easytesting/gtest/gtest.h"
 
 namespace Teste {

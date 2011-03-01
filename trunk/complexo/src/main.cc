@@ -1,7 +1,8 @@
-#include "easytesting/complexo/src/complexo.h"
+// Copyright 2010 Thiago Noronha
 
-#include <iostream>
 #include <math.h>
+#include <iostream>
+#include "easytesting/complexo/src/complexo.h"
 
 using namespace std;
 
@@ -19,7 +20,8 @@ void CalcularRaizes(float a, float b, float c, Complexo* r1, Complexo* r2) {
 // Le os coeficientes de uma equacao de segundo grau do teclado e
 // imprime na tela as raizes da equacao.
 int main() {
-    cout << "Digite os coeficientes da equacao de segundo gral f(x) = a.x^2 + b.x + c" << endl;
+    cout << "Digite os coeficientes da equacao de segundo grau"
+    cout << " f(x) = a.x^2 + b.x + c" << endl;
     float a, b, c;
     cin >> a >> b >> c;
     Complexo raiz1, raiz2;
