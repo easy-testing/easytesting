@@ -1,0 +1,55 @@
+#summary Casos de Teste da lista Vetores
+= Funções =
+
+A lista VETORES é constituida de cinco funções:
+
+  * float Media(V, n)
+    - Retorna a média de _n_ elementos do vetor _V_.
+  * float Variancia(V, n)
+    - Retorna a variancia de _n_ elementos do vetor _V_.
+  * float Maior(V, n)
+    - Retorna o maior elemento do vetor _V_ de_n_ elementos.
+  * float Menor(V, n)
+    - Retorna o menor elemento do vetor _V_ de_n_ elementos.
+  * float ProdutoEscalar(V, U, n)
+    - Retorna o produto escalar dos vetores _V_ e _U_ de dimensão _n_.
+
+= Casos de Teste =
+
+Para criação do corretor desta lista de exercícios foram levadas em conta
+varias entradas diferentes, com o intuito de cobrir todos os erros possíveis de serem ocorridos. Os casos de teste analisados são os seguintes:
+
+- *float Media(V, n)*
+  * Testa acesso a um índice do vetor não alocado pelo programa
+  * Vetor unitário
+  * Vetor de elementos positivos
+  * Vetor de elementos positivos e negativos
+  * Vetor de elementos nulos
+- *float Variancia(V, n)*
+  * Testa acesso a um índice do vetor não alocado pelo programa
+  * Vetor de elementos positivos
+  * Vetor de elementos negativos e iguais
+  * Vetor de elementos negativos e distintos entre si
+  * Vetor de elementos nulos
+- *float Maior(V, n)*
+  * Testa acesso a um índice do vetor não alocado pelo programa
+  * Vetor de elementos positivos
+  * Vetor de elementos positivos com repetição
+  * Vetor de elementos negativos
+  * Vetor de elementos negativos com repetição
+  * Vetor de elementos positivos e negativos
+- *float Menor(V, n)*
+  * Testa acesso a um índice do vetor não alocado pelo programa
+  * Vetor de elementos positivos
+  * Vetor de elementos positivos com repetição
+  * Vetor de elementos negativos
+  * Vetor de elementos negativos com repetição
+  * Vetor de elementos positivos e negativos
+- *float ProdutoEscalar(V, U, n)*
+  * Vetores de elementos positivos
+  * Vetores de elementos positivos e negativos
+  * Vetores unitários
+  * Vetores nulos
+  * Vetores paralelos
+  * Vetores opostos
+  * Vetores perpendiculares
