@@ -131,7 +131,7 @@ TEST_F(Teste, Testa_funcao_Variancia_com_numeros_nulos) {
   float atual = Variancia(v, n);
   ASSERT_FLOAT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: \"float Variancia(float v[], int n)\               \n"
+    << "Erro na funcao: \"float Variancia(float v[], int n)\".             \n"
     << "-------------------------------------------------------------------\n"
     << "  v = " << MostrarVetor(v, n) << "\n"
     << "  n = " << n << "\n"
@@ -147,7 +147,7 @@ TEST_F(Teste, Testa_funcao_Variancia_numeros_positivos_distintos) {
   float atual = Variancia(v, n);
   ASSERT_FLOAT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: \"float Variancia(float v[], int n)\               \n"
+    << "Erro na funcao: \"float Variancia(float v[], int n)\".             \n"
     << "-------------------------------------------------------------------\n"
     << "  v = " << MostrarVetor(v, n) << "\n"
     << "  n = " << n << "\n"
@@ -163,7 +163,7 @@ TEST_F(Teste, Testa_funcao_Variancia_com_numeros_negativos_iguais) {
   float atual = Variancia(v, n);
   ASSERT_FLOAT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: \"float Variancia(float v[], int n)\               \n"
+    << "Erro na funcao: \"float Variancia(float v[], int n)\".             \n"
     << "-------------------------------------------------------------------\n"
     << "  v = " << MostrarVetor(v, n) << "\n"
     << "  n = " << n << "\n"
@@ -179,7 +179,7 @@ TEST_F(Teste, Testa_funcao_Variancia_com_numeros_negativos_distintos) {
   float atual = Variancia(v, n);
   ASSERT_FLOAT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  \"float Variancia(float v[], int n)\              \n"
+    << "Erro na funcao:  \"float Variancia(float v[], int n)\".            \n"
     << "-------------------------------------------------------------------\n"
     << "  v = " << MostrarVetor(v, n) << "\n"
     << "  n = " << n << "\n"
