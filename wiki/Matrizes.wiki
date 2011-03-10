@@ -1,0 +1,42 @@
+#summary Casos de Teste da lista Matrizes
+= Funções =
+
+A lista MATRIZES é constituida de seis funções:
+
+  * float MediaMatriz(n, mat)
+    - Retorna a média de _n_ elementos da matriz _mat_.
+  * void Identidade(n, A)
+    - Retorna, através de _A_, a matriz identidade de dimensão n.
+  * void Transposta(n, A, T)
+    - Retorna, através de _T_, a matriz transposta de _A_.
+  * bool Simetrica(n, A)
+    - Testa se a matriz _A_ de dimensão _n_ é simétrica.
+  * void SomaMatriz(n, A, B, S)
+    - Retorna, através de _S_, o resultado da soma de duas matrizes, _A_ e _B_, de dimensão _n_.
+  * void MultMatriz(n, A, B, P)
+    - Retorna, através de _P_, o resultado da multiplicação de duas matrizes, _A_ e _B_, de dimensão _n_.
+
+= Casos de Teste =
+
+Para criação do corretor desta lista de exercícios foram levadas em conta
+varias entradas diferentes, com o intuito de cobrir todos os erros possíveis de serem ocorridos. Os casos de teste analisados são os seguintes:
+
+- *float MediaMatriz(n, mat)*
+  * Testa se a função retorna a soma, ao invés da média
+  * Matriz de elementos positivos
+  * Matriz de elementos negativos
+- *void Identidade(n, A)*
+  * Matriz Identidade unitária
+  * Matriz Identidade com mais de um elemento
+- *void Transposta(n, A, T)*
+  * Matriz Transposta unitária
+  * Matriz Transposta com mais de um elemento
+- *bool Simetrica(n, A)*
+  * Matriz simétrica
+  * Matriz não simétrica
+- *void SomaMatriz(n, A, B, S)*
+  * Matrizes positivas
+  * Uma matriz nula e outra positiva
+- *void MultMatriz(n, A, B, P)*
+  * Matrizes positivas
+  * Resultado nulo
