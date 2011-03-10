@@ -25,7 +25,7 @@ void Identidade(int n, float A[][100]) {
   }
   for (int i = 0; i < n; i++) {
     A[i][i] = 1;
-}
+  }
 }
 
 void Transposta(int n, float A[][100], float T[][100]) {
