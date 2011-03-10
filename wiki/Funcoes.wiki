@@ -1,4 +1,4 @@
-#summary Corretor de lista de Funcoes
+#summary Casos de Teste da lista Funcoes
 
 = Funções =
 
