@@ -68,7 +68,7 @@ class Teste : public testing::Test {
 
 TEST_F(Teste, Media_Matriz_1x1) {
   float mat[DM][DM] = { {3.52} };
-  float resultado = media_matriz(1, mat);
+  float resultado = MediaMatriz(1, mat);
   float esperado = 3.52;
 
   ASSERT_FLOAT_EQ(esperado, resultado)
@@ -87,7 +87,7 @@ TEST_F(Teste, Media_Matriz_Quadrada_elementos_positivos) {
                       {2.2, 3.2, 4.7, 5.8}, {3.9, 4.1, 5.5, 6.4} };
   float soma = 53.9;  // Soma dos elementos
   float esperado = 3.36875;
-  float resultado = media_matriz(4, mat);
+  float resultado = MediaMatriz(4, mat);
 
   ASSERT_NE(soma, resultado)
     << "-------------------------------------------------------------------\n"
@@ -113,7 +113,7 @@ TEST_F(Teste, Media_Matriz_Quadrada_elementos_negativos) {
   float mat[DM][DM] = { {-1.4, -1.1, -1.4, -1.3}, {-2.6, -1.2, -3.4, -4.5},
                        {-2.8, -1.1, -3.1, -4.6}, {-3.2, -5.5, -4.4, -6.4} };
   float esperado = -3;
-  float resultado = media_matriz(4, mat);
+  float resultado = MediaMatriz(4, mat);
   ASSERT_FLOAT_EQ(esperado, resultado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"float Media(int n, float matriz[][])\".          \n"
@@ -129,7 +129,7 @@ TEST_F(Teste, Identidade_Matriz_1x1) {
   float mat[DM][DM];
   float mat_esperada[DM][DM] = { {1} };
 
-  identidade(1, mat);
+  Identidade(1, mat);
 
   bool resultado = mat[0][0] == 1;
 
@@ -150,7 +150,7 @@ TEST_F(Teste, Identidade_Matriz_Quadrada) {
   float mat_esperada[DM][DM] = { {1, 0, 0, 0}, {0, 1, 0, 0},
                                 {0, 0, 1, 0}, {0, 0, 0, 1} };
 
-  identidade(4, mat);
+  Identidade(4, mat);
 
   bool resultado = Iguais(4, 4, mat, mat_esperada);
 
@@ -168,7 +168,7 @@ TEST_F(Teste, Transposta_Matriz_1x1) {
   float mat[DM][DM] = { {5} };
   float mat_resultado[DM][DM];
 
-  transposta(1, mat,  mat_resultado);
+  Transposta(1, mat,  mat_resultado);
 
   bool resultado = Iguais(1, 1, mat, mat_resultado);
 
@@ -191,7 +191,7 @@ TEST_F(Teste, Transposta_Matriz_Quadrada) {
                                 {1.4, 2.1, 3.4, 4.8}, {0.5, 1.1, 2.5, 3.9} };
   float mat_resultado[DM][DM];
 
-  transposta(4, mat, mat_resultado);
+  Transposta(4, mat, mat_resultado);
 
   bool resultado = Iguais(4, 4,  mat_resultado, mat_esperada);
 
@@ -210,7 +210,7 @@ TEST_F(Teste, Transposta_Matriz_Quadrada) {
 TEST_F(Teste, Simetria_matriz_nao_simetrica) {
   float mat[DM][DM] = { {0, 0, 0, 0}, {0, 0, 0, 0},
                       {0, 5, 0, 0}, {0, 0, 0, 0} };
-  bool resultado = simetrica(4, mat);
+  bool resultado = Simetrica(4, mat);
 
   ASSERT_FALSE(resultado)
     << "-------------------------------------------------------------------\n"
@@ -226,7 +226,7 @@ TEST_F(Teste, Simetria_matriz_nao_simetrica) {
 TEST_F(Teste, Simetria_matriz_simetrica) {
   float mat[DM][DM] = { {1.5, 7.4, 3.2, 0.1}, {7.4, 2.2, 0.1, 0.2},
                        {3.2, 0.1, 3.4, 6.5}, {0.1, 0.2, 6.5, 4.8} };
-  bool resultado = simetrica(4, mat);
+  bool resultado = Simetrica(4, mat);
 
   ASSERT_TRUE(resultado)
     << "-------------------------------------------------------------------\n"
@@ -247,7 +247,7 @@ TEST_F(Teste, Soma_matrizes_positivas) {
                            {5.1, 3.5, 9.7, 9.3}, {1.8, 2.7, 8.9, 7.2} };
   float mat_resultado[DM][DM];
 
-  soma_matriz(4, mat1, mat2, mat_resultado);
+  SomaMatriz(4, mat1, mat2, mat_resultado);
 
   bool resultado = Iguais(4, 4, mat_esp, mat_resultado);
 
@@ -273,7 +273,7 @@ TEST_F(Teste, Soma_matrizes_com_uma_nula) {
                            {3.3, 0.8, 3.4, 6.5}, {0.9, 0.7, 6.8, 4.9} };
   float mat_resultado[DM][DM];
 
-  soma_matriz(4, mat1, mat2, mat_resultado);
+  SomaMatriz(4, mat1, mat2, mat_resultado);
 
   bool resultado = Iguais(4, 4, mat_esperada, mat_resultado);
 
@@ -301,7 +301,7 @@ TEST_F(Teste, Multiplicacao_Matrizes_diversas) {
                                 {9.62, 6.59, 5.67, 4.97},
                                 {8.87, 7.68, 4.39, 4.76} };
 
-  mult_matriz(4, mat1, mat2, mat_resultado);
+  MultMatriz(4, mat1, mat2, mat_resultado);
 
   bool resultado = Iguais(4, 4, mat_resultado, mat_esperada);
 
@@ -327,7 +327,7 @@ TEST_F(Teste, Multiplicacao_Matrizes_resposta_nula) {
   float mat_esperada[DM][DM] = { {0, 0, 0, 0}, {0, 0, 0, 0},
                                 {0, 0, 0, 0}, {0, 0, 0, 0} };
 
-  mult_matriz(4, mat1, mat2, mat_resultado);
+  MultMatriz(4, mat1, mat2, mat_resultado);
 
   bool resposta = Iguais(4, 4, mat_resultado, mat_esperada);
 
