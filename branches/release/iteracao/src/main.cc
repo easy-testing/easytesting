@@ -12,7 +12,7 @@
 
 #include <stdio.h>
 #include <iostream>
-#include "easytesting/iteracao/src/iteracao.h"
+#include "iteracao/src/iteracao.h"
 
 using namespace std;
 
