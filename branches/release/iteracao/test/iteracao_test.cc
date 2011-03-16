@@ -1,4 +1,4 @@
-// copyright 2010 Thiago Ferreira de Noronha
+// copyright 2011 Universidade Federal de Minas Gerais.
 
 #include "iteracao/test/iteracao_test.h"
 

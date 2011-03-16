@@ -1,4 +1,4 @@
-// Copyright 2010 Thiago Noronha
+// copyright 2011 Universidade Federal de Minas Gerais.
 
 #ifndef ITERACAO_SRC_ITERACAO_H_
 #define ITERACAO_SRC_ITERACAO_H_
