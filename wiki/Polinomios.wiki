@@ -1,0 +1,50 @@
+#summary Casos de Teste da lista Polinômios
+= Funções =
+
+A lista POLINÔMIOS é constituida de oito funções:
+
+  * int Polinomios::Grau()
+    - Retorna o grau do polinômio corrente.
+  * float Polinomios::Get(i)
+    - Retorna o coeficiente _a[i]_ do polinômio corrente.
+  * void Polinomios::Set(i, x)
+    - Atribui _x_ ao valor do coeficiente _a[i]_ do polinômio corrente.
+  * float Polinomios::Avaliar(x)
+    - Retorna o valor do polinômio corrente no ponto _x_.
+  * void Polinomios::Atribuir(P)
+    - Atribui o polinômio _P_ ao polinômio corrente.
+  * void Polinomios::Somar(P1, P2)
+    - Atribui o resultado da soma dos polinômio _P1_ e _P2_ ao polinômio corrente.
+  * void Polinomios::Derivar(P)
+    - Atribui a derivada do polinômio _P_ ao polinômio corrente.
+  * void Polinomios::Integrar(P)
+    - Atribui a integral do polinômio _P_ ao polinômio corrente.
+
+= Casos de Teste =
+
+Para criação do corretor desta lista de exercícios foram levadas em conta
+varias entradas diferentes, com o intuito de cobrir todos os erros possíveis de serem ocorridos. Os casos de teste analisados são os seguintes:
+
+- *int Polinomios::Grau()*
+  * Nenhum teste
+- *float Polinomios::Get(i)*
+  * Nenhum teste
+- *void Polinomios::Set(i, x)*
+  * Nenhum teste
+- *float Polinomios::Avaliar(x)*
+  * Polinômios com coeficientes não nulos
+  * Polinômios com alguns coeficientes nulos
+  * Polinômios constantes
+  * Testar x nas raízes
+- *void Polinomios::Atribuir(P)*
+  * Polinômios com grau maior que um
+- *void Polinomios::Somar(P1, P2)*
+  * Polinômios com coeficientes não nulos
+  * Polinômios com alguns coeficientes nulos
+- *void Polinomios::Derivar(P)*
+  * Polinômios de grau um
+  * Polinômios de grau maior que um
+- *void Polinomios::Integrar(P)*
+  * Polinômios de grau zero
+  * Polinômios de grau um
+  * Polinômios de grau maior que um
