@@ -1,5 +1,5 @@
 // Copyright 2010 Thiago Ferreira de Noronha
-#include "easytesting/iteracao/src/iteracao.h"
+#include "iteracao/src/iteracao.h"
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>

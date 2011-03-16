@@ -65,7 +65,7 @@
 //
 // The Google C++ Testing Framework (Google Test)
 
-#include "easytesting/gtest/gtest.h"
+#include "iteracao/test/gtest.h"
 
 // Copyright 2007, Google Inc.
 // All rights reserved.

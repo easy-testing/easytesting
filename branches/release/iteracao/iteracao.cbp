@@ -31,18 +31,18 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add directory="../.." />
+			<Add directory=".." />
 		</Compiler>
-		<Unit filename="../gtest/gtest.cc">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="../gtest/gtest.h">
-			<Option target="Debug" />
-		</Unit>
 		<Unit filename="src/iteracao.cc" />
 		<Unit filename="src/iteracao.h" />
 		<Unit filename="src/main.cc">
 			<Option target="Release" />
+		</Unit>
+		<Unit filename="test/gtest.cc">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="test/gtest.h">
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="test/iteracao_test.cc">
 			<Option target="Debug" />
