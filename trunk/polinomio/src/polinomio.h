@@ -1,17 +1,16 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef POLINOMIOS_H_
+#ifndef POLINOMIO_SRC_POLINOMIO_H_
 
-#define POLINOMIOS_H_
+#define POLINOMIO_SRC_POLINOMIO_H_
 
 #define GRAU_MAXIMO 1000
 
 class Polinomio {
-private:
   int n;  // Numero de elementos no vetor 'a'. O grau do polinomio eh n - 1.
   float a[GRAU_MAXIMO + 1];  // Vetor com os coeficientes do polinomio.
 
-public:
+  public:
   // Cria um polinômio igual a P(x)=0.
   Polinomio();
 
@@ -45,6 +44,6 @@ public:
   // Faz com que o polinômio corrente fique igual a integral do polinômio q
   // passado como parâmetro.
   void Integrar(Polinomio& q);
- };
+};
 
-#endif  // POLINOMIOS_H_
+#endif  // POLINOMIO_SRC_POLINOMIO_H_

@@ -19,10 +19,9 @@
 // polinômio e é seguido por n + 1 número reais que representam os
 // cooeficientes de P(x).
 
-#include "easytesting/polinomio/src/polinomio.h"
-
 #include <iostream>
 #include <fstream>
+#include "easytesting/polinomio/src/polinomio.h"
 
 using namespace std;
 
@@ -31,13 +30,13 @@ int main() {
   int n;
   fin >> n;
   float* v = new float[n + 1];
-  for (int i = 0; i <= n; i++){
+  for (int i = 0; i <= n; i++) {
     fin >> v[i];
   }
   Polinomio p(n + 1, v);
   delete [] v;
 
-  while(true) {
+  while (true) {
     cout << "Digite o valor de x: ";
     float x;
     cin >> x;
