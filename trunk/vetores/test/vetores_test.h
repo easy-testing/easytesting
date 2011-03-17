@@ -53,6 +53,7 @@ TEST_F(Teste, Testa_funcao_Media_de_um_vetor_unitario) {
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"float Media(float v[], int n)\".                 \n"
+    << "-------------------------------------------------------------------\n"
     << "   v = " << MostrarVetor(v, n) << "\n"
     << "   n = " << n << "\n"
     << "Valor esperado: " << esperado << "\n"
