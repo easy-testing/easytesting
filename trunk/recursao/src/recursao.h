@@ -1,4 +1,4 @@
-// Copyright 2010 Thiago Noronha
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef RECURSAO_SRC_RECURSAO_H_
 #define RECURSAO_SRC_RECURSAO_H_

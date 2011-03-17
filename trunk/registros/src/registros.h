@@ -1,4 +1,4 @@
-// Copyright 2010 Thiago Ferreira de Noronha
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef REGISTROS_SRC_REGISTROS_H_
 #define REGISTROS_SRC_REGISTROS_H_

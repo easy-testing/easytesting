@@ -1,4 +1,4 @@
-// Copyright 2011 Thiago Noronha
+// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 #ifndef SET_SRC_SET_H_
 #define SET_SRC_SET_H_
 

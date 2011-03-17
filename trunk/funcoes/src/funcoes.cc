@@ -1,4 +1,4 @@
-// Copyright 2010 Matheus Pacheco
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 #include<math.h>
 #include "easytesting/funcoes/src/funcoes.h"
 

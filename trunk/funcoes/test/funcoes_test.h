@@ -1,4 +1,4 @@
-// copyright 2010 Matheus Pacheco
+// copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef FUNCOES_TEST_FUNCOES_TEST_H_
 #define FUNCOES_TEST_FUNCOES_TEST_H_

@@ -1,4 +1,4 @@
-// Copyright 2011 Thiago Noronha
+// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 #include <math.h>
 #include <iostream>
 #include "easytesting/unordered_set/src/unordered_set.h"

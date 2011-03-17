@@ -1,4 +1,4 @@
-// Copyright 2011 Thiago Noronha
+// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 #ifndef UNORDERED_SET_SRC_UNORDERED_SET_H_
 #define UNORDERED_SET_SRC_UNORDERED_SET_H_
 

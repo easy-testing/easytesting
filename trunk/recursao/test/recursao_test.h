@@ -1,4 +1,4 @@
-// Copyright 2010 Matheus Pacheco
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 #ifndef RECURSAO_TEST_RECURSAO_TEST_H_
 #define RECURSAO_TEST_RECURSAO_TEST_H_
 

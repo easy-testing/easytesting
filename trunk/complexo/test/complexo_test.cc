@@ -1,4 +1,4 @@
-// Copyright 2010 Thiago Noronha
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 #include "easytesting/complexo/test/complexo_test.h"
 
 int main(int argc, char** argv) {

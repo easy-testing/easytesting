@@ -1,3 +1,4 @@
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 #include "easytesting/polinomio/src/polinomio.h"
 
 #include <stdio.h>

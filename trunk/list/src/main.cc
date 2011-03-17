@@ -1,3 +1,4 @@
+// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 // TODO(thiago): Escrever enunciado desta lista.
 
 #include "easytesting/list/src/list.h"

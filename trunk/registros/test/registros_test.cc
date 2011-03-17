@@ -1,4 +1,4 @@
-// Copyright 2010 Thiago Noronha
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 #include "easytesting/registros/test/registros_test.h"
 
 int main(int argc, char** argv) {

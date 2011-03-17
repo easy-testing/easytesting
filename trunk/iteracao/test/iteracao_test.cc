@@ -1,4 +1,4 @@
-// copyright 2010 Thiago Ferreira de Noronha
+// copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
 #include "easytesting/iteracao/test/iteracao_test.h"
 

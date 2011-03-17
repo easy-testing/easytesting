@@ -1,3 +1,4 @@
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 // Lista sobre Tipos Abstratos de Dados - TAD.
 //
 // Introdução: Um polinômio de grau n é uma função do tipo

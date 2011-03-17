@@ -1,4 +1,4 @@
-// Copyright 2010 Thiago Ferreira de Noronha
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
 #include "easytesting/vetores/src/vetores.h"
 #include <iostream>

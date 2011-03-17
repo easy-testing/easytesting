@@ -1,5 +1,4 @@
-// copyright 2010 Thiago Ferreira de Noronha
-
+// copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 #include "easytesting/funcoes/test/funcoes_test.h"
 
 int main(int argc, char** argv) {

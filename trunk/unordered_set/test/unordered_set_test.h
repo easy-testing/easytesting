@@ -1,4 +1,4 @@
-// Copyright 2011 Matheus Pacheco
+// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 #ifndef UNORDERED_SET_TEST_UNORDERED_SET_TEST_H_
 #define UNORDERED_SET_TEST_UNORDERED_SET_TEST_H_
 

@@ -1,4 +1,4 @@
-// copyright 2011 Matheus Pacheco
+// copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
 // Lista de exercícios sobre algoritmos iterativos.
 //

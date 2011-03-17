@@ -1,3 +1,4 @@
+// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 #ifndef LIST_NODE_INCLUDED
 #define LIST_NODE_INCLUDED
 

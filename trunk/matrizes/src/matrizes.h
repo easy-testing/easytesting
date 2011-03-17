@@ -1,4 +1,4 @@
-// Copyright 2010 Thiago Ferreira de Noronha
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef MATRIZES_SRC_MATRIZES_H_
 #define MATRIZES_SRC_MATRIZES_H_

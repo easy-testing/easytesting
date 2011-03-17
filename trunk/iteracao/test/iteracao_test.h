@@ -1,4 +1,4 @@
-// copyright 2010 Thiago Ferreira de Noronha
+// copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 #ifndef ITERACAO_TEST_ITERACAO_TEST_H_
 #define ITERACAO_TEST_ITERACAO_TEST_H_
 

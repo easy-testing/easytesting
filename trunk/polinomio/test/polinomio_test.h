@@ -1,3 +1,4 @@
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 #ifndef TEST_H_
 #define TEST_H_
 

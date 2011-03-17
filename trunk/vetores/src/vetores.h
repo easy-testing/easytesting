@@ -1,4 +1,4 @@
-// Copyright 2010 Thiago Ferreira de Noronha
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef VETORES_SRC_VETORES_H_
 #define VETORES_SRC_VETORES_H_

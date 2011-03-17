@@ -1,3 +1,4 @@
+// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 #ifndef LIST_ITERATOR_H_
 #define LIST_ITERATOR_H_
 

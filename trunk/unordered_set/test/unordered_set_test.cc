@@ -1,4 +1,4 @@
-// Copyright 2011 Thiago Noronha
+// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 #include "easytesting/unordered_set/test/unordered_set_test.h"
 
 int main(int argc, char** argv) {

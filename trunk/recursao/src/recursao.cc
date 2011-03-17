@@ -1,4 +1,4 @@
-// Copyright 2010 Thiago Noronha
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 #include "easytesting/recursao/src/recursao.h"
 #include <math.h>
 

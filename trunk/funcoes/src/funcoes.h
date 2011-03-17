@@ -1,4 +1,4 @@
-// Copyright 2010 Thiago Noronha
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 #ifndef FUNCOES_SRC_FUNCOES_H_
 #define FUNCOES_SRC_FUNCOES_H_
 #define PI 3.1415

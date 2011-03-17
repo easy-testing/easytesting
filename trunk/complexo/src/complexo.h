@@ -1,4 +1,4 @@
-// Copyright 2010 Thiago Noronha
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 #ifndef COMPLEXO_SRC_COMPLEXO_H_
 #define COMPLEXO_SRC_COMPLEXO_H_
 

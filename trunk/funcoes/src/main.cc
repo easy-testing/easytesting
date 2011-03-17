@@ -1,4 +1,4 @@
-// Copyright 2011 Matheus Pacheco
+// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 // Lista de exercícios sobre funções em C++.
 //
 // QUESTÃO 1:

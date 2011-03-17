@@ -1,4 +1,4 @@
-// Copyright 2010 Thiago Ferreira de Noronha
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 // Lista de exercicio sobre estruturas de dados heterogêneas - Registros.
 //
 // QUESTÃO 1:
