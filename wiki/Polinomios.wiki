@@ -6,9 +6,9 @@ A lista POLINÔMIOS é constituida de oito funções:
   * int Polinomios::Grau()
     - Retorna o grau do polinômio corrente.
   * float Polinomios::Get(i)
-    - Retorna o coeficiente _a[i]_ do polinômio corrente.
+    - Retorna o coeficiente _a(i)_ do polinômio corrente.
   * void Polinomios::Set(i, x)
-    - Atribui _x_ ao valor do coeficiente _a[i]_ do polinômio corrente.
+    - Atribui _x_ ao valor do coeficiente _ a(i) _ do polinômio corrente.
   * float Polinomios::Avaliar(x)
     - Retorna o valor do polinômio corrente no ponto _x_.
   * void Polinomios::Atribuir(P)
