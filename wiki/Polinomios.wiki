@@ -26,11 +26,12 @@ Para criação do corretor desta lista de exercícios foram levadas em conta
 varias entradas diferentes, com o intuito de cobrir todos os erros possíveis de serem ocorridos. Os casos de teste analisados são os seguintes:
 
 - *int Polinomios::Grau()*
-  * Nenhum teste
+  * Polinomio de grau um
+  * Polinomio de grau maior que um
 - *float Polinomios::Get(i)*
-  * Nenhum teste
+  * coeficientes quaisquer
 - *void Polinomios::Set(i, x)*
-  * Nenhum teste
+  * coeficientes quaisquer
 - *float Polinomios::Avaliar(x)*
   * Polinômios com coeficientes não nulos
   * Polinômios com alguns coeficientes nulos
