@@ -82,6 +82,7 @@ class list {
   iterator insert(iterator position, Type x) {
     Node* node = position.current_;
     node->left = node->left->right = new Node(x, node->left, node);
+    return iterator(node->left);
   }
 
   // Apaga o elemento indicado por posision em O(1).
@@ -117,6 +118,8 @@ class list {
 private:
   // Ponteiro para o nó sentinela da lista.
   Node* end_;
+
+  friend class Teste;
 };
 
 #endif  // LIST_H_
