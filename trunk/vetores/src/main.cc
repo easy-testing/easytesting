@@ -1,22 +1,23 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
-// Lista de exercicio sobre estruturas de dados homogenias - Vetores.
+//
+// Lista de exercício sobre estruturas de dados homogênias - Vetores.
 //
 // QUESTÃO 1:
 // Implemente em vetores.cc as funções descritas em vetores.h.
 //
 // QUESTÃO 2:
-// Escreva um programa em C++ que le uma sequencia de numeros de um arquivo
+// Escreva um programa em C++ que lê uma sequência de números de um arquivo
 // e armazena em um vetor. Assuma que a quantidade de numeros no arquivo
-// nao ultrapassa o limite maximo de elementos do vetor (e.g. 1000).
+// não ultrapassa o limite máximo de elementos do vetor (e.g. 1000).
+// Use este programa para testar as funções que você implementou na questão 1.
 
 #include <fstream>
 
 #include "easytesting/vetores/src/vetores.h"
 
-// Lê uma sequencia de números de um arquivo
+// Lê uma sequência de números de um arquivo
 // e armazena em um vetor. Assuma que a quantidade de números no arquivo
 // não ultrapassa o limite máximo de elementos do vetor (e.g. 1000).
-
 int main() {
   std::ifstream input;
   float numero_arq;
