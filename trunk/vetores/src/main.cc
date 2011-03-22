@@ -22,7 +22,7 @@ int main() {
   std::ifstream input;
   float numero_arq;
   int v[1000];
-  input.open("numeros.txt");
+  input.open("input.txt");
   for (int i = 0 ; input >> numero_arq ; i++) {
     v[i] = numero_arq;
   }
