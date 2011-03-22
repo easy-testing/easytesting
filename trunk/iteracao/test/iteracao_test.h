@@ -4,8 +4,8 @@
 
 #include <sstream>
 #include <string>
-#include "easytesting/iteracao/src/iteracao.h"
-#include "easytesting/gtest/gtest.h"
+#include "iteracao/src/iteracao.h"
+#include "gtest/gtest.h"
 
 using std::string;
 using std::stringstream;
