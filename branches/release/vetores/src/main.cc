@@ -19,13 +19,5 @@
 // e armazena em um vetor. Assuma que a quantidade de números no arquivo
 // não ultrapassa o limite máximo de elementos do vetor (e.g. 1000).
 int main() {
-  std::ifstream input;
-  float numero_arq;
-  int v[1000];
-  input.open("input.txt");
-  for (int i = 0 ; input >> numero_arq ; i++) {
-    v[i] = numero_arq;
-  }
-  input.close();
   return 0;
 }
