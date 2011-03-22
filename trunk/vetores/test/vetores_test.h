@@ -5,8 +5,8 @@
 
 #include <sstream>
 #include <string>
-#include "easytesting/vetores/src/vetores.h"
-#include "easytesting/gtest/gtest.h"
+#include "vetores/src/vetores.h"
+#include "gtest/gtest.h"
 
 using std::string;
 using std::stringstream;

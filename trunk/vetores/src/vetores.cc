@@ -1,6 +1,6 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#include "easytesting/vetores/src/vetores.h"
+#include "vetores/src/vetores.h"
 #include <iostream>
 
 float Media(float v[], int n) {

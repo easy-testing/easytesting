@@ -1,6 +1,6 @@
 // copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#include "easytesting/vetores/test/vetores_test.h"
+#include "vetores/test/vetores_test.h"
 
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);

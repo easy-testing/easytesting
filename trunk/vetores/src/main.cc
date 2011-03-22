@@ -13,7 +13,7 @@
 
 #include <fstream>
 
-#include "easytesting/vetores/src/vetores.h"
+#include "vetores/src/vetores.h"
 
 // Lê uma sequência de números de um arquivo
 // e armazena em um vetor. Assuma que a quantidade de números no arquivo
