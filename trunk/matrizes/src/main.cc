@@ -1,4 +1,5 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+//
 // Lista de exercícios sobre estruturas de dados homogenias - Matrizes.
 //
 // QUESTÃO 1:
@@ -6,20 +7,22 @@
 //
 // QUESTÃO 2:
 // Escreva um programa que lê de um arquivo o número de linhas, o número de
-// colunas e todos os coeficientes de uma matriz
-// e imprime esta matriz na tela.
+// colunas e todos os coeficientes de uma matriz e imprime esta matriz na tela.
+// Use este programa para testar se as funções que você implementou na questão 1
+// estão corretas.
 
 #include <fstream>
 
-#include "easytesting/matrizes/src/matrizes.h"
+#include "matrizes/src/matrizes.h"
 
-// 1. Escreva um programa que lê de um arquivo o número de linhas, o número de
-// colunas e todos os coeficientes de uma matriz.
+// Lê de um arquivo o número de linhas, o número de
+// colunas e todos os coeficientes de uma matriz
+// e imprime esta matriz na tela.
 int main(void) {
   std::ifstream input;
   float a[100][100], entrada_arq;
   int n, m;
-  input.open("matriz.txt");
+  input.open("input.txt");
   input >> n >> m;
   for (int i = 0 ; i < n ; i++) {
     for (int j = 0 ; j < m ; j++) {

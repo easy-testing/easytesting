@@ -4,8 +4,8 @@
 
 #include <sstream>
 #include <string>
-#include "easytesting/matrizes/src/matrizes.h"
-#include "easytesting/gtest/gtest.h"
+#include "matrizes/src/matrizes.h"
+#include "gtest/gtest.h"
 
 // Definir dimensao maxima da matriz quadrada
 #define DM 100

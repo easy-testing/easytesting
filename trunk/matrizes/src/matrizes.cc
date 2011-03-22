@@ -1,6 +1,6 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#include "easytesting/matrizes/src/matrizes.h"
+#include "matrizes/src/matrizes.h"
 #include <stdio.h>
 #include <iostream>
 
