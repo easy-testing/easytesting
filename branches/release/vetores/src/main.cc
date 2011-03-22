@@ -1,6 +1,6 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 //
-// Lista de exercício sobre estruturas de dados homogênias - Vetores.
+// Lista de exercício sobre estruturas de dados homogêneas - Vetores.
 //
 // QUESTÃO 1:
 // Implemente em vetores.cc as funções descritas em vetores.h.

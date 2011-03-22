@@ -1,6 +1,6 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 //
-// Lista de exercícios sobre estruturas de dados homogenias - Matrizes.
+// Lista de exercícios sobre estruturas de dados homogêneas - Matrizes.
 //
 // QUESTÃO 1:
 // Implemente em matrizes.cc as funções descritas em matrizes.h.

@@ -1,5 +1,6 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
-// Lista de exercicio sobre estruturas de dados heterogêneas - Registros.
+//
+// Lista de exercícios sobre estruturas de dados heterogêneas - Registros.
 //
 // QUESTÃO 1:
 // Implemente em registros.cc o struct Ponto que está em registros.h.
