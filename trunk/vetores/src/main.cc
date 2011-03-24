@@ -15,17 +15,17 @@
 
 #include "vetores/src/vetores.h"
 
-// Lê uma sequência de números de um arquivo
-// e armazena em um vetor. Assuma que a quantidade de números no arquivo
-// não ultrapassa o limite máximo de elementos do vetor (e.g. 1000).
+// Lê uma sequência de números de um arquivo, armazena em um vetor e os imprime
+// na tela.
 int main() {
-  std::ifstream input;
-  float numero_arq;
-  int v[1000];
-  input.open("input.txt");
-  for (int i = 0 ; input >> numero_arq ; i++) {
-    v[i] = numero_arq;
+  float x;
+  int n = 0;
+  float v[1000];
+  std::ifstream input("input.txt");
+  while (input >> x) {
+    v[n] = x;
+    n++;
   }
-  input.close();
+  MostraVetor(v, n);
   return 0;
 }
