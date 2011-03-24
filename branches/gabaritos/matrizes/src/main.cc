@@ -19,6 +19,19 @@
 // colunas e todos os coeficientes de uma matriz
 // e imprime esta matriz na tela.
 int main(void) {
-  return 0;  // TODO.
+  std::ifstream input;
+  float a[100][100], entrada_arq;
+  int n, m;
+  input.open("input.txt");
+  input >> n >> m;
+  for (int i = 0 ; i < n ; i++) {
+    for (int j = 0 ; j < m ; j++) {
+      input >> entrada_arq;
+      a[i][j] = entrada_arq;
+    }
+  }
+  MostraMatriz(n, m, a);
+  input.close();
+  return 0;
 }
 
