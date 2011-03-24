@@ -94,16 +94,12 @@ bool primo(int n) {
   }
 }
 
+#include <iostream>
+
 double sqrt_(double n) {
-  float a = 0;
-  float b = n;
-  float m = (a + b) / 2;
-  while (fabs(m*m - n) > 0.001) {
-    if (m * m > n)
-      b = m;
-    else
-      a = m;
-    m = (a + b) / 2;
+  double x = n;
+  while (fabs(x * x - n) >= 0.001) {
+    x = x - (x * x - n) / (2 * x);
   }
-  return m;
+  return x;
 }

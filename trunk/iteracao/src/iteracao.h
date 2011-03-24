@@ -34,7 +34,7 @@ int dig(int n);
 // Retorna verdadeiro se n eh primo e false caso contrario.
 bool primo(int n);
 
-// Retorna a raiz quadrada de n >= 1 (com precisão de 0.001).
+// Retorna a raiz quadrada de n (com precisão de 0.001).
 double sqrt_(double n);
 
 #endif  // ITERACAO_SRC_ITERACAO_H_
