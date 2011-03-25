@@ -268,6 +268,23 @@ TEST_F(Teste, Calculo_da_Raiz_quadrada) {
     << "-------------------------------------------------------------------\n";
   }
 }
+
+TEST_F(Teste, Calculo_da_Raiz_quadrada_para_numeros_menores_que_um) {
+  double esperado[] = {0, 0.5, 0.0001, 0.9,};
+  double  entrada[] = {0, 0.25, 0.001, 0.81};
+  int num_testes = 4;
+  for (int i = 0; i < num_testes; i ++) {
+  ASSERT_NEAR(esperado[i], sqrt_(entrada[i]), 0.001)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* double sqrt_double) *\n"
+    << "-------------------------------------------------------------------\n"
+    << " Valores de entrada : " << entrada[i] << "\n\n"
+    << "   Resultado esperado : " << esperado[i] << "\n"
+    << "  Resultado retornado : " << sqrt_(entrada[i]) << "\n\n"
+    << "-------------------------------------------------------------------\n";
+  }
+}
 }  // end namespace
 
 #endif  // ITERACAO_TEST_ITERACAO_TEST_H_

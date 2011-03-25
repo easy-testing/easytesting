@@ -95,8 +95,6 @@ bool primo(int n) {
   }
 }
 
-#include <iostream>
-
 double sqrt_(double n) {
   double x = n;
   while (fabs(x * x - n) >= 0.001) {
