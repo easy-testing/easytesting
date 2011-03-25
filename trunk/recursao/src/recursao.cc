@@ -63,24 +63,22 @@ int dig(int n) {
     return n % 10 + dig(n / 10);
 }
 
-// Utilizado por "bool primo(int n)"
-// Verifica se o resto da divisao de n por k tem resto diferente de zero
-bool resto_nzero(int n, int k) {
-  if (k < 2)
-    return true;
-  else if (n % k == 0)
+bool TemDivisorPrimoMenorQueK(int n, int k) {
+  if (k == 1)
     return false;
+  else if (n % k == 0)
+    return true;
   else
-    return resto_nzero(n, k - 1);
+    return TemDivisorPrimoMenorQueK(n, k - 1);
 }
 
 bool primo(int n) {
-  if (n == 1)
+  if (n <= 1)
     return false;
   else if (n == 2)
     return true;
   else
-    return resto_nzero(n, n - 1);
+    return !TemDivisorPrimoMenorQueK(n, n - 1);
 }
 
 double sqrt_aux(double n, double x) {
