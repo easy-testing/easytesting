@@ -1,11 +1,12 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+
 #ifndef RECURSAO_TEST_RECURSAO_TEST_H_
 #define RECURSAO_TEST_RECURSAO_TEST_H_
 
 #include <sstream>
 #include <string>
-#include "easytesting/recursao/src/recursao.h"
-#include "easytesting/gtest/gtest.h"
+#include "recursao/src/recursao.h"
+#include "gtest/gtest.h"
 
 using std::string;
 using std::stringstream;
@@ -253,8 +254,8 @@ TEST_F(Teste, Calculo_da_Raiz_quadrada) {
   // raiz exata
   // raiz inexata de numero inteiro
   // raiz inexata de numero nao inteiro
-  double esperado[] = {0, 1,  9,  4.795,   3.937};
-  double  entrada[] = {0, 1, 81, 23,      15.5};
+  double esperado[] = {0, 1, 9, 4.795, 3.937};
+  double  entrada[] = {0, 1, 81, 23, 15.5};
   int num_testes = 5;
   for (int i = 0; i < num_testes; i ++) {
   ASSERT_NEAR(esperado[i], sqrt_(entrada[i]), 0.001)
@@ -269,6 +270,22 @@ TEST_F(Teste, Calculo_da_Raiz_quadrada) {
   }
 }
 
+TEST_F(Teste, Calculo_da_Raiz_quadrada_para_numeros_menores_que_um) {
+  double esperado[] = {0, 0.5, 0.0001, 0.9,};
+  double  entrada[] = {0, 0.25, 0.001, 0.81};
+  int num_testes = 4;
+  for (int i = 0; i < num_testes; i ++) {
+  ASSERT_NEAR(esperado[i], sqrt_(entrada[i]), 0.001)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* double sqrt_double) *\n"
+    << "-------------------------------------------------------------------\n"
+    << " Valores de entrada : " << entrada[i] << "\n\n"
+    << "   Resultado esperado : " << esperado[i] << "\n"
+    << "  Resultado retornado : " << sqrt_(entrada[i]) << "\n\n"
+    << "-------------------------------------------------------------------\n";
+  }
+}
 }  // end namespace
 
 #endif  // RECURSAO_TEST_RECURSAO_TEST_H_

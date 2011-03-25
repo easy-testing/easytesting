@@ -1,5 +1,6 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
-#include "easytesting/recursao/test/recursao_test.h"
+
+#include "recursao/test/recursao_test.h"
 
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);

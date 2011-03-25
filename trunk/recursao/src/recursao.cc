@@ -1,5 +1,6 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
-#include "easytesting/recursao/src/recursao.h"
+
+#include "recursao/src/recursao.h"
 #include <math.h>
 
 int fat(int n) {
@@ -65,30 +66,31 @@ int dig(int n) {
 // Utilizado por "bool primo(int n)"
 // Verifica se o resto da divisao de n por k tem resto diferente de zero
 bool resto_nzero(int n, int k) {
-  if (k < 2) return true;
-  else if (n % k == 0) return false;
+  if (k < 2)
+    return true;
+  else if (n % k == 0)
+    return false;
   else
     return resto_nzero(n, k - 1);
 }
 
 bool primo(int n) {
-  if (n == 1) return false;
-  else if (n == 2) return true;
+  if (n == 1)
+    return false;
+  else if (n == 2)
+    return true;
+  else
     return resto_nzero(n, n - 1);
 }
 
-// Utilizada por 'double sqrt(double n)'.
-// Procura o ponto 'x' onde f(x) = X*X - n e menor que 0.001.
-double bissecao(double n, double a, double b) {
-  double x = (a + b) / 2;
-  if (fabs(a - b) < 0.001)
+double sqrt_aux(double n, double x) {
+  if (fabs(x * x - n) < 0.001) {
     return x;
-  else if (x*x > n)
-    return bissecao(n, a, x);
-  else
-    return bissecao(n, x, b);
+  } else {
+    return  sqrt_aux(n, x - (x * x - n) / (2 * x));
+  }
 }
 
 double sqrt_(double n) {
-  return bissecao(n, 0.0, n);
+  return sqrt_aux(n, n);
 }

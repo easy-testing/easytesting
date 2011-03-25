@@ -37,12 +37,4 @@ bool primo(int n);
 // Retorna a raiz quadrada de n >= 1 (com precisão de 0.001).
 double sqrt_(double n);
 
-// Escreve em ordem decrescente, todos os inteiros maiores que 0
-// e menores ou iguais a x.
-void decrescente(int x);
-
-// Escreve em ordem crescente, todos os inteiros maiores que 0
-// e menores ou iguais a x.
-void crescente(int x);
-
 #endif  // RECURSAO_SRC_RECURSAO_H_

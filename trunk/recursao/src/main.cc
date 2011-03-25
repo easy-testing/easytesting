@@ -10,7 +10,7 @@
 // (ii) lê o valor dos parâmetros e (iii) exibe o resultado da função.
 
 #include <iostream>
-#include "easytesting/recursao/src/recursao.h"
+#include "recursao/src/recursao.h"
 
 using namespace std;
 
