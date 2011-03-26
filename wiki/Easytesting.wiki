@@ -21,7 +21,7 @@ Este projeto aborda diferentes temas ligados a programação básica lecionados 
   * TAD para Polinômios
   * Números Complexos
   * Funções
-  * [http://code.google.com/p/easytesting/downloads/detail?name=gabarito-recursao-v0.9.zip&can=2&q= Recursão]
+  * [http://code.google.com/p/easytesting/downloads/detail?name=recursao-v0.9.zip&can=2&q= Recursão]
   * [http://code.google.com/p/easytesting/downloads/detail?name=iteracao-v0.9.zip&can=2&q= Iteração]
   * [http://code.google.com/p/easytesting/downloads/detail?name=vetores-v0.9.zip&can=2&q= Vetores]
   * [http://code.google.com/p/easytesting/downloads/detail?name=matrizes-v0.9.zip&can=2&q= Matrizes]
