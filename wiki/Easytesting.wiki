@@ -1,0 +1,38 @@
+#summary Instruções sobre a utilização do Software
+= Projeto Easytesting =
+
+* Autores: * Thiago Noronha, Gabriel Guedes e Matheus Pacheco
+
+== Introdução ==
+
+Com a adoção de várias universidades federais ao programa de  Reestruturação e Expansão das Universidades Federais - REUNI, espera-se um grande aumento no número de alunos por turma nas disciplinas de ensino de programação de computadores. Com o aumento da relação aluno/professor, torna-se necessário desenvolver ferramentas e metodologias para garantir a qualidade do ensino. Este trabalho pretende auxiliar o ensino de linguagens de programação com uma metodologia de correção automática de listas de exercícios através de conjuntos de teste de unidade[http://pt.wikipedia.org/wiki/Teste_de_unidade 1.]
+
+Na abordagem baseada em testes de unidade, os exercícios programados
+pelos alunos são testados função por função. Caso haja algum erro no
+código do aluno, o erro é detectado e comunicado ao aluno
+imediatamente, junto com uma mensagem explicando onde está o erro e
+como ele possivelmente pode ser solucionado.
+
+== Conteúdos Abordados ==
+
+Este projeto aborda diferentes temas ligados a programação básica lecionados pelos professores. A lista desses temas se encontra abaixo:
+
+==== Programação Básica Nível 1 ====
+  * TAD para Polinômios
+  * Números Complexos
+  * Funções
+  * [http://code.google.com/p/easytesting/downloads/detail?name=gabarito-recursao-v0.9.zip&can=2&q= Recursão]
+  * [http://code.google.com/p/easytesting/downloads/detail?name=iteracao-v0.9.zip&can=2&q= Iteração]
+  * [http://code.google.com/p/easytesting/downloads/detail?name=vetores-v0.9.zip&can=2&q= Vetores]
+  * [http://code.google.com/p/easytesting/downloads/detail?name=matrizes-v0.9.zip&can=2&q= Matrizes]
+  * Registros
+
+==== Programação Básica Nível 2 ====
+  * List
+  * Set
+  * Unordered Set
+== Como Utilizar ==
+
+== Referências ==
+
+[http://pt.wikipedia.org/wiki/Teste_de_unidade 1.] -> Link para a página do wikipedia que traz explicações sobre Testes de Unidade
