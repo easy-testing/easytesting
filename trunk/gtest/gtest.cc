@@ -65,7 +65,7 @@
 //
 // The Google C++ Testing Framework (Google Test)
 
-#include "gtest/gtest.h"
+#include "gtest.h"
 
 // Copyright 2007, Google Inc.
 // All rights reserved.
@@ -4207,7 +4207,7 @@ void PrettyUnitTestResultPrinter::OnTestIterationStart(
   }
 
   ColoredPrintf(COLOR_GREEN,  "[==========] ");
-  printf("Executando %s.\n",  // NOTE(tfn): Coloquei em portugues.
+  printf("Executando %s %s.\n",  // NOTE(tfn): Coloquei em portugues.
          FormatTestCount(unit_test.test_to_run_count()).c_str(),
          FormatTestCaseCount(unit_test.test_case_to_run_count()).c_str());
   fflush(stdout);
@@ -4329,7 +4329,7 @@ void PrettyUnitTestResultPrinter::PrintFailedTests(const UnitTest& unit_test) {
  void PrettyUnitTestResultPrinter::OnTestIterationEnd(const UnitTest& unit_test,
                                                       int /*iteration*/) {
   ColoredPrintf(COLOR_GREEN,  "[==========] ");
-  printf("Foram executados %s.",
+  printf("Foram executados %s %s.",
          FormatTestCount(unit_test.test_to_run_count()).c_str(),
          FormatTestCaseCount(unit_test.test_case_to_run_count()).c_str());
   if (GTEST_FLAG(print_time)) {

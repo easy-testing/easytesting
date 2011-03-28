@@ -6,18 +6,18 @@
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="Debug">
-				<Option output="bin/debug/set" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/debug/" />
+			<Target title="EasyTesting">
+				<Option output="bin\debug\set" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\debug\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
 			</Target>
-			<Target title="Release">
-				<Option output="bin/release/set" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/release/" />
+			<Target title="Main">
+				<Option output="bin\release\set" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\release\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -31,19 +31,19 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add directory="../.." />
+			<Add directory="..\.." />
 		</Compiler>
-		<Unit filename="../gtest/gtest.cc" />
-		<Unit filename="../gtest/gtest.h" />
-		<Unit filename="src/binary_search_tree.h" />
-		<Unit filename="src/main.cc">
-			<Option target="Release" />
+		<Unit filename="..\gtest\gtest.cc" />
+		<Unit filename="..\gtest\gtest.h" />
+		<Unit filename="src\binary_search_tree.h" />
+		<Unit filename="src\main.cc">
+			<Option target="Main" />
 		</Unit>
-		<Unit filename="src/set.h" />
-		<Unit filename="test/set_test.cc">
-			<Option target="Debug" />
+		<Unit filename="src\set.h" />
+		<Unit filename="test\set_test.cc">
+			<Option target="EasyTesting" />
 		</Unit>
-		<Unit filename="test/set_test.h" />
+		<Unit filename="test\set_test.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

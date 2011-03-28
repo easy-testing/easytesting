@@ -6,18 +6,18 @@
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="Debug">
-				<Option output="bin/debug/matrizes" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/debug/" />
+			<Target title="EasyTesting">
+				<Option output="bin\debug\matrizes" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\debug\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
 			</Target>
-			<Target title="Release">
-				<Option output="bin/release/matrizes" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/release/" />
+			<Target title="Main">
+				<Option output="bin\release\matrizes" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\release\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -34,22 +34,22 @@
 			<Add directory=".." />
 			<Add directory="." />
 		</Compiler>
-		<Unit filename="../gtest/gtest.cc">
-			<Option target="Debug" />
+		<Unit filename="..\gtest\gtest.cc">
+			<Option target="EasyTesting" />
 		</Unit>
-		<Unit filename="../gtest/gtest.h">
-			<Option target="Debug" />
+		<Unit filename="..\gtest\gtest.h">
+			<Option target="EasyTesting" />
 		</Unit>
-		<Unit filename="src/main.cc">
-			<Option target="Release" />
+		<Unit filename="src\main.cc">
+			<Option target="Main" />
 		</Unit>
-		<Unit filename="src/matrizes.cc" />
-		<Unit filename="src/matrizes.h" />
-		<Unit filename="test/matrizes_test.cc">
-			<Option target="Debug" />
+		<Unit filename="src\matrizes.cc" />
+		<Unit filename="src\matrizes.h" />
+		<Unit filename="test\matrizes_test.cc">
+			<Option target="EasyTesting" />
 		</Unit>
-		<Unit filename="test/matrizes_test.h">
-			<Option target="Debug" />
+		<Unit filename="test\matrizes_test.h">
+			<Option target="EasyTesting" />
 		</Unit>
 		<Extensions>
 			<code_completion />
