@@ -1,0 +1,72 @@
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+
+#include "complexo/src/complexo.h"
+
+#include <math.h>
+
+Complexo::Complexo() {
+  real_ = 0.0;
+  imag_ = 0.0;
+}
+
+Complexo::Complexo(float a) {
+  real_ = a;
+  imag_ = 0.0;
+}
+
+Complexo::Complexo(float a, float b) {
+  real_ = a;
+  imag_ = b;
+}
+
+float Complexo::real() {
+  return real_;
+}
+
+float Complexo::imag() {
+  return imag_;
+}
+
+bool Complexo::operator==(Complexo x) {
+  return real_ == x.real_ && imag_ == x.imag_;
+}
+
+void Complexo::operator=(Complexo x) {
+  real_ = x.real_;
+  imag_ = x.imag_;
+}
+
+float Complexo::modulo() {
+  return sqrt(real_*real_ + imag_*imag_);
+}
+
+Complexo Complexo::conjugado() {
+  Complexo c(real_, -imag_);
+  return c;
+}
+
+Complexo Complexo::inverso() {
+  float mod2 = pow(modulo(), 2.0);
+  Complexo i(real_ / mod2, -imag_ / mod2);
+  return i;
+}
+
+Complexo Complexo::operator+(Complexo y) {
+  Complexo s(real_ + y.real_, imag_ + y.imag_);
+  return s;
+}
+
+Complexo Complexo::operator-(Complexo y) {
+  Complexo s(real_ - y.real_, imag_ - y.imag_);
+  return s;
+}
+
+Complexo Complexo::operator*(Complexo y) {
+  Complexo p(real_ * y.real_ - imag_ * y.imag_, imag_*y.real_ - real_*y.imag_);
+  return p;
+}
+
+Complexo Complexo::operator/(Complexo y) {
+  Complexo q = *this * y.inverso();
+  return q;
+}
