@@ -49,11 +49,8 @@ class set {
   }
 
  private:
-  // Número de elementos no conjunto.
-  int size_;
-
-  // Árvore binária de busca que representa o conjunto.
+  // Lista que representa o conjunto.
   list<Type> list_;
-};  // end class set.
+};  // end class linear_set.
 
 #endif  // SET_SRC_SET_H_

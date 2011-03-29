@@ -1,9 +1,10 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+
 #ifndef LIST_H_
 #define LIST_H_
 
-#include "easytesting/list/src/list_iterator.h"
-#include "easytesting/list/src/list_node.h"
+#include "list/src/list_iterator.h"
+#include "list/src/list_node.h"
 
 template<class Type>
 class list {
