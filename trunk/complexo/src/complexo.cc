@@ -1,18 +1,22 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
-#include "easytesting/complexo/src/complexo.h"
+
+#include "complexo/src/complexo.h"
 
 #include <math.h>
 
 Complexo::Complexo() {
-  Atribuir(0.0, 0.0);
+  real_ = 0.0;
+  imag_ = 0.0;
 }
 
 Complexo::Complexo(float a) {
-  Atribuir(a, 0.0);
+  real_ = a;
+  imag_ = 0.0;
 }
 
 Complexo::Complexo(float a, float b) {
-  Atribuir(a, b);
+  real_ = a;
+  imag_ = b;
 }
 
 float Complexo::real() {
@@ -23,47 +27,46 @@ float Complexo::imag() {
   return imag_;
 }
 
-void Complexo::Atribuir(float a, float b) {
-  real_ = a;
-  imag_ = b;
+bool Complexo::operator==(Complexo x) {
+  return real_ == x.real_ && imag_ == x.imag_;
 }
 
-bool Complexo::igual(Complexo x) {
-  return real_ == x.real_ && imag_ == x.imag_;
+void Complexo::operator=(Complexo x) {
+  real_ = x.real_;
+  imag_ = x.imag_;
 }
 
 float Complexo::modulo() {
   return sqrt(real_*real_ + imag_*imag_);
 }
 
-void Complexo::Igualar(Complexo x) {
-  Atribuir(x.real_, x.imag_);
+Complexo Complexo::conjugado() {
+  Complexo c(real_, -imag_);
+  return c;
 }
 
-void Complexo::Conjugar(Complexo x) {
-  Atribuir(x.real_, -x.imag_);
+Complexo Complexo::inverso() {
+  float mod2 = pow(modulo(), 2.0);
+  Complexo i(real_ / mod2, -imag_ / mod2);
+  return i;
 }
 
-void Complexo::Inverter(Complexo x) {
-  float mod2 = pow(x.modulo(), 2.0);
-  Atribuir(x.real_ / mod2, -x.imag_ / mod2);
+Complexo Complexo::operator+(Complexo y) {
+  Complexo s(real_ + y.real_, imag_ + y.imag_);
+  return s;
 }
 
-void Complexo::Somar(Complexo x, Complexo y) {
-  Atribuir(x.real_ + y.real_, x.imag_ + y.imag_);
+Complexo Complexo::operator-(Complexo y) {
+  Complexo s(real_ - y.real_, imag_ - y.imag_);
+  return s;
 }
 
-void Complexo::Subtrair(Complexo x, Complexo y) {
-  Atribuir(x.real_ - y.real_, x.imag_ - y.imag_);
+Complexo Complexo::operator*(Complexo y) {
+  Complexo p(real_ * y.real_ - imag_ * y.imag_, imag_*y.real_ - real_*y.imag_);
+  return p;
 }
 
-void Complexo::Multiplicar(Complexo x, Complexo y) {
-  Atribuir(x.real_*y.real_ - x.imag_*y.imag_,
-           x.imag_*y.real_ - x.real_*y.imag_);
-}
-
-void Complexo::Dividir(Complexo x, Complexo y) {
-  Complexo inverso_y;
-  inverso_y.Inverter(y);
-  Multiplicar(x, inverso_y);
+Complexo Complexo::operator/(Complexo y) {
+  Complexo q = *this * y.inverso();
+  return q;
 }

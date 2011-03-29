@@ -1,58 +1,56 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+
 #ifndef COMPLEXO_SRC_COMPLEXO_H_
 #define COMPLEXO_SRC_COMPLEXO_H_
 
-// Representa um numero complexo.
+// Representa um número complexo.
 struct Complexo {
  private:
   float real_;  // Parte real;
-  float imag_;  // Parte imaginaria.
+  float imag_;  // Parte imaginária.
 
  public:
-  // Cria o numero complexo 0 + 0i.
+  // Cria o número complexo 0 + 0i.
   Complexo();
 
-  // Cria o numero complexo a + 0i.
+  // Cria o número complexo a + 0i.
   Complexo(float a);
 
-  // Cria o numero complexo a + bi.
+  // Cria o número complexo a + bi.
   Complexo(float a, float b);
 
-  // Retorna a parte real do numero complexo corrente.
+  // Retorna a parte real do número complexo corrente.
   float real();
 
-  // Retorna a parte imaginaria do numero complexo corrente.
+  // Retorna a parte imaginária do número complexo corrente.
   float imag();
 
-  // Atribui 'a + bi' ao numero complexo corrente.
-  void Atribuir(float a, float b);
+  // Testa se o número complexo corrente é igual a 'x'.
+  bool operator==(Complexo x);
 
-  // Retorna o modulo do numero complexo corrente.
+  // Atribui 'x' ao número complexo corrente.
+  void operator=(Complexo x);
+
+  // Retorna o módulo do número complexo corrente.
   float modulo();
 
-  // Testa se o numero complexo corrente eh igual a 'x'.
-  bool igual(Complexo x);
+  // Retorna o conjugado do número complexo corrente.
+  Complexo conjugado();
 
-  // Atribui 'x' ao numero complexo corrente.
-  void Igualar(Complexo x);
+  // Retorna o inverso multiplicativo do número complexo corrente.
+  Complexo inverso();
 
-  // Atribui o conjugado de 'x' ao numero complexo corrente.
-  void Conjugar(Complexo x);
+  // Soma o número complexo corrente com 'y' e retorna o resultado.
+  Complexo operator+(Complexo y);
 
-  // Atribui o inverso multiplicativo de x ao numero complexo corrente.
-  void Inverter(Complexo x);
+  // Subtrai o número complexo corrente por 'y' e retorna o resultado.
+  Complexo operator-(Complexo y);
 
-  // Atribui a soma de 'x' e 'y' ao numero complexo corrente.
-  void Somar(Complexo x, Complexo y);
+  // Multiplica o número complexo corrente com 'y' e retorna o resultado.
+  Complexo operator*(Complexo y);
 
-  // Atribui a subtracao de 'x' e 'y' (x - y) ao numero complexo corrente.
-  void Subtrair(Complexo x, Complexo y);
-
-  // Atribui o produto de 'x' e 'y' ao numero complexo corrente.
-  void Multiplicar(Complexo x, Complexo y);
-
-  // Atribui a divisao de 'x' e 'y' (x / y) ao numero complexo corrente.
-  void Dividir(Complexo x, Complexo y);
+  // Divide o número complexo corrente por 'y' e retorna o resultado.
+  Complexo operator/(Complexo y);
 };
 
 #endif  // COMPLEXO_SRC_COMPLEXO_H_

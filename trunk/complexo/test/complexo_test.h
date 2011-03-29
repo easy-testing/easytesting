@@ -1,13 +1,14 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+
 #ifndef COMPLEXO_TEST_COMPLEXO_TEST_H_
 #define COMPLEXO_TEST_COMPLEXO_TEST_H_
 
-#include "easytesting/complexo/src/complexo.h"
+#include "complexo/src/complexo.h"
 
 #include <sstream>
 #include <string>
 
-#include "easytesting/gtest/gtest.h"
+#include "gtest/gtest.h"
 
 using std::string;
 using std::stringstream;
@@ -42,112 +43,8 @@ class Teste : public testing::Test {
 // aquele que possui parte real e parte imaginaria positivas e
 // negativo o que possui as duas partes negativas
 
-
-
-// NOTA(Matheus) Optei em testar primeiro a funcao
-// void Atribuir(float, float) pois se esta estiver
-// correta, os construtores irão com certeza estar
-// corretos.
-
-TEST_F(Teste, Atribuicao_Parte_Real_Positiva) {
-  Complexo x;
-  x.Atribuir(1.3, 1.8);
-  float esperado_r = 1.3;
-  float atual_r = x.real();
-  ASSERT_FLOAT_EQ(esperado_r, atual_r)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  \"void Atribuir(float, float)\"                   \n"
-    << "        Parte real                                                 \n"
-    << "-------------------------------------------------------------------\n"
-    << " Numero Complexo: " << MostrarComplexo(x) << "\n\n"
-    << "   Parte real esperada : " << esperado_r << "\n"
-    << "  Parte real retornada : " << atual_r << "\n\n"
-    << "-------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Atribuicao_Parte_Real_Negativa) {
-  Complexo x;
-  x.Atribuir(-1.3, 1.8);
-  float esperado_r = -1.3;
-  float atual_r = x.real();
-  ASSERT_FLOAT_EQ(esperado_r, atual_r)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  \"void Atribuir(float, float)\"                   \n"
-    << "        Parte real                                                 \n"
-    << "-------------------------------------------------------------------\n"
-    << " Numero Complexo: " << MostrarComplexo(x) << "\n\n"
-    << "   Parte real esperada : " << esperado_r << "\n"
-    << "  Parte real retornada : " << atual_r << "\n\n"
-    << "-------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Atribuicao_Parte_Real_Nula) {
-  Complexo x;
-  x.Atribuir(0, 1.8);
-  float esperado_r = 0;
-  float atual_r = x.real();
-  ASSERT_FLOAT_EQ(esperado_r, atual_r)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  \"void Atribuir(float, float)\"                   \n"
-    << "        Parte real                                                 \n"
-    << "-------------------------------------------------------------------\n"
-    << " Numero Complexo: " << MostrarComplexo(x) << "\n\n"
-    << "   Parte real esperada : " << esperado_r << "\n"
-    << "  Parte real retornada : " << atual_r << "\n\n"
-    << "-------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Atribuicao_Parte_Imaginaria_Positiva) {
-  Complexo x;
-  x.Atribuir(2.4, 3.1);
-  float esperado_i = 3.1;
-  float atual_i = x.imag();
-  ASSERT_FLOAT_EQ(esperado_i, atual_i)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  \"void Atribuir(float, float)\"                   \n"
-    << "        Parte imaginaria                                           \n"
-    << "-------------------------------------------------------------------\n"
-    << " Numero Complexo: " << MostrarComplexo(x) << "\n\n"
-    << "   Parte imaginaria esperada : " << esperado_i << "\n"
-    << "  Parte imaginaria retornada : " << atual_i << "\n\n"
-    << "-------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Atribuicao_Parte_Imaginaria_Negativa) {
-  Complexo x;
-  x.Atribuir(2.4, -3.1);
-  float esperado_i = -3.1;
-  float atual_i = x.imag();
-  ASSERT_FLOAT_EQ(esperado_i, atual_i)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  \"void Atribuir(float, float)\"                   \n"
-    << "        Parte imaginaria                                           \n"
-    << "-------------------------------------------------------------------\n"
-    << " Numero Complexo: " << MostrarComplexo(x) << "\n\n"
-    << "   Parte imaginaria esperada : " << esperado_i << "\n"
-    << "  Parte imaginaria retornada : " << atual_i << "\n\n"
-    << "-------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Atribuicao_Parte_Imaginaria_Nula) {
-  Complexo x;
-  x.Atribuir(2.4, 0);
-  float esperado_i = 0;
-  float atual_i = x.imag();
-  ASSERT_FLOAT_EQ(esperado_i, atual_i)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  \"void Atribuir(float, float)\"                   \n"
-    << "        Parte imaginaria                                           \n"
-    << "-------------------------------------------------------------------\n"
-    << " Numero Complexo: " << MostrarComplexo(x) << "\n\n"
-    << "   Parte imaginaria esperada : " << esperado_i << "\n"
-    << "  Parte imaginaria retornada : " << atual_i << "\n\n"
-    << "-------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Exibir_Parte_Real) {
-  Complexo x;
-  x.Atribuir(1.1, 2.2);
+TEST_F(Teste, Testar_Parte_Real) {
+  Complexo x(1.1, 2.2);
   float esperado = 1.1;
   float atual = x.real();
   ASSERT_FLOAT_EQ(esperado, atual)
@@ -160,9 +57,8 @@ TEST_F(Teste, Exibir_Parte_Real) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Exibir_Parte_Imaginaria) {
-  Complexo x;
-  x.Atribuir(0.1, 3.2);
+TEST_F(Teste, Testar_Parte_Imaginaria) {
+  Complexo x(0.1, 3.2);
   float esperado = 3.2;
   float atual = x.imag();
   ASSERT_FLOAT_EQ(esperado, atual)
@@ -310,7 +206,7 @@ TEST_F(Teste, Calculo_Modulo_Numero_Complexo_Positivo) {
 TEST_F(Teste, Igualdade_entre_Numeros_Complexos_Totalmente_Distintos) {
   Complexo x(6.1, 8.5);
   Complexo y(4.2, 3.03);
-  ASSERT_FALSE(x.igual(y))
+  ASSERT_FALSE(x == y)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  \"bool igual()\"                                  \n"
     << "-------------------------------------------------------------------\n"
@@ -324,7 +220,7 @@ TEST_F(Teste, Igualdade_entre_Numeros_Complexos_Totalmente_Distintos) {
 TEST_F(Teste, Igualdade_entre_Numeros_Complexos_com_mesma_Parte_Imaginaria) {
   Complexo x(6.1, 8.5);
   Complexo y(4.2, 8.5);
-  ASSERT_FALSE(x.igual(y))
+  ASSERT_FALSE(x == y)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  \"bool igual()\"                                  \n"
     << "-------------------------------------------------------------------\n"
@@ -341,7 +237,7 @@ TEST_F(Teste, Igualdade_entre_Numeros_Complexos_com_mesma_Parte_Imaginaria) {
 TEST_F(Teste, Igualdade_entre_Numeros_Complexos_com_mesma_Parte_Real) {
   Complexo x(6.1, 4.5);
   Complexo y(6.1, 8.5);
-  ASSERT_FALSE(x.igual(y))
+  ASSERT_FALSE(x == y)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  \"bool igual()\"                                  \n"
     << "-------------------------------------------------------------------\n"
@@ -358,7 +254,7 @@ TEST_F(Teste, Igualdade_entre_Numeros_Complexos_com_mesma_Parte_Real) {
 TEST_F(Teste, Igualdade_entre_Numeros_Complexos_Iguais) {
   Complexo x(6.1, 8.5);
   Complexo y(6.1, 8.5);
-  ASSERT_TRUE(x.igual(y))
+  ASSERT_TRUE(x == y)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  \"bool igual()\"                                  \n"
     << "-------------------------------------------------------------------\n"
@@ -372,7 +268,7 @@ TEST_F(Teste, Igualdade_entre_Numeros_Complexos_Iguais) {
 TEST_F(Teste, Igualar_Numero_Complexo_Parte_Real) {
   Complexo x(2, 3.4);
   Complexo y;
-  y.Igualar(x);
+  y = x;
   float atual = y.real();
   float esperado = 2;
   ASSERT_FLOAT_EQ(esperado, atual)
@@ -389,7 +285,7 @@ TEST_F(Teste, Igualar_Numero_Complexo_Parte_Real) {
 TEST_F(Teste, Igualar_Numero_Complexo_Parte_Imaginaria) {
   Complexo x(2, 3.4);
   Complexo y;
-  y.Igualar(x);
+  y = x;
   float atual = y.imag();
   float esperado = 3.4;
   ASSERT_FLOAT_EQ(esperado, atual)
@@ -406,7 +302,7 @@ TEST_F(Teste, Igualar_Numero_Complexo_Parte_Imaginaria) {
 TEST_F(Teste, Atribuir_Conjugado_de_Numero_Complexo_Nulo) {
   Complexo x;
   Complexo y(2, 3.5);
-  y.Conjugar(x);
+  y = x.conjugado();
   float atual = y.imag();
   float esperado = 0;
   ASSERT_FLOAT_EQ(esperado, atual)
@@ -422,7 +318,7 @@ TEST_F(Teste, Atribuir_Conjugado_de_Numero_Complexo_Nulo) {
 TEST_F(Teste, Atribuir_Conjugado_de_Numero_Complexo_Positivo) {
   Complexo x(1, 10.3);
   Complexo y(2, 3.5);
-  y.Conjugar(x);
+  y = x.conjugado();
   float atual = y.imag();
   float esperado = -10.3;
   ASSERT_FLOAT_EQ(esperado, atual)
@@ -438,7 +334,7 @@ TEST_F(Teste, Atribuir_Conjugado_de_Numero_Complexo_Positivo) {
 TEST_F(Teste, Atribuir_Conjugado_de_Numero_Complexo_Negativo) {
   Complexo x(-2, -3.4);
   Complexo y(2, 3.5);
-  y.Conjugar(x);
+  y = x.conjugado();
   float atual = y.imag();
   float esperado = 3.4;
   ASSERT_FLOAT_EQ(esperado, atual)
@@ -454,7 +350,7 @@ TEST_F(Teste, Atribuir_Conjugado_de_Numero_Complexo_Negativo) {
 TEST_F(Teste, Inverter_Numero_Complexo_Parte_Real) {
   Complexo x(6, 8);
   Complexo y;
-  y.Inverter(x);
+    y = x.inverso();
   float atual = y.real();
   float esperado = 0.06;
   ASSERT_FLOAT_EQ(esperado, atual)
@@ -470,7 +366,7 @@ TEST_F(Teste, Inverter_Numero_Complexo_Parte_Real) {
 TEST_F(Teste, Inverter_Numero_Complexo_Parte_Imaginaria) {
   Complexo x(6, 8);
   Complexo y;
-  y.Inverter(x);
+    y = x.inverso();
   float atual = y.imag();
   float esperado = -0.08;
   ASSERT_FLOAT_EQ(esperado, atual)
@@ -487,7 +383,7 @@ TEST_F(Teste, Somar_Numeros_Complexos_Nulos) {
   Complexo x(2, 3);
   Complexo y;
   Complexo z;
-  x.Somar(y, z);
+  x = y + z;
   float atual_r = x.real();
   float atual_i = x.imag();
   float esperado = 0;
@@ -516,7 +412,7 @@ TEST_F(Teste, Somar_Numeros_Complexos_Positivos) {
   Complexo x;
   Complexo y(4.1, 2.4);
   Complexo z(3.6, 1.5);
-  x.Somar(y, z);
+  x = y + z;
   float atual_r = x.real();
   float atual_i = x.imag();
   float esperado_r = 7.7;
@@ -546,7 +442,7 @@ TEST_F(Teste, Somar_Numeros_Complexos_Negativos) {
   Complexo x;
   Complexo y(-4.1, -2.4);
   Complexo z(-3.6, -1.5);
-  x.Somar(y, z);
+  x = y + z;
   float atual_r = x.real();
   float atual_i = x.imag();
   float esperado_r = -7.7;
@@ -576,7 +472,7 @@ TEST_F(Teste, Somar_Numeros_Complexos_de_sinais_opostos) {
   Complexo x;
   Complexo y(-4.1, 2.4);
   Complexo z(3.6, -1.5);
-  x.Somar(y, z);
+  x = y + z;
   float atual_r = x.real();
   float atual_i = x.imag();
   float esperado_r = -0.5;
@@ -606,7 +502,7 @@ TEST_F(Teste, Subtrair_Numeros_Complexos_Nulos) {
   Complexo x(2, 3);
   Complexo y;
   Complexo z;
-  x.Subtrair(y, z);
+  x = y - z;
   float atual_r = x.real();
   float atual_i = x.imag();
   float esperado = 0;
@@ -635,7 +531,7 @@ TEST_F(Teste, Subtrair_Numeros_Complexos_Positivos) {
   Complexo x;
   Complexo y(4.1, 2.4);
   Complexo z(3.6, 1.5);
-  x.Subtrair(y, z);
+  x = y - z;
   float atual_r = x.real();
   float atual_i = x.imag();
   float esperado_r = 0.5;
@@ -665,7 +561,7 @@ TEST_F(Teste, Subtrair_Numeros_Complexos_Negativos) {
   Complexo x;
   Complexo y(-4.1, -2.4);
   Complexo z(-3.6, -1.5);
-  x.Subtrair(y, z);
+  x = y - z;
   float atual_r = x.real();
   float atual_i = x.imag();
   float esperado_r = -0.5;
@@ -695,7 +591,7 @@ TEST_F(Teste, Subtrair_Numeros_Complexos_de_sinais_opostos) {
   Complexo x;
   Complexo y(4.1, -2.4);
   Complexo z(-3.6, 1.5);
-  x.Subtrair(y, z);
+  x = y - z;
   float atual_r = x.real();
   float atual_i = x.imag();
   float esperado_r = 7.7;
@@ -725,7 +621,7 @@ TEST_F(Teste, Multiplicar_Numeros_Complexos_Nulos) {
   Complexo x(4.1, -2.4);
   Complexo y;
   Complexo z;
-  x.Multiplicar(y, z);
+  x = y * z;
   float atual_r = x.real();
   float atual_i = x.imag();
   float esperado = 0;
@@ -754,7 +650,7 @@ TEST_F(Teste, Multiplicar_Numeros_Complexos_mesmo_sinal) {
   Complexo x;
   Complexo y(4.1, 2.4);
   Complexo z(3.6, 1.5);
-  x.Multiplicar(y, z);
+  x = y * z;
   float atual_r = x.real();
   float atual_i = x.imag();
   float esperado_r = 11.16;
@@ -784,7 +680,7 @@ TEST_F(Teste, Multiplicar_Numeros_Complexos_sinais_contrarios) {
   Complexo x;
   Complexo y(3.1, -2.4);
   Complexo z(-3.6, 1.8);
-  x.Multiplicar(y, z);
+  x = y * z;
   float atual_r = x.real();
   float atual_i = x.imag();
   float esperado_r = -6.84;
@@ -814,7 +710,7 @@ TEST_F(Teste, Dividir_Numeros_Complexos_mesmo_sinal) {
   Complexo x;
   Complexo y(8, 1);
   Complexo z(4, 2);
-  x.Dividir(y, z);
+  x = y / z;
   float atual_r = x.real();
   float atual_i = x.imag();
   float esperado_r = 1.7;
@@ -844,7 +740,7 @@ TEST_F(Teste, Dividir_Numeros_Complexos_sinais_contrarios) {
   Complexo x;
   Complexo y(8, 5);
   Complexo z(-4, -2);
-  x.Dividir(y, z);
+  x = y / z;
   float atual_r = x.real();
   float atual_i = x.imag();
   float esperado_r = -2.1;
