@@ -52,13 +52,13 @@ Figura 1
 
 O modo de compilação _Easytesting_ irá compilar e executar o teste da lista de exercícios. O modo _Main_ irá compilar o arquivo main.cc do exercício do aluno.
 
-Ao escolher o modo _EasyTesting_ e executar, o programa abrirá uma tela indicando os testes executados e os resultados de cada teste realizado.
+Ao escolher o modo _Easytesting_ e executar, o programa abrirá uma tela indicando os testes executados e os resultados de cada teste realizado.
 
 <wiki:comment>
 Postar Figura 2 - sem erros no programa e Figura 3 - com erros
-<\wiki:comment>
+</wiki:comment>
 
-Para cada erro detectado haverá uma mensagem indicando - o. Assim será possível que o aluno descubra o erro e corrija o programa
+Para cada erro detectado haverá uma mensagem indicando - o. Assim será possível que o aluno descubra o erro e corrija o programa.
 
 == Referências ==
 
