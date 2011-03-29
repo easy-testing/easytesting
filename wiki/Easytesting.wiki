@@ -45,7 +45,7 @@ O projeto de cada lista de exercícios é composto por um grupo de arquivos:
   * alguns ainda possuem mais um arquivo auxiliar
 
 "xxx" está substituindo o nome do projeto. Gtest.cc e .h são arquivos de teste criados pelo Google (Google Test) para auxiliar a criação dos testes de unidade. Os arquivos xxx.h e .cc são as respostas das listas de exercícios, que serão testados pelo Easytesting e os arquivos xxx_test.cc e .h são os testes de unidade criados para cada lista de exercícios.
-No projeto existem duas opções de compilação, _EasyTesting_ e _Main_ . A Figura 1 abaixo indica é feita a alteração dessas opções:
+No projeto existem duas opções de compilação, _Easytesting_ e _Main_ . A Figura 1 abaixo indica é feita a alteração dessas opções:
 
 [https://sites.google.com/site/matheuspachecao100/BuildTarget.png?attredirects=0&d=1]
 Figura 1
