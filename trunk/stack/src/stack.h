@@ -41,6 +41,6 @@ class stack {
  private:
   // Lista que representa a pilha.
   list<Type> list_;
-};  // end class set.
+};  // end class stack.
 
 #endif  // SET_SRC_SET_H_
