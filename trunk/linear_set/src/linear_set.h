@@ -2,9 +2,7 @@
 #ifndef SET_SRC_SET_H_
 #define SET_SRC_SET_H_
 
-#include "easytesting/set/src/binary_search_tree.h"
-
-template<class Type> class BinarySearchTree;
+#include "list/src/list.h"
 
 // Implementa um conjunto. O calculo da complexidade das funções assume que a
 // árvore esta sempre balanceada, o que não é garantido nesta implentação.
@@ -13,58 +11,41 @@ template<class Type> class BinarySearchTree;
 template<class Type>
 class set {
  public:
-  // Tipo da árvore que representa o conjunto.
-  typedef BinarySearchTree<Type> Tree;
-
   // Cria um conjunto vazio em O(1).
   set() {
-    size_ = 0;
   }
 
   // Testa se o cojunto esta vazio em O(1).
   bool empty() {
-    return tree_.empty();
+    return false;
   }
 
   // Retorna o número de elementos no cojunto em O(1).
   int size() {
-    return size_;
+    return 0;
   }
 
   // Testa se x pertece ao conjunto em O(log n).
   bool find(Type x) {
-    return !tree_.find(x)->empty();
+    return false;
   }
 
   // Insere x no conjunto em O(log n). Retorna false se x já estava no conjunto
   // r true caso contrário.
   bool insert(Type x) {
-    if (tree_.find(x)->empty()) {
-      tree_.insert(x);
-      size_++;
-      return true;
-    } else {
-      return false;
-    }
+    return false;
   }
 
   // Remove x do conjunto em O(log n). x deve pertencer ao conjunto.
   void erase(Type x) {
-    if (!tree_.find(x)->empty()) {
-      tree_.find(x)->erase();
-      size_--;
-    }
   }
 
   // Insere todos os elementos do conjunto no final de l em O(n)
   void ToList(list<Type>* l) {
-    tree_.ListInOrder(l);
   }
 
   // Remove todos os elementos do conjunto em O(n).
   void clear() {
-    tree_.clear();
-    size_ = 0;
   }
 
  private:
@@ -72,7 +53,7 @@ class set {
   int size_;
 
   // Árvore binária de busca que representa o conjunto.
-  Tree tree_;
+  list<Type> list_;
 };  // end class set.
 
 #endif  // SET_SRC_SET_H_
