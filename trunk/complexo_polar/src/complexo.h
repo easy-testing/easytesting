@@ -6,8 +6,8 @@
 // Representa um número complexo.
 struct Complexo {
  private:
-  float real_;  // Parte real;
-  float imag_;  // Parte imaginária.
+  float arg_;  // Argumento do número complexo.
+  float mod_;  // Módulo do número compelxo.
 
  public:
   // Cria o número complexo 0 + 0i.

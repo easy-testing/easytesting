@@ -5,68 +5,63 @@
 #include <math.h>
 
 Complexo::Complexo() {
-  real_ = 0.0;
-  imag_ = 0.0;
+  // TODO.
 }
 
 Complexo::Complexo(float a) {
-  real_ = a;
-  imag_ = 0.0;
+  // TODO.
 }
 
 Complexo::Complexo(float a, float b) {
-  real_ = a;
-  imag_ = b;
+  // TODO.
 }
 
 float Complexo::real() {
-  return real_;
+  return 0.0;  // TODO.
 }
 
 float Complexo::imag() {
-  return imag_;
+  return 0.0;  // TODO.
 }
 
 bool Complexo::operator==(Complexo x) {
-  return real_ == x.real_ && imag_ == x.imag_;
+  return false;  // TODO.
 }
 
 void Complexo::operator=(Complexo x) {
-  real_ = x.real_;
-  imag_ = x.imag_;
+  // TODO.
 }
 
 float Complexo::modulo() {
-  return sqrt(real_*real_ + imag_*imag_);
+  return 0.0;  // TODO.
 }
 
 Complexo Complexo::conjugado() {
-  Complexo c(real_, -imag_);
+  Complexo c;  // TODO.
   return c;
 }
 
 Complexo Complexo::inverso() {
-  float mod2 = pow(modulo(), 2.0);
-  Complexo i(real_ / mod2, -imag_ / mod2);
+  Complexo i;  // TODO.
   return i;
 }
 
 Complexo Complexo::operator+(Complexo y) {
-  Complexo s(real_ + y.real_, imag_ + y.imag_);
+  Complexo s;  // TODO.
   return s;
 }
 
 Complexo Complexo::operator-(Complexo y) {
-  Complexo s(real_ - y.real_, imag_ - y.imag_);
+  Complexo s;  // TODO.
   return s;
 }
 
 Complexo Complexo::operator*(Complexo y) {
-  Complexo p(real_ * y.real_ - imag_ * y.imag_, imag_*y.real_ - real_*y.imag_);
+  Complexo p;  // TODO.
   return p;
 }
 
 Complexo Complexo::operator/(Complexo y) {
-  Complexo q = *this * y.inverso();
+  Complexo q;  // TODO.
   return q;
 }

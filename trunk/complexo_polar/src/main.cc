@@ -1,4 +1,23 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+//
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+//
+// Lista de exercícios sobre Tipos Abstratos de Dados.
+// Aplicação: Números Complexos.
+//
+// QUESTÃO 1:
+// Implemente em complexo.cc as funções descritas em complexo.h.
+//
+// QUESTÃO 2:
+// Escreva uma função "void CalcularRaizes(float a, float b, float c,
+// Complexo* r1, Complexo* r2)" que recebe os coeficientes
+// de uma equação de segundo grau "a.x^2 + b.x + c = 0" e retorna por r1 e r2
+// as raízes (possivelmente complexas) desta equação.
+
+// QUESTÃO 3:
+// Escreva um programa que lê do teclaso os coeficientes de uma equação de
+// segundo grau e imprime na tela as raízes (possivelmente complexas) desta
+// equação.
 
 #include <math.h>
 #include <iostream>
@@ -18,7 +37,7 @@ void CalcularRaizes(float a, float b, float c, Complexo* r1, Complexo* r2) {
 }
 
 // Le os coeficientes de uma equacao de segundo grau do teclado e
-// imprime na tela as raizes da equacao.
+// imprime na tela as raízes da equacao.
 int main() {
     cout << "Digite os coeficientes da equacao de segundo grau";
     cout << " f(x) = a.x^2 + b.x + c" << endl;
