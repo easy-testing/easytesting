@@ -331,6 +331,22 @@ TEST_F(Teste, Atribuir_Conjugado_de_Numero_Complexo_Positivo) {
     << "-------------------------------------------------------------------\n";
 }
 
+TEST_F(Teste, Testar_conjugado) {
+  Complexo x(1, 10.3);
+  Complexo atual = x.conjugado();
+  Complexo esperado(1, -10.3);
+  ASSERT_TRUE(esperado == atual)
+    << "------------------------------------------------------------------------------\n"
+    << "Erro na funcao:  \"Complexo Complexo::conjugar()\"                            \n"
+    << "------------------------------------------------------------------------------\n"
+    << " Parametro de entrada: " << MostrarComplexo(x) << "\n\n"
+    << "   Valor esperado : " << MostrarComplexo(esperado) << "\n"
+    << "   Valor retornado: " << MostrarComplexo(atual) << "\n\n"
+    << " Lembre-se que o conjugado de um numero complexo \"a + b.i\" eh \"a - b.i\",  \n"
+    << " ou seja, a parte real eh a mesma, mas a parte imaginaria tem sinal oposto.   \n"
+    << "------------------------------------------------------------------------------\n";
+}
+
 TEST_F(Teste, Atribuir_Conjugado_de_Numero_Complexo_Negativo) {
   Complexo x(-2, -3.4);
   Complexo y(2, 3.5);
