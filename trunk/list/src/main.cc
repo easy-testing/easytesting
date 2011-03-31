@@ -1,18 +1,17 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
-// TODO(thiago): Escrever enunciado desta lista.
 
-#include "easytesting/list/src/list.h"
-//#include <list>
+#include "list/src/list.h"
 
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 // Imprime os elementos da lista entre chaves.
 void Print(list<int>& l) {
   cout << "{ ";
-  for (list<int>::iterator i = l.begin(); i != l.end() ; ++i) {
-    cout << *i << " ";
+  for (Node<int>* i = l.begin(); i != l.end() ; i = i->next) {
+    cout << i->key << " ";
   }
   cout << "}" << endl;
 }
@@ -29,5 +28,6 @@ int main() {
   }
   l.front() = -8;
   Print(l);
+
   return 0;
 }

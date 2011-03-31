@@ -1,12 +1,13 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copynext 2011 Universidade Federal de Minas Gerais (UFMG)
+
 #ifndef LIST_TEST_LIST_TEST_H_
 #define LIST_TEST_LIST_TEST_H_
 
 #include <sstream>
 #include <string>
 
-#include "easytesting/list/src/list.h"
-#include "easytesting/gtest/gtest.h"
+#include "list/src/list.h"
+#include "gtest/gtest.h"
 
 using std::string;
 using std::stringstream;
@@ -14,17 +15,15 @@ using std::stringstream;
 // Classe base dos testes.
 class Teste : public testing::Test {
  protected:
-  typedef ListNode<int> Node;  // Tipo dos nós da lista.
-
   // Retorna uma string no formato {a b c d...}.
   string PrintList(list<int>& l) {
     stringstream output;
     output << "{";
-    for (list<int>::iterator i = l.begin() ; i != l.end() ; ++i) {
+    for (Node<int>* i = l.begin() ; i != l.end() ; i = i->next) {
       if (i == l.begin())
-        output << *i;
+        output << i->key;
       else
-        output << " " << *i;
+        output << " " << i->key;
     }
     output << "}";
     return output.str();
@@ -33,16 +32,16 @@ class Teste : public testing::Test {
   // Preenche a lista passada como parametro com 1 numero.
   // 'l' deve ser uma lista vazia.
   void CriaList1(int x, list<int> *l) {
-    l->end_->left = l->end_->right = new Node(x, l->end_, l->end_);
+    l->end_->prev = l->end_->next = new Node<int>(x, l->end_, l->end_);
   }
 
   // Preenche a lista passada como parametro com 3 numeros.
   // 'l' deve ser uma lista vazia.
   void CriaList3(int x1, int x2, int x3, list<int>* l) {
-    l->end_->right = new Node(x1, l->end_, NULL);
-    l->end_->right->right = new Node(x2, l->end_->right, NULL);
-    l->end_->right->right->right = l->end_->left =
-        new Node(x3, l->end_->right->right, l->end_);
+    l->end_->next = new Node<int>(x1, l->end_, NULL);
+    l->end_->next->next = new Node<int>(x2, l->end_->next, NULL);
+    l->end_->next->next->next = l->end_->prev =
+        new Node<int>(x3, l->end_->next->next, l->end_);
   }
 };
 
@@ -278,8 +277,8 @@ TEST_F(Teste, Testar_metodo_insert_no_final_da_lista_com_varios_elementos) {
 TEST_F(Teste, Testar_metodo_insert_antes_do_segundo_elemento) {
   list<int> l;
   CriaList3(12, 8, -1, &l);
-  list<int>::iterator it = l.begin();
-  ++it;
+  Node<int>* it = l.begin();
+  it = it->next;
   l.insert(it, 22);
   string esperado("{12 22 8 -1}");
   string atual = PrintList(l);
@@ -296,9 +295,9 @@ TEST_F(Teste, Testar_metodo_insert_antes_do_segundo_elemento) {
 TEST_F(Teste, Testar_metodo_insert_antes_do_ultimo_elemento) {
   list<int> l;
   CriaList3(13, 9, 0, &l);
-  list<int>::iterator it = l.begin();
-  ++it;
-  ++it;
+  Node<int>* it = l.begin();
+  it = it->next;
+  it = it->next;
   l.insert(it, 23);
   string esperado("{13 9 23 0}");
   string atual = PrintList(l);
@@ -332,8 +331,8 @@ TEST_F(Teste, Testar_metodo_erase_em_uma_lista_com_um_elemento) {
 TEST_F(Teste, Testar_metodo_erase_em_uma_lista_com_varios_elemento) {
   list<int> l;
   CriaList3(8, 0, -3, &l);
-  list<int>::iterator it = l.begin();
-  ++it;
+  Node<int>* it = l.begin();
+  it = it->next;
   l.erase(it);
   string esperado("{8 -3}");
   string atual = PrintList(l);

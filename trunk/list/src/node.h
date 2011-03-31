@@ -4,23 +4,22 @@
 #define LIST_NODE_INCLUDED
 
 template<class Type>
-struct ListNode {
+struct Node {
   Type key;  // Valor associado ao no da lista.
-  ListNode* left;  // Ponteiro para o proximo no da lista.
-  ListNode* right;  // Ponteiro para o no anterior da lista.
+  Node* prev;  // Ponteiro para o proximo no da lista.
+  Node* next;  // Ponteiro para o no anterior da lista.
 
   // Cria um no sentinela em O(1).
-  ListNode() {
-    left = right = this;
+  Node() {
+    prev = next = this;
   }
 
  // Cria um novo no em O(1).
-  ListNode(Type k, ListNode* l, ListNode* r) {
+  Node(Type k, Node* l, Node* r) {
     key = k;
-    left = l;
-    right = r;
+    prev = l;
+    next = r;
   }
 };  // end struct Node;
-
 
 #endif // LIST_NODE_INCLUDED

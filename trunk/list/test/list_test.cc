@@ -1,5 +1,6 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
-#include "easytesting/list/test/list_test.h"
+
+#include "list/test/list_test.h"
 
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);
