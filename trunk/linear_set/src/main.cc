@@ -1,4 +1,5 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+
 #include <math.h>
 #include <iostream>
 #include "linear_set/src/linear_set.h"
@@ -6,7 +7,7 @@
 using namespace std;
 
 // Imprime os elementos da lista entre chaves.
-void Print(set<float>& set) {
+void Print(linear_set<float>& set) {
   list<float> l;
   set.ToList(&l);
   cout << "{ ";
@@ -17,7 +18,7 @@ void Print(set<float>& set) {
 }
 
 int main() {
-  set<float> s;
+  linear_set<float> s;
   for (int i = 0; i < 5; ++i) {
     s.insert(i);
     s.insert(-i);

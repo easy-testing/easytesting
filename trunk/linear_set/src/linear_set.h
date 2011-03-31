@@ -4,15 +4,12 @@
 
 #include "list/src/list.h"
 
-// Implementa um conjunto. O calculo da complexidade das funções assume que a
-// árvore esta sempre balanceada, o que não é garantido nesta implentação.
-// Ou seja, considera-se que a altura da arvore eh O(log n),
-// onde n eh o numero de elementos no conjunto.
+// Implementa um conjunto usando listas.
 template<class Type>
-class set {
+class linear_set {
  public:
   // Cria um conjunto vazio em O(1).
-  set() {
+  linear_set() {
   }
 
   // Testa se o cojunto esta vazio em O(1).
@@ -25,19 +22,19 @@ class set {
     return 0;
   }
 
-  // Testa se x pertece ao conjunto em O(log n).
+  // Testa se x pertece ao conjunto em O(n).
   bool find(Type x) {
     return false;
   }
 
-  // Insere x no conjunto em O(log n). Retorna false se x já estava no conjunto
+  // Insere x no conjunto em O(1). Retorna false se x já estava no conjunto
   // r true caso contrário.
   bool insert(Type x) {
     return false;
   }
 
-  // Remove x do conjunto em O(log n). x deve pertencer ao conjunto.
-  void erase(Type x) {
+  // Remove x do conjunto em O(1). Retorna o número de elementos removidos.
+  int erase(Type x) {
   }
 
   // Insere todos os elementos do conjunto no final de l em O(n)
