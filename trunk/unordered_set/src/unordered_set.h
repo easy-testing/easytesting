@@ -2,8 +2,8 @@
 #ifndef UNORDERED_SET_SRC_UNORDERED_SET_H_
 #define UNORDERED_SET_SRC_UNORDERED_SET_H_
 
-#include "easytesting/list/src/list.h"
-#include "easytesting/unordered_set/src/hash_function.h"
+#include "list/src/list.h"
+#include "unordered_set/src/hash_function.h"
 
 // Implementa um conjunto desordenado usando tabelas de dispersão.
 // O cálculo da complexidade assume que não existe colisão entre
@@ -64,16 +64,17 @@ class unordered_set {
     }
   }
 
-  // Remove x do conjunto em O(1). x deve pertencer ao conjunto.
-  void erase(Type x) {
+  // Remove x do conjunto em O(1). Retorna o número de elementos removidos.
+  int erase(Type x) {
     int i = hash(x, table_size_);
     for (iterator it = table_[i].begin(); it != table_[i].end(); ++it) {
       if (*it == x) {
         table_[i].erase(it);
         size_--;
-        return;
+        return 1;
       }
     }
+    return 0;
   }
 
   // Remove todos os elementos do conjunto em O(n).

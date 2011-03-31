@@ -2,12 +2,12 @@
 #ifndef UNORDERED_SET_TEST_UNORDERED_SET_TEST_H_
 #define UNORDERED_SET_TEST_UNORDERED_SET_TEST_H_
 
-#include "easytesting/unordered_set/src/unordered_set.h"
+#include "unordered_set/src/unordered_set.h"
 
 #include <sstream>
 #include <string>
 
-#include "easytesting/gtest/gtest.h"
+#include "gtest/gtest.h"
 
 using std::string;
 using std::stringstream;
