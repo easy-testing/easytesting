@@ -1,10 +1,11 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+
 #ifndef SET_SRC_BINARY_SEARCH_TREE_H_
 #define SET_SRC_BINARY_SEARCH_TREE_H_
 
 #include <stdlib.h>
 
-#include "easytesting/list/src/list.h"
+#include "list/src/list.h"
 
 // Implementa uma árvore binária de busca.
 template<class Type>

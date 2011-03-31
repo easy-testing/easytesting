@@ -1,8 +1,9 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+
 #ifndef SET_SRC_SET_H_
 #define SET_SRC_SET_H_
 
-#include "easytesting/set/src/binary_search_tree.h"
+#include "set/src/binary_search_tree.h"
 
 template<class Type> class BinarySearchTree;
 
@@ -48,12 +49,14 @@ class set {
     }
   }
 
-  // Remove x do conjunto em O(log n). x deve pertencer ao conjunto.
-  void erase(Type x) {
+  // Remove x do conjunto em O(1). Retorna o número de elementos removidos.
+  int erase(Type x) {
     if (!tree_.find(x)->empty()) {
       tree_.find(x)->erase();
       size_--;
+      return 1;
     }
+    return 0;
   }
 
   // Insere todos os elementos do conjunto no final de l em O(n)

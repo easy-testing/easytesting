@@ -1,13 +1,14 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+
 #ifndef SET_TEST_SET_TEST_H_
 #define SET_TEST_SET_TEST_H_
 
-#include "easytesting/set/src/set.h"
+#include "set/src/set.h"
 
 #include <sstream>
 #include <string>
 
-#include "easytesting/gtest/gtest.h"
+#include "gtest/gtest.h"
 
 using std::string;
 using std::stringstream;

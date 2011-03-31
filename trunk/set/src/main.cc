@@ -1,4 +1,5 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+
 #include <math.h>
 #include <iostream>
 #include "easytesting/set/src/set.h"
