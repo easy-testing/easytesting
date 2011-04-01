@@ -146,8 +146,8 @@ TEST_F(Teste, Testar_metodo_size_em_lista_com_varios_elementos) {
     << "-------------------------------------------------------------------\n";
 }
 
-// Para realizar a comparacao da lista esperada para a lista do aluno, foi
-// necessario utilizar a comparacao da classe string (imprimir a lista do
+// Para realizar a comparacao da stack esperada para a stack do aluno, foi
+// necessario utilizar a comparacao da classe string (imprimir a stack do
 // aluno em uma string).
 TEST_F(Teste, Testar_metodo_push_em_stack_vazia) {
   stack<int> p;
