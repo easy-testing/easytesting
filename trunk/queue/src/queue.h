@@ -44,8 +44,10 @@ class queue {
   }
 
  private:
+  friend class Teste;
   // Lista que representa a fila.
   list<Type> list_;
+
 };  // end class queue.
 
 #endif  // SET_SRC_SET_H_
