@@ -33,12 +33,11 @@ class Teste : public testing::Test {
   // Preenche a stack passada como parametro com 1 numero.
   // 'p' deve ser uma stack vazia.
   void CriaStack1(int x, stack<int>& p) {
-    //l->end_->prev = l->end_->next = new Node<int>(x, l->end_, l->end_);
     p.list_.end_->prev = p.list_.end_->next = new Node<int>(x, p.list_.end_, p.list_.end_);
   }
 
-  // Preenche a lista passada como parametro com 3 numeros.
-  // 'l' deve ser uma lista vazia.
+  // Preenche a stack passada como parametro com 3 numeros.
+  // 'p' deve ser uma stack vazia.
   void CriaStack3(int x1, int x2, int x3, stack<int>& p) {
     p.list_.end_->next = new Node<int>(x1, p.list_.end_, NULL);
     p.list_.end_->next->next = new Node<int>(x2, p.list_.end_->next, NULL);
