@@ -40,6 +40,7 @@ class stack {
 
  private:
   // Lista que representa a pilha.
+  friend class Teste;
   list<Type> list_;
 };  // end class stack.
 
