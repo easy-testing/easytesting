@@ -31,12 +31,30 @@ class Teste : public testing::Test {
       return "Conjunto Vazio";
     } else {
       c.ToList(&l);
+      SortList(&l);
       out << "{ ";
-      for (list<int>::iterator it = l.begin(); it != l.end(); ++it) {
-        out << *it << " ";
+      for (Node<int>* it = l.begin(); it != l.end(); it = it->next) {
+        out << it->key << " ";
       }
       out << "}";
       return out.str();
+    }
+  }
+
+  void SortList(list<int>* l) {
+    list<int> aux = *l;
+    PrintList(*l);
+
+    l->clear();
+    while (aux.size() > 0) {
+      Node<int>* min = aux.begin();
+      for (Node<int>* it = aux.begin(); it != aux.end(); it = it->next) {
+        if (it->key < min->key) {
+          min = it;
+        }
+      }
+      l->push_back(min->key);
+      aux.erase(min);
     }
   }
 
@@ -48,8 +66,8 @@ class Teste : public testing::Test {
       return "Lista Vazia";
     } else {
       out << "[ ";
-      for (list<int>::iterator it = l.begin(); it != l.end(); ++it) {
-        out << *it << " ";
+      for (Node<int>* it = l.begin(); it != l.end(); it = it->next) {
+        out << it->key << " ";
       }
       out << "]";
       return out.str();

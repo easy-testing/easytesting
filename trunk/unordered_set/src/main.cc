@@ -11,8 +11,8 @@ void Print(unordered_set<float>& set) {
   list<float> l;
   set.ToList(&l);
   cout << "{ ";
-  for (list<float>::iterator i = l.begin(); i != l.end() ; ++i) {
-    cout << *i << " ";
+  for (Node<float> *i = l.begin(); i != l.end() ; i = i->next) {
+    cout << i->key << " ";
   }
   cout << "} = " << l.size() << endl;
 }
@@ -30,15 +30,7 @@ int main() {
     }
   }
 
-  list<float> l;
-  s.ToList(&l);
-  for (list<float>::iterator i = l.begin(); i != l.end() ; ++i) {
-    if (*i == 0) {
-      s.erase(*i);
-      break;
-    }
-  }
-
+  s.erase(0.0);
   s.insert(3.14);
 
   Print(s);

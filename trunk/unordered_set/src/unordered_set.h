@@ -1,4 +1,5 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+
 #ifndef UNORDERED_SET_SRC_UNORDERED_SET_H_
 #define UNORDERED_SET_SRC_UNORDERED_SET_H_
 
@@ -11,16 +12,20 @@
 template<class Type>
 class unordered_set {
  public:
-  // Tipo do iterador da lista.
-  typedef ListIterator<Type> iterator;
-
-  typedef list<Type> List;
-
   // Cria um conjunto vazio em O(1).
   unordered_set() {
     size_ = 0;
     table_size_ = 16;
-    table_ = new List[table_size_];
+    table_ = new list<Type>[table_size_];
+  }
+
+  unordered_set(unordered_set& c) {
+    size_ = c.size_;
+    table_size_ = c.table_size_;
+    table_ = new list<Type>[table_size_];
+    for (int i = 0; i < table_size_; i++) {
+      table_[i].merge(c.table_[i]);
+    }
   }
 
   // Libera memória.
@@ -38,19 +43,36 @@ class unordered_set {
     return size_;
   }
 
+  // Retorna o menor elemento do cojunto em O(n).
+  Type min() {
+    Type min = -1000; // TODO(tfn) implementar corretamente.
+    for (int i = 0; i < table_size_; i++) {
+      for (Node<Type>* j = table_[i].begin()->next;
+           j != table[i]_.end();
+           j = j->next) {
+        if (j->key < min) {
+          min = j->key;
+        }
+      }
+    }
+    return min;
+  }
+
   // Testa se x pertece ao conjunto em O(1).
   bool find(Type x) {
     int i = hash(x, table_size_);
-    for (iterator it = table_[i].begin(); it != table_[i].end(); ++it) {
-      if (*it == x) {
+    for (Node<Type>* i = table_[i].begin();
+         i != table_[i].end();
+         i = i->next) {
+      if (i->key == x) {
         return true;
       }
     }
     return false;
   }
 
-  // Insere x no conjunto em O(1). Retorna false se x já estava no conjunto e
-  // true caso contrário.
+  // Insere x no conjunto em O(1).
+  // Retorna false se x já estava no conjunto e true caso contrário.
   bool insert(Type x) {
     if (find(x)) {
       return false;
@@ -64,17 +86,20 @@ class unordered_set {
     }
   }
 
-  // Remove x do conjunto em O(1). Retorna o número de elementos removidos.
-  int erase(Type x) {
+  // Remove x do conjunto em O(1).
+  // Retorna true se algum elemento foi removido ou falso caso contrário.
+  bool erase(Type x) {
     int i = hash(x, table_size_);
-    for (iterator it = table_[i].begin(); it != table_[i].end(); ++it) {
-      if (*it == x) {
-        table_[i].erase(it);
+    for (Node<Type>* i = table_[i].begin();
+         i != table_[i].end();
+         i = i->next) {
+      if (i->key == x) {
+        table_[i].erase(i);
         size_--;
-        return 1;
+        return true;
       }
     }
-    return 0;
+    return false;
   }
 
   // Remove todos os elementos do conjunto em O(n).
@@ -101,11 +126,11 @@ class unordered_set {
     // Realoca a tabela.
     delete [] table_;
     table_size_ = new_size;
-    table_ = new List[table_size_];
+    table_ = new list<Type>[table_size_];
 
     // Reinsere novamente os elementos do conjunto.
-    for (iterator it = l.begin(); it != l.end(); ++it) {
-      table_[hash(*it, table_size_)].push_back(*it);
+    for (Node<Type>* i = l.begin(); i != l.end(); i = i->next) {
+      table_[hash(i->key, table_size_)].push_back(i->key);
     }
   }
 
@@ -117,7 +142,7 @@ class unordered_set {
   int table_size_;
 
   // Vetor com as linhas da tabela.
-  List* table_;
+  list<Type>* table_;
 };  // end class unordered_set.
 
 #endif  // UNORDERED_SET_SRC_UNORDERED_SET_H_
