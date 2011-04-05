@@ -1,4 +1,5 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+
 #ifndef SET_SRC_SET_H_
 #define SET_SRC_SET_H_
 
@@ -8,16 +9,17 @@
 template<class Type>
 class linear_set {
  public:
+
   // Cria um conjunto vazio em O(1).
   linear_set() {
-    list_.clear();
   }
 
-  // Testa se o cojunto esta vazio em O(1).
-  // Cria um conjunto vazio em O(1).
-  linear_set() {
+  // Cria um conjunto com os mesmos elementos de c em O(n).
+  linear_set(linear_set<Type>& c) {
     list_.clear();
+    list_.merge(c.list_);
   }
+
 
   // Testa se o cojunto esta vazio em O(1).
   bool empty() {
@@ -29,53 +31,63 @@ class linear_set {
     return list_.size();
   }
 
+  // Retorna o menor elemento do cojunto em O(n).
+  Type min() {
+    Type min = list_.begin()->key;
+    for (Node<Type>* i = list_.begin()->next; i != list_.end(); i = i->next) {
+      if (i->key < min) {
+        min = i->key;
+      }
+    }
+    return min;
+  }
+
   // Testa se x pertece ao conjunto em O(n).
   bool find(Type x) {
-    for (it_ = list.begin(); it_ != list_.end(); ++it_) {
-      if (*it_ == x) return true;
-      else if (*it > x) return false;  // Lista está ordenada
+    for (Node<Type>* i = list_.begin(); i != list_.end(); i = i->next) {
+      if (i->key == x) {
+        return true;
+      }
     }
     return false;
   }
 
-  // Insere x no conjunto em O(1). Retorna false se x já estava no conjunto
-  // r true caso contrário.
+  // Insere x no conjunto em O(n).
+  // Retorna false se x já estava no conjunto ou true caso contrário.
   bool insert(Type x) {
-    for (it_ = begin(); it_ != list_.end(); ++it_) {
-        if (*it_ == x) return false;
-        else if (*it_ > x) {
-             list_.insert(x);
-             return true;
-        }
+    if (find(x)) {
+      return false;
+    } else {
+      list_.push_back(x);
+      return true;
+    }
+  }
+
+  // Remove x do conjunto em O(n).
+  // Retorna true se algum elemento foi removido ou falso caso contrário.
+  bool erase(Type x) {
+    for (Node<Type>* i = list_.begin(); i != list_.end(); i = i->next) {
+      if (i->key == x) {
+        list_.erase(i);
+        return true;
+      }
     }
     return false;
   }
 
-  // Remove x do conjunto em O(1). Retorna o número de elementos removidos.
-  int erase(Type x) {
-      list_.erase(x);
-      return 1;  // Em conjuntos só há 1 elemento de cada valor
-  }
-
-  // Insere todos os elementos do conjunto no final de l em O(n)
+  // Insere todos os elementos do conjunto no final de l em O(n).
   void ToList(list<Type>* l) {
-       for (it_ = list_.begin(); it_ != list_.end(); ++it_) {
-           l.push_back(*it);
-       }
+    l->merge(list_);
   }
 
   // Remove todos os elementos do conjunto em O(n).
   void clear() {
-       list_.clear();
+    list_.clear();
   }
 
  private:
-  // Número de elementos no conjunto.
-  int size_;
-
   // Lista que representa o conjunto.
   list<Type> list_;
-  list<Type>::iterator it_;
 };  // end class linear_set.
 
 #endif  // SET_SRC_SET_H_

@@ -47,8 +47,7 @@
 			<Option target="EasyTesting" />
 		</Unit>
 		<Unit filename="../list/src/list.h" />
-		<Unit filename="../list/src/list_iterator.h" />
-		<Unit filename="../list/src/list_node.h" />
+		<Unit filename="../list/src/node.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
