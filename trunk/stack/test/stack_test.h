@@ -19,14 +19,14 @@ class Teste : public testing::Test {
   // Retorna uma string no formato {a b c d...}.
   string PrintStack(stack<int>& p) {
     stringstream output;
-    output << "{";
+    output << "[";
     for (Node<int>* i = p.list_.begin() ; i != p.list_.end() ; i = i->next) {
       if (i == p.list_.begin())
         output << i->key;
       else
         output << " " << i->key;
     }
-    output << "}";
+    output << "]";
     return output.str();
   }
 

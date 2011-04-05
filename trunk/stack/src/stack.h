@@ -40,8 +40,9 @@ class stack {
 
  private:
   // Lista que representa a pilha.
-  friend class Teste;
   list<Type> list_;
+
+  friend class Teste;
 };  // end class stack.
 
 #endif  // SET_SRC_SET_H_

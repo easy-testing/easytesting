@@ -42,7 +42,6 @@ class Teste : public testing::Test {
 // parte real e parte imaginaria nulas. Numero complexo positivo
 // aquele que possui parte real e parte imaginaria positivas e
 // negativo o que possui as duas partes negativas
-
 TEST_F(Teste, Testar_Parte_Real) {
   Complexo x(1.1, 2.2);
   float esperado = 1.1;
