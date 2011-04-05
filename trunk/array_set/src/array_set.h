@@ -32,6 +32,17 @@ class array_set {
     return n_;
   }
 
+  // Retorna o menor elemento do cojunto em O(n).
+  Type min() {
+    Type min = v_[0];
+    for (int i = 1; i < n_; i++) {
+      if (v_[i] < min) {
+        min = v_[i];
+      }
+    }
+    return min;
+  }
+
   // Testa se x pertece ao conjunto em O(n).
   bool find(Type x) {
     for (int i = 0; i < n_; i++) {
