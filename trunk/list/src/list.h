@@ -13,6 +13,13 @@ class list {
     end_ = new Node<Type>();
   }
 
+  // Cria a lista com os mesmo elementos de l em O(n).
+  list(list<Type>& l) {
+    end_ = new Node<Type>();
+    clear();
+    merge(l);
+  }
+
   // Remove todos os elementos da lista para liberar a memoria.
   ~list() {
     clear();
@@ -96,15 +103,8 @@ class list {
     }
   }
 
-  // Atribui l a lista corrente em O(n).
-  void operator=(list& l) {
-    clear();
-    merge(l);
-    return *this;
-  }
-
   // Concatena os elementos de l no final da lista corrente em O(n).
-  void merge(list& l) {
+  void merge(list<Type>& l) {
     for (Node<Type>* i = l.begin(); i != l.end(); i = i->next) {
       push_back(i->key);
     }
