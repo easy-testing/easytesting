@@ -22,6 +22,15 @@ class set {
     size_ = 0;
   }
 
+  // Cria um conjunto com os mesmos elementos de c em O(n).
+  set(set<Type>& c) {
+    list<Type> l;
+    c.ToList(&l);
+    for (Node<Type>* i = l.begin(); i != l.end(); i = i->next) {
+      insert(i->key);
+    }
+  }
+
   // Testa se o cojunto esta vazio em O(1).
   bool empty() {
     return tree_.empty();
@@ -32,31 +41,38 @@ class set {
     return size_;
   }
 
+  // Retorna o menor elemento do cojunto em O(log n).
+  Type min() {
+    return tree_.min();
+  }
+
   // Testa se x pertece ao conjunto em O(log n).
   bool find(Type x) {
     return !tree_.find(x)->empty();
   }
 
-  // Insere x no conjunto em O(log n). Retorna false se x já estava no conjunto
-  // r true caso contrário.
+  // Insere x no conjunto em O(log n).
+  // Retorna false se x já estava no conjunto ou true caso contrário.
   bool insert(Type x) {
-    if (tree_.find(x)->empty()) {
+    if (find(x)) {
+      return false;
+    } else {
       tree_.insert(x);
       size_++;
+      return true;
+    }
+  }
+
+  // Remove x do conjunto em O(log n).
+  // Retorna true se algum elemento foi removido ou falso caso contrário.
+  bool erase(Type x) {
+    if (find(x)) {
+      tree_.find(x)->erase();
+      size_--;
       return true;
     } else {
       return false;
     }
-  }
-
-  // Remove x do conjunto em O(1). Retorna o número de elementos removidos.
-  int erase(Type x) {
-    if (!tree_.find(x)->empty()) {
-      tree_.find(x)->erase();
-      size_--;
-      return 1;
-    }
-    return 0;
   }
 
   // Insere todos os elementos do conjunto no final de l em O(n)
