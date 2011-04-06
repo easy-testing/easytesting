@@ -6829,7 +6829,9 @@ class Random {
   if (::testing::internal::IsTrue(boolexpr)) \
     ; \
   else \
-    fail("Value of: " booltext "\n  Actual: " #actual "\nExpected: " #expected)
+    fail("")
+    //NOTA(tfn): Comentei.
+    //fail("Value of: " booltext "\n  Actual: " #actual "\nExpected: " #expected)
 
 #define GTEST_TEST_NO_FATAL_FAILURE_(statement, fail) \
   GTEST_AMBIGUOUS_ELSE_BLOCKER_ \

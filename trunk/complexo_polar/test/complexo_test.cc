@@ -1,6 +1,6 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#include "complexo/test/complexo_test.h"
+#include "complexo_polar/test/complexo_test.h"
 
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);

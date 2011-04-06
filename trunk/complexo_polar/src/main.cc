@@ -21,7 +21,7 @@
 
 #include <math.h>
 #include <iostream>
-#include "complexo/src/complexo.h"
+#include "complexo_polar/src/complexo.h"
 
 using namespace std;
 

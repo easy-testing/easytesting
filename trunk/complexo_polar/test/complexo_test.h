@@ -3,7 +3,9 @@
 #ifndef COMPLEXO_TEST_COMPLEXO_TEST_H_
 #define COMPLEXO_TEST_COMPLEXO_TEST_H_
 
-#include "complexo/src/complexo.h"
+#include "complexo_polar/src/complexo.h"
+
+#include <math.h>
 
 #include <sstream>
 #include <string>
@@ -13,46 +15,41 @@
 using std::string;
 using std::stringstream;
 
-namespace Teste {
-
 // Classe base dos testes.
 class Teste : public testing::Test {
  protected:
+  float real(Complexo& x) {
+    return x.mod_ * cos(x.arg_);
+  }
+
+  float imag(Complexo& x) {
+    return x.mod_ * sin(x.arg_);
+  }
+
   // Retorna string no formato [x + yi]
   string MostrarComplexo(Complexo& z) {
     stringstream output;
-    output << "[";
-    if (z.imag() == 0) {
-      output << z.real();
-    } else if (z.real() == 0) {
-      output << z.imag() << "i";
+    output << real(z);
+    if (imag(z) >= 0.0) {
+      output << " + " << imag(z);
     } else {
-      output << z.real();
-      if (z.imag() > 0) output << " + " << z.imag();
-      else
-        output << " -" << -z.imag();
-      output << "i";
+      output << " -" << -imag(z) << ".i";
     }
-    output << "]";
     return output.str();
   }
 };
 
-// NOTA(Matheus): Chamei de Numero complexo nulo aquele que possui
-// parte real e parte imaginaria nulas. Numero complexo positivo
-// aquele que possui parte real e parte imaginaria positivas e
-// negativo o que possui as duas partes negativas
 TEST_F(Teste, Testar_Parte_Real) {
   Complexo x(1.1, 2.2);
   float esperado = 1.1;
-  float atual = x.real();
+  float atual = real(x);
   ASSERT_FLOAT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  \"float real()\"                                  \n"
+    << "Erro na funcao:  \"float Complexo::real()\"                        \n"
     << "-------------------------------------------------------------------\n"
     << " Numero Complexo: " << MostrarComplexo(x) << "\n\n"
-    << "   Parte real esperada : " << esperado << "\n"
-    << "  Parte real retornada : " << atual << "\n\n"
+    << "   Parte real esperada: " << esperado << "\n"
+    << "   Parte real retornada: " << atual << "\n\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -328,6 +325,22 @@ TEST_F(Teste, Atribuir_Conjugado_de_Numero_Complexo_Positivo) {
     << "   Parte Imaginaria esperada: " << esperado << "\n"
     << "  Parte Imaginaria retornada: " << atual << "\n\n"
     << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testar_conjugado) {
+  Complexo x(1, 10.3);
+  Complexo atual = x.conjugado();
+  Complexo esperado(1, -10.3);
+  ASSERT_TRUE(esperado == atual)
+    << "------------------------------------------------------------------------------\n"
+    << "Erro na funcao:  \"Complexo Complexo::conjugar()\"                            \n"
+    << "------------------------------------------------------------------------------\n"
+    << " Parametro de entrada: " << MostrarComplexo(x) << "\n\n"
+    << "   Valor esperado : " << MostrarComplexo(esperado) << "\n"
+    << "   Valor retornado: " << MostrarComplexo(atual) << "\n\n"
+    << " Lembre-se que o conjugado de um numero complexo \"a + b.i\" eh \"a - b.i\",  \n"
+    << " ou seja, a parte real eh a mesma, mas a parte imaginaria tem sinal oposto.   \n"
+    << "------------------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Atribuir_Conjugado_de_Numero_Complexo_Negativo) {
@@ -764,7 +777,4 @@ TEST_F(Teste, Dividir_Numeros_Complexos_sinais_contrarios) {
     << "  Parte Imaginaria retornada: " << atual_i << "\n\n"
     << "-------------------------------------------------------------------\n";
 }
-
-}  // end namespace
-
 #endif  // COMPLEXO_TEST_COMPLEXO_TEST_H_

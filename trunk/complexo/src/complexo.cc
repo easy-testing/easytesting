@@ -9,21 +9,21 @@ Complexo::Complexo() {
   imag_ = 0.0;
 }
 
-Complexo::Complexo(float a) {
+Complexo::Complexo(double a) {
   real_ = a;
   imag_ = 0.0;
 }
 
-Complexo::Complexo(float a, float b) {
+Complexo::Complexo(double a, double b) {
   real_ = a;
   imag_ = b;
 }
 
-float Complexo::real() {
+double Complexo::real() {
   return real_;
 }
 
-float Complexo::imag() {
+double Complexo::imag() {
   return imag_;
 }
 
@@ -36,7 +36,7 @@ void Complexo::operator=(Complexo x) {
   imag_ = x.imag_;
 }
 
-float Complexo::modulo() {
+double Complexo::modulo() {
   return sqrt(real_*real_ + imag_*imag_);
 }
 
@@ -46,13 +46,13 @@ Complexo Complexo::conjugado() {
 }
 
 Complexo Complexo::inverso() {
-  float mod2 = pow(modulo(), 2.0);
+  double mod2 = modulo() * modulo();
   Complexo i(real_ / mod2, -imag_ / mod2);
   return i;
 }
 
 Complexo Complexo::operator+(Complexo y) {
-  Complexo s(real_ + y.real_, imag_ + y.imag_);
+  Complexo s(real_ + y.real_, (imag_ + y.imag_)*-1);
   return s;
 }
 

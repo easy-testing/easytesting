@@ -42,9 +42,7 @@
 		<Unit filename="test/complexo_test.cc">
 			<Option target="EasyTesting" />
 		</Unit>
-		<Unit filename="test/complexo_test.h">
-			<Option target="EasyTesting" />
-		</Unit>
+		<Unit filename="test/complexo_test.h" />
 		<Unit filename="../gtest/gtest.cc">
 			<Option target="EasyTesting" />
 		</Unit>

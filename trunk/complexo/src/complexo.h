@@ -6,24 +6,24 @@
 // Representa um número complexo.
 struct Complexo {
  private:
-  float real_;  // Parte real;
-  float imag_;  // Parte imaginária.
+  double real_;  // Parte real;
+  double imag_;  // Parte imaginária.
 
  public:
   // Cria o número complexo 0 + 0i.
   Complexo();
 
   // Cria o número complexo a + 0i.
-  Complexo(float a);
+  Complexo(double a);
 
   // Cria o número complexo a + bi.
-  Complexo(float a, float b);
+  Complexo(double a, double b);
 
   // Retorna a parte real do número complexo corrente.
-  float real();
+  double real();
 
   // Retorna a parte imaginária do número complexo corrente.
-  float imag();
+  double imag();
 
   // Testa se o número complexo corrente é igual a 'x'.
   bool operator==(Complexo x);
@@ -32,7 +32,7 @@ struct Complexo {
   void operator=(Complexo x);
 
   // Retorna o módulo do número complexo corrente.
-  float modulo();
+  double modulo();
 
   // Retorna o conjugado do número complexo corrente.
   Complexo conjugado();
@@ -51,6 +51,8 @@ struct Complexo {
 
   // Divide o número complexo corrente por 'y' e retorna o resultado.
   Complexo operator/(Complexo y);
+
+  friend class Teste;
 };
 
 #endif  // COMPLEXO_SRC_COMPLEXO_H_
