@@ -31,8 +31,17 @@ class Teste : public testing::Test {
     return x.imag_;
   }
 
+  // Foi necessário criar uma margem de erro para a função pois
+  // ela está comparando duas variáveis float.
   bool Igual(Complexo x, Complexo y) {
-    return x.real_ == y.real_ && x.imag_ == y.imag_;
+    float diferenca_real = x.real_ - y.real_;
+    float diferenca_imag = x.imag_ - y.imag_;
+    if (diferenca_real < 0.01 && diferenca_real > -0.01) {
+      if (diferenca_imag < 0.01 && diferenca_imag > -0.01) {
+        return true;
+      }
+    }
+    return false;
   }
 
   // Retorna string no formato [x + yi]
@@ -150,7 +159,7 @@ TEST_F(Teste, Testa_igualdade_de_numeros_complexos_iguais) {
   Complexo y(3.14, -1.4142);
   ASSERT_TRUE(x == y)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: \"bool Complexo::operator==(Complexo x)\"                                  \n"
+    << "Erro na funcao: \"bool Complexo::operator==(Complexo x)\"          \n"
     << "-------------------------------------------------------------------\n"
     << "  Numero Complexo 1: " << ToString(x) << "\n"
     << "  Numero Complexo 2: " << ToString(y) << "\n\n"
@@ -164,7 +173,7 @@ TEST_F(Teste, Testa_igualdade_de_numeros_complexos_distintos) {
   Complexo y(4.2, 3.03);
   ASSERT_FALSE(x == y)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: \"bool Complexo::operator==(Complexo x)\"                                  \n"
+    << "Erro na funcao: \"bool Complexo::operator==(Complexo x)\"          \n"
     << "-------------------------------------------------------------------\n"
     << "  Numero Complexo 1: " << ToString(x) << "\n"
     << "  Numero Complexo 2: " << ToString(y) << "\n"
@@ -178,7 +187,7 @@ TEST_F(Teste, Testa_igualdade_de_numeros_diferentes_com_mesma_parte_real) {
   Complexo y(-3.56, 3.03);
   ASSERT_FALSE(x == y)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: \"bool Complexo::operator==(Complexo x)\"                                  \n"
+    << "Erro na funcao: \"bool Complexo::operator==(Complexo x)\"          \n"
     << "-------------------------------------------------------------------\n"
     << "  Numero Complexo 1: " << ToString(x) << "\n"
     << "  Numero Complexo 2: " << ToString(y) << "\n"
@@ -192,7 +201,7 @@ TEST_F(Teste, Testa_igualdade_de_numeros_diferentes_com_mesma_parte_imag) {
   Complexo y(1.34, -8.5);
   ASSERT_FALSE(x == y)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: \"bool Complexo::operator==(Complexo x)\"                                  \n"
+    << "Erro na funcao: \"bool Complexo::operator==(Complexo x)\"          \n"
     << "-------------------------------------------------------------------\n"
     << "  Numero Complexo 1: " << ToString(x) << "\n"
     << "  Numero Complexo 2: " << ToString(y) << "\n\n"
@@ -271,39 +280,25 @@ TEST_F(Teste, Testa_inverso_de_numero_complexo) {
 }
 
 TEST_F(Teste, Testa_soma_de_numeros_complexos_nulos) {
-//  Complexo x(2, 3);
-//  Complexo y;
-//  Complexo z;
-//  x = y + z;
-//  float atual_r = x.real();
-//  float atual_i = x.imag();
-//  float esperado = 0;
-//  ASSERT_FLOAT_EQ(esperado, atual_r)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void somar(Complexo, Complexo)\"                \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Real esperada: " << esperado << "\n"
-//    << "  Parte Real retornada: " << atual_r << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//
-//  ASSERT_FLOAT_EQ(esperado, atual_i)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void somar(Complexo, Complexo)\"                \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Imaginaria esperada: " << esperado << "\n"
-//    << "  Parte Imaginaria retornada: " << atual_i << "\n\n"
-//    << "-------------------------------------------------------------------\n";
+  Complexo x(2, 3);
+  Complexo y;
+  Complexo atual = x + y;
+  Complexo esperado(2, 3);
+  ASSERT_TRUE(Igual(esperado, atual))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao: \"Complexo Complexo::operator+(Complexo y)\" \n"
+    << "-------------------------------------------------------------------\n"
+    << "  Numero Complexo 1: " << ToString(x) << "\n"
+    << "  Numero Complexo 2: " << ToString(y) << "\n\n"
+    << "  Resultado esperado: "  << ToString(esperado) << "\n"
+    << "  Resultado retornado: " << ToString(atual) << "\n"
+    << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_soma_de_numeros_complexos_positivos) {
   Complexo x(4.1, 2.4);
   Complexo y(3.6, 1.5);
-  Complexo atual;
-  atual = x + y;
+  Complexo atual = x + y;
   Complexo esperado(7.7, 3.9);
   ASSERT_TRUE(Igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
@@ -316,331 +311,183 @@ TEST_F(Teste, Testa_soma_de_numeros_complexos_positivos) {
     << "-------------------------------------------------------------------\n";
 }
 
-//TEST_F(Teste, Somar_Numeros_Complexos_Negativos) {
-//  Complexo x;
-//  Complexo y(-4.1, -2.4);
-//  Complexo z(-3.6, -1.5);
-//  x = y + z;
-//  float atual_r = x.real();
-//  float atual_i = x.imag();
-//  float esperado_r = -7.7;
-//  float esperado_i = -3.9;
-//  ASSERT_FLOAT_EQ(esperado_r, atual_r)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void somar(Complexo, Complexo)\"                \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Real esperada: " << esperado_r << "\n"
-//    << "  Parte Real retornada: " << atual_r << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//
-//  ASSERT_FLOAT_EQ(esperado_i, atual_i)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void somar(Complexo, Complexo)\"                \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Imaginaria esperada: " << esperado_i << "\n"
-//    << "  Parte Imaginaria retornada: " << atual_i << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST_F(Teste, Somar_Numeros_Complexos_de_sinais_opostos) {
-//  Complexo x;
-//  Complexo y(-4.1, 2.4);
-//  Complexo z(3.6, -1.5);
-//  x = y + z;
-//  float atual_r = x.real();
-//  float atual_i = x.imag();
-//  float esperado_r = -0.5;
-//  float esperado_i = 0.9;
-//  ASSERT_FLOAT_EQ(esperado_r, atual_r)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void somar(Complexo, Complexo)\"                \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Real esperada: " << esperado_r << "\n"
-//    << "  Parte Real retornada: " << atual_r << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//
-//  ASSERT_FLOAT_EQ(esperado_i, atual_i)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void somar(Complexo, Complexo)\"                \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Imaginaria esperada: " << esperado_i << "\n"
-//    << "  Parte Imaginaria retornada: " << atual_i << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST_F(Teste, Subtrair_Numeros_Complexos_Nulos) {
-//  Complexo x(2, 3);
-//  Complexo y;
-//  Complexo z;
-//  x = y - z;
-//  float atual_r = x.real();
-//  float atual_i = x.imag();
-//  float esperado = 0;
-//  ASSERT_FLOAT_EQ(esperado, atual_r)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void subtrair(Complexo, Complexo)\"             \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Real esperada: " << esperado << "\n"
-//    << "  Parte Real retornada: " << atual_r << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//
-//  ASSERT_FLOAT_EQ(esperado, atual_i)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void subtrair(Complexo, Complexo)\"             \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Imaginaria esperada: " << esperado << "\n"
-//    << "  Parte Imaginaria retornada: " << atual_i << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST_F(Teste, Subtrair_Numeros_Complexos_Positivos) {
-//  Complexo x;
-//  Complexo y(4.1, 2.4);
-//  Complexo z(3.6, 1.5);
-//  x = y - z;
-//  float atual_r = x.real();
-//  float atual_i = x.imag();
-//  float esperado_r = 0.5;
-//  float esperado_i = 0.9;
-//  ASSERT_FLOAT_EQ(esperado_r, atual_r)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void somar(Complexo, Complexo)\"                \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Real esperada: " << esperado_r << "\n"
-//    << "  Parte Real retornada: " << atual_r << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//
-//  ASSERT_FLOAT_EQ(esperado_i, atual_i)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void somar(Complexo, Complexo)\"                \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Imaginaria esperada: " << esperado_i << "\n"
-//    << "  Parte Imaginaria retornada: " << atual_i << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST_F(Teste, Subtrair_Numeros_Complexos_Negativos) {
-//  Complexo x;
-//  Complexo y(-4.1, -2.4);
-//  Complexo z(-3.6, -1.5);
-//  x = y - z;
-//  float atual_r = x.real();
-//  float atual_i = x.imag();
-//  float esperado_r = -0.5;
-//  float esperado_i = -0.9;
-//  ASSERT_FLOAT_EQ(esperado_r, atual_r)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void somar(Complexo, Complexo)\"                \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Real esperada: " << esperado_r << "\n"
-//    << "  Parte Real retornada: " << atual_r << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//
-//  ASSERT_FLOAT_EQ(esperado_i, atual_i)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void somar(Complexo, Complexo)\"                \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Imaginaria esperada: " << esperado_i << "\n"
-//    << "  Parte Imaginaria retornada: " << atual_i << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST_F(Teste, Subtrair_Numeros_Complexos_de_sinais_opostos) {
-//  Complexo x;
-//  Complexo y(4.1, -2.4);
-//  Complexo z(-3.6, 1.5);
-//  x = y - z;
-//  float atual_r = x.real();
-//  float atual_i = x.imag();
-//  float esperado_r = 7.7;
-//  float esperado_i = -3.9;
-//  ASSERT_FLOAT_EQ(esperado_r, atual_r)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void somar(Complexo, Complexo)\"                \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Real esperada: " << esperado_r << "\n"
-//    << "  Parte Real retornada: " << atual_r << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//
-//  ASSERT_FLOAT_EQ(esperado_i, atual_i)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void somar(Complexo, Complexo)\"                \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Imaginaria esperada: " << esperado_i << "\n"
-//    << "  Parte Imaginaria retornada: " << atual_i << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST_F(Teste, Multiplicar_Numeros_Complexos_Nulos) {
-//  Complexo x(4.1, -2.4);
-//  Complexo y;
-//  Complexo z;
-//  x = y * z;
-//  float atual_r = x.real();
-//  float atual_i = x.imag();
-//  float esperado = 0;
-//  ASSERT_FLOAT_EQ(esperado, atual_r)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void multiplicar(Complexo, Complexo)\"          \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Real esperada: " << esperado << "\n"
-//    << "  Parte Real retornada: " << atual_r << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//
-//  ASSERT_FLOAT_EQ(esperado, atual_i)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void multiplicar(Complexo, Complexo)\"          \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Imaginaria esperada: " << esperado << "\n"
-//    << "  Parte Imaginaria retornada: " << atual_i << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST_F(Teste, Multiplicar_Numeros_Complexos_mesmo_sinal) {
-//  Complexo x;
-//  Complexo y(4.1, 2.4);
-//  Complexo z(3.6, 1.5);
-//  x = y * z;
-//  float atual_r = x.real();
-//  float atual_i = x.imag();
-//  float esperado_r = 11.16;
-//  float esperado_i = 2.49;
-//  ASSERT_FLOAT_EQ(esperado_r, atual_r)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void multiplicar(Complexo, Complexo)\"          \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Real esperada: " << esperado_r << "\n"
-//    << "  Parte Real retornada: " << atual_r << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//
-//  ASSERT_FLOAT_EQ(esperado_i, atual_i)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void multiplicar(Complexo, Complexo)\"          \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Imaginaria esperada: " << esperado_i << "\n"
-//    << "  Parte Imaginaria retornada: " << atual_i << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST_F(Teste, Multiplicar_Numeros_Complexos_sinais_contrarios) {
-//  Complexo x;
-//  Complexo y(3.1, -2.4);
-//  Complexo z(-3.6, 1.8);
-//  x = y * z;
-//  float atual_r = x.real();
-//  float atual_i = x.imag();
-//  float esperado_r = -6.84;
-//  float esperado_i = 3.06;
-//  ASSERT_FLOAT_EQ(esperado_r, atual_r)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void multiplicar(Complexo, Complexo)\"          \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Real esperada: " << esperado_r << "\n"
-//    << "  Parte Real retornada: " << atual_r << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//
-//  ASSERT_FLOAT_EQ(esperado_i, atual_i)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void multiplicar(Complexo, Complexo)\"          \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Imaginaria esperada: " << esperado_i << "\n"
-//    << "  Parte Imaginaria retornada: " << atual_i << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST_F(Teste, Dividir_Numeros_Complexos_mesmo_sinal) {
-//  Complexo x;
-//  Complexo y(8, 1);
-//  Complexo z(4, 2);
-//  x = y / z;
-//  float atual_r = x.real();
-//  float atual_i = x.imag();
-//  float esperado_r = 1.7;
-//  float esperado_i = 1;
-//  ASSERT_FLOAT_EQ(esperado_r, atual_r)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void dividir(Complexo, Complexo)\"          \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Real esperada: " << esperado_r << "\n"
-//    << "  Parte Real retornada: " << atual_r << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//
-//  ASSERT_FLOAT_EQ(esperado_i, atual_i)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void dividir(Complexo, Complexo)\"          \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Imaginaria esperada: " << esperado_i << "\n"
-//    << "  Parte Imaginaria retornada: " << atual_i << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST_F(Teste, Dividir_Numeros_Complexos_sinais_contrarios) {
-//  Complexo x;
-//  Complexo y(8, 5);
-//  Complexo z(-4, -2);
-//  x = y / z;
-//  float atual_r = x.real();
-//  float atual_i = x.imag();
-//  float esperado_r = -2.1;
-//  float esperado_i = -1.8;
-//  ASSERT_FLOAT_EQ(esperado_r, atual_r)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void dividir(Complexo, Complexo)\"          \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Real esperada: " << esperado_r << "\n"
-//    << "  Parte Real retornada: " << atual_r << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//
-//  ASSERT_FLOAT_EQ(esperado_i, atual_i)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  \"void dividir(Complexo, Complexo)\"          \n"
-//    << "-------------------------------------------------------------------\n"
-//    << " Numero Complexo 1: " << ToString(y) << "\n"
-//    << " Numero Complexo 2: " << ToString(z) << "\n\n"
-//    << "   Parte Imaginaria esperada: " << esperado_i << "\n"
-//    << "  Parte Imaginaria retornada: " << atual_i << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
+TEST_F(Teste, Somar_Numeros_Complexos_Negativos) {
+  Complexo x(-4.1, -2.4);
+  Complexo y(-3.6, -1.5);
+  Complexo atual = x + y;
+  Complexo esperado(-7.7, -3.9);
+  ASSERT_TRUE(Igual(esperado, atual))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao: \"Complexo Complexo::operator+(Complexo y)\" \n"
+    << "-------------------------------------------------------------------\n"
+    << "  Numero Complexo 1: " << ToString(x) << "\n"
+    << "  Numero Complexo 2: " << ToString(y) << "\n\n"
+    << "  Resultado esperado: "  << ToString(esperado) << "\n"
+    << "  Resultado retornado: " << ToString(atual) << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Somar_Numeros_Complexos_de_sinais_opostos) {
+  Complexo x(-4.1, 2.4);
+  Complexo y(3.6, -1.5);
+  Complexo atual = x + y;
+  Complexo esperado(-0.5, -0.9);
+  ASSERT_TRUE(Igual(esperado, atual))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao: \"Complexo Complexo::operator+(Complexo y)\" \n"
+    << "-------------------------------------------------------------------\n"
+    << "  Numero Complexo 1: " << ToString(x) << "\n"
+    << "  Numero Complexo 2: " << ToString(y) << "\n\n"
+    << "  Resultado esperado: "  << ToString(esperado) << "\n"
+    << "  Resultado retornado: " << ToString(atual) << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+TEST_F(Teste, Subtrair_Numeros_Complexos_Nulos) {
+  Complexo x(2.4, 1.1);
+  Complexo y;
+  Complexo atual = x - y;
+  Complexo esperado(2.4, 1.1);
+  ASSERT_TRUE(Igual(esperado, atual))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao: \"Complexo Complexo::operator-(Complexo y)\" \n"
+    << "-------------------------------------------------------------------\n"
+    << "  Numero Complexo 1: " << ToString(x) << "\n"
+    << "  Numero Complexo 2: " << ToString(y) << "\n\n"
+    << "  Resultado esperado: "  << ToString(esperado) << "\n"
+    << "  Resultado retornado: " << ToString(atual) << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Subtrair_Numeros_Complexos_Positivos) {
+  Complexo x(2.4, 1.1);
+  Complexo y(3.5, 0.8);
+  Complexo atual = x - y;
+  Complexo esperado(-1.1, 0.3);
+  ASSERT_TRUE(Igual(esperado, atual))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao: \"Complexo Complexo::operator-(Complexo y)\" \n"
+    << "-------------------------------------------------------------------\n"
+    << "  Numero Complexo 1: " << ToString(x) << "\n"
+    << "  Numero Complexo 2: " << ToString(y) << "\n\n"
+    << "  Resultado esperado: "  << ToString(esperado) << "\n"
+    << "  Resultado retornado: " << ToString(atual) << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Subtrair_Numeros_Complexos_Negativos) {
+  Complexo x(-3.5, -0.1);
+  Complexo y(-2.2, -4.7);
+  Complexo atual = x - y;
+  Complexo esperado(-1.3, 4.6);
+  ASSERT_TRUE(Igual(esperado, atual))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao: \"Complexo Complexo::operator-(Complexo y)\" \n"
+    << "-------------------------------------------------------------------\n"
+    << "  Numero Complexo 1: " << ToString(x) << "\n"
+    << "  Numero Complexo 2: " << ToString(y) << "\n\n"
+    << "  Resultado esperado: "  << ToString(esperado) << "\n"
+    << "  Resultado retornado: " << ToString(atual) << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Subtrair_Numeros_Complexos_de_sinais_opostos) {
+  Complexo x(-3.5, 0.1);
+  Complexo y(3.5, -0.1);
+  Complexo atual = x - y;
+  Complexo esperado(-7.0, 0.2);
+  ASSERT_TRUE(Igual(esperado, atual))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao: \"Complexo Complexo::operator-(Complexo y)\" \n"
+    << "-------------------------------------------------------------------\n"
+    << "  Numero Complexo 1: " << ToString(x) << "\n"
+    << "  Numero Complexo 2: " << ToString(y) << "\n\n"
+    << "  Resultado esperado: "  << ToString(esperado) << "\n"
+    << "  Resultado retornado: " << ToString(atual) << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Multiplicar_Numeros_Complexos_Nulos) {
+  Complexo x(4.1, -2.4);
+  Complexo y;
+  Complexo z;
+  x = y * z;
+  Complexo esperado(0, 0);
+  ASSERT_TRUE(Igual(esperado, x))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  \"Complexo Complexo::operator*(Complexo)\"        \n"
+    << "-------------------------------------------------------------------\n"
+    << " Numero Complexo 1: " << ToString(y) << "\n"
+    << " Numero Complexo 2: " << ToString(z) << "\n\n"
+    << " Resposta retornada: " << ToString(x) << "\n"
+    << " Resposta esperada:  " << ToString(esperado) << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Multiplicar_Numeros_Complexos_mesmo_sinal) {
+  Complexo x;
+  Complexo y(4.1, 2.4);
+  Complexo z(3.6, 1.5);
+  x = y * z;
+  Complexo esperado(11.16, 2.49);
+  ASSERT_TRUE(Igual(esperado, x))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  \"Complexo Complexo::operator*(Complexo)\"        \n"
+    << "-------------------------------------------------------------------\n"
+    << " Numero Complexo 1: " << ToString(y) << "\n"
+    << " Numero Complexo 2: " << ToString(z) << "\n\n"
+    << " Resposta retornada: " << ToString(x) << "\n"
+    << " Resposta esperada:  " << ToString(esperado) << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Multiplicar_Numeros_Complexos_sinais_contrarios) {
+  Complexo x;
+  Complexo y(3.1, -2.4);
+  Complexo z(-3.6, 1.8);
+  x = y * z;
+  Complexo esperado(-6.84, 3.06);
+  ASSERT_TRUE(Igual(esperado, x))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  \"Complexo Complexo::operator*(Complexo)\"        \n"
+    << "-------------------------------------------------------------------\n"
+    << " Numero Complexo 1: " << ToString(y) << "\n"
+    << " Numero Complexo 2: " << ToString(z) << "\n\n"
+    << " Resposta retornada: " << ToString(x) << "\n"
+    << " Resposta esperada:  " << ToString(esperado) << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Dividir_Numeros_Complexos_mesmo_sinal) {
+  Complexo x;
+  Complexo y(8, 1);
+  Complexo z(4, 2);
+  x = y / z;
+  Complexo esperado(1.70, 1.00);
+  ASSERT_TRUE(Igual(esperado, x))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  \"Complexo Complexo::operator/(Complexo)\"        \n"
+    << "-------------------------------------------------------------------\n"
+    << " Numero Complexo 1: " << ToString(y) << "\n"
+    << " Numero Complexo 2: " << ToString(z) << "\n\n"
+    << " Resposta retornada: " << ToString(x) << "\n"
+    << " Resposta esperada:  " << ToString(esperado) << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Dividir_Numeros_Complexos_sinais_contrarios) {
+  Complexo x;
+  Complexo y(8, 5);
+  Complexo z(-4, -2);
+  x = y / z;
+  Complexo esperado(-2.1, -1.80);
+  ASSERT_TRUE(Igual(esperado, x))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  \"Complexo Complexo::operator/(Complexo)\"        \n"
+    << "-------------------------------------------------------------------\n"
+    << " Numero Complexo 1: " << ToString(y) << "\n"
+    << " Numero Complexo 2: " << ToString(z) << "\n\n"
+    << " Resposta retornada: " << ToString(x) << "\n"
+    << " Resposta esperada:  " << ToString(esperado) << "\n"
+    << "-------------------------------------------------------------------\n";
+}
 #endif  // COMPLEXO_TEST_COMPLEXO_TEST_H_
