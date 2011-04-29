@@ -27,12 +27,12 @@ class array_set {
     return n_ == 0;
   }
 
-  // Retorna o número de elementos no cojunto em O(1).
+  // Retorna o número de elementos no conjunto em O(1).
   int size() {
     return n_;
   }
 
-  // Retorna o menor elemento do cojunto em O(n).
+  // Retorna o menor elemento do conjunto em O(n).
   Type min() {
     Type min = v_[0];
     for (int i = 1; i < n_; i++) {

@@ -36,12 +36,12 @@ class set {
     return tree_.empty();
   }
 
-  // Retorna o número de elementos no cojunto em O(1).
+  // Retorna o número de elementos no conjunto em O(1).
   int size() {
     return size_;
   }
 
-  // Retorna o menor elemento do cojunto em O(log n).
+  // Retorna o menor elemento do conjunto em O(log n).
   Type min() {
     return tree_.min();
   }

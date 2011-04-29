@@ -193,6 +193,56 @@ TEST_F(Teste, Testar_metodo_size_em_conjunto_com_varios_elementos) {
     << "-------------------------------------------------------------------\n";
 }
 
+TEST_F(Teste, Testar_metodo_min_conjunto_unitario) {
+  linear_set<int> c;
+  c.insert(3);
+  int esperado = 3;
+  int atual = c.min();
+  ASSERT_EQ(esperado, atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* Type linear_set<Type>::min() *\n"
+    << "-------------------------------------------------------------------\n"
+    << "Conjunto : " << PrintSet(c) << "\n\n"
+    << "Valor esperado  : " << esperado << "\n"
+    << "Valor retornado : " << atual << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testar_metodo_min_conjunto_com_varios_elementos_iguais) {
+  linear_set<int> c;
+  int v[4] = {2, 2, 2, 2};
+  CriaSet(c, 4, v);
+  int esperado = 2;
+  int atual = c.min();
+  ASSERT_EQ(esperado, atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* Type linear_set<Type>::min() *\n"
+    << "-------------------------------------------------------------------\n"
+    << "Conjunto : " << PrintSet(c) << "\n\n"
+    << "Valor esperado  : " << esperado << "\n"
+    << "Valor retornado : " << atual << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testar_metodo_min_conjunto_com_varios_elementos_distintos) {
+  linear_set<int> c;
+  int v[4] = {2, 4, 8, -2};
+  CriaSet(c, 4, v);
+  int esperado = -2;
+  int atual = c.min();
+  ASSERT_EQ(esperado, atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* Type linear_set<Type>::min() *\n"
+    << "-------------------------------------------------------------------\n"
+    << "Conjunto : " << PrintSet(c) << "\n\n"
+    << "Valor esperado  : " << esperado << "\n"
+    << "Valor retornado : " << atual << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
 TEST_F(Teste, Testar_metodo_find_em_conjunto_vazio) {
   linear_set<int> c;
   bool atual = c.find(4);
