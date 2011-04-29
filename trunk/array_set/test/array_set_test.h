@@ -332,29 +332,45 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_contido_em_conjunto) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testar_metodo_erase_em_conjunto_unitario) {
+TEST_F(Teste, Testar_metodo_erase_em_conjunto_unitario_com_exito) {
   array_set<int> c;
-  string esperado = "Conjunto Vazio";
-  int v[] = {4};
-  CriaSet(c, 1, v);
   int apagar = 4;
-  c.erase(apagar);
+  c.insert(apagar);
+  string anterior = PrintSet(c);
+  bool teste = c.erase(apagar);
   string atual = PrintSet(c);
+  string esperado = "Conjunto Vazio";
+  int size_esperado = 0;
+  int size_atual = c.size();
+
+  // Testa retorno da função
+  ASSERT_TRUE(teste)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* bool array_set<Type>::erase(Type x) *\n"
+    << "-------------------------------------------------------------------\n"
+    << " A funcao retornou false, mesmo sendo possivel apagar o elemento\n"
+    << " proposto:\n\n"
+    << " Conjunto: " << anterior << "\n"
+    << " Elemento a ser apagado: " << apagar << "\n"
+    << "-------------------------------------------------------------------\n";
+
+  // Testa apagar numero
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void array_set<Type>::erase(Type x) *\n"
+    << "* bool array_set<Type>::erase(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto esperado: " << esperado << "\n"
     << "  Conjunto formado: " << atual << "\n"
     << "  Elemento apagado: " << apagar << "\n"
     << "-------------------------------------------------------------------\n";
-  int size_esperado = 0;
-  int size_atual = c.size();
+
+  // Testar tamanho do novo conjunto
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void array_set<Type>::insert(Type x) *\n"
+    << "* bool array_set<Type>::erase(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função removeu corretamente um elemento no conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
@@ -363,30 +379,141 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_unitario) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testar_metodo_erase_em_conjunto_com_varios_elementos) {
+TEST_F(Teste, Testar_metodo_erase_em_conjunto_unitario_elemento_sem_exito) {
   array_set<int> c;
-  string esperado = "{ 6 7 8 }";
-  int v[] = {4, 6, 7, 8};
-  CriaSet(c, 4, v);
   int apagar = 4;
-  c.erase(apagar);
+  c.insert(apagar + 1);
+  string anterior = PrintSet(c);
+  bool teste = c.erase(apagar);
   string atual = PrintSet(c);
+  string esperado = anterior;
+  int size_esperado = 1;
+  int size_atual = c.size();
+
+  // Testa retorno da função
+  ASSERT_FALSE(teste)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* bool array_set<Type>::erase(Type x) *\n"
+    << "-------------------------------------------------------------------\n"
+    << " A funcao retornou true, mesmo nao sendo possivel apagar o elemento\n"
+    << " proposto:\n\n"
+    << " Conjunto: " << anterior << "\n"
+    << " Elemento a ser apagado: " << apagar << "\n"
+    << "-------------------------------------------------------------------\n";
+
+  // Testa apagar numero
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void array_set<Type>::erase(Type x) *\n"
+    << "* bool array_set<Type>::erase(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto esperado: " << esperado << "\n"
     << "  Conjunto formado: " << atual << "\n"
     << "  Elemento apagado: " << apagar << "\n"
     << "-------------------------------------------------------------------\n";
 
-  int size_esperado = 3;
-  int size_atual = c.size();
+  // Testar tamanho do novo conjunto
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void array_set<Type>::insert(Type x) *\n"
+    << "* bool array_set<Type>::erase(Type x) *\n"
+    << "-------------------------------------------------------------------\n"
+    << " A função removeu corretamente um elemento no conjunto porem\n"
+    << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
+    << "  Tamanho Esperado: " << size_esperado << "\n"
+    << " Tamanho Retornado: " << size_atual << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testar_metodo_erase_em_conjunto_com_varios_elementos_com_exito) {
+  array_set<int> c;
+  int v[] = {4, 6, 7, 8};
+  CriaSet(c, 4, v);
+  string anterior = PrintSet(c);
+  int apagar = 4;
+  bool teste = c.erase(apagar);
+  string atual = PrintSet(c);
+  string esperado = "{ 6 7 8 }";
+  int size_esperado = 3;
+  int size_atual = c.size();
+
+  // Testa retorno da função
+  ASSERT_TRUE(teste)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* bool array_set<Type>::erase(Type x) *\n"
+    << "-------------------------------------------------------------------\n"
+    << " A funcao retornou false, mesmo sendo possivel apagar o elemento\n"
+    << " proposto:\n\n"
+    << " Conjunto: " << anterior << "\n"
+    << " Elemento a ser apagado: " << apagar << "\n"
+    << "-------------------------------------------------------------------\n";
+
+  // Testa apagar numero
+  ASSERT_EQ(atual, esperado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* bool array_set<Type>::erase(Type x) *\n"
+    << "-------------------------------------------------------------------\n"
+    << " Conjunto esperado: " << esperado << "\n"
+    << "  Conjunto formado: " << atual << "\n"
+    << "  Elemento apagado: " << apagar << "\n"
+    << "-------------------------------------------------------------------\n";
+
+  // Testar tamanho do novo conjunto
+  ASSERT_EQ(size_esperado, size_atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* bool array_set<Type>::erase(Type x) *\n"
+    << "-------------------------------------------------------------------\n"
+    << " A função removeu corretamente um elemento no conjunto porem\n"
+    << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
+    << "  Tamanho Esperado: " << size_esperado << "\n"
+    << " Tamanho Retornado: " << size_atual << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testar_metodo_erase_em_conjunto_com_varios_elementos_sem_exito) {
+  array_set<int> c;
+  int v[] = {4, 6, 7, 8};
+  CriaSet(c, 4, v);
+  string anterior = PrintSet(c);
+  int apagar = 5;
+  bool teste = c.erase(apagar);
+  string atual = PrintSet(c);
+  string esperado = anterior;
+  int size_esperado = 4;
+  int size_atual = c.size();
+
+  // Testa retorno da função
+  ASSERT_FALSE(teste)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* bool array_set<Type>::erase(Type x) *\n"
+    << "-------------------------------------------------------------------\n"
+    << " A funcao retornou true, mesmo sendo possivel apagar o elemento\n"
+    << " proposto:\n\n"
+    << " Conjunto: " << anterior << "\n"
+    << " Elemento a ser apagado: " << apagar << "\n"
+    << "-------------------------------------------------------------------\n";
+
+  // Testa apagar numero
+  ASSERT_EQ(atual, esperado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* bool array_set<Type>::erase(Type x) *\n"
+    << "-------------------------------------------------------------------\n"
+    << " Conjunto esperado: " << esperado << "\n"
+    << "  Conjunto formado: " << atual << "\n"
+    << "  Elemento apagado: " << apagar << "\n"
+    << "-------------------------------------------------------------------\n";
+
+  // Testar tamanho do novo conjunto
+  ASSERT_EQ(size_esperado, size_atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* bool array_set<Type>::erase(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função removeu corretamente um elemento no conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
