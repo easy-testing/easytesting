@@ -74,6 +74,41 @@ class Teste : public testing::Test {
   }
 };
 
+TEST_F(Teste, Testar_Construtor_por_copia_vazio) {
+  linear_set<int> c;
+  c.clear();
+  linear_set<int> d(c);
+  string atual = PrintSet(c);
+  string esperado = PrintSet(d);
+  ASSERT_EQ(atual, esperado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* ~linear_set<Type>::linear_set(linear_set<Type> c) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "Construtor por copia nao criou conjunto igual ao parametro passado\n\n"
+    << "  Conjunto esperado: " << esperado << "\n"
+    << "  Conjunto criado:   " << atual << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testar_Construtor_por_copia_varios_elementos) {
+  linear_set<int> c;
+  int v[5] = {1, 3, 5, 8, 2};
+  CriaSet(c, 5, v);
+  linear_set<int> d(c);
+  string atual = PrintSet(c);
+  string esperado = PrintSet(d);
+  ASSERT_EQ(atual, esperado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* ~linear_set<Type>::linear_set(linear_set<Type> c) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "Construtor por copia nao criou conjunto igual ao parametro passado\n\n"
+    << "  Conjunto esperado: " << esperado << "\n"
+    << "  Conjunto criado:   " << atual << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
 TEST_F(Teste, Testar_metodo_empty_em_conjunto_vazio) {
   linear_set<int> c;
   ASSERT_TRUE(c.empty())
