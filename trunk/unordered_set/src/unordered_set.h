@@ -48,7 +48,7 @@ class unordered_set {
     Type min = -1000; // TODO(tfn) implementar corretamente.
     for (int i = 0; i < table_size_; i++) {
       for (Node<Type>* j = table_[i].begin()->next;
-           j != table[i]_.end();
+           j != table_[i].end();
            j = j->next) {
         if (j->key < min) {
           min = j->key;
@@ -61,10 +61,10 @@ class unordered_set {
   // Testa se x pertece ao conjunto em O(1).
   bool find(Type x) {
     int i = hash(x, table_size_);
-    for (Node<Type>* i = table_[i].begin();
-         i != table_[i].end();
-         i = i->next) {
-      if (i->key == x) {
+    for (Node<Type>* in = table_[i].begin();
+         in != table_[i].end();
+         in = in->next) {
+      if (in->key == x) {
         return true;
       }
     }
@@ -90,11 +90,11 @@ class unordered_set {
   // Retorna true se algum elemento foi removido ou falso caso contrário.
   bool erase(Type x) {
     int i = hash(x, table_size_);
-    for (Node<Type>* i = table_[i].begin();
-         i != table_[i].end();
-         i = i->next) {
-      if (i->key == x) {
-        table_[i].erase(i);
+    for (Node<Type>* in = table_[i].begin();
+         in != table_[i].end();
+         in = in->next) {
+      if (in->key == x) {
+        table_[i].erase(in);
         size_--;
         return true;
       }
