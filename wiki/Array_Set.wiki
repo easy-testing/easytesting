@@ -1,12 +1,14 @@
 #summary Casos de Teste da lista Array Set
 = Funções =
 
-A lista ARRAY SET é constituida de sete funções:
+A lista ARRAY SET é constituida de oito funções:
 
   * bool Empty()
     - Retorna _true_ se o conjunto for vazio e _false_ caso não seja.
   * int Size()
     - Retorna o número de elementos pertencentes ao conjunto.
+  * Type Min()
+    - Retorna menor valor do conjunto.
   * bool Find(x)
     - Retorna _true_ se x pertencer ao conjunto e _false_ caso contrário.
   * bool Insert(x)
@@ -29,6 +31,9 @@ varias entradas diferentes, com o intuito de cobrir todos os erros possíveis de
   * Conjunto com vários elementos
 - *int Size()*
   * Conjunto vazio
+  * Conjunto unitário
+  * Conjunto com vários elementos
+- *Type Min()*
   * Conjunto unitário
   * Conjunto com vários elementos
 - *bool Find(x)*
