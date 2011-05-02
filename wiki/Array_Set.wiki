@@ -13,8 +13,8 @@ A lista ARRAY SET é constituida de oito funções:
     - Retorna _true_ se x pertencer ao conjunto e _false_ caso contrário.
   * bool Insert(x)
     - Se não houver o elemento x no conjunto, a função insere x a ele e retorna _true_. Caso haja x, retorna _false_.
-  * void Erase(x)
-    - Deleta x do conjunto. Neste caso, x obrigatoriamente deve pertencer ao conjunto
+  * bool Erase(x)
+    - Se x pertence ao conjunto, ele é deletado e a função retorna _true_. Caso contrário retorna _false_.
   * void ToList(list)
     - Copia todos os elementos do conjunto para uma lista, em ordem crescente
   * void Clear()
@@ -44,7 +44,7 @@ varias entradas diferentes, com o intuito de cobrir todos os erros possíveis de
   * Conjunto vazio
   * Conjunto não vazio e sem x
   * Conjunto contendo x
-- *void Erase(x)*
+- *bool Erase(x)*
   * Conjunto unitário
   * Conjunto com mais de um elemento
 - *void ToList(list)*
