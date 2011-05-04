@@ -20,6 +20,7 @@ Este projeto aborda diferentes temas ligados a programação básica lecionados 
 ==== Programação Básica Nível 1 ====
   * TAD para Polinômios
   * Números Complexos
+  * Complexos Polares
   * Funções
   * [http://code.google.com/p/easytesting/downloads/detail?name=recursao-v0.9.zip&can=2&q= Recursão]
   * [http://code.google.com/p/easytesting/downloads/detail?name=iteracao-v0.9.zip&can=2&q= Iteração]
@@ -29,8 +30,11 @@ Este projeto aborda diferentes temas ligados a programação básica lecionados 
 
 ==== Programação Básica Nível 2 ====
   * List
+  * Array Set
+  * Linear Set
   * Set
   * Unordered Set
+  * Queue
 == Como Utilizar ==
 
 O projeto de cada lista de exercícios é composto por um grupo de arquivos:
