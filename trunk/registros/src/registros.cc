@@ -1,6 +1,6 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#include "easytesting/registros/src/registros.h"
+#include "registros/src/registros.h"
 
 #include <math.h>
 

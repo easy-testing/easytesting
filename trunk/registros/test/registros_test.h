@@ -5,8 +5,8 @@
 #include <math.h>
 #include <string>
 #include <sstream>
-#include "easytesting/gtest/gtest.h"
-#include "easytesting/registros/src/registros.h"
+#include "gtest/gtest.h"
+#include "registros/src/registros.h"
 
 using std::string;
 using std::stringstream;

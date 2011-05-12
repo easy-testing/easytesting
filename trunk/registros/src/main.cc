@@ -29,23 +29,28 @@
 // 4.000 bares.
 // Por favor, use os structs Ponto e Circunferencia definidos acima.
 //
-// QUESTÃO 6:
+// QUESTÃO 6: DESAFIO!
 // Resolva o mesmo problema da questão 6, mas imprima os bares ordenados,
 // começando do mais próximo da posição em que o usuário está e terminando com o
 // bar mais distante.
 
 #include <iostream>
 #include <fstream>
+#include <string>
 
-#include "easytesting/registros/src/registros.h"
+#include "registros/src/registros.h"
 
+using std::cin;
 using std::cout;
 using std::endl;
+using std::ifstream;
+using std::string;
 
+// Gabarito da questão 5.
 int main() {
   ifstream input;
   Ponto bar[4000];
-  string CNPJ;
+  string nome;
   int num_bares = 0;
   float a, b, dist_max;
   Ponto centro;
@@ -55,12 +60,14 @@ int main() {
   cout << endl << "Digite a distancia maxima a caminhar: ";
   cin >> dist_max;
   input.open("input.txt");
-  while (input >> CNPJ >> a >> b) {
+  while (input >> nome >> a >> b) {
     bar[num_bares].atribuir(a, b);
-    if (dist_max >= bar[num_bares].distancia(centro)) {
-      cout << "CNPJ: " << CNPJ << endl;
+    if (bar[num_bares].distancia(centro) <= dist_max) {
+      cout << "Bar: " << nome << "\t\t"
+           << "Distancia: " << bar[num_bares].distancia(centro)<< endl;
     }
     num_bares++;
   }
   input.close();
 }
+
