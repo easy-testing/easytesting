@@ -10,8 +10,8 @@ Complexo::Complexo() {
 }
 
 Complexo::Complexo(double a) {
-  mod_ = a;
-  arg_ = 0.0;
+  mod_ = fabs(a);
+  arg_ = atan2(0, a);
 }
 
 Complexo::Complexo(double a, double b) {
@@ -41,13 +41,26 @@ double Complexo::modulo() {
 }
 
 Complexo Complexo::conjugado() {
-  Complexo c(real(), -imag());
+  Complexo c;
+  c.mod_ = mod_;
+  c.arg_ = -arg_;
+  return c;
+}
+
+Complexo Complexo::simetrico() {
+  Complexo c;
+  c.mod_ = mod_;
+  c.arg_ = arg_ + M_PI;
+  if (c.arg_ > M_PI) {
+    c.arg_ = c.arg_ - 2 * M_PI;
+  }
   return c;
 }
 
 Complexo Complexo::inverso() {
-  float mod2 = modulo() * modulo();
-  Complexo i(real() / mod2, -imag() / mod2);
+  Complexo i;
+  i.mod_ = 1.0 / mod_;
+  i.arg_ = -arg_;
   return i;
 }
 
@@ -57,13 +70,18 @@ Complexo Complexo::operator+(Complexo y) {
 }
 
 Complexo Complexo::operator-(Complexo y) {
-  Complexo s(real() - y.real(), imag() - y.imag());
-  return s;
+  return *this + y.simetrico();
 }
 
 Complexo Complexo::operator*(Complexo y) {
-  Complexo p(real() * y.real() - imag() * y.imag(),
-             imag() * y.real() - real() * y.imag());
+  Complexo p;
+  p.mod_ = mod_ * y.mod_;
+  p.arg_ = arg_ + y.arg_;
+  if (p.arg_ > M_PI) {
+    p.arg_ = p.arg_ - 2 * M_PI;
+  } else   if (p.arg_ < -M_PI) {
+    p.arg_ = p.arg_ + 2 * M_PI;
+  }
   return p;
 }
 

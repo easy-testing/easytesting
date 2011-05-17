@@ -1,11 +1,11 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef COMPLEXO_SRC_COMPLEXO_H_
-#define COMPLEXO_SRC_COMPLEXO_H_
+#ifndef COMPLEXO_POLAR_SRC_COMPLEXO_H_
+#define COMPLEXO_POLAR_SRC_COMPLEXO_H_
 
 // Representa um número complexo.
 struct Complexo {
- private:
+ public:
   double mod_;  // Módulo do número compelxo.
   double arg_;  // Argumento do número complexo.
 
@@ -37,6 +37,9 @@ struct Complexo {
   // Retorna o conjugado do número complexo corrente.
   Complexo conjugado();
 
+  // Retorna o simétrico do número complexo corrente.
+  Complexo simetrico();
+
   // Retorna o inverso multiplicativo do número complexo corrente.
   Complexo inverso();
 
@@ -52,6 +55,7 @@ struct Complexo {
   // Divide o número complexo corrente por 'y' e retorna o resultado.
   Complexo operator/(Complexo y);
 
+  // Usado apenas pelo testador da lista de exercício.
   friend class Teste;
 };
 
