@@ -1,4 +1,4 @@
-// copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef VETORES_TEST_VETORES_TEST_H_
 #define VETORES_TEST_VETORES_TEST_H_

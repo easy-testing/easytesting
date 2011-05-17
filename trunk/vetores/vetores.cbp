@@ -33,10 +33,10 @@
 			<Add option="-fexceptions" />
 			<Add directory=".." />
 		</Compiler>
-		<Unit filename="gtest/gtest.cc">
+		<Unit filename="../gtest/gtest.cc">
 			<Option target="Easytesting" />
 		</Unit>
-		<Unit filename="gtest/gtest.h">
+		<Unit filename="../gtest/gtest.h">
 			<Option target="Easytesting" />
 		</Unit>
 		<Unit filename="src/main.cc">
