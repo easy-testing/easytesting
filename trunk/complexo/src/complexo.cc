@@ -45,6 +45,11 @@ Complexo Complexo::conjugado() {
   return c;
 }
 
+Complexo Complexo::simetrico() {
+  Complexo c(-real_, -imag_);
+  return c;
+}
+
 Complexo Complexo::inverso() {
   double mod2 = modulo() * modulo();
   Complexo i(real_ / mod2, -imag_ / mod2);
@@ -52,13 +57,12 @@ Complexo Complexo::inverso() {
 }
 
 Complexo Complexo::operator+(Complexo y) {
-  Complexo s(real_ + y.real_, (imag_ + y.imag_)*-1);
+  Complexo s(real_ + y.real_, (imag_ + y.imag_));
   return s;
 }
 
 Complexo Complexo::operator-(Complexo y) {
-  Complexo s(real_ - y.real_, imag_ - y.imag_);
-  return s;
+  return *this + y.simetrico();
 }
 
 Complexo Complexo::operator*(Complexo y) {

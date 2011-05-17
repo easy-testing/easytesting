@@ -37,6 +37,9 @@ struct Complexo {
   // Retorna o conjugado do número complexo corrente.
   Complexo conjugado();
 
+  // Retorna o simétrico do número complexo corrente.
+  Complexo simetrico();
+
   // Retorna o inverso multiplicativo do número complexo corrente.
   Complexo inverso();
 
@@ -52,6 +55,7 @@ struct Complexo {
   // Divide o número complexo corrente por 'y' e retorna o resultado.
   Complexo operator/(Complexo y);
 
+  // Usado apenas pelo testador da lista de exercício.
   friend class Teste;
 };
 

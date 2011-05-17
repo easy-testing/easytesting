@@ -23,25 +23,17 @@ class Teste : public testing::Test {
     c->imag_ = i;
   }
 
-  float real(Complexo& x) {
+  double real(Complexo& x) {
     return x.real_;
   }
 
-  float imag(Complexo& x) {
+  double imag(Complexo& x) {
     return x.imag_;
   }
 
-  // Foi necessário criar uma margem de erro para a função pois
-  // ela está comparando duas variáveis float.
   bool Igual(Complexo x, Complexo y) {
-    float diferenca_real = x.real_ - y.real_;
-    float diferenca_imag = x.imag_ - y.imag_;
-    if (diferenca_real < 0.01 && diferenca_real > -0.01) {
-      if (diferenca_imag < 0.01 && diferenca_imag > -0.01) {
-        return true;
-      }
-    }
-    return false;
+    return fabs(x.real_ - y.real_) <= 1E-6 &&
+           fabs(x.imag_ - y.imag_) <= 1E-6;
   }
 
   // Retorna string no formato [x + yi]
@@ -60,8 +52,8 @@ class Teste : public testing::Test {
 TEST_F(Teste, Testa_funcao_real) {
   Complexo x;
   Inicializar(1.1, 2.2, &x);
-  float esperado = 1.1;
-  float atual = x.real();
+  double esperado = 1.1;
+  double atual = x.real();
   ASSERT_DOUBLE_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"double Complexo::real()\" \n"
@@ -75,8 +67,8 @@ TEST_F(Teste, Testa_funcao_real) {
 TEST_F(Teste, Testa_funcao_imag) {
   Complexo x(0.1, 3.2);
   Inicializar(0.1, 3.2, &x);
-  float atual = x.imag();
-  float esperado = 3.2;
+  double atual = x.imag();
+  double esperado = 3.2;
   ASSERT_DOUBLE_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"double Complexo::imag()\" \n"
@@ -128,8 +120,8 @@ TEST_F(Teste, Testa_construtor_com_dois_paramentros) {
 
 TEST_F(Teste, Testa_funcao_modulo_com_numero_complexo_nulo) {
   Complexo x(0, 0);
-  float esperado = 0;
-  float atual = x.modulo();
+  double esperado = 0;
+  double atual = x.modulo();
   ASSERT_DOUBLE_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"double Complexo::modulo()\" \n"
@@ -142,8 +134,8 @@ TEST_F(Teste, Testa_funcao_modulo_com_numero_complexo_nulo) {
 
 TEST_F(Teste, Testa_funcao_modulo_com_numero_complexo_nao_nulo) {
   Complexo x(3, 4);
-  float esperado = 5;
-  float atual = x.modulo();
+  double esperado = 5;
+  double atual = x.modulo();
   ASSERT_DOUBLE_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"double Complexo::modulo()\" \n"
@@ -265,6 +257,19 @@ TEST_F(Teste, Testa_conjugado_de_numero_com_parte_imaginaria_positiva) {
     << "-------------------------------------------------------------------\n";
 }
 
+TEST_F(Teste, Testa_simetrico) {
+  Complexo x(1, 1);
+  Complexo esperado(-1, -1);
+  Complexo atual = x.simetrico().simetrico().simetrico();
+  ASSERT_TRUE(Igual(esperado, atual))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  \"Complexo Complexo::simpetrico()\" \n"
+    << "-------------------------------------------------------------------\n"
+    << "  Numero complexo esperado: " << ToString(esperado) << "\n"
+    << "  Numero complexo retornado: " << ToString(atual) << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
 TEST_F(Teste, Testa_inverso_de_numero_complexo) {
   Complexo x(6, 8);
   Complexo atual;
@@ -331,7 +336,7 @@ TEST_F(Teste, Somar_Numeros_Complexos_de_sinais_opostos) {
   Complexo x(-4.1, 2.4);
   Complexo y(3.6, -1.5);
   Complexo atual = x + y;
-  Complexo esperado(-0.5, -0.9);
+  Complexo esperado(-0.5, 0.9);
   ASSERT_TRUE(Igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"Complexo Complexo::operator+(Complexo y)\" \n"
