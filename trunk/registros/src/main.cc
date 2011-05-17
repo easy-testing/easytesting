@@ -25,7 +25,7 @@
 // você está disposto a caminhar para chegar em algum restaurante. Para cada
 // valor de x, y e d que o usuário digitar, o seu programa deve retornar a
 // lista com o o nome e a distância entre você e todos os restaurantes que
-// estão a menos de d Km da sua posição atual. Assuma que BH não tem mais do
+// estão a menos de d Km da sua posição atual. Assuma que BH tem no máximo
 // 4.000 bares.
 // Por favor, use os structs Ponto e Circunferencia definidos acima.
 //

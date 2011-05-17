@@ -1,4 +1,5 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+
 #ifndef REGISTROS_TEST_REGISTROS_TEST_H_
 #define REGISTROS_TEST_REGISTROS_TEST_H_
 
