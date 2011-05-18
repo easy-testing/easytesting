@@ -66,7 +66,7 @@ Complexo Complexo::operator-(Complexo y) {
 }
 
 Complexo Complexo::operator*(Complexo y) {
-  Complexo p(real_ * y.real_ - imag_ * y.imag_, imag_*y.real_ - real_*y.imag_);
+  Complexo p(real_ * y.real_ - imag_ * y.imag_, real_*y.imag_ + imag_*y.real_);
   return p;
 }
 

@@ -93,9 +93,9 @@ TEST_F(Teste, Testa_construtor_sem_parametros) {
 }
 
 TEST_F(Teste, Testa_construtor_com_um_paramentro) {
-  Complexo atual(-3.14);
+  Complexo atual(-13);
   Complexo esperado;
-  Inicializar(-3.14, 0, &esperado);
+  Inicializar(-13, 0, &esperado);
   ASSERT_TRUE(Igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro no construtor: \"Complexo::Complexo(double a)\" \n"
@@ -429,18 +429,17 @@ TEST_F(Teste, Multiplicar_Numeros_Complexos_Nulos) {
 }
 
 TEST_F(Teste, Multiplicar_Numeros_Complexos_mesmo_sinal) {
-  Complexo x;
   Complexo y(4.1, 2.4);
   Complexo z(3.6, 1.5);
-  x = y * z;
-  Complexo esperado(11.16, 2.49);
-  ASSERT_TRUE(Igual(esperado, x))
+  Complexo atual = y * z;
+  Complexo esperado(11.16, 14.79);
+  ASSERT_TRUE(Igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  \"Complexo Complexo::operator*(Complexo)\"        \n"
     << "-------------------------------------------------------------------\n"
     << " Numero Complexo 1: " << ToString(y) << "\n"
     << " Numero Complexo 2: " << ToString(z) << "\n\n"
-    << " Resposta retornada: " << ToString(x) << "\n"
+    << " Resposta retornada: " << ToString(atual) << "\n"
     << " Resposta esperada:  " << ToString(esperado) << "\n"
     << "-------------------------------------------------------------------\n";
 }
@@ -450,7 +449,7 @@ TEST_F(Teste, Multiplicar_Numeros_Complexos_sinais_contrarios) {
   Complexo y(3.1, -2.4);
   Complexo z(-3.6, 1.8);
   x = y * z;
-  Complexo esperado(-6.84, 3.06);
+  Complexo esperado(-6.84, 14.22);
   ASSERT_TRUE(Igual(esperado, x))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  \"Complexo Complexo::operator*(Complexo)\"        \n"
@@ -467,7 +466,7 @@ TEST_F(Teste, Dividir_Numeros_Complexos_mesmo_sinal) {
   Complexo y(8, 1);
   Complexo z(4, 2);
   x = y / z;
-  Complexo esperado(1.70, 1.00);
+  Complexo esperado(1.7, -0.6);
   ASSERT_TRUE(Igual(esperado, x))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  \"Complexo Complexo::operator/(Complexo)\"        \n"
@@ -484,7 +483,7 @@ TEST_F(Teste, Dividir_Numeros_Complexos_sinais_contrarios) {
   Complexo y(8, 5);
   Complexo z(-4, -2);
   x = y / z;
-  Complexo esperado(-2.1, -1.80);
+  Complexo esperado(-2.1, -0.2);
   ASSERT_TRUE(Igual(esperado, x))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  \"Complexo Complexo::operator/(Complexo)\"        \n"
