@@ -28,7 +28,9 @@ double Complexo::imag() {
 }
 
 bool Complexo::operator==(Complexo x) {
-  return x.mod_ == mod_ && x.arg_ - sin(arg_) && cos(x.arg_) - cos(arg_);
+  return fabs(x.mod_ - mod_) <= 1E-6 &&
+         fabs(sin(x.arg_) - sin(arg_)) <= 1E-6 &&
+         fabs(cos(x.arg_) - cos(arg_)) <= 1E-6;
 }
 
 void Complexo::operator=(Complexo x) {
