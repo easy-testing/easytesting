@@ -5,9 +5,12 @@
 
 // Representa um número complexo.
 struct Complexo {
- public:
-  double mod_;  // Módulo do número compelxo.
-  double arg_;  // Argumento do número complexo.
+ private:
+  // Módulo do número compelxo.
+  double mod_;
+
+  // Argumento do número complexo em radianos.
+  double arg_;
 
  public:
   // Cria o número complexo 0 + 0i.
@@ -59,4 +62,4 @@ struct Complexo {
   friend class Teste;
 };
 
-#endif  // COMPLEXO_SRC_COMPLEXO_H_
+#endif  // COMPLEXO_POLAR_SRC_COMPLEXO_H_

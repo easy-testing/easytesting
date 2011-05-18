@@ -28,7 +28,7 @@ double Complexo::imag() {
 }
 
 bool Complexo::operator==(Complexo x) {
-  return mod_ == x.mod_ && arg_ == x.arg_;
+  return x.mod_ == mod_ && x.arg_ - sin(arg_) && cos(x.arg_) - cos(arg_);
 }
 
 void Complexo::operator=(Complexo x) {
@@ -51,9 +51,6 @@ Complexo Complexo::simetrico() {
   Complexo c;
   c.mod_ = mod_;
   c.arg_ = arg_ + M_PI;
-  if (c.arg_ > M_PI) {
-    c.arg_ = c.arg_ - 2 * M_PI;
-  }
   return c;
 }
 
@@ -77,15 +74,12 @@ Complexo Complexo::operator*(Complexo y) {
   Complexo p;
   p.mod_ = mod_ * y.mod_;
   p.arg_ = arg_ + y.arg_;
-  if (p.arg_ > M_PI) {
-    p.arg_ = p.arg_ - 2 * M_PI;
-  } else   if (p.arg_ < -M_PI) {
-    p.arg_ = p.arg_ + 2 * M_PI;
-  }
   return p;
 }
 
 Complexo Complexo::operator/(Complexo y) {
-  Complexo q = *this * y.inverso();
+  Complexo q;
+  q.mod_ = mod_ / y.mod_;
+  q.arg_ = arg_ - y.arg_;
   return q;
 }
