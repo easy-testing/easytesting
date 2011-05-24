@@ -259,13 +259,52 @@ TEST_F(Teste, Testa_conjugado_de_numero_com_parte_imaginaria_positiva) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_simetrico) {
+TEST_F(Teste, Testa_simetrico_complexo_positivo) {
   Complexo x(1, 1);
   Complexo esperado(-1, -1);
   Complexo atual = x.simetrico().simetrico().simetrico();
   ASSERT_TRUE(Igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  \"Complexo Complexo::simpetrico()\" \n"
+    << "Erro na funcao:  \"Complexo Complexo::simetrico()\" \n"
+    << "-------------------------------------------------------------------\n"
+    << "  Numero complexo esperado: " << ToString(esperado) << "\n"
+    << "  Numero complexo retornado: " << ToString(atual) << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testa_simetrico_complexo_negativo) {
+  Complexo x(-1, -1);
+  Complexo esperado(1, 1);
+  Complexo atual = x.simetrico().simetrico().simetrico();
+  ASSERT_TRUE(Igual(esperado, atual))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  \"Complexo Complexo::simetrico()\" \n"
+    << "-------------------------------------------------------------------\n"
+    << "  Numero complexo esperado: " << ToString(esperado) << "\n"
+    << "  Numero complexo retornado: " << ToString(atual) << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testa_simetrico_complexo_mod_nulo) {
+  Complexo x(0, -1);
+  Complexo esperado(0, 1);
+  Complexo atual = x.simetrico().simetrico().simetrico();
+  ASSERT_TRUE(Igual(esperado, atual))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  \"Complexo Complexo::simetrico()\" \n"
+    << "-------------------------------------------------------------------\n"
+    << "  Numero complexo esperado: " << ToString(esperado) << "\n"
+    << "  Numero complexo retornado: " << ToString(atual) << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testa_simetrico_complexo_arg_nulo) {
+  Complexo x(3);
+  Complexo esperado(-3);
+  Complexo atual = x.simetrico().simetrico().simetrico();
+  ASSERT_TRUE(Igual(esperado, atual))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  \"Complexo Complexo::simetrico()\" \n"
     << "-------------------------------------------------------------------\n"
     << "  Numero complexo esperado: " << ToString(esperado) << "\n"
     << "  Numero complexo retornado: " << ToString(atual) << "\n"
