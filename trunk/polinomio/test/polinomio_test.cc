@@ -1,5 +1,6 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
-#include "easytesting/polinomio/test/polinomio_test.h"
+
+#include "polinomio/test/polinomio_test.h"
 
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);

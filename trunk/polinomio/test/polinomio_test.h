@@ -1,11 +1,12 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+
 #ifndef POLINOMIO_TEST_POLINOMIO_TEST_H_
 #define POLINOMIO_TEST_POLINOMIO_TEST_H_
 
 #include <sstream>
 #include <string>
-#include "easytesting/polinomio/src/polinomio.h"
-#include "easytesting/gtest/gtest.h"
+#include "polinomio/src/polinomio.h"
+#include "gtest/gtest.h"
 
 using std::string;
 using std::stringstream;
