@@ -14,6 +14,9 @@ class list {
   }
 
   // Cria a lista com os mesmo elementos de l em O(n).
+  // Este tipo construtor é conhecido como construtor por cópia, pois cria
+  // uma lista igual a lista l passada como parâmetro. Quando este operador é
+  // definido, o c++ sobrecarrega automaticamente o operador de atribuição "=".
   list(list<Type>& l) {
     end_ = new Node<Type>();
     clear();
@@ -43,13 +46,13 @@ class list {
 
   // Retorna o valor do primeiro elemento da lista em O(1).
   // PRECONDIÇÃO: a lista não pode estar vazia.
-  Type& front() {
+  Type front() {
     return end_->next->key;
   }
 
   // Retorna o valor do último elemento da lista em O(1).
   // PRECONDIÇÃO: a lista não pode estar vazia.
-  Type& back() {
+  Type back() {
     return end_->prev->key;
   }
 
@@ -82,7 +85,17 @@ class list {
     erase(end_->prev);
   }
 
-  // Insere x antes do elemento identificado por posision em O(1).
+  // Retona um
+  Node<Type>* find(Type x) {
+    Node<Type>* iter = begin();
+    while (iter != end() && iter.key != x) {
+      iter = iter->next;
+    }
+    return iter;
+  }
+
+  // Insere x antes do elemento identificado por posision em O(1) e retorna
+  // um ponteiro para o nó que foi criado para armazenar x.
   Node<Type>* insert(Node<Type>* node, Type x) {
     node->prev = node->prev->next = new Node<Type>(x, node->prev, node);
     return node->prev;
