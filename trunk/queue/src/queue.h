@@ -13,6 +13,11 @@ class queue {
   queue() {
   }
 
+  // Cria a fila com os mesmos elementos de f em O(n).
+  queue(queue<Type>& f) {
+    list_ = f.list_;
+  }
+
   // Testa se a fila está vazia em O(1).
   bool empty() {
     return list_.empty();
@@ -24,12 +29,12 @@ class queue {
   }
 
   // Retorna o elemento que está no início da fila em O(1).
-  Type& front() {
+  Type front() {
     return list_.front();
   }
 
   // Retorna o elemento que está no final da fila em O(1).
-  Type& back() {
+  Type back() {
     return list_.back();
   }
 
@@ -41,6 +46,11 @@ class queue {
   // Remove o elemento que está no início da fila em O(1).
   void pop() {
     list_.pop_front();
+  }
+
+  // Faz a fila corrente ficar igual a f em O(n);
+  void operator=(queue<Type>& f) {
+    list_ = f.list_;
   }
 
  private:
