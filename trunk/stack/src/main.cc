@@ -55,6 +55,8 @@ bool EhUmOperador(string s) {
   return s == "+" || s == "-" || s == "*" || s == "/";
 }
 
+// Realiza a operação definida pela string operador utiliando como operandos
+// os números reais operando1 e operando2.
 double RealizarOperacao(string operador, double operando1, double operando2) {
   if (operador == "+") {
     return operando1 + operando2;
@@ -67,6 +69,9 @@ double RealizarOperacao(string operador, double operando1, double operando2) {
   }
 }
 
+// Recebe como parâmetro uma pilha exp que representa uma expressão em notação
+// pré-fixada e substitui a expressão que está no topo da pilha pelo seu
+// respectivo valor.
 void ResolverExpressaoDoTopo(stack<string>* exp) {
   string topo = exp->top();
   if (EhUmOperador(topo)) {
@@ -85,6 +90,9 @@ void ResolverExpressaoDoTopo(stack<string>* exp) {
   }
 }
 
+// Recebe como parâmetro uma pilha exp que representa uma expressão em notação
+// pré-fixada e retira os operadores e operandos de exp, imprimindo-os em
+// notação infixada totalmente parametrizada.
 void ImprimirInfixado(stack<string>* exp) {
   string top = exp->top();
   exp->pop();
@@ -99,6 +107,9 @@ void ImprimirInfixado(stack<string>* exp) {
   }
 }
 
+// Lê de um arquivo uma expressão em notação pré-fixada, imprime na tela a
+// mesma expressão em notação infixada e em seguida imprime o resultado
+// da expressão.
 int main() {
   // Lê uma expressão em notação pré-fixada de um arquivo.
   ifstream fin("input.txt");
