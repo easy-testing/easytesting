@@ -21,10 +21,10 @@ class Teste : public testing::Test {
     stringstream output;
     output << "[";
     for (Node<int>* i = p.list_.begin() ; i != p.list_.end() ; i = i->next) {
-      if (i == p.list_.begin())
-        output << i->key;
-      else
-        output << " " << i->key;
+      output << i->key;
+      if (i->next != p.list_.end()) {
+        output << ", ";
+      }
     }
     output << "]";
     return output.str();
@@ -152,7 +152,7 @@ TEST_F(Teste, Testar_metodo_size_em_lista_com_varios_elementos) {
 TEST_F(Teste, Testar_metodo_push_em_stack_vazia) {
   stack<int> p;
   p.push(10);
-  string esperado("{10}");
+  string esperado("[10]");
   string atual = PrintStack(p);
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
@@ -168,7 +168,7 @@ TEST_F(Teste, Testar_metodo_push_em_stack_com_um_elemento) {
   stack<int> p;
   CriaStack1(22, p);
   p.push(12);
-  string esperado("{12 22}");
+  string esperado("[12, 22]");
   string atual = PrintStack(p);
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
@@ -184,7 +184,7 @@ TEST_F(Teste, Testar_metodo_push_em_stack_com_varios_elementos) {
   stack<int> p;
   CriaStack3(5, 13, 49, p);
   p.push(17);
-  string esperado("{17 5 13 49}");
+  string esperado("[17, 5, 13, 49]");
   string atual = PrintStack(p);
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
@@ -200,7 +200,7 @@ TEST_F(Teste, Testar_metodo_pop_em_stack_com_um_elemento) {
   stack<int> p;
   CriaStack1(8, p);
   p.pop();
-  string esperado("{}");
+  string esperado("[]");
   string atual = PrintStack(p);
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
@@ -216,7 +216,7 @@ TEST_F(Teste, Testar_metodo_pop_em_stack_com_varios_elemento) {
   stack<int> p;
   CriaStack3(8, 0, -3, p);
   p.pop();
-  string esperado("{0 -3}");
+  string esperado("[0, -3]");
   string atual = PrintStack(p);
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"

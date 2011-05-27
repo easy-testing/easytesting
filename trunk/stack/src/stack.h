@@ -13,6 +13,11 @@ class stack {
   stack() {
   }
 
+  // Cria uma pilha com os mesmos elementos de p em O(n).
+  stack(stack<Type>& p) {
+    list_ = p.list_;
+  }
+
   // Testa se a pilha está vazia em O(1).
   bool empty() {
     return list_.empty();
@@ -24,7 +29,7 @@ class stack {
   }
 
   // Retorna o elemento que está no topo da pilha em O(1).
-  Type& top() {
+  Type top() {
     return list_.front();
   }
 
@@ -36,6 +41,11 @@ class stack {
   // Remove o elemento que está no topo da pilha em O(1).
   void pop() {
     list_.pop_front();
+  }
+
+  // Faz a pilha corrente ficar igual a p em O(n);
+  void operator=(stack<Type>& p) {
+    list_ = p.list_;
   }
 
  private:
