@@ -103,6 +103,7 @@ int main() {
       Imprimir(&aux);
       aux = nao_prioritarios;
       Imprimir(&aux);
+      cout << endl;
     }
   } while(opcao != 0);
   return 0;
