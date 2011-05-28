@@ -17,7 +17,7 @@ using std::stringstream;
 class Teste : public testing::Test {
  protected:
   // Insere em um conjunto c, n elementos contidos no vetor v
-  void CriaSet(linear_set<int>& c, int n, int v[]) {
+  void CriaSet(set<int>& c, int n, int v[]) {
     for (int i = 0; i < n; ++i) {
       c.insert(v[i]);
     }
@@ -25,7 +25,7 @@ class Teste : public testing::Test {
 
   // Retorna uma string contendo os elementos do conjunto c
   // no formato { c1 c2 c3 c4 }
-  string PrintSet(linear_set<int> &c) {
+  string PrintSet(set<int> &c) {
     stringstream out;
     list<int> l;
     if (c.empty()) {
@@ -75,15 +75,15 @@ class Teste : public testing::Test {
 };
 
 TEST_F(Teste, Testar_Construtor_por_copia_vazio) {
-  linear_set<int> c;
+  set<int> c;
   c.clear();
-  linear_set<int> d(c);
+  set<int> d(c);
   string atual = PrintSet(c);
   string esperado = PrintSet(d);
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* ~linear_set<Type>::linear_set(linear_set<Type> c) *\n"
+    << "* ~set<Type>::set(set<Type> c) *\n"
     << "-------------------------------------------------------------------\n"
     << "Construtor por copia nao criou conjunto igual ao parametro passado\n\n"
     << "  Conjunto esperado: " << esperado << "\n"
@@ -92,16 +92,16 @@ TEST_F(Teste, Testar_Construtor_por_copia_vazio) {
 }
 
 TEST_F(Teste, Testar_Construtor_por_copia_varios_elementos) {
-  linear_set<int> c;
+  set<int> c;
   int v[5] = {1, 3, 5, 8, 2};
   CriaSet(c, 5, v);
-  linear_set<int> d(c);
+  set<int> d(c);
   string atual = PrintSet(c);
   string esperado = PrintSet(d);
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* ~linear_set<Type>::linear_set(linear_set<Type> c) *\n"
+    << "* ~set<Type>::set(set<Type> c) *\n"
     << "-------------------------------------------------------------------\n"
     << "Construtor por copia nao criou conjunto igual ao parametro passado\n\n"
     << "  Conjunto esperado: " << esperado << "\n"
@@ -110,11 +110,11 @@ TEST_F(Teste, Testar_Construtor_por_copia_varios_elementos) {
 }
 
 TEST_F(Teste, Testar_metodo_empty_em_conjunto_vazio) {
-  linear_set<int> c;
+  set<int> c;
   ASSERT_TRUE(c.empty())
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* bool linear_set<Type>::empty() *\n"
+    << "* bool set<Type>::empty() *\n"
     << "-------------------------------------------------------------------\n"
     << "O conjunto esta vazio e a funcao retornou FALSE.\n"
     << "-------------------------------------------------------------------\n";
@@ -122,39 +122,39 @@ TEST_F(Teste, Testar_metodo_empty_em_conjunto_vazio) {
 
 
 TEST_F(Teste, Testar_metodo_empty_em_conjunto_unitario) {
-  linear_set<int> c;
+  set<int> c;
   int v[] = {3};
   CriaSet(c, 1, v);
   ASSERT_FALSE(c.empty())
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* bool linear_set<Type>::empty() *\n"
+    << "* bool set<Type>::empty() *\n"
     << "-------------------------------------------------------------------\n"
     << "O conjunto possui um elemento e a funcao retornou TRUE.\n"
     << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testar_metodo_empty_em_conjunto_com_varios_elementos) {
-  linear_set<int> c;
+  set<int> c;
   int v[] = {3, 8, 5, 6, 4, 7};
   CriaSet(c, 6, v);
   ASSERT_FALSE(c.empty())
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* bool linear_set<Type>::empty() *\n"
+    << "* bool set<Type>::empty() *\n"
     << "-------------------------------------------------------------------\n"
     << "O conjunto possui varios elementos e a funcao retornou TRUE.\n"
     << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testar_metodo_size_em_conjunto_vazio) {
-  linear_set<int> c;
+  set<int> c;
   int esperado = 0;
   int atual = c.size();
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* int linear_set<Type>::size() *\n"
+    << "* int set<Type>::size() *\n"
     << "-------------------------------------------------------------------\n"
     << "Valor esperado  : " << esperado << "\n"
     << "Valor retornado : " << atual << "\n"
@@ -162,7 +162,7 @@ TEST_F(Teste, Testar_metodo_size_em_conjunto_vazio) {
 }
 
 TEST_F(Teste, Testar_metodo_size_em_conjunto_unitario) {
-  linear_set<int> c;
+  set<int> c;
   int esperado = 1;
   int v[] = {3};
   CriaSet(c, 1, v);
@@ -170,7 +170,7 @@ TEST_F(Teste, Testar_metodo_size_em_conjunto_unitario) {
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* int linear_set<Type>::size() *\n"
+    << "* int set<Type>::size() *\n"
     << "-------------------------------------------------------------------\n"
     << "Valor esperado  : " << esperado << "\n"
     << "Valor retornado : " << atual << "\n"
@@ -178,7 +178,7 @@ TEST_F(Teste, Testar_metodo_size_em_conjunto_unitario) {
 }
 
 TEST_F(Teste, Testar_metodo_size_em_conjunto_com_varios_elementos) {
-  linear_set<int> c;
+  set<int> c;
   int esperado = 3;
   int v[] = {3, 0, 4};
   CriaSet(c, 3, v);
@@ -186,7 +186,7 @@ TEST_F(Teste, Testar_metodo_size_em_conjunto_com_varios_elementos) {
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* int linear_set<Type>::size() *\n"
+    << "* int set<Type>::size() *\n"
     << "-------------------------------------------------------------------\n"
     << "Valor esperado  : " << esperado << "\n"
     << "Valor retornado : " << atual << "\n"
@@ -194,14 +194,14 @@ TEST_F(Teste, Testar_metodo_size_em_conjunto_com_varios_elementos) {
 }
 
 TEST_F(Teste, Testar_metodo_min_conjunto_unitario) {
-  linear_set<int> c;
+  set<int> c;
   c.insert(3);
   int esperado = 3;
   int atual = c.min();
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* Type linear_set<Type>::min() *\n"
+    << "* Type set<Type>::min() *\n"
     << "-------------------------------------------------------------------\n"
     << "Conjunto : " << PrintSet(c) << "\n\n"
     << "Valor esperado  : " << esperado << "\n"
@@ -210,7 +210,7 @@ TEST_F(Teste, Testar_metodo_min_conjunto_unitario) {
 }
 
 TEST_F(Teste, Testar_metodo_min_conjunto_com_varios_elementos_iguais) {
-  linear_set<int> c;
+  set<int> c;
   int v[4] = {2, 2, 2, 2};
   CriaSet(c, 4, v);
   int esperado = 2;
@@ -218,7 +218,7 @@ TEST_F(Teste, Testar_metodo_min_conjunto_com_varios_elementos_iguais) {
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* Type linear_set<Type>::min() *\n"
+    << "* Type set<Type>::min() *\n"
     << "-------------------------------------------------------------------\n"
     << "Conjunto : " << PrintSet(c) << "\n\n"
     << "Valor esperado  : " << esperado << "\n"
@@ -227,7 +227,7 @@ TEST_F(Teste, Testar_metodo_min_conjunto_com_varios_elementos_iguais) {
 }
 
 TEST_F(Teste, Testar_metodo_min_conjunto_com_varios_elementos_distintos) {
-  linear_set<int> c;
+  set<int> c;
   int v[4] = {2, 4, 8, -2};
   CriaSet(c, 4, v);
   int esperado = -2;
@@ -235,7 +235,7 @@ TEST_F(Teste, Testar_metodo_min_conjunto_com_varios_elementos_distintos) {
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* Type linear_set<Type>::min() *\n"
+    << "* Type set<Type>::min() *\n"
     << "-------------------------------------------------------------------\n"
     << "Conjunto : " << PrintSet(c) << "\n\n"
     << "Valor esperado  : " << esperado << "\n"
@@ -244,12 +244,12 @@ TEST_F(Teste, Testar_metodo_min_conjunto_com_varios_elementos_distintos) {
 }
 
 TEST_F(Teste, Testar_metodo_find_em_conjunto_vazio) {
-  linear_set<int> c;
+  set<int> c;
   bool atual = c.find(4);
   ASSERT_FALSE(atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* bool linear_set<Type>::find(Type x) *\n"
+    << "* bool set<Type>::find(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << "Funcao retornou TRUE para a procura de um elemento nao\n"
     << "contido no conjunto\n"
@@ -257,7 +257,7 @@ TEST_F(Teste, Testar_metodo_find_em_conjunto_vazio) {
 }
 
 TEST_F(Teste, Testar_metodo_find_em_conjunto_com_varios_elementos) {
-  linear_set<int> c;
+  set<int> c;
   int v[] = {3, 5, 8, 15};
   int procurado = 4;
   CriaSet(c, 4, v);
@@ -265,7 +265,7 @@ TEST_F(Teste, Testar_metodo_find_em_conjunto_com_varios_elementos) {
   ASSERT_FALSE(atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* bool linear_set<Type>::find(Type x) *\n"
+    << "* bool set<Type>::find(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << "Funcao retornou TRUE para a procura de um elemento nao\n"
     << "contido no conjunto\n"
@@ -278,7 +278,7 @@ TEST_F(Teste, Testar_metodo_find_em_conjunto_com_varios_elementos) {
   ASSERT_TRUE(atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* bool linear_set<Type>::find(Type x) *\n"
+    << "* bool set<Type>::find(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << "Funcao retornou FALSE para a procura de um elemento\n"
     << "contido no conjunto\n"
@@ -288,14 +288,14 @@ TEST_F(Teste, Testar_metodo_find_em_conjunto_com_varios_elementos) {
 }
 
 TEST_F(Teste, Testar_metodo_insert_em_conjunto_vazio) {
-  linear_set<int> c;
+  set<int> c;
   string esperado = "{ 4 }";
   c.insert(4);
   string atual = PrintSet(c);
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void linear_set<Type>::insert(Type x) *\n"
+    << "* void set<Type>::insert(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto esperado: " << esperado << "\n"
     << "  Conjunto formado: " << atual << "\n"
@@ -305,7 +305,7 @@ TEST_F(Teste, Testar_metodo_insert_em_conjunto_vazio) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void linear_set<Type>::insert(Type x) *\n"
+    << "* void set<Type>::insert(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função inseriu corretamente um elemento no conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
@@ -315,7 +315,7 @@ TEST_F(Teste, Testar_metodo_insert_em_conjunto_vazio) {
 }
 
 TEST_F(Teste, Testar_metodo_insert_para_elemento_nao_contido_em_conjunto) {
-  linear_set<int> c;
+  set<int> c;
   string esperado = "{ 4 5 7 8 }";
   int v[] = {4, 5, 7};
   CriaSet(c, 3, v);
@@ -325,7 +325,7 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_nao_contido_em_conjunto) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void linear_set<Type>::insert(Type x) *\n"
+    << "* void set<Type>::insert(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto esperado: " << esperado << "\n"
     << "  Conjunto formado: " << atual << "\n"
@@ -336,7 +336,7 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_nao_contido_em_conjunto) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void linear_set<Type>::insert(Type x) *\n"
+    << "* void set<Type>::insert(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função inseriu corretamente um elemento no conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
@@ -346,7 +346,7 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_nao_contido_em_conjunto) {
 }
 
 TEST_F(Teste, Testar_metodo_insert_para_elemento_contido_em_conjunto) {
-  linear_set<int> c;
+  set<int> c;
   string esperado = "{ 1 3 4 5 }";
   int v[] = {1, 3, 4, 5};
   CriaSet(c, 4, v);
@@ -356,7 +356,7 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_contido_em_conjunto) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void linear_set<Type>::insert(Type x) *\n"
+    << "* void set<Type>::insert(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto esperado: " << esperado << "\n"
     << "  Conjunto formado: " << atual << "\n"
@@ -367,7 +367,7 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_contido_em_conjunto) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void linear_set<Type>::insert(Type x) *\n"
+    << "* void set<Type>::insert(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função corretamente nao inseriu um elemento no conjunto pois ja\n"
     << " possuia o elemento porem alterou o valor do tamanho do conjunto\n\n"
@@ -377,7 +377,7 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_contido_em_conjunto) {
 }
 
 TEST_F(Teste, Testar_metodo_erase_em_conjunto_unitario_com_exito) {
-  linear_set<int> c;
+  set<int> c;
   int apagar = 4;
   c.insert(apagar);
   string anterior = PrintSet(c);
@@ -391,7 +391,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_unitario_com_exito) {
   ASSERT_TRUE(teste)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* bool linear_set<Type>::erase(Type x) *\n"
+    << "* bool set<Type>::erase(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A funcao retornou false, mesmo sendo possivel apagar o elemento\n"
     << " proposto:\n\n"
@@ -403,7 +403,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_unitario_com_exito) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* bool linear_set<Type>::erase(Type x) *\n"
+    << "* bool set<Type>::erase(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto esperado: " << esperado << "\n"
     << "  Conjunto formado: " << atual << "\n"
@@ -414,7 +414,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_unitario_com_exito) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* bool linear_set<Type>::erase(Type x) *\n"
+    << "* bool set<Type>::erase(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função removeu corretamente um elemento no conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
@@ -424,7 +424,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_unitario_com_exito) {
 }
 
 TEST_F(Teste, Testar_metodo_erase_em_conjunto_unitario_elemento_sem_exito) {
-  linear_set<int> c;
+  set<int> c;
   int apagar = 4;
   c.insert(apagar + 1);
   string anterior = PrintSet(c);
@@ -438,7 +438,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_unitario_elemento_sem_exito) {
   ASSERT_FALSE(teste)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* bool linear_set<Type>::erase(Type x) *\n"
+    << "* bool set<Type>::erase(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A funcao retornou true, mesmo nao sendo possivel apagar o elemento\n"
     << " proposto:\n\n"
@@ -450,7 +450,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_unitario_elemento_sem_exito) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* bool linear_set<Type>::erase(Type x) *\n"
+    << "* bool set<Type>::erase(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto esperado: " << esperado << "\n"
     << "  Conjunto formado: " << atual << "\n"
@@ -461,7 +461,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_unitario_elemento_sem_exito) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* bool linear_set<Type>::erase(Type x) *\n"
+    << "* bool set<Type>::erase(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função removeu corretamente um elemento no conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
@@ -471,7 +471,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_unitario_elemento_sem_exito) {
 }
 
 TEST_F(Teste, Testar_metodo_erase_em_conjunto_com_varios_elementos_com_exito) {
-  linear_set<int> c;
+  set<int> c;
   int v[] = {4, 6, 7, 8};
   CriaSet(c, 4, v);
   string anterior = PrintSet(c);
@@ -486,7 +486,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_com_varios_elementos_com_exito) {
   ASSERT_TRUE(teste)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* bool linear_set<Type>::erase(Type x) *\n"
+    << "* bool set<Type>::erase(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A funcao retornou false, mesmo sendo possivel apagar o elemento\n"
     << " proposto:\n\n"
@@ -498,7 +498,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_com_varios_elementos_com_exito) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* bool linear_set<Type>::erase(Type x) *\n"
+    << "* bool set<Type>::erase(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto esperado: " << esperado << "\n"
     << "  Conjunto formado: " << atual << "\n"
@@ -509,7 +509,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_com_varios_elementos_com_exito) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* bool linear_set<Type>::erase(Type x) *\n"
+    << "* bool set<Type>::erase(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função removeu corretamente um elemento no conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
@@ -519,7 +519,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_com_varios_elementos_com_exito) {
 }
 
 TEST_F(Teste, Testar_metodo_erase_em_conjunto_com_varios_elementos_sem_exito) {
-  linear_set<int> c;
+  set<int> c;
   int v[] = {4, 6, 7, 8};
   CriaSet(c, 4, v);
   string anterior = PrintSet(c);
@@ -534,7 +534,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_com_varios_elementos_sem_exito) {
   ASSERT_FALSE(teste)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* bool linear_set<Type>::erase(Type x) *\n"
+    << "* bool set<Type>::erase(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A funcao retornou true, mesmo sendo possivel apagar o elemento\n"
     << " proposto:\n\n"
@@ -546,7 +546,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_com_varios_elementos_sem_exito) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* bool linear_set<Type>::erase(Type x) *\n"
+    << "* bool set<Type>::erase(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto esperado: " << esperado << "\n"
     << "  Conjunto formado: " << atual << "\n"
@@ -557,7 +557,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_com_varios_elementos_sem_exito) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* bool linear_set<Type>::erase(Type x) *\n"
+    << "* bool set<Type>::erase(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função removeu corretamente um elemento no conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
@@ -567,7 +567,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_com_varios_elementos_sem_exito) {
 }
 
 TEST_F(Teste, Testar_metodo_Tolist_em_conjunto_vazio) {
-  linear_set<int> c;
+  set<int> c;
   list<int> l;
   string esperado = "Lista Vazia";
   c.ToList(&l);
@@ -575,7 +575,7 @@ TEST_F(Teste, Testar_metodo_Tolist_em_conjunto_vazio) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void linear_set<Type>::ToList(list<Type>& l) *\n"
+    << "* void set<Type>::ToList(list<Type>& l) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto inicial: " << PrintSet(c) << "\n"
     << "   Lista esperada: " << esperado << "\n"
@@ -584,7 +584,7 @@ TEST_F(Teste, Testar_metodo_Tolist_em_conjunto_vazio) {
 }
 
 TEST_F(Teste, Testar_metodo_Tolist_em_conjunto_unitario) {
-  linear_set<int> c;
+  set<int> c;
   list<int> l;
   string esperado = "[ 6 ]";
   int v[] = {6};
@@ -594,7 +594,7 @@ TEST_F(Teste, Testar_metodo_Tolist_em_conjunto_unitario) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void linear_set<Type>::ToList(list<Type>& l) *\n"
+    << "* void set<Type>::ToList(list<Type>& l) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto inicial: " << PrintSet(c) << "\n"
     << "   Lista esperada: " << esperado << "\n"
@@ -603,7 +603,7 @@ TEST_F(Teste, Testar_metodo_Tolist_em_conjunto_unitario) {
 }
 
 TEST_F(Teste, Testar_metodo_Tolist_em_conjunto_com_varios_elementos) {
-  linear_set<int> c;
+  set<int> c;
   list<int> l;
   string esperado = "[ 6 7 8 ]";
   int v[] = {6, 7, 8};
@@ -613,7 +613,7 @@ TEST_F(Teste, Testar_metodo_Tolist_em_conjunto_com_varios_elementos) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void linear_set<Type>::ToList(list<Type>& l) *\n"
+    << "* void set<Type>::ToList(list<Type>& l) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto inicial: " << PrintSet(c) << "\n"
     << "   Lista esperada: " << esperado << "\n"
@@ -622,13 +622,13 @@ TEST_F(Teste, Testar_metodo_Tolist_em_conjunto_com_varios_elementos) {
 }
 
 TEST_F(Teste, Testar_metodo_clear_em_conjunto_vazio) {
-  linear_set<int> c;
+  set<int> c;
   c.clear();
   int atual = c.empty();
   ASSERT_TRUE(atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void linear_set<Type>::clear() *\n"
+    << "* void set<Type>::clear() *\n"
     << "-------------------------------------------------------------------\n"
     << "Apos executar a funcao clear() o teste acusou haver\n"
     << "um ou mais elementos no conjunto\n"
@@ -638,7 +638,7 @@ TEST_F(Teste, Testar_metodo_clear_em_conjunto_vazio) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void linear_set<Type>::insert(Type x) *\n"
+    << "* void set<Type>::insert(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função limpou corretamente o conteudo do conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
@@ -648,7 +648,7 @@ TEST_F(Teste, Testar_metodo_clear_em_conjunto_vazio) {
 }
 
 TEST_F(Teste, Testar_metodo_clear_em_conjunto_com_varios_elementos) {
-  linear_set<int> c;
+  set<int> c;
   int v[] = {10, 5, 9};
   CriaSet(c, 3, v);
   c.clear();
@@ -656,7 +656,7 @@ TEST_F(Teste, Testar_metodo_clear_em_conjunto_com_varios_elementos) {
   ASSERT_TRUE(atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void linear_set<Type>::clear() *\n"
+    << "* void set<Type>::clear() *\n"
     << "-------------------------------------------------------------------\n"
     << "Apos executar a funcao clear() o teste acusou haver\n"
     << "um ou mais elementos no conjunto\n"
@@ -666,7 +666,7 @@ TEST_F(Teste, Testar_metodo_clear_em_conjunto_com_varios_elementos) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void linear_set<Type>::insert(Type x) *\n"
+    << "* void set<Type>::insert(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função limpou corretamente o conteudo do conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
