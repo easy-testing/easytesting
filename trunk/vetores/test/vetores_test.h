@@ -33,15 +33,14 @@ class Teste : public testing::Test {
 
 TEST_F(Teste, Testa_acesso_a_uma_posicao_invalida_do_vetor_na_funcao_Media) {
   int n = 3;
-  float v[4] = {4.0, 8.0, 14.0, 1000.0};
+  float v[3 + 1] = {4.0, 8.0, 14.0, 1000.0};
   float atual = Media(v, n);
   float inesperado = (4.0 + 8.0 + 14.0 + 1000.0) / n;
   ASSERT_NE(atual, inesperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao \"float Media(float v[], int n)\".                  \n"
     << "-------------------------------------------------------------------\n"
-    << "  Sua função esta acessando uma posição inválida do vetor.         \n"
-    << "  Verifique se ela está acessando um elemento além de v[n - 1] .   \n"
+    << "  Sua função pode estar acessando a posição inválida v[n].         \n"
     << "-------------------------------------------------------------------\n";
 }
 
