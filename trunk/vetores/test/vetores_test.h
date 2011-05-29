@@ -32,11 +32,11 @@ class Teste : public testing::Test {
 };
 
 TEST_F(Teste, Testa_acesso_a_uma_posicao_invalida_do_vetor_na_funcao_Media) {
-  int n = 4;
-  float v[5] = {4, 8, 12, 16, 1000000};
-  float esperado = 10;
+  int n = 3;
+  float v[4] = {4.0, 8.0, 14.0, 1000.0};
   float atual = Media(v, n);
-  ASSERT_EQ(esperado, atual)
+  float inesperado = (4.0 + 8.0 + 14.0 + 1000.0) / n;
+  ASSERT_NE(atual, inesperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao \"float Media(float v[], int n)\".                  \n"
     << "-------------------------------------------------------------------\n"
