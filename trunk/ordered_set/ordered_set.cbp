@@ -36,6 +36,8 @@
 		</Compiler>
 		<Unit filename="../gtest/gtest.cc" />
 		<Unit filename="../gtest/gtest.h" />
+		<Unit filename="../list/src/list.h" />
+		<Unit filename="../list/src/node.h" />
 		<Unit filename="src/binary_search_tree.h" />
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
