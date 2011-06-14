@@ -34,7 +34,7 @@ class set {
 
   // Retorna o número de elementos no conjunto em O(1).
   int size() {
-    return size_;
+    return tree_.size();
   }
 
   // Retorna o menor elemento do conjunto em O(log n).
@@ -54,7 +54,6 @@ class set {
       return false;
     } else {
       tree_.insert(x);
-      size_++;
       return true;
     }
   }
@@ -64,7 +63,6 @@ class set {
   bool erase(Type x) {
     if (find(x)) {
       tree_.find(x)->erase();
-      size_--;
       return true;
     } else {
       return false;
@@ -79,7 +77,6 @@ class set {
   // Remove todos os elementos do conjunto em O(n).
   void clear() {
     tree_.clear();
-    size_ = 0;
   }
 
   // Faz com que o conjunto corrente contenha exatamente os mesmos elementos
@@ -88,11 +85,7 @@ class set {
     tree_ = c.tree_;
   }
 
-
  private:
-  // Número de elementos no conjunto.
-  int size_;
-
   // Árvore binária de busca que representa o conjunto.
   Tree tree_;
 };  // end class set.
