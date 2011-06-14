@@ -36,14 +36,16 @@
 		</Compiler>
 		<Unit filename="../gtest/gtest.cc" />
 		<Unit filename="../gtest/gtest.h" />
-		<Unit filename="src/linear_set.h" />
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
 		</Unit>
-		<Unit filename="test/linear_set_test.cc">
+		<Unit filename="src/set.h">
 			<Option target="EasyTesting" />
 		</Unit>
-		<Unit filename="test/linear_set_test.h">
+		<Unit filename="test/set_test.cc">
+			<Option target="EasyTesting" />
+		</Unit>
+		<Unit filename="test/set_test.h">
 			<Option target="EasyTesting" />
 		</Unit>
 		<Unit filename="../list/src/list.h" />

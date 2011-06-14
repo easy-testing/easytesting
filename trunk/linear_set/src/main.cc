@@ -3,7 +3,7 @@
 // Lista sobre Conjuntos.
 //
 // Questão 1.
-// Implemente o TAD set<Type> em set.h.
+// Implemente o TAD set<Type> em set.h utilizando listas encadeadas.
 //
 // Questão 2.
 // Escreva uma função "void Imprimir(set<string>& s)" que recebe
@@ -45,7 +45,7 @@
 
 #include <fstream>
 #include <iostream>
-#include "linear_set/src/linear_set.h"
+#include "linear_set/src/set.h"
 
 using namespace std;
 
