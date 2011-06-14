@@ -53,14 +53,14 @@ class BinarySearchTree {
     return key_;
   }
 
-  // Altera a chave da árvore em O(1). Se a árvore for vazia,
-  // ela passa então a ser uma folha.
+  // Altera a chave da árvore em O(1).
+  // Se a árvore for vazia, ela passa então a ser uma folha.
   void set_key(Type key) {
+    key_ = key;
     if (empty()) {
       left_ = new BinarySearchTree();
       right_ = new BinarySearchTree();
     }
-    key_ = key;
   }
 
   int size() {
@@ -110,7 +110,8 @@ class BinarySearchTree {
     return node;
   }
 
-  // Apaga apenas a raiz da árvore em O(log n). A árvore não pode ser vazia.
+  // Apaga apenas a raiz da árvore em O(log n).
+  // A árvore não pode ser vazia.
   void erase() {
     if (leaf()) {
       clear();
@@ -121,7 +122,8 @@ class BinarySearchTree {
     }
   }
 
-  // Apaga todos os elementos da árvore em O(n). Ao final, a arvore é vazia.
+  // Apaga todos os elementos da árvore em O(n).
+  // Ao final, a arvore é vazia.
   void clear() {
     if (!empty()) {
       delete left_;
@@ -130,12 +132,24 @@ class BinarySearchTree {
     }
   }
 
-  // Insere os lementos da árvore em ordem no final da lista l.
+  // Insere os lementos da árvore em ordem no final da lista l em O(n).
   void ListInOrder(list<Type>* l) {
     if (!empty()) {
       left()->ListInOrder(l);
       l->push_back(key());
       right()->ListInOrder(l);
+    }
+  }
+
+  // Faz com que o conjunto corrente contenha exatamente os mesmos elementos
+  // do cojunto c em O(n).
+  void operator=(BinarySearchTree& bst) {
+    if (bst.empty()) {
+      clear();
+    } else {
+      set_key(bst.key());
+      *left_ = *bst.left();  // Chamada recursiva para o lado esquerdo.
+      *right_ = *bst.right();  // Chamada recursiva para o lado direito.
     }
   }
 

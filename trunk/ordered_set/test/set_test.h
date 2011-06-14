@@ -3,7 +3,7 @@
 #ifndef SET_TEST_SET_TEST_H_
 #define SET_TEST_SET_TEST_H_
 
-#include "set/src/set.h"
+#include "ordered_set/src/set.h"
 
 #include <sstream>
 #include <string>

@@ -3,7 +3,7 @@
 #ifndef SET_SRC_SET_H_
 #define SET_SRC_SET_H_
 
-#include "set/src/binary_search_tree.h"
+#include "ordered_set/src/binary_search_tree.h"
 
 template<class Type> class BinarySearchTree;
 
@@ -24,11 +24,7 @@ class set {
 
   // Cria um conjunto com os mesmos elementos de c em O(n).
   set(set<Type>& c) {
-    list<Type> l;
-    c.ToList(&l);
-    for (Node<Type>* i = l.begin(); i != l.end(); i = i->next) {
-      insert(i->key);
-    }
+    tree_ = c.tree_;
   }
 
   // Testa se o cojunto esta vazio em O(1).
@@ -43,7 +39,7 @@ class set {
 
   // Retorna o menor elemento do conjunto em O(log n).
   Type min() {
-    return tree_.min();
+    return tree_.min()->key();
   }
 
   // Testa se x pertece ao conjunto em O(log n).
@@ -85,6 +81,13 @@ class set {
     tree_.clear();
     size_ = 0;
   }
+
+  // Faz com que o conjunto corrente contenha exatamente os mesmos elementos
+  // do cojunto c.
+  void operator=(set<Type>& c) {
+    tree_ = c.tree_;
+  }
+
 
  private:
   // Número de elementos no conjunto.
