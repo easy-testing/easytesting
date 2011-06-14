@@ -92,14 +92,14 @@ class list {
     return iter;
   }
 
-  // Insere x antes do elemento identificado por posision em O(1) e retorna
+  // Insere x antes do elemento identificado por 'node' em O(1) e retorna
   // um ponteiro para o nó que foi criado para armazenar x.
   Node<Type>* insert(Node<Type>* node, Type x) {
     node->prev = node->prev->next = new Node<Type>(x, node->prev, node);
     return node->prev;
   }
 
-  // Apaga o elemento indicado por posision em O(1).
+  // Apaga o elemento indicado por 'node' em O(1).
   void erase(Node<Type>* node) {
     node->prev->next = node->next;
     node->next->prev = node->prev;
