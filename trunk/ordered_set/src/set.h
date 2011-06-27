@@ -19,7 +19,6 @@ class set {
 
   // Cria um conjunto vazio em O(1).
   set() {
-    size_ = 0;
   }
 
   // Cria um conjunto com os mesmos elementos de c em O(n).
@@ -27,7 +26,7 @@ class set {
     tree_ = c.tree_;
   }
 
-  // Testa se o cojunto esta vazio em O(1).
+  // Testa se o cojunto está vazio em O(1).
   bool empty() {
     return tree_.empty();
   }
@@ -69,7 +68,7 @@ class set {
     }
   }
 
-  // Insere todos os elementos do conjunto no final de l em O(n)
+  // Insere todos os elementos do conjunto no final de l em O(n).
   void ToList(list<Type>* l) {
     tree_.ListInOrder(l);
   }
@@ -82,12 +81,14 @@ class set {
   // Faz com que o conjunto corrente contenha exatamente os mesmos elementos
   // do cojunto c.
   void operator=(set<Type>& c) {
+    // Usa o operador de atribuição implementado em BinarySearchTree<Type>.
     tree_ = c.tree_;
   }
 
  private:
   // Árvore binária de busca que representa o conjunto.
   Tree tree_;
-};  // end class set.
 
+  friend class Test;
+};  // end class set.
 #endif  // SET_SRC_SET_H_
