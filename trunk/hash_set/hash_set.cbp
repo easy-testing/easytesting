@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="unordered_set" />
+		<Option title="hash_set" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -41,14 +41,14 @@
 			<Option target="EasyTesting" />
 		</Unit>
 		<Unit filename="src/hash_function.h" />
+		<Unit filename="src/hash_set.h" />
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
 		</Unit>
-		<Unit filename="src/set.h" />
-		<Unit filename="test/set_test.cc">
+		<Unit filename="test/hash_set_test.cc">
 			<Option target="EasyTesting" />
 		</Unit>
-		<Unit filename="test/set_test.h" />
+		<Unit filename="test/hash_set_test.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

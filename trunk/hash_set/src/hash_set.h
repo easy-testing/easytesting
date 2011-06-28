@@ -4,7 +4,7 @@
 #define UNORDERED_SET_SRC_UNORDERED_SET_H_
 
 #include <algorithm>
-#include "linear_set/src/set.h"
+#include "linear_set/src/linear_set.h"
 #include "list/src/list.h"
 #include "hash_set/src/hash_function.h"
 
@@ -19,8 +19,8 @@ class hash_set {
   // Cria um conjunto vazio em O(1).
   hash_set() {
     size_ = 0;
-    num_lines_ = 1024;  // 2^10
-    table_ = new set<Type>[num_lines_];
+    num_lines_ = 1000;
+    table_ = new linear_set<Type>[num_lines_];
   }
 
   // Cria um conjunto vazio em O(1).
@@ -28,15 +28,17 @@ class hash_set {
   hash_set(int num_lines) {
     size_ = 0;
     num_lines_ = num_lines;
-    table_ = new set<Type>[num_lines_];
+    table_ = new linear_set<Type>[num_lines_];
   }
 
   // Cria um conjunto com os mesmos elementos de c em O(n).
   hash_set(hash_set& c) {
     size_ = c.size_;
     num_lines_ = c.num_lines_;
-    table_ = new set<Type>[num_lines_];
-    *this = c;  // Operador de atribuição definido a baixo.
+    table_ = new linear_set<Type>[num_lines_];
+    for (int i = 0; i < num_lines_; i++) {
+      table_[i] = c.table_[i];
+    }
   }
 
   // Libera memória.
@@ -44,28 +46,29 @@ class hash_set {
     delete [] table_;
   }
 
-  // Testa se o cojunto está vazio em O(1).
+  // Testa se o conjunto está vazio em O(1).
   bool empty() {
     return size_ == 0;
   }
 
-  // Retorna o número de elementos no cojunto em O(1).
+  // Retorna o número de elementos no conjunto em O(1).
   int size() {
     return size_;
   }
 
-  // Retorna o menor elemento do cojunto em O(n).
+  // Retorna o menor elemento do conjunto em O(n).
   Type min() {
-    // Seleciona o menor elemento de cada linha da tabela e armazena no conjunto
-    // 'smallest_set'.
-    set<Type> smallest_set;
+    Type min_set;
+    bool first = true;
     for (int i = 0; i < num_lines_; i++) {
       if (!table_[i].empty()) {
-        smallest_set.insert(table_[i].min());
+        if (first || table_[i].min() < min_set) {
+          min_set = table_[i].min();
+          first = false;
+        }
       }
     }
-    // Retorna o menor dentre os menores elementos de cada linha.
-    return smallest_set.min();
+    return min_set;
   }
 
   // Testa se x pertece ao conjunto em O(k).
@@ -104,13 +107,15 @@ class hash_set {
   }
 
   // Faz com que o conjunto corrente contenha exatamente os mesmos elementos
-  // do cojunto c.
+  // do conjunto c.
   void operator=(hash_set<Type>& c) {
-    clear();
-    list<Type> l;
-    c.ToList(&l);
-    for (Node<Type>* iter = l.begin(); iter != l.end(); iter= iter->next) {
-      insert(iter->key);
+    delete [] table_;
+
+    size_ = c.size_;
+    num_lines_ = c.num_lines_;
+    table_ = new linear_set<Type>[num_lines_];
+    for (int i = 0; i < num_lines_; i++) {
+      table_[i] = c.table_[i];
     }
   }
 
@@ -129,7 +134,7 @@ class hash_set {
   int num_lines_;
 
   // Vetor com as linhas da tabela.
-  set<Type>* table_;
+  linear_set<Type>* table_;
 };  // end class hash_set.
 
 #endif  // UNORDERED_SET_SRC_UNORDERED_SET_H_

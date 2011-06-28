@@ -3,7 +3,7 @@
 #ifndef SET_TEST_SET_TEST_H_
 #define SET_TEST_SET_TEST_H_
 
-#include "hash_set/src/set.h"
+#include "hash_set/src/hash_set.h"
 
 #include <sstream>
 #include <string>
