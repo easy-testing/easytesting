@@ -3,18 +3,19 @@
 // Lista sobre Conjuntos.
 //
 // Questão 1.
-// Implemente o TAD set<Type> em set.h utilizando listas encadeadas.
+// Implemente o TAD linear_set<Type> em linear_set.h utilizando
+//  listas encadeadas.
 //
 // Questão 2.
-// Escreva uma função "void Imprimir(set<string>& s)" que recebe
+// Escreva uma função "void Imprimir(linear_set<string>& s)" que recebe
 // como parâmetro um conjunto s e imprime os elementos de s na tela.
-// DICA: Utilize a função set<Type>::ToList(list<Type>* l).
+// DICA: Utilize a função linear_set<Type>::ToList(list<Type>* l).
 //
 // Questão 3.
 // Escreva uma função
-// "void Intersecao(set<string>& a, set<string>& b, set<string>* inter)" que
-// recebe dois conjuntos 'a' e 'b' e atribui a 'inter' o resultado da
-// interseção de 'a' e 'b'.
+// "void Intersecao(linear_set<string>& a, linear_set<string>& b,
+// linear_set<string>* inter)" que recebe dois conjuntos 'a' e 'b'
+// e atribui a 'inter' o resultado da interseção de 'a' e 'b'.
 //
 // Questão 4.
 // Escreva um programa que gerencia os fornecedores para compra de peças
@@ -37,11 +38,11 @@
 // pedindo o número de uma nova peça até que o usuário digite zero ou até
 // que o conjunto de fornecedores candidatos seja vazio.
 //
-// DICA: crie um conjunto "set<string> candidatos" que contém inicialmente o
-// nome de todos os fornecedores e um vetor "set<string> pecas[100]" com o
-// conjunto de fornecedores para cada peça. A cada iteração em que uma peça
-// x for digitada, você deve fazer a interseção do conjunto 'candidatos' com
-// o conjunto 'pecas[x - 1]'.
+// DICA: crie um conjunto "linear_set<string> candidatos" que contém
+// inicialmente o nome de todos os fornecedores e um vetor
+// "linear_set<string> pecas[100]" com o conjunto de fornecedores para cada
+// peça. A cada iteração em que uma peça x for digitada, você deve fazer a
+// interseção do conjunto 'candidatos' com o conjunto 'pecas[x - 1]'.
 
 #include <fstream>
 #include <iostream>
@@ -50,7 +51,7 @@
 using namespace std;
 
 // Imprime os elementos da lista entre chaves.
-void Imprimir(set<string>& s) {
+void Imprimir(linear_set<string>& s) {
   list<string> l;
   s.ToList(&l);
   cout << "{";
@@ -62,7 +63,9 @@ void Imprimir(set<string>& s) {
   cout << "}" << endl;
 }
 
-void Intersecao(set<string>& a, set<string>& b, set<string>* inter) {
+void Intersecao(linear_set<string>& a,
+                linear_set<string>& b,
+                linear_set<string>* inter) {
   // Apaga todos os elementos de 'inter'.
   inter->clear();
   // Percorre todos os elementos do cojunto 'a' e insere em 'inter' todos
@@ -77,8 +80,9 @@ void Intersecao(set<string>& a, set<string>& b, set<string>* inter) {
 }
 
 int main() {
-  set<string> pecas[100];  // pecas[i] contém os fornecedores da peça i + 1.
-  set<string> candidatos;
+  // pecas[i] contém os fornecedores da peça i + 1.
+  linear_set<string> pecas[100];
+  linear_set<string> candidatos;
 
   // Inicializa o cojunto de fornecedores candidatos e o vetor de fornecedores
   // de cada peça.
@@ -102,7 +106,7 @@ int main() {
     cout << "Filtrar por peça [1, 100]: ";
     cin >> num_peca;
     if (num_peca >= 1 && num_peca <= 100) {
-      set<string> inter;
+      linear_set<string> inter;
       Intersecao(pecas[num_peca - 1], candidatos, &inter);
       candidatos = inter;
       cout << "\n\nCandidatos: ";

@@ -7,15 +7,15 @@
 
 // Implementa um conjunto usando listas.
 template<class Type>
-class set {
+class linear_set {
  public:
 
   // Cria um conjunto vazio em O(1).
-  set() {
+  linear_set() {
   }
 
   // Cria um conjunto com os mesmos elementos de c em O(n).
-  set(set<Type>& c) {
+  linear_set(linear_set<Type>& c) {
     list_.clear();
     list_.merge(c.list_);
   }
@@ -90,7 +90,7 @@ class set {
 
   // Faz com que o conjunto corrente contenha exatamente os mesmos elementos
   // do cojunto c.
-  void operator=(set<Type>& c) {
+  void operator=(linear_set<Type>& c) {
     list_.clear();
     list_.merge(c.list_);
   }
@@ -98,6 +98,6 @@ class set {
  private:
   // Lista que representa o conjunto.
   list<Type> list_;
-};  // end class set.
+};  // end class linear_set.
 
 #endif  // SET_SRC_SET_H_
