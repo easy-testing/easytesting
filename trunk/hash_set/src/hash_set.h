@@ -35,7 +35,7 @@ class hash_set {
   hash_set(hash_set& c) {
     size_ = c.size_;
     num_lines_ = c.num_lines_;
-    table_ = new linear_set<Type>[num_lines_];
+    table_ = new linear_set<Type>[c.num_lines_];
     for (int i = 0; i < num_lines_; i++) {
       table_[i] = c.table_[i];
     }
@@ -59,12 +59,12 @@ class hash_set {
   // Retorna o menor elemento do conjunto em O(n).
   Type min() {
     Type min_set;
-    bool first = true;
+    bool first_line_not_empty = true;
     for (int i = 0; i < num_lines_; i++) {
       if (!table_[i].empty()) {
-        if (first || table_[i].min() < min_set) {
+        if (first_line_not_empty || table_[i].min() < min_set) {
           min_set = table_[i].min();
-          first = false;
+          first_line_not_empty = false;
         }
       }
     }
@@ -109,8 +109,9 @@ class hash_set {
   // Faz com que o conjunto corrente contenha exatamente os mesmos elementos
   // do conjunto c.
   void operator=(hash_set<Type>& c) {
+    // Apaga a tabela corrente.
     delete [] table_;
-
+    // Cria uma nova tabela igual a de 'c'.
     size_ = c.size_;
     num_lines_ = c.num_lines_;
     table_ = new linear_set<Type>[num_lines_];
