@@ -45,7 +45,7 @@
 
 #include <fstream>
 #include <iostream>
-#include "linear_set/src/set.h"
+#include "linear_set/src/linear_set.h"
 
 using namespace std;
 
