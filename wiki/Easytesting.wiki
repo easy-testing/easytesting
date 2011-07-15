@@ -19,22 +19,25 @@ Este projeto aborda diferentes temas ligados a programação básica lecionados 
 
 ==== Programação Básica Nível 1 ====
   * TAD para Polinômios
-  * Números Complexos
-  * Complexos Polares
+  * [http://code.google.com/p/easytesting/downloads/detail?name=complexo-v0.9.zip&can=2&q= Números Complexos]
+  * [http://code.google.com/p/easytesting/downloads/detail?name=complexo_polar-v0.9.zip&can=2&q= Complexos Polares]
   * Funções
   * [http://code.google.com/p/easytesting/downloads/detail?name=recursao-v0.9.zip&can=2&q= Recursão]
   * [http://code.google.com/p/easytesting/downloads/detail?name=iteracao-v0.9.zip&can=2&q= Iteração]
   * [http://code.google.com/p/easytesting/downloads/detail?name=vetores-v0.9.zip&can=2&q= Vetores]
   * [http://code.google.com/p/easytesting/downloads/detail?name=matrizes-v0.9.zip&can=2&q= Matrizes]
-  * Registros
+  * [http://code.google.com/p/easytesting/downloads/detail?name=registros-v0.9.zip&can=2&q= Registros]
 
 ==== Programação Básica Nível 2 ====
-  * List
+  * [http://code.google.com/p/easytesting/downloads/detail?name=list-v0.9.zip&can=2&q= List]
   * Array Set
-  * Linear Set
+  * [http://code.google.com/p/easytesting/downloads/detail?name=linear_set-v0.9.zip&can=2&q= Linear Set]
+  * [http://code.google.com/p/easytesting/downloads/detail?name=hash_set-v0.8.zip&can=2&q= Hash Set]
   * Set
+  * [http://code.google.com/p/easytesting/downloads/detail?name=ordered_set-v0.9.zip&can=2&q= Ordered Set]
   * Unordered Set
-  * Queue
+  * [http://code.google.com/p/easytesting/downloads/detail?name=queue-v0.9.zip&can=2&q= Queue]
+  * [http://code.google.com/p/easytesting/downloads/detail?name=stack-v0.9.zip&can=2&q= Stack]
 == Como Utilizar ==
 
 O projeto de cada lista de exercícios é composto por um grupo de arquivos:
