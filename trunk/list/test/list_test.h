@@ -429,4 +429,37 @@ TEST_F(Teste, Testar_metodo_clear_lista_nao_vazia) {
     << "-------------------------------------------------------------------\n";
 }
 
+TEST_F(Teste, Testar_operador_de_atribuicao) {
+  list<int> l1;
+  list<int> l2;
+  CriaList1(4, &l1);
+  CriaList3(4, 5, 6, &l2);
+  l1 = l2;
+  string esperado("{4 5 6}");
+  string atual = PrintList(l1);
+  ASSERT_EQ(esperado, atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* void list<Type>::operator=(list<Type>) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "Lista esperada : " << esperado << "\n"
+    << "Lista atual    : " << atual << "\n"
+    << "-------------------------------------------------------------------\n";
+
+  int tamanho_esperado = l2.size();
+  int tamanho_atual = l1.size();
+  ASSERT_EQ(tamanho_esperado, tamanho_atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* void list<Type>::operator=(list<Type>) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "     O operador de atribuicao esta funcionando corretamente, porem\n"
+    << "   nao esta alterando o tamanho da lista\n\n"
+    << "Lista esperada   : " << esperado << "\n"
+    << "Lista atual      : " << atual << "\n\n"
+    << "Tamanho esperado : " << tamanho_esperado << "\n"
+    << "Tamanho atual    : " << tamanho_atual << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
 #endif  // LIST_TEST_LIST_TEST_H_

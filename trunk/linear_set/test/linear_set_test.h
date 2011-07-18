@@ -674,4 +674,38 @@ TEST_F(Teste, Testar_metodo_clear_em_conjunto_com_varios_elementos) {
     << " Tamanho Retornado: " << size_atual << "\n"
     << "-------------------------------------------------------------------\n";
 }
+
+TEST_F(Teste, Testar_operador_de_atribuicao) {
+  linear_set<int> c1;
+  linear_set<int> c2;
+  int v[] = {1, 4, 6, 9, 12};
+  CriaSet(c2, 5, v);
+  c1 = c2;
+  string esperado("{ 1 4 6 9 12 }");
+  string atual = PrintSet(c1);
+  ASSERT_EQ(esperado, atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* void linear_set<Type>::operator=(linear_set<Type>) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "Conjunto esperado : " << esperado << "\n"
+    << "Conjunto atual    : " << atual << "\n"
+    << "-------------------------------------------------------------------\n";
+
+  int tamanho_esperado = c2.size();
+  int tamanho_atual = c1.size();
+  ASSERT_EQ(tamanho_esperado, tamanho_atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* void linear_set<Type>::operator=(linear_set<Type>) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "     O operador de atribuicao esta funcionando corretamente, porem\n"
+    << "   nao esta alterando o tamanho do conjunto\n\n"
+    << "Conjunto esperado : " << esperado << "\n"
+    << "Conjunto atual    : " << atual << "\n\n"
+    << "Tamanho esperado  : " << tamanho_esperado << "\n"
+    << "Tamanho atual     : " << tamanho_atual << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
 #endif  // LINEAR_SET_TEST_H_
