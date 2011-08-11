@@ -10,8 +10,6 @@
 // programaou na questão anterior e após o usuário escolher uma das funções
 // (ii) lê o valor dos parâmetros e (iii) exibe o resultado da função.
 
-#include <iostream>
-
 #include "funcoes/src/funcoes.h"
 
 using namespace std;
