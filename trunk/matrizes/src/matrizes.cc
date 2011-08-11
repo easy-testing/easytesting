@@ -1,13 +1,13 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
 #include "matrizes/src/matrizes.h"
-#include <stdio.h>
+
 #include <iostream>
+#include <stdio.h>
 
-using std::cout;
-using std::endl;
+using namespace std;
 
-float MediaMatriz(int n, float mat[][100]) {
+float MediaMatriz(int n, float mat[][MAX]) {
   float soma = 0;
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++) {
@@ -17,7 +17,7 @@ float MediaMatriz(int n, float mat[][100]) {
   return soma /(n*n);
 }
 
-void Identidade(int n, float A[][100]) {
+void Identidade(int n, float A[][MAX]) {
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++) {
       A[i][j] = 0;
@@ -28,7 +28,7 @@ void Identidade(int n, float A[][100]) {
   }
 }
 
-void Transposta(int n, float A[][100], float T[][100]) {
+void Transposta(int n, float A[][MAX], float T[][MAX]) {
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++) {
       T[i][j] = A[j][i];
@@ -36,7 +36,7 @@ void Transposta(int n, float A[][100], float T[][100]) {
   }
 }
 
-bool Simetrica(int n, float A[][100]) {
+bool Simetrica(int n, float A[][MAX]) {
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++) {
       if (A[i][j] != A[j][i]) {
@@ -47,7 +47,7 @@ bool Simetrica(int n, float A[][100]) {
   return true;
 }
 
-void SomaMatriz(int n, float A[][100], float B[][100], float S[][100]) {
+void SomaMatriz(int n, float A[][MAX], float B[][MAX], float S[][MAX]) {
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++) {
       S[i][j] = A[i][j] + B[i][j];
@@ -55,7 +55,7 @@ void SomaMatriz(int n, float A[][100], float B[][100], float S[][100]) {
   }
 }
 
-void MultMatriz(int n, float A[][100], float B[][100], float P[][100]) {
+void MultMatriz(int n, float A[][MAX], float B[][MAX], float P[][MAX]) {
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++) {
       P[i][j]=0.0;
@@ -66,7 +66,7 @@ void MultMatriz(int n, float A[][100], float B[][100], float P[][100]) {
   }
 }
 
-void MostraMatriz(int n, int m, float a[][100]) {
+void MostraMatriz(int n, int m, float a[][MAX]) {
   for (int i = 0 ; i < n ; i++) {
     cout << "| ";
     for (int j = 0 ; j < m ; j++) {
