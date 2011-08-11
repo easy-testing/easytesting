@@ -1,4 +1,5 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+//
 // Lista de exercícios sobre funções em C++.
 //
 // QUESTÃO 1:
@@ -11,7 +12,7 @@
 
 #include <iostream>
 
-#include "easytesting/funcoes/src/funcoes.h"
+#include "funcoes/src/funcoes.h"
 
 using namespace std;
 

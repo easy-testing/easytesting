@@ -1,5 +1,6 @@
 // copyright 2010 Universidade Federal de Minas Gerais (UFMG)
-#include "easytesting/funcoes/test/funcoes_test.h"
+
+#include "funcoes/test/funcoes_test.h"
 
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);

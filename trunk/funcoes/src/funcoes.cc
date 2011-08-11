@@ -1,8 +1,8 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
-#include<math.h>
-#include "easytesting/funcoes/src/funcoes.h"
 
-#define PI 3.1415
+#include "funcoes/src/funcoes.h"
+
+#include <math.h>
 
 float media(float a, float b, float c) {
   return (a + b + c) / 3.0;
@@ -13,11 +13,11 @@ float media_ponderada(float a, float b, float c) {
 }
 
 float perimetro(float r) {
-  return 2 * PI * r;
+  return 2 * M_PI * r;
 }
 
 float area_circulo(float r) {
-  return PI * r * r;
+  return M_PI * r * r;
 }
 
 float area_triangulo(float b, float c) {

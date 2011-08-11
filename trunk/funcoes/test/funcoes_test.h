@@ -6,8 +6,9 @@
 #include <math.h>
 #include <sstream>
 #include <string>
-#include "easytesting/funcoes/src/funcoes.h"
-#include "easytesting/gtest/gtest.h"
+
+#include "funcoes/src/funcoes.h"
+#include "gtest/gtest.h"
 
 namespace Teste {
 
@@ -110,7 +111,7 @@ TEST(Teste, Calculo_media_ponderada_nula) {
 TEST(Teste, Calculo_perimetro_circulo) {
   float entrada = 1000;
   float resposta = perimetro(entrada);
-  float esperado = 6283;
+  float esperado = 2 * M_PI * entrada;
   ASSERT_FLOAT_EQ(resposta, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
@@ -125,7 +126,7 @@ TEST(Teste, Calculo_perimetro_circulo) {
 TEST(Teste, Calculo_area_circulo) {
   float entrada = 100;
   float resposta = area_circulo(entrada);
-  float esperado = 31415;
+  float esperado = M_PI * entrada * entrada;
   ASSERT_FLOAT_EQ(resposta, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
@@ -250,32 +251,34 @@ TEST(Teste, Calculo_volume_caixa_retangular) {
 }
 
 TEST(Teste, Calculo_area_cilindro) {
-  float entrada[2] = {100, 2};
-  float resposta = area_cilindro(entrada[0], entrada[1]);
-  float esperado = 64086.6;
+  float raio = 2;
+  float altura = 100;
+  float resposta = area_cilindro(raio, altura);
+  float esperado = (2 * M_PI * raio) * altura + 2 * (M_PI * raio * raio);
+
   ASSERT_FLOAT_EQ(resposta, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
     << "* float area_cilindro(float, float) *\n"
     << "-------------------------------------------------------------------\n"
-    << "\nValores de entrada : " << entrada[0]
-    << ", " << entrada[1] << "\n\n"
+    << "\nValores de entrada : " << raio
+    << ", " << altura << "\n\n"
     << "   Resultado esperado:  " << esperado << "\n"
     << "   Resultado retornado: " << resposta << "\n\n"
     << "-------------------------------------------------------------------\n";
 }
 
 TEST(Teste, Calculo_volume_cilindro) {
-  float entrada[2] = {100, 2};
-  float resposta = volume_cilindro(entrada[0], entrada[1]);
-  float esperado = 62830;
+  float raio = 2;
+  float altura = 100;
+  float resposta = volume_cilindro(raio, altura);
+  float esperado = (M_PI * raio * raio) * altura;
   ASSERT_FLOAT_EQ(resposta, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
     << "* float volume_cilindro(float, float) *\n"
     << "-------------------------------------------------------------------\n"
-    << "\nValores de entrada : " << entrada[0]
-    << ", " << entrada[1] << "\n\n"
+    << "\nValores de entrada : " << raio << ", " << altura << "\n\n"
     << "   Resultado esperado:  " << esperado << "\n"
     << "   Resultado retornado: " << resposta << "\n\n"
     << "-------------------------------------------------------------------\n";
