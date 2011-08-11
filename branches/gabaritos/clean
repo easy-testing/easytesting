@@ -1,0 +1,1 @@
+svn status --no-ignore | grep '^[?I]' | awk '{print $2}' | xargs rm -rf
