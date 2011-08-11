@@ -1,4 +1,4 @@
-// copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
 #include "vetores/test/vetores_test.h"
 

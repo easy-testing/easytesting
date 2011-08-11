@@ -1,7 +1,10 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
 #include "vetores/src/vetores.h"
+
 #include <iostream>
+
+using namespace std;
 
 float Media(float v[], int n) {
   float soma = 0;
@@ -49,13 +52,12 @@ float ProdutoEscalar(float u[], float v[], int n) {
 }
 
 void MostraVetor(float v[], int n) {
-  std::cout << "{";
-  for (int i = 0 ; i < n-1 ; i++) {
-    std::cout << v[i] << ", ";
+  cout << "{";
+  for (int i = 0 ; i < n; i++) {
+    cout << v[i];
+    if (i < n - 1) {
+      cout << ", ";
+    }
   }
-  if (n > 0) {
-    std::cout << v[n-1] << "}";
-  } else {
-    std::cout << " }";
-  }
+  cout << "}";
 }
