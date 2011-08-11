@@ -1,5 +1,7 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+
 #include "iteracao/src/iteracao.h"
+
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>

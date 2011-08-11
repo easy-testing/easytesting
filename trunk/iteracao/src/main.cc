@@ -1,5 +1,5 @@
-// copyright 2011 Universidade Federal de Minas Gerais (UFMG)
-
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+//
 // Lista de exercícios sobre algoritmos iterativos.
 //
 // QUESTÃO 1:
@@ -7,11 +7,11 @@
 //
 // QUESTÃO 2:
 // Escreva um programa que (i) apresenta um menu com as funções que você
-// programaou na questão anterior e após o usuário escolher uma das funções
+// programou na questão anterior e após o usuário escolher uma das funções
 // (ii) lê o valor dos parâmetros e (iii) exibe o resultado da função.
 
-#include <stdio.h>
 #include <iostream>
+
 #include "iteracao/src/iteracao.h"
 
 using namespace std;
