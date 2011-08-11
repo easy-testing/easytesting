@@ -1,4 +1,5 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+//
 // Lista de exercícios sobre algoritmos recursivos.
 //
 // QUESTÃO 1:

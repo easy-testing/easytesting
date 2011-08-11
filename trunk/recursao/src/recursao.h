@@ -18,7 +18,8 @@ int mdc3(int a, int b, int c);
 // Retorna o menor multiplo comum de a e b.
 int mmc(int a, int b);
 
-// Retorna o n-esimo termo da serie de Fibonacci.
+// Retorna o n-ésimo termo da serie de Fibonacci.
+// Por exemplo: fib(0) = 0, fib(1) = 1, fib(2) = 1, fib(3) = 2, fib(4) = 3, ...
 int fib(int n);
 
 // Retorna o resto da divisao inteira de a por b.
