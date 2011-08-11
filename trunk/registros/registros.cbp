@@ -32,6 +32,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 			<Add directory=".." />
+			<Add directory="." />
 		</Compiler>
 		<Unit filename="../gtest/gtest.cc">
 			<Option target="EasyTesting" />
@@ -39,11 +40,17 @@
 		<Unit filename="../gtest/gtest.h">
 			<Option target="EasyTesting" />
 		</Unit>
+		<Unit filename="src/circunferencia.cc" />
+		<Unit filename="src/circunferencia.h" />
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
 		</Unit>
-		<Unit filename="src/registros.cc" />
-		<Unit filename="src/registros.h" />
+		<Unit filename="src/ponto.cc" />
+		<Unit filename="src/ponto.h" />
+		<Unit filename="src/retangulo.cc" />
+		<Unit filename="src/retangulo.h" />
+		<Unit filename="src/triangulo.cc" />
+		<Unit filename="src/triangulo.h" />
 		<Unit filename="test/registros_test.cc">
 			<Option target="EasyTesting" />
 		</Unit>

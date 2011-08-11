@@ -3,16 +3,17 @@
 // Lista de exercícios sobre estruturas de dados heterogêneas - Registros.
 //
 // QUESTÃO 1:
-// Implemente em registros.cc o struct Ponto que está em registros.h.
+// Implemente em ponto.cc o struct Ponto que está em ponto.h.
 //
 // QUESTÃO 2:
-// Implemente em registros.cc o struct Triangulo que está em registros.h.
+// Implemente em triangulo.cc o struct Triangulo que está em Triangulo.h.
 //
 // QUESTÃO 3:
-// Implemente em registros.cc o struct Retangulo que está em registros.h.
+// Implemente em retangulo.cc o struct Retangulo que está em retangulo.h.
 //
 // QUESTÃO 4:
-// Implemente em registros.cc o struct Circunferencia que está em registros.h.
+// Implemente em circunferencia.cc o struct Circunferencia que está
+// em circunferencia.h.
 //
 // QUESTÃO 5:
 // Resolva o seguinte problema: imagine que você está no centro de BH e procura
@@ -21,10 +22,10 @@
 // está.
 // Escreva um programa em C++ que lê de um arquivo o nome e as coordenadas x e y
 // de todos os restaurantes da cidade. O programa deve iterativamente perguntar
-// qual é a coordenada (x, y) em que você se encontra e a distância máxima que
+// qual é a coordenada (x, y) em que você se encontra e a distância máxima d que
 // você está disposto a caminhar para chegar em algum restaurante. Para cada
 // valor de x, y e d que o usuário digitar, o seu programa deve retornar a
-// lista com o o nome e a distância entre você e todos os restaurantes que
+// lista com o nome e a distância entre você e todos os restaurantes que
 // estão a menos de d Km da sua posição atual. Assuma que BH tem no máximo
 // 4.000 bares.
 // Por favor, use os structs Ponto e Circunferencia definidos acima.
@@ -38,13 +39,10 @@
 #include <fstream>
 #include <string>
 
-#include "registros/src/registros.h"
+#include "registros/src/circunferencia.h"
+#include "registros/src/ponto.h"
 
-using std::cin;
-using std::cout;
-using std::endl;
-using std::ifstream;
-using std::string;
+using namespace std;
 
 // Gabarito da questão 5.
 int main() {
@@ -56,15 +54,15 @@ int main() {
   Ponto centro;
   cout << "Digite as coordenadas x e y de onde voce se encontra: ";
   cin >> a >> b;
-  centro.atribuir(a, b);
+  centro = {a, b};
   cout << endl << "Digite a distancia maxima a caminhar: ";
   cin >> dist_max;
   input.open("input.txt");
   while (input >> nome >> a >> b) {
-    bar[num_bares].atribuir(a, b);
-    if (bar[num_bares].distancia(centro) <= dist_max) {
+    bar[num_bares] = {a, b};
+    if (Distancia(centro, bar[num_bares]) <= dist_max) {
       cout << "Bar: " << nome << "\t\t"
-           << "Distancia: " << bar[num_bares].distancia(centro)<< endl;
+           << "Distancia: " << Distancia(centro, bar[num_bares])<< endl;
     }
     num_bares++;
   }
