@@ -51,15 +51,15 @@ int main() {
   string nome;
   int num_bares = 0;
   float a, b, dist_max;
-  Ponto centro;
   cout << "Digite as coordenadas x e y de onde voce se encontra: ";
   cin >> a >> b;
-  centro = {a, b};
+  Ponto centro = {a, b};
   cout << endl << "Digite a distancia maxima a caminhar: ";
   cin >> dist_max;
   input.open("input.txt");
   while (input >> nome >> a >> b) {
-    bar[num_bares] = {a, b};
+    bar[num_bares].x = a;
+    bar[num_bares].y = b;
     if (Distancia(centro, bar[num_bares]) <= dist_max) {
       cout << "Bar: " << nome << "\t\t"
            << "Distancia: " << Distancia(centro, bar[num_bares])<< endl;
