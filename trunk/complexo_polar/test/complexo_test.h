@@ -1,9 +1,9 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef COMPLEXO_EUCLIDIANO_TEST_COMPLEXO_TEST_H_
-#define COMPLEXO_EUCLIDIANO_TEST_COMPLEXO_TEST_H_
+#ifndef COMPLEXO_POLAR_TEST_COMPLEXO_TEST_H_
+#define COMPLEXO_POLAR_TEST_COMPLEXO_TEST_H_
 
-#include "complexo_euclidiano/src/complexo.h"
+#include "complexo_polar/src/complexo.h"
 
 #include <math.h>
 
@@ -18,22 +18,23 @@ using std::stringstream;
 // Classe base dos testes.
 class Teste : public testing::Test {
  protected:
-  void Inicializar(double r, double i, Complexo* c) {
-    c->real_ = r;
-    c->imag_ = i;
+  void Inicializar(double a, double b, Complexo* c) {
+    c->mod_ = sqrt(a * a + b * b);
+    c->arg_ = atan2(b, a);
   }
 
   double real(Complexo& x) {
-    return x.real_;
+    return x.mod_ * cos(x.arg_);
   }
 
   double imag(Complexo& x) {
-    return x.imag_;
+    return x.mod_ * sin(x.arg_);
   }
 
   bool Igual(Complexo x, Complexo y) {
-    return fabs(x.real_ - y.real_) <= 1E-6 &&
-           fabs(x.imag_ - y.imag_) <= 1E-6;
+    return fabs(x.mod_ - y.mod_) <= 1E-6 &&
+           fabs(sin(x.arg_) - sin(y.arg_)) <= 1E-6 &&
+           fabs(cos(x.arg_) - cos(y.arg_)) <= 1E-6;
   }
 
   // Retorna string no formato [x + yi]
@@ -45,6 +46,7 @@ class Teste : public testing::Test {
     } else {
       output << " - " << -imag(z) << "i";
     }
+    output << " --- " << z.mod_ << " " << z.arg_;
     return output.str();
   }
 };
@@ -283,7 +285,7 @@ TEST_F(Teste, Testa_simetrico_complexo_negativo) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_simetrico_complexo_real_nula) {
+TEST_F(Teste, Testa_simetrico_complexo_mod_nulo) {
   Complexo x(0, -1);
   Complexo esperado(0, 1);
   Complexo atual = x.simetrico().simetrico().simetrico();
@@ -296,9 +298,9 @@ TEST_F(Teste, Testa_simetrico_complexo_real_nula) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_simetrico_complexo_imaginario_nula) {
-  Complexo x(-1);
-  Complexo esperado(1);
+TEST_F(Teste, Testa_simetrico_complexo_arg_nulo) {
+  Complexo x(3);
+  Complexo esperado(-3);
   Complexo atual = x.simetrico().simetrico().simetrico();
   ASSERT_TRUE(Igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
@@ -533,4 +535,4 @@ TEST_F(Teste, Dividir_Numeros_Complexos_sinais_contrarios) {
     << " Resposta esperada:  " << ToString(esperado) << "\n"
     << "-------------------------------------------------------------------\n";
 }
-#endif  // COMPLEXO_EUCLIDIANO_TEST_COMPLEXO_TEST_H_
+#endif  // COMPLEXO_POLAR_TEST_COMPLEXO_TEST_H_

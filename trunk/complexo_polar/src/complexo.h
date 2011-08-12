@@ -1,16 +1,16 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef COMPLEXO_EUCLIDIANO_SRC_COMPLEXO_H_
-#define COMPLEXO_EUCLIDIANO_SRC_COMPLEXO_H_
+#ifndef COMPLEXO_POLAR_SRC_COMPLEXO_H_
+#define COMPLEXO_POLAR_SRC_COMPLEXO_H_
 
 // Representa um número complexo.
 struct Complexo {
  private:
- // Parte real;
-  double real_;
+  // Módulo do número compelxo.
+  double mod_;
 
-  // Parte imaginária.
-  double imag_;
+  // Argumento do número complexo em radianos.
+  double arg_;
 
  public:
   // Cria o número complexo 0 + 0i.
@@ -62,4 +62,4 @@ struct Complexo {
   friend class Teste;
 };
 
-#endif  // COMPLEXO_EUCLIDIANO_SRC_COMPLEXO_H_
+#endif  // COMPLEXO_POLAR_SRC_COMPLEXO_H_

@@ -28,49 +28,41 @@ double Complexo::imag() {
 }
 
 bool Complexo::operator==(Complexo x) {
-  return real_ == x.real_ && imag_ == x.imag_;
+  // TODO.
 }
 
 void Complexo::operator=(Complexo x) {
-  real_ = x.real_;
-  imag_ = x.imag_;
+  // TODO.
 }
 
 double Complexo::modulo() {
-  return sqrt(real_*real_ + imag_*imag_);
+  // TODO.
 }
 
 Complexo Complexo::conjugado() {
-  Complexo c(real_, -imag_);
-  return c;
+  // TODO.
 }
 
 Complexo Complexo::simetrico() {
-  Complexo c(-real_, -imag_);
-  return c;
+  // TODO.
 }
 
 Complexo Complexo::inverso() {
-  double mod2 = modulo() * modulo();
-  Complexo i(real_ / mod2, -imag_ / mod2);
-  return i;
+  // TODO.
 }
 
 Complexo Complexo::operator+(Complexo y) {
-  Complexo s(real_ + y.real_, (imag_ + y.imag_));
-  return s;
+  // TODO.
 }
 
 Complexo Complexo::operator-(Complexo y) {
-  return *this + y.simetrico();
+  // TODO.
 }
 
 Complexo Complexo::operator*(Complexo y) {
-  Complexo p(real_ * y.real_ - imag_ * y.imag_, real_*y.imag_ + imag_*y.real_);
-  return p;
+  // TODO.
 }
 
 Complexo Complexo::operator/(Complexo y) {
-  Complexo q = *this * y.inverso();
-  return q;
+  // TODO.
 }
