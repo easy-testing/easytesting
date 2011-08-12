@@ -27,7 +27,7 @@
 #include <math.h>
 #include <iostream>
 #include <sstream>
-#include "complexo/src/complexo.h"
+#include "complexo_euclidiano/src/complexo.h"
 
 using namespace std;
 
