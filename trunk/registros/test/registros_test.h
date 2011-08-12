@@ -119,17 +119,17 @@ TEST_F(Teste, PONTO_funcao_distancia_pontos_em_qualquer_lugar) {
     << "   Distancia esperada : " << esperado << "\n"
     << "  Distancia retornada : " << distancia << "\n\n"
     << "-------------------------------------------------------------------\n";
-  p1 = {0, 0};
-  p2 = {1, 1};
-  distancia = Distancia(p1, p2);
+  Ponto p3 = {0, 0};
+  Ponto p4 = {1, 1};
+  distancia = Distancia(p3, p4);
   esperado = sqrt(2);
   ASSERT_FLOAT_EQ(esperado, distancia)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
     << "* float Distancia(p1, p2) *\n"
     << "-------------------------------------------------------------------\n"
-    << " p1 " << MostrarPonto(p1) << "\n\n"
-    << " p2 " << MostrarPonto(p2) << "\n\n"
+    << " p1 " << MostrarPonto(p3) << "\n\n"
+    << " p2 " << MostrarPonto(p4) << "\n\n"
     << "   Distancia esperada : " << esperado << "\n"
     << "  Distancia retornada : " << distancia << "\n\n"
     << "-------------------------------------------------------------------\n";
@@ -217,7 +217,7 @@ TEST_F(Teste, TRIANGULO_funcao_area_triangulo_obtuso) {
 }
 
 TEST_F(Teste, TRIANGULO_funcao_equilatero_triangulo_equilatero) {
-  Triangulo t = {{1, 0}, {-1, 0}, {0, sqrt(3)}};
+  Triangulo t = {{1, 0}, {-1, 0}, {0, (float) sqrt(3)}};
   ASSERT_TRUE(Equilatero(t))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
@@ -296,29 +296,29 @@ TEST_F(Teste, RETANGULO_funcao_perimetro) {
     << "   Valor esperado : " << esperado << "\n"
     << "   Valor retornado: " << perimetro_r << "\n"
     << "-------------------------------------------------------------------\n";
-  r = {{3, 3}, {6, 1}};
-  perimetro_r = Perimetro(r);
+  Retangulo r2 = {{3, 3}, {6, 1}};
+  float perimetro_r2 = Perimetro(r2);
   esperado = 10;
-  ASSERT_FLOAT_EQ(esperado, perimetro_r)
+  ASSERT_FLOAT_EQ(esperado, perimetro_r2)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
     << "* float Perimetro(Retangulo r) *\n"
     << "-------------------------------------------------------------------\n"
-    << "r = " << MostrarRetangulo(r) << "\n\n"
+    << "r = " << MostrarRetangulo(r2) << "\n\n"
     << "   Valor esperado : " << esperado << "\n"
-    << "   Valor retornado: " << perimetro_r << "\n"
+    << "   Valor retornado: " << perimetro_r2 << "\n"
     << "-------------------------------------------------------------------\n";
-  r = {{2, 2}, {3, 1}};
-  perimetro_r = Perimetro(r);
+  Retangulo r3 = {{2, 2}, {3, 1}};
+  float perimetro_r3 = Perimetro(r3);
   esperado = 4;
-  ASSERT_FLOAT_EQ(esperado, perimetro_r)
+  ASSERT_FLOAT_EQ(esperado, perimetro_r3)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
     << "* float Perimetro(Retangulo r) *\n"
     << "-------------------------------------------------------------------\n"
-    << "r = " << MostrarRetangulo(r) << "\n\n"
+    << "r = " << MostrarRetangulo(r3) << "\n\n"
     << "   Valor esperado : " << esperado << "\n"
-    << "   Valor retornado: " << perimetro_r << "\n"
+    << "   Valor retornado: " << perimetro_r3 << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -335,27 +335,27 @@ TEST_F(Teste, RETANGULO_funcao_area) {
     << "   Valor esperado : " << esperado << "\n"
     << "   Valor retornado: " << areas << "\n"
     << "-------------------------------------------------------------------\n";
-  r = {{3, 3}, {6, 1}};
-  areas = Area(r);
+  Retangulo r2 = {{3, 3}, {6, 1}};
+  areas = Area(r2);
   esperado = 6;
   ASSERT_FLOAT_EQ(esperado, areas)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
     << "* float Area(Retangulo r) *\n"
     << "-------------------------------------------------------------------\n"
-    << "r = " << MostrarRetangulo(r) << "\n\n"
+    << "r = " << MostrarRetangulo(r2) << "\n\n"
     << "   Valor esperado : " << esperado << "\n"
     << "   Valor retornado: " << areas << "\n"
     << "-------------------------------------------------------------------\n";
-  r = {{2, 2}, {3, 1}};
-  areas = Area(r);
+  Retangulo r3 = {{2, 2}, {3, 1}};
+  areas = Area(r3);
   esperado = 1;
   ASSERT_FLOAT_EQ(esperado, areas)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
     << "* float Area(Retangulo r) *\n"
     << "-------------------------------------------------------------------\n"
-    << "r = " << MostrarRetangulo(r) << "\n\n"
+    << "r = " << MostrarRetangulo(r3) << "\n\n"
     << "   Valor esperado : " << esperado << "\n"
     << "   Valor retornado: " << areas << "\n"
     << "-------------------------------------------------------------------\n";
