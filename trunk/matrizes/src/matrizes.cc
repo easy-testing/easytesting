@@ -8,29 +8,61 @@
 using namespace std;
 
 float MediaMatriz(int n, float mat[][MAX]) {
-  return 0.0;  // TODO.
+  float ret = 0.;
+  for(int i = 0;i < n;++i)
+    for(int j = 0;j < n;++j)
+      ret += mat[i][j];
+
+  ret /= (double)n*n;
+
+  return ret/n*n;
 }
 
 void Identidade(int n, float A[][MAX]) {
-  // TODO.
+  for(int i = 0;i < n;++i){
+    for(int j = 0;j < n;++j)
+      A[i][j] = 0;
+    A[i][i] = 1;
+  }
 }
 
 void Transposta(int n, float A[][MAX], float T[][MAX]) {
-  // TODO.
+  for(int i = 0;i < n;++i)
+    for(int j = 0;j < n;++j)
+      T[j][i] = A[i][j];
 }
 
 bool Simetrica(int n, float A[][MAX]) {
-  return false;  // TODO.
+  for(int i = 0;i < n;++i)
+    for(int j = i+1;j < n;++j)
+      if(A[i][j] != A[j][i])
+        return false;
+  return true;
 }
 
 void SomaMatriz(int n, float A[][MAX], float B[][MAX], float S[][MAX]) {
-  // TODO.
+  for(int i = 0;i < n;++i)
+    for(int j = 0;j < n;++j)
+      S[i][j] = A[i][j] + B[i][j];
 }
 
 void MultMatriz(int n, float A[][MAX], float B[][MAX], float P[][MAX]) {
-  // TODO.
+  float t;
+  for(int i = 0;i < n;++i)
+    for(int j = 0;j < n;++j){
+      t = 0.;
+      for(int k = 0;k < n;++k){
+        t += A[i][k]*B[k][j];
+      }
+      P[i][j] = t;
+    }
 }
 
 void MostraMatriz(int n, int m, float a[][MAX]) {
-  // TODO.
+  for(int i = 0;i < n;++i){
+    printf("| ");
+    for(int j = 0;j < m;++j)
+      cout << a[i][j] << " ";
+    printf("|\n");
+  }
 }
