@@ -23,7 +23,7 @@
 //
 // (v) O conjugado de z = p|t é dado por p|-t.
 //
-// (vi) O simétrico de z = p|t é dado por p|t+2pi.
+// (vi) O simétrico de z = p|t é dado por p|t+pi.
 //
 // (vii) O inverso de z = p|t é dado por 1/p|-t.
 //
