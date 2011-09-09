@@ -34,4 +34,16 @@ void MultMatriz(int n, float A[][MAX], float B[][MAX], float P[][MAX]);
 // |   ...     ...     ...     ...   ...|
 void MostraMatriz(int n, int m, float a[][MAX]);
 
+// Multiplica a matriz A por uma escalar e armazena oresultado em Out
+void EscalarMatriz(int n, int m, int escalar, float A[][MAX], float Out[][MAX]);
+
+// Calcula o determinante de uma matriz 3x3
+float DeterminanteMatriz(float A[][MAX]);
+
+// Verifica se uma matriz é triangular inferior
+bool VerificaTriangularInferior(int n, float A[][MAX]);
+
+// Verifica se uma matriz é triangular superior
+bool VerificaTriangularSuperior(int n, float A[][MAX]);
+
 #endif  // MATRIZES_SRC_MATRIZES_H_
