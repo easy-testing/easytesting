@@ -6,7 +6,7 @@
 #include <sstream>
 #include <string>
 
-#include "matrizes/src/matrizes.h"
+#include "matrizes.h"
 #include "gtest/gtest.h"
 
 #define MAX 100 // Dimensao máxima de uma matriz.
@@ -59,7 +59,7 @@ class Teste : public testing::Test {
   bool Iguais(int n, int m, float A[][MAX], float B[][MAX]) {
     for (int i = 0; i < n; ++i) {
       for (int j = 0; j < m; ++j) {
-        if (A[i][j] - B[i][j] > 0.000001) {
+        if (A[i][j] - B[i][j] > 0.000001 || A[i][j] - B[i][j] < -0.000001) {
           return false;
         }
       }
@@ -355,6 +355,336 @@ TEST_F(Teste, Multiplicacao_Matrizes_resposta_nula) {
     << "\n"
     << "-------------------------------------------------------------------\n";
 }
+
+//////////////////////////////////////
+//         TESTES ADICIONAIS        //
+//////////////////////////////////////
+
+TEST_F(Teste, Multiplicacao_Escalar_Positiva) {
+  float mat[MAX][MAX] = {{2, 3, 2},
+                         {5, 1, 2},
+                         {5, 1, 8},
+                         {4, 2, 3}};
+  float mat_esperada[MAX][MAX] = {{14, 21, 14},
+                                  {35,  7, 14},
+                                  {35,  7, 56},
+                                  {28, 14, 21}};
+  float mat_resultado[MAX][MAX];
+  EscalarMatriz(4, 3, 7, mat, mat_resultado);
+  bool resposta = Iguais(4, 3, mat_resultado, mat_esperada);
+  ASSERT_TRUE(resposta)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao: \"void EscalarMatriz\n"
+    << "               (int n, int m, int escalar, float[][], float[][])\" \n"
+    << "-------------------------------------------------------------------\n"
+    << "   Escalar: 7   |      Matriz de Entrada\n\n"
+    << Imprime_1_Matriz(4, 3, 25,  mat)
+    << "\n            Resposta incorreta       Resposta correta\n\n"
+    << Imprime_2_Matrizes(4, 3, 13,  mat_resultado, mat_esperada)
+    << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Multiplicacao_Escalar_Negativa) {
+  float mat[MAX][MAX] = {{2, 3, 2},
+                         {5, 1, 2},
+                         {5, 1, 8},
+                         {4, 2, 3}};
+  float mat_esperada[MAX][MAX] = {{ -4, -6, -4},
+                                  {-10, -2, -4},
+                                  {-10, -2, -16},
+                                  { -8, -4, -6}};
+  float mat_resultado[MAX][MAX];
+  EscalarMatriz(4, 3, -2, mat, mat_resultado);
+  bool resposta = Iguais(4, 3, mat_resultado, mat_esperada);
+  ASSERT_TRUE(resposta)
+  << "-------------------------------------------------------------------\n"
+  << "Erro na funcao: \"void EscalarMatriz\n"
+  << "               (int n, int m, int escalar, float[][], float[][])\" \n"
+  << "-------------------------------------------------------------------\n"
+  << "   Escalar: -2   |      Matriz de Entrada\n\n"
+  << Imprime_1_Matriz(4, 3, 25,  mat)
+  << "\n            Resposta incorreta       Resposta correta\n\n"
+  << Imprime_2_Matrizes(4, 3, 13,  mat_resultado, mat_esperada)
+  << "\n"
+  << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Multiplicacao_Escalar_Nula) {
+  float mat[MAX][MAX] = {{2, 3, 2},
+                         {5, 1, 2},
+                         {5, 1, 8},
+                         {4, 2, 3}};
+  float mat_esperada[MAX][MAX] = {{0, 0, 0},
+                                  {0, 0, 0},
+                                  {0, 0, 0},
+                                  {0, 0, 0}};
+  float mat_resultado[MAX][MAX];
+  EscalarMatriz(4, 3, 0, mat, mat_resultado);
+  bool resposta = Iguais(4, 3, mat_resultado, mat_esperada);
+  ASSERT_TRUE(resposta)
+  << "-------------------------------------------------------------------\n"
+  << "Erro na funcao: \"void EscalarMatriz\n"
+  << "               (int n, int m, int escalar, float[][], float[][])\" \n"
+  << "-------------------------------------------------------------------\n"
+  << "   Escalar: 0   |      Matriz de Entrada\n\n"
+  << Imprime_1_Matriz(4, 3, 25,  mat)
+  << "\n            Resposta incorreta       Resposta correta\n\n"
+  << Imprime_2_Matrizes(4, 3, 13,  mat_resultado, mat_esperada)
+  << "\n"
+  << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Multiplicacao_Escalar_Com_Matriz_Nula) {
+  float mat[MAX][MAX] = {{0, 0, 0},
+                         {0, 0, 0},
+                         {0, 0, 0},
+                         {0, 0, 0}};
+  float mat_esperada[MAX][MAX] = {{0, 0, 0},
+                                  {0, 0, 0},
+                                  {0, 0, 0},
+                                  {0, 0, 0}};
+  float mat_resultado[MAX][MAX];
+  EscalarMatriz(4, 3, 125, mat, mat_resultado);
+  bool resposta = Iguais(4, 3, mat_resultado, mat_esperada);
+  ASSERT_TRUE(resposta)
+  << "-------------------------------------------------------------------\n"
+  << "Erro na funcao: \"void EscalarMatriz\n"
+  << "               (int n, int m, int escalar, float[][], float[][])\" \n"
+  << "-------------------------------------------------------------------\n"
+  << "   Escalar: 125   |    Matriz de Entrada\n\n"
+  << Imprime_1_Matriz(4, 3, 25,  mat)
+  << "\n            Resposta incorreta       Resposta correta\n\n"
+  << Imprime_2_Matrizes(4, 3, 13,  mat_resultado, mat_esperada)
+  << "\n"
+  << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Determinante_Matriz) {
+  float mat[MAX][MAX] = {{2, 0, 5},
+                         {6, 1, 8},
+                         {3, 9, 9}};
+  float res_esperado = 129;
+  float resultado = DeterminanteMatriz(mat);
+  ASSERT_FLOAT_EQ(res_esperado, resultado)
+  << "-------------------------------------------------------------------\n"
+  << "Erro na funcao: \"float DeterminanteMatriz(float[][])\" \n"
+  << "-------------------------------------------------------------------\n"
+  << "                        Matriz de Entrada\n\n"
+  << Imprime_1_Matriz(3, 3, 25,  mat)
+  << "\n"
+  << "   Determinante calculado: " << resultado   << "\n"
+  << "   Determinante esperado:  " << res_esperado << "\n"
+  << "-------------------------------------------------------------------\n";
+}
+
+
+TEST_F(Teste, Determinante_Matriz_Diagonal) {
+  float mat[MAX][MAX] = {{2, 0, 0},
+                         {0, 2, 0},
+                         {0, 0, 9}};
+  float res_esperado = 36;
+  float resultado = DeterminanteMatriz(mat);
+  ASSERT_FLOAT_EQ(res_esperado, resultado)
+  << "-------------------------------------------------------------------\n"
+  << "Erro na funcao: \"float DeterminanteMatriz(float[][])\" \n"
+  << "-------------------------------------------------------------------\n"
+  << "                        Matriz de Entrada\n\n"
+  << Imprime_1_Matriz(3, 3, 25,  mat)
+  << "\n"
+  << "   Determinante calculado: " << resultado   << "\n"
+  << "   Determinante esperado:  " << res_esperado << "\n"
+  << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Determinante_Matriz_Nula) {
+  float mat[MAX][MAX] = {{0, 0, 0},
+                         {0, 0, 0},
+                         {0, 0, 0}};
+  float res_esperado = 0;
+  float resultado = DeterminanteMatriz(mat);
+  ASSERT_FLOAT_EQ(res_esperado, resultado)
+  << "-------------------------------------------------------------------\n"
+  << "Erro na funcao: \"float DeterminanteMatriz(float[][])\" \n"
+  << "-------------------------------------------------------------------\n"
+  << "                        Matriz de Entrada\n\n"
+  << Imprime_1_Matriz(3, 3, 25,  mat)
+  << "\n"
+  << "   Determinante calculado: " << resultado   << "\n"
+  << "   Determinante esperado:  " << res_esperado << "\n"
+  << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Determinante_Matriz_resultado_zero) {
+  float mat[MAX][MAX] = {{2, 3, 2},
+                         {3, 2, 3},
+                         {2, 3, 2}};
+  float res_esperado = 0;
+  float resultado = DeterminanteMatriz(mat);
+  ASSERT_FLOAT_EQ(res_esperado, resultado)
+  << "-------------------------------------------------------------------\n"
+  << "Erro na funcao: \"float DeterminanteMatriz(float[][])\" \n"
+  << "-------------------------------------------------------------------\n"
+  << "                        Matriz de Entrada\n\n"
+  << Imprime_1_Matriz(3, 3, 25,  mat)
+  << "\n"
+  << "   Determinante calculado: " << resultado   << "\n"
+  << "   Determinante esperado:  " << res_esperado << "\n"
+  << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Triangular_Inferior_Elementos_Nao_Nulos) {
+  float mat[MAX][MAX] = {{1,  2,  3,  4},
+                         {5,  6,  7,  8},
+                         {9,  10, 11, 12},
+                         {13, 14, 15, 16}};
+  bool resultado = VerificaTriangularInferior(4, mat);
+  ASSERT_FALSE(resultado)
+  << "-------------------------------------------------------------------\n"
+  << "Erro na funcao: \"bool VerificaTriangularInferior\n"
+  << "                                              (int n, float[][])\" \n"
+  << "-------------------------------------------------------------------\n"
+  << "                        Matriz de Entrada\n\n"
+  << Imprime_1_Matriz(3, 3, 25,  mat)
+  << "\n"
+  << "A matriz de entrada nao eh uma matriz triangular inferior porem a  \n"
+  << "funcao retornou verdadeiro.\n"
+  << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Triangular_Inferior_Elementos_Superior_Nulos) {
+  float mat[MAX][MAX] = {{0,  0,  0,  0},
+                         {5,  6,  0,  0},
+                         {9,  10, 0,  0},
+                         {13, 14, 15, 16}};
+  bool resultado = VerificaTriangularInferior(4, mat);
+  ASSERT_TRUE(resultado)
+  << "-------------------------------------------------------------------\n"
+  << "Erro na funcao: \"bool VerificaTriangularInferior\n"
+  << "                                              (int n, float[][])\" \n"
+  << "-------------------------------------------------------------------\n"
+  << "                        Matriz de Entrada\n\n"
+  << Imprime_1_Matriz(3, 3, 25,  mat)
+  << "\n"
+  << "A matriz de entrada eh uma matriz triangular inferior porem a\n"
+  << "funcao retornou falso.\n"
+  << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Triangular_Inferior_Elementos_Superior_Nulos_E_Diagonal_Nao_Nula) {
+  float mat[MAX][MAX] = {{5,  0,  0,  0},
+                         {5,  6,  0,  0},
+                         {9,  10, 5, 0},
+                         {13, 14, 15, 16}};
+  bool resultado = VerificaTriangularInferior(4, mat);
+  ASSERT_TRUE(resultado)
+  << "-------------------------------------------------------------------\n"
+  << "Erro na funcao: \"bool VerificaTriangularInferior\n"
+  << "                                              (int n, float[][])\" \n"
+  << "-------------------------------------------------------------------\n"
+  << "                        Matriz de Entrada\n\n"
+  << Imprime_1_Matriz(3, 3, 25,  mat)
+  << "\n"
+  << "A matriz de entrada eh uma matriz triangular inferior porem a\n"
+  << "funcao retornou falso.\n"
+  << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Triangular_Inferior_Matriz_Nula) {
+  float mat[MAX][MAX] = {{0, 0, 0, 0},
+                         {0, 0, 0, 0},
+                         {0, 0, 0, 0},
+                         {0, 0, 0, 0}};
+  bool resultado = VerificaTriangularInferior(4, mat);
+  ASSERT_TRUE(resultado)
+  << "-------------------------------------------------------------------\n"
+  << "Erro na funcao: \"bool VerificaTriangularInferior\n"
+  << "                                              (int n, float[][])\" \n"
+  << "-------------------------------------------------------------------\n"
+  << "                        Matriz de Entrada\n\n"
+  << Imprime_1_Matriz(3, 3, 25,  mat)
+  << "\n"
+  << "A matriz de entrada eh uma matriz triangular inferior porem a\n"
+  << "funcao retornou falso.\n"
+  << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Triangular_Superior_Elementos_Nao_Nulos) {
+  float mat[MAX][MAX] = {{1,  2,  3,  4},
+                         {5,  6,  7,  8},
+                         {9,  10, 11, 12},
+                         {13, 14, 15, 16}};
+  bool resultado = VerificaTriangularSuperior(4, mat);
+  ASSERT_FALSE(resultado)
+  << "-------------------------------------------------------------------\n"
+  << "Erro na funcao: \"bool VerificaTriangularSuperior\n"
+  << "                                              (int n, float[][])\" \n"
+  << "-------------------------------------------------------------------\n"
+  << "                        Matriz de Entrada\n\n"
+  << Imprime_1_Matriz(3, 3, 25,  mat)
+  << "\n"
+  << "A matriz de entrada nao eh uma matriz triangular superior porem a  \n"
+  << "funcao retornou verdadeiro.\n"
+  << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Triangular_Superior_Elementos_Inferior_Nulos) {
+  float mat[MAX][MAX] = {{0, 2,  3,  4},
+                         {0, 6,  7,  8},
+                         {0, 0,  0, 12},
+                         {0, 0,  0, 16}};
+  bool resultado = VerificaTriangularSuperior(4, mat);
+  ASSERT_TRUE(resultado)
+  << "-------------------------------------------------------------------\n"
+  << "Erro na funcao: \"bool VerificaTriangularSuperior\n"
+  << "                                              (int n, float[][])\" \n"
+  << "-------------------------------------------------------------------\n"
+  << "                        Matriz de Entrada\n\n"
+  << Imprime_1_Matriz(3, 3, 25,  mat)
+  << "\n"
+  << "A matriz de entrada eh uma matriz triangular superior porem a\n"
+  << "funcao retornou falso.\n"
+  << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Triangular_Superior_Elementos_Inferior_Nulos_E_Diagonal_Nao_Nula) {
+  float mat[MAX][MAX] = {{5, 2,  3,  4},
+                         {0, 6,  7,  8},
+                         {0, 0,  5, 12},
+                         {0, 0,  0, 16}};
+  bool resultado = VerificaTriangularSuperior(4, mat);
+  ASSERT_TRUE(resultado)
+  << "-------------------------------------------------------------------\n"
+  << "Erro na funcao: \"bool VerificaTriangularSuperior\n"
+  << "                                              (int n, float[][])\" \n"
+  << "-------------------------------------------------------------------\n"
+  << "                        Matriz de Entrada\n\n"
+  << Imprime_1_Matriz(3, 3, 25,  mat)
+  << "\n"
+  << "A matriz de entrada eh uma matriz triangular superior porem a\n"
+  << "funcao retornou falso.\n"
+  << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Triangular_Superior_Matriz_Nula) {
+  float mat[MAX][MAX] = {{0, 0, 0, 0},
+                         {0, 0, 0, 0},
+                         {0, 0, 0, 0},
+                         {0, 0, 0, 0}};
+  bool resultado = VerificaTriangularSuperior(4, mat);
+  ASSERT_TRUE(resultado)
+  << "-------------------------------------------------------------------\n"
+  << "Erro na funcao: \"bool VerificaTriangularSuperior\n"
+  << "                                              (int n, float[][])\" \n"
+  << "-------------------------------------------------------------------\n"
+  << "                        Matriz de Entrada\n\n"
+  << Imprime_1_Matriz(3, 3, 25,  mat)
+  << "\n"
+  << "A matriz de entrada eh uma matriz triangular superior porem a\n"
+  << "funcao retornou falso.\n"
+  << "-------------------------------------------------------------------\n";
+}
+
 }  // Fim do namespace vazio.
 
 #endif  // MATRIZES_TEST_MATRIZES_TEST_H_
