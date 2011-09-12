@@ -4,46 +4,54 @@
 
 #define POLINOMIO_SRC_POLINOMIO_H_
 
-#define GRAU_MAXIMO 1000
-
 class Polinomio {
-  int n;  // Numero de elementos no vetor 'a'. O grau do polinomio eh n - 1.
-  float a[GRAU_MAXIMO + 1];  // Vetor com os coeficientes do polinomio.
-
-  public:
-  // Cria um polinômio igual a P(x)=0.
+ public:
+  // Cria um polinômio nulo (P(x)=0).
   Polinomio();
 
-  // Cria um polinômio a partir de um vetor q com m elementos.
-  Polinomio(int m, float* q);
+  // Cria um polinômio igual a P(x)=x^m.
+  Polinomio(int g);
 
   // Retorna o grau do polinômio.
   int grau();
 
-  // Retorna o coeficiente a[i].
-  float get(int i);
-
-  // Atribui o valor 'b' ao coeficiente a[i].
-  void set(int i, float b);
+  // Retorna uma referência ao coeficiente a[i].
+  // NOTA: Retornamos uma referência para um coeficiente do polinômio para
+  // podermos alterar o valor deste coeficiente fora da classe.
+  float& at(int i);
+  float& operator[](int i) {return at(i);}
 
   // Retorna o valor do polinômio corrente no ponto x.
   float Avaliar(float x);
+  float operator()(float x) {return Avaliar(x);}
 
-  // Faz com que o polinômio corrente fique igual ao polinômio q
-  // passado como parâmetro.
+  // Faz com que o polinômio corrente fique igual ao polinômio q.
   void Atribuir(Polinomio& q);
+  void operator=(Polinomio& q) {Atribuir(q);}
 
-  // Atribui ao polinômio corrente a soma dos polinômios p1 e p2
-  // de mesmo grau passados como parâmetro.
-  void Somar(Polinomio& p1, Polinomio &p2);
-
-  // Faz com que o polinômio corrente fique igual a derivada do polinômio q
-  // passado como parâmetro.
+  // Faz com que o polinômio corrente fique igual a derivada do polinômio q.
   void Derivar(Polinomio& q);
 
-  // Faz com que o polinômio corrente fique igual a integral do polinômio q
-  // passado como parâmetro.
+  // Faz com que o polinômio corrente fique igual a integral do polinômio q.
   void Integrar(Polinomio& q);
+
+  // Libera a memória alocada para o vetor 'a'.
+  ~Polinomio();
+
+ private:
+  // Número de elementos no vetor 'a'. O grau do polinômio é n - 1.
+  int n;
+
+  // Vetor com os coeficientes do polinômio.
+  float* coeficientes;
+
+  // Realoca a memória alocada para o vetor 'a'.
+  // O novo bloco de memória terá m elementos.
+  // NOTA: Esta função é definida como "private:" porque é usada apenas
+  // internamente na classe.
+  void Realocar(int m);
+
+  friend class Teste;
 };
 
 #endif  // POLINOMIO_SRC_POLINOMIO_H_
