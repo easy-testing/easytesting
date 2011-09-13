@@ -12,6 +12,9 @@ class Polinomio {
   // Cria um polinômio igual a P(x)=x^m.
   Polinomio(int g);
 
+  // Cria um polinômio idêntico a q.
+  Polinomio(Polinomio& q);
+
   // Retorna o grau do polinômio.
   int grau();
 

@@ -21,6 +21,14 @@ Polinomio::Polinomio(int g) {
   coeficientes[n - 1] = 1;
 }
 
+Polinomio::Polinomio(Polinomio& q) {
+  coeficientes = new float[q.n];
+  n = q.n;
+  for (int i = 0; i < n; i++) {
+    coeficientes[i] = q.coeficientes[i];
+  }
+}
+
 int Polinomio::grau() {
   return n - 1;
 }
@@ -67,11 +75,14 @@ Polinomio::~Polinomio() {
 }
 
 void Polinomio::Realocar(int m) {
-  float* aux = new float[m];
-  int min = n < m ? n : m;
-  for (int i = 0; i < min; i++) {
-    coeficientes[i] = aux[i];
+    if (m <= n) {
+      n = m;
+    } else {
+      float* aux = new float[m];
+      for (int i = 0; i < n; i++) {
+        aux[i] = coeficientes[i];
+      }
+      delete [] coeficientes;
+      coeficientes = aux;
+    }
   }
-  delete [] coeficientes;
-  coeficientes = aux;
-}
