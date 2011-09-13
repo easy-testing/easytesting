@@ -1,141 +1,91 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef UNORDERED_SET_SRC_UNORDERED_SET_H_
-#define UNORDERED_SET_SRC_UNORDERED_SET_H_
+#ifndef VETOR_DINAMICO_SRC_VECTOR_H_
+#define VETOR_DINAMICO_SRC_VECTOR_H_
 
-#include <algorithm>
-#include "linear_set/src/linear_set.h"
-#include "list/src/list.h"
-#include "hash_set/src/hash_function.h"
-
-using std::max;
-
-// Implementa um conjunto desordenado usando tabelas de dispersão.
-// No cáculo das complexidades assintóticas, 'n' é o número de elementos
-// no conjunto e 'k' é número esperado de colisões.
-template<class Type>
-class hash_set {
+// Implementa um vetor dinâmico de números reais.
+class vector {
  public:
-  // Cria um conjunto vazio em O(1).
-  hash_set() {
-    size_ = 0;
-    num_lines_ = 1000;
-    table_ = new linear_set<Type>[num_lines_];
-  }
+  // Cria um vetor vazio.
+  vector();
 
-  // Cria um conjunto vazio em O(1).
-  // Cria a tabela com num_lines.
-  hash_set(int num_lines) {
-    size_ = 0;
-    num_lines_ = num_lines;
-    table_ = new linear_set<Type>[num_lines_];
-  }
+  // Cria um vetor com n elementos. O valor dos n elementos é indeterminado
+  // (ou seja, pode ser qualquer número real).
+  vector(int n);
 
-  // Cria um conjunto com os mesmos elementos de c em O(n).
-  hash_set(hash_set& c) {
-    size_ = c.size_;
-    num_lines_ = c.num_lines_;
-    table_ = new linear_set<Type>[c.num_lines_];
-    for (int i = 0; i < num_lines_; i++) {
-      table_[i] = c.table_[i];
-    }
-  }
+  // Cria um vetor idêntico a v.
+  vector(vector& v);
 
-  // Libera memória.
-  ~hash_set() {
-    delete [] table_;
-  }
+  // Testa se o vetor está vazio.
+  bool empty();
 
-  // Testa se o conjunto está vazio em O(1).
-  bool empty() {
-    return size_ == 0;
-  }
+  // Retorna o número de elementos no vetor.
+  int size();
 
-  // Retorna o número de elementos no conjunto em O(1).
-  int size() {
-    return size_;
-  }
+  // Altera o tamanho do vetor para n elementos.
+  // Se n <= size_, o conteúdo do vetor é reduzido para os seus n primeiros
+  // elementos. Se n > size_, o conteúdo do vetor é expandido e "n - size_"
+  // novos elementos são inseridos no final do vetor. O valor dos novos
+  // elementos é indeterminado (ou seja, pode ser qualquer número real).
+  void resize(int n);
 
-  // Retorna o menor elemento do conjunto em O(n).
-  Type min() {
-    Type min_set;
-    bool first_line_not_empty = true;
-    for (int i = 0; i < num_lines_; i++) {
-      if (!table_[i].empty()) {
-        if (first_line_not_empty || table_[i].min() < min_set) {
-          min_set = table_[i].min();
-          first_line_not_empty = false;
-        }
-      }
-    }
-    return min_set;
-  }
+  // Retorna uma referência ao elemento de índice i no vetor.
+  float& at(int i);
+  float& operator[](int i) {return at(i);}
 
-  // Testa se x pertece ao conjunto em O(k).
-  bool find(Type x) {
-    return table_[hash(x, num_lines_)].find(x);
-  }
+  // Retorna uma referência ao primeiro elemento no vetor.
+  float& front();
 
-  // Insere x no conjunto em O(k).
-  // Retorna false se x já estava no conjunto e true caso contrário.
-  bool insert(Type x) {
-    if (table_[hash(x, num_lines_)].insert(x)) {
-      size_++;
-      return true;
-    } else {
-      return false;
-    }
-  }
+  // Retorna uma referência ao último elemento no vetor.
+  float& back();
 
-  // Remove x do conjunto em O(k).
-  // Retorna true se algum elemento foi removido ou falso caso contrário.
-  bool erase(Type x) {
-    if (table_[hash(x, num_lines_)].erase(x)) {
-      size_--;
-      return true;
-    } else {
-      return false;
-    }
-  }
+  // Faz com que o vetor corrente fique igual ao vetor v.
+  void operator=(vector& v);
 
-  // Remove todos os elementos do conjunto em O(n).
-  void clear() {
-    for (int i = 0; i < num_lines_; i++) {
-      table_[i].clear();
-    }
-    size_ = 0;
-  }
+  // Insere o elemento x no final do vetor.
+  // Esta operação aumenta o número de elementos do vetor em uma unidade.
+  // Por exemplo: se "v = {1.0, 3.0, 5.0}", após "v.push_back(-7.0)",
+  // "v = {1.0, 3.0, 5.0, -7.0}".
+  void push_back(float x);
 
-  // Faz com que o conjunto corrente contenha exatamente os mesmos elementos
-  // do conjunto c.
-  void operator=(hash_set<Type>& c) {
-    // Apaga a tabela corrente.
-    delete [] table_;
-    // Cria uma nova tabela igual a de 'c'.
-    size_ = c.size_;
-    num_lines_ = c.num_lines_;
-    table_ = new linear_set<Type>[num_lines_];
-    for (int i = 0; i < num_lines_; i++) {
-      table_[i] = c.table_[i];
-    }
-  }
+  // Remove o último elemento do vetor.
+  // Esta operação diminui o número de elementos no vetor em uma unidade.
+  // Por exemplo: se "v = {1.0, 3.0, 5.0}", após "v.pop_back()",
+  // "v = {1.0, 3.0}".
+  void pop_back();
 
-  // Insere todos os elementos do conjunto no final de 'l' em O(n).
-  void ToList(list<Type>* l) {
-    for (int i = 0; i < num_lines_; i++) {
-      table_[i].ToList(l);
-    }
-  }
+  // Insere o elemento x antes do elemento de índice 'index'.
+  // Os valores válidos para 'index' estão no intervalo [0, size_].
+  // Todos os elementos com índice igual ou maior que 'index' são deslocados
+  // para a direita.
+  // Esta operação aumenta o número de elementos no vetor em uma unidade.
+  // Por exemplo: se "v = {1.0, 3.0, 5.0}", após "v.insert(1, -7.0)",
+  // "v = {1.0, -7.0, 3.0, 5.0}".
+  bool insert(int index, float x);
+
+  // Remove o elemento de índice 'index' do vetor.
+  // Todos os elementos com índice maior que 'index' são deslocados para
+  // a esquerda.
+  // Esta operação diminui o número de elementos no vetor em uma unidade.
+  // Por exemplo: se "v = {1.0, 3.0, 5.0}", após "v.erase(1)",
+  // "v = {1.0, 5.0}".
+  void erase(int index);
+
+  // Remove todos os elementos do vetor.
+  // Ao final, o número de elementos no vetor é igual a zero.
+  // Por exemplo: se "v = {1.0, 3.0, 5.0}", após "v.clear()",
+  // "v = {}".
+  void clear();
+
+  // Libera a memória alocada para array_.
+  ~vector();
 
  private:
-  // Número de elementos no conjunto.
+  // Número de elementos no vetor.
   int size_;
 
-  // Número de linhas na tabela.
-  int num_lines_;
+  // Vetor alocado dinamicamente.
+  float* array_;
+};  // end class vector.
 
-  // Vetor com as linhas da tabela.
-  linear_set<Type>* table_;
-};  // end class hash_set.
-
-#endif  // UNORDERED_SET_SRC_UNORDERED_SET_H_
+#endif  // VETOR_DINAMICO_SRC_VECTOR_H_
