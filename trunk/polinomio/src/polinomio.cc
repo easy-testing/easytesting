@@ -46,11 +46,5 @@ Polinomio::~Polinomio() {
 }
 
 void Polinomio::Realocar(int m) {
-  float* aux = new float[m];
-  int min = n < m ? n : m;
-  for (int i = 0; i < min; i++) {
-    coeficientes[i] = aux[i];
-  }
-  delete [] coeficientes;
-  coeficientes = aux;
+  // TODO.
 }

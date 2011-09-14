@@ -48,8 +48,6 @@
 #include <iostream>
 #include "complexo_polar/src/complexo.h"
 
-using namespace std;
-
 // Le os coeficientes de uma equacao de segundo grau do teclado e
 // imprime na tela as raízes da equacao.
 int main() {
