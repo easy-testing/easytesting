@@ -23,70 +23,51 @@ FloatVector::FloatVector(FloatVector& v) {
 }
 
 bool FloatVector::empty() {
-  return size_ == 0;
+  // TODO.
 }
 
 int FloatVector::size() {
-  return size_;
+  // TODO.
 }
 
 void FloatVector::resize(int n) {
-  if (n > size_) {
-    float* aux = new float[n];
-    for (int i = 0; i < size_; i++) {
-      aux[i] = array_[i];
-    }
-    delete [] array_;
-    array_ = aux;
-  }
-  size_ = n;
+  // TODO.
 }
 
 float& FloatVector::at(int i) {
-  return array_[i];
+  // TODO.
 }
 
 float& FloatVector::front() {
-  return array_[0];
+  // TODO.
 }
 
 float& FloatVector::back() {
-  return array_[size_ - 1];
+  // TODO.
 }
 
 void FloatVector::assign(FloatVector& v) {
-  resize(v.size_);
-  for (int i = 0; i < size_; i++) {
-    array_[i] = v.array_[i];
-  }
+  // TODO.
 }
 
 void FloatVector::push_back(float x) {
-  resize(size_ + 1);
-  array_[size_ - 1] = x;
+  // TODO.
 }
 
 void FloatVector::pop_back() {
-  size_--;
+  // TODO.
 }
 
 void FloatVector::insert(int index, float x) {
-  resize(size_ + 1);
-  for (int i = size_ - 1; i > index; i--) {
-    array_[i] = array_[i - 1];
-  }
-  array_[index] = x;
+  // TODO.
 }
 
 void FloatVector::erase(int index) {
-  for (int i = index; i < size_ - 1; i++) {
-    array_[i] = array_[i + 1];
-  }
-  resize(size_ - 1);
+  // TODO.
 }
 
 void FloatVector::clear() {
-  size_ = 0;
+  // TODO.
 }
 
 FloatVector::~FloatVector() {
