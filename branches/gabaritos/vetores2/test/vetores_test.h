@@ -6,7 +6,7 @@
 #include <sstream>
 #include <string>
 #include <cmath>
-#include "vetores/src/vetores.h"
+#include "vetores2/src/vetores.h"
 #include "gtest/gtest.h"
 
 using std::string;

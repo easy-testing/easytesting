@@ -35,7 +35,7 @@ mais parecidos sao os textos )
 #include<fstream>
 #include<map>
 #include<iostream>
-#include "vetores/src/vetores.h"
+#include "vetores2/src/vetores.h"
 
 using namespace std;
 
