@@ -1,7 +1,7 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef VETOR_DINAMICO_SRC_VECTOR_H_
-#define VETOR_DINAMICO_SRC_VECTOR_H_
+#ifndef BRANCHES_GABARITOS_FLOAT_VECTOR_SRC_FLOAT_VECTOR_H_
+#define BRANCHES_GABARITOS_FLOAT_VECTOR_SRC_FLOAT_VECTOR_H_
 
 // Implementa um vetor dinâmico de números reais.
 class FloatVector {
@@ -88,4 +88,4 @@ class FloatVector {
   float* array_;
 };  // end class FloatVector.
 
-#endif  // VETOR_DINAMICO_SRC_VECTOR_H_
+#endif  // BRANCHES_GABARITOS_FLOAT_VECTOR_SRC_FLOAT_VECTOR_H_
