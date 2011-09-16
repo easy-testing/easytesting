@@ -1,6 +1,6 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#include "funcoes/src/funcoes.h"
+#include "funcoes2/src/funcoes.h"
 
 #include <math.h>
 

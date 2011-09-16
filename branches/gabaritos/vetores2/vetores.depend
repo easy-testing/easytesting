@@ -146,8 +146,8 @@
 
 1315746849 /home/gabriel/Desktop/Noronha/commit/easytesting/branches/gabaritos/vetores/src/vetores.h
 
-1314883644 source:/home/gabriel/Desktop/Noronha/commit/easytesting/branches/gabaritos/vetores2/test/vetores_test.cc
-	"vetores/test/vetores_test.h"
+1316171297 source:/home/gabriel/Desktop/Noronha/commit/easytesting/branches/gabaritos/vetores2/test/vetores_test.cc
+	"vetores2/test/vetores_test.h"
 
 1315746849 /home/gabriel/Desktop/Noronha/commit/easytesting/branches/gabaritos/vetores/test/vetores_test.h
 	<sstream>
@@ -267,4 +267,17 @@
 	<mach/vm_map.h>
 
 1315745388 /home/gabriel/Desktop/Noronha/commit/easytesting/branches/gabaritos/vetores2/src/vetores.h
+
+1316171261 /home/gabriel/Desktop/Noronha/commit/easytesting/branches/gabaritos/vetores2/test/vetores_test.h
+	<sstream>
+	<string>
+	<cmath>
+	"vetores2/src/vetores.h"
+	"gtest/gtest.h"
+
+1316171201 source:/home/gabriel/Desktop/Noronha/commit/easytesting/branches/gabaritos/vetores2/src/main.cc
+	<fstream>
+	<map>
+	<iostream>
+	"vetores2/src/vetores.h"
 

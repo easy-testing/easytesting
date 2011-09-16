@@ -201,3 +201,15 @@
 1314883644 source:/home/gabriel/Desktop/Noronha/minhasquestesET/funcoes2/test/funcoes_test.cc
 	"funcoes/test/funcoes_test.h"
 
+1315221494 source:/home/gabriel/Desktop/Noronha/commit/easytesting/branches/gabaritos/funcoes2/src/funcoes.cc
+	"funcoes/src/funcoes.h"
+	<math.h>
+
+1315746850 /home/gabriel/Desktop/Noronha/commit/easytesting/branches/gabaritos/funcoes/src/funcoes.h
+
+1315730319 source:/home/gabriel/Desktop/Noronha/commit/easytesting/branches/gabaritos/funcoes2/src/main.cc
+	<iostream>
+	<cstdio>
+	<cstdlib>
+	"funcoes/src/funcoes.h"
+

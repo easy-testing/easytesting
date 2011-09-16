@@ -7,7 +7,7 @@
 #include <sstream>
 #include <string>
 
-#include "funcoes/src/funcoes.h"
+#include "funcoes2/src/funcoes.h"
 #include "gtest/gtest.h"
 
 namespace Teste {

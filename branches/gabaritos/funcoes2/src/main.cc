@@ -25,7 +25,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-#include "funcoes/src/funcoes.h"
+#include "funcoes2/src/funcoes.h"
 
 using namespace std;
 
