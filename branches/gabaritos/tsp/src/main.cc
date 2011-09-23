@@ -25,6 +25,7 @@ int main(int argc, char** argv) {
   solver.PrintBestTour();
   cout << "------------------------------------------------------------\n";
   solver.RunBacktracking();
+  cout << "------------------------------------------------------------\n";
   solver.PrintBestTour();
   return 0;
 }

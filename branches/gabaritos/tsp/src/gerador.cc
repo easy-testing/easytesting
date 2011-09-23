@@ -35,9 +35,11 @@ float Trunca(float x) {
 
 void GerarInstanciacircular(int n, float raio, vector<Cidade>* v) {
   v->resize(n);
-  float passo = (2.0 * M_PI) / n;
+  v->at(0).x = raio;
+  v->at(0).y = raio;
+  float passo = (2.0 * M_PI) / (n - 1);
   float angulo = 0;
-  for (int i = 0; i < n; i++) {
+  for (int i = 1; i < n; i++) {
     v->at(i).x = Trunca(raio * cos(angulo) + raio);
     v->at(i).y = Trunca(raio * sin(angulo) + raio);
     angulo = angulo + passo;
@@ -62,7 +64,7 @@ int main() {
     cout << "Numero de cidades: ";
     int n;
     cin >> n;
-    float r = n * 1000 / (2.0 * M_PI);  // Perímero igual a 'n * 1000'.
+    float r = (n - 1) * 1000 / (2.0 * M_PI);  // Perímero = a '(n - 1) * 1000'.
     vector<Cidade> v;
     GerarInstanciacircular(n, r, &v);
     stringstream nome;

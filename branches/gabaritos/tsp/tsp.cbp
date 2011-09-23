@@ -30,20 +30,8 @@
 			<Add option="-fexceptions" />
 			<Add directory=".." />
 		</Compiler>
-		<Unit filename="../float_vector/src/float_vector.cc">
-			<Option target="Main" />
-		</Unit>
-		<Unit filename="../float_vector/src/float_vector.h">
-			<Option target="Main" />
-		</Unit>
 		<Unit filename="src/gerador.cc">
 			<Option target="Gerador" />
-		</Unit>
-		<Unit filename="src/imprime_permutacoes.cc">
-			<Option target="Main" />
-		</Unit>
-		<Unit filename="src/imprime_permutacoes.h">
-			<Option target="Main" />
 		</Unit>
 		<Unit filename="src/main.cc">
 			<Option target="Main" />

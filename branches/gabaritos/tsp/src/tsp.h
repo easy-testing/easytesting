@@ -39,8 +39,8 @@ class TSPSolver {
   // Troca o conteudo de duas variaveis.
   void Swap(int& x, int& y);
 
-  // Testa todas as permutacoes dos elementos contidos
-  // a partir indice 'begin' vetor 'p'
+  // Testa todas (implicitamente no caso de 'Backtracking') as permutacoes dos
+  // elementos contidos a partir indice 'begin' vetor 'p'
   void Permute(const int p[], int begin);
   void Backtracking(const int p[], int begin, float acc_cost);
 
@@ -56,10 +56,19 @@ class TSPSolver {
   // Calcula um ciclo atraves da heuristica Nearest Neighbour.
   void NearestNeighbourheuristic(int p[]);
 
+  // Numero de cidades.
   int num_cities_;
+
+  // Vetor de cidades.
   City* cities_;
+
+  // Melhor ciclo conhecido.
   int* best_permutation_;
+
+  // Custo do melhor ciclo conhecido.
   float best_cost_;
+
+  // Valor da menor distância entre duas cidades.
   float smallest_distance_;
 };
 
