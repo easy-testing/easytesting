@@ -1,3 +1,4 @@
+// Copyright 2011 Universidade Federal de Minas Gerais
 
 #include "tsp/src/tsp.h"
 
@@ -7,22 +8,18 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include <vector>
 
 using std::cin;
 using std::cout;
 using std::endl;
-using std::ofstream;
+using std::ifstream;
 using std::string;
 using std::stringstream;
-using std::vector;
-
-using namespace std;
 
 /* FUNCOES PUBLICAS.
 ********************/
 
-TSPSolver::TSPSolver(char file_name[]) {
+TSPSolver::TSPSolver(const char* file_name) {
   ifstream fin(file_name);
   fin >> num_cities_;
   // Inicializa o vetor 'cities_'.
@@ -32,13 +29,12 @@ TSPSolver::TSPSolver(char file_name[]) {
   }
   // Inicializa o vetor 'best_permutation_'.
   best_permutation_ = new int[num_cities_];
-  for (int i = 0; i < num_cities_; i++) {
-    best_permutation_[i] = i;
-  }
+  NearestNeighbourheuristic(best_permutation_);
   best_cost_ = PermutationCost(best_permutation_);
+  smallest_distance_ = SmallestDistance();
 }
 
-float TSPSolver::PermutationCost(int p[]) {
+float TSPSolver::PermutationCost(const int p[]) {
   float cost = 0.0;
   for (int i = 0; i < num_cities_ - 1; i++) {
     cost += Distance(cities_[p[i]], cities_[p[i + 1]]);
@@ -47,7 +43,7 @@ float TSPSolver::PermutationCost(int p[]) {
   return cost;
 }
 
-void TSPSolver::PrintTour(int p[]) {
+void TSPSolver::PrintTour(const int p[]) {
   cout << "{";
   for (int i = 0; i < num_cities_; i++) {
     cout << cities_[p[i]].name << ", ";
@@ -65,6 +61,15 @@ void TSPSolver::Run() {
   delete [] p;
 }
 
+void TSPSolver::RunBacktracking() {
+  int* p = new int[num_cities_];
+  for (int i = 0; i < num_cities_; i++) {
+    p[i] = i;
+  }
+  Backtracking(p, 1, 0.0);
+  delete [] p;
+}
+
 TSPSolver::~TSPSolver() {
   delete [] cities_;
   delete [] best_permutation_;
@@ -73,8 +78,21 @@ TSPSolver::~TSPSolver() {
 /* FUNCOES AUXILIARES (PRIVADAS).
 *********************************/
 
-float TSPSolver::Distance(City& c1, City& c2) {
+float TSPSolver::Distance(const City& c1, const City& c2) {
   return sqrt((c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y));
+}
+
+float TSPSolver::SmallestDistance() {
+  float smallest = Distance(cities_[0], cities_[1]);
+  for (int i = 0; i < num_cities_ - 1; i++) {
+    for (int j = i + 1; j < num_cities_; j++) {
+      if (Distance(cities_[i], cities_[j]) < smallest) {
+        smallest = Distance(cities_[i], cities_[j]);
+        cout << smallest_distance_ << endl;
+      }
+    }
+  }
+  return smallest;
 }
 
 void TSPSolver::Swap(int& x, int& y) {
@@ -83,25 +101,66 @@ void TSPSolver::Swap(int& x, int& y) {
   y = aux;
 }
 
-void TSPSolver::Assign(int n, int v[], int u[]) {
+void TSPSolver::Assign(int n, const int v[], int* u) {
   for (int i = 0; i < n; i++) {
     u[i] = v[i];
   }
 }
 
-void TSPSolver::Permute(int p[], int begin) {
-  if(begin == num_cities_ - 1)   {
-    if(PermutationCost(p) <= best_cost_) {
+void TSPSolver::Permute(const int p[], int begin) {
+  if (begin == num_cities_ - 1)   {
+    if (PermutationCost(p) <= best_cost_) {
+      Assign(num_cities_, p, best_permutation_);
+      best_cost_ = PermutationCost(p);
+      PrintBestTour();
+    }
+  } else {
+    int* aux = new int[num_cities_];
+    Assign(num_cities_ , p, aux);
+    for (int i = begin; i < num_cities_; i++) {
+      Swap(aux[begin], aux[i]);
+      Permute(aux, begin + 1);
+    }
+    delete [] aux;
+  }
+}
+
+void TSPSolver::Backtracking(const int p[], int begin, float acc_cost) {
+  // Retorna se o custo acumulado for maior do que o custo do melhor ciclo.
+  if (acc_cost + (smallest_distance_ * (num_cities_ - begin + 1)) >=
+      best_cost_) {
+    return;
+  }
+
+  if (begin == num_cities_ - 1)   {
+    if (PermutationCost(p) <= best_cost_) {
       Assign(num_cities_, p, best_permutation_);
       best_cost_ = PermutationCost(p);
     }
   } else {
     int* aux = new int[num_cities_];
     Assign(num_cities_ , p, aux);
-    for(int i = begin; i < num_cities_; i++) {
+    for (int i = begin; i < num_cities_; i++) {
       Swap(aux[begin], aux[i]);
-      Permute(aux, begin + 1);
+      Backtracking(
+          aux,
+          begin + 1,
+          acc_cost + Distance(cities_[aux[begin]], cities_[aux[begin - 1]]));
     }
     delete [] aux;
+  }
+}
+
+void TSPSolver::NearestNeighbourheuristic(int p[]) {
+  for (int i = 0; i < num_cities_; i++) {
+    p[i] = i;
+  }
+  for (int i = 1; i < num_cities_ - 1; i++) {
+    for (int j = i + 1; j < num_cities_; j++) {
+      if (Distance(cities_[p[j]], cities_[p[i - 1]]) <
+          Distance(cities_[p[i]], cities_[p[i - 1]])) {
+        Swap(p[i], p[j]);
+      }
+    }
   }
 }
