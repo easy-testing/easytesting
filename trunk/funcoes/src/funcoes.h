@@ -1,7 +1,7 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef BRANCHES_GABARITOS_FUNCOES3_SRC_FUNCOES_H_
-#define BRANCHES_GABARITOS_FUNCOES3_SRC_FUNCOES_H_
+#ifndef FUNCOES_SRC_FUNCOES_H_
+#define FUNCOES_SRC_FUNCOES_H_
 
 // Calcula a media de a, b e c.
 float media(float a, float b, float c);
@@ -38,4 +38,4 @@ float hipotenusa(float b, float c);
 // por a.x2 + b.x + c.
 float raiz_positiva(float a, float b, float c);
 
-#endif  // BRANCHES_GABARITOS_FUNCOES3_SRC_FUNCOES_H_
+#endif  //FUNCOES_SRC_FUNCOES_H_
