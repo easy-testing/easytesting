@@ -5,8 +5,8 @@
 
 #include <sstream>
 #include <string>
-#include "vetores.h"
 #include "gtest/gtest.h"
+#include "vetores/src/vetores.h"
 
 using std::string;
 using std::stringstream;
@@ -29,9 +29,9 @@ class Teste : public testing::Test {
     output << "}";
     return output.str();
   }
-  // Verifica se dois vetores sao iguas
-  bool Iguais(float v1[], float v2[], int n){
-    for(int i = 0;i < n;++i)
+  // Verifica se dois vetores sao iguas.
+  bool Iguais(float v1[], float v2[], int n) {
+    for (int i = 0;i < n;++i)
       if (v1[i] - v2[i] > 0.000001 || v1[i] - v2[i] < -0.000001)
         return false;
     return true;
@@ -48,7 +48,7 @@ TEST_F(Teste, Testa_acesso_a_uma_posicao_invalida_do_vetor_na_funcao_Media) {
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao \"float Media(float v[], int n)\".                  \n"
     << "-------------------------------------------------------------------\n"
-    << "  Sua função pode estar acessando a posição inválida v[n].         \n"
+    << "  Sua funcao pode estar acessando a posicao invalida v[n].         \n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -279,7 +279,7 @@ TEST_F(Teste, Testa_funcao_Maior_com_numeros_positivos_e_negativos) {
   float v[] = {21.21, -78.021, -65, 45.1, -78.02, 66.321, -21.21};
   float esperado = 66.321;
   float atual = Maior(v, n);
- ASSERT_EQ(esperado, atual)
+  ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"float Maior(float v[], int n)\".                 \n"
     << "-------------------------------------------------------------------\n"
@@ -517,13 +517,13 @@ TEST_F(Teste, Testa_funcao_ProdutoEscalar_vetores_perpendiculares) {
 
 TEST_F(Teste, Testa_Media_Ponderada_Peso_1) {
   int n = 4;
-  float v[] = {3, 2, 5, 7};  // Valores
-  float p[] = {1, 1, 1, 1};  // Peso
+  float v[] = {3, 2, 5, 7};  // Valores.
+  float p[] = {1, 1, 1, 1};  // Peso.
   float esperado = 4.25;
   float resultado = MediaPonderada(v, p, n);
   ASSERT_FLOAT_EQ(esperado, resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float MediaPonderada(float[],float[],int n)\".\n"
+  << "Erro na funcao: \"float MediaPonderada(float[],float[],int n)\".    \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  Peso    = " << MostrarVetor(p, n) << "\n"
@@ -534,13 +534,13 @@ TEST_F(Teste, Testa_Media_Ponderada_Peso_1) {
 
 TEST_F(Teste, Testa_Media_Ponderada_Valores_Positivos) {
   int n = 4;
-  float v[] = {3, 2, 5, 7};  // Valores
-  float p[] = {5, 1, 2, 3};  // Peso
+  float v[] = {3, 2, 5, 7};  // Valores.
+  float p[] = {5, 1, 2, 3};  // Peso.
   float esperado = 4.36363636;
   float resultado = MediaPonderada(v, p, n);
   ASSERT_FLOAT_EQ(esperado, resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float MediaPonderada(float[],float[],int n)\".\n"
+  << "Erro na funcao: \"float MediaPonderada(float[],float[],int n)\".    \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  Peso    = " << MostrarVetor(p, n) << "\n"
@@ -551,13 +551,13 @@ TEST_F(Teste, Testa_Media_Ponderada_Valores_Positivos) {
 
 TEST_F(Teste, Testa_Media_Ponderada_Valores_Negativos) {
   int n = 4;
-  float v[] = {-3, -2, -5, -7};  // Valores
-  float p[] = {5, 1, 2, 3};  // Peso
+  float v[] = {-3, -2, -5, -7};  // Valores.
+  float p[] = {5, 1, 2, 3};      // Peso.
   float esperado = -4.36363636;
   float resultado = MediaPonderada(v, p, n);
   ASSERT_FLOAT_EQ(esperado, resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float MediaPonderada(float[],float[],int n)\".\n"
+  << "Erro na funcao: \"float MediaPonderada(float[],float[],int n)\".    \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  Peso    = " << MostrarVetor(p, n) << "\n"
@@ -568,13 +568,13 @@ TEST_F(Teste, Testa_Media_Ponderada_Valores_Negativos) {
 
 TEST_F(Teste, Testa_Media_Ponderada_Valores_Variados) {
   int n = 4;
-  float v[] = {3, -2, 5, -7};  // Valores
-  float p[] = {5, 1, 2, 3};  // Peso
+  float v[] = {3, -2, 5, -7};  // Valores.
+  float p[] = {5, 1, 2, 3};    // Peso.
   float esperado = 0.18181818;
   float resultado = MediaPonderada(v, p, n);
   ASSERT_FLOAT_EQ(esperado, resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float MediaPonderada(float[],float[],int n)\".\n"
+  << "Erro na funcao: \"float MediaPonderada(float[],float[],int n)\".    \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  Peso    = " << MostrarVetor(p, n) << "\n"
@@ -585,12 +585,12 @@ TEST_F(Teste, Testa_Media_Ponderada_Valores_Variados) {
 
 TEST_F(Teste, Testa_Media_Harmonica_Numeros_Positivos) {
   int n = 4;
-  float v[] = {3, 2, 5, 7};  // Valores
+  float v[] = {3, 2, 5, 7};
   float esperado = 3.400809;
   float resultado = MediaHarmonica(v, n);
   ASSERT_FLOAT_EQ(esperado, resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float MediaHarmonica(float[],int n)\".\n"
+  << "Erro na funcao: \"float MediaHarmonica(float[],int n)\".            \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  Valor esperado:  " << esperado << "\n"
@@ -600,12 +600,12 @@ TEST_F(Teste, Testa_Media_Harmonica_Numeros_Positivos) {
 
 TEST_F(Teste, Testa_Media_Harmonica_Numeros_Negativos) {
   int n = 4;
-  float v[] = {-3, -2, -5, -7};  // Valores
+  float v[] = {-3, -2, -5, -7};
   float esperado = -3.400809;
   float resultado = MediaHarmonica(v, n);
   ASSERT_FLOAT_EQ(esperado, resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float MediaHarmonica(float[],int n)\".\n"
+  << "Erro na funcao: \"float MediaHarmonica(float[],int n)\".            \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  Valor esperado:  " << esperado << "\n"
@@ -615,12 +615,12 @@ TEST_F(Teste, Testa_Media_Harmonica_Numeros_Negativos) {
 
 TEST_F(Teste, Testa_Media_Harmonica_Um_Valor_Nulo) {
   int n = 4;
-  float v[] = {7, 0, 3, 0};  // Valores
+  float v[] = {7, 0, 3, 0};
   float esperado = 0;
   float resultado = MediaHarmonica(v, n);
   ASSERT_FLOAT_EQ(esperado, resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float MediaHarmonica(float[],int n)\".\n"
+  << "Erro na funcao: \"float MediaHarmonica(float[],int n)\".            \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  Valor esperado:  " << esperado << "\n"
@@ -634,12 +634,12 @@ TEST_F(Teste, Testa_Media_Harmonica_Um_Valor_Nulo) {
 
 TEST_F(Teste, Testa_Media_Geometrica_Numeros_Positivos) {
   int n = 4;
-  float v[] = {3, 2, 5, 7};  // Valores
+  float v[] = {3, 2, 5, 7};
   float esperado = 3.806754;
   float resultado = MediaGeometrica(v, n);
   ASSERT_FLOAT_EQ(esperado, resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float MediaGeometrica(float[],int n)\".\n"
+  << "Erro na funcao: \"float MediaGeometrica(float[],int n)\".           \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  Valor esperado:  " << esperado << "\n"
@@ -649,12 +649,12 @@ TEST_F(Teste, Testa_Media_Geometrica_Numeros_Positivos) {
 
 TEST_F(Teste, Testa_Media_Geometrica_Um_Valor_Nulo) {
   int n = 4;
-  float v[] = {3, 0, 5, 7};  // Valores
+  float v[] = {3, 0, 5, 7};
   float esperado = 0;
   float resultado = MediaGeometrica(v, n);
   ASSERT_FLOAT_EQ(esperado, resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float MediaGeometrica(float[],int n)\".\n"
+  << "Erro na funcao: \"float MediaGeometrica(float[],int n)\".           \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  Valor esperado:  " << esperado << "\n"
@@ -664,12 +664,12 @@ TEST_F(Teste, Testa_Media_Geometrica_Um_Valor_Nulo) {
 
 TEST_F(Teste, Testa_Media_Quadratica_Numeros_Positivos) {
   int n = 4;
-  float v[] = {3, 2, 5, 7};  // Valores
+  float v[] = {3, 2, 5, 7};
   float esperado = 4.663689;
   float resultado = MediaQuadratica(v, n);
   ASSERT_FLOAT_EQ(esperado, resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float MediaQuadratica(float[],int n)\".\n"
+  << "Erro na funcao: \"float MediaQuadratica(float[],int n)\".           \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  Valor esperado:  " << esperado << "\n"
@@ -679,12 +679,12 @@ TEST_F(Teste, Testa_Media_Quadratica_Numeros_Positivos) {
 
 TEST_F(Teste, Testa_Media_Quadratica_Numeros_Negativos) {
   int n = 4;
-  float v[] = {-3, -2, -5, -7};  // Valores
+  float v[] = {-3, -2, -5, -7};
   float esperado = 4.663689;
   float resultado = MediaQuadratica(v, n);
   ASSERT_FLOAT_EQ(esperado, resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float MediaQuadratica(float[],int n)\".\n"
+  << "Erro na funcao: \"float MediaQuadratica(float[],int n)\".           \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  Valor esperado:  " << esperado << "\n"
@@ -694,12 +694,12 @@ TEST_F(Teste, Testa_Media_Quadratica_Numeros_Negativos) {
 
 TEST_F(Teste, Testa_Media_Quadratica_Numeros_Positivos_E_Negativos) {
   int n = 4;
-  float v[] = {-3, 2, -5, 7};  // Valores
+  float v[] = {-3, 2, -5, 7};
   float esperado = 4.663689;
   float resultado = MediaQuadratica(v, n);
   ASSERT_FLOAT_EQ(esperado, resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float MediaQuadratica(float[],int n)\".\n"
+  << "Erro na funcao: \"float MediaQuadratica(float[],int n)\".           \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  Valor esperado:  " << esperado << "\n"
@@ -709,249 +709,249 @@ TEST_F(Teste, Testa_Media_Quadratica_Numeros_Positivos_E_Negativos) {
 
 TEST_F(Teste, Testa_Verifica_Progressao_Aritmetica_Um_Valor) {
   int n = 1;
-  float v[] = {7};  // Valores
+  float v[] = {7};
   bool resultado = VerificaPA(v, n);
   ASSERT_FALSE(resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"bool VerificaPA(float[],int n)\".\n"
+  << "Erro na funcao: \"bool VerificaPA(float[],int n)\".                 \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  A funcao retornou verdadeiro porem um vetor com um unico valor nao\n"
-  << "  eh possivel determinar uma progressao aritmetica\n"
+  << "  eh possivel determinar uma progressao aritmetica.\n"
   << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Verifica_Progressao_Aritmetica_Dois_Valores) {
   int n = 2;
-  float v[] = {7, 9};  // Valores
+  float v[] = {7, 9};
   bool resultado = VerificaPA(v, n);
   ASSERT_TRUE(resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"bool VerificaPA(float[],int n)\".\n"
+  << "Erro na funcao: \"bool VerificaPA(float[],int n)\".                 \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  A funcao retornou falso porem um vetor com dois valores sempre eh\n"
-  << "  eh possivel determinar uma progressao aritmetica\n"
+  << "  eh possivel determinar uma progressao aritmetica.\n"
   << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Verifica_Progressao_Aritmetica_Tres_Valores_Verdadeiro) {
   int n = 3;
-  float v[] = {5, 25, 45};  // Valores
+  float v[] = {5, 25, 45};
   bool resultado = VerificaPA(v, n);
   ASSERT_TRUE(resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"bool VerificaPA(float[],int n)\".\n"
+  << "Erro na funcao: \"bool VerificaPA(float[],int n)\".                 \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  A funcao retornou falso porem o vetor corresponde a uma\n"
-  << "  progressao aritmetica: a1 = 5 e r = 20\n"
+  << "  progressao aritmetica: a1 = 5 e r = 20.\n"
   << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Verifica_Progressao_Aritmetica_Tres_Valores_Falso) {
   int n = 3;
-  float v[] = {5, 25, 46};  // Valores
+  float v[] = {5, 25, 46};
   bool resultado = VerificaPA(v, n);
   ASSERT_FALSE(resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"bool VerificaPA(float[],int n)\".\n"
+  << "Erro na funcao: \"bool VerificaPA(float[],int n)\".                 \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  A funcao retornou verdadeiro porem o vetor nao corresponde a uma\n"
-  << "  progressao aritmetica\n"
+  << "  progressao aritmetica.\n"
   << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Verifica_Progressao_Aritmetica_Muitos_Valores_Verdadeiro) {
   int n = 8;
-  float v[] = {1, 2, 3, 4, 5, 6, 7, 8};  // Valores
+  float v[] = {1, 2, 3, 4, 5, 6, 7, 8};
   bool resultado = VerificaPA(v, n);
   ASSERT_TRUE(resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"bool VerificaPA(float[],int n)\".\n"
+  << "Erro na funcao: \"bool VerificaPA(float[],int n)\".                 \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  A funcao retornou verdadeiro porem o vetor corresponde a uma\n"
-  << "  progressao aritmetica: a1 = 1 e r = 1\n"
+  << "  progressao aritmetica: a1 = 1 e r = 1.\n"
   << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Verifica_Progressao_Aritmetica_Muitos_Valores_Falso) {
   int n = 8;
-  float v[] = {5, 25, 45, 65, 85, 105, 125, 125};  // Valores
+  float v[] = {5, 25, 45, 65, 85, 105, 125, 125};
   bool resultado = VerificaPA(v, n);
   ASSERT_FALSE(resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"bool VerificaPA(float[],int n)\".\n"
+  << "Erro na funcao: \"bool VerificaPA(float[],int n)\".                 \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  A funcao retornou verdadeiro porem o vetor nao corresponde a uma\n"
-  << "  progressao aritmetica\n"
+  << "  progressao aritmetica.\n"
   << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Verifica_Progressao_Aritmetica_Valores_Negativos) {
   int n = 5;
-  float v[] = {-30, -24, -18, -12, -6};  // Valores
+  float v[] = {-30, -24, -18, -12, -6};
   bool resultado = VerificaPA(v, n);
   ASSERT_TRUE(resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"bool VerificaPA(float[],int n)\".\n"
+  << "Erro na funcao: \"bool VerificaPA(float[],int n)\".                 \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  A funcao retornou falso porem o vetor corresponde a uma\n"
-  << "  progressao aritmetica: a1 = -30 e r = 6\n"
+  << "  progressao aritmetica: a1 = -30 e r = 6.\n"
   << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Verifica_Progressao_Aritmetica_Razao_Negativa) {
   int n = 5;
-  float v[] = {0, -2, -4, -6, -8};  // Valores
+  float v[] = {0, -2, -4, -6, -8};
   bool resultado = VerificaPA(v, n);
   ASSERT_TRUE(resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"bool VerificaPA(float[],int n)\".\n"
+  << "Erro na funcao: \"bool VerificaPA(float[],int n)\".                 \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  A funcao retornou falso porem o vetor corresponde a uma\n"
-  << "  progressao aritmetica: a1 = 0 e r = -2\n"
+  << "  progressao aritmetica: a1 = 0 e r = -2.\n"
   << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Verifica_Progressao_Aritmetica_Valores_Constantes) {
   int n = 8;
-  float v[] = {5, 5, 5, 5, 5, 5, 5, 5};  // Valores
+  float v[] = {5, 5, 5, 5, 5, 5, 5, 5};
   bool resultado = VerificaPA(v, n);
   ASSERT_TRUE(resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"bool VerificaPA(float[],int n)\".\n"
+  << "Erro na funcao: \"bool VerificaPA(float[],int n)\".                 \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  A funcao retornou falso porem o vetor corresponde a uma\n"
-  << "  progressao aritmetica: a1 = 5 e r = 0\n"
+  << "  progressao aritmetica: a1 = 5 e r = 0.\n"
   << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Verifica_Progressao_Aritmetica_Valores_Nulos) {
   int n = 8;
-  float v[] = {0, 0, 0, 0, 0, 0, 0, 0};  // Valores
+  float v[] = {0, 0, 0, 0, 0, 0, 0, 0};
   bool resultado = VerificaPA(v, n);
   ASSERT_TRUE(resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"bool VerificaPA(float[],int n)\".\n"
+  << "Erro na funcao: \"bool VerificaPA(float[],int n)\".                 \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  A funcao retornou falso porem o vetor corresponde a uma\n"
-  << "  progressao aritmetica: a1 = 0 e r = 0\n"
+  << "  progressao aritmetica: a1 = 0 e r = 0.\n"
   << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Verifica_Progressao_Geometrica_Um_Valor) {
   int n = 1;
-  float v[] = {7};  // Valores
+  float v[] = {7};
   bool resultado = VerificaPG(v, n);
   ASSERT_FALSE(resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".\n"
+  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".                 \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  A funcao retornou verdadeiro porem um vetor com um unico valor nao\n"
-  << "  eh possivel determinar uma progressao geometrica\n"
+  << "  eh possivel determinar uma progressao geometrica.\n"
   << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Verifica_Progressao_Geometrica_Dois_Valores) {
   int n = 2;
-  float v[] = {7, 9};  // Valores
+  float v[] = {7, 9};
   bool resultado = VerificaPG(v, n);
   ASSERT_TRUE(resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".\n"
+  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".                 \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  A funcao retornou falso porem um vetor com dois valores sempre eh\n"
-  << "  eh possivel determinar uma progressao geometrica desde que a1!=0\n"
+  << "  eh possivel determinar uma progressao geometrica desde que a1!=0.\n"
   << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Verifica_Progressao_Geometrica_Tres_Valores_Verdadeiro) {
   int n = 3;
-  float v[] = {5, 25, 125};  // Valores
+  float v[] = {5, 25, 125};
   bool resultado = VerificaPG(v, n);
   ASSERT_TRUE(resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".\n"
+  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".                 \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  A funcao retornou falso porem o vetor corresponde a uma\n"
-  << "  progressao geometrica: a1 = 5 e r = 5\n"
+  << "  progressao geometrica: a1 = 5 e r = 5.\n"
   << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Verifica_Progressao_Geometrica_Tres_Valores_Falso) {
   int n = 3;
-  float v[] = {5, 25, 126};  // Valores
+  float v[] = {5, 25, 126};
   bool resultado = VerificaPG(v, n);
   ASSERT_FALSE(resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".\n"
+  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".                 \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  A funcao retornou verdadeiro porem o vetor nao corresponde a uma\n"
-  << "  progressao aritmetica\n"
+  << "  progressao aritmetica.\n"
   << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Verifica_Progressao_Geometrica_Muitos_Valores_Verdadeiro) {
   int n = 5;
-  float v[] = {1, 3, 9, 27, 81};  // Valores
+  float v[] = {1, 3, 9, 27, 81};
   bool resultado = VerificaPG(v, n);
   ASSERT_TRUE(resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".\n"
+  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".                 \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  A funcao retornou verdadeiro porem o vetor corresponde a uma\n"
-  << "  progressao geometrica: a1 = 1 e r = 3\n"
+  << "  progressao geometrica: a1 = 1 e r = 3.\n"
   << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Verifica_Progressao_Geometrica_Muitos_Valores_Falso) {
   int n = 8;
-  float v[] = {1, 2, 4, 8, 16, 32, 64, 125};  // Valores
+  float v[] = {1, 2, 4, 8, 16, 32, 64, 125};
   bool resultado = VerificaPG(v, n);
   ASSERT_FALSE(resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".\n"
+  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".                 \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  A funcao retornou verdadeiro porem o vetor nao corresponde a uma\n"
-  << "  progressao geometrica\n"
+  << "  progressao geometrica.\n"
   << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Verifica_Progressao_Geometrica_Razao_Negativa) {
   int n = 8;
-  float v[] = {1, -2, 4, -8, 16, -32, 64, -128};  // Valores
+  float v[] = {1, -2, 4, -8, 16, -32, 64, -128};
   bool resultado = VerificaPG(v, n);
   ASSERT_TRUE(resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".\n"
+  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".                 \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  A funcao retornou falso porem o vetor corresponde a uma\n"
-  << "  progressao geometrica: a1 = 1 e r = -2\n"
+  << "  progressao geometrica: a1 = 1 e r = -2.\n"
   << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Verifica_Progressao_Geometrica_Razao_Fracao) {
   int n = 5;
-  float v[] = {1, 0.5, 0.25, 0.125, 0.0625};  // Valores
+  float v[] = {1, 0.5, 0.25, 0.125, 0.0625};
   bool resultado = VerificaPG(v, n);
   ASSERT_TRUE(resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".\n"
+  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".                 \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  A funcao retornou falso porem o vetor corresponde a uma\n"
@@ -964,25 +964,25 @@ TEST_F(Teste, Testa_Verifica_Progressao_Geometrica_Razao_Fracao) {
 
 TEST_F(Teste, Testa_Verifica_Progressao_Geometrica_Valores_Constantes) {
   int n = 8;
-  float v[] = {5, 5, 5, 5, 5, 5, 5, 5};  // Valores
+  float v[] = {5, 5, 5, 5, 5, 5, 5, 5};
   bool resultado = VerificaPG(v, n);
   ASSERT_TRUE(resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".\n"
+  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".                 \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  A funcao retornou falso porem o vetor corresponde a uma\n"
-  << "  progressao geometrica: a1 = 5 e r = 1\n"
+  << "  progressao geometrica: a1 = 5 e r = 1.\n"
   << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Verifica_Progressao_Geometrica_Valores_Nulos) {
   int n = 8;
-  float v[] = {0, 0, 0, 0, 0, 0, 0, 0};  // Valores
+  float v[] = {0, 0, 0, 0, 0, 0, 0, 0};
   bool resultado = VerificaPG(v, n);
   ASSERT_FALSE(resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".\n"
+  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".                 \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  A funcao retornou verdadeiro porem o vetor nao corresponde a uma\n"
@@ -991,20 +991,21 @@ TEST_F(Teste, Testa_Verifica_Progressao_Geometrica_Valores_Nulos) {
   << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Verifica_Progressao_Geometrica_Valores_Nulos_E_Primeiro_Nao_Nulo) {
+TEST_F(Teste, Testa_Verifica_PG_Valores_Nulos_E_Primeiro_Nao_Nulo) {
   int n = 8;
-  float v[] = {7, 0, 0, 0, 0, 0, 0, 0};  // Valores
+  float v[] = {7, 0, 0, 0, 0, 0, 0, 0};
   bool resultado = VerificaPG(v, n);
   ASSERT_TRUE(resultado)
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".\n"
+  << "Erro na funcao: \"bool VerificaPG(float[],int n)\".                 \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores = " << MostrarVetor(v, n) << "\n"
   << "  A funcao retornou falso porem o vetor corresponde a uma\n"
-  << "  progressao geometrica: a1 = 7 e r = 0\n"
-  << "  DICA: Se na funcao existe uma comparacao do tipo: if(v[i+1]/v[i] != r\n"
+  << "  progressao geometrica: a1 = 7 e r = 0.\n"
+  << "  DICA: Se na funcao existe uma comparacao do tipo:                 \n"
+  << "                                              if (v[i+1]/v[i] != r) \n"
   << "        entao ela nao se comporta bem quando v[i] = 0. Isso pode ser\n"
-  << "        resolvido trocando a expressao por: if(v[i+1] != r*v[i]\n"
+  << "        resolvido trocando a expressao por: if(v[i+1] != r*v[i].\n"
   << "-------------------------------------------------------------------\n";
 }
 
@@ -1016,7 +1017,7 @@ TEST_F(Teste, Testa_Ordena_Vetor_Valores_Positivos) {
   OrdenaVetor(resposta, n);
   ASSERT_TRUE(Iguais(esperado, resposta, n))
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"void OrdenaVetor(float[],int n)\".\n"
+  << "Erro na funcao: \"void OrdenaVetor(float[],int n)\".                \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores   = " << MostrarVetor(entrada, n) << "\n"
   << "  Resultado = " << MostrarVetor(resposta, n) << "\n"
@@ -1032,7 +1033,7 @@ TEST_F(Teste, Testa_Ordena_Vetor_Valores_Negativos) {
   OrdenaVetor(resposta, n);
   ASSERT_TRUE(Iguais(esperado, resposta, n))
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"void OrdenaVetor(float[],int n)\".\n"
+  << "Erro na funcao: \"void OrdenaVetor(float[],int n)\".                \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores   = " << MostrarVetor(entrada, n) << "\n"
   << "  Resultado = " << MostrarVetor(resposta, n) << "\n"
@@ -1048,7 +1049,7 @@ TEST_F(Teste, Testa_Ordena_Vetor_Valores_Positivos_E_Negativos) {
   OrdenaVetor(resposta, n);
   ASSERT_TRUE(Iguais(esperado, resposta, n))
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"void OrdenaVetor(float[],int n)\".\n"
+  << "Erro na funcao: \"void OrdenaVetor(float[],int n)\".                \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores   = " << MostrarVetor(entrada, n) << "\n"
   << "  Resultado = " << MostrarVetor(resposta, n) << "\n"
@@ -1064,7 +1065,7 @@ TEST_F(Teste, Testa_Ordena_Vetor_Valores_Variados) {
   OrdenaVetor(resposta, n);
   ASSERT_TRUE(Iguais(esperado, resposta, n))
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"void OrdenaVetor(float[],int n)\".\n"
+  << "Erro na funcao: \"void OrdenaVetor(float[],int n)\".                \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores   = " << MostrarVetor(entrada, n) << "\n"
   << "  Resultado = " << MostrarVetor(resposta, n) << "\n"
@@ -1080,7 +1081,7 @@ TEST_F(Teste, Testa_Inverte_Vetor_Um_Elemento) {
   InverteVetor(resposta, n);
   ASSERT_TRUE(Iguais(esperado, resposta, n))
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"void InverteVetor(float[],int n)\".\n"
+  << "Erro na funcao: \"void InverteVetor(float[],int n)\".               \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores   = " << MostrarVetor(entrada, n) << "\n"
   << "  Resultado = " << MostrarVetor(resposta, n) << "\n"
@@ -1096,7 +1097,7 @@ TEST_F(Teste, Testa_Inverte_Vetor_Dois_Elementos) {
   InverteVetor(resposta, n);
   ASSERT_TRUE(Iguais(esperado, resposta, n))
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"void InverteVetor(float[],int n)\".\n"
+  << "Erro na funcao: \"void InverteVetor(float[],int n)\".               \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores   = " << MostrarVetor(entrada, n) << "\n"
   << "  Resultado = " << MostrarVetor(resposta, n) << "\n"
@@ -1112,7 +1113,7 @@ TEST_F(Teste, Testa_Inverte_Vetor_Dez_Elementos) {
   InverteVetor(resposta, n);
   ASSERT_TRUE(Iguais(esperado, resposta, n))
   << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"void InverteVetor(float[],int n)\".\n"
+  << "Erro na funcao: \"void InverteVetor(float[],int n)\".               \n"
   << "--------------------------------------------------------------------\n"
   << "  Valores   = " << MostrarVetor(entrada, n) << "\n"
   << "  Resultado = " << MostrarVetor(resposta, n) << "\n"
