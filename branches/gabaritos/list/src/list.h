@@ -86,7 +86,7 @@ class list {
   // Se x não está na lista, retorna um ponteiro para end().
   Node<Type>* find(Type x) {
     Node<Type>* iter = begin();
-    while (iter != end() && iter.key != x) {
+    while (iter != end() && iter->key != x) {
       iter = iter->next;
     }
     return iter;
