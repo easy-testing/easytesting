@@ -56,7 +56,7 @@ void Operacao(int op) {
       cin >> b;
       cout << "Digite o valor do terceiro numero: ";
       cin >> c;
-      cout << "\nResultado: " << media(a, b, c) << endl;
+      cout << "\nResultado: " << Media(a, b, c) << endl;
       break;
     case 2:  // Media Ponderada
       cout << "Digite o valor do primeiro numero: ";
@@ -65,17 +65,17 @@ void Operacao(int op) {
       cin >> b;
       cout << "Digite o valor do terceiro numero: ";
       cin >> c;
-      cout << "\nResultado: " << media_ponderada(a, b, c) << endl;
+      cout << "\nResultado: " << MediaPonderada(a, b, c) << endl;
       break;
     case 3:  // Perimetro do Circulo
       cout << "Digite o valor do raio do circulo: ";
       cin >> k;
-      cout << "\nResultado: " << perimetro(k) << endl;
+      cout << "\nResultado: " << Perimetro(k) << endl;
       break;
     case 4:  // Area do Circulo
       cout << "Digite o valor do raio do circulo: ";
       cin >> k;
-      cout << "\nResultado: " << area_circulo(k) << endl;
+      cout << "\nResultado: " << AreaCirculo(k) << endl;
       break;
     case 5:  // Area da Caixa
       cout << "Digite o valor da altura da caixa: ";
@@ -84,7 +84,7 @@ void Operacao(int op) {
       cin >> b;
       cout << "Digite o valor do comprimento da caixa: ";
       cin >> c;
-      cout << "\nResultado: " << area_caixa(a, b, c) << endl;
+      cout << "\nResultado: " << AreaCaixa(a, b, c) << endl;
       break;
     case 6:  // Volume da Caixa
       cout << "Digite o valor da altura da caixa: ";
@@ -93,28 +93,28 @@ void Operacao(int op) {
       cin >> b;
       cout << "Digite o valor do comprimento da caixa: ";
       cin >> c;
-      cout << "\nResultado: " << volume_caixa(a, b, c) << endl;
+      cout << "\nResultado: " << VolumeCaixa(a, b, c) << endl;
       break;
     case 7:  // Area do Cilindro
       cout << "Digite o valor do raio da base do cilindro: ";
       cin >> n;
       cout << "Digite o valor da altura do cilindro: ";
       cin >> k;
-      cout << "\nResultado: " << area_cilindro(n, k) << endl;
+      cout << "\nResultado: " << AreaCilindro(n, k) << endl;
       break;
     case 8:  // Volume do Cilindro
       cout << "Digite o valor do raio da base do cilindro: ";
       cin >> n;
       cout << "Digite o valor da altura do cilindro: ";
       cin >> k;
-      cout << "\nResultado: " << volume_cilindro(n, k) << endl;
+      cout << "\nResultado: " << VolumeCilindro(n, k) << endl;
       break;
     case 9:  // Hipotenusa
       cout << "Digite o valor do primeiro cateto: ";
       cin >> b;
       cout << "Digite o valor do segundo cateto: ";
       cin >> c;
-      cout << "\nResultado: " << hipotenusa(b, c) << endl;
+      cout << "\nResultado: " << Hipotenusa(b, c) << endl;
       break;
     case 10:  // Raiz positiva
       cout << "Sendo a funcao do segundo grau definida como ax2 + bx + c\n";
@@ -124,7 +124,7 @@ void Operacao(int op) {
       cin >> b;
       cout << "Digite o coeficiente c: ";
       cin >> c;
-      cout << "\nResultado: " << raiz_positiva(a, b, c) << endl;
+      cout << "\nResultado: " << RaizPositiva(a, b, c) << endl;
       break;
   }
 }

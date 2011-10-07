@@ -29,109 +29,73 @@
 
 using namespace std;
 
-// Exibe na dela o objetivo do jogo
-void Instrucoes() {
-     cout << "------------------------------";
-     cout << "------------------------------" << endl;
-     cout << "                     TIRO AO ALVO" << endl;
-     cout << "------------------------------";
-     cout << "------------------------------" << endl;
-     cout << "O objetivo do jogo e atingir a regiao alvo";
-     cout << " com um tiro de canhao." << endl;
-     cout << "Para isso voce deve especificar o angulo";
-     cout << " do disparo e a velocidade" << endl;
-     cout << "inicial do projetil." << endl;
+void ImprimeInstrucoes() {
+  cout << "------------------------------";
+  cout << "------------------------------" << endl;
+  cout << "                     TIRO AO ALVO" << endl;
+  cout << "------------------------------";
+  cout << "------------------------------" << endl;
+  cout << "O objetivo do jogo e atingir a regiao alvo";
+  cout << " com um tiro de canhao." << endl;
+  cout << "Para isso voce deve especificar o angulo";
+  cout << " do disparo e a velocidade" << endl;
+  cout << "inicial do projetil." << endl;
 }
 
-
-// Recebe a posicao xi de disparo(metros),
-// le do teclado os parametros
-// a e v da funcao 1( orientando o usuario
-// com mensagens na tela), chama  a funcao 1
-// utilizando esses parametros
-// e retorna seu resultado
 float RecebeJogada(float xi) {
-     cout << " -- Digite os parametros do disparo ";
-     cout << "(casas decimais separadas por um ponto) -- \n";
-
-     float a;
-     float v;
-
-     cout << " Angulo do disparo em graus(anti-horario em relacao ao solo):";
-     cin >> a;
-     cout << " Velocidade do projetil em m/s:";
-     cin >> v;
-
-     return Destino_disparo(xi, a, v);
+  cout << " -- Digite os parametros do disparo ";
+  cout << "(casas decimais separadas por um ponto) -- \n";
+  cout << " Angulo do disparo em graus(anti-horario em relacao ao solo):";
+  float a;
+  cin >> a;
+  cout << " Velocidade do projetil em m/s:";
+  float v;
+  cin >> v;
+  return DestinoDisparo(xi, a, v);
 }
 
-// Avalia se o disparo atingiu o alvo, recebendo
-// a posicao final do projetil xf e o intervalo do alvo [a,b].
-// Exibe na tela uma mensagem descrevendo
-// a posicao final do projetil e indicando se o tiro atingiu ou nao o alvo.
-// Retorna true se o alvo foi atingido e false caso contrario.
 bool ResultadoJogada(float xf, float a, float b) {
-     printf("\n------>O disparo atingiu a posicao %.2f m.", xf);
-
-
-     if ( Pertence_intervalo(xf, a, b) ) {
-          cout << "Alvo atingido!!!\n";
-          return true;
-
-     } else {
-          cout << "Errou o alvo...\n";
-          return false;
-     }
+  cout << "\n------>O disparo atingiu a posicao "<< xf << "m.";
+  if ( PertenceIntervalo(xf, a, b) ) {
+    cout << "Alvo atingido!!!\n";
+    return true;
+  } else {
+    cout << "Errou o alvo...\n";
+    return false;
+  }
 }
-
-
-void DeclaraVez(int jogador) {
-     cout << "\n--------------------------------------\n";
-     cout << "         Vez do jogador " << jogador;
-     cout << "\n--------------------------------------\n";
-}
-
-void ExibeCenario(float xi, float a, float b) {
-     cout << "Posicao do canhao no eixo x: " << xi << "." << endl;
-     cout << "Regiao alvo: [" << a << "," << b << "]." << endl << endl;
-}
-
 
 int main() {
-       int njogadores  = 0;
-       float        xi = 0.;
-       float         a = 0.;
-       float         b = 0.;
+  FILE * cenario;
+  cenario = fopen("cenario.txt", "r");
+  float xi = 0;
+  float a = 0;
+  float b = 0;
+  int njogadores  = 0;
+  if (cenario != NULL) {
+    fscanf(cenario, "%d %f %f %f", &njogadores , &xi , &a , &b);
+    fclose(cenario);
+  } else {
+    cout << "Erro ao abrir cenario. Saindo do programa" << endl;
+    exit(1);
+  }
 
-
-       FILE * cenario;
-       cenario = fopen("cenario.txt", "r");
-       if (cenario != NULL) {
-           fscanf(cenario, "%d %f %f %f", &njogadores , &xi , &a , &b);
-               fclose(cenario);
-       } else {
-          cout << "Erro ao abrir cenario. Saindo do programa" << endl;
-          exit(1);
-       }
-
-
-     Instrucoes();
-     bool    fim = false;
-     int jogador = 1;
-
-     while ( !fim ) {
-          DeclaraVez(jogador);
-          ExibeCenario(xi , a , b);
-          float xf = RecebeJogada(xi);
-
-          if (ResultadoJogada(xf, a , b )) {
-               cout << endl << ">>>>>Fim de jogo.";
-               cout << "Jogador " << jogador << " e o vencedor." << endl;
-               fim = true;
-          }
-
-          jogador=(jogador%njogadores)+1;
-     }
-
+  ImprimeInstrucoes();
+  bool fim = false;
+  int jogador = 1;
+  while ( !fim ) {
+    cout << "\n--------------------------------------\n";
+    cout << "         Vez do jogador " << jogador;
+    cout << "\n--------------------------------------\n";
+    cout << "Posicao do canhao no eixo x: " << xi << "." << endl;
+    cout << "Regiao alvo: [" << a << "," << b << "]." << endl << endl;
+    float xf = RecebeJogada(xi);
+    if (ResultadoJogada(xf, a , b )) {
+      cout << endl << ">>>>>Fim de jogo.";
+      cout << "Jogador " << jogador << " e o vencedor." << endl;
+      fim = true;
+    }
+    jogador=(jogador%njogadores)+1;
+  }
   return 0;
 }

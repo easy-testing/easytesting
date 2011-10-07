@@ -55,7 +55,7 @@ void Operacao(int op) {
       cin >> b;
       cout << "Digite o valor da altura: ";
       cin >> c;
-      cout << "\nResultado: " << area_trapezio(a, b, c) << endl;
+      cout << "\nResultado: " << AreaTrapezio(a, b, c) << endl;
       break;
     case 2:  // Maior de 3 valores
       cout << "Digite o valor do primeiro numero: ";
@@ -64,7 +64,8 @@ void Operacao(int op) {
       cin >> b;
       cout << "Digite o valor do terceiro numero: ";
       cin >> c;
-      cout << "\nResultado: "  << maior(a, b, c) << endl;
+      cout << "\nResultado: "  << Maior(a, b, c) << endl;
+      break;
     case 3:  // Formam triangulo
       cout << "Digite o valor do primeiro numero: ";
       cin >> a;
@@ -73,10 +74,10 @@ void Operacao(int op) {
       cout << "Digite o valor do terceiro numero: ";
       cin >> c;
       cout << "\nResultado: ";
-      if ( formam_triangulo(a, b, c) ) {
-           cout << "Sim." << endl;
+      if ( FormamTriangulo(a, b, c) ) {
+        cout << "Sim." << endl;
       } else {
-          cout << "Nao." << endl;
+        cout << "Nao." << endl;
       }
       break;
     case 4:  // Area triangulo
@@ -86,12 +87,12 @@ void Operacao(int op) {
       cin >> b;
       cout << "Digite a medida do terceiro lado: ";
       cin >> c;
-      cout << "\nResultado: "  << area_triangulo(a, b, c) << endl;
+      cout << "\nResultado: "  << AreaTriangulo(a, b, c) << endl;
       break;
     case 5:  // graus para radianos
       cout << "Digite o angulo en graus: ";
       cin >> a;
-      cout << "\nResultado: " << graus_radianos(a) << endl;
+      cout << "\nResultado: " << GrausRadianos(a) << endl;
       break;
     case 6:  // graus,minutos,segundos para grau
       cout << "Digite o numero de graus: ";
@@ -100,12 +101,12 @@ void Operacao(int op) {
       cin >> b;
       cout << "Digite o numero de segundos: ";
       cin >> c;
-      cout << "\nResultado: "  << grauminutosegundo_grau(a, b, c) << endl;
+      cout << "\nResultado: "  << SexagenalDecimal(a, b, c) << endl;
       break;
     case 7:  // Soma de 1 a n
       cout << "Digite o valor de n: ";
       cin >> a;
-      cout << "\nResultado: " << soma_progressao(a) << endl;
+      cout << "\nResultado: " << SomaMenoresOuIguais(a) << endl;
       break;
     case 8:  // x de y maximo
       cout << "Digite o valor de a: ";
@@ -114,7 +115,7 @@ void Operacao(int op) {
       cin >> b;
       cout << "Digite o valor de c: ";
       cin >> c;
-      cout << "\nResultado: "  << xy_maximo(a, b, c) << endl;
+      cout << "\nResultado: "  << XParaYMaximo(a, b, c) << endl;
       break;
     case 9:  // y maximo
       cout << "Digite o valor de a: ";
@@ -123,7 +124,7 @@ void Operacao(int op) {
       cin >> b;
       cout << "Digite o valor de c: ";
       cin >> c;
-      cout << "\nResultado: "  << y_maximo(a, b, c) << endl;
+      cout << "\nResultado: "  << YMaximo(a, b, c) << endl;
       break;
     case 10:  // Distancia pontos
       cout << "Digite a coordenada x do primeiro ponto: ";
@@ -134,7 +135,7 @@ void Operacao(int op) {
       cin >> c;
       cout << "Digite a coordenada y do segundo ponto: ";
       cin >> d;
-      cout << "\nResultado: " << distancia_pontos(a, b, c, d) << endl;
+      cout << "\nResultado: " << DistanciaPontos(a, b, c, d) << endl;
       break;
   }
 }
@@ -144,5 +145,3 @@ int main() {
   Operacao(op);
   return 0;
 }
-
-
