@@ -378,6 +378,107 @@ TEST(Teste, Calculo_raiz_positiva_com_alguns_coeficientes_nulos) {
     << "-------------------------------------------------------------------\n";
 }
 
+TEST(Teste, Calculo_area_triangulo_lados) {
+  float entrada[3] = { 5.0, 7.0, 8.0};
+  float resposta = AreaTrianguloLados(entrada[0], entrada[1], entrada[2]);
+  float esperado = sqrt(10 * 5.0 * 3.0 * 2.0);
+  ASSERT_FLOAT_EQ(resposta, esperado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* float AreaTriangulo(float, float, float) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValores de entrada : " << entrada[0] << ", " << entrada[1]
+    << ", " << entrada[2] << "\n\n"
+    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado retornado: " << resposta << "\n\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST(Teste, GrausRadianos) {
+  float entrada = 10.0;
+  float resposta = GrausRadianos(entrada);
+  float esperado = 10 * M_PI / 180.;
+  ASSERT_FLOAT_EQ(resposta, esperado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* float GrausRadiano(float, float, float) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValor de entrada : " << entrada << "\n\n"
+    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado retornado: " << resposta << "\n\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST(Teste, Converte_SexagenalDecimal) {
+  float entrada[3] = {10.5, 25.5, 40.7};
+  float resposta = SexagenalDecimal(entrada[0], entrada[1], entrada[2]);
+  float esperado = entrada[0] + entrada[1] / 60.0 + entrada[2] / 3600.0;
+  ASSERT_FLOAT_EQ(resposta, esperado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* float SexagenalDecimal(float, float, float) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValores de entrada : " << entrada[0] << ", " << entrada[1]
+    << ", " << entrada[2] << "\n\n"
+    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado retornado: " << resposta << "\n\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST(Teste, Calculo_XParaYMaximo) {
+  float entrada[3] = {-10.5, 20.1, 33.4};
+  float resposta = XParaYMaximo(entrada[0], entrada[1], entrada[2]);
+  float esperado = -entrada[1] / (2 * entrada[0]);
+  ASSERT_FLOAT_EQ(resposta, esperado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* float XParaYMaximo(float, float, float) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValores de entrada : " << entrada[0] << ", " << entrada[1]
+    << ", " << entrada[2] << "\n\n"
+    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado retornado: " << resposta << "\n\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST(Teste, Calculo_YMaximo) {
+  float entrada[3] = {-10.5, 20.1, 33.4};
+  float resposta = YMaximo(entrada[0], entrada[1], entrada[2]);
+  float auxiliar = 4 * entrada[0] * entrada[2] - entrada[1] * entrada[1];
+  float esperado = auxiliar / (4*entrada[0]);
+  ASSERT_FLOAT_EQ(resposta, esperado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* float YMaximo(float, float, float) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValores de entrada : " << entrada[0] << ", " << entrada[1]
+    << ", " << entrada[2] << "\n\n"
+    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado retornado: " << resposta << "\n\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST(Teste, Calculo_distancia_pontos) {
+  float entrada[4] = { 1.2, 3.4, -5.6, -7.8};
+  float resposta = DistanciaPontos(entrada[0],
+                                   entrada[1],
+                                   entrada[2],
+                                   entrada[3]);
+  float dx = entrada[2] - entrada[0];
+  float dy = entrada[3] - entrada[1];
+  float esperado = sqrt(dx * dx + dy * dy);
+  ASSERT_FLOAT_EQ(resposta, esperado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* float DistanciaPontos(float, float, float, float) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValores de entrada : " << entrada[0] << ", " << entrada[1]
+    << ", " << entrada[2] << ", " << entrada[3] << "\n\n"
+    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado retornado: " << resposta << "\n\n"
+    << "-------------------------------------------------------------------\n";
+}
+
 }  // end namespace
 
 #endif  // FUNCOES_TEST_FUNCOES_TEST_H_

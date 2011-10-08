@@ -6,132 +6,60 @@
 // Implemente em funcoes.cc as funções descritas em funcoes.h.
 //
 // QUESTÃO 2:
-// Escreva um programa que (i) apresenta um menu com as funções que você
-// programaou na questão anterior e após o usuário escolher uma das funções
-// (ii) lê o valor dos parâmetros e (iii) exibe o resultado da função.
+// Escreva um programa que (i) Recebe do teclado a posição
+// de um canhao no eixo X em metros. (ii) Recebe do teclado
+// um angulo de disparo(sentido anti-horario a partir do solo)
+// em graus, minutos e segundos. (iii) Recebe do teclado a
+// velocidade inicial da bala em metros por segundo.
+// (iv) Imprime na tela a posicao final do projetil no eixo
+// X (v) Imprima na tela as coordenadas X e Y da bala no
+// momento em que atingiu a altura maxima (vi) Imprima na
+// tela a distancia entre o canhao e a bala no momento em que
+// ela atinge a altura maxima. Considere a g = 10 m/s2
 
 #include <iostream>
-
+#include <cmath>
 #include "funcoes/src/funcoes.h"
 
 using namespace std;
 
-// Retorna um numero inteiro indicando a opcao escolhida pelo usuario
-int Menu() {
-  int op;
-  cout << "*****************************************************************";
-  cout << "\n                        MENU PRINCIPAL\n";
-  cout << "*****************************************************************";
-  cout << "\n Opcoes:\n\n";
-  cout << "1.  Media\n";
-  cout << "2.  Media Ponderada\n";
-  cout << "3.  Perimetro do Circulo\n";
-  cout << "4.  Area do Circulo\n";
-  cout << "5.  Area da Caixa\n";
-  cout << "6.  Volume da Caixa\n";
-  cout << "7.  Area do Cilindro\n";
-  cout << "8.  Volume do Cilindro\n";
-  cout << "9.  Hipotenusa\n";
-  cout << "10. Raiz Positiva de uma Funcao do Segundo Grau\n\n";
-  cout << "Escolha a operacao que deseja fazer: ";
-  cin >> op;
-  while (op < 1 || op > 10) {
-    cout << "Opcao invalida. Escolha uma das opcoes acima: ";
-    cin >> op;
-  }
-  return op;
+// Calcula a posicao final do disparo.
+float DestinoDisparo(float xi, float a, float v) {
+  return xi + v * v * sin(2 * a) / 10.0;
 }
 
-// Recebe como parametro a opcao escolhida pelo usuario e
-// apos entrada de valores, imprime o resultado desejado
-void Operacao(int op) {
-  int n;
-  int k;
-  int a, b, c;
-  switch (op) {
-    case 1:  // Media
-      cout << "Digite o valor do primeiro numero: ";
-      cin >> a;
-      cout << "Digite o valor do segundo numero: ";
-      cin >> b;
-      cout << "Digite o valor do terceiro numero: ";
-      cin >> c;
-      cout << "\nResultado: " << Media(a, b, c) << endl;
-      break;
-    case 2:  // Media Ponderada
-      cout << "Digite o valor do primeiro numero: ";
-      cin >> a;
-      cout << "Digite o valor do segundo numero: ";
-      cin >> b;
-      cout << "Digite o valor do terceiro numero: ";
-      cin >> c;
-      cout << "\nResultado: " << MediaPonderada(a, b, c) << endl;
-      break;
-    case 3:  // Perimetro do Circulo
-      cout << "Digite o valor do raio do circulo: ";
-      cin >> k;
-      cout << "\nResultado: " << Perimetro(k) << endl;
-      break;
-    case 4:  // Area do Circulo
-      cout << "Digite o valor do raio do circulo: ";
-      cin >> k;
-      cout << "\nResultado: " << AreaCirculo(k) << endl;
-      break;
-    case 5:  // Area da Caixa
-      cout << "Digite o valor da altura da caixa: ";
-      cin >> a;
-      cout << "Digite o valor da largura da caixa: ";
-      cin >> b;
-      cout << "Digite o valor do comprimento da caixa: ";
-      cin >> c;
-      cout << "\nResultado: " << AreaCaixa(a, b, c) << endl;
-      break;
-    case 6:  // Volume da Caixa
-      cout << "Digite o valor da altura da caixa: ";
-      cin >> a;
-      cout << "Digite o valor da largura da caixa: ";
-      cin >> b;
-      cout << "Digite o valor do comprimento da caixa: ";
-      cin >> c;
-      cout << "\nResultado: " << VolumeCaixa(a, b, c) << endl;
-      break;
-    case 7:  // Area do Cilindro
-      cout << "Digite o valor do raio da base do cilindro: ";
-      cin >> n;
-      cout << "Digite o valor da altura do cilindro: ";
-      cin >> k;
-      cout << "\nResultado: " << AreaCilindro(n, k) << endl;
-      break;
-    case 8:  // Volume do Cilindro
-      cout << "Digite o valor do raio da base do cilindro: ";
-      cin >> n;
-      cout << "Digite o valor da altura do cilindro: ";
-      cin >> k;
-      cout << "\nResultado: " << VolumeCilindro(n, k) << endl;
-      break;
-    case 9:  // Hipotenusa
-      cout << "Digite o valor do primeiro cateto: ";
-      cin >> b;
-      cout << "Digite o valor do segundo cateto: ";
-      cin >> c;
-      cout << "\nResultado: " << Hipotenusa(b, c) << endl;
-      break;
-    case 10:  // Raiz positiva
-      cout << "Sendo a funcao do segundo grau definida como ax2 + bx + c\n";
-      cout << "Digite o coeficiente a: ";
-      cin >> a;
-      cout << "Digite o coeficiente b: ";
-      cin >> b;
-      cout << "Digite o coeficiente c: ";
-      cin >> c;
-      cout << "\nResultado: " << RaizPositiva(a, b, c) << endl;
-      break;
-  }
+// Calcula a posicao final do disparo.
+float AlturaMaxima(float a, float v) {
+  return v * v * sin(a) * sin(a) / (2.0 * 10.0);
 }
+
+
 
 int main() {
-  int op = Menu();
-  Operacao(op);
+  cout << "Digite a posicao do canhao no eixo X (metros): ";
+  float xi;
+  cin >> xi;
+  cout << "Digite o numero de graus do angulo de disparo: ";
+  float g;
+  cin >> g;
+  cout << "Digite o numero de minutos do angulo de disparo: ";
+  float m;
+  cin >> m;
+  cout << "Digite o numero de segundos do angulo de disparo: ";
+  float s;
+  cin >> s;
+  cout << "Digite a velocidade inicial da bala(m/s): ";
+  float v;
+  cin >> v;
+  float ang_graus = SexagenalDecimal(g, m, s);
+  float ang_radianos = GrausRadianos(ang_graus);
+  float xf = DestinoDisparo(xi, ang_radianos, v);
+  cout << "Posicao final da bala: X = " << xf << " metros.\n";
+  float hmax = AlturaMaxima(ang_radianos, v);
+  float x_hmax = (xi + xf) / 2.0;
+  cout << "Posicao de altura maxima: (" << x_hmax << ", " << hmax << ")\n";
+  float d = DistanciaPontos(xi, 0, x_hmax, hmax);
+  cout << "Distancia canhao-bala na posicao de altura maxima:" << d << " m.\n";
   return 0;
 }
 

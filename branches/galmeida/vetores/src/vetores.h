@@ -18,6 +18,12 @@ float Menor(float v[], int n);
 // Calcula o produto escalar dos vetores v e u.
 float ProdutoEscalar(float u[], float v[], int n);
 
+// Calcula o modulo do vetor v.
+float Modulo(float v[], int n);
+
+// Calcula o cosseno do angulo entre dois vetores.
+float CossenoVetores(float v[], float u[], int n);
+
 // Mostra os coeficientes de um vetor na tela
 // no formato {v[0], v[1], ..., v[n-1]}.
 void MostraVetor(float v[], int n);

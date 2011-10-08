@@ -1,7 +1,7 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
 #include "vetores/src/vetores.h"
-
+#include <cmath>
 #include <iostream>
 
 using namespace std;
@@ -43,12 +43,24 @@ float Menor(float v[], int n) {
   return menor;
 }
 
+float Modulo(float v[], int n) {
+  int q = 0;
+  for (int i = 0; i < n; i++) {
+    q += v[i] * v[i];
+  }
+  return sqrt(q);
+}
+
 float ProdutoEscalar(float u[], float v[], int n) {
   float pe = 0;
   for (int i = 0 ; i < n ; i++) {
     pe += u[i] * v[i];
   }
   return pe;
+}
+
+float CossenoVetores(float v[], float u[], int n) {
+  return ProdutoEscalar(v, u, n) / (Modulo(v, n) * Modulo(u, n));
 }
 
 void MostraVetor(float v[], int n) {

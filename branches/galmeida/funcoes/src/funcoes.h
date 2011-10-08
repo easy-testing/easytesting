@@ -15,9 +15,6 @@ float Perimetro(float r);
 // Calcula a area de um circulo de raio r.
 float AreaCirculo(float r);
 
-// Calcula a area de um triangulo de base b e altura c.
-float AreaTriangulo(float b, float c);
-
 // Calcula a area de uma caixa de dimensoes a, b e c.
 float AreaCaixa(float a, float b, float c);
 
@@ -29,6 +26,30 @@ float AreaCilindro(float r, float h);
 
 // Calcula o volume de um cilindro de raio r e altura h.
 float VolumeCilindro(float r, float h);
+
+// Calcula a area de um triangulo de base b e altura c.
+float AreaTriangulo(float b, float c);
+
+// Calcula a area do triangulo de lados a, b e c
+float AreaTrianguloLados(float a, float b, float c);
+
+// Calcula o valor de g(graus) em radianos
+float GrausRadianos(float g);
+
+// Calcula o valor do angulo expresso em g graus
+// m minutos e s segundos em graus.
+float SexagenalDecimal(float g, float m, float s);
+
+// Calcula o x para o qual y e maximo da parabola definida
+// por a.x2 + b.x + c., a < 0
+float XParaYMaximo(float a, float b, float c);
+
+// Calcula o y maximo da parabola definida
+// por a.x2 + b.x + c., a < 0
+float YMaximo(float a, float b, float c);
+
+// Calcula a distancia entre os pontos (x1,y1) e (x2,y2) no plano cartesiano.
+float DistanciaPontos(float x1, float y1, float x2, float y2);
 
 // Calcula a hipotenusa de um triangulo retangulo,
 // cujos lados conhecidos sao b e c.
