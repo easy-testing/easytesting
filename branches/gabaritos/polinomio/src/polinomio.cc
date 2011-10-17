@@ -6,83 +6,87 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// No caso de um polinomio nulo, n_ = 0 e coeficientes_ = NULL.
 Polinomio::Polinomio() {
-  n = 1;
-  coeficientes = new float[1];
-  coeficientes[0] = 0;
+  n_ = 0;
+  coeficientes_ = NULL;
 }
 
 Polinomio::Polinomio(int g) {
-  n = g + 1;
-  coeficientes = new float[n];
-  for (int i = 0; i < n - 1; i++) {
-    coeficientes[i] = 0;
+  n_ = g + 1;
+  coeficientes_ = new float[n_];
+  for (int i = 0; i < n_ - 1; i++) {
+    coeficientes_[i] = 0;
   }
-  coeficientes[n - 1] = 1;
+  coeficientes_[n_ - 1] = 1;
 }
 
 Polinomio::Polinomio(Polinomio& q) {
-  coeficientes = new float[q.n];
-  n = q.n;
-  for (int i = 0; i < n; i++) {
-    coeficientes[i] = q.coeficientes[i];
+  coeficientes_ = new float[q.n_];
+  n_ = q.n_;
+  for (int i = 0; i < n_; i++) {
+    coeficientes_[i] = q.coeficientes_[i];
   }
 }
 
+bool Polinomio::nulo() {
+  return n_ == 0;
+}
+
 int Polinomio::grau() {
-  return n - 1;
+  return n_ - 1;
 }
 
 float& Polinomio::at(int i) {
-  return coeficientes[i];
+  return coeficientes_[i];
 }
 
 float Polinomio::Avaliar(float x) {
   float soma = 0;
-  for (int i = 0; i < n; i++) {
-    soma += coeficientes[i] * pow(x, i);
+  for (int i = 0; i < n_; i++) {
+    soma += coeficientes_[i] * pow(x, i);
   }
   return soma;
 }
 
 void Polinomio::Atribuir(Polinomio& q) {
-  Realocar(q.n);
-  n = q.n;
-  for (int i = 0; i < n; i++) {
-    coeficientes[i] = q.coeficientes[i];
+  Realocar(q.n_);
+  n_ = q.n_;
+  for (int i = 0; i < n_; i++) {
+    coeficientes_[i] = q.coeficientes_[i];
   }
 }
 
 void Polinomio::Derivar(Polinomio& q) {
-  Realocar(q.n - 1);
-  n = q.n - 1;
-  for (int i = 0; i < n; i++) {
-    coeficientes[i] = q.coeficientes[i + 1] * (i + 1);
+  Realocar(q.n_ - 1);
+  n_ = q.n_ - 1;
+  for (int i = 0; i < n_; i++) {
+    coeficientes_[i] = q.coeficientes_[i + 1] * (i + 1);
   }
 }
 
 void Polinomio::Integrar(Polinomio& q) {
-  Realocar(q.n + 1);
-  n = q.n + 1;
-  coeficientes[0] = 0.0;
-  for (int i = 1; i < n ; i++) {
-    coeficientes[i] = q.coeficientes[i - 1] / i;
+  Realocar(q.n_ + 1);
+  n_ = q.n_ + 1;
+  coeficientes_[0] = 0.0;
+  for (int i = 1; i < n_; i++) {
+    coeficientes_[i] = q.coeficientes_[i - 1] / i;
   }
 }
 
 Polinomio::~Polinomio() {
-  delete [] coeficientes;
+  delete [] coeficientes_;
 }
 
 void Polinomio::Realocar(int m) {
-    if (m <= n) {
-      n = m;
+    if (m <= n_) {
+      n_ = m;
     } else {
       float* aux = new float[m];
-      for (int i = 0; i < n; i++) {
-        aux[i] = coeficientes[i];
+      for (int i = 0; i < n_; i++) {
+        aux[i] = coeficientes_[i];
       }
-      delete [] coeficientes;
-      coeficientes = aux;
+      delete [] coeficientes_;
+      coeficientes_ = aux;
     }
   }

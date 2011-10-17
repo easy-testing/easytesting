@@ -15,7 +15,11 @@ class Polinomio {
   // Cria um polinômio idêntico a q.
   Polinomio(Polinomio& q);
 
-  // Retorna o grau do polinômio.
+  // Retorna verdadeiro se o polinomio é nulo, false c.c.
+  bool nulo();
+
+  // Retorna o grau do polinômio. O polinomio não pode ser nulo,
+  // uma vez que um polinomio nulo nao tem grau.
   int grau();
 
   // Retorna uma referência ao coeficiente a[i].
@@ -33,9 +37,11 @@ class Polinomio {
   void operator=(Polinomio& q) {Atribuir(q);}
 
   // Faz com que o polinômio corrente fique igual a derivada do polinômio q.
+  // q não pode ser nulo.
   void Derivar(Polinomio& q);
 
   // Faz com que o polinômio corrente fique igual a integral do polinômio q.
+  // q não pode ser nulo.
   void Integrar(Polinomio& q);
 
   // Libera a memória alocada para o vetor 'a'.
@@ -43,10 +49,10 @@ class Polinomio {
 
  private:
   // Número de elementos no vetor 'a'. O grau do polinômio é n - 1.
-  int n;
+  int n_;
 
   // Vetor com os coeficientes do polinômio.
-  float* coeficientes;
+  float* coeficientes_;
 
   // Realoca a memória alocada para o vetor 'a'.
   // O novo bloco de memória terá m elementos.
