@@ -40,9 +40,7 @@
 
 using namespace std;
 
-/* Gabarito da Questão 2.
-*************************/
-
+// Gabarito da Questão 2.
 int main2() {
   ifstream fin("input.txt");
   int g;
@@ -60,9 +58,7 @@ int main2() {
   return 0;
 }
 
-/* Gabarito da Questão 3.
-*************************/
-
+// Gabarito da Questão 3.
 float AreaPolinomio(Polinomio& p, float a, float b) {
   Polinomio integral;
   integral.Integrar(p);
