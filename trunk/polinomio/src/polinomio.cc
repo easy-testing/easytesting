@@ -14,7 +14,7 @@ Polinomio::Polinomio() {
 
 Polinomio::Polinomio(int g) {
   n = g + 1;
-  coeficientes = NULL; // TODO.
+  coeficientes = new float[n];
 }
 
 int Polinomio::grau() {
@@ -26,19 +26,50 @@ float& Polinomio::at(int i) {
 }
 
 float Polinomio::Avaliar(float x) {
-  return -1;  // TODO.
+  float soma = 0;
+  for (int i = 0;i < n;i++)
+    soma += coeficientes[i]*pow(x, i);
+  return soma;
 }
 
 void Polinomio::Atribuir(Polinomio& q) {
-  // TODO.
+  Realocar(q.n);
+  n = q.n;
+  for (int i = 0;i < n;i++)
+    coeficientes[i] = q.coeficientes[i];
 }
 
 void Polinomio::Derivar(Polinomio& q) {
-  // TODO.
+  // Derivada de constante.
+  if (q.n == 1) {
+    Realocar(1);
+    n = 1;
+    at(0) = 0;
+    return;
+  }
+
+  Realocar(q.n-1);
+  n = q.n-1;
+
+  for (int i = 0;i < n;i++)
+    coeficientes[i] = q.at(i+1)*(i+1);
 }
 
 void Polinomio::Integrar(Polinomio& q) {
-  // TODO.
+  // Integral de 0.
+  if (q.n == 1 && q.at(0) == 0) {
+    Realocar(1);
+    n = 1;
+    at(0) = 0;
+    return;
+  }
+
+  Realocar(q.n+1);
+  n = q.n+1;
+
+  coeficientes[0] = 0.;
+  for (int i = 1;i < n;i++)
+    coeficientes[i] = q.at(i-1)/(i);
 }
 
 Polinomio::~Polinomio() {
@@ -46,5 +77,14 @@ Polinomio::~Polinomio() {
 }
 
 void Polinomio::Realocar(int m) {
-  // TODO.
+  if (m <= n)
+    return;
+
+  float* temp = new float[m];
+  for (int i = 0;i < n;i++)
+    temp[i] = coeficientes[i];
+  delete[] coeficientes;
+  coeficientes = temp;
+
+  return;
 }
