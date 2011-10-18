@@ -17,27 +17,39 @@ como ele possivelmente pode ser solucionado.
 
 Este projeto aborda diferentes temas ligados a programação básica lecionados pelos professores. A lista desses temas se encontra abaixo:
 
+
+
 ==== Programação Básica Nível 1 ====
-  * TAD para Polinômios
-  * [http://code.google.com/p/easytesting/downloads/detail?name=complexo-v0.9.zip&can=2&q= Números Complexos]
-  * [http://code.google.com/p/easytesting/downloads/detail?name=complexo_polar-v0.9.zip&can=2&q= Complexos Polares]
-  * Funções
-  * [http://code.google.com/p/easytesting/downloads/detail?name=recursao-v0.9.zip&can=2&q= Recursão]
-  * [http://code.google.com/p/easytesting/downloads/detail?name=iteracao-v0.9.zip&can=2&q= Iteração]
-  * [http://code.google.com/p/easytesting/downloads/detail?name=vetores-v0.9.zip&can=2&q= Vetores]
-  * [http://code.google.com/p/easytesting/downloads/detail?name=matrizes-v0.9.zip&can=2&q= Matrizes]
-  * [http://code.google.com/p/easytesting/downloads/detail?name=registros-v0.9.zip&can=2&q= Registros]
+
+
+|| *Tópico* || *Assuntos abordados* || *Requisitos* ||
+|| Funções ||   Codificação de funções simples. Parâmteros passados por valor.       || Nenhum ||
+|| Condicionais || Estruturas de controle if-else, switch-case, operador condicional ?:|| Funções ||
+|| [http://code.google.com/p/easytesting/downloads/detail?name=iteracao-v0.9.zip&can=2&q= Iteração] || Estruturas de controle for, while, do-while  || Condicionais ||
+|| [http://code.google.com/p/easytesting/downloads/detail?name=recursao-v0.9.zip&can=2&q= Recursão] || Codificação de sunções recursivas || Condicionais||
+|| [http://code.google.com/p/easytesting/downloads/detail?name=vetores-v0.9.zip&can=2&q= Vetores] || Funções que realizam operações envolvendo arranjos. || [http://code.google.com/p/easytesting/downloads/detail?name=iteracao-v0.9.zip&can=2&q= Iteração]||
+|| [http://code.google.com/p/easytesting/downloads/detail?name=matrizes-v0.9.zip&can=2&q= Matrizes] || Funções que realizam operações envolvendo arranjos de arranjos.  || [http://code.google.com/p/easytesting/downloads/detail?name=iteracao-v0.9.zip&can=2&q= Iteração]||
+|| [http://code.google.com/p/easytesting/downloads/detail?name=registros-v0.9.zip&can=2&q= Registros]|| Introdução aos tipos abstratos de dados( TADs ) e suas funções associadas.  || [http://code.google.com/p/easytesting/downloads/detail?name=iteracao-v0.9.zip&can=2&q= Iteração]||
+|| [http://code.google.com/p/easytesting/downloads/detail?name=complexo-v0.9.zip&can=2&q= Números Complexos]|| Codificação de TAD para números complexos e operações associadas || [http://code.google.com/p/easytesting/downloads/detail?name=registros-v0.9.zip&can=2&q= Registros]||
+|| [http://code.google.com/p/easytesting/downloads/detail?name=complexo_polar-v0.9.zip&can=2&q= Complexos Polares]|| Codificação de TAD para números complexos na forma polar e operações associadas  || [http://code.google.com/p/easytesting/downloads/detail?name=registros-v0.9.zip&can=2&q= Registros]||
+|| TAD para Polinômios || Codificação de TAD para polinômios complexos e operações associadas  || [http://code.google.com/p/easytesting/downloads/detail?name=registros-v0.9.zip&can=2&q= Registros], [http://code.google.com/p/easytesting/downloads/detail?name=vetores-v0.9.zip&can=2&q= Vetores] ||
+
+
 
 ==== Programação Básica Nível 2 ====
-  * [http://code.google.com/p/easytesting/downloads/detail?name=list-v0.9.zip&can=2&q= List]
-  * Array Set
-  * [http://code.google.com/p/easytesting/downloads/detail?name=linear_set-v0.9.zip&can=2&q= Linear Set]
-  * [http://code.google.com/p/easytesting/downloads/detail?name=hash_set-v0.8.zip&can=2&q= Hash Set]
-  * Set
-  * [http://code.google.com/p/easytesting/downloads/detail?name=ordered_set-v0.9.zip&can=2&q= Ordered Set]
-  * Unordered Set
-  * [http://code.google.com/p/easytesting/downloads/detail?name=queue-v0.9.zip&can=2&q= Queue]
-  * [http://code.google.com/p/easytesting/downloads/detail?name=stack-v0.9.zip&can=2&q= Stack]
+
+
+
+|| *Tópico* || *Assuntos abordados* || *Requisitos* ||
+|| [http://code.google.com/p/easytesting/downloads/detail?name=list-v0.9.zip&can=2&q= List] ||   TAD lista encadeada.       || Nível 1 ||
+|| Array Set || TAD conjunto (implementado usando vetores).  || Nível 1 ||
+|| [http://code.google.com/p/easytesting/downloads/detail?name=linear_set-v0.9.zip&can=2&q= Linear Set] || TAD conjunto (implementado usando listas encadeadas).  || List ||
+|| [http://code.google.com/p/easytesting/downloads/detail?name=hash_set-v0.8.zip&can=2&q= Hash Set] || TAD conjunto (implementado usando Linear sets). || Linear set||
+|| [http://code.google.com/p/easytesting/downloads/detail?name=ordered_set-v0.9.zip&can=2&q= Ordered Set] || TAD Conjunto ordenado (implementado usando árvores binárias).  ||Binary tree||
+|| [http://code.google.com/p/easytesting/downloads/detail?name=queue-v0.9.zip&can=2&q= Queue]|| TAD fila.  || List||
+|| [http://code.google.com/p/easytesting/downloads/detail?name=queue-v0.9.zip&can=2&q= Stack] || TAD pilha.  || List ||
+
+
 == Como Utilizar ==
 
 O projeto de cada lista de exercícios é composto por um grupo de arquivos:
