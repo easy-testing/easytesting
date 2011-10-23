@@ -1,20 +1,20 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 //
-// Lista de exercício sobre estruturas de dados homogêneas - Vetores.
+// Lista de exercicio sobre estruturas de dados homogeneas - Vetores.
 //
-// QUESTÃO 1:
-// Implemente em vetores.cc as funções descritas em vetores.h.
+// QUESTAO 1:
+// Implemente em vetores.cc as funcoes descritas em vetores.h.
 //
-// QUESTÃO 2:
-// Escreva um programa em C++ que lê uma sequência de números de um arquivo
+// QUESTAO 2:
+// Escreva um programa em C++ que le uma sequencia de numeros de um arquivo
 // e armazena em um vetor. Assuma que a quantidade de numeros no arquivo
-// não ultrapassa o limite máximo de elementos do vetor (e.g. 1000).
-// Use este programa para testar as funções que você implementou na questão 1.
+// nao ultrapassa o limite maximo de elementos do vetor (e.g. 1000).
+// Use este programa para testar as funcoes que voce implementou na questao 1.
 
 #include "vetores/src/vetores.h"
 
-// Lê uma sequência de números de um arquivo, armazena em um vetor e os imprime
+// Le uma sequencia de numeros de um arquivo, armazena em um vetor e os imprime
 // na tela.
 int main() {
-  return 0;  //TODO.
+  return 0;  // TODO.
 }
