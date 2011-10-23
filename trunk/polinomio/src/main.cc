@@ -41,5 +41,39 @@
 using namespace std;
 
 int main() {
-  return 0;  // TODO.
+
+  int* v = new int[5];
+  int p[6];
+
+  printf("%d\n", sizeof(v));
+
+  return 0;
+
+  Polinomio f(4);
+  Polinomio g;
+  
+  f.at(0) = 6;
+  f.at(1) = 5;
+  f.at(2) = 1;
+  f.at(3) = 3;
+  f.at(4) = 2;
+  
+  
+  
+  /*
+  float* p;
+  
+  p = &(g.at(0));
+  
+  printf("%p\n", p);
+  g.Atribuir(f);
+  printf("%p\n", &(g.at(0)));
+  */
+  
+  g.Integrar(f);  
+  for(int i = 0;i < g.grau()+1;i++)
+    printf("%lf\n", g.at(i));
+  printf("\n");
+
+  return 0;
 }
