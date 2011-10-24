@@ -33,20 +33,19 @@ float AreaTriangulo(float b, float c);
 // Calcula a area do triangulo de lados a, b e c
 float AreaTrianguloLados(float a, float b, float c);
 
-// Calcula o valor de g(graus) em radianos
-float GrausRadianos(float g);
+//Calcula o valor de g graus em radianos. O resultado deve estar no
+//intervalo (-M_PI e M_PI), onde M_PI está definido na biblioteca
+//<cmath>.
+float GrausParaRadianos(float g);
 
-// Calcula o valor do angulo expresso em g graus
-// m minutos e s segundos em graus.
-float SexagenalDecimal(float g, float m, float s);
+// Seja um angulo expresso em g graus, m minutos e s segundos.
+// Calcula o valor deste angulo em graus (convertendo suas subunidades
+// sexagesimais, minuto e segundo, para  graus).  .
+float AnguloGMSParaG(float g, float m, float s);
 
-// Calcula o x para o qual y e maximo da parabola definida
-// por a.x2 + b.x + c., a < 0
-float XParaYMaximo(float a, float b, float c);
-
-// Calcula o y maximo da parabola definida
-// por a.x2 + b.x + c., a < 0
-float YMaximo(float a, float b, float c);
+// Calcula a coordenada X do ponto extremo da parabola
+// y = a*x^2 + b^x + c
+float PontoExtremo(float a, float b, float c);
 
 // Calcula a distancia entre os pontos (x1,y1) e (x2,y2) no plano cartesiano.
 float DistanciaPontos(float x1, float y1, float x2, float y2);

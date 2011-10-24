@@ -7,10 +7,11 @@
 //
 // QUESTÃO 2:
 // Escreva um programa que (i) Recebe do teclado a posição
-// de um canhao no eixo X em metros. (ii) Recebe do teclado
-// um angulo de disparo(sentido anti-horario a partir do solo)
-// em graus, minutos e segundos. (iii) Recebe do teclado a
-// velocidade inicial da bala em metros por segundo.
+// de um canhao no eixo X (horizontal) em metros. Depois ,
+// (ii) Recebe do teclado um angulo de disparo
+// (sentido anti-horario a partir do solo) em graus, minutos
+// e segundos. (iii) Recebe do teclado a velocidade inicial
+// da bala em metros por segundo.
 // (iv) Imprime na tela a posicao final do projetil no eixo
 // X (v) Imprima na tela as coordenadas X e Y da bala no
 // momento em que atingiu a altura maxima (vi) Imprima na

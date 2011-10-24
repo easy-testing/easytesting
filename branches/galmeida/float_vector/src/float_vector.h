@@ -86,6 +86,8 @@ class FloatVector {
   int size_;
 
   // Vetor alocado dinamicamente.
+  // Sempre que o tamanho do vetor for 0
+  // o valor deste campo devera ser NULL
   float* array_;
 };  // end class FloatVector.
 

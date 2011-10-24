@@ -11,14 +11,22 @@ FloatVector::FloatVector() {
 
 FloatVector::FloatVector(int n) {
   size_ = n;
-  array_ = new float[size_];
+  if (n == 0) {
+      array_ = NULL;
+  } else {
+      array_ = new float[size_];
+  }
 }
 
 FloatVector::FloatVector(FloatVector& v) {
   size_ = v.size_;
-  array_ = new float[size_];
-  for (int i = 0; i < size_; i++) {
-    array_[i] = v.array_[i];
+  if (size_ == 0) {
+      array_ = NULL;
+  } else {
+    array_ = new float[size_];
+    for (int i = 0; i < size_; i++) {
+      array_[i] = v.array_[i];
+    }
   }
 }
 
@@ -40,6 +48,9 @@ void FloatVector::resize(int n) {
     array_ = aux;
   }
   size_ = n;
+  if (n == 0) {
+      array_ = NULL;
+  }
 }
 
 float& FloatVector::at(int i) {
@@ -67,7 +78,7 @@ void FloatVector::push_back(float x) {
 }
 
 void FloatVector::pop_back() {
-  size_--;
+  resize(this->size_-1);
 }
 
 void FloatVector::insert(int index, float x) {
@@ -87,6 +98,7 @@ void FloatVector::erase(int index) {
 
 void FloatVector::clear() {
   size_ = 0;
+  array_ = NULL;
 }
 
 FloatVector::~FloatVector() {
