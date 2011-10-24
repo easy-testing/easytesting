@@ -28,7 +28,7 @@ main.o:
 $(program).o:
 	$(cc) -I $(path) -c src/$(program).cc
 
-polinomio_test.o:
+$(program)_test.o:
 	$(cc) -I $(path) -c test/$(program)_test.cc
 
 gtest.o:
