@@ -39,10 +39,12 @@
 		<Unit filename="../gtest/gtest.h">
 			<Option target="EasyTesting" />
 		</Unit>
+		<Unit filename="src/list.cc" />
 		<Unit filename="src/list.h" />
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
 		</Unit>
+		<Unit filename="src/node.cc" />
 		<Unit filename="src/node.h" />
 		<Unit filename="test/list_test.cc">
 			<Option target="EasyTesting" />

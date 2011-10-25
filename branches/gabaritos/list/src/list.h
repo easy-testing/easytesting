@@ -5,133 +5,80 @@
 
 #include "list/src/node.h"
 
-template<class Type>
 class list {
  public:
   // Cria uma lista vazia em O(1).
-  list() {
-    size_ = 0;
-    end_ = new Node<Type>();
-  }
+  list();
 
-  // Cria a lista com os mesmo elementos de l em O(n).
-  list(list<Type>& l) {
-    size_ = 0;
-    end_ = new Node<Type>();
-    merge(l);
-  }
+  // Cria a lista com os mesmo elementos de l em O(n), onde n = l.size().
+  list(list& l);
 
-  // Remove todos os elementos da lista para liberar a memoria.
-  ~list() {
-    clear();
-    delete end_;
-  }
+  // Remove todos os elementos da lista para liberar a memoria em O(n),
+  // onde n é o numero de elementos na lista.
+  ~list();
 
   // Retorna um iterador para o primeiro elemento da lista em O(1).
-  Node<Type>* begin() {
-    return end_->next;
-  }
+  Node* begin();
 
   // Retorna um iterador para "depois" do ultimo elemento da lista em O(1).
-  Node<Type>* end() {
-    return end_;
-  }
+  Node* end();
 
    // Testa se a lista esta vazia em O(1).
-  bool empty() {
-    return size_ == 0;
-  }
+  bool empty();
 
   // Retorna o valor do primeiro elemento da lista em O(1).
   // PRECONDIÇÃO: a lista não pode estar vazia.
-  Type front() {
-    return end_->next->key;
-  }
+  ListType front();
 
   // Retorna o valor do último elemento da lista em O(1).
   // PRECONDIÇÃO: a lista não pode estar vazia.
-  Type back() {
-    return end_->prev->key;
-  }
+  ListType back();
 
-  // Retorna o número de elementos da lista em O(n).
-  int size() {
-    return size_;
-  }
+  // Retorna o número de elementos da lista em O(1).
+  int size();
 
   // Insere x no início da lista em O(1).
-  void push_front(Type x) {
-    insert(begin(), x);
-  }
+  void push_front(ListType x);
 
   // Remove o primeiro elemento da lista em O(1).
-  void pop_front() {
-    erase(begin());
-  }
+  void pop_front();
 
   // Insere x no final da lista em O(1).
-  void push_back(Type x) {
-    insert(end(), x);
-  }
+  void push_back(ListType x);
 
   // Remove o último elemento da lista em O(1).
-  void pop_back() {
-    erase(end_->prev);
-  }
+  void pop_back();
 
-  // Retona um ponteiro para o primeiro nó da lista que contém x.
+  // Retona um ponteiro para o primeiro nó da lista que contém x em O(n),
+  // onde n é o numero de elementos na lista.
   // Se x não está na lista, retorna um ponteiro para end().
-  Node<Type>* find(Type x) {
-    Node<Type>* iter = begin();
-    while (iter != end() && iter->key != x) {
-      iter = iter->next;
-    }
-    return iter;
-  }
+  Node* find(ListType x);
 
   // Insere x antes do elemento identificado por 'node' em O(1) e retorna
   // um ponteiro para o nó que foi criado para armazenar x.
-  Node<Type>* insert(Node<Type>* node, Type x) {
-    node->prev = node->prev->next = new Node<Type>(x, node->prev, node);
-    size_++;
-    return node->prev;
-  }
+  Node* insert(Node* node, ListType x);
 
   // Apaga o elemento indicado por 'node' em O(1).
-  void erase(Node<Type>* node) {
-    node->prev->next = node->next;
-    node->next->prev = node->prev;
-    delete node;
-    size_--;
-  }
+  void erase(Node* node);
 
 
-  // Remove todos os elementos da lista corrente em O(n).
-  void clear() {
-    while (!empty()) {
-      pop_back();
-    }
-  }
+  // Remove todos os elementos da lista corrente em O(n),
+  // onde n é o numero de elementos na lista.
+  void clear();
 
-  // Concatena os elementos de l no final da lista corrente em O(n).
-  void merge(list<Type>& l) {
-    for (Node<Type>* i = l.begin(); i != l.end(); i = i->next) {
-      push_back(i->key);
-    }
-  }
+  // Concatena os elementos de l no final da lista corrente em O(n),
+  // onde n = l.size().
+  void merge(list& l);
 
-  // Faz a lista corrente ficar igual a l em O(n);
-  void operator=(list<Type>& l) {
-    clear();
-    merge(l);
-  }
+  // Faz a lista corrente ficar igual a l em O(n), onde n = l.size().
+  void operator=(list& l);
 
 private:
-  // Número de elementos na lista.
+  // Numero de elementos na lista.
   int size_;
 
-  // Ponteiro para o nó sentinela da lista.
-  Node<Type>* end_;
+  // Ponteiro para o no sentinela da lista.
+  Node* end_;
 
   friend class Teste;
 };

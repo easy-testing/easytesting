@@ -16,10 +16,10 @@ using std::stringstream;
 class Teste : public testing::Test {
  protected:
   // Retorna uma string no formato {a b c d...}.
-  string PrintList(list<int>& l) {
+  string PrintList(list& l) {
     stringstream output;
     output << "{";
-    for (Node<int>* i = l.begin() ; i != l.end() ; i = i->next) {
+    for (Node* i = l.begin() ; i != l.end() ; i = i->next) {
       if (i == l.begin())
         output << i->key;
       else
@@ -31,24 +31,24 @@ class Teste : public testing::Test {
 
   // Preenche a lista passada como parametro com 1 numero.
   // 'l' deve ser uma lista vazia.
-  void CriaList1(int x, list<int> *l) {
-    l->end_->prev = l->end_->next = new Node<int>(x, l->end_, l->end_);
+  void CriaList1(int x, list *l) {
+    l->end_->prev = l->end_->next = new Node(x, l->end_, l->end_);
     l->size_ = 1;
   }
 
   // Preenche a lista passada como parametro com 3 numeros.
   // 'l' deve ser uma lista vazia.
-  void CriaList3(int x1, int x2, int x3, list<int>* l) {
-    l->end_->next = new Node<int>(x1, l->end_, NULL);
-    l->end_->next->next = new Node<int>(x2, l->end_->next, NULL);
+  void CriaList3(int x1, int x2, int x3, list* l) {
+    l->end_->next = new Node(x1, l->end_, NULL);
+    l->end_->next->next = new Node(x2, l->end_->next, NULL);
     l->end_->next->next->next = l->end_->prev =
-        new Node<int>(x3, l->end_->next->next, l->end_);
+        new Node(x3, l->end_->next->next, l->end_);
     l->size_ = 3;
   }
 };
 
 TEST_F(Teste, Testar_metodo_empty) {
-  list<int> l1;
+  list l1;
   ASSERT_TRUE(l1.empty())
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
@@ -57,7 +57,7 @@ TEST_F(Teste, Testar_metodo_empty) {
     << "A lista esta vazia e a funcao retornou FALSE."
     << "-------------------------------------------------------------------\n";
 
-  list<int> l2;
+  list l2;
   CriaList3(12, 14, 15, &l2);
   ASSERT_FALSE(l2.empty())
     << "-------------------------------------------------------------------\n"
@@ -70,7 +70,7 @@ TEST_F(Teste, Testar_metodo_empty) {
 }
 
 TEST_F(Teste, Testar_metodo_front_em_lista_com_um_elemento) {
-  list<int> l;
+  list l;
   CriaList1(2, &l);
   int esperado = 2;
   int atual = l.front();
@@ -86,7 +86,7 @@ TEST_F(Teste, Testar_metodo_front_em_lista_com_um_elemento) {
 }
 
 TEST_F(Teste, Testar_metodo_front_em_lista_com_mais_de_um_elemento) {
-  list<int> l;
+  list l;
   CriaList3(3, 7, 8, &l);
   int esperado = 3;
   int atual = l.front();
@@ -102,7 +102,7 @@ TEST_F(Teste, Testar_metodo_front_em_lista_com_mais_de_um_elemento) {
 }
 
 TEST_F(Teste, Testar_metodo_back_em_lista_com_um_elemento) {
-  list<int> l;
+  list l;
   CriaList1(3, &l);
   int esperado = 3;
   int atual = l.back();
@@ -118,7 +118,7 @@ TEST_F(Teste, Testar_metodo_back_em_lista_com_um_elemento) {
 }
 
 TEST_F(Teste, Testar_metodo_back_em_lista_com_mais_de_um_elemento) {
-  list<int> l;
+  list l;
   CriaList3(4, 5, 7, &l);
   int esperado = 7;
   int atual = l.back();
@@ -134,7 +134,7 @@ TEST_F(Teste, Testar_metodo_back_em_lista_com_mais_de_um_elemento) {
 }
 
 TEST_F(Teste, Testar_metodo_size_em_lista_vazia) {
-  list<int> l;
+  list l;
   int esperado = 0;
   int atual = l.size();
   ASSERT_EQ(esperado, atual)
@@ -149,7 +149,7 @@ TEST_F(Teste, Testar_metodo_size_em_lista_vazia) {
 }
 
 TEST_F(Teste, Testar_metodo_size_em_lista_com_um_elemento) {
-  list<int> l;
+  list l;
   CriaList1(2, &l);
   int esperado = 1;
   int atual = l.size();
@@ -165,7 +165,7 @@ TEST_F(Teste, Testar_metodo_size_em_lista_com_um_elemento) {
 }
 
 TEST_F(Teste, Testar_metodo_size_em_lista_com_varios_elementos) {
-  list<int> l;
+  list l;
   CriaList3(10, 3, 0, &l);
   int esperado = 3;
   int atual = l.size();
@@ -181,7 +181,7 @@ TEST_F(Teste, Testar_metodo_size_em_lista_com_varios_elementos) {
 }
 
 TEST_F(Teste, Testar_metodo_push_back) {
-  list<int> l;
+  list l;
   CriaList3(10, 3, 0, &l);
   l.push_back(2);
   string esperado = "{10 3 0 2}";
@@ -197,7 +197,7 @@ TEST_F(Teste, Testar_metodo_push_back) {
 }
 
 TEST_F(Teste, Testar_metodo_pop_back) {
-  list<int> l;
+  list l;
   CriaList3(10, 3, 0, &l);
   l.pop_back();
   string esperado = "{10 3}";
@@ -213,8 +213,8 @@ TEST_F(Teste, Testar_metodo_pop_back) {
 }
 
 TEST_F(Teste, Testar_metodo_find_em_lista_vazia) {
-    list<int> l;
-    Node<int>* it;
+    list l;
+    Node* it;
     it = l.find(10);
     ASSERT_EQ(it, l.end())
       << "-------------------------------------------------------------------\n"
@@ -226,9 +226,9 @@ TEST_F(Teste, Testar_metodo_find_em_lista_vazia) {
 }
 
 TEST_F(Teste, Testar_metodo_find_em_lista_unitaria) {
-    list<int> l;
+    list l;
     CriaList1(10, &l);
-    Node<int>* it;
+    Node* it;
     it = l.find(10);
     int esperado = 10;
     int atual = it->key;
@@ -244,9 +244,9 @@ TEST_F(Teste, Testar_metodo_find_em_lista_unitaria) {
 }
 
 TEST_F(Teste, Testar_metodo_find_em_lista_com_varios_elementos) {
-    list<int> l;
+    list l;
     CriaList3(10, 5, 3, &l);
-    Node<int>* it;
+    Node* it;
     // Encontrar primeiro valor
     it = l.find(10);
     int esperado = 10;
@@ -290,7 +290,7 @@ TEST_F(Teste, Testar_metodo_find_em_lista_com_varios_elementos) {
 // necessario utilizar a comparacao da classe string (imprimir a lista do
 // aluno em uma string).
 TEST_F(Teste, Testar_metodo_insert_no_inicio_da_lista_vazia) {
-  list<int> l;
+  list l;
   l.insert(l.begin(), 10);
   string esperado("{10}");
   string atual = PrintList(l);
@@ -305,7 +305,7 @@ TEST_F(Teste, Testar_metodo_insert_no_inicio_da_lista_vazia) {
 }
 
 TEST_F(Teste, Testar_metodo_insert_no_inicio_da_lista_com_um_elemento) {
-  list<int> l;
+  list l;
   CriaList1(22, &l);
   l.insert(l.begin(), 12);
   string esperado("{12 22}");
@@ -321,7 +321,7 @@ TEST_F(Teste, Testar_metodo_insert_no_inicio_da_lista_com_um_elemento) {
 }
 
 TEST_F(Teste, Testar_metodo_insert_no_inicio_da_lista_com_varios_elementos) {
-  list<int> l;
+  list l;
   CriaList3(5, 13, 49, &l);
   l.insert(l.begin(), 17);
   string esperado("{17 5 13 49}");
@@ -337,7 +337,7 @@ TEST_F(Teste, Testar_metodo_insert_no_inicio_da_lista_com_varios_elementos) {
 }
 
 TEST_F(Teste, Testar_metodo_insert_no_final_da_lista_vazia) {
-  list<int> l;
+  list l;
   l.insert(l.end(), 10);
   string esperado("{10}");
   string atual = PrintList(l);
@@ -352,7 +352,7 @@ TEST_F(Teste, Testar_metodo_insert_no_final_da_lista_vazia) {
 }
 
 TEST_F(Teste, Testar_metodo_insert_no_final_da_lista_com_um_elemento) {
-  list<int> l;
+  list l;
   CriaList1(45, &l);
   l.insert(l.end(), -9);
   string esperado("{45 -9}");
@@ -368,7 +368,7 @@ TEST_F(Teste, Testar_metodo_insert_no_final_da_lista_com_um_elemento) {
 }
 
 TEST_F(Teste, Testar_metodo_insert_no_final_da_lista_com_varios_elementos) {
-  list<int> l;
+  list l;
   CriaList3(8, 22, -7, &l);
   l.insert(l.end(), 1);
   string esperado("{8 22 -7 1}");
@@ -383,9 +383,9 @@ TEST_F(Teste, Testar_metodo_insert_no_final_da_lista_com_varios_elementos) {
     << "-------------------------------------------------------------------\n";
 }
 TEST_F(Teste, Testar_metodo_insert_antes_do_segundo_elemento) {
-  list<int> l;
+  list l;
   CriaList3(12, 8, -1, &l);
-  Node<int>* it = l.begin();
+  Node* it = l.begin();
   it = it->next;
   l.insert(it, 22);
   string esperado("{12 22 8 -1}");
@@ -401,9 +401,9 @@ TEST_F(Teste, Testar_metodo_insert_antes_do_segundo_elemento) {
 }
 
 TEST_F(Teste, Testar_metodo_insert_antes_do_ultimo_elemento) {
-  list<int> l;
+  list l;
   CriaList3(13, 9, 0, &l);
-  Node<int>* it = l.begin();
+  Node* it = l.begin();
   it = it->next;
   it = it->next;
   l.insert(it, 23);
@@ -421,7 +421,7 @@ TEST_F(Teste, Testar_metodo_insert_antes_do_ultimo_elemento) {
 
 
 TEST_F(Teste, Testar_metodo_erase_em_uma_lista_com_um_elemento) {
-  list<int> l;
+  list l;
   CriaList1(8, &l);
   l.erase(l.begin());
   string esperado("{}");
@@ -437,9 +437,9 @@ TEST_F(Teste, Testar_metodo_erase_em_uma_lista_com_um_elemento) {
 }
 
 TEST_F(Teste, Testar_metodo_erase_em_uma_lista_com_varios_elemento) {
-  list<int> l;
+  list l;
   CriaList3(8, 0, -3, &l);
-  Node<int>* it = l.begin();
+  Node* it = l.begin();
   it = it->next;
   l.erase(it);
   string esperado("{8 -3}");
@@ -455,9 +455,9 @@ TEST_F(Teste, Testar_metodo_erase_em_uma_lista_com_varios_elemento) {
 }
 
 TEST_F(Teste, Testar_metodo_merge_de_lista_vazia_com_lista_nao_vazia) {
-  list<int> l1;
+  list l1;
   CriaList3(15, 13, 2, &l1);
-  list<int> l2;
+  list l2;
   l2.merge(l1);
   string esperado("{15 13 2}");
   string atual = PrintList(l2);
@@ -472,8 +472,8 @@ TEST_F(Teste, Testar_metodo_merge_de_lista_vazia_com_lista_nao_vazia) {
 }
 
 TEST_F(Teste, Testar_metodo_merge_de_lista_nao_vazia_com_lista_vazia) {
-  list<int> l1;
-  list<int> l2;
+  list l1;
+  list l2;
   CriaList3(12, 125, 32, &l2);
   l2.merge(l1);
   string esperado("{12 125 32}");
@@ -489,8 +489,8 @@ TEST_F(Teste, Testar_metodo_merge_de_lista_nao_vazia_com_lista_vazia) {
 }
 
 TEST_F(Teste, Testar_metodo_merge_com_duas_listas_nao_vazias) {
-  list<int> l1;
-  list<int> l2;
+  list l1;
+  list l2;
   CriaList3(1, 2, 3, &l1);
   CriaList3(4, 5, 6, &l2);
   l2.merge(l1);
@@ -507,7 +507,7 @@ TEST_F(Teste, Testar_metodo_merge_com_duas_listas_nao_vazias) {
 }
 
 TEST_F(Teste, Testar_metodo_clear_com_lista_vazia) {
-  list<int> l;
+  list l;
   l.clear();
   string esperado("{}");
   string atual = PrintList(l);
@@ -522,7 +522,7 @@ TEST_F(Teste, Testar_metodo_clear_com_lista_vazia) {
 }
 
 TEST_F(Teste, Testar_metodo_clear_lista_nao_vazia) {
-  list<int> l;
+  list l;
   CriaList3(1, 4, 7, &l);
   l.clear();
   string esperado("{}");
