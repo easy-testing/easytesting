@@ -10,13 +10,14 @@ class list {
  public:
   // Cria uma lista vazia em O(1).
   list() {
+    size_ = 0;
     end_ = new Node<Type>();
   }
 
   // Cria a lista com os mesmo elementos de l em O(n).
   list(list<Type>& l) {
+    size_ = 0;
     end_ = new Node<Type>();
-    clear();
     merge(l);
   }
 
@@ -38,7 +39,7 @@ class list {
 
    // Testa se a lista esta vazia em O(1).
   bool empty() {
-    return end_->next == end_;
+    return size_ == 0;
   }
 
   // Retorna o valor do primeiro elemento da lista em O(1).
@@ -55,11 +56,7 @@ class list {
 
   // Retorna o número de elementos da lista em O(n).
   int size() {
-    int s = 0;
-    for (Node<Type>* i = begin(); i != end(); i = i->next) {
-      s++;
-    }
-    return s;
+    return size_;
   }
 
   // Insere x no início da lista em O(1).
@@ -96,6 +93,7 @@ class list {
   // um ponteiro para o nó que foi criado para armazenar x.
   Node<Type>* insert(Node<Type>* node, Type x) {
     node->prev = node->prev->next = new Node<Type>(x, node->prev, node);
+    size_++;
     return node->prev;
   }
 
@@ -104,6 +102,7 @@ class list {
     node->prev->next = node->next;
     node->next->prev = node->prev;
     delete node;
+    size_--;
   }
 
 
@@ -128,6 +127,9 @@ class list {
   }
 
 private:
+  // Número de elementos na lista.
+  int size_;
+
   // Ponteiro para o nó sentinela da lista.
   Node<Type>* end_;
 

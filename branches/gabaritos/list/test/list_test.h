@@ -33,6 +33,7 @@ class Teste : public testing::Test {
   // 'l' deve ser uma lista vazia.
   void CriaList1(int x, list<int> *l) {
     l->end_->prev = l->end_->next = new Node<int>(x, l->end_, l->end_);
+    l->size_ = 1;
   }
 
   // Preenche a lista passada como parametro com 3 numeros.
@@ -42,6 +43,7 @@ class Teste : public testing::Test {
     l->end_->next->next = new Node<int>(x2, l->end_->next, NULL);
     l->end_->next->next->next = l->end_->prev =
         new Node<int>(x3, l->end_->next->next, l->end_);
+    l->size_ = 3;
   }
 };
 
