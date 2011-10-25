@@ -11,12 +11,12 @@ vector::vector() {
 
 vector::vector(int n) {
   size_ = n;
-  array_ = new vector_type[size_];
+  array_ = new VectorType[size_];
 }
 
 vector::vector(vector& v) {
   size_ = v.size_;
-  array_ = new vector_type[size_];
+  array_ = new VectorType[size_];
   for (int i = 0; i < size_; i++) {
     array_[i] = v.array_[i];
   }
@@ -32,7 +32,7 @@ int vector::size() {
 
 void vector::resize(int n) {
   if (n > size_) {
-    vector_type* aux = new vector_type[n];
+    VectorType* aux = new VectorType[n];
     for (int i = 0; i < size_; i++) {
       aux[i] = array_[i];
     }
@@ -42,15 +42,15 @@ void vector::resize(int n) {
   size_ = n;
 }
 
-vector_type& vector::at(int i) {
+VectorType& vector::at(int i) {
   return array_[i];
 }
 
-vector_type& vector::front() {
+VectorType& vector::front() {
   return array_[0];
 }
 
-vector_type& vector::back() {
+VectorType& vector::back() {
   return array_[size_ - 1];
 }
 
@@ -61,7 +61,7 @@ void vector::assign(vector& v) {
   }
 }
 
-void vector::push_back(vector_type x) {
+void vector::push_back(VectorType x) {
   resize(size_ + 1);
   array_[size_ - 1] = x;
 }
@@ -70,7 +70,7 @@ void vector::pop_back() {
   size_--;
 }
 
-void vector::insert(int index, vector_type x) {
+void vector::insert(int index, VectorType x) {
   resize(size_ + 1);
   for (int i = size_ - 1; i > index; i--) {
     array_[i] = array_[i - 1];

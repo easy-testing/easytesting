@@ -19,7 +19,7 @@
 
 #include <iostream>
 #include <fstream>
-#include "vector/src/float_vector.h"
+#include "vector/src/vector.h"
 
 using namespace std;
 

@@ -3,10 +3,7 @@
 #ifndef BRANCHES_GABARITOS_VECTOR_SRC_FLOAT_VECTOR_H_
 #define BRANCHES_GABARITOS_VECTOR_SRC_FLOAT_VECTOR_H_
 
-#include <string>
-using std::string;
-
-typedef float vector_type;
+typedef float VectorType;
 
 // Implementa um vetor dinâmico de números reais.
 class vector {
@@ -35,14 +32,14 @@ class vector {
   void resize(int n);
 
   // Retorna uma referência ao elemento de índice i no vetor.
-  vector_type& at(int i);
-  vector_type& operator[](int i) {return at(i);}
+  VectorType& at(int i);
+  VectorType& operator[](int i) {return at(i);}
 
   // Retorna uma referência ao primeiro elemento no vetor.
-  vector_type& front();
+  VectorType& front();
 
   // Retorna uma referência ao último elemento no vetor.
-  vector_type& back();
+  VectorType& back();
 
   // Faz com que o vetor corrente fique igual ao vetor v.
   void assign(vector& v);
@@ -52,7 +49,7 @@ class vector {
   // Esta operação aumenta o número de elementos do vetor em uma unidade.
   // Por exemplo: se "v = {1.0, 3.0, 5.0}", após "v.push_back(-7.0)",
   // "v = {1.0, 3.0, 5.0, -7.0}".
-  void push_back(vector_type x);
+  void push_back(VectorType x);
 
   // Remove o último elemento do vetor.
   // Esta operação diminui o número de elementos no vetor em uma unidade.
@@ -67,7 +64,7 @@ class vector {
   // Esta operação aumenta o número de elementos no vetor em uma unidade.
   // Por exemplo: se "v = {1.0, 3.0, 5.0}", após "v.insert(1, -7.0)",
   // "v = {1.0, -7.0, 3.0, 5.0}".
-  void insert(int index, vector_type x);
+  void insert(int index, VectorType x);
 
   // Remove o elemento de índice 'index' do vetor.
   // Todos os elementos com índice maior que 'index' são deslocados para
@@ -91,7 +88,7 @@ class vector {
   int size_;
 
   // Vetor alocado dinamicamente.
-  vector_type* array_;
+  VectorType* array_;
 };  // end class vector.
 
 #endif  // BRANCHES_GABARITOS_VECTOR_SRC_FLOAT_VECTOR_H_
