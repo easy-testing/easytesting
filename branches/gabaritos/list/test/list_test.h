@@ -19,7 +19,7 @@ class Teste : public testing::Test {
   string PrintList(list& l) {
     stringstream output;
     output << "{";
-    for (Node* i = l.begin() ; i != l.end() ; i = i->next) {
+    for (node* i = l.begin() ; i != l.end() ; i = i->next) {
       if (i == l.begin())
         output << i->key;
       else
@@ -32,17 +32,17 @@ class Teste : public testing::Test {
   // Preenche a lista passada como parametro com 1 numero.
   // 'l' deve ser uma lista vazia.
   void CriaList1(int x, list *l) {
-    l->end_->prev = l->end_->next = new Node(x, l->end_, l->end_);
+    l->end_->prev = l->end_->next = NewNode(x, l->end_, l->end_);
     l->size_ = 1;
   }
 
   // Preenche a lista passada como parametro com 3 numeros.
   // 'l' deve ser uma lista vazia.
   void CriaList3(int x1, int x2, int x3, list* l) {
-    l->end_->next = new Node(x1, l->end_, NULL);
-    l->end_->next->next = new Node(x2, l->end_->next, NULL);
+    l->end_->next = NewNode(x1, l->end_, NULL);
+    l->end_->next->next = NewNode(x2, l->end_->next, NULL);
     l->end_->next->next->next = l->end_->prev =
-        new Node(x3, l->end_->next->next, l->end_);
+        NewNode(x3, l->end_->next->next, l->end_);
     l->size_ = 3;
   }
 };
@@ -214,12 +214,12 @@ TEST_F(Teste, Testar_metodo_pop_back) {
 
 TEST_F(Teste, Testar_metodo_find_em_lista_vazia) {
     list l;
-    Node* it;
+    node* it;
     it = l.find(10);
     ASSERT_EQ(it, l.end())
       << "-------------------------------------------------------------------\n"
       << "Erro na funcao:  "
-      << "* Node* list<Type>::find(Type x) *\n"
+      << "* node* list<Type>::find(Type x) *\n"
       << "-------------------------------------------------------------------\n"
       << "Funcao retornou endereco de um valor nao existente na lista\n"
       << "-------------------------------------------------------------------\n";
@@ -228,14 +228,14 @@ TEST_F(Teste, Testar_metodo_find_em_lista_vazia) {
 TEST_F(Teste, Testar_metodo_find_em_lista_unitaria) {
     list l;
     CriaList1(10, &l);
-    Node* it;
+    node* it;
     it = l.find(10);
     int esperado = 10;
     int atual = it->key;
     ASSERT_EQ(esperado, atual)
       << "-------------------------------------------------------------------\n"
       << "Erro na funcao:  "
-      << "* Node* list<Type>::find(Type x) *\n"
+      << "* node* list<Type>::find(Type x) *\n"
       << "-------------------------------------------------------------------\n"
       << "Funcao retornou endereco de um valor diferente do esperado\n\n"
       << "Valor esperado : " << esperado << "\n"
@@ -246,7 +246,7 @@ TEST_F(Teste, Testar_metodo_find_em_lista_unitaria) {
 TEST_F(Teste, Testar_metodo_find_em_lista_com_varios_elementos) {
     list l;
     CriaList3(10, 5, 3, &l);
-    Node* it;
+    node* it;
     // Encontrar primeiro valor
     it = l.find(10);
     int esperado = 10;
@@ -254,7 +254,7 @@ TEST_F(Teste, Testar_metodo_find_em_lista_com_varios_elementos) {
     ASSERT_EQ(esperado, atual)
       << "-------------------------------------------------------------------\n"
       << "Erro na funcao:  "
-      << "* Node* list<Type>::find(Type x) *\n"
+      << "* node* list<Type>::find(Type x) *\n"
       << "-------------------------------------------------------------------\n"
       << "Funcao retornou endereco de um valor diferente do esperado\n\n"
       << "Valor esperado : " << esperado << "\n"
@@ -268,7 +268,7 @@ TEST_F(Teste, Testar_metodo_find_em_lista_com_varios_elementos) {
     ASSERT_EQ(esperado, atual)
       << "-------------------------------------------------------------------\n"
       << "Erro na funcao:  "
-      << "* Node* list<Type>::find(Type x) *\n"
+      << "* node* list<Type>::find(Type x) *\n"
       << "-------------------------------------------------------------------\n"
       << "Funcao retornou endereco de um valor diferente do esperado\n\n"
       << "Valor esperado : " << esperado << "\n"
@@ -280,7 +280,7 @@ TEST_F(Teste, Testar_metodo_find_em_lista_com_varios_elementos) {
     ASSERT_EQ(it, l.end())
       << "-------------------------------------------------------------------\n"
       << "Erro na funcao:  "
-      << "* Node* list<Type>::find(Type x) *\n"
+      << "* node* list<Type>::find(Type x) *\n"
       << "-------------------------------------------------------------------\n"
       << "Funcao retornou endereco de um valor nao existente na lista\n"
       << "-------------------------------------------------------------------\n";
@@ -297,7 +297,7 @@ TEST_F(Teste, Testar_metodo_insert_no_inicio_da_lista_vazia) {
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* Node* list<Type>::insert(Node* position, Type x) *\n"
+    << "* node* list<Type>::insert(node* position, Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << "Lista esperada : " << esperado << "\n"
     << "Lista atual    : " << atual << "\n"
@@ -313,7 +313,7 @@ TEST_F(Teste, Testar_metodo_insert_no_inicio_da_lista_com_um_elemento) {
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* Node* list<Type>::insert(Node* position, Type x) *\n"
+    << "* node* list<Type>::insert(node* position, Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << "Lista esperada : " << esperado << "\n"
     << "Lista atual    : " << atual << "\n"
@@ -329,7 +329,7 @@ TEST_F(Teste, Testar_metodo_insert_no_inicio_da_lista_com_varios_elementos) {
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* Node* list<Type>::insert(Node* position, Type x) *\n"
+    << "* node* list<Type>::insert(node* position, Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << "Lista esperada : " << esperado << "\n"
     << "Lista atual    : " << atual << "\n"
@@ -344,7 +344,7 @@ TEST_F(Teste, Testar_metodo_insert_no_final_da_lista_vazia) {
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* Node* list<Type>::insert(Node* position, Type x) *\n"
+    << "* node* list<Type>::insert(node* position, Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << "Lista esperada : " << esperado << "\n"
     << "Lista atual    : " << atual << "\n"
@@ -360,7 +360,7 @@ TEST_F(Teste, Testar_metodo_insert_no_final_da_lista_com_um_elemento) {
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* Node* list<Type>::insert(Node* position, Type x) *\n"
+    << "* node* list<Type>::insert(node* position, Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << "Lista esperada : " << esperado << "\n"
     << "Lista atual    : " << atual << "\n"
@@ -376,7 +376,7 @@ TEST_F(Teste, Testar_metodo_insert_no_final_da_lista_com_varios_elementos) {
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* Node* list<Type>::insert(Node* position, Type x) *\n"
+    << "* node* list<Type>::insert(node* position, Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << "Lista esperada : " << esperado << "\n"
     << "Lista atual    : " << atual << "\n"
@@ -385,7 +385,7 @@ TEST_F(Teste, Testar_metodo_insert_no_final_da_lista_com_varios_elementos) {
 TEST_F(Teste, Testar_metodo_insert_antes_do_segundo_elemento) {
   list l;
   CriaList3(12, 8, -1, &l);
-  Node* it = l.begin();
+  node* it = l.begin();
   it = it->next;
   l.insert(it, 22);
   string esperado("{12 22 8 -1}");
@@ -393,7 +393,7 @@ TEST_F(Teste, Testar_metodo_insert_antes_do_segundo_elemento) {
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* Node* list<Type>::insert(Node* position, Type x) *\n"
+    << "* node* list<Type>::insert(node* position, Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << "Lista esperada : " << esperado << "\n"
     << "Lista atual    : " << atual << "\n"
@@ -403,7 +403,7 @@ TEST_F(Teste, Testar_metodo_insert_antes_do_segundo_elemento) {
 TEST_F(Teste, Testar_metodo_insert_antes_do_ultimo_elemento) {
   list l;
   CriaList3(13, 9, 0, &l);
-  Node* it = l.begin();
+  node* it = l.begin();
   it = it->next;
   it = it->next;
   l.insert(it, 23);
@@ -412,7 +412,7 @@ TEST_F(Teste, Testar_metodo_insert_antes_do_ultimo_elemento) {
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* Node* list<Type>::insert(Node* position, Type x) *\n"
+    << "* node* list<Type>::insert(node* position, Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << "Lista esperada : " << esperado << "\n"
     << "Lista atual    : " << atual << "\n"
@@ -429,7 +429,7 @@ TEST_F(Teste, Testar_metodo_erase_em_uma_lista_com_um_elemento) {
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void list<Type>::erase(Node* position) *\n"
+    << "* void list<Type>::erase(node* position) *\n"
     << "-------------------------------------------------------------------\n"
     << "Lista esperada : " << esperado << "\n"
     << "Lista atual    : " << atual << "\n"
@@ -439,7 +439,7 @@ TEST_F(Teste, Testar_metodo_erase_em_uma_lista_com_um_elemento) {
 TEST_F(Teste, Testar_metodo_erase_em_uma_lista_com_varios_elemento) {
   list l;
   CriaList3(8, 0, -3, &l);
-  Node* it = l.begin();
+  node* it = l.begin();
   it = it->next;
   l.erase(it);
   string esperado("{8 -3}");
@@ -447,7 +447,7 @@ TEST_F(Teste, Testar_metodo_erase_em_uma_lista_com_varios_elemento) {
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void list<Type>::erase(Node* position) *\n"
+    << "* void list<Type>::erase(node* position) *\n"
     << "-------------------------------------------------------------------\n"
     << "Lista esperada : " << esperado << "\n"
     << "Lista atual    : " << atual << "\n"

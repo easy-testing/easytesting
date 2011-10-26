@@ -1,20 +1,30 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef NODE_H_
-#define NODE_H_
+#ifndef BRANCHES_GABARITOS_LIST_SRC_NODE_H_
+#define BRANCHES_GABARITOS_LIST_SRC_NODE_H_
 
-typedef float ListType;
+#include "list/src/list.h"
 
 struct Node {
-  ListType key;  // Valor associado ao no da lista.
-  Node* prev;  // Ponteiro para o proximo no da lista.
-  Node* next;  // Ponteiro para o no anterior da lista.
+
+  type key;  // Valor da chave do noh.
+  Node* prev;  // Ponteiro para o proximo noh da lista.
+  Node* next;  // Ponteiro para o noh anterior da lista.
 };
 
-// Cria um no sentinela em O(1).
-Node* NewSentinel();
+Node* NewSentinel() {
+  Node* node = new Node();
+  node->prev = node->next = node;
+  return node;
+}
 
 // Cria um novo no em O(1).
-Node* NewNode(ListType k, Node* l, Node* r);
+Node* NewNode(list::type k, Node* l, Node* r) {
+  Node* node = new Node();
+  node->key = k;
+  node->prev = l;
+  node->next = r;
+  return node;
+}
 
-#endif // NODE_H_
+#endif  // BRANCHES_GABARITOS_LIST_SRC_NODE_H_

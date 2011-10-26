@@ -1,86 +1,104 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef LIST_H_
-#define LIST_H_
+#ifndef BRANCHES_GABARITOS_LIST_SRC_LIST_H_
+#define BRANCHES_GABARITOS_LIST_SRC_LIST_H_
 
-#include "list/src/node.h"
 
+struct node;  // Definido depois da classe list.
+
+// Implementa uma lista de elementos. O tipo dos elementos é
+// definido por 'type'.
 class list {
  public:
+  typedef float type;
+
   // Cria uma lista vazia em O(1).
   list();
 
-  // Cria a lista com os mesmo elementos de l em O(n), onde n = l.size().
+  // Cria a lista com os mesmo elementos de l em O(m), onde m = l.size().
   list(list& l);
 
   // Remove todos os elementos da lista para liberar a memoria em O(n),
-  // onde n é o numero de elementos na lista.
+  // onde n eh o numero de elementos na lista.
   ~list();
 
-  // Retorna um iterador para o primeiro elemento da lista em O(1).
-  Node* begin();
+  // Retorna um pontiero para o primeiro noh da lista em O(1).
+  node* begin();
 
-  // Retorna um iterador para "depois" do ultimo elemento da lista em O(1).
-  Node* end();
+  // Retorna um pontiero para "depois" do ultimo noh da lista em O(1).
+  node* end();
 
-   // Testa se a lista esta vazia em O(1).
+  // Testa se a lista esta vazia em O(1).
   bool empty();
 
   // Retorna o valor do primeiro elemento da lista em O(1).
-  // PRECONDIÇÃO: a lista não pode estar vazia.
-  ListType front();
+  // PRECONDICAO: a lista nao pode estar vazia.
+  list::type front();
 
-  // Retorna o valor do último elemento da lista em O(1).
-  // PRECONDIÇÃO: a lista não pode estar vazia.
-  ListType back();
+  // Retorna o valor do ultimo elemento da lista em O(1).
+  // PRECONDICAO: a lista não pode estar vazia.
+  list::type back();
 
-  // Retorna o número de elementos da lista em O(1).
+  // Retorna o numero de elementos da lista em O(1).
   int size();
 
   // Insere x no início da lista em O(1).
-  void push_front(ListType x);
+  void push_front(list::type x);
 
   // Remove o primeiro elemento da lista em O(1).
   void pop_front();
 
   // Insere x no final da lista em O(1).
-  void push_back(ListType x);
+  void push_back(list::type x);
 
   // Remove o último elemento da lista em O(1).
   void pop_back();
 
-  // Retona um ponteiro para o primeiro nó da lista que contém x em O(n),
-  // onde n é o numero de elementos na lista.
-  // Se x não está na lista, retorna um ponteiro para end().
-  Node* find(ListType x);
+  // Retorna um pontiero para o primeiro noh da lista cuja chave eh x em O(n),
+  // onde n eh o numero de elementos na lista.
+  // Se x nao esta na lista, retorna um pontiero para end().
+  node* find(list::type x);
 
   // Insere x antes do elemento identificado por 'node' em O(1) e retorna
-  // um ponteiro para o nó que foi criado para armazenar x.
-  Node* insert(Node* node, ListType x);
+  // um ponteiro para o noh que foi criado para armazenar x.
+  node* insert(node* node, list::type x);
 
   // Apaga o elemento indicado por 'node' em O(1).
-  void erase(Node* node);
+  void erase(node* node);
 
 
   // Remove todos os elementos da lista corrente em O(n),
   // onde n é o numero de elementos na lista.
   void clear();
 
-  // Concatena os elementos de l no final da lista corrente em O(n),
-  // onde n = l.size().
+  // Concatena os elementos de l no final da lista corrente em O(m),
+  // onde m = l.size().
   void merge(list& l);
 
-  // Faz a lista corrente ficar igual a l em O(n), onde n = l.size().
+  // Faz a lista corrente ficar igual a l em O(m), onde m = l.size().
   void operator=(list& l);
 
-private:
+ private:
   // Numero de elementos na lista.
   int size_;
 
-  // Ponteiro para o no sentinela da lista.
-  Node* end_;
+  // Ponteiro para o noh sentinela da lista.
+  node* end_;
 
   friend class Teste;
 };
 
-#endif  // LIST_H_
+// Implementa um noh da lista ligada.
+struct node {
+  list::type key;  // Valor da chave do noh.
+  node* prev;  // Ponteiro para o proximo noh da lista.
+  node* next;  // Ponteiro para o noh anterior da lista.
+};
+
+// Cria o noh sentinela da lista ligada em O(1).
+node* NewSentinel();
+
+// Cria um novo noh da lista ligada em O(1).
+node* NewNode(list::type k, node* l, node* r);
+
+#endif  // BRANCHES_GABARITOS_LIST_SRC_LIST_H_

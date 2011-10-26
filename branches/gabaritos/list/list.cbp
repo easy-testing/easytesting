@@ -44,8 +44,6 @@
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
 		</Unit>
-		<Unit filename="src/node.cc" />
-		<Unit filename="src/node.h" />
 		<Unit filename="test/list_test.cc">
 			<Option target="EasyTesting" />
 		</Unit>
