@@ -1,17 +1,18 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef BRANCHES_GABARITOS_VECTOR_SRC_FLOAT_VECTOR_H_
-#define BRANCHES_GABARITOS_VECTOR_SRC_FLOAT_VECTOR_H_
+#ifndef BRANCHES_GABARITOS_VECTOR_SRC_VECTOR_H_
+#define BRANCHES_GABARITOS_VECTOR_SRC_VECTOR_H_
 
-typedef float VectorType;
-
-// Implementa um vetor dinâmico de números reais.
+// Implementa um vetor dinâmico de numeros reais.
 class vector {
  public:
+  // Tipo dos elementos contidos no vetor.
+  typedef float type;
+
   // Cria um vetor vazio.
   vector();
 
-  // Cria um vetor com n elementos. O valor dos n elementos é indeterminado
+  // Cria um vetor com n elementos. O valor dos n elementos eh indeterminado
   // (ou seja, pode ser qualquer número real).
   vector(int n);
 
@@ -21,7 +22,7 @@ class vector {
   // Testa se o vetor está vazio.
   bool empty();
 
-  // Retorna o número de elementos no vetor.
+  // Retorna o numero de elementos no vetor.
   int size();
 
   // Altera o tamanho do vetor para n elementos.
@@ -32,14 +33,14 @@ class vector {
   void resize(int n);
 
   // Retorna uma referência ao elemento de índice i no vetor.
-  VectorType& at(int i);
-  VectorType& operator[](int i) {return at(i);}
+  type& at(int i);
+  type& operator[](int i) {return at(i);}
 
   // Retorna uma referência ao primeiro elemento no vetor.
-  VectorType& front();
+  type& front();
 
   // Retorna uma referência ao último elemento no vetor.
-  VectorType& back();
+  type& back();
 
   // Faz com que o vetor corrente fique igual ao vetor v.
   void assign(vector& v);
@@ -49,7 +50,7 @@ class vector {
   // Esta operação aumenta o número de elementos do vetor em uma unidade.
   // Por exemplo: se "v = {1.0, 3.0, 5.0}", após "v.push_back(-7.0)",
   // "v = {1.0, 3.0, 5.0, -7.0}".
-  void push_back(VectorType x);
+  void push_back(type x);
 
   // Remove o último elemento do vetor.
   // Esta operação diminui o número de elementos no vetor em uma unidade.
@@ -64,7 +65,7 @@ class vector {
   // Esta operação aumenta o número de elementos no vetor em uma unidade.
   // Por exemplo: se "v = {1.0, 3.0, 5.0}", após "v.insert(1, -7.0)",
   // "v = {1.0, -7.0, 3.0, 5.0}".
-  void insert(int index, VectorType x);
+  void insert(int index, type x);
 
   // Remove o elemento de índice 'index' do vetor.
   // Todos os elementos com índice maior que 'index' são deslocados para
@@ -88,7 +89,7 @@ class vector {
   int size_;
 
   // Vetor alocado dinamicamente.
-  VectorType* array_;
+  type* array_;
 };  // end class vector.
 
-#endif  // BRANCHES_GABARITOS_VECTOR_SRC_FLOAT_VECTOR_H_
+#endif  // BRANCHES_GABARITOS_VECTOR_SRC_VECTOR_H_

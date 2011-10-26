@@ -3,7 +3,7 @@
 // Lista sobre vetores dinâmicos.
 //
 // Questão 1.
-// Implemente em float_vector.h e float_vector.cc o TAD vector.
+// Implemente em vector.h e vector.cc o TAD vector.
 //
 // Questão 2.
 // Implemente uma função "void FiltraPositivos(vector& v)" que recebe um
@@ -21,7 +21,9 @@
 #include <fstream>
 #include "vector/src/vector.h"
 
-using namespace std;
+using std::cout;
+using std::endl;
+using std::ifstream;
 
 void FiltraPositivos(vector& v) {
   for (int i = 0; i < v.size(); i++) {
@@ -44,6 +46,5 @@ int main() {
   for (int i = 0; i < v.size(); i++) {
     cout << v.at(i) << endl;
   }
-
   return 0;
 }

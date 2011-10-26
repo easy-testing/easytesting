@@ -10,6 +10,7 @@ struct node;  // Definido depois da classe list.
 // definido por 'type'.
 class list {
  public:
+  // Tipo dos elementos contidos na lista.
   typedef float type;
 
   // Cria uma lista vazia em O(1).
