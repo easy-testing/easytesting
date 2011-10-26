@@ -11,7 +11,7 @@
 // "[a1, a2, ..., an]".
 //
 // Questão 3.
-// Escreva uma função "Node* MinList(list& l))" que recebe uma
+// Escreva uma função "node* MinList(list& l))" que recebe uma
 // lista l como parametro e retorna um ponteiro para o noh que contem o menor
 // elemento de l.
 //
@@ -51,7 +51,7 @@ using std::string;
 // Impreme na tela os elementos da lista l no formato "[a1, a2, ..., an]".
 void Imprimir(list& l) {
   cout << "[";
-  for (Node* i = l.begin(); i != l.end() ; i = i->next) {
+  for (node* i = l.begin(); i != l.end() ; i = i->next) {
     cout << i->key;
     if (i->next != l.end()) {
       cout << ", ";
@@ -62,9 +62,9 @@ void Imprimir(list& l) {
 
 // Gabarito da questão 3.
 // Retorna um ponteiro para o noh que contem o menor elemento de l.
-Node* MinList(list& l) {
-  Node* min = l.begin();
-  for (Node* i = l.begin(); i != l.end(); i = i->next) {
+node* MinList(list& l) {
+  node* min = l.begin();
+  for (node* i = l.begin(); i != l.end(); i = i->next) {
     if (i->key < min->key) {
       min = i;
     }
@@ -78,7 +78,7 @@ void Sort(list* l) {
   list aux(*l);
   l->clear();
   while (!aux.empty()) {
-    Node* min = MinList(aux);
+    node* min = MinList(aux);
     l->push_back(min->key);
     aux.erase(min);
   }
@@ -111,7 +111,7 @@ int Char2Int(char c) {
 // Imprime na tela os digitos contidos em l. Por exemplo, l = [3, 7, 1]
 // resulta na impressão de 371.
 void ImprimeDigitos(list& l) {
-  for (Node* i = l.begin(); i != l.end() ; i = i->next) {
+  for (node* i = l.begin(); i != l.end() ; i = i->next) {
     cout << i->key;
   }
   cout << endl;
@@ -125,7 +125,7 @@ void ApagaDigitos(int d, list* l) {
   // digito, insere o numero 10 antes do primeiro e depois do ultimo digito.
   l->push_front(10);
   l->push_back(10);
-  for (Node* i = l->begin()->next; i != l->end(); i = i->next) {
+  for (node* i = l->begin()->next; i != l->end(); i = i->next) {
     while (d > 0 && i->prev->key < i->key) {
       l->erase(i->prev);
       d--;

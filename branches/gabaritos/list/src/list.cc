@@ -42,7 +42,7 @@ int list::size() {
   return size_;
 }
 
-void list::push_front(list::type x) {
+void list::push_front(type x) {
   insert(begin(), x);
 }
 
@@ -50,7 +50,7 @@ void list::pop_front() {
   erase(begin());
 }
 
-void list::push_back(list::type x) {
+void list::push_back(type x) {
   insert(end(), x);
 }
 
@@ -58,7 +58,7 @@ void list::pop_back() {
   erase(end_->prev);
 }
 
-node* list::find(list::type x) {
+node* list::find(type x) {
   node* iter = begin();
   while (iter != end() && iter->key != x) {
     iter = iter->next;
@@ -66,7 +66,7 @@ node* list::find(list::type x) {
   return iter;
 }
 
-node* list::insert(node* node, list::type x) {
+node* list::insert(node* node, type x) {
   node->prev = node->prev->next = NewNode(x, node->prev, node);
   size_++;
   return node->prev;

@@ -34,23 +34,23 @@ class list {
 
   // Retorna o valor do primeiro elemento da lista em O(1).
   // PRECONDICAO: a lista nao pode estar vazia.
-  list::type front();
+  type front();
 
   // Retorna o valor do ultimo elemento da lista em O(1).
   // PRECONDICAO: a lista não pode estar vazia.
-  list::type back();
+  type back();
 
   // Retorna o numero de elementos da lista em O(1).
   int size();
 
   // Insere x no início da lista em O(1).
-  void push_front(list::type x);
+  void push_front(type x);
 
   // Remove o primeiro elemento da lista em O(1).
   void pop_front();
 
   // Insere x no final da lista em O(1).
-  void push_back(list::type x);
+  void push_back(type x);
 
   // Remove o último elemento da lista em O(1).
   void pop_back();
@@ -58,11 +58,11 @@ class list {
   // Retorna um pontiero para o primeiro noh da lista cuja chave eh x em O(n),
   // onde n eh o numero de elementos na lista.
   // Se x nao esta na lista, retorna um pontiero para end().
-  node* find(list::type x);
+  node* find(type x);
 
   // Insere x antes do elemento identificado por 'node' em O(1) e retorna
   // um ponteiro para o noh que foi criado para armazenar x.
-  node* insert(node* node, list::type x);
+  node* insert(node* node, type x);
 
   // Apaga o elemento indicado por 'node' em O(1).
   void erase(node* node);
