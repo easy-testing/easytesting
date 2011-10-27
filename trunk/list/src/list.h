@@ -61,18 +61,12 @@ class list {
   // Remove o último elemento da lista em O(1).
   void pop_back();
 
-  // Retorna um pontiero para o primeiro noh da lista cuja chave eh x em O(n),
-  // onde n eh o numero de elementos na lista.
-  // Se x nao esta na lista, retorna um pontiero para end().
-  node* find(type x);
-
   // Insere x antes do elemento identificado por 'node' em O(1) e retorna
   // um ponteiro para o noh que foi criado para armazenar x.
   node* insert(node* node, type x);
 
   // Apaga o elemento indicado por 'node' em O(1).
   void erase(node* node);
-
 
   // Remove todos os elementos da lista corrente em O(n),
   // onde n é o numero de elementos na lista.

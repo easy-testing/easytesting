@@ -19,81 +19,63 @@ list::~list() {
 }
 
 node* list::begin() {
-  return end_->next;
+  // TODO.
 }
 
 node* list::end() {
-  return end_;
+  // TODO.
 }
 
 bool list::empty() {
-  return size_ == 0;
+  // TODO.
 }
 
 list::type list::front() {
-  return end_->next->key;
+  // TODO.
 }
 
 list::type list::back() {
-  return end_->prev->key;
+  // TODO.
 }
 
 int list::size() {
-  return size_;
+  // TODO.
 }
 
 void list::push_front(type x) {
-  insert(begin(), x);
+  // TODO.
 }
 
 void list::pop_front() {
-  erase(begin());
+  // TODO.
 }
 
 void list::push_back(type x) {
-  insert(end(), x);
+  // TODO.
 }
 
 void list::pop_back() {
-  erase(end_->prev);
-}
-
-node* list::find(type x) {
-  node* iter = begin();
-  while (iter != end() && iter->key != x) {
-    iter = iter->next;
-  }
-  return iter;
+  // TODO.
 }
 
 node* list::insert(node* node, type x) {
-  node->prev = node->prev->next = NewNode(x, node->prev, node);
-  size_++;
-  return node->prev;
+  // TODO.
 }
 
 void list::erase(node* node) {
-  node->prev->next = node->next;
-  node->next->prev = node->prev;
-  delete node;
-  size_--;
+  // TODO.
 }
 
 void list::clear() {
-  while (!empty()) {
-    pop_back();
-  }
+  // TODO.
 }
 
 void list::merge(list& l) {
-  for (node* i = l.begin(); i != l.end(); i = i->next) {
-    push_back(i->key);
-  }
+  // TODO.
 }
 
 void list::operator=(list& l) {
-  clear();
-  merge(l);
+  // TODO.
 }
 
 node* list::NewSentinel() {
