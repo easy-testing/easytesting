@@ -84,6 +84,26 @@ TEST_F(Teste, Media_Matriz_1x1) {
     << "-------------------------------------------------------------------\n";
 }
 
+TEST_F(Teste, Verifica_divisao_correta_na_funcao_media_matriz) {
+  float mat[MAX][MAX] = { {1.0, 1.0, 1.0, 1.0},
+                          {1.0, 1.0, 1.0, 1.0},
+                          {1.0, 1.0, 1.0, 1.0},
+                          {1.0, 1.0, 1.0, 1.0} };
+  float inesperado = 4;
+  float resultado = MediaMatriz(4, mat);
+  ASSERT_NE(inesperado, resultado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao: \"float Media(int n, float matriz[][])\".          \n"
+    << "-------------------------------------------------------------------\n"
+    << "                       Matriz de Entrada:\n\n"
+    << Imprime_1_Matriz(4, 4, 18, mat)
+    << "\n    Media esperada: " << 1.0 << "\n"
+    << "   Media retornada: " << resultado << "\n"
+    << " Provavelmente a divisao do seu somatorio eh por n, enquanto\n"
+    << " deveria ser por n*n\n"
+    << "-------------------------------------------------------------------\n";
+}
+
 TEST_F(Teste, Media_Matriz_Quadrada_elementos_positivos) {
   float mat[MAX][MAX] = {{0.1, 1.5, 2.4, 3.1},
                          {1.1, 2.5, 3.3, 4.1},

@@ -272,6 +272,84 @@ TEST_F(Teste, Testar_operador_at_em_atribuicao_de_valores) {
     << "-------------------------------------------------------------------\n";
 }
 
+TEST_F(Teste, Testar_funcao_nulo) {
+  float coef_p[] = {1, 2, 3};  // P(x) = 1 + 2x + 3x^2.
+  Polinomio p;
+  Inicializar(3, coef_p, &p);
+
+  // Verifica se um polinomio nao eh nulo
+  float x = 2.0;
+  bool atual = p.nulo();
+  ASSERT_FALSE(atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* bool Polinomio::nulo() *\n"
+    << "-------------------------------------------------------------------\n"
+    << "      p = " << MostrarPorExtenso(p) << "\n"
+    << "   Polinomio nao eh nulo, porem a funcao retornou verdadeiro.\n"
+    << "-------------------------------------------------------------------\n";
+
+  Polinomio p2;
+
+  // Verifica se um polinomio eh nulo
+  atual = p2.nulo();
+  ASSERT_TRUE(atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* float Polinomio::nulo() *\n"
+    << "-------------------------------------------------------------------\n"
+    << "      p = " << MostrarPorExtenso(p2) << "\n"
+    << "   Polinomio foi inicializado sem um numero de termos, a funcao\n"
+    << "   deveria retornar true.\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Verificar_termos_em_avaliar_polinomios) {
+  float coef_p[] = {1, 2, 3};  // P(x) = 1 + 2x + 3x^2.
+  Polinomio p;
+  Inicializar(3, coef_p, &p);
+
+  // Avalia P(2) verificando se faltou 'x^i'.
+  float x = 2.0;
+  float inesperado = 6;
+  float esperado = 17;
+  float atual = p.Avaliar(x);
+  ASSERT_NE(inesperado, atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* float Polinomio::Avaliar(float) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "      p = " << MostrarPorExtenso(p) << "\n"
+    << "      x = " << x << "\n\n"
+    << "   Valor esperado : " << esperado << "\n"
+    << "   Valor retornado: " << atual << "\n"
+    << "   Verifique se utilizou o valor do 'x^i' no somatorio do\n"
+    << "   polinomio.\n"
+    << "-------------------------------------------------------------------\n";
+
+  float coef_p2[] = {1, 2, 3};  // P(x) = 1 + 2x + 3x^2.
+  Polinomio p2;
+  Inicializar(3, coef_p2, &p2);
+
+  // Avalia P(2) verificando se faltou coeficiente.
+  x = 2.0;
+  inesperado = 7;
+  esperado = 17;
+  atual = p2.Avaliar(x);
+  ASSERT_NE(inesperado, atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* float Polinomio::Avaliar(float) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "      p = " << MostrarPorExtenso(p2) << "\n"
+    << "      x = " << x << "\n\n"
+    << "   Valor esperado : " << esperado << "\n"
+    << "   Valor retornado: " << atual << "\n"
+    << "   Verifique se utilizou o valor do coeficiente no somatorio do\n"
+    << "   polinomio.\n"
+    << "-------------------------------------------------------------------\n";
+}
+
 TEST_F(Teste, Avaliar_polinomios_com_coeficientes_nao_nulos) {
   float coef_p[] = {4, -2.0, 3, -5, 1};  // P(x) = 4 - 2x + 3x^2 - 5x^3 + x^4.
   Polinomio p;
@@ -650,6 +728,26 @@ TEST_F(Teste, Operador_avaliar_polinomios_constantes) {
     << "-------------------------------------------------------------------\n";
 }
 
+TEST_F(Teste, Verifica_grau_em_atribuicao_de_polinomio) {
+  float coef_p[] = {5, 0, 3, 0, 2};
+  int esperado = 4;
+  Polinomio p;
+  Inicializar(5, coef_p, &p);
+  Polinomio novo;
+  novo.Atribuir(p);
+  int atual = novo.grau();
+  ASSERT_EQ(esperado, atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* void Polinomio::Atribuir(Polinomio& q) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "   Polinomio a atribuir tem grau: " << esperado << "\n"
+    << "   Polinomio atribuido tem grau: " << atual << "\n"
+    << "   Verifique se esta lembrando de atualizar o grau do polinomio    \n"
+    << "   atribuido.\n"
+    << "-------------------------------------------------------------------\n";
+}
+
 TEST_F(Teste, Atribuir_polinomio_de_grau_maior_que_um) {
   float coef_p[] = {5, 0, 3, 0, 2};
   Polinomio p;
@@ -679,6 +777,27 @@ TEST_F(Teste, Operador_atribuicao_polinomio_de_grau_maior_que_um) {
     << "-------------------------------------------------------------------\n"
     << "   Polinomio a atribuir: " << MostrarPorExtenso(p) << "\n"
     << "   Polinomio atribuido: " << MostrarPorExtenso(novo) << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Verifica_grau_em_derivada_de_polinomio) {
+  float coef_p[] = {5, 0, 3, 0, 2};
+  int esperado = 3;
+  Polinomio p;
+  Inicializar(5, coef_p, &p);
+  Polinomio derivada;
+  derivada.Derivar(p);
+  int atual = derivada.grau();
+    ASSERT_EQ(esperado, atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* void Polinomio::Derivar(Polinomio& q) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "      p = " << MostrarPorExtenso(p) << "\n\n"
+    << "   Grau da derivada esperada : " << esperado << "\n"
+    << "   Grau da derivada retornada: " << atual << "\n"
+    << "   Verifique se esta lembrando de atualizar o grau do polinomio    \n"
+    << "   derivado.\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -719,6 +838,45 @@ TEST_F(Teste, Derivar_polinomio_de_grau_maior_que_um) {
     << "      p = " << MostrarPorExtenso(p) << "\n\n"
     << "   Derivada esperada : " << MostrarPorExtenso(esperado) << "\n"
     << "   Derivada retornada: " << MostrarPorExtenso(derivada) << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Derivar_polinomio_constante) {
+  float coef_p[] = {1};
+  Polinomio p;
+  Inicializar(1, coef_p, &p);
+  Polinomio derivada;
+  derivada.Derivar(p);
+  bool atual = derivada.nulo();
+  ASSERT_TRUE(atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* void Polinomio::Derivar(Polinomio& q) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "      p = " << MostrarPorExtenso(p) << "\n\n"
+    << "   A derivada do polinomio constante eh um polinomio nulo, porem a\n"
+    << "   funcao nao retorna true.\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Verifica_grau_integral_de_polinomio) {
+  float coef_p[] = {5, 0, 3, 0, 2};
+  int esperado = 5;
+  Polinomio p;
+  Inicializar(5, coef_p, &p);
+  Polinomio integral;
+  integral.Integrar(p);
+  int atual = integral.grau();
+  ASSERT_EQ(atual, esperado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* void Polinomio::Integrar(Polinomio& q) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "      p = " << MostrarPorExtenso(p) << "\n\n"
+    << "   Grau da integral esperada : " << esperado << "\n"
+    << "   Grau da integral retornada: " << atual << "\n"
+    << "   Verifique se esta lembrando de atualizar o grau do polinomio    \n"
+    << "   integrado.\n"
     << "-------------------------------------------------------------------\n";
 }
 

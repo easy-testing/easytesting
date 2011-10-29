@@ -87,6 +87,8 @@ class FloatVector {
 
   // Vetor alocado dinamicamente.
   float* array_;
+
+  friend class Teste;
 };  // end class FloatVector.
 
 #endif  // BRANCHES_GABARITOS_FLOAT_VECTOR_SRC_FLOAT_VECTOR_H_
