@@ -1,7 +1,7 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef STACK_TEST_STACK_TEST_H_
-#define STACK_TEST_STACK_TEST_H_
+#ifndef BRANCHES_GABARITOS_STACK_TEST_STACK_TEST_H_
+#define BRANCHES_GABARITOS_STACK_TEST_STACK_TEST_H_
 
 #include "stack/src/stack.h"
 
@@ -230,4 +230,4 @@ TEST_F(Teste, Testar_metodo_pop_em_stack_com_varios_elemento) {
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // STACK_TEST_STACK_TEST_H_
+#endif  // BRANCHES_GABARITOS_STACK_TEST_STACK_TEST_H_

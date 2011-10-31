@@ -1,7 +1,7 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef BRANCHES_GABARITOS_LIST_SRC_NODE_H_
-#define BRANCHES_GABARITOS_LIST_SRC_NODE_H_
+#ifndef BRANCHES_GABARITOS_QUEUE_SRC_NODE_H_
+#define BRANCHES_GABARITOS_QUEUE_SRC_NODE_H_
 
 #include<string>
 
@@ -10,17 +10,17 @@ using std::string;
 // Tipo dos elementos contidos na fila.
 typedef string type;
 
-// Implementa um nó.
+// Implementa um nÃ³.
 struct node {
-  type key;  // Valor da chave do nó.
-  node* prev;  // Ponteiro para o próximo nó.
-  node* next;  // Ponteiro para o nó anterior.
+  type key;  // Valor da chave do nÃ³.
+  node* prev;  // Ponteiro para o prÃ³ximo nÃ³.
+  node* next;  // Ponteiro para o nÃ³ anterior.
 };
 
-// Cria um nó sentinela.
+// Cria um nÃ³ sentinela.
 node* NewSentinel();
 
-// Cria uma nó cuja chave é k, o nó anterior é l, e o nó posterior é r.
+// Cria uma nÃ³ cuja chave Ã© k, o nÃ³ anterior Ã© l, e o nÃ³ posterior Ã© r.
 node* NewNode(type k, node* l, node* r);
 
-#endif  // BRANCHES_GABARITOS_LIST_SRC_NODE_H_
+#endif  // BRANCHES_GABARITOS_QUEUE_SRC_NODE_H_

@@ -40,7 +40,10 @@
 
 #include "stack/src/stack.h"
 
-using namespace std;
+using std::cout;
+using std::endl;
+using std::ifstream;
+using std::string;
 
 // Questão 2.
 ////////////////////////////////////////////////////////////////////////////////
