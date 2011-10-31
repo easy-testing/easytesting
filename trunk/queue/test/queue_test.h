@@ -55,7 +55,7 @@ TEST_F(Teste, Testar_metodo_empty) {
     << "Erro na funcao:  "
     << "* bool queue::empty() *\n"
     << "-------------------------------------------------------------------\n"
-    << "A queue esta vazia e a funcao retornou FALSE."
+    << "A queue esta vazia e a funcao retornou FALSE.\n"
     << "-------------------------------------------------------------------\n";
 
   queue f2;
@@ -77,9 +77,9 @@ TEST_F(Teste, Testar_metodo_front_em_queue_com_um_elemento) {
   ASSERT_EQ(esperado, atual)
   << "-------------------------------------------------------------------\n"
   << "Erro na funcao:  "
-  << "* Type queue::front() *\n"
+  << "* type queue::front() *\n"
   << "-------------------------------------------------------------------\n"
-  << "     " << PrintQueue(f) << "\n\n"
+  << "fila = " << PrintQueue(f) << "\n\n"
   << "Valor esperado  : " << esperado << "\n"
   << "Valor retornado : " << atual << "\n"
   << "-------------------------------------------------------------------\n";
@@ -93,9 +93,9 @@ TEST_F(Teste, Testar_metodo_front_em_queue_com_mais_de_um_elemento) {
   ASSERT_EQ(esperado, atual)
   << "-------------------------------------------------------------------\n"
   << "Erro na funcao:  "
-  << "* Type queue::front() *\n"
+  << "* type queue::front() *\n"
   << "-------------------------------------------------------------------\n"
-  << "     " << PrintQueue(f) << "\n\n"
+  << "fila = " << PrintQueue(f) << "\n\n"
   << "Valor esperado  : " << esperado << "\n"
   << "Valor retornado : " << atual << "\n"
   << "-------------------------------------------------------------------\n";
@@ -109,9 +109,9 @@ TEST_F(Teste, Testar_metodo_back_em_queue_com_um_elemento) {
   ASSERT_EQ(esperado, atual)
   << "-------------------------------------------------------------------\n"
   << "Erro na funcao:  "
-  << "* Type queue::back() *\n"
+  << "* type queue::back() *\n"
   << "-------------------------------------------------------------------\n"
-  << "     " << PrintQueue(f) << "\n\n"
+  << "fila = " << PrintQueue(f) << "\n\n"
   << "Valor esperado  : " << esperado << "\n"
   << "Valor retornado : " << atual << "\n"
   << "-------------------------------------------------------------------\n";
@@ -125,9 +125,9 @@ TEST_F(Teste, Testar_metodo_back_em_queue_com_mais_de_um_elemento) {
   ASSERT_EQ(esperado, atual)
   << "-------------------------------------------------------------------\n"
   << "Erro na funcao:  "
-  << "* Type queue::back() *\n"
+  << "* type queue::back() *\n"
   << "-------------------------------------------------------------------\n"
-  << "     " << PrintQueue(f) << "\n\n"
+  << "fila = " << PrintQueue(f) << "\n\n"
   << "Valor esperado  : " << esperado << "\n"
   << "Valor retornado : " << atual << "\n"
   << "-------------------------------------------------------------------\n";
@@ -142,7 +142,7 @@ TEST_F(Teste, Testar_metodo_size_em_queue_vazia) {
     << "Erro na funcao:  "
     << "* string queue::size() *\n"
     << "-------------------------------------------------------------------\n"
-    << "     " << PrintQueue(f) << "\n\n"
+    << "fila = " << PrintQueue(f) << "\n\n"
     << "Valor esperado  : " << esperado << "\n"
     << "Valor retornado : " << atual << "\n"
     << "-------------------------------------------------------------------\n";
@@ -158,7 +158,7 @@ TEST_F(Teste, Testar_metodo_size_em_queue_com_um_elemento) {
     << "Erro na funcao:  "
     << "* int queue::size() *\n"
     << "-------------------------------------------------------------------\n"
-    << "     " << PrintQueue(f) << "\n\n"
+    << "fila = " << PrintQueue(f) << "\n\n"
     << "Valor esperado  : " << esperado << "\n"
     << "Valor retornado : " << atual << "\n"
     << "-------------------------------------------------------------------\n";
@@ -174,7 +174,7 @@ TEST_F(Teste, Testar_metodo_size_em_queue_com_varios_elementos) {
     << "Erro na funcao:  "
     << "* int queue::size() *\n"
     << "-------------------------------------------------------------------\n"
-    << "     " << PrintQueue(f) << "\n\n"
+    << "fila = " << PrintQueue(f) << "\n\n"
     << "Valor esperado  : " << esperado << "\n"
     << "Valor retornado : " << atual << "\n"
     << "-------------------------------------------------------------------\n";
@@ -191,10 +191,10 @@ TEST_F(Teste, Testar_metodo_push_em_queue_vazia) {
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void queue::push(Type x) *\n"
+    << "* void queue::push(type x) *\n"
     << "-------------------------------------------------------------------\n"
-    << "Lista esperada : " << esperado << "\n"
-    << "Lista atual    : " << atual << "\n"
+    << "Fila esperada : " << esperado << "\n"
+    << "Fila atual    : " << atual << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -207,10 +207,10 @@ TEST_F(Teste, Testar_metodo_push_em_queue_com_um_elemento) {
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void queue::push(Type x) *\n"
+    << "* void queue::push(type x) *\n"
     << "-------------------------------------------------------------------\n"
-    << "Lista esperada : " << esperado << "\n"
-    << "Lista atual    : " << atual << "\n"
+    << "Fila esperada : " << esperado << "\n"
+    << "Fila atual    : " << atual << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -223,10 +223,10 @@ TEST_F(Teste, Testar_metodo_push_em_queue_com_varios_elementos) {
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void queue::push(Type x) *\n"
+    << "* void queue::push(type x) *\n"
     << "-------------------------------------------------------------------\n"
-    << "Lista esperada : " << esperado << "\n"
-    << "Lista atual    : " << atual << "\n"
+    << "Fila esperada : " << esperado << "\n"
+    << "Fila atual    : " << atual << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -241,8 +241,8 @@ TEST_F(Teste, Testar_metodo_pop_em_queue_com_um_elemento) {
     << "Erro na funcao:  "
     << "* void queue::pop() *\n"
     << "-------------------------------------------------------------------\n"
-    << "Lista esperada : " << esperado << "\n"
-    << "Lista atual    : " << atual << "\n"
+    << "Fila esperada : " << esperado << "\n"
+    << "Fila atual    : " << atual << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -257,8 +257,8 @@ TEST_F(Teste, Testar_metodo_pop_em_queue_com_varios_elemento) {
     << "Erro na funcao:  "
     << "* void queue::pop() *\n"
     << "-------------------------------------------------------------------\n"
-    << "Lista esperada : " << esperado << "\n"
-    << "Lista atual    : " << atual << "\n"
+    << "Fila esperada : " << esperado << "\n"
+    << "Fila atual    : " << atual << "\n"
     << "-------------------------------------------------------------------\n";
 }
 #endif  // BRANCHES_GABARITOS_QUEUE_TEST_QUEUE_TEST_H_

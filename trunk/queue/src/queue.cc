@@ -9,39 +9,30 @@ queue::queue() {
 }
 
 queue::~queue() {
-  // Primeiramente, remove todos os elementos da fila.
-  while (!empty()) {
-    pop();  // A função pop() libera a memórima de cada nó removido da fila;
-  }
-  // Em seguida, libera a memória alocada ao sentinela.
-  delete end_;
+  // TODO.
 }
 
 bool queue::empty() {
-  return size_ == 0;
+  return false; // TODO.
 }
-
 int queue::size() {
-  return size_;
+  return -1;  // TODO.
 }
 
 type queue::front() {
-  return end_->next->key;
+  type x;
+  return x;  // TODO.
 }
 
 type queue::back() {
-  return end_->prev->key;
+  type x;
+  return x;  // TODO.
 }
 
 void queue::push(type x) {
-  end_->prev = end_->prev->next = NewNode(x, end_->prev, end_);
-  size_++;
+  // TODO.
 }
 
 void queue::pop() {
-  node* first = end_->next;  // Ponteiro para o primeiro elemento na fila.
-  first->prev->next = first->next;
-  first->next->prev = first->prev;
-  delete first;
-  size_--;
+  // TODO.
 }
