@@ -58,15 +58,15 @@ TEST_F(Teste, Testar_metodo_empty) {
     << "A stack esta vazia e a funcao retornou FALSE.\n"
     << "-------------------------------------------------------------------\n";
 
-//  stack p2;
-//  CriaStack3("12", "14", "15", p2);
-//  ASSERT_FALSE(p2.empty())
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  "
-//    << "* bool stack::empty() *\n"
-//    << "-------------------------------------------------------------------\n"
-//    << "A stack tem pelo menos um elemento e a funcao retornou TRUE."
-//    << "-------------------------------------------------------------------\n";
+  stack p2;
+  CriaStack3("12", "14", "15", p2);
+  ASSERT_FALSE(p2.empty())
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* bool stack::empty() *\n"
+    << "-------------------------------------------------------------------\n"
+    << "A stack tem pelo menos um elemento e a funcao retornou TRUE."
+    << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testar_metodo_top_em_stack_com_um_elemento) {
@@ -79,7 +79,7 @@ TEST_F(Teste, Testar_metodo_top_em_stack_com_um_elemento) {
   << "Erro na funcao:  "
   << "* type stack::top() *\n"
   << "-------------------------------------------------------------------\n"
-  << "     " << PrintStack(p) << "\n\n"
+  << "pilha = " << PrintStack(p) << "\n\n"
   << "Valor esperado  : " << esperado << "\n"
   << "Valor retornado : " << atual << "\n"
   << "-------------------------------------------------------------------\n";
@@ -95,7 +95,7 @@ TEST_F(Teste, Testar_metodo_top_em_stack_com_mais_de_um_elemento) {
   << "Erro na funcao:  "
   << "* type stack::top() *\n"
   << "-------------------------------------------------------------------\n"
-  << "     " << PrintStack(p) << "\n\n"
+  << "pilha = " << PrintStack(p) << "\n\n"
   << "Valor esperado  : " << esperado << "\n"
   << "Valor retornado : " << atual << "\n"
   << "-------------------------------------------------------------------\n";
@@ -110,7 +110,7 @@ TEST_F(Teste, Testar_metodo_size_em_stack_vazia) {
     << "Erro na funcao:  "
     << "* int stack::size() *\n"
     << "-------------------------------------------------------------------\n"
-    << "     " << PrintStack(p) << "\n\n"
+    << "pilha = " << PrintStack(p) << "\n\n"
     << "Valor esperado  : " << esperado << "\n"
     << "Valor retornado : " << atual << "\n"
     << "-------------------------------------------------------------------\n";
@@ -126,7 +126,7 @@ TEST_F(Teste, Testar_metodo_size_em_stack_com_um_elemento) {
     << "Erro na funcao:  "
     << "* int stack::size() *\n"
     << "-------------------------------------------------------------------\n"
-    << "     " << PrintStack(p) << "\n\n"
+    << "pilha = " << PrintStack(p) << "\n\n"
     << "Valor esperado  : " << esperado << "\n"
     << "Valor retornado : " << atual << "\n"
     << "-------------------------------------------------------------------\n";
@@ -142,7 +142,7 @@ TEST_F(Teste, Testar_metodo_size_em_lista_com_varios_elementos) {
     << "Erro na funcao:  "
     << "* int stack::size() *\n"
     << "-------------------------------------------------------------------\n"
-    << "     " << PrintStack(p) << "\n\n"
+    << "pilha = " << PrintStack(p) << "\n\n"
     << "Valor esperado  : " << esperado << "\n"
     << "Valor retornado : " << atual << "\n"
     << "-------------------------------------------------------------------\n";
@@ -161,8 +161,8 @@ TEST_F(Teste, Testar_metodo_push_em_stack_vazia) {
     << "Erro na funcao:  "
     << "* void stack::push(type x) *\n"
     << "-------------------------------------------------------------------\n"
-    << "Lista esperada : " << esperado << "\n"
-    << "Lista atual    : " << atual << "\n"
+    << "Pilha esperada : " << esperado << "\n"
+    << "Pilha atual    : " << atual << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -177,8 +177,8 @@ TEST_F(Teste, Testar_metodo_push_em_stack_com_um_elemento) {
     << "Erro na funcao:  "
     << "* void stack::push(type x) *\n"
     << "-------------------------------------------------------------------\n"
-    << "Lista esperada : " << esperado << "\n"
-    << "Lista atual    : " << atual << "\n"
+    << "Pilha esperada : " << esperado << "\n"
+    << "Pilha atual    : " << atual << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -193,8 +193,8 @@ TEST_F(Teste, Testar_metodo_push_em_stack_com_varios_elementos) {
     << "Erro na funcao:  "
     << "* void stack::push(type x) *\n"
     << "-------------------------------------------------------------------\n"
-    << "Lista esperada : " << esperado << "\n"
-    << "Lista atual    : " << atual << "\n"
+    << "Pilha esperada : " << esperado << "\n"
+    << "Pilha atual    : " << atual << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -209,8 +209,8 @@ TEST_F(Teste, Testar_metodo_pop_em_stack_com_um_elemento) {
     << "Erro na funcao:  "
     << "* void stack::pop() *\n"
     << "-------------------------------------------------------------------\n"
-    << "Lista esperada : " << esperado << "\n"
-    << "Lista atual    : " << atual << "\n"
+    << "Pilha esperada : " << esperado << "\n"
+    << "Pilha atual    : " << atual << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -225,8 +225,8 @@ TEST_F(Teste, Testar_metodo_pop_em_stack_com_varios_elemento) {
     << "Erro na funcao:  "
     << "* void stack::pop() *\n"
     << "-------------------------------------------------------------------\n"
-    << "Lista esperada : " << esperado << "\n"
-    << "Lista atual    : " << atual << "\n"
+    << "Pilha esperada : " << esperado << "\n"
+    << "Pilha atual    : " << atual << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
