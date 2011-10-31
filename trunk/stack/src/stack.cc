@@ -16,7 +16,7 @@ bool stack::empty() {
 }
 
 int stack::size() {
-  //TODO.
+  return -1;  //TODO.
 }
 
 type stack::top() {
