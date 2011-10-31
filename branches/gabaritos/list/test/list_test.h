@@ -29,20 +29,6 @@ class Teste : public testing::Test {
     return output.str();
   }
 
-  node* NewSentinel() {
-    node* aux = new node();
-    aux->prev = aux->next = aux;
-    return aux;
-  }
-
-  node* NewNode(list::type k, node* l, node* r) {
-    node* aux = new node();
-    aux->key = k;
-    aux->prev = l;
-    aux->next = r;
-    return aux;
-  }
-
   // Preenche a lista passada como parametro com 1 numero.
   // 'l' deve ser uma lista vazia.
   void CriaList1(int x, list *l) {
@@ -223,80 +209,6 @@ TEST_F(Teste, Testar_metodo_pop_back) {
       << "------------------------------------------------------------------\n"
       << "Lista esperada: " << esperado << "\n"
       << "   Lista atual: " << atual << "\n"
-      << "------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Testar_metodo_find_em_lista_vazia) {
-  list l;
-  node* it;
-  it = l.find(10);
-  ASSERT_EQ(it, l.end())
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao:  "
-      << "* node* list<Type>::find(Type x) *\n"
-      << "------------------------------------------------------------------\n"
-      << "Funcao retornou endereco de um valor nao existente na lista\n"
-      << "------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Testar_metodo_find_em_lista_unitaria) {
-  list l;
-  CriaList1(10, &l);
-  node* it;
-  it = l.find(10);
-  int esperado = 10;
-  int atual = it->key;
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao:  "
-      << "* node* list<Type>::find(Type x) *\n"
-      << "------------------------------------------------------------------\n"
-      << "Funcao retornou endereco de um valor diferente do esperado\n\n"
-      << "Valor esperado : " << esperado << "\n"
-      << "Valor atual    : " << atual << "\n"
-      << "------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Testar_metodo_find_em_lista_com_varios_elementos) {
-  list l;
-  CriaList3(10, 5, 3, &l);
-  node* it;
-  // Encontrar primeiro valor
-  it = l.find(10);
-  int esperado = 10;
-  int atual = it->key;
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao:  "
-      << "* node* list<Type>::find(Type x) *\n"
-      << "------------------------------------------------------------------\n"
-      << "Funcao retornou endereco de um valor diferente do esperado\n\n"
-      << "Valor esperado : " << esperado << "\n"
-      << "Valor atual    : " << atual << "\n"
-      << "------------------------------------------------------------------\n";
-
-  // Encontrar ultimo valor
-  it = l.find(3);
-  esperado = 3;
-  atual = it->key;
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao:  "
-      << "* node* list<Type>::find(Type x) *\n"
-      << "------------------------------------------------------------------\n"
-      << "Funcao retornou endereco de um valor diferente do esperado\n\n"
-      << "Valor esperado : " << esperado << "\n"
-      << "Valor atual    : " << atual << "\n"
-      << "------------------------------------------------------------------\n";
-
-  // Não encontrar valor
-  it = l.find(13);
-  ASSERT_EQ(it, l.end())
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao:  "
-      << "* node* list<Type>::find(Type x) *\n"
-      << "------------------------------------------------------------------\n"
-      << "Funcao retornou endereco de um valor nao existente na lista\n"
       << "------------------------------------------------------------------\n";
 }
 

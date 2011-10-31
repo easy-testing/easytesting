@@ -2,26 +2,26 @@
 //
 // Lista sobre Filas.
 //
-// Quest√£o 1.
-// Implemente o TAD queue<Type> em queue.h.
+// Quest„o 1.
+// Implemente em queue.h e queue.cc o TAD queue.
 //
-// Quest√£o 2.
-// Escreva uma fun√ß√£o "void Imprimir(queue<string> f)" que recebe
-// como par√¢metro uma fila f e retira os elementos de f imprimindo-os na tela.
+// Quest„o 2.
+// Escreva uma funÁ„o "void Imprimir(queue& q)" que recebe
+// como par‚metro uma fila q e imprime os elemento de q na tela.
 //
-// Quest√£o 3.
+// Quest„o 3.
 // Escreva um programa que gerencia uma fila de banco. Ao entrar na fila,
-// o cliente d√° seu nome e sua idade. Os clientes s√£o atendidos por ordem de
+// o cliente d· seu nome e sua idade. Os clientes s„o atendidos por ordem de
 // chegada. Entretanto, os clientes com 60 anos ou mais tem prioridade sobre
-// os outros clientes, ou seja, um cliente com menos de 60 anos s√≥ √© atendido
-// se n√£o houver nenhum cliente com 60 anos ou mais esperando na fila. O sistema
-// que voc√™ vai implementar deve apresentar duas op√ß√µes: "(1) Entrar na fila" e
-// "(2) Pr√≥ximo da fila". Na Primeira, o sistema deve cadastrar o nome e a
-// idade do cliente. J√° na segunda op√ß√£o, ele deve imprimir apenas o nome do
-// pr√≥ximo cliente que est√° esperando na fila do banco ou uma mensagem
-// indicando que a fila est√° vazia.
-// DICA: Use duas filas (queue<string>): uma para armazenar os nomes do clientes
-// priorit√°rios e outra para armazenar os nomes dos clientes n√£o priorit√°rios.
+// os outros clientes, ou seja, um cliente com menos de 60 anos sÛ È atendido
+// se n„o houver nenhum cliente com 60 anos ou mais esperando na fila. O sistema
+// que vocÍ vai implementar deve apresentar duas opÁıes: "(1) Entrar na fila" e
+// "(2) PrÛximo da fila". Na Primeira, o sistema deve cadastrar o nome e a
+// idade do cliente. J· na segunda opÁ„o, ele deve imprimir o nome do
+// prÛximo cliente que est· esperando e retir·-lo da fila, ou imprimir uma
+// mensagem indicando que a fila est· vazia.
+// DICA: Use duas filas: uma para armazenar os nomes dos clientes
+// priorit·rios e outra para armazenar os nomes dos clientes n„o priorit·rios.
 
 #include <stdlib.h>
 
@@ -33,19 +33,21 @@
 
 using namespace std;
 
-// Retira os elementos da fila f imprimindo-os na tela.
-void Imprimir(queue<string>* f) {
-  while (!f->empty()) {
-    cout << f->front() << endl;
-    f->pop();
+// Retira os elementos da fila q na tela.
+void Imprimir(queue& q) {
+  for (int i = 0; i < q.size(); i++) {
+    type primeiro = q.front();
+    q.pop();
+    cout << primeiro << endl;
+    q.push(primeiro);
   }
 }
 
 // Insere um cliente na fila do banco.
 void Enfileirar(string nome,
                 int idade,
-                queue<string>* prioritarios,
-                queue<string>* nao_prioritarios) {
+                queue* prioritarios,
+                queue* nao_prioritarios) {
   if (idade >= 60) {
     prioritarios->push(nome);
   } else {
@@ -53,9 +55,9 @@ void Enfileirar(string nome,
   }
 }
 
-// Retira o pr√≥ximo cliente da fila do banco e retorna o seu nome.
-string Desenfileirar(queue<string>* prioritarios,
-                     queue<string>* nao_prioritarios) {
+// Retira o prÛximo cliente da fila do banco e retorna o seu nome.
+string Desenfileirar(queue* prioritarios,
+                     queue* nao_prioritarios) {
   string proximo;
   if (!prioritarios->empty()) {
     proximo = prioritarios->front();
@@ -71,11 +73,11 @@ string Desenfileirar(queue<string>* prioritarios,
 }
 
 int main() {
-  queue<string> prioritarios;
-  queue<string> nao_prioritarios;
+  queue prioritarios;
+  queue nao_prioritarios;
   int opcao;
   do {
-    // Insiste at√© que o usu√°rio digite uma op√ß√£o correta.
+    // Insiste atÈ que o usu·rio digite uma opÁ„o correta.
     do {
       cout << "(1) Entrar na fila" << endl;
       cout << "(2) Proximo da fila"  << endl;
@@ -85,7 +87,7 @@ int main() {
       cin >> opcao;
     } while (opcao < 0 || opcao > 3);
 
-    // Executa a solicita√ß√£o do usu√°rio.
+    // Executa a solicitaÁ„o do usu·rio.
     if (opcao == 1) {
       string nome;
       cout << "Nome: ";
@@ -95,14 +97,12 @@ int main() {
       cin >> idade;
       Enfileirar(nome, idade, &prioritarios, &nao_prioritarios);
     } else if (opcao == 2) {
-      cout << "\n\n\nPr√≥ximo: "
+      cout << "\n\n\nProximo: "
            << Desenfileirar(&prioritarios, &nao_prioritarios) << "\n\n";
     } else if (opcao == 3) {
-      cout << "\n\n\Lista de espera:" << endl;
-      queue<string> aux = prioritarios;
-      Imprimir(&aux);
-      aux = nao_prioritarios;
-      Imprimir(&aux);
+      cout << "\n\nLista de espera:" << endl;
+      Imprimir(prioritarios);
+      Imprimir(nao_prioritarios);
       cout << endl;
     }
   } while(opcao != 0);

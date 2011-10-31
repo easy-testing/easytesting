@@ -36,11 +36,12 @@
 		</Compiler>
 		<Unit filename="../gtest/gtest.cc" />
 		<Unit filename="../gtest/gtest.h" />
-		<Unit filename="../list/src/list.h" />
-		<Unit filename="../list/src/node.h" />
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
 		</Unit>
+		<Unit filename="src/node.cc" />
+		<Unit filename="src/node.h" />
+		<Unit filename="src/queue.cc" />
 		<Unit filename="src/queue.h" />
 		<Unit filename="test/queue_test.cc">
 			<Option target="EasyTesting" />

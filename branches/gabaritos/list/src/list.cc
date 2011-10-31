@@ -14,8 +14,8 @@ list::list(list& l) {
 }
 
 list::~list() {
-  clear();
-  delete end_;
+  clear();  // Primeiramente, remove todos os elementos da lista.
+  delete end_;  // Em seguida, libera a memória alocada ao sentinela.
 }
 
 node* list::begin() {
@@ -30,11 +30,11 @@ bool list::empty() {
   return size_ == 0;
 }
 
-list::type list::front() {
+type list::front() {
   return end_->next->key;
 }
 
-list::type list::back() {
+type list::back() {
   return end_->prev->key;
 }
 
@@ -58,24 +58,18 @@ void list::pop_back() {
   erase(end_->prev);
 }
 
-node* list::find(type x) {
-  node* iter = begin();
-  while (iter != end() && iter->key != x) {
-    iter = iter->next;
-  }
-  return iter;
-}
-
-node* list::insert(node* node, type x) {
-  node->prev = node->prev->next = NewNode(x, node->prev, node);
+node* list::insert(node* p, type x) {
+  node* aux = NewNode(x, p->prev, p);
+  p->prev->next = aux;
+  p->prev = aux;
   size_++;
-  return node->prev;
+  return p;
 }
 
-void list::erase(node* node) {
-  node->prev->next = node->next;
-  node->next->prev = node->prev;
-  delete node;
+void list::erase(node* p) {
+  p->prev->next = p->next;
+  p->next->prev = p->prev;
+  delete p;
   size_--;
 }
 
@@ -94,18 +88,4 @@ void list::merge(list& l) {
 void list::operator=(list& l) {
   clear();
   merge(l);
-}
-
-node* list::NewSentinel() {
-  node* aux = new node();
-  aux->prev = aux->next = aux;
-  return aux;
-}
-
-node* list::NewNode(list::type k, node* l, node* r) {
-  node* aux = new node();
-  aux->key = k;
-  aux->prev = l;
-  aux->next = r;
-  return aux;
 }

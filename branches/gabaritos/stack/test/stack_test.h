@@ -17,12 +17,12 @@ using std::stringstream;
 class Teste : public testing::Test {
  protected:
   // Retorna uma string no formato {a b c d...}.
-  string PrintStack(stack<int>& p) {
+  string PrintStack(stack& p) {
     stringstream output;
     output << "[";
-    for (Node<int>* i = p.list_.begin() ; i != p.list_.end() ; i = i->next) {
+    for (node* i = p.end_->next; i != p.end_; i = i->next) {
       output << i->key;
-      if (i->next != p.list_.end()) {
+      if (i->next != p.end_) {
         output << ", ";
       }
     }
@@ -32,50 +32,52 @@ class Teste : public testing::Test {
 
   // Preenche a stack passada como parametro com 1 numero.
   // 'p' deve ser uma stack vazia.
-  void CriaStack1(int x, stack<int>& p) {
-    p.list_.end_->prev = p.list_.end_->next = new Node<int>(x, p.list_.end_, p.list_.end_);
+  void CriaStack1(string x, stack& p) {
+    p.end_->prev = p.end_->next = NewNode(x, p.end_, p.end_);
+    p.size_ = 1;
   }
 
   // Preenche a stack passada como parametro com 3 numeros.
   // 'p' deve ser uma stack vazia.
-  void CriaStack3(int x1, int x2, int x3, stack<int>& p) {
-    p.list_.end_->next = new Node<int>(x1, p.list_.end_, NULL);
-    p.list_.end_->next->next = new Node<int>(x2, p.list_.end_->next, NULL);
-    p.list_.end_->next->next->next = p.list_.end_->prev =
-        new Node<int>(x3, p.list_.end_->next->next, p.list_.end_);
+  void CriaStack3(string x1, string x2, string x3, stack& p) {
+    p.end_->next = NewNode(x1, p.end_, NULL);
+    p.end_->next->next = NewNode(x2, p.end_->next, NULL);
+    p.end_->next->next->next = p.end_->prev =
+        NewNode(x3, p.end_->next->next, p.end_);
+    p.size_ = 3;
   }
 };
 
 TEST_F(Teste, Testar_metodo_empty) {
-  stack<int> p1;
+  stack p1;
   ASSERT_TRUE(p1.empty())
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* bool stack<Type>::empty() *\n"
+    << "* bool stack::empty() *\n"
     << "-------------------------------------------------------------------\n"
     << "A stack esta vazia e a funcao retornou FALSE."
     << "-------------------------------------------------------------------\n";
 
-  stack<int> p2;
-  CriaStack3(12, 14, 15, p2);
+  stack p2;
+  CriaStack3("12", "14", "15", p2);
   ASSERT_FALSE(p2.empty())
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* bool stack<Type>::empty() *\n"
+    << "* bool stack::empty() *\n"
     << "-------------------------------------------------------------------\n"
     << "A stack tem pelo menos um elemento e a funcao retornou TRUE."
     << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testar_metodo_top_em_stack_com_um_elemento) {
-  stack<int> p;
-  CriaStack1(2, p);
-  int esperado = 2;
-  int atual = p.top();
+  stack p;
+  CriaStack1("2", p);
+  string esperado = "2";
+  string atual = p.top();
   ASSERT_EQ(esperado, atual)
   << "-------------------------------------------------------------------\n"
   << "Erro na funcao:  "
-  << "* Type stack<Type>::top() *\n"
+  << "* Type stack::top() *\n"
   << "-------------------------------------------------------------------\n"
   << "     " << PrintStack(p) << "\n\n"
   << "Valor esperado  : " << esperado << "\n"
@@ -84,14 +86,14 @@ TEST_F(Teste, Testar_metodo_top_em_stack_com_um_elemento) {
 }
 
 TEST_F(Teste, Testar_metodo_top_em_stack_com_mais_de_um_elemento) {
-  stack<int> p;
-  CriaStack3(3, 7, 8, p);
-  int esperado = 3;
-  int atual = p.top();
+  stack p;
+  CriaStack3("3", "7", "8", p);
+  string esperado = "3";
+  string atual = p.top();
   ASSERT_EQ(esperado, atual)
   << "-------------------------------------------------------------------\n"
   << "Erro na funcao:  "
-  << "* Type stack<Type>::top() *\n"
+  << "* Type stack::top() *\n"
   << "-------------------------------------------------------------------\n"
   << "     " << PrintStack(p) << "\n\n"
   << "Valor esperado  : " << esperado << "\n"
@@ -100,13 +102,13 @@ TEST_F(Teste, Testar_metodo_top_em_stack_com_mais_de_um_elemento) {
 }
 
 TEST_F(Teste, Testar_metodo_size_em_stack_vazia) {
-  stack<int> p;
+  stack p;
   int esperado = 0;
   int atual = p.size();
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* int stack<Type>::size() *\n"
+    << "* int stack::size() *\n"
     << "-------------------------------------------------------------------\n"
     << "     " << PrintStack(p) << "\n\n"
     << "Valor esperado  : " << esperado << "\n"
@@ -115,14 +117,14 @@ TEST_F(Teste, Testar_metodo_size_em_stack_vazia) {
 }
 
 TEST_F(Teste, Testar_metodo_size_em_stack_com_um_elemento) {
-  stack<int> p;
-  CriaStack1(2, p);
+  stack p;
+  CriaStack1("2", p);
   int esperado = 1;
   int atual = p.size();
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* int stack<Type>::size() *\n"
+    << "* int stack::size() *\n"
     << "-------------------------------------------------------------------\n"
     << "     " << PrintStack(p) << "\n\n"
     << "Valor esperado  : " << esperado << "\n"
@@ -131,14 +133,14 @@ TEST_F(Teste, Testar_metodo_size_em_stack_com_um_elemento) {
 }
 
 TEST_F(Teste, Testar_metodo_size_em_lista_com_varios_elementos) {
-  stack<int> p;
-  CriaStack3(10, 3, 0, p);
+  stack p;
+  CriaStack3("10", "3", "0", p);
   int esperado = 3;
   int atual = p.size();
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* int stack<Type>::size() *\n"
+    << "* int stack::size() *\n"
     << "-------------------------------------------------------------------\n"
     << "     " << PrintStack(p) << "\n\n"
     << "Valor esperado  : " << esperado << "\n"
@@ -150,14 +152,14 @@ TEST_F(Teste, Testar_metodo_size_em_lista_com_varios_elementos) {
 // necessario utilizar a comparacao da classe string (imprimir a stack do
 // aluno em uma string).
 TEST_F(Teste, Testar_metodo_push_em_stack_vazia) {
-  stack<int> p;
-  p.push(10);
+  stack p;
+  p.push("10");
   string esperado("[10]");
   string atual = PrintStack(p);
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void stack<Type>::push(Type x) *\n"
+    << "* void stack::push(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << "Lista esperada : " << esperado << "\n"
     << "Lista atual    : " << atual << "\n"
@@ -165,15 +167,15 @@ TEST_F(Teste, Testar_metodo_push_em_stack_vazia) {
 }
 
 TEST_F(Teste, Testar_metodo_push_em_stack_com_um_elemento) {
-  stack<int> p;
-  CriaStack1(22, p);
-  p.push(12);
+  stack p;
+  CriaStack1("22", p);
+  p.push("12");
   string esperado("[12, 22]");
   string atual = PrintStack(p);
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void stack<Type>::push(Type x) *\n"
+    << "* void stack::push(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << "Lista esperada : " << esperado << "\n"
     << "Lista atual    : " << atual << "\n"
@@ -181,15 +183,15 @@ TEST_F(Teste, Testar_metodo_push_em_stack_com_um_elemento) {
 }
 
 TEST_F(Teste, Testar_metodo_push_em_stack_com_varios_elementos) {
-  stack<int> p;
-  CriaStack3(5, 13, 49, p);
-  p.push(17);
+  stack p;
+  CriaStack3("5", "13", "49", p);
+  p.push("17");
   string esperado("[17, 5, 13, 49]");
   string atual = PrintStack(p);
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void stack<Type>::push(Type x) *\n"
+    << "* void stack::push(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << "Lista esperada : " << esperado << "\n"
     << "Lista atual    : " << atual << "\n"
@@ -197,15 +199,15 @@ TEST_F(Teste, Testar_metodo_push_em_stack_com_varios_elementos) {
 }
 
 TEST_F(Teste, Testar_metodo_pop_em_stack_com_um_elemento) {
-  stack<int> p;
-  CriaStack1(8, p);
+  stack p;
+  CriaStack1("8", p);
   p.pop();
   string esperado("[]");
   string atual = PrintStack(p);
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void stack<Type>::pop() *\n"
+    << "* void stack::pop() *\n"
     << "-------------------------------------------------------------------\n"
     << "Lista esperada : " << esperado << "\n"
     << "Lista atual    : " << atual << "\n"
@@ -213,15 +215,15 @@ TEST_F(Teste, Testar_metodo_pop_em_stack_com_um_elemento) {
 }
 
 TEST_F(Teste, Testar_metodo_pop_em_stack_com_varios_elemento) {
-  stack<int> p;
-  CriaStack3(8, 0, -3, p);
+  stack p;
+  CriaStack3("8", "0", "-3", p);
   p.pop();
   string esperado("[0, -3]");
   string atual = PrintStack(p);
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void stack<Type>::pop() *\n"
+    << "* void stack::pop() *\n"
     << "-------------------------------------------------------------------\n"
     << "Lista esperada : " << esperado << "\n"
     << "Lista atual    : " << atual << "\n"

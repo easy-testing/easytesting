@@ -3,79 +3,67 @@
 #ifndef BRANCHES_GABARITOS_LIST_SRC_LIST_H_
 #define BRANCHES_GABARITOS_LIST_SRC_LIST_H_
 
+#include "list/src/node.h"
 
-// Implementa um noh da lista ligada.
-struct node {
-  typedef float type;
-  type key;  // Valor da chave do noh.
-  node* prev;  // Ponteiro para o proximo noh da lista.
-  node* next;  // Ponteiro para o noh anterior da lista.
-};
-
-// Implementa uma lista de elementos. O tipo dos elementos é
-// definido por 'type'.
+// Implementa uma lista de elementos utilizando Listas Ligadas.
+// O tipo dos elementos é definido por 'type'.
 class list {
  public:
-  // Tipo dos elementos contidos na lista.
-  typedef node::type type;
-
   // Cria uma lista vazia em O(1).
   list();
 
-  // Cria a lista com os mesmo elementos de l em O(m), onde m = l.size().
+  // Cria a lista com os mesmos elementos de l em O(m), onde m = l.size().
   list(list& l);
 
-  // Remove todos os elementos da lista para liberar a memoria em O(n),
-  // onde n eh o numero de elementos na lista.
+  // Libera a memória alocada para todos os elementos na lista em O(n),
+  // onde n é o número de elementos na lista.
   ~list();
 
-  // Retorna um pontiero para o primeiro noh da lista em O(1).
+  // Retorna um ponteiro para o primeiro nó da lista em O(1).
+  // Caso a lista esteja vazia, rentorna um ponteiro para list::end().
   node* begin();
 
-  // Retorna um pontiero para "depois" do ultimo noh da lista em O(1).
+  // Retorna um ponteiro para "depois" do ultimo nó da lista em O(1).
   node* end();
 
   // Testa se a lista esta vazia em O(1).
   bool empty();
 
-  // Retorna o valor do primeiro elemento da lista em O(1).
-  // PRECONDICAO: a lista nao pode estar vazia.
+  // Retorna o valor da chave do primeiro elemento da lista em O(1).
+  // PRECONDIÇÃO: a lista não pode estar vazia.
   type front();
 
-  // Retorna o valor do ultimo elemento da lista em O(1).
-  // PRECONDICAO: a lista não pode estar vazia.
+  // Retorna o valor da chave do último elemento da lista em O(1).
+  // PRECONDIÇÃO: a lista não pode estar vazia.
   type back();
 
-  // Retorna o numero de elementos da lista em O(1).
+  // Retorna o número de elementos na lista em O(1).
   int size();
 
   // Insere x no início da lista em O(1).
   void push_front(type x);
 
   // Remove o primeiro elemento da lista em O(1).
+  // PRECONDIÇÃO: a lista não pode estar vazia.
   void pop_front();
 
   // Insere x no final da lista em O(1).
   void push_back(type x);
 
   // Remove o último elemento da lista em O(1).
+  // PRECONDIÇÃO: a lista não pode estar vazia.
   void pop_back();
 
-  // Retorna um pontiero para o primeiro noh da lista cuja chave eh x em O(n),
-  // onde n eh o numero de elementos na lista.
-  // Se x nao esta na lista, retorna um pontiero para end().
-  node* find(type x);
+  // Insere x antes do nó p em O(1) e retorna um ponteiro para o nó que foi
+  // criado para armazenar x.
+  node* insert(node* p, type x);
 
-  // Insere x antes do elemento identificado por 'node' em O(1) e retorna
-  // um ponteiro para o noh que foi criado para armazenar x.
-  node* insert(node* node, type x);
+  // Apaga o nó p da lista em O(1).
+  // PRECONDIÇÃO: p é um nó da lista.
+  void erase(node* p);
 
-  // Apaga o elemento indicado por 'node' em O(1).
-  void erase(node* node);
-
-
-  // Remove todos os elementos da lista corrente em O(n),
-  // onde n é o numero de elementos na lista.
+  // Remove todos os elementos da lista em O(n),
+  // onde n é o número de elementos na lista.
   void clear();
 
   // Concatena os elementos de l no final da lista corrente em O(m),
@@ -86,17 +74,11 @@ class list {
   void operator=(list& l);
 
  private:
-  // Numero de elementos na lista.
+  // Número de elementos na lista.
   int size_;
 
-  // Ponteiro para o noh sentinela da lista.
+  // Ponteiro para o nó sentinela da lista.
   node* end_;
-
-  // Cria o noh sentinela da lista ligada em O(1).
-  node* NewSentinel();
-
-  // Cria um novo noh da lista ligada em O(1).
-  node* NewNode(list::type k, node* l, node* r);
 
   friend class Teste;
 };

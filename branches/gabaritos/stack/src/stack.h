@@ -1,58 +1,46 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef SET_SRC_SET_H_
-#define SET_SRC_SET_H_
+#ifndef STACK_SRC_STACK_H_
+#define STACK_SRC_STACK_H_
 
-#include "list/src/list.h"
+#include "stack/src/node.h"
 
-// Implementa uma estrutura de dados Pilha.
-template<class Type>
+// Implementa uma pilha de elementos utilizando Listas Ligadas.
+// O tipo dos elementos é definido por 'type'.
 class stack {
  public:
   // Cria uma pilha vazia em O(1).
-  stack() {
-  }
+  stack();
 
-  // Cria uma pilha com os mesmos elementos de p em O(n).
-  stack(stack<Type>& p) {
-    list_ = p.list_;
-  }
+  // Libera a memória alocada para todos os elementos da pilha em O(n),
+  // onde n é o número de elementos na pilha.
+  ~stack();
 
   // Testa se a pilha está vazia em O(1).
-  bool empty() {
-    return list_.empty();
-  }
+  bool empty();
 
   // Retorna o número de elementos na pilha em O(1).
-  int size() {
-    return list_.size();
-  }
+  int size();
 
   // Retorna o elemento que está no topo da pilha em O(1).
-  Type top() {
-    return list_.front();
-  }
+  // PRECONDIÇÃO: a pilha não pode estar vazia.
+  type top();
 
   // Insere x no topo da pilha em O(1).
-  void push(Type x) {
-    list_.push_front(x);
-  }
+  void push(type x);
 
   // Remove o elemento que está no topo da pilha em O(1).
-  void pop() {
-    list_.pop_front();
-  }
-
-  // Faz a pilha corrente ficar igual a p em O(n);
-  void operator=(stack<Type>& p) {
-    list_ = p.list_;
-  }
+  // PRECONDIÇÃO: a pilha não pode estar vazia.
+  void pop();
 
  private:
-  // Lista que representa a pilha.
-  list<Type> list_;
+  // Número de elementos na pilha.
+  int size_;
+
+  // Ponteiro para o nó sentinela da pilha.
+  node* end_;
 
   friend class Teste;
-};  // end class stack.
+};
 
-#endif  // SET_SRC_SET_H_
+#endif  // STACK_SRC_STACK_H_
