@@ -2,26 +2,26 @@
 //
 // Lista sobre Filas.
 //
-// Quest„o 1.
+// Quest√£o 1.
 // Implemente em queue.h e queue.cc o TAD queue.
 //
-// Quest„o 2.
-// Escreva uma funÁ„o "void Imprimir(queue& q)" que recebe
-// como par‚metro uma fila q e imprime os elemento de q na tela.
+// Quest√£o 2.
+// Escreva uma fun√ß√£o "void Imprimir(queue& q)" que recebe
+// como par√¢metro uma fila q e imprime os elemento de q na tela.
 //
-// Quest„o 3.
+// Quest√£o 3.
 // Escreva um programa que gerencia uma fila de banco. Ao entrar na fila,
-// o cliente d· seu nome e sua idade. Os clientes s„o atendidos por ordem de
+// o cliente d√° seu nome e sua idade. Os clientes s√£o atendidos por ordem de
 // chegada. Entretanto, os clientes com 60 anos ou mais tem prioridade sobre
-// os outros clientes, ou seja, um cliente com menos de 60 anos sÛ È atendido
-// se n„o houver nenhum cliente com 60 anos ou mais esperando na fila. O sistema
-// que vocÍ vai implementar deve apresentar duas opÁıes: "(1) Entrar na fila" e
-// "(2) PrÛximo da fila". Na Primeira, o sistema deve cadastrar o nome e a
-// idade do cliente. J· na segunda opÁ„o, ele deve imprimir o nome do
-// prÛximo cliente que est· esperando e retir·-lo da fila, ou imprimir uma
-// mensagem indicando que a fila est· vazia.
+// os outros clientes, ou seja, um cliente com menos de 60 anos s√≥ √© atendido
+// se n√£o houver nenhum cliente com 60 anos ou mais esperando na fila. O sistema
+// que voc√™ vai implementar deve apresentar duas op√ß√µes: "(1) Entrar na fila" e
+// "(2) Pr√≥ximo da fila". Na Primeira, o sistema deve cadastrar o nome e a
+// idade do cliente. J√° na segunda op√ß√£o, ele deve imprimir o nome do
+// pr√≥ximo cliente que est√° esperando e retir√°-lo da fila, ou imprimir uma
+// mensagem indicando que a fila est√° vazia.
 // DICA: Use duas filas: uma para armazenar os nomes dos clientes
-// priorit·rios e outra para armazenar os nomes dos clientes n„o priorit·rios.
+// priorit√°rios e outra para armazenar os nomes dos clientes n√£o priorit√°rios.
 
 #include <stdlib.h>
 
@@ -31,7 +31,9 @@
 
 #include "queue/src/queue.h"
 
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
 // Retira os elementos da fila q na tela.
 void Imprimir(queue& q) {
@@ -55,7 +57,7 @@ void Enfileirar(string nome,
   }
 }
 
-// Retira o prÛximo cliente da fila do banco e retorna o seu nome.
+// Retira o pr√≥ximo cliente da fila do banco e retorna o seu nome.
 string Desenfileirar(queue* prioritarios,
                      queue* nao_prioritarios) {
   string proximo;
@@ -77,7 +79,7 @@ int main() {
   queue nao_prioritarios;
   int opcao;
   do {
-    // Insiste atÈ que o usu·rio digite uma opÁ„o correta.
+    // Insiste at√© que o usu√°rio digite uma op√ß√£o correta.
     do {
       cout << "(1) Entrar na fila" << endl;
       cout << "(2) Proximo da fila"  << endl;
@@ -87,7 +89,7 @@ int main() {
       cin >> opcao;
     } while (opcao < 0 || opcao > 3);
 
-    // Executa a solicitaÁ„o do usu·rio.
+    // Executa a solicita√ß√£o do usu√°rio.
     if (opcao == 1) {
       string nome;
       cout << "Nome: ";
@@ -105,6 +107,6 @@ int main() {
       Imprimir(nao_prioritarios);
       cout << endl;
     }
-  } while(opcao != 0);
+  } while (opcao != 0);
   return 0;
 }

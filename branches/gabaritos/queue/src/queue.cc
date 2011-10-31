@@ -11,9 +11,9 @@ queue::queue() {
 queue::~queue() {
   // Primeiramente, remove todos os elementos da fila.
   while (!empty()) {
-    pop();  // A função pop() libera a memórima de cada nó removido da fila;
+    pop();  // A funÃ§Ã£o pop() libera a memÃ³rima de cada nÃ³ removido da fila;
   }
-  // Em seguida, libera a memória alocada ao sentinela.
+  // Em seguida, libera a memÃ³ria alocada ao sentinela.
   delete end_;
 }
 

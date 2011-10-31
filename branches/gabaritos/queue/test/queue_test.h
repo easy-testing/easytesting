@@ -1,7 +1,7 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef QUEUE_TEST_QUEUE_TEST_H_
-#define QUEUE_TEST_QUEUE_TEST_H_
+#ifndef BRANCHES_GABARITOS_QUEUE_TEST_QUEUE_TEST_H_
+#define BRANCHES_GABARITOS_QUEUE_TEST_QUEUE_TEST_H_
 
 #include "queue/src/queue.h"
 
@@ -261,4 +261,4 @@ TEST_F(Teste, Testar_metodo_pop_em_queue_com_varios_elemento) {
     << "Lista atual    : " << atual << "\n"
     << "-------------------------------------------------------------------\n";
 }
-#endif  // QUEUE_TEST_QUEUE_TEST_H_
+#endif  // BRANCHES_GABARITOS_QUEUE_TEST_QUEUE_TEST_H_
