@@ -19,27 +19,29 @@ list::~list() {
 }
 
 node* list::begin() {
-  // TODO.
+  return NULL;  // TODO.
 }
 
 node* list::end() {
-  // TODO.
+  return NULL;  // TODO.
 }
 
 bool list::empty() {
-  // TODO.
+  return false;  // TODO.
 }
 
 type list::front() {
-  // TODO.
+  type x;
+  return x;  // TODO.
 }
 
 type list::back() {
-  // TODO.
+  type x;
+  return x;  // TODO.
 }
 
 int list::size() {
-  // TODO.
+  return -1;  // TODO.
 }
 
 void list::push_front(type x) {
@@ -59,7 +61,7 @@ void list::pop_back() {
 }
 
 node* list::insert(node* p, type x) {
-  // TODO.
+  return NULL;  // TODO.
 }
 
 void list::erase(node* p) {
