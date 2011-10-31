@@ -15,7 +15,7 @@ list::list(list& l) {
 
 list::~list() {
   clear();  // Primeiramente, remove todos os elementos da lista.
-  delete end_;  // Em seguida, libera a memória alocada ao sentinela.
+  delete end_;  // Em seguida, libera a memÃ³ria alocada ao sentinela.
 }
 
 node* list::begin() {
