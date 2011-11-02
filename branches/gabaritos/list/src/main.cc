@@ -3,7 +3,7 @@
 // Lista sobre Listas Ligadas.
 //
 // Questão 1.
-// Implemente em list.h e list.cc o TAD list.
+// Implemente em list.h e list.cc o TAD list, utilizando listas ligadas.
 //
 // Questão 2.
 // Escreva uam funcao "void Imprimir(list& l)" que recebe uma lista como

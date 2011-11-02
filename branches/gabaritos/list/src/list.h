@@ -77,7 +77,7 @@ class list {
   // Número de elementos na lista.
   int size_;
 
-  // Ponteiro para o nó sentinela da lista.
+  // Ponteiro para o nó sentinela da lista ligada.
   node* end_;
 
   friend class Teste;
