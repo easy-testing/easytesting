@@ -41,7 +41,7 @@ class queue {
   // Número de elementos na fila.
   int size_;
 
-  // Ponteiro para o nó sentinela da fila.
+  // Ponteiro para o nó sentinela da lista ligada.
   node* end_;
 
   friend class Teste;

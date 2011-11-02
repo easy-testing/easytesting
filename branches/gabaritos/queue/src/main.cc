@@ -3,7 +3,7 @@
 // Lista sobre Filas.
 //
 // Questão 1.
-// Implemente em queue.h e queue.cc o TAD queue.
+// Implemente em queue.h e queue.cc o TAD queue, utilizando listas ligadas.
 //
 // Questão 2.
 // Escreva uma função "void Imprimir(queue& q)" que recebe
