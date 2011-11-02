@@ -37,7 +37,7 @@ class stack {
   // Número de elementos na pilha.
   int size_;
 
-  // Ponteiro para o nó sentinela da pilha.
+  // Ponteiro para o nó sentinela da lista ligada.
   node* end_;
 
   friend class Teste;

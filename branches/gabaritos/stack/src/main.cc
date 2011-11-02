@@ -3,7 +3,7 @@
 // Lista de exercícios sobre Pilhas.
 //
 // Questão 1.
-// Implemente em stack.h e stack.cc o TAD stack.
+// Implemente em stack.h e stack.cc o TAD stack, utilizando listas ligadas.
 //
 // Questão 2.
 // Escreva uma função "void ImprimirInfixado(stack* exp)" que recebe
