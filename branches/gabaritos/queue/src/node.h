@@ -5,10 +5,8 @@
 
 #include<string>
 
-using std::string;
-
 // Tipo dos elementos contidos na fila.
-typedef string type;
+typedef std::string type;
 
 // Implementa um nó.
 struct node {

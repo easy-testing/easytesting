@@ -1,6 +1,6 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#include "stack/src/node.h"
+#include "queue/src/node.h"
 
 node* NewSentinel() {
   node* aux = new node();
