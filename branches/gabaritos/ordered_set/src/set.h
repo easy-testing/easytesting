@@ -52,12 +52,13 @@ class set {
 
   // Retorna um ponteiro para o nó que contém k em O(log n),
   // ou um ponteiro para set::end() caso k não pertença ao conjunto.
+  // OBS: Note que esta função NÃO retorna bool. Para testar se um elemento 'a'
+  // pertence a um conjunto 'c', você deve escrever "if (c.find(a) != c.end())".
   node* find(type k);
 
   // Insere k no conjunto em O(log n) e retorna um ponteiro para o nó que contém
   // k. Caso k já pertença ao conjunto, um novo elemento NÃO é criado e a função
   // retorna um ponteiro para o nó que contém a versão mais antiga de k;
-
   node* insert(type k);
 
   // Remove k do conjunto (caso lá ele esteja) em O(log n).

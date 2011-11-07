@@ -40,8 +40,8 @@
 // DICA: crie um conjunto "set candidatos" que contém
 // inicialmente o nome de todos os fornecedores e um vetor
 // "set pecas[100]" com o conjunto de fornecedores para cada
-// peça. A cada iteração em que uma peça x for digitada, você deve fazer a
-// interseção do conjunto 'candidatos' com o conjunto 'pecas[x - 1]'.
+// peça. A cada iteração em que uma peça 'p' for digitada, você deve fazer a
+// interseção do conjunto 'candidatos' com o conjunto 'pecas[p - 1]'.
 
 #include <fstream>
 #include <iostream>
@@ -62,7 +62,7 @@ void Intersecao(set& a, set& b, set* inter) {
   // aqueles que também estão no cojunto 'b'.
   inter->clear();
   for (node* i = a.begin(); i != a.end(); i = a.next(i)) {
-    if (b.find(i->key)) {
+    if (b.find(i->key) != b.end()) {
       inter->insert(i->key);
     }
   }
@@ -92,15 +92,17 @@ int main() {
   // Filtra iterativamente o cojunto de fornecedores candidatos.
   int num_peca = -1;
   while (!candidatos.empty() && num_peca != 0) {
+    cout << "Candidatos: ";
+    Imprimir(candidatos);
     cout << "Filtrar por peca [1, 100]: ";
     cin >> num_peca;
     if (num_peca >= 1 && num_peca <= 100) {
       set inter;
       Intersecao(pecas[num_peca - 1], candidatos, &inter);
       candidatos = inter;
-      cout << "\n\nCandidatos: ";
-      Imprimir(candidatos);
     }
   }
+  cout << "Resultado: ";
+  Imprimir(candidatos);
   return 0;
 }
