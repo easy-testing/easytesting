@@ -6,7 +6,7 @@
 #include<string>
 
 // Tipo dos elementos contidos na lista.
-typedef int type;
+typedef std::string type;
 
 // Implementa um nó.
 struct node {

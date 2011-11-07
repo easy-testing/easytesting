@@ -1,10 +1,14 @@
-5
-6
-4
-8
-2
-1
-9
-3
-7
-0
+in high e1
+in high e2
+in low e3
+in low e4
+out
+in high e5
+out
+in low e6
+out
+in low e7
+out
+out
+out
+out

@@ -1,91 +1,64 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#include "list/src/list.h"
+#include "deque/src/deque.h"
 
-list::list() {
+deque::deque() {
   size_ = 0;
   end_ = NewSentinel();
 }
 
-list::list(list& l) {
-  size_ = 0;
-  end_ = NewSentinel();
-  merge(l);
-}
-
-list::~list() {
-  clear();  // Primeiramente, remove todos os elementos da lista.
+deque::~deque() {
+  clear();  // Primeiramente, remove todos os elementos da dequea.
   delete end_;  // Em seguida, libera a memória alocada ao sentinela.
 }
 
-node* list::begin() {
-  return end_->next;
-}
-
-node* list::end() {
-  return end_;
-}
-
-bool list::empty() {
+bool deque::empty() {
   return size_ == 0;
 }
 
-type list::front() {
-  return end_->next->key;
-}
-
-type list::back() {
-  return end_->prev->key;
-}
-
-int list::size() {
+int deque::size() {
   return size_;
 }
 
-void list::push_front(type x) {
-  insert(begin(), x);
+type deque::front() {
+  return end_->next->key;
 }
 
-void list::pop_front() {
-  erase(begin());
+type deque::back() {
+  return end_->prev->key;
 }
 
-void list::push_back(type x) {
-  insert(end(), x);
-}
-
-void list::pop_back() {
-  erase(end_->prev);
-}
-
-node* list::insert(node* p, type x) {
-  node* aux = NewNode(x, p->prev, p);
-  p->prev->next = aux;
-  p->prev = aux;
+void deque::push_front(type x) {
+  node* first = end_->next;
+  node* aux = NewNode(x, first->prev, first);
+  first->prev->next = aux;
+  first->prev = aux;
   size_++;
-  return p;
 }
 
-void list::erase(node* p) {
-  p->prev->next = p->next;
-  p->next->prev = p->prev;
-  delete p;
+void deque::pop_front() {
+  node* first = end_->next;
+  first->prev->next = first->next;
+  first->next->prev = first->prev;
   size_--;
 }
 
-void list::clear() {
+void deque::push_back(type x) {
+  node* aux = NewNode(x, end_->prev, end_);
+  end_->prev->next = aux;
+  end_->prev = aux;
+  size_++;
+}
+
+void deque::pop_back() {
+  node* last = end_->prev;
+  last->prev->next = last->next;
+  last->next->prev = last->prev;
+  size_--;
+}
+
+void deque::clear() {
   while (!empty()) {
     pop_back();
   }
-}
-
-void list::merge(list& l) {
-  for (node* i = l.begin(); i != l.end(); i = i->next) {
-    push_back(i->key);
-  }
-}
-
-void list::operator=(list& l) {
-  clear();
-  merge(l);
 }
