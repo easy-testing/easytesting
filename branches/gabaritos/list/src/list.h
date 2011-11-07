@@ -15,7 +15,7 @@ class list {
   // Cria a lista com os mesmos elementos de l em O(m), onde m = l.size().
   list(list& l);
 
-  // Libera a memória alocada para todos os elementos na lista em O(n),
+  // Libera toda a memória alocada para a lista em O(n),
   // onde n é o número de elementos na lista.
   ~list();
 
