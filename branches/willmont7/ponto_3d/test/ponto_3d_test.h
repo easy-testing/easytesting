@@ -52,7 +52,7 @@ TEST_F(Teste, Mudar_escala_no_eixo_X) {
     << "                                                      double dz)\".\n"
     << "-------------------------------------------------------------------\n"
     << "Ponto de Entrada: " << Imprime_Ponto(&entrada) << "\n"
-    << "Mudar coordenadas para: x = 3.0 | y = 1.0 | z = 1.0\n"
+    << "Mudar escala para: x = 3.0 | y = 1.0 | z = 1.0\n"
     << "Ponto esperado: " << Imprime_Ponto(&esperado) << "\n"
     << "Ponto retornado: " << Imprime_Ponto(&resultado) << "\n"
     << "-------------------------------------------------------------------\n";
@@ -71,7 +71,7 @@ TEST_F(Teste, Mudar_escala_no_eixo_Y) {
     << "                                                      double dz)\".\n"
     << "-------------------------------------------------------------------\n"
     << "Ponto de Entrada: " << Imprime_Ponto(&entrada) << "\n"
-    << "Mudar coordenadas para: x = 1.0 | y = 2.5 | z = 1.0\n"
+    << "Mudar escala para: x = 1.0 | y = 2.5 | z = 1.0\n"
     << "Ponto esperado: " << Imprime_Ponto(&esperado) << "\n"
     << "Ponto retornado: " << Imprime_Ponto(&resultado) << "\n"
     << "-------------------------------------------------------------------\n";
@@ -90,7 +90,7 @@ TEST_F(Teste, Mudar_escala_no_eixo_Z) {
     << "                                                      double dz)\".\n"
     << "-------------------------------------------------------------------\n"
     << "Ponto de Entrada: " << Imprime_Ponto(&entrada) << "\n"
-    << "Mudar coordenadas para: x = 1.0 | y = 1.0 | z = 9.0\n"
+    << "Mudar escala para: x = 1.0 | y = 1.0 | z = 9.0\n"
     << "Ponto esperado: " << Imprime_Ponto(&esperado) << "\n"
     << "Ponto retornado: " << Imprime_Ponto(&resultado) << "\n"
     << "-------------------------------------------------------------------\n";
@@ -109,7 +109,7 @@ TEST_F(Teste, Transladar_no_eixo_X) {
     << "                                                      double dz)\".\n"
     << "-------------------------------------------------------------------\n"
     << "Ponto de Entrada: " << Imprime_Ponto(&entrada) << "\n"
-    << "Transladar coordenadas em: x = 6.0 | y = 0.0 | z = 0.0\n"
+    << "Transladar coordenadas para: x = 6.0 | y = 0.0 | z = 0.0\n"
     << "Ponto esperado: " << Imprime_Ponto(&esperado) << "\n"
     << "Ponto retornado: " << Imprime_Ponto(&resultado) << "\n"
     << "-------------------------------------------------------------------\n";
@@ -128,7 +128,7 @@ TEST_F(Teste, Transladar_no_eixo_Y) {
     << "                                                      double dz)\".\n"
     << "-------------------------------------------------------------------\n"
     << "Ponto de Entrada: " << Imprime_Ponto(&entrada) << "\n"
-    << "Transladar coordenadas em: x = 0.0 | y = 5.5 | z = 0.0\n"
+    << "Transladar coordenadas para: x = 0.0 | y = 5.5 | z = 0.0\n"
     << "Ponto esperado: " << Imprime_Ponto(&esperado) << "\n"
     << "Ponto retornado: " << Imprime_Ponto(&resultado) << "\n"
     << "-------------------------------------------------------------------\n";
@@ -147,7 +147,7 @@ TEST_F(Teste, Transladar_no_eixo_Z) {
     << "                                                      double dz)\".\n"
     << "-------------------------------------------------------------------\n"
     << "Ponto de Entrada: " << Imprime_Ponto(&entrada) << "\n"
-    << "Transladar coordenadas em: x = 0.0 | y = 0.0 | z = -2.0\n"
+    << "Transladar coordenadas para: x = 0.0 | y = 0.0 | z = -2.0\n"
     << "Ponto esperado: " << Imprime_Ponto(&esperado) << "\n"
     << "Ponto retornado: " << Imprime_Ponto(&resultado) << "\n"
     << "-------------------------------------------------------------------\n";
@@ -166,7 +166,7 @@ TEST_F(Teste, Rotacionar_no_eixo_X) {
     << "                                                      double dz)\".\n"
     << "-------------------------------------------------------------------\n"
     << "Ponto de Entrada: " << Imprime_Ponto(&entrada) << "\n"
-    << "Rotacionar em X graus\n"
+    << "Rotacionar no eixo X em -30 graus\n"
     << "Ponto esperado: " << Imprime_Ponto(&esperado) << "\n"
     << "Ponto retornado: " << Imprime_Ponto(&resultado) << "\n"
     << "-------------------------------------------------------------------\n";
@@ -185,7 +185,7 @@ TEST_F(Teste, Rotacionar_no_eixo_Y) {
     << "                                                      double dz)\".\n"
     << "-------------------------------------------------------------------\n"
     << "Ponto de Entrada: " << Imprime_Ponto(&entrada) << "\n"
-    << "Rotacionar em X graus\n"
+    << "Rotacionar no eixo Y em 45 graus\n"
     << "Ponto esperado: " << Imprime_Ponto(&esperado) << "\n"
     << "Ponto retornado: " << Imprime_Ponto(&resultado) << "\n"
     << "-------------------------------------------------------------------\n";
@@ -204,7 +204,7 @@ TEST_F(Teste, Rotacionar_no_eixo_Z) {
     << "                                                      double dz)\".\n"
     << "-------------------------------------------------------------------\n"
     << "Ponto de Entrada: " << Imprime_Ponto(&entrada) << "\n"
-    << "Rotacionar em X graus\n"
+    << "Rotacionar no eixo Z em 180 graus\n"
     << "Ponto esperado: " << Imprime_Ponto(&esperado) << "\n"
     << "Ponto retornado: " << Imprime_Ponto(&resultado) << "\n"
     << "-------------------------------------------------------------------\n";
