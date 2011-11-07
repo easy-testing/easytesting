@@ -6,14 +6,19 @@
 // Implemente em deque.h e deque.cc o TAD deque, utilizando listas ligadas.
 //
 // Questão 2.
-// Escreva uma função "void Imprimir(deque* d)" que recebe como parâmetro um
+// Escreva uma função "void ImprimeDeque(deque* d)" que recebe como parâmetro um
 // deque e imprime os elementos do deque na tela do computador.
 //
 // Questão 3.
+// Implemente uma função "bool PertenceDeque(deque& d, type x)" que recebe um
+// deque d e um elemento x e retorna verdadeiro se x é um dos elementos do
+// deque e false caso contrário.
+//
+// Questão 4.
 // Escreva uma função "void MergeSort(deque& q)" que ordena os elementos de um
 // deque em O(n*log n), onde n = q.size().
 //
-// Questão 4.
+// Questão 5.
 // TODO(tfn): escrever enunciado. Eventos de alta prioridade LIFO. Enventos de
 // baixa prioridade FIFO.
 
@@ -34,7 +39,7 @@ using std::string;
 // Questão 2.
 ////////////////////////////////////////////////////////////////////////////////
 
-void Print(deque& d) {
+void ImprimeDeque(deque& d) {
   cout << "[ ";
   for (int i = 0; i < d.size(); i++) {
     cout << d.front() << " ";
@@ -45,6 +50,21 @@ void Print(deque& d) {
 }
 
 // Questão 3.
+////////////////////////////////////////////////////////////////////////////////
+
+bool PertenceDeque(deque& d, type x) {
+  bool pertence = false;
+  for (int i = 0; i < d.size(); i++) {
+    if (d.front() == x) {
+       pertence = true;
+    }
+    d.push_back(d.front());
+    d.pop_front();
+  }
+  return pertence;
+}
+
+// Questão 4.
 ////////////////////////////////////////////////////////////////////////////////
 
 // Recebe duas filas ordenadas q1 e q2 e retorna uma fila ordenada com todos os
@@ -81,7 +101,7 @@ void MergeSort(deque& q) {
   }
 }
 
-// Questão 4.
+// Questão 5.
 ////////////////////////////////////////////////////////////////////////////////
 
 int main() {
@@ -91,8 +111,7 @@ int main() {
   string op;
   while (fin >> op) {
     if (op == "out") {
-      cout << event_queue.front() << endl;
-      event_queue.pop_front();
+      //event_queue.pop_front();
     } else {  // op == "in"
       string priority, name;
       fin >> priority >> name;
@@ -103,5 +122,6 @@ int main() {
       }
     }
   }
+  ImprimeDeque(event_queue);
   return 0;
 }
