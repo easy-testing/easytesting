@@ -9,7 +9,7 @@
 #include "matrizes/src/matrizes.h"
 #include "gtest/gtest.h"
 
-#define MAX 100 // Dimensao máxima de uma matriz.
+#define MAX 100  // Dimensao máxima de uma matriz.
 
 using std::string;
 using std::stringstream;
@@ -77,10 +77,10 @@ TEST_F(Teste, Media_Matriz_1x1) {
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"float Media(int n, float matriz[][])\".          \n"
     << "-------------------------------------------------------------------\n"
-    << "                       Matriz de Entrada:\n\n"
+    << "Matriz de Entrada:\n\n"
     << Imprime_1_Matriz(1, 1, 28,  mat)
-    << "\n    Media esperada: " << esperado << "\n"
-    << "   Media retornada: " << resultado << "\n"
+    << "\nMedia esperada: " << esperado << "\n"
+    << "Media retornada: " << resultado << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -95,12 +95,12 @@ TEST_F(Teste, Verifica_divisao_correta_na_funcao_media_matriz) {
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"float Media(int n, float matriz[][])\".          \n"
     << "-------------------------------------------------------------------\n"
-    << "                       Matriz de Entrada:\n\n"
+    << "Matriz de Entrada:\n\n"
     << Imprime_1_Matriz(4, 4, 18, mat)
-    << "\n    Media esperada: " << 1.0 << "\n"
-    << "   Media retornada: " << resultado << "\n"
-    << " Provavelmente a divisao do seu somatorio eh por n, enquanto\n"
-    << " deveria ser por n*n\n"
+    << "\nMedia esperada: " << 1.0 << "\n"
+    << "Media retornada: " << resultado << "\n"
+    << "  Provavelmente a divisao do seu somatorio eh por n, enquanto\n"
+    << "deveria ser por n*n\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -117,7 +117,7 @@ TEST_F(Teste, Media_Matriz_Quadrada_elementos_positivos) {
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"float Media(int n, float matriz[][])\".          \n"
     << "-------------------------------------------------------------------\n"
-    << "   A funcao retornou a soma dos elementos da matriz.\n"
+    << "  A funcao retornou a soma dos elementos da matriz.\n"
     << "Verifique se esta funcao dividi a soma dos elementos\n"
     << "da matriz pelo numero de elementos dela\n"
     << "-------------------------------------------------------------------\n";
@@ -126,10 +126,10 @@ TEST_F(Teste, Media_Matriz_Quadrada_elementos_positivos) {
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"float Media(int n, float matriz[][])\".          \n"
     << "-------------------------------------------------------------------\n"
-    << "                       Matriz de Entrada:\n\n"
+    << "Matriz de Entrada:\n\n"
     << Imprime_1_Matriz(4, 4, 20, mat)
-    << "\n    Media esperada: " << esperado << "\n"
-    << "   Media retornada: " << resultado << "\n"
+    << "\nMedia esperada: " << esperado << "\n"
+    << "Media retornada: " << resultado << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -144,10 +144,10 @@ TEST_F(Teste, Media_Matriz_Quadrada_elementos_negativos) {
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"float Media(int n, float matriz[][])\".          \n"
     << "-------------------------------------------------------------------\n"
-    << "                       Matriz de Entrada:\n\n"
+    << "Matriz de Entrada:\n\n"
     << Imprime_1_Matriz(4, 4, 18, mat)
-    << "\n    Media esperada: " << esperado << "\n"
-    << "   Media retornada: " << resultado << "\n"
+    << "\nMedia esperada: " << esperado << "\n"
+    << "Media retornada: " << resultado << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -160,7 +160,7 @@ TEST_F(Teste, Identidade_Matriz_1x1) {
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"void identidade(int n, float matriz[][])\".      \n"
     << "-------------------------------------------------------------------\n"
-    << "                       Matriz de Entrada:\n\n"
+    << "Matriz de Entrada:\n\n"
     << Imprime_1_Matriz(1, 1, 28,  mat)
     << "\n         Resposta incorreta        Resposta correta\n\n"
     << Imprime_2_Matrizes(1, 1, 20,  mat, mat_esperada)
@@ -195,7 +195,7 @@ TEST_F(Teste, Transposta_Matriz_1x1) {
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"void transposta(int n, float [][], float [][]))\"\n"
     << "-------------------------------------------------------------------\n"
-    << "                       Matriz de Entrada:\n\n"
+    << "Matriz de Entrada:\n\n"
     << Imprime_1_Matriz(1, 1, 28,  mat)
     << "\n         Resposta incorreta        Resposta correta\n\n"
     << Imprime_2_Matrizes(1, 1, 20,  mat_resultado, mat)
@@ -219,7 +219,7 @@ TEST_F(Teste, Transposta_Matriz_Quadrada) {
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"void transposta(int n, float [][], float [][]))\"\n"
     << "-------------------------------------------------------------------\n"
-    << "                       Matriz de Entrada:\n\n"
+    << "Matriz de Entrada:\n\n"
     << Imprime_1_Matriz(4, 4, 21,  mat)
     << "\n        Resposta incorreta               Resposta correta\n\n"
     << Imprime_2_Matrizes(4, 4, 5,  mat_resultado, mat_esperada)
@@ -237,10 +237,10 @@ TEST_F(Teste, Simetria_matriz_nao_simetrica) {
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"void simetrica(int n, float [][]))\"             \n"
     << "-------------------------------------------------------------------\n"
-    << "                       Matriz de Entrada:\n\n"
+    << "Matriz de Entrada:\n\n"
     << Imprime_1_Matriz(4, 4, 22,  mat)
     << "\n"
-    << " Matriz nao simetrica, porem a funcao retornou true\n"
+    << "Matriz nao simetrica, porem a funcao retornou true\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -254,7 +254,7 @@ TEST_F(Teste, Simetria_matriz_simetrica) {
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"void simetrica(int n, float [][]))\"             \n"
     << "-------------------------------------------------------------------\n"
-    << "                     Matriz de Entrada:\n\n"
+    << "Matriz de Entrada:\n\n"
     << Imprime_1_Matriz(4, 4, 18,  mat)
     << "\nMatriz simetrica, porem a funcao retornou false\n"
     << "-------------------------------------------------------------------\n";

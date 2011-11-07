@@ -10,7 +10,7 @@ using std::ostream;
 // Implementa um ponto num espaco tridimensional.
 class Ponto3D {
  public:
-   // Cria um ponto com coordenadas (0.0, 0.0, 0.0).
+  // Cria um ponto com coordenadas (0.0, 0.0, 0.0).
   Ponto3D();
 
   // Cria um ponto com coordenadas (x, y, z).
@@ -64,8 +64,7 @@ class Ponto3D {
   // Vetor coluna igual a {x, y, z, 1}.
   double v_[4];
 
-
-
+  friend class Teste;
 };
 
 
