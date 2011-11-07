@@ -3,92 +3,80 @@
 #ifndef SET_SRC_SET_H_
 #define SET_SRC_SET_H_
 
-#include "ordered_set/src/binary_search_tree.h"
+#include <string>
 
-template<class Type> class BinarySearchTree;
+// Tipo dos elementos contidos na árvore.
+typedef std::string type;
 
-// Implementa um conjunto. O calculo da complexidade das funções assume que a
-// árvore esta sempre balanceada, o que não é garantido nesta implentação.
-// Ou seja, considera-se que a altura da arvore eh O(log n),
-// onde n eh o numero de elementos no conjunto.
-template<class Type>
+// Defite como os elementos do conjunto serão organizados na memória.
+// Implementa um nó da árvore.
+struct node {
+  type key;  // Valor da chave do nó.
+  node* right;  // Ponteiro para o nó a direita.
+  node* left;  // Ponteiro para o nó a esquerda.
+  node* parent;  // Ponteiro para o nó acima.
+};
+
+// Implementa um conjunto utilizando árvores binárias de busca.
+// NOTA: O cálculo da complexidade das funções assume que a árvore está
+// balanceada, o que não é garantido nesta implentação. Ou seja, considera-se
+// que a altura da arvore é O(log n), onde n é a cardinalidade do conjunto.
 class set {
  public:
-  // Tipo da árvore que representa o conjunto.
-  typedef BinarySearchTree<Type> Tree;
-
   // Cria um conjunto vazio em O(1).
-  set() {
-  }
+  set();
 
-  // Cria um conjunto com os mesmos elementos de c em O(n).
-  set(set<Type>& c) {
-    tree_ = c.tree_;
-  }
+  // Cria um conjunto com os mesmos elementos de s em O(m), onde m = s.size().
+  set(set& s);
+
+  // Libera toda a memória alocada para o conjunto em O(n*log n),
+  // onde n é o número de elementos no conjunto.
+  ~set();
+
+  // Retorna um ponteiro para o nó com o MENOR elemento do conjunto em O(log n).
+  // Caso o conjunto esteja vazio, rentorna um ponteiro para set::end().
+  node* begin();
+
+  // Retorna um ponteiro para o nó que marca o fim do conjunto em O(1).
+  node* end();
+
+  // Retorna o sucessor de x no conjunto, ou seja, o nó cuja chave é o menor
+  // elemento maior que a chave de x.
+  node* next(node* x);
 
   // Testa se o cojunto está vazio em O(1).
-  bool empty() {
-    return tree_.empty();
-  }
+  bool empty();
 
   // Retorna o número de elementos no conjunto em O(1).
-  int size() {
-    return tree_.size();
-  }
+  int size();
 
-  // Retorna o menor elemento do conjunto em O(log n).
-  Type min() {
-    return tree_.min()->key();
-  }
+  // Retorna um ponteiro para o nó que contém k em O(log n),
+  // ou um ponteiro para set::end() caso k não pertença ao conjunto.
+  node* find(type k);
 
-  // Testa se x pertece ao conjunto em O(log n).
-  bool find(Type x) {
-    return !tree_.find(x)->empty();
-  }
+  // Insere k no conjunto em O(log n) e retorna um ponteiro para o nó que contém
+  // k. Caso k já pertença ao conjunto, um novo elemento NÃO é criado e a função
+  // retorna um ponteiro para o nó que contém a versão mais antiga de k;
 
-  // Insere x no conjunto em O(log n).
-  // Retorna false se x já estava no conjunto ou true caso contrário.
-  bool insert(Type x) {
-    if (find(x)) {
-      return false;
-    } else {
-      tree_.insert(x);
-      return true;
-    }
-  }
+  node* insert(type k);
 
-  // Remove x do conjunto em O(log n).
-  // Retorna true se algum elemento foi removido ou falso caso contrário.
-  bool erase(Type x) {
-    if (find(x)) {
-      tree_.find(x)->erase();
-      return true;
-    } else {
-      return false;
-    }
-  }
+  // Remove k do conjunto (caso lá ele esteja) em O(log n).
+  void erase(type k);
 
-  // Insere todos os elementos do conjunto no final de l em O(n).
-  void ToList(list<Type>* l) {
-    tree_.ListInOrder(l);
-  }
-
-  // Remove todos os elementos do conjunto em O(n).
-  void clear() {
-    tree_.clear();
-  }
+  // Remove todos os elementos do conjunto em O(n*log n).
+  void clear();
 
   // Faz com que o conjunto corrente contenha exatamente os mesmos elementos
-  // do cojunto c.
-  void operator=(set<Type>& c) {
-    // Usa o operador de atribuição implementado em BinarySearchTree<Type>.
-    tree_ = c.tree_;
-  }
+  // do cojunto s em O(m*log m), onde m = s.size().
+  void operator=(set& s);
 
  private:
-  // Árvore binária de busca que representa o conjunto.
-  Tree tree_;
+  // Número de elementos no conjunto.
+  int size_;
 
-  friend class Test;
-};  // end class set.
+  // Raiz da árvore binária de busca que representa o conjunto.
+  node* end_;
+
+  friend class Teste;
+};
 #endif  // SET_SRC_SET_H_
