@@ -3,13 +3,12 @@
 #ifndef SET_TEST_SET_TEST_H_
 #define SET_TEST_SET_TEST_H_
 
-#include "ordered_set/src/set.h"
-
 #include <sstream>
 #include <string>
 
 #include "gtest/gtest.h"
-
+#include "ordered_set/src/node.h"
+#include "ordered_set/src/set.h"
 using std::string;
 using std::stringstream;
 

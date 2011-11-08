@@ -5,22 +5,24 @@
 
 #include <string>
 
-// Tipo dos elementos contidos na árvore.
+// Tipo dos elementos contidos no conjunto.
+#ifdef EASY_TESTING
+// Os testes são sempre realizados sobre conjuntos de string.
 typedef std::string type;
+#else
+typedef std::string type;
+#endif
 
 // Defite como os elementos do conjunto serão organizados na memória.
-// Implementa um nó da árvore.
-struct node {
-  type key;  // Valor da chave do nó.
-  node* right;  // Ponteiro para o nó a direita.
-  node* left;  // Ponteiro para o nó a esquerda.
-  node* parent;  // Ponteiro para o nó acima.
-};
+// É declarado aqui, mas só é implementado em set.cc para não violar o
+// encapsulamento
+struct node;
 
 // Implementa um conjunto utilizando árvores binárias de busca.
 // NOTA: O cálculo da complexidade das funções assume que a árvore está
-// balanceada, o que não é garantido nesta implentação. Ou seja, considera-se
-// que a altura da arvore é O(log n), onde n é a cardinalidade do conjunto.
+// balanceada, ou seja, considera-se que a altura da arvore é O(log n), onde n
+// é a cardinalidade do conjunto. Entretanto, isto não é garantido nesta
+// implentação.
 class set {
  public:
   // Cria um conjunto vazio em O(1).
@@ -33,16 +35,19 @@ class set {
   // onde n é o número de elementos no conjunto.
   ~set();
 
-  // Retorna um ponteiro para o nó com o MENOR elemento do conjunto em O(log n).
+  // Retorna um ponteiro para o MENOR elemento do conjunto em O(log n).
   // Caso o conjunto esteja vazio, rentorna um ponteiro para set::end().
   node* begin();
 
-  // Retorna um ponteiro para o nó que marca o fim do conjunto em O(1).
+  // Retorna um ponteiro para o "marcador de fim" do conjunto em O(1).
   node* end();
 
-  // Retorna o sucessor de x no conjunto, ou seja, o nó cuja chave é o menor
-  // elemento maior que a chave de x em O(log n).
+  // Retorna um ponteiro para o sucessor de x no conjunto, ou seja, o menor
+  // elemento maior que x em O(log n).
   node* next(node* x);
+
+  // Retorna o valor do elemento apontado por x em (1).
+  type value(node* x);
 
   // Testa se o cojunto está vazio em O(1).
   bool empty();
@@ -50,15 +55,15 @@ class set {
   // Retorna o número de elementos no conjunto em O(1).
   int size();
 
-  // Retorna um ponteiro para o nó que contém k em O(log n),
+  // Retorna um ponteiro para o elemento cuja chave é k em O(log n),
   // ou um ponteiro para set::end() caso k não pertença ao conjunto.
   // OBS: Note que esta função NÃO retorna bool. Para testar se um elemento 'a'
   // pertence a um conjunto 'c', você deve escrever "if (c.find(a) != c.end())".
   node* find(type k);
 
-  // Insere k no conjunto em O(log n) e retorna um ponteiro para o nó que contém
-  // k. Caso k já pertença ao conjunto, um novo elemento NÃO é criado e a função
-  // retorna um ponteiro para o nó que contém a versão mais antiga de k;
+  // Insere k no conjunto em O(log n) e retorna um ponteiro para este elemento.
+  // Caso k já pertença ao conjunto, um novo elemento NÃO é criado e a função
+  // retorna um ponteiro para k;
   node* insert(type k);
 
   // Remove k do conjunto (caso lá ele esteja) em O(log n).

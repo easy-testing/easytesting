@@ -1,5 +1,6 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
+#include "ordered_set/src/node.h"
 #include "ordered_set/src/set.h"
 
 #include <iostream>
@@ -154,6 +155,10 @@ node* set::end() {
 
 node* set::next(node* x) {
   return TreeSuccerssor(x);
+}
+
+node* set::value(node* x) {
+  return x->key;
 }
 
 bool set::empty() {

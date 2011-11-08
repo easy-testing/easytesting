@@ -52,7 +52,7 @@ using namespace std;
 void Imprimir(set& c) {
   cout << "{ ";
   for (node* i = c.begin(); i != c.end(); i = c.next(i)) {
-    cout << i->key << " ";
+    cout << c.value(i) << " ";
   }
   cout << "} = " << c.size() << endl;
 }
