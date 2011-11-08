@@ -5,65 +5,74 @@
 #include "linear_set/src/list.h"
 #include "linear_set/src/node.h"
 
-linear_set::linear_set() {
+set::set() {
 }
 
-linear_set::linear_set(linear_set& s) {
+set::set(set& s) {
   list_.clear();
   list_.merge(s.list_);
 }
 
-bool linear_set::empty() {
+set::~set() {
+  // O destrutor de list_ desaloca toda a memória alocada para ela.
+}
+
+node* set::begin() {
+  if (empty()) {
+    return list_.end();
+  } else {
+    return list_.begin();
+  }
+}
+
+node* set::end() {
+  return list_.end();
+}
+
+node* set::next(node* x) {
+  return x->next;
+}
+
+bool set::empty() {
   return list_.empty();
 }
 
-int linear_set::size() {
+int set::size() {
   return list_.size();
 }
 
-type linear_set::min() {
-  type m = list_.front();
+node* set::find(type k) {
   for (node* i = list_.begin(); i != list_.end(); i = i->next) {
-    if (i->key < m) {
-      m = i->key;
+    if (i->key == k) {
+      return i;
     }
   }
-  return m;
+  return list_.end();
 }
 
-bool linear_set::find(type x) {
+node* set::insert(type k) {
   for (node* i = list_.begin(); i != list_.end(); i = i->next) {
-    if (i->key == x) {
-      return true;
+    if (i->key == k) {
+      return i;
+    } else if (i->key > k) {
+      return list_.insert(i, k);
     }
   }
-  return false;  // i == list_.end().
+  return list_.insert(list_.end(), k);  // k é o maior elemento do conjunto.
 }
 
-bool linear_set::insert(type x) {
-  if (find(x)) {
-    return false;
-  } else {
-    list_.push_back(x);
-    return true;
+void set::erase(type k) {
+  node* aux = find(k);
+  if (aux != end()) {
+    list_.erase(aux);
   }
 }
 
-bool linear_set::erase(type x) {
-  for (node* i = list_.begin(); i != list_.end(); i = i->next) {
-    if (i->key == x) {
-      list_.erase(i);
-      return true;
-    }
-  }
-  return false;
-}
-
-void linear_set::clear() {
+void set::clear() {
   list_.clear();
 }
 
-void linear_set::operator=(linear_set& c) {
+void set::operator=(set& c) {
   list_.clear();
   list_.merge(c.list_);
 }

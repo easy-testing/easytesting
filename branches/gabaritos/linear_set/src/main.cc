@@ -3,19 +3,18 @@
 // Lista sobre Conjuntos.
 //
 // Questão 1.
-// Implemente em linear_set.h e linear_set.cc o TAD linear_set, utilizando
+// Implemente em set.h e set.cc o TAD set, utilizando
 // listas ligadas.
 //
 // Questão 2.
-// Escreva uma função "void Imprimir(linear_set& s)" que recebe
+// Escreva uma função "void Imprimir(set& s)" que recebe
 // como parâmetro um conjunto s e imprime os elementos de s na tela.
-// DICA: Utilize a função linear_set<Type>::ToList(list<Type>* l).
+// DICA: Utilize a função set<type>::ToList(list<type>* l).
 //
 // Questão 3.
 // Escreva uma função
-// "void Intersecao(linear_set& a, linear_set& b,
-// linear_set* inter)" que recebe dois conjuntos 'a' e 'b'
-// e atribui a 'inter' o resultado da interseção de 'a' e 'b'.
+// "void Intersecao(set& a, set& b, set* inter)" que recebe dois conjuntos
+// 'a' e 'b' e atribui a 'inter' o resultado da interseção de 'a' e 'b'.
 //
 // Questão 4.
 // Escreva um programa que gerencia os fornecedores para compra de peças
@@ -38,11 +37,11 @@
 // pedindo o número de uma nova peça até que o usuário digite zero ou até
 // que o conjunto de fornecedores candidatos seja vazio.
 //
-// DICA: crie um conjunto "linear_set candidatos" que contém
+// DICA: crie um conjunto "set candidatos" que contém
 // inicialmente o nome de todos os fornecedores e um vetor
-// "linear_set pecas[100]" com o conjunto de fornecedores para cada
-// peça. A cada iteração em que uma peça x for digitada, você deve fazer a
-// interseção do conjunto 'candidatos' com o conjunto 'pecas[x - 1]'.
+// "set pecas[100]" com o conjunto de fornecedores para cada
+// peça. A cada iteração em que uma peça 'p' for digitada, você deve fazer a
+// interseção do conjunto 'candidatos' com o conjunto 'pecas[p - 1]'.
 
 #include <fstream>
 #include <iostream>
@@ -50,38 +49,29 @@
 
 using namespace std;
 
-// Imprime os elementos da lista entre chaves.
-void Imprimir(linear_set& c) {
-  linear_set aux = c;
+void Imprimir(set& c) {
   cout << "{ ";
-  while (!aux.empty()) {
-    type x = aux.min();
-    cout << x << " ";
-    aux.erase(x);
+  for (node* i = c.begin(); i != c.end(); i = c.next(i)) {
+    cout << i->key << " ";
   }
-  cout << "}\n";
+  cout << "} = " << c.size() << endl;
 }
 
-void Intersecao(linear_set& a,
-                linear_set& b,
-                linear_set* inter) {
+void Intersecao(set& a, set& b, set* inter) {
   // Percorre todos os elementos do cojunto 'a' e insere em 'inter' todos
   // aqueles que também estão no cojunto 'b'.
   inter->clear();
-  linear_set copia_a = a;
-  while (!copia_a.empty()) {
-    type x = copia_a.min();
-    if (b.find(x)) {
-      inter->insert(x);
+  for (node* i = a.begin(); i != a.end(); i = a.next(i)) {
+    if (b.find(i->key) != b.end()) {
+      inter->insert(i->key);
     }
-    copia_a.erase(x);
   }
 }
 
 int main() {
   // pecas[i] contém os fornecedores da peça i + 1.
-  linear_set pecas[100];
-  linear_set candidatos;
+  set pecas[100];
+  set candidatos;
 
   // Inicializa o cojunto de fornecedores candidatos e o vetor de fornecedores
   // de cada peça.
@@ -102,15 +92,17 @@ int main() {
   // Filtra iterativamente o cojunto de fornecedores candidatos.
   int num_peca = -1;
   while (!candidatos.empty() && num_peca != 0) {
-    cout << "Filtrar por peça [1, 100]: ";
+    cout << "Candidatos: ";
+    Imprimir(candidatos);
+    cout << "Filtrar por peca [1, 100]: ";
     cin >> num_peca;
     if (num_peca >= 1 && num_peca <= 100) {
-      linear_set inter;
+      set inter;
       Intersecao(pecas[num_peca - 1], candidatos, &inter);
       candidatos = inter;
-      cout << "\n\nCandidatos: ";
-      Imprimir(candidatos);
     }
   }
+  cout << "Resultado: ";
+  Imprimir(candidatos);
   return 0;
 }

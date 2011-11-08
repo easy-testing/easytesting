@@ -41,7 +41,7 @@ class set {
   node* end();
 
   // Retorna o sucessor de x no conjunto, ou seja, o nó cuja chave é o menor
-  // elemento maior que a chave de x.
+  // elemento maior que a chave de x em O(log n).
   node* next(node* x);
 
   // Testa se o cojunto está vazio em O(1).

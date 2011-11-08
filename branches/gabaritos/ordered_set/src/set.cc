@@ -140,10 +140,6 @@ set::~set() {
   delete end_;
 }
 
-node* set::next(node* x) {
-  return TreeSuccerssor(x);
-}
-
 node* set::begin() {
   if (empty()) {
     return end();
@@ -154,6 +150,10 @@ node* set::begin() {
 
 node* set::end() {
   return end_;
+}
+
+node* set::next(node* x) {
+  return TreeSuccerssor(x);
 }
 
 bool set::empty() {

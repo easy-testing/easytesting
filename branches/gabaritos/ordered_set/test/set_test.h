@@ -79,7 +79,7 @@ TEST_F(Teste, Testar_Construtor_por_copia_vazio) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* ~set::set(set c) *\n"
+    << "* set::set(set c) *\n"
     << "-------------------------------------------------------------------\n"
     << "Construtor por copia nao criou conjunto igual ao parametro passado\n\n"
     << "  Conjunto esperado: " << esperado << "\n"
@@ -97,7 +97,7 @@ TEST_F(Teste, Testar_Construtor_por_copia_varios_elementos) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* ~set::set(set c) *\n"
+    << "* set::set(set c) *\n"
     << "-------------------------------------------------------------------\n"
     << "Construtor por copia nao criou conjunto igual ao parametro passado\n\n"
     << "  Conjunto esperado: " << esperado << "\n"

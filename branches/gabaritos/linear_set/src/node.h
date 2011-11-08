@@ -11,8 +11,8 @@ typedef std::string type;
 // Implementa um nó.
 struct node {
   type key;  // Valor da chave do nó.
-  node* prev;  // Ponteiro para o próximo nó.
-  node* next;  // Ponteiro para o nó anterior.
+  node* prev;  // Ponteiro para o nó anterior.
+  node* next;  // Ponteiro para o próximo nó.
 };
 
 // Cria um nó sentinela.

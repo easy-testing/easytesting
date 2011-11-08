@@ -4,7 +4,9 @@
 
 node* NewSentinel() {
   node* aux = new node();
-  aux->prev = aux->next = aux;
+  aux->key = type();
+  aux->prev = aux;
+  aux->next = aux;
   return aux;
 }
 
