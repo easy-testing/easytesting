@@ -190,6 +190,38 @@ TEST_F(Teste, Testar_metodo_size_em_deque_com_varios_elementos) {
       << "------------------------------------------------------------------\n";
 }
 
+TEST_F(Teste, Testar_metodo_push_front) {
+  deque l;
+  CriaList3(10, 3, 0, &l);
+  l.push_front(2);
+  string esperado = "{2 10 3 0}";
+  string atual = PrintDeque(l);
+  ASSERT_EQ(esperado, atual)
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao:  "
+      << "* void deque::push_front(type x) *\n"
+      << "------------------------------------------------------------------\n"
+      << "Lista esperada: " << esperado << "\n"
+      << "Lista atual: " << atual << "\n"
+      << "------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testar_metodo_pop_front) {
+  deque l;
+  CriaList3(10, 3, 0, &l);
+  l.pop_front();
+  string esperado = "{3 0}";
+  string atual = PrintDeque(l);
+  ASSERT_EQ(esperado, atual)
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao:  "
+      << "* void deque::pop_front() *\n"
+      << "------------------------------------------------------------------\n"
+      << "Lista esperada: " << esperado << "\n"
+      << "Lista atual: " << atual << "\n"
+      << "------------------------------------------------------------------\n";
+}
+
 TEST_F(Teste, Testar_metodo_push_back) {
   deque l;
   CriaList3(10, 3, 0, &l);
