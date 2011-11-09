@@ -1,12 +1,12 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef SET_SRC_SET_H_
-#define SET_SRC_SET_H_
+#ifndef BRANCHES_GABARITOS_LINEAR_SET_SRC_SET_H_
+#define BRANCHES_GABARITOS_LINEAR_SET_SRC_SET_H_
 
 #include "list/src/list.h"
 
-// Defite como os elementos do conjunto ser„o organizados na memÛria.
-// … declarado aqui, mas sÛ È implementado em set.cc para n„o violar o
+// Defite como os elementos do conjunto ser√£o organizados na mem√≥ria.
+// √â declarado aqui, mas s√≥ √© implementado em set.cc para n√£o violar o
 // encapsulamento
 struct node;
 
@@ -19,7 +19,7 @@ class set {
   // Cria um conjunto com os mesmos elementos de s em O(m), onde m = s.size().
   set(set& s);
 
-  // Libera toda a memÛria alocada para o conjunto em O(n).
+  // Libera toda a mem√≥ria alocada para o conjunto em O(n).
   ~set();
 
   // Retorna um ponteiro para o MENOR elemento do conjunto em O(1).
@@ -36,24 +36,24 @@ class set {
   // Retorna o valor do elemento indicado por x em (1).
   type value(node* x);
 
-  // Testa se o cojunto est· vazio em O(1).
+  // Testa se o cojunto est√° vazio em O(1).
   bool empty();
 
-  // Retorna o n˙mero de elementos no conjunto em O(1).
+  // Retorna o n√∫mero de elementos no conjunto em O(1).
   int size();
 
   // Retorna um ponteiro para o elemento k em O(n),
-  // ou um ponteiro para set::end() caso k n„o pertenÁa ao conjunto.
-  // OBS: Note que esta funÁ„o N√O retorna bool. Para testar se um elemento 'a'
-  // pertence a um conjunto 'c', vocÍ deve escrever "if (c.find(a) != c.end())".
+  // ou um ponteiro para set::end() caso k n√£o perten√ßa ao conjunto.
+  // OBS: Note que esta fun√ß√£o N√ÉO retorna bool. Para testar se um elemento 'a'
+  // pertence a um conjunto 'c', voc√™ deve escrever "if (c.find(a) != c.end())".
   node* find(type k);
 
   // Insere k no conjunto em O(n) e retorna um ponteiro para este elemento.
-  // Caso k j· pertenÁa ao conjunto, um novo elemento N√O È inserido no conjunto
-  // e a funÁ„o retorna um ponteiro o para o elemento k j· existente.
+  // Caso k j√° perten√ßa ao conjunto, um novo elemento N√ÉO √© inserido no conjunto
+  // e a fun√ß√£o retorna um ponteiro o para o elemento k j√° existente.
   node* insert(type k);
 
-  // Remove k do conjunto (caso l· ele esteja) em O(n).
+  // Remove k do conjunto (caso l√° ele esteja) em O(n).
   void erase(type k);
 
   // Remove todos os elementos do conjunto em O(n).
@@ -71,4 +71,4 @@ class set {
   friend class Teste;
 };
 
-#endif  // SET_SRC_SET_H_
+#endif  // BRANCHES_GABARITOS_LINEAR_SET_SRC_SET_H_
