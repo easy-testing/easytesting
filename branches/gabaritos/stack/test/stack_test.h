@@ -3,12 +3,12 @@
 #ifndef BRANCHES_GABARITOS_STACK_TEST_STACK_TEST_H_
 #define BRANCHES_GABARITOS_STACK_TEST_STACK_TEST_H_
 
-#include "stack/src/stack.h"
-
 #include <sstream>
 #include <string>
 
 #include "gtest/gtest.h"
+#include "stack/src/node.h"
+#include "stack/src/stack.h"
 
 using std::string;
 using std::stringstream;
@@ -28,6 +28,22 @@ class Teste : public testing::Test {
     }
     output << "]";
     return output.str();
+  }
+
+  // Cria um nó sentinela.
+  node* NewSentinel() {
+    node* aux = new node();
+    aux->prev = aux->next = aux;
+    return aux;
+  }
+
+  // Cria uma nó cuja chave é k, o nó anterior é l, e o nó posterior é r.
+  node* NewNode(type k, node* l, node* r) {
+    node* aux = new node();
+    aux->key = k;
+    aux->prev = l;
+    aux->next = r;
+    return aux;
   }
 
   // Preenche a stack passada como parametro com 1 numero.

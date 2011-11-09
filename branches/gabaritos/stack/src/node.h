@@ -3,22 +3,13 @@
 #ifndef BRANCHES_GABARITOS_STACK_SRC_NODE_H_
 #define BRANCHES_GABARITOS_STACK_SRC_NODE_H_
 
-#include<string>
+#include "stack/src/stack.h"
 
-// Tipo dos elementos contidos na pilha.
-typedef std::string type;
-
-// Implementa um nó.
+// Implementa um nó da lista encadeada.
 struct node {
   type key;  // Valor da chave do nó.
-  node* prev;  // Ponteiro para o próximo nó.
-  node* next;  // Ponteiro para o nó anterior.
+  node* prev;  // Ponteiro para o nó anterior.
+  node* next;  // Ponteiro para o próximo nó.
 };
-
-// Cria um nó sentinela.
-node* NewSentinel();
-
-// Cria uma nó cuja chave é k, o nó anterior é l, e o nó posterior é r.
-node* NewNode(type k, node* l, node* r);
 
 #endif  // BRANCHES_GABARITOS_STACK_SRC_NODE_H_

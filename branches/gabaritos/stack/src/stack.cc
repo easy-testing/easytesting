@@ -2,9 +2,13 @@
 
 #include "stack/src/stack.h"
 
+#include "stack/src/node.h"
+
 stack::stack() {
   size_ = 0;
-  end_ = NewSentinel();
+  end_ = new node();
+  end_->next = end_;
+  end_->prev = end_;
 }
 
 stack::~stack() {
@@ -28,10 +32,11 @@ type stack::top() {
   return end_->next->key;
 }
 
-
-void stack::push(type x) {
-  node* first = end_->next;  // Ponteiro para o primeiro elemento na fila.
-  first->prev = first->prev->next = NewNode(x, first->prev, first);
+void stack::push(type k) {
+  node* i = end_->next;  // Ponteiro para o primeiro elemento na fila.
+  node* k_node = new node({k, i->prev, i});
+  i->prev->next = k_node;
+  i->prev = k_node;
   size_++;
 }
 
