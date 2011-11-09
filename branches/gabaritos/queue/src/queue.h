@@ -3,10 +3,17 @@
 #ifndef BRANCHES_GABARITOS_QUEUE_SRC_QUEUE_H_
 #define BRANCHES_GABARITOS_QUEUE_SRC_QUEUE_H_
 
-#include "queue/src/node.h"
+#include <string>
 
-// Implementa uma fila de elementos utilizando Listas Ligadas.
-// O tipo dos elementos é definido por 'type'.
+// Tipo dos elementos contidos na fila.
+typedef std::string  type;
+
+// Defite como os elementos da fila serão organizados na memória.
+// É declarado aqui, mas só é implementado em queue.cc para não violar o
+// encapsulamento
+struct node;
+
+// Implementa uma fila de elementos utilizando listas encadeadas.
 class queue {
  public:
   // Cria uma fila vazia em O(1).
@@ -30,8 +37,8 @@ class queue {
   // PRECONDIÇÃO: a fila não pode estar vazia.
   type back();
 
-  // Insere x no final da fila em O(1).
-  void push(type x);
+  // Insere k no final da fila em O(1).
+  void push(type k);
 
   // Remove o elemento que está no início da fila em O(1).
   // PRECONDIÇÃO: a fila não pode estar vazia.
@@ -41,7 +48,7 @@ class queue {
   // Número de elementos na fila.
   int size_;
 
-  // Ponteiro para o nó sentinela da lista ligada.
+  // Ponteiro para o nó sentinela da lista encadeada.
   node* end_;
 
   friend class Teste;

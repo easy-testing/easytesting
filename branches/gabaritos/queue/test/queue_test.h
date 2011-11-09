@@ -3,12 +3,12 @@
 #ifndef BRANCHES_GABARITOS_QUEUE_TEST_QUEUE_TEST_H_
 #define BRANCHES_GABARITOS_QUEUE_TEST_QUEUE_TEST_H_
 
-#include "queue/src/queue.h"
-
 #include <sstream>
 #include <string>
 
 #include "gtest/gtest.h"
+#include "queue/src/node.h"
+#include "queue/src/queue.h"
 
 using std::string;
 using std::stringstream;
@@ -28,6 +28,15 @@ class Teste : public testing::Test {
     }
     output << "}";
     return output.str();
+  }
+
+  // Cria uma nó cuja chave é k, o nó anterior é l, e o nó posterior é r.
+  node* NewNode(type k, node* l, node* r) {
+    node* aux = new node();
+    aux->key = k;
+    aux->prev = l;
+    aux->next = r;
+    return aux;
   }
 
   // Preenche a queue passada como parametro com 1 numero.

@@ -5,7 +5,9 @@
 
 queue::queue() {
   size_ = 0;
-  end_ = NewSentinel();
+  end_ = new node();
+  end_->next = end_;
+  end_->prev = end_;
 }
 
 queue::~queue() {
@@ -33,8 +35,10 @@ type queue::back() {
   return end_->prev->key;
 }
 
-void queue::push(type x) {
-  end_->prev = end_->prev->next = NewNode(x, end_->prev, end_);
+void queue::push(type k) {
+  node* k_node = new node({k, end_->prev, end_});
+  end_->prev->next = k_node;
+  end_->prev = k_node;
   size_++;
 }
 

@@ -3,17 +3,13 @@
 // Lista sobre Filas.
 //
 // Questão 1.
-// Implemente em queue.h e queue.cc o TAD queue, utilizando listas ligadas.
+// Implemente em queue.h e queue.cc o TAD queue, utilizando listas encadeadas.
 //
 // Questão 2.
 // Escreva uma função "void Imprimir(queue& q)" que recebe
 // como parâmetro uma fila q e imprime os elemento de q na tela.
 //
 // Questão 3.
-// Escreva uma função "void MergeSort(queue& q)" que ordena os elementos de uma
-// fila em O(n*log n), onde n = q.size().
-//
-// Questão 4.
 // Escreva um programa que gerencia uma fila de banco. Ao entrar na fila,
 // o cliente dá seu nome e sua idade. Os clientes são atendidos por ordem de
 // chegada. Entretanto, os clientes com 60 anos ou mais tem prioridade sobre
@@ -55,43 +51,6 @@ void Imprimir(queue& q) {
 }
 
 // Questão 3.
-////////////////////////////////////////////////////////////////////////////////
-
-// Recebe duas filas ordenadas q1 e q2 e retorna uma fila ordenada com todos os
-// elementos de q1 e q2.
-void Merge(queue& q1, queue& q2, queue* r) {
-  int n = q1.size() + q2.size();
-  for (int i = 0; i < n; i++) {
-    if (q1.empty()) {
-      r->push(q2.front());
-      q2.pop();
-    } else if (q2.empty()) {
-      r->push(q1.front());
-      q1.pop();
-    } else if (q2.front() < q1.front()) {
-      r->push(q2.front());
-      q2.pop();
-    } else {  // q2.front() >= q1.front()
-      r->push(q1.front());
-      q1.pop();
-    }
-  }
-}
-
-void MergeSort(queue& q) {
-  if (q.size() > 1) {
-    queue v[2];
-    for (int i = 0; !q.empty(); i++) {
-      v[i % 2].push(q.front());
-      q.pop();
-    }
-    MergeSort(v[0]);
-    MergeSort(v[1]);
-    Merge(v[0], v[1], &q);
-  }
-}
-
-// Questão 4.
 //////////////////////////////////////////////////////////////////////////////
 
 // Insere um cliente na fila do banco.
