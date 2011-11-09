@@ -2,20 +2,26 @@
 
 #include "list/src/list.h"
 
+#include "list/src/node.h"
+
 list::list() {
   size_ = 0;
-  end_ = NewSentinel();
+  end_ = new node();
+  end_->next = end_;
+  end_->prev = end_;
 }
 
 list::list(list& l) {
   size_ = 0;
-  end_ = NewSentinel();
+  end_ = new node();
+  end_->next = end_;
+  end_->prev = end_;
   merge(l);
 }
 
 list::~list() {
-  clear();  // Primeiramente, remove todos os elementos da lista.
-  delete end_;  // Em seguida, libera a memória alocada ao sentinela.
+  clear();
+  delete end_;
 }
 
 node* list::begin() {
@@ -24,6 +30,18 @@ node* list::begin() {
 
 node* list::end() {
   return end_;
+}
+
+node* list::next(node* i) {
+  return i->next;
+}
+
+node* list::prev(node* i) {
+  return i->prev;
+}
+
+type list::value(node* i) {
+  return i->key;
 }
 
 bool list::empty() {
@@ -58,18 +76,18 @@ void list::pop_back() {
   erase(end_->prev);
 }
 
-node* list::insert(node* p, type x) {
-  node* aux = NewNode(x, p->prev, p);
-  p->prev->next = aux;
-  p->prev = aux;
+node* list::insert(node* i, type k) {
+  node* k_node = new node({k, i->prev, i});
+  i->prev->next = k_node;
+  i->prev = k_node;
   size_++;
-  return p;
+  return k_node;
 }
 
-void list::erase(node* p) {
-  p->prev->next = p->next;
-  p->next->prev = p->prev;
-  delete p;
+void list::erase(node* x) {
+  x->prev->next = x->next;
+  x->next->prev = x->prev;
+  delete x;
   size_--;
 }
 

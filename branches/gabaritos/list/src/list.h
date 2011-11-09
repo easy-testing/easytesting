@@ -3,10 +3,22 @@
 #ifndef BRANCHES_GABARITOS_LIST_SRC_LIST_H_
 #define BRANCHES_GABARITOS_LIST_SRC_LIST_H_
 
-#include "list/src/node.h"
+#include <string>
+
+// Tipo dos elementos contidos na lista.
+#ifdef EASY_TESTING
+// Os testes são sempre realizados sobre listas de string.
+typedef std::string type;
+#else
+typedef int type;
+#endif
+
+// Defite como os elementos do conjunto serão organizados na memória.
+// É declarado aqui, mas só é implementado em list.cc para não violar o
+// encapsulamento
+struct node;
 
 // Implementa uma lista de elementos utilizando Listas Ligadas.
-// O tipo dos elementos é definido por 'type'.
 class list {
  public:
   // Cria uma lista vazia em O(1).
@@ -19,21 +31,30 @@ class list {
   // onde n é o número de elementos na lista.
   ~list();
 
-  // Retorna um ponteiro para o primeiro nó da lista em O(1).
+  // Retorna um ponteiro para o primeiro elemento da lista em O(1).
   // Caso a lista esteja vazia, rentorna um ponteiro para list::end().
   node* begin();
 
-  // Retorna um ponteiro para "depois" do ultimo nó da lista em O(1).
+  // Retorna um ponteiro para o "marcador de fim" da lista em O(1).
   node* end();
+
+  // Retorna o elemento seguinte ao indicado por i na lista em (1).
+  node* next(node* i);
+
+  // Retorna o elemento anterior ao indicado por i na lista em (1).
+  node* prev(node* i);
+
+  // Retorna o valor do indicado por i em (1).
+  type value(node* i);
 
   // Testa se a lista esta vazia em O(1).
   bool empty();
 
-  // Retorna o valor da chave do primeiro elemento da lista em O(1).
+  // Retorna o valor do primeiro elemento da lista em O(1).
   // PRECONDIÇÃO: a lista não pode estar vazia.
   type front();
 
-  // Retorna o valor da chave do último elemento da lista em O(1).
+  // Retorna o valor do último elemento da lista em O(1).
   // PRECONDIÇÃO: a lista não pode estar vazia.
   type back();
 
@@ -54,13 +75,13 @@ class list {
   // PRECONDIÇÃO: a lista não pode estar vazia.
   void pop_back();
 
-  // Insere x antes do nó p em O(1) e retorna um ponteiro para o nó que foi
-  // criado para armazenar x.
-  node* insert(node* p, type x);
+  // Insere k antes do elemento indicado por x em O(1) e retorna um ponteiro
+  // para o elemento k.
+  node* insert(node* i, type k);
 
-  // Apaga o nó p da lista em O(1).
-  // PRECONDIÇÃO: p é um nó da lista.
-  void erase(node* p);
+  // Apaga o elemento indicado por x da lista em O(1).
+  // PRECONDIÇÃO: x aponta para um dos elementos da lista.
+  void erase(node* i);
 
   // Remove todos os elementos da lista em O(n),
   // onde n é o número de elementos na lista.
