@@ -26,6 +26,17 @@ Node* NewNode(Type k, Node* l, Node* r, Node* p) {
   return aux;
 }
 
+// Retorna a raiz da árvore cujo nó sentinela é 'end'.
+Node* Root(Node* end) {
+  return end->left;
+}
+
+
+// Retorna true se p é o nó sentinela, ou false caso contrário.
+bool IsEnd(Node* p) {
+  return p->parent == NULL;
+}
+
 // Retorna o nó da árvore x cuja chave é k em O(log n),
 // ou NULL caso k não esteja na árvore x.
 // PRECONDIÇÃO: x não é uma árvore vazia.
@@ -64,55 +75,59 @@ Node* TreeSuccerssor(Node* x) {
   return y;
 }
 
-// Conecta o nó z ao nó pai p de forma consistente.
-// PRECONDIÇÃO: z não aponta para um árvore vazia.
-void Connect(Node* p, Node* z) {
-  if (p->parent == NULL || z->key < p->key) {
-    p->left = z;
-  } else  {
-    p->right = z;
-  }
-  z->parent = p;
-}
-
 // Insere uma FOLHA z na árvore cujo nó sentinela é t de forma consistente.
 // NOTA: Esta função NÃO aloca a memória para z.
-void TreeInsert(Node* t, Node* z) {
-  Node* y = t;
-  Node* x = t->left;
+void TreeInsert(Node* end, Node* z) {
+  Node* y = end;
+  Node* x = Root(end);
   while (x != NULL) {
     y = x;
     x = (z->key < x->key) ? x->left : x->right;
   }
-  Connect(y, z);
+  z->parent = y;
+  if (IsEnd(y)) {
+    end->left = z;
+  } else if (z->key < y->key) {
+    y->left = z;
+  } else  {
+    y->right = z;
+  }
 }
 
-// Desconecta o nó z da árvore de forma consistente.
-// PRECONDIÇÃO: pelo menos um dos filhos de z é vazio (possivelmente os dois).
-void Disconnect(Node* z) {
-  Node* p = z->parent;  // Pai de z.
-  Node* f = (z->left == NULL) ? z->right : z->left;  // Filho não vazio de z.
+// Desconecta o nó z da árvore de forma consistente e depois retorna z.
+// NOTA: Esta função NÃO desaloca a memória alocada para z.
+// PRECONDIÇÃO: Um dos filhos de z é vazio (possivelmente os dois).
+Node* RestrictedTreeDelete(Node* z) {
+  // Seleciona qual o filho de z que vai substituir ele.
+  Node* f;
+  if (z->left == NULL) {
+    f = z->right;
+  } else {
+    f = z->left;
+  }
+  // Troca o pai do filho de z.
+  Node* p = z->parent;
+  if (f != NULL) {
+    f->parent = p;
+  }
+  // Troca o filho do pai de z.
   if (z == p->left) {
     p->left = f;
   } else  {
     p->right = f;
   }
-  if (f != NULL) {
-    f->parent = p;
-  }
+  return z;
 }
 
-// Desconecta o nó x da árvore de forma consistente e depois retorna x.
-// NOTA: Esta função NÃO desaloca a memória alocada para x.
+// Desconecta o nó z da árvore de forma consistente e depois retorna z.
+// NOTA: Esta função NÃO desaloca a memória alocada para z.
 Node* TreeDelete(Node* z) {
-  if (z->right == NULL) {
-    Disconnect(z);  // Subárvore direita de x é vazia.
-    return z;
+  if (z->right == NULL || z->left == NULL) {
+    return RestrictedTreeDelete(z);  // Subárvore direita de z é vazia.
   } else {
     Node* y = TreeMinimum(z->right);
-    Disconnect(y);  // Subárvore esquerda de y é vazia.
     z->key = y->key;
-    return y;
+    return RestrictedTreeDelete(y);  // Subárvore esquerda de y é vazia.
   }
 }
 
@@ -141,7 +156,7 @@ Node* set::begin() {
   if (empty()) {
     return end();
   } else {
-    return TreeMinimum(end_->left);
+    return TreeMinimum(Root(end_));
   }
 }
 
@@ -166,7 +181,7 @@ return size_;
 }
 
 Node* set::find(Type k) {
-  Node* aux = TreeSearch(end_->left, k);
+  Node* aux = TreeSearch(Root(end_), k);
   if (aux != NULL) {
     return aux;
   } else {
@@ -175,8 +190,8 @@ Node* set::find(Type k) {
 }
 
 Node* set::insert(Type k) {
-  Node* z = TreeSearch(end_->left, k);
-  if (z != NULL) {
+  Node* z = find(k);
+  if (z != end()) {
     return z;
   } else {
     z = NewNode(k, NULL, NULL, NULL);
@@ -186,8 +201,8 @@ Node* set::insert(Type k) {
 }
 
 void set::erase(Type k) {
-  Node* aux = TreeSearch(end_->left, k);
-  if (aux != NULL) {
+  Node* aux = find(k);
+  if (aux != end()) {
     delete TreeDelete(aux);
     size_--;
   }
