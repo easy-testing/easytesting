@@ -3,15 +3,11 @@
 #include "ordered_set/src/node.h"
 #include "ordered_set/src/set.h"
 
-#include <iostream>
-
-using namespace std;
-
 // Implementação das funções auxiliares que operam sobre os nós da árvore.
 ////////////////////////////////////////////////////////////////////////////////
 
 // Cria um nó sentinela.
-node* NewSentinel(){
+node* NewSentinel() {
   node* aux = new node();
   aux->left = NULL;
   aux->right = NULL;
@@ -35,7 +31,7 @@ node* NewNode(type k, node* l, node* r, node* p) {
 // PRECONDIÇÃO: x não é uma árvore vazia.
 node* TreeSearch(node* x, type k) {
   while (x != NULL && k != x->key) {
-    if ( k < x->key) {
+    if (k < x->key) {
       x = x->left;
     } else {
       x = x->right;
@@ -157,7 +153,7 @@ node* set::next(node* x) {
   return TreeSuccerssor(x);
 }
 
-node* set::value(node* x) {
+type set::value(node* x) {
   return x->key;
 }
 

@@ -1,7 +1,7 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef SET_TEST_SET_TEST_H_
-#define SET_TEST_SET_TEST_H_
+#ifndef BRANCHES_GABARITOS_ORDERED_SET_TEST_SET_TEST_H_
+#define BRANCHES_GABARITOS_ORDERED_SET_TEST_SET_TEST_H_
 
 #include <sstream>
 #include <string>
@@ -15,7 +15,7 @@ using std::stringstream;
 // Classe base dos testes.
 class Teste : public testing::Test {
  protected:
-   node* NewNode(type k, node* l, node* r, node* p) {
+  node* NewNode(type k, node* l, node* r, node* p) {
     node* aux = new node();
     aux->key = k;
     aux->left = l;
@@ -50,6 +50,7 @@ class Teste : public testing::Test {
     TreeInsert(c->end_, z);
     c->size_++;
   }
+
   // Insere em um conjunto c, n elementos contidos no vetor v
   void CriaSet(set& c, int n, string v[]) {
     for (int i = 0; i < n; ++i) {
@@ -182,6 +183,7 @@ TEST_F(Teste, Testar_metodo_size_em_conjunto_com_varios_elementos) {
     << "Erro na funcao:  "
     << "* int set::size() *\n"
     << "-------------------------------------------------------------------\n"
+    << "Conjunto  : " << ToString(c)  << "\n"
     << "Valor esperado  : " << esperado << "\n"
     << "Valor retornado : " << atual << "\n"
     << "-------------------------------------------------------------------\n";
@@ -396,4 +398,4 @@ TEST_F(Teste, Testar_metodo_clear_em_conjunto_com_varios_elementos) {
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // SET_TEST_SET_TEST_H_
+#endif  // BRANCHES_GABARITOS_ORDERED_SET_TEST_SET_TEST_H_

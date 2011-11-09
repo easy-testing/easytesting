@@ -45,9 +45,16 @@
 
 #include <fstream>
 #include <iostream>
+#include <string>
+
 #include "ordered_set/src/set.h"
 
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::ifstream;
+using std::string;
+
 
 void Imprimir(set& c) {
   cout << "{ ";
@@ -62,8 +69,8 @@ void Intersecao(set& a, set& b, set* inter) {
   // aqueles que também estão no cojunto 'b'.
   inter->clear();
   for (node* i = a.begin(); i != a.end(); i = a.next(i)) {
-    if (b.find(i->key) != b.end()) {
-      inter->insert(i->key);
+    if (b.find(a.value(i)) != b.end()) {
+      inter->insert(a.value(i));
     }
   }
 }
