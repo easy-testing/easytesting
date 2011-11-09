@@ -3,12 +3,11 @@
 #ifndef LINEAR_SET_TEST_H_
 #define LINEAR_SET_TEST_H_
 
-#include "linear_set/src/linear_set.h"
-
 #include <sstream>
 #include <string>
 
 #include "gtest/gtest.h"
+#include "linear_set/src/set.h"
 
 using std::string;
 using std::stringstream;
@@ -16,11 +15,17 @@ using std::stringstream;
 // Classe base dos testes.
 class Teste : public testing::Test {
  protected:
+  type Value(set& c, node* x) {
+    return c.list_.value(x);
+  }
+
   node* insert(type k, set* c) {
-    for (node* i = c->list_.begin(); i != c->list_.end(); i = i->next) {
-      if (i->key == k) {
+    for (node* i = c->list_.begin();
+         i != c->list_.end();
+         i = c->list_.next(i)) {
+      if (c->list_.value(i) == k) {
         return i;
-      } else if (i->key > k) {
+      } else if (c->list_.value(i) > k) {
         return c->list_.insert(i, k);
       }
     }
@@ -40,7 +45,7 @@ class Teste : public testing::Test {
     stringstream out;
     out << "{ ";
     for (node* i = c.begin(); i != c.end(); i = c.next(i)) {
-      out << i->key << " ";
+      out << c.list_.value(i) << " ";
     }
     out << "}";
     return out.str();
@@ -96,7 +101,6 @@ TEST_F(Teste, Testar_metodo_empty_em_conjunto_unitario) {
   set c;
   string v[] = {"3"};
   CriaSet(c, 1, v);
-  std::cout << "---> " << ToString(c) << std::endl;
   ASSERT_FALSE(c.empty())
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
@@ -192,7 +196,7 @@ TEST_F(Teste, Testar_metodo_find_em_conjunto_com_varios_elementos) {
     << "-------------------------------------------------------------------\n";
 
   string procurado = "8";
-  string retornado = c.find(procurado)->key;
+  string retornado = Value(c, c.find(procurado));
   ASSERT_EQ(procurado, retornado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "

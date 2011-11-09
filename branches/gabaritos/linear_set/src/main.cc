@@ -3,8 +3,7 @@
 // Lista sobre Conjuntos.
 //
 // Questão 1.
-// Implemente em set.h e set.cc o TAD set, utilizando
-// listas ligadas.
+// Implemente em set.h e set.cc o TAD set, utilizando o TAD list.
 //
 // Questão 2.
 // Escreva uma função "void Imprimir(set& s)" que recebe
@@ -30,7 +29,7 @@
 // por este fornecedor.
 //
 // O seu programa deve inicialmente exibir o conjunto com todos os
-// fornecedores, que são candidatos para fornecer um pedido com várias peças.
+// fornecedores, ,que são candidatos para fornecer um pedido com várias peças.
 // A cada iteração, o usuário deve ser capaz de digitar o número
 // de uma peça e o sistema deve eliminar do conjunto de fornecedores candidatos
 // aqueles que não vendem a última peça digitada. O programa deve continuar
@@ -45,14 +44,14 @@
 
 #include <fstream>
 #include <iostream>
-#include "linear_set/src/linear_set.h"
+#include "linear_set/src/set.h"
 
 using namespace std;
 
 void Imprimir(set& c) {
   cout << "{ ";
   for (node* i = c.begin(); i != c.end(); i = c.next(i)) {
-    cout << i->key << " ";
+    cout << c.value(i) << " ";
   }
   cout << "} = " << c.size() << endl;
 }
@@ -62,8 +61,8 @@ void Intersecao(set& a, set& b, set* inter) {
   // aqueles que também estão no cojunto 'b'.
   inter->clear();
   for (node* i = a.begin(); i != a.end(); i = a.next(i)) {
-    if (b.find(i->key) != b.end()) {
-      inter->insert(i->key);
+    if (b.find(a.value(i)) != b.end()) {
+      inter->insert(a.value(i));
     }
   }
 }

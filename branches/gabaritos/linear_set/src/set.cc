@@ -1,9 +1,8 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#include "linear_set/src/linear_set.h"
+#include "linear_set/src/set.h"
 
-#include "linear_set/src/list.h"
-#include "linear_set/src/node.h"
+#include "list/src/list.h"
 
 set::set() {
 }
@@ -30,7 +29,11 @@ node* set::end() {
 }
 
 node* set::next(node* x) {
-  return x->next;
+  return list_.next(x);
+}
+
+type set::value(node* x) {
+  return list_.value(x);
 }
 
 bool set::empty() {
@@ -42,8 +45,8 @@ int set::size() {
 }
 
 node* set::find(type k) {
-  for (node* i = list_.begin(); i != list_.end(); i = i->next) {
-    if (i->key == k) {
+  for (node* i = list_.begin(); i != list_.end(); i = list_.next(i)) {
+    if (list_.value(i) == k) {
       return i;
     }
   }
@@ -51,10 +54,10 @@ node* set::find(type k) {
 }
 
 node* set::insert(type k) {
-  for (node* i = list_.begin(); i != list_.end(); i = i->next) {
-    if (i->key == k) {
+  for (node* i = list_.begin(); i != list_.end(); i = list_.next(i)) {
+    if (list_.value(i) == k) {
       return i;
-    } else if (i->key > k) {
+    } else if (list_.value(i) > k) {
       return list_.insert(i, k);
     }
   }

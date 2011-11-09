@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="linear_set" />
+		<Option title="set" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-DEASY_TESTING" />
 				</Compiler>
 			</Target>
 			<Target title="Main">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-DEASY_TESTING" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -36,21 +38,18 @@
 		</Compiler>
 		<Unit filename="../gtest/gtest.cc" />
 		<Unit filename="../gtest/gtest.h" />
-		<Unit filename="src/linear_set.cc" />
-		<Unit filename="src/linear_set.h" />
-		<Unit filename="src/list.cc" />
-		<Unit filename="src/list.h" />
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
 		</Unit>
-		<Unit filename="src/node.cc" />
-		<Unit filename="src/node.h" />
-		<Unit filename="test/linear_set_test.cc">
+		<Unit filename="src/set.cc" />
+		<Unit filename="src/set.h" />
+		<Unit filename="test/set_test.cc">
 			<Option target="EasyTesting" />
 		</Unit>
-		<Unit filename="test/linear_set_test.h">
-			<Option target="EasyTesting" />
-		</Unit>
+		<Unit filename="test/set_test.h" />
+		<Unit filename="../list/src/list.cc" />
+		<Unit filename="../list/src/list.h" />
+		<Unit filename="../list/src/node.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
