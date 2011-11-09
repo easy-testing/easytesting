@@ -7,6 +7,7 @@
 #include <string>
 
 #include "deque/src/deque.h"
+#include "deque/src/node.h"
 #include "gtest/gtest.h"
 
 using std::string;
@@ -15,8 +16,18 @@ using std::stringstream;
 // Classe base dos testes.
 class Teste : public testing::Test {
  protected:
+  // Retorna um ponteiro para o primeiro elemento do deque.
+  node* Begin(deque& l) {
+    return l.end_->next;
+  }
+
+  // Retorna um ponteiro para o elemento seguinte ao último elemento do deque.
+  node* End(deque& l) {
+    return l.end_;
+  }
+
   // Retorna uma string no formato {a b c d...}.
-  string PrintDeque(deque& l) {
+  string ToString(deque& l) {
     stringstream output;
     output << "{";
     for (node* i = Begin(l) ; i != End(l) ; i = i->next) {
@@ -29,26 +40,32 @@ class Teste : public testing::Test {
     return output.str();
   }
 
-  // Retorna um ponteiro para o primeiro elemento do deque.
-  node* Begin(deque& l) {
-    return l.end_->next;
+  // Cria um nó sentinela.
+  node* NewSentinel() {
+    node* aux = new node();
+    aux->prev = aux->next = aux;
+    return aux;
   }
 
-  // Retorna um ponteiro para o elemento seguinte ao último elemento do deque.
-  node* End(deque& l) {
-    return l.end_;
+  // Cria uma nó cuja chave é k, o nó anterior é l, e o nó posterior é r.
+  node* NewNode(type k, node* l, node* r) {
+    node* aux = new node();
+    aux->key = k;
+    aux->prev = l;
+    aux->next = r;
+    return aux;
   }
 
   // Preenche o deque passado como parâmetro com um único número.
   // 'q' deve ser um deque vazio.
-  void CriaList1(int x, deque *q) {
+  void CriaList1(string x, deque *q) {
     q->end_->prev = q->end_->next = NewNode(x, q->end_, q->end_);
     q->size_ = 1;
   }
 
   // Preenche o deque passado como parametro com 3 números.
   // 'd' deve ser umo deque vazio.
-  void CriaList3(int x1, int x2, int x3, deque* d) {
+  void CriaList3(string x1, string x2, string x3, deque* d) {
     d->end_->next = NewNode(x1, d->end_, NULL);
     d->end_->next->next = NewNode(x2, d->end_->next, NULL);
     d->end_->next->next->next = d->end_->prev =
@@ -68,7 +85,7 @@ TEST_F(Teste, Testar_metodo_empty) {
       << "------------------------------------------------------------------\n";
 
   deque l2;
-  CriaList3(12, 14, 15, &l2);
+  CriaList3("12", "14", "15", &l2);
   ASSERT_FALSE(l2.empty())
       << "------------------------------------------------------------------\n"
       << "Erro na funcao:  "
@@ -81,15 +98,15 @@ TEST_F(Teste, Testar_metodo_empty) {
 
 TEST_F(Teste, Testar_metodo_front_em_deque_com_um_elemento) {
   deque l;
-  CriaList1(2, &l);
-  int esperado = 2;
-  int atual = l.front();
+  CriaList1("2", &l);
+  string esperado = "2";
+  string atual = l.front();
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao:  "
       << "* type deque::front() *\n"
       << "------------------------------------------------------------------\n"
-      << "deque = " << PrintDeque(l) << "\n\n"
+      << "deque = " << ToString(l) << "\n\n"
       << "Valor esperado  : " << esperado << "\n"
       << "Valor retornado : " << atual << "\n"
       << "------------------------------------------------------------------\n";
@@ -97,15 +114,15 @@ TEST_F(Teste, Testar_metodo_front_em_deque_com_um_elemento) {
 
 TEST_F(Teste, Testar_metodo_front_em_deque_com_mais_de_um_elemento) {
   deque l;
-  CriaList3(3, 7, 8, &l);
-  int esperado = 3;
-  int atual = l.front();
+  CriaList3("3", "7", "8", &l);
+  string esperado = "3";
+  string atual = l.front();
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao:  "
       << "* type deque::front() *\n"
       << "------------------------------------------------------------------\n"
-      << "deque = " << PrintDeque(l) << "\n\n"
+      << "deque = " << ToString(l) << "\n\n"
       << "Valor esperado  : " << esperado << "\n"
       << "Valor retornado : " << atual << "\n"
       << "------------------------------------------------------------------\n";
@@ -113,15 +130,15 @@ TEST_F(Teste, Testar_metodo_front_em_deque_com_mais_de_um_elemento) {
 
 TEST_F(Teste, Testar_metodo_back_em_deque_com_um_elemento) {
   deque l;
-  CriaList1(3, &l);
-  int esperado = 3;
-  int atual = l.back();
+  CriaList1("3", &l);
+  string esperado = "3";
+  string atual = l.back();
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao:  "
       << "* type deque::back() *\n"
       << "------------------------------------------------------------------\n"
-      << "deque = " << PrintDeque(l) << "\n\n"
+      << "deque = " << ToString(l) << "\n\n"
       << "Valor esperado  : " << esperado << "\n"
       << "Valor retornado : " << atual << "\n"
       << "------------------------------------------------------------------\n";
@@ -129,15 +146,15 @@ TEST_F(Teste, Testar_metodo_back_em_deque_com_um_elemento) {
 
 TEST_F(Teste, Testar_metodo_back_em_deque_com_mais_de_um_elemento) {
   deque l;
-  CriaList3(4, 5, 7, &l);
-  int esperado = 7;
-  int atual = l.back();
+  CriaList3("4", "5", "7", &l);
+  string esperado = "7";
+  string atual = l.back();
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao:  "
       << "* type deque::back() *\n"
       << "------------------------------------------------------------------\n"
-      << "deque = " << PrintDeque(l) << "\n\n"
+      << "deque = " << ToString(l) << "\n\n"
       << "Valor esperado  : " << esperado << "\n"
       << "Valor retornado : " << atual << "\n"
       << "------------------------------------------------------------------\n";
@@ -152,7 +169,7 @@ TEST_F(Teste, Testar_metodo_size_em_deque_vazio) {
       << "Erro na funcao:  "
       << "* int deque::size() *\n"
       << "------------------------------------------------------------------\n"
-      << "deque = " << PrintDeque(l) << "\n\n"
+      << "deque = " << ToString(l) << "\n\n"
       << "Valor esperado  : " << esperado << "\n"
       << "Valor retornado : " << atual << "\n"
       << "------------------------------------------------------------------\n";
@@ -160,7 +177,7 @@ TEST_F(Teste, Testar_metodo_size_em_deque_vazio) {
 
 TEST_F(Teste, Testar_metodo_size_em_deque_com_um_elemento) {
   deque l;
-  CriaList1(2, &l);
+  CriaList1("2", &l);
   int esperado = 1;
   int atual = l.size();
   ASSERT_EQ(esperado, atual)
@@ -168,7 +185,7 @@ TEST_F(Teste, Testar_metodo_size_em_deque_com_um_elemento) {
       << "Erro na funcao:  "
       << "* int deque::size() *\n"
       << "------------------------------------------------------------------\n"
-      << "deque = " << PrintDeque(l) << "\n\n"
+      << "deque = " << ToString(l) << "\n\n"
       << "Valor esperado  : " << esperado << "\n"
       << "Valor retornado : " << atual << "\n"
       << "------------------------------------------------------------------\n";
@@ -176,7 +193,7 @@ TEST_F(Teste, Testar_metodo_size_em_deque_com_um_elemento) {
 
 TEST_F(Teste, Testar_metodo_size_em_deque_com_varios_elementos) {
   deque l;
-  CriaList3(10, 3, 0, &l);
+  CriaList3("10", "3", "0", &l);
   int esperado = 3;
   int atual = l.size();
   ASSERT_EQ(esperado, atual)
@@ -184,7 +201,7 @@ TEST_F(Teste, Testar_metodo_size_em_deque_com_varios_elementos) {
       << "Erro na funcao:  "
       << "* int deque::size() *\n"
       << "------------------------------------------------------------------\n"
-      << "deque = " << PrintDeque(l) << "\n\n"
+      << "deque = " << ToString(l) << "\n\n"
       << "Valor esperado  : " << esperado << "\n"
       << "Valor retornado : " << atual << "\n"
       << "------------------------------------------------------------------\n";
@@ -192,10 +209,10 @@ TEST_F(Teste, Testar_metodo_size_em_deque_com_varios_elementos) {
 
 TEST_F(Teste, Testar_metodo_push_front) {
   deque l;
-  CriaList3(10, 3, 0, &l);
-  l.push_front(2);
+  CriaList3("10", "3", "0", &l);
+  l.push_front("2");
   string esperado = "{2 10 3 0}";
-  string atual = PrintDeque(l);
+  string atual = ToString(l);
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao:  "
@@ -208,10 +225,10 @@ TEST_F(Teste, Testar_metodo_push_front) {
 
 TEST_F(Teste, Testar_metodo_pop_front) {
   deque l;
-  CriaList3(10, 3, 0, &l);
+  CriaList3("10", "3", "0", &l);
   l.pop_front();
   string esperado = "{3 0}";
-  string atual = PrintDeque(l);
+  string atual = ToString(l);
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao:  "
@@ -224,10 +241,10 @@ TEST_F(Teste, Testar_metodo_pop_front) {
 
 TEST_F(Teste, Testar_metodo_push_back) {
   deque l;
-  CriaList3(10, 3, 0, &l);
-  l.push_back(2);
+  CriaList3("10", "3", "0", &l);
+  l.push_back("2");
   string esperado = "{10 3 0 2}";
-  string atual = PrintDeque(l);
+  string atual = ToString(l);
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao:  "
@@ -240,10 +257,10 @@ TEST_F(Teste, Testar_metodo_push_back) {
 
 TEST_F(Teste, Testar_metodo_pop_back) {
   deque l;
-  CriaList3(10, 3, 0, &l);
+  CriaList3("10", "3", "0", &l);
   l.pop_back();
   string esperado = "{10 3}";
-  string atual = PrintDeque(l);
+  string atual = ToString(l);
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao:  "
@@ -258,7 +275,7 @@ TEST_F(Teste, Testar_metodo_clear_com_deque_vazio) {
   deque l;
   l.clear();
   string esperado("{}");
-  string atual = PrintDeque(l);
+  string atual = ToString(l);
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao:  "
@@ -271,10 +288,10 @@ TEST_F(Teste, Testar_metodo_clear_com_deque_vazio) {
 
 TEST_F(Teste, Testar_metodo_clear_deque_nao_vazio) {
   deque l;
-  CriaList3(1, 4, 7, &l);
+  CriaList3("1", "4", "7", &l);
   l.clear();
   string esperado("{}");
-  string atual = PrintDeque(l);
+  string atual = ToString(l);
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao:  "

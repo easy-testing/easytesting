@@ -2,9 +2,13 @@
 
 #include "deque/src/deque.h"
 
+#include "deque/src/node.h"
+
 deque::deque() {
   size_ = 0;
-  end_ = NewSentinel();
+  end_ = new node();
+  end_->next = end_;
+  end_->prev = end_;
 }
 
 deque::~deque() {
@@ -28,11 +32,11 @@ type deque::back() {
   return end_->prev->key;
 }
 
-void deque::push_front(type x) {
-  node* first = end_->next;
-  node* aux = NewNode(x, first->prev, first);
-  first->prev->next = aux;
-  first->prev = aux;
+void deque::push_front(type k) {
+  node* i = end_->next;  // Ponteiro para o primeiro elemento na fila.
+  node* k_node = new node({k, i->prev, i});
+  i->prev->next = k_node;
+  i->prev = k_node;
   size_++;
 }
 
@@ -43,10 +47,10 @@ void deque::pop_front() {
   size_--;
 }
 
-void deque::push_back(type x) {
-  node* aux = NewNode(x, end_->prev, end_);
-  end_->prev->next = aux;
-  end_->prev = aux;
+void deque::push_back(type k) {
+  node* k_node = new node({k, end_->prev, end_});
+  end_->prev->next = k_node;
+  end_->prev = k_node;
   size_++;
 }
 

@@ -5,6 +5,7 @@
 
 #include "deque/src/deque.h"
 
+// Implementa um nó da lista encadeada.
 struct node {
   type key;  // Valor da chave do nó.
   node* prev;  // Ponteiro para o nó anterior.

@@ -67,7 +67,7 @@ bool PertenceDeque(deque& d, type x) {
 // Questão 4.
 ////////////////////////////////////////////////////////////////////////////////
 
-// Recebe duas filas ordenadas q1 e q2 e retorna uma fila ordenada com todos os
+// Recebe dois deques ordenados q1 e q2 e retorna um deque ordenado com todos os
 // elementos de q1 e q2.
 void Merge(deque& q1, deque& q2, deque* r) {
   int n = q1.size() + q2.size();
@@ -111,7 +111,8 @@ int main() {
   string op;
   while (fin >> op) {
     if (op == "out") {
-      //event_queue.pop_front();
+    cout << event_queue.front() << endl;
+    event_queue.pop_front();
     } else {  // op == "in"
       string priority, name;
       fin >> priority >> name;
@@ -122,6 +123,5 @@ int main() {
       }
     }
   }
-  ImprimeDeque(event_queue);
   return 0;
 }
