@@ -3,8 +3,7 @@
 // Lista sobre Conjuntos.
 //
 // Questão 1.
-// Implemente em set.h e set.cc o TAD set, utilizando
-// listas ligadas.
+// Implemente em set.h e set.cc o TAD set, utilizando árvores binárias de busca.
 //
 // Questão 2.
 // Escreva uma função "void Imprimir(set& s)" que recebe
@@ -30,7 +29,7 @@
 // por este fornecedor.
 //
 // O seu programa deve inicialmente exibir o conjunto com todos os
-// fornecedores, que são candidatos para fornecer um pedido com várias peças.
+// fornecedores, ,que são candidatos para fornecer um pedido com várias peças.
 // A cada iteração, o usuário deve ser capaz de digitar o número
 // de uma peça e o sistema deve eliminar do conjunto de fornecedores candidatos
 // aqueles que não vendem a última peça digitada. O programa deve continuar
@@ -47,7 +46,7 @@
 #include <iostream>
 #include <string>
 
-#include "ordered_set/src/set.h"
+#include "linear_set/src/set.h"
 
 using std::cin;
 using std::cout;
@@ -58,7 +57,7 @@ using std::string;
 
 void Imprimir(set& c) {
   cout << "{ ";
-  for (node* i = c.begin(); i != c.end(); i = c.next(i)) {
+  for (Node* i = c.begin(); i != c.end(); i = c.next(i)) {
     cout << c.value(i) << " ";
   }
   cout << "} = " << c.size() << endl;
@@ -68,7 +67,7 @@ void Intersecao(set& a, set& b, set* inter) {
   // Percorre todos os elementos do cojunto 'a' e insere em 'inter' todos
   // aqueles que também estão no cojunto 'b'.
   inter->clear();
-  for (node* i = a.begin(); i != a.end(); i = a.next(i)) {
+  for (Node* i = a.begin(); i != a.end(); i = a.next(i)) {
     if (b.find(a.value(i)) != b.end()) {
       inter->insert(a.value(i));
     }

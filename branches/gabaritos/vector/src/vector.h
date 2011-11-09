@@ -3,8 +3,7 @@
 #ifndef BRANCHES_GABARITOS_VECTOR_SRC_VECTOR_H_
 #define BRANCHES_GABARITOS_VECTOR_SRC_VECTOR_H_
 
-// Tipo dos elementos contidos no vetor.
-typedef float type;
+#include "type/type.h"
 
 // Implementa um vetor dinâmico de numeros reais.
 class vector {
@@ -33,8 +32,8 @@ class vector {
   void resize(int m);
 
   // Retorna uma referência ao elemento de índice i no vetor.
-  type& at(int i);
-  type& operator[](int i) {return at(i);}
+  Type& at(int i);
+  Type& operator[](int i) {return at(i);}
 
   // Faz com que o vetor corrente fique igual ao vetor v.
   void assign(vector& v);
@@ -44,7 +43,7 @@ class vector {
   // Esta operação aumenta o número de elementos do vetor em uma unidade.
   // Por exemplo: se "v = {1.0, 3.0, 5.0}", após "v.push_back(-7.0)",
   // "v = {1.0, 3.0, 5.0, -7.0}".
-  void push_back(type x);
+  void push_back(Type x);
 
   // Remove o último elemento do vetor.
   // Esta operação diminui o número de elementos no vetor em uma unidade.
@@ -59,7 +58,7 @@ class vector {
   // Esta operação aumenta o número de elementos no vetor em uma unidade.
   // Por exemplo: se "v = {1.0, 3.0, 5.0}", após "v.insert(1, -7.0)",
   // "v = {1.0, -7.0, 3.0, 5.0}".
-  void insert(int i, type x);
+  void insert(int i, Type x);
 
   // Remove o elemento de índice 'i' do vetor.
   // Todos os elementos com índice maior que 'i' são deslocados para
@@ -83,7 +82,7 @@ class vector {
   int size_;
 
   // Vetor alocado dinamicamente.
-  type* array_;
+  Type* array_;
 };
 
 #endif  // BRANCHES_GABARITOS_VECTOR_SRC_VECTOR_H_

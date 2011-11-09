@@ -11,7 +11,7 @@
 // "[a1, a2, ..., an]".
 //
 // Questão 3.
-// Escreva uma função "node* Min(list& l))" que recebe uma
+// Escreva uma função "Node* Min(list& l))" que recebe uma
 // lista l como parametro e retorna um ponteiro para o nó que contém o menor
 // elemento de l.
 //
@@ -51,7 +51,7 @@ using std::string;
 
 void Print(list& l) {
   cout << "[";
-  for (node* i = l.begin(); i != l.end() ; i = l.next(i)) {
+  for (Node* i = l.begin(); i != l.end() ; i = l.next(i)) {
     cout << l.value(i);
     if (l.next(i) != l.end()) {
       cout << ", ";
@@ -63,9 +63,9 @@ void Print(list& l) {
 // Questão 3.
 ////////////////////////////////////////////////////////////////////////////////
 
-node* Min(list& l) {
-  node* min = l.begin();
-  for (node* i = l.begin(); i != l.end(); i = l.next(i)) {
+Node* Min(list& l) {
+  Node* min = l.begin();
+  for (Node* i = l.begin(); i != l.end(); i = l.next(i)) {
     if (l.value(i) < l.value(min)) {
       min = i;
     }
@@ -80,7 +80,7 @@ void Sort(list* l) {
   list aux(*l);
   l->clear();
   while (!aux.empty()) {
-    node* min = Min(aux);
+    Node* min = Min(aux);
     l->push_back(l->value(min));
     aux.erase(min);
   }
@@ -151,7 +151,7 @@ int Char2Int(char c) {
 // Imprime na tela os digitos contidos em l. Por exemplo, l = [3, 7, 1]
 // resulta na impressão de 371.
 void ImprimeDigitos(list& l) {
-  for (node* i = l.begin(); i != l.end() ; i = l.next(i)) {
+  for (Node* i = l.begin(); i != l.end() ; i = l.next(i)) {
     cout << l.value(i);
   }
   cout << endl;
@@ -165,7 +165,7 @@ void ApagaDigitos(int d, list* l) {
   // digito, insere o numero 10 antes do primeiro e depois do ultimo digito.
   l->push_front(10);
   l->push_back(10);
-  for (node* i = l->next(l->begin()); i != l->end(); i = l->next(i)) {
+  for (Node* i = l->next(l->begin()); i != l->end(); i = l->next(i)) {
     while (d > 0 && l->value(l->prev(i)) < l->value(i)) {
       l->erase(l->prev(i));
       d--;
@@ -187,6 +187,7 @@ int main_questao6() {
     l.push_back(Char2Int(x[i]));
   }
   ApagaDigitos(d, &l);
+  cout << "y = ";
   ImprimeDigitos(l);
 }
 

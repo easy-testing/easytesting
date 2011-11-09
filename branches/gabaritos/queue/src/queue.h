@@ -3,15 +3,12 @@
 #ifndef BRANCHES_GABARITOS_QUEUE_SRC_QUEUE_H_
 #define BRANCHES_GABARITOS_QUEUE_SRC_QUEUE_H_
 
-#include <string>
-
-// Tipo dos elementos contidos na fila.
-typedef std::string  type;
+#include "type/type.h"
 
 // Defite como os elementos da fila serão organizados na memória.
 // É declarado aqui, mas só é implementado em queue.cc para não violar o
 // encapsulamento
-struct node;
+struct Node;
 
 // Implementa uma fila de elementos utilizando listas encadeadas.
 class queue {
@@ -31,14 +28,14 @@ class queue {
 
   // Retorna o elemento que está no início da fila em O(1).
   // PRECONDIÇÃO: a fila não pode estar vazia.
-  type front();
+  Type front();
 
   // Retorna o elemento que está no final da fila em O(1).
   // PRECONDIÇÃO: a fila não pode estar vazia.
-  type back();
+  Type back();
 
   // Insere k no final da fila em O(1).
-  void push(type k);
+  void push(Type k);
 
   // Remove o elemento que está no início da fila em O(1).
   // PRECONDIÇÃO: a fila não pode estar vazia.
@@ -49,7 +46,7 @@ class queue {
   int size_;
 
   // Ponteiro para o nó sentinela da lista encadeada.
-  node* end_;
+  Node* end_;
 
   friend class Teste;
 };

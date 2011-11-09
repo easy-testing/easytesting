@@ -5,7 +5,7 @@
 
 queue::queue() {
   size_ = 0;
-  end_ = new node();
+  end_ = new Node();
   end_->next = end_;
   end_->prev = end_;
 }
@@ -27,23 +27,23 @@ int queue::size() {
   return size_;
 }
 
-type queue::front() {
+Type queue::front() {
   return end_->next->key;
 }
 
-type queue::back() {
+Type queue::back() {
   return end_->prev->key;
 }
 
-void queue::push(type k) {
-  node* k_node = new node({k, end_->prev, end_});
-  end_->prev->next = k_node;
-  end_->prev = k_node;
+void queue::push(Type k) {
+  Node* node = new Node({k, end_->prev, end_});
+  end_->prev->next = node;
+  end_->prev = node;
   size_++;
 }
 
 void queue::pop() {
-  node* first = end_->next;  // Ponteiro para o primeiro elemento na fila.
+  Node* first = end_->next;  // Ponteiro para o primeiro elemento na fila.
   first->prev->next = first->next;
   first->next->prev = first->prev;
   delete first;

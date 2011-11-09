@@ -3,13 +3,13 @@
 #ifndef BRANCHES_GABARITOS_QUEUE_SRC_NODE_H_
 #define BRANCHES_GABARITOS_QUEUE_SRC_NODE_H_
 
-#include "queue/src/queue.h"
+#include "type/type.h"
 
 // Implementa um nó da lista encadeada.
-struct node {
-  type key;  // Valor da chave do nó.
-  node* prev;  // Ponteiro para o próximo nó.
-  node* next;  // Ponteiro para o nó anterior.
+struct Node {
+  Type key;  // Valor da chave do nó.
+  Node* prev;  // Ponteiro para o nó anterior.
+  Node* next;  // Ponteiro para o próximo nó.
 };
 
 #endif  // BRANCHES_GABARITOS_QUEUE_SRC_NODE_H_

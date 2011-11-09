@@ -3,20 +3,12 @@
 #ifndef BRANCHES_GABARITOS_LIST_SRC_LIST_H_
 #define BRANCHES_GABARITOS_LIST_SRC_LIST_H_
 
-#include <string>
-
-// Tipo dos elementos contidos na lista.
-#ifdef EASY_TESTING
-// Os testes são sempre realizados sobre listas de string.
-typedef std::string type;
-#else
-typedef int type;
-#endif
+#include "type/type.h"
 
 // Defite como os elementos do conjunto serão organizados na memória.
 // É declarado aqui, mas só é implementado em list.cc para não violar o
 // encapsulamento
-struct node;
+struct Node;
 
 // Implementa uma lista de elementos utilizando Listas Ligadas.
 class list {
@@ -33,43 +25,43 @@ class list {
 
   // Retorna um ponteiro para o primeiro elemento da lista em O(1).
   // Caso a lista esteja vazia, rentorna um ponteiro para list::end().
-  node* begin();
+  Node* begin();
 
   // Retorna um ponteiro para o "marcador de fim" da lista em O(1).
-  node* end();
+  Node* end();
 
   // Retorna o elemento seguinte ao indicado por i na lista em (1).
-  node* next(node* i);
+  Node* next(Node* i);
 
   // Retorna o elemento anterior ao indicado por i na lista em (1).
-  node* prev(node* i);
+  Node* prev(Node* i);
 
   // Retorna o valor do indicado por i em (1).
-  type value(node* i);
+  Type value(Node* i);
 
   // Testa se a lista esta vazia em O(1).
   bool empty();
 
   // Retorna o valor do primeiro elemento da lista em O(1).
   // PRECONDIÇÃO: a lista não pode estar vazia.
-  type front();
+  Type front();
 
   // Retorna o valor do último elemento da lista em O(1).
   // PRECONDIÇÃO: a lista não pode estar vazia.
-  type back();
+  Type back();
 
   // Retorna o número de elementos na lista em O(1).
   int size();
 
   // Insere x no início da lista em O(1).
-  void push_front(type x);
+  void push_front(Type x);
 
   // Remove o primeiro elemento da lista em O(1).
   // PRECONDIÇÃO: a lista não pode estar vazia.
   void pop_front();
 
   // Insere x no final da lista em O(1).
-  void push_back(type x);
+  void push_back(Type x);
 
   // Remove o último elemento da lista em O(1).
   // PRECONDIÇÃO: a lista não pode estar vazia.
@@ -77,11 +69,11 @@ class list {
 
   // Insere k antes do elemento indicado por x em O(1) e retorna um ponteiro
   // para o elemento k.
-  node* insert(node* i, type k);
+  Node* insert(Node* i, Type k);
 
   // Apaga o elemento indicado por x da lista em O(1).
   // PRECONDIÇÃO: x aponta para um dos elementos da lista.
-  void erase(node* i);
+  void erase(Node* i);
 
   // Remove todos os elementos da lista em O(n),
   // onde n é o número de elementos na lista.
@@ -99,7 +91,7 @@ class list {
   int size_;
 
   // Ponteiro para o nó sentinela da lista ligada.
-  node* end_;
+  Node* end_;
 
   friend class Teste;
 };

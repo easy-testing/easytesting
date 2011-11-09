@@ -15,12 +15,12 @@ using std::stringstream;
 // Classe base dos testes.
 class Teste : public testing::Test {
  protected:
-  type Value(set& c, node* x) {
+  string Value(set& c, Node* x) {
     return c.list_.value(x);
   }
 
-  node* insert(type k, set* c) {
-    for (node* i = c->list_.begin();
+  Node* insert(string k, set* c) {
+    for (Node* i = c->list_.begin();
          i != c->list_.end();
          i = c->list_.next(i)) {
       if (c->list_.value(i) == k) {
@@ -44,7 +44,7 @@ class Teste : public testing::Test {
   string ToString(set& c) {
     stringstream out;
     out << "{ ";
-    for (node* i = c.begin(); i != c.end(); i = c.next(i)) {
+    for (Node* i = c.begin(); i != c.end(); i = c.next(i)) {
       out << c.list_.value(i) << " ";
     }
     out << "}";
@@ -175,7 +175,7 @@ TEST_F(Teste, Testar_metodo_find_em_conjunto_vazio) {
   ASSERT_EQ(c.end(), c.find("4"))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* node* set::find(type k) *\n"
+    << "* Node* set::find(type k) *\n"
     << "-------------------------------------------------------------------\n"
     << "Funcao retornou algo diferente de NULL para a procura de um \n"
     << "elemento nao contido no conjunto\n"
@@ -189,7 +189,7 @@ TEST_F(Teste, Testar_metodo_find_em_conjunto_com_varios_elementos) {
   ASSERT_EQ(c.end(), c.find("4"))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* node* set::find(type k) *\n"
+    << "* Node* set::find(type k) *\n"
     << "-------------------------------------------------------------------\n"
     << "Funcao retornou algo diferente de NULL para a procura de um \n"
     << "elemento nao contido no conjunto\n"
@@ -200,7 +200,7 @@ TEST_F(Teste, Testar_metodo_find_em_conjunto_com_varios_elementos) {
   ASSERT_EQ(procurado, retornado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* node* set::find(type k) *\n"
+    << "* Node* set::find(type k) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto: " << ToString(c) << "\n"
     << " Elemento procurado: " << procurado << "\n"
@@ -216,7 +216,7 @@ TEST_F(Teste, Testar_metodo_insert_em_conjunto_vazio) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* node* set::insert(type k) *\n"
+    << "* Node* set::insert(type k) *\n"
     << "-------------------------------------------------------------------\n"
     << "Conjunto esperado: " << esperado << "\n"
     << "Conjunto formado: " << atual << "\n"
@@ -226,7 +226,7 @@ TEST_F(Teste, Testar_metodo_insert_em_conjunto_vazio) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* node* set::insert(type k) *\n"
+    << "* Node* set::insert(type k) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função inseriu corretamente um elemento no conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
@@ -245,7 +245,7 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_nao_contido_em_conjunto) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* node* set::insert(type k) *\n"
+    << "* Node* set::insert(type k) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto esperado: " << esperado << "\n"
     << " Conjunto formado: " << atual << "\n"
@@ -255,7 +255,7 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_nao_contido_em_conjunto) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* node* set::insert(type k) *\n"
+    << "* Node* set::insert(type k) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função inseriu corretamente um elemento no conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
@@ -274,7 +274,7 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_contido_em_conjunto) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* node* set::insert(type k) *\n"
+    << "* Node* set::insert(type k) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto esperado: " << esperado << "\n"
     << "  Conjunto formado: " << atual << "\n"
@@ -284,7 +284,7 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_contido_em_conjunto) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* node* set::insert(type k) *\n"
+    << "* Node* set::insert(type k) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função corretamente nao inseriu um elemento no conjunto pois ja\n"
     << " possuia o elemento porem alterou o valor do tamanho do conjunto\n\n"

@@ -57,7 +57,7 @@ using std::string;
 
 void Imprimir(set& c) {
   cout << "{ ";
-  for (node* i = c.begin(); i != c.end(); i = c.next(i)) {
+  for (Node* i = c.begin(); i != c.end(); i = c.next(i)) {
     cout << c.value(i) << " ";
   }
   cout << "} = " << c.size() << endl;
@@ -67,7 +67,7 @@ void Intersecao(set& a, set& b, set* inter) {
   // Percorre todos os elementos do cojunto 'a' e insere em 'inter' todos
   // aqueles que também estão no cojunto 'b'.
   inter->clear();
-  for (node* i = a.begin(); i != a.end(); i = a.next(i)) {
+  for (Node* i = a.begin(); i != a.end(); i = a.next(i)) {
     if (b.find(a.value(i)) != b.end()) {
       inter->insert(a.value(i));
     }

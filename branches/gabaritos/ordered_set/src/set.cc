@@ -7,8 +7,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Cria um nó sentinela.
-node* NewSentinel() {
-  node* aux = new node();
+Node* NewSentinel() {
+  Node* aux = new Node();
   aux->left = NULL;
   aux->right = NULL;
   aux->parent = NULL;
@@ -17,8 +17,8 @@ node* NewSentinel() {
 
 // Cria uma nó cuja chave é k, o nó a esquerda é l, e o nó a direita é r e
 // o nó acima é p.
-node* NewNode(type k, node* l, node* r, node* p) {
-  node* aux = new node();
+Node* NewNode(Type k, Node* l, Node* r, Node* p) {
+  Node* aux = new Node();
   aux->key = k;
   aux->left = l;
   aux->right = r;
@@ -29,7 +29,7 @@ node* NewNode(type k, node* l, node* r, node* p) {
 // Retorna o nó da árvore x cuja chave é k em O(log n),
 // ou NULL caso k não esteja na árvore x.
 // PRECONDIÇÃO: x não é uma árvore vazia.
-node* TreeSearch(node* x, type k) {
+Node* TreeSearch(Node* x, Type k) {
   while (x != NULL && k != x->key) {
     if (k < x->key) {
       x = x->left;
@@ -42,7 +42,7 @@ node* TreeSearch(node* x, type k) {
 
 // Retorna o nó com o menor elemento da árvore x em O(log n).
 // PRECONDIÇÃO: x não é uma árvore vazia.
-node* TreeMinimum(node* x) {
+Node* TreeMinimum(Node* x) {
   while (x->left != NULL) {
     x = x->left;
   }
@@ -52,11 +52,11 @@ node* TreeMinimum(node* x) {
 // Dado o nó x que pertence a uma árvore binária de busca qualquer,
 // retorna o sucessor de x nesta árvore, ou seja, o nó cuja chave é o menor
 // elemento maior que a chave de x.
-node* TreeSuccerssor(node* x) {
+Node* TreeSuccerssor(Node* x) {
   if (x->right != NULL) {
     return TreeMinimum(x->right);
   }
-  node* y = x->parent;
+  Node* y = x->parent;
   while (y != NULL && x == y->right) {
     x = y;
     y = y->parent;
@@ -66,7 +66,7 @@ node* TreeSuccerssor(node* x) {
 
 // Conecta o nó z ao nó pai p de forma consistente.
 // PRECONDIÇÃO: z não aponta para um árvore vazia.
-void Connect(node* p, node* z) {
+void Connect(Node* p, Node* z) {
   if (p->parent == NULL || z->key < p->key) {
     p->left = z;
   } else  {
@@ -77,9 +77,9 @@ void Connect(node* p, node* z) {
 
 // Insere uma FOLHA z na árvore cujo nó sentinela é t de forma consistente.
 // NOTA: Esta função NÃO aloca a memória para z.
-void TreeInsert(node* t, node* z) {
-  node* y = t;
-  node* x = t->left;
+void TreeInsert(Node* t, Node* z) {
+  Node* y = t;
+  Node* x = t->left;
   while (x != NULL) {
     y = x;
     x = (z->key < x->key) ? x->left : x->right;
@@ -89,9 +89,9 @@ void TreeInsert(node* t, node* z) {
 
 // Desconecta o nó z da árvore de forma consistente.
 // PRECONDIÇÃO: pelo menos um dos filhos de z é vazio (possivelmente os dois).
-void Disconnect(node* z) {
-  node* p = z->parent;  // Pai de z.
-  node* f = (z->left == NULL) ? z->right : z->left;  // Filho não vazio de z.
+void Disconnect(Node* z) {
+  Node* p = z->parent;  // Pai de z.
+  Node* f = (z->left == NULL) ? z->right : z->left;  // Filho não vazio de z.
   if (z == p->left) {
     p->left = f;
   } else  {
@@ -104,12 +104,12 @@ void Disconnect(node* z) {
 
 // Desconecta o nó x da árvore de forma consistente e depois retorna x.
 // NOTA: Esta função NÃO desaloca a memória alocada para x.
-node* TreeDelete(node* z) {
+Node* TreeDelete(Node* z) {
   if (z->right == NULL) {
     Disconnect(z);  // Subárvore direita de x é vazia.
     return z;
   } else {
-    node* y = TreeMinimum(z->right);
+    Node* y = TreeMinimum(z->right);
     Disconnect(y);  // Subárvore esquerda de y é vazia.
     z->key = y->key;
     return y;
@@ -127,7 +127,7 @@ set::set() {
 set::set(set& s) {
   end_ = NewSentinel();
   size_ = 0;
-  for (node* i = s.begin(); i != s.end(); i = s.next(i)) {
+  for (Node* i = s.begin(); i != s.end(); i = s.next(i)) {
     insert(i->key);
   }
 }
@@ -137,7 +137,7 @@ set::~set() {
   delete end_;
 }
 
-node* set::begin() {
+Node* set::begin() {
   if (empty()) {
     return end();
   } else {
@@ -145,15 +145,15 @@ node* set::begin() {
   }
 }
 
-node* set::end() {
+Node* set::end() {
   return end_;
 }
 
-node* set::next(node* x) {
+Node* set::next(Node* x) {
   return TreeSuccerssor(x);
 }
 
-type set::value(node* x) {
+Type set::value(Node* x) {
   return x->key;
 }
 
@@ -165,8 +165,8 @@ int set::size() {
 return size_;
 }
 
-node* set::find(type k) {
-  node* aux = TreeSearch(end_->left, k);
+Node* set::find(Type k) {
+  Node* aux = TreeSearch(end_->left, k);
   if (aux != NULL) {
     return aux;
   } else {
@@ -174,8 +174,8 @@ node* set::find(type k) {
   }
 }
 
-node* set::insert(type k) {
-  node* z = TreeSearch(end_->left, k);
+Node* set::insert(Type k) {
+  Node* z = TreeSearch(end_->left, k);
   if (z != NULL) {
     return z;
   } else {
@@ -185,8 +185,8 @@ node* set::insert(type k) {
   }
 }
 
-void set::erase(type k) {
-  node* aux = TreeSearch(end_->left, k);
+void set::erase(Type k) {
+  Node* aux = TreeSearch(end_->left, k);
   if (aux != NULL) {
     delete TreeDelete(aux);
     size_--;
@@ -201,7 +201,7 @@ void set::clear() {
 
 void set::operator=(set& s) {
   clear();
-  for (node* i = s.begin(); i != s.end(); i = s.next(i)) {
+  for (Node* i = s.begin(); i != s.end(); i = s.next(i)) {
     insert(i->key);
   }
 }

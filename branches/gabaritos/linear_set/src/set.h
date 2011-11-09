@@ -8,7 +8,7 @@
 // Defite como os elementos do conjunto serão organizados na memória.
 // É declarado aqui, mas só é implementado em set.cc para não violar o
 // encapsulamento
-struct node;
+struct Node;
 
 // Implementa um conjunto usando listas ligadas.
 class set {
@@ -24,17 +24,17 @@ class set {
 
   // Retorna um ponteiro para o MENOR elemento do conjunto em O(1).
   // Caso o conjunto esteja vazio, rentorna um ponteiro para set::end().
-  node* begin();
+  Node* begin();
 
   // Retorna um ponteiro para o "marcador de fim" do conjunto em O(1).
-  node* end();
+  Node* end();
 
   // Retorna um ponteiro para o sucessor do elemento indicado por x no conjunto,
   // ou seja, o menor elemento maior que aquele indicado por x em O(1).
-  node* next(node* x);
+  Node* next(Node* x);
 
   // Retorna o valor do elemento indicado por x em (1).
-  type value(node* x);
+  Type value(Node* x);
 
   // Testa se o cojunto está vazio em O(1).
   bool empty();
@@ -46,15 +46,15 @@ class set {
   // ou um ponteiro para set::end() caso k não pertença ao conjunto.
   // OBS: Note que esta função NÃO retorna bool. Para testar se um elemento 'a'
   // pertence a um conjunto 'c', você deve escrever "if (c.find(a) != c.end())".
-  node* find(type k);
+  Node* find(Type k);
 
   // Insere k no conjunto em O(n) e retorna um ponteiro para este elemento.
   // Caso k já pertença ao conjunto, um novo elemento NÃO é inserido no conjunto
   // e a função retorna um ponteiro o para o elemento k já existente.
-  node* insert(type k);
+  Node* insert(Type k);
 
   // Remove k do conjunto (caso lá ele esteja) em O(n).
-  void erase(type k);
+  void erase(Type k);
 
   // Remove todos os elementos do conjunto em O(n).
   void clear();

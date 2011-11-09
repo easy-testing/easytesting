@@ -6,14 +6,14 @@
 
 list::list() {
   size_ = 0;
-  end_ = new node();
+  end_ = new Node();
   end_->next = end_;
   end_->prev = end_;
 }
 
 list::list(list& l) {
   size_ = 0;
-  end_ = new node();
+  end_ = new Node();
   end_->next = end_;
   end_->prev = end_;
   merge(l);
@@ -24,23 +24,23 @@ list::~list() {
   delete end_;
 }
 
-node* list::begin() {
+Node* list::begin() {
   return end_->next;
 }
 
-node* list::end() {
+Node* list::end() {
   return end_;
 }
 
-node* list::next(node* i) {
+Node* list::next(Node* i) {
   return i->next;
 }
 
-node* list::prev(node* i) {
+Node* list::prev(Node* i) {
   return i->prev;
 }
 
-type list::value(node* i) {
+Type list::value(Node* i) {
   return i->key;
 }
 
@@ -48,11 +48,11 @@ bool list::empty() {
   return size_ == 0;
 }
 
-type list::front() {
+Type list::front() {
   return end_->next->key;
 }
 
-type list::back() {
+Type list::back() {
   return end_->prev->key;
 }
 
@@ -60,7 +60,7 @@ int list::size() {
   return size_;
 }
 
-void list::push_front(type x) {
+void list::push_front(Type x) {
   insert(begin(), x);
 }
 
@@ -68,7 +68,7 @@ void list::pop_front() {
   erase(begin());
 }
 
-void list::push_back(type x) {
+void list::push_back(Type x) {
   insert(end(), x);
 }
 
@@ -76,15 +76,15 @@ void list::pop_back() {
   erase(end_->prev);
 }
 
-node* list::insert(node* i, type k) {
-  node* k_node = new node({k, i->prev, i});
-  i->prev->next = k_node;
-  i->prev = k_node;
+Node* list::insert(Node* i, Type k) {
+  Node* node = new Node({k, i->prev, i});
+  i->prev->next = node;
+  i->prev = node;
   size_++;
-  return k_node;
+  return node;
 }
 
-void list::erase(node* x) {
+void list::erase(Node* x) {
   x->prev->next = x->next;
   x->next->prev = x->prev;
   delete x;
@@ -98,7 +98,7 @@ void list::clear() {
 }
 
 void list::merge(list& l) {
-  for (node* i = l.begin(); i != l.end(); i = i->next) {
+  for (Node* i = l.begin(); i != l.end(); i = i->next) {
     push_back(i->key);
   }
 }

@@ -20,7 +20,7 @@ class Teste : public testing::Test {
   string PrintStack(stack& p) {
     stringstream output;
     output << "[";
-    for (node* i = p.end_->next; i != p.end_; i = i->next) {
+    for (Node* i = p.end_->next; i != p.end_; i = i->next) {
       output << i->key;
       if (i->next != p.end_) {
         output << ", ";
@@ -30,16 +30,9 @@ class Teste : public testing::Test {
     return output.str();
   }
 
-  // Cria um nó sentinela.
-  node* NewSentinel() {
-    node* aux = new node();
-    aux->prev = aux->next = aux;
-    return aux;
-  }
-
   // Cria uma nó cuja chave é k, o nó anterior é l, e o nó posterior é r.
-  node* NewNode(type k, node* l, node* r) {
-    node* aux = new node();
+  Node* NewNode(string k, Node* l, Node* r) {
+    Node* aux = new Node();
     aux->key = k;
     aux->prev = l;
     aux->next = r;

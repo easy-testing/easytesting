@@ -6,7 +6,7 @@
 
 stack::stack() {
   size_ = 0;
-  end_ = new node();
+  end_ = new Node();
   end_->next = end_;
   end_->prev = end_;
 }
@@ -28,20 +28,20 @@ int stack::size() {
   return size_;
 }
 
-type stack::top() {
+Type stack::top() {
   return end_->next->key;
 }
 
-void stack::push(type k) {
-  node* i = end_->next;  // Ponteiro para o primeiro elemento na fila.
-  node* k_node = new node({k, i->prev, i});
-  i->prev->next = k_node;
-  i->prev = k_node;
+void stack::push(Type k) {
+  Node* i = end_->next;  // Ponteiro para o primeiro elemento na fila.
+  Node* node = new Node({k, i->prev, i});
+  i->prev->next = node;
+  i->prev = node;
   size_++;
 }
 
 void stack::pop() {
-  node* first = end_->next;  // Ponteiro para o primeiro elemento na fila.
+  Node* first = end_->next;  // Ponteiro para o primeiro elemento na fila.
   first->prev->next = first->next;
   first->next->prev = first->prev;
   delete first;

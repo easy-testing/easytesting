@@ -150,6 +150,5 @@ int main_questao4() {
 }
 
 int main() {
-  // return main_questao4();
-  return main_questao4();
+  return main_questao3();
 }

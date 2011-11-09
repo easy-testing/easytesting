@@ -3,14 +3,14 @@
 #ifndef BRANCHES_GABARITOS_LIST_SRC_NODE_H_
 #define BRANCHES_GABARITOS_LIST_SRC_NODE_H_
 
-#include "ordered_set/src/set.h"
+#include "type/type.h"
 
 // Defite como os elementos do conjunto serão organizados na memória.
-struct node {
-  type key;  // Valor da chave do nó.
-  node* right;  // Ponteiro para o nó a direita.
-  node* left;  // Ponteiro para o nó a esquerda.
-  node* parent;  // Ponteiro para o nó acima.
+struct Node {
+  Type key;  // Valor da chave do nó.
+  Node* right;  // Ponteiro para o nó a direita.
+  Node* left;  // Ponteiro para o nó a esquerda.
+  Node* parent;  // Ponteiro para o nó acima.
 };
 
 #endif  // BRANCHES_GABARITOS_LIST_SRC_NODE_H_

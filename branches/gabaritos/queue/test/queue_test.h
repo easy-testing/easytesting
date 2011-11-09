@@ -20,7 +20,7 @@ class Teste : public testing::Test {
   string PrintQueue(queue& f) {
     stringstream output;
     output << "{";
-    for (node* i = f.end_->next; i != f.end_ ; i = i->next) {
+    for (Node* i = f.end_->next; i != f.end_ ; i = i->next) {
       if (i == f.end_->next)
         output << i->key;
       else
@@ -31,8 +31,8 @@ class Teste : public testing::Test {
   }
 
   // Cria uma nó cuja chave é k, o nó anterior é l, e o nó posterior é r.
-  node* NewNode(type k, node* l, node* r) {
-    node* aux = new node();
+  Node* NewNode(string k, Node* l, Node* r) {
+    Node* aux = new Node();
     aux->key = k;
     aux->prev = l;
     aux->next = r;

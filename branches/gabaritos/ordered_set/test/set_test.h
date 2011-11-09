@@ -9,14 +9,15 @@
 #include "gtest/gtest.h"
 #include "ordered_set/src/node.h"
 #include "ordered_set/src/set.h"
+
 using std::string;
 using std::stringstream;
 
 // Classe base dos testes.
 class Teste : public testing::Test {
  protected:
-  node* NewNode(type k, node* l, node* r, node* p) {
-    node* aux = new node();
+  Node* NewNode(Type k, Node* l, Node* r, Node* p) {
+    Node* aux = new Node();
     aux->key = k;
     aux->left = l;
     aux->right = r;
@@ -25,7 +26,7 @@ class Teste : public testing::Test {
   }
   // Conecta o nó z ao nó pai p de forma consistente.
   // PRECONDIÇÃO: z não aponta para um árvore vazia.
-  void Connect(node* p, node* z) {
+  void Connect(Node* p, Node* z) {
     if (p->parent == NULL || z->key < p->key) {
       p->left = z;
     } else  {
@@ -36,17 +37,17 @@ class Teste : public testing::Test {
 
   // Insere uma FOLHA z na árvore cujo nó sentinela é t de forma consistente.
   // NOTA: Esta função NÃO aloca a memória para z.
-  void TreeInsert(node* t, node* z) {
-    node* y = t;
-    node* x = t->left;
+  void TreeInsert(Node* t, Node* z) {
+    Node* y = t;
+    Node* x = t->left;
     while (x != NULL) {
       y = x;
       x = (z->key < x->key) ? x->left : x->right;
     }
     Connect(y, z);
   }
-  void insert(type k, set* c) {
-    node* z = NewNode(k, NULL, NULL, NULL);
+  void insert(Type k, set* c) {
+    Node* z = NewNode(k, NULL, NULL, NULL);
     TreeInsert(c->end_, z);
     c->size_++;
   }
@@ -63,7 +64,7 @@ class Teste : public testing::Test {
   string ToString(set& c) {
     stringstream out;
     out << "{ ";
-    for (node* i = c.begin(); i != c.end(); i = c.next(i)) {
+    for (Node* i = c.begin(); i != c.end(); i = c.next(i)) {
       out << i->key << " ";
     }
     out << "}";
@@ -194,7 +195,7 @@ TEST_F(Teste, Testar_metodo_find_em_conjunto_vazio) {
   ASSERT_EQ(c.end(), c.find("4"))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* node* set::find(type k) *\n"
+    << "* Node* set::find(Type k) *\n"
     << "-------------------------------------------------------------------\n"
     << "Funcao retornou algo diferente de NULL para a procura de um \n"
     << "elemento nao contido no conjunto\n"
@@ -208,7 +209,7 @@ TEST_F(Teste, Testar_metodo_find_em_conjunto_com_varios_elementos) {
   ASSERT_EQ(c.end(), c.find("4"))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* node* set::find(type k) *\n"
+    << "* Node* set::find(Type k) *\n"
     << "-------------------------------------------------------------------\n"
     << "Funcao retornou algo diferente de NULL para a procura de um \n"
     << "elemento nao contido no conjunto\n"
@@ -219,7 +220,7 @@ TEST_F(Teste, Testar_metodo_find_em_conjunto_com_varios_elementos) {
   ASSERT_EQ(procurado, retornado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* node* set::find(type k) *\n"
+    << "* Node* set::find(Type k) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto: " << ToString(c) << "\n"
     << " Elemento procurado: " << procurado << "\n"
@@ -235,7 +236,7 @@ TEST_F(Teste, Testar_metodo_insert_em_conjunto_vazio) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* node* set::insert(type k) *\n"
+    << "* Node* set::insert(Type k) *\n"
     << "-------------------------------------------------------------------\n"
     << "Conjunto esperado: " << esperado << "\n"
     << "Conjunto formado: " << atual << "\n"
@@ -245,7 +246,7 @@ TEST_F(Teste, Testar_metodo_insert_em_conjunto_vazio) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* node* set::insert(type k) *\n"
+    << "* Node* set::insert(Type k) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função inseriu corretamente um elemento no conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
@@ -264,7 +265,7 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_nao_contido_em_conjunto) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* node* set::insert(type k) *\n"
+    << "* Node* set::insert(Type k) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto esperado: " << esperado << "\n"
     << " Conjunto formado: " << atual << "\n"
@@ -274,7 +275,7 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_nao_contido_em_conjunto) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* node* set::insert(type k) *\n"
+    << "* Node* set::insert(Type k) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função inseriu corretamente um elemento no conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
@@ -293,7 +294,7 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_contido_em_conjunto) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* node* set::insert(type k) *\n"
+    << "* Node* set::insert(Type k) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto esperado: " << esperado << "\n"
     << "  Conjunto formado: " << atual << "\n"
@@ -303,7 +304,7 @@ TEST_F(Teste, Testar_metodo_insert_para_elemento_contido_em_conjunto) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* node* set::insert(type k) *\n"
+    << "* Node* set::insert(Type k) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função corretamente nao inseriu um elemento no conjunto pois ja\n"
     << " possuia o elemento porem alterou o valor do tamanho do conjunto\n\n"
@@ -322,7 +323,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_com_varios_elementos_com_exito) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void set::erase(type x) *\n"
+    << "* void set::erase(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto esperado: " << esperado << "\n"
     << "  Conjunto formado: " << atual << "\n"
@@ -339,7 +340,7 @@ TEST_F(Teste, Testar_metodo_erase_em_conjunto_com_varios_elementos_sem_exito) {
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void set::erase(type x) *\n"
+    << "* void set::erase(Type x) *\n"
     << "-------------------------------------------------------------------\n"
     << " Conjunto esperado: " << esperado << "\n"
     << "  Conjunto formado: " << atual << "\n"
@@ -362,7 +363,7 @@ TEST_F(Teste, Testar_metodo_clear_em_conjunto_vazio) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void set::clear(type k) *\n"
+    << "* void set::clear(Type k) *\n"
     << "-------------------------------------------------------------------\n"
     << "A função limpou corretamente o conteudo do conjunto porem\n"
     << "nao alterou corretamente o valor do tamanho do conjunto.\n\n"
@@ -389,7 +390,7 @@ TEST_F(Teste, Testar_metodo_clear_em_conjunto_com_varios_elementos) {
   ASSERT_EQ(size_esperado, size_atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* void set::clear(type k) *\n"
+    << "* void set::clear(Type k) *\n"
     << "-------------------------------------------------------------------\n"
     << " A função limpou corretamente o conteudo do conjunto porem\n"
     << " nao alterou corretamente o valor do tamanho do conjunto\n\n"

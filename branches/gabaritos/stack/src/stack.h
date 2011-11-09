@@ -5,13 +5,12 @@
 
 #include <string>
 
-// Tipo dos elementos contidos na lista.
-typedef std::string  type;
+#include "type/type.h"
 
 // Defite como os elementos do conjunto serão organizados na memória.
 // É declarado aqui, mas só é implementado em list.cc para não violar o
 // encapsulamento
-struct node;
+struct Node;
 
 // Implementa uma pilha de elementos utilizando Listas Encadeadas.
 class stack {
@@ -31,10 +30,10 @@ class stack {
 
   // Retorna o elemento que está no topo da pilha em O(1).
   // PRECONDIÇÃO: a pilha não pode estar vazia.
-  type top();
+  Type top();
 
   // Insere k no topo da pilha em O(1).
-  void push(type k);
+  void push(Type k);
 
   // Remove o elemento que está no topo da pilha em O(1).
   // PRECONDIÇÃO: a pilha não pode estar vazia.
@@ -45,7 +44,7 @@ class stack {
   int size_;
 
   // Ponteiro para o nó sentinela da lista ligada.
-  node* end_;
+  Node* end_;
 
   friend class Teste;
 };

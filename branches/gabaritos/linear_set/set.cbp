@@ -13,7 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add option="-DEASY_TESTING" />
+					<Add option="-DTYPE_STRING" />
 				</Compiler>
 			</Target>
 			<Target title="Main">
@@ -23,7 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add option="-DEASY_TESTING" />
+					<Add option="-DTYPE_STRING" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -49,7 +49,6 @@
 		<Unit filename="test/set_test.h" />
 		<Unit filename="../list/src/list.cc" />
 		<Unit filename="../list/src/list.h" />
-		<Unit filename="../list/src/node.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
