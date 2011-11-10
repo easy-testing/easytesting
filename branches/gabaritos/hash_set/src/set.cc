@@ -1,17 +1,11 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
+#include<string>
+
 #include "hash_set/src/hash_function.h"
 #include "hash_set/src/set.h"
 #include "list/src/list.h"
 #include "list/src/node.h"
-
-int hash(std::string x, int max_size) {
-  int h = 0;
-  for (int i = 0; i < x.size(); i++) {
-    h += (int) x[i];
-  }
-  return h % max_size;
-}
 
 set::set() {
   table_ = new list[capacity_];
@@ -90,9 +84,10 @@ Node* set::insert(Type k) {
   if (x != end()) {
     return x;
   } else {
+    size_++;
     int j = hash(k, capacity_);
     table_[j].push_front(k);
-    size_++;
+    return table_[j].begin();
   }
 }
 

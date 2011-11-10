@@ -46,14 +46,13 @@
 #include <iostream>
 #include <string>
 
-#include "linear_set/src/set.h"
+#include "hash_set/src/set.h"
 
 using std::cin;
 using std::cout;
 using std::endl;
 using std::ifstream;
 using std::string;
-
 
 void Imprimir(set& c) {
   cout << "{ ";

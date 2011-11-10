@@ -38,7 +38,9 @@
 		</Compiler>
 		<Unit filename="../gtest/gtest.cc" />
 		<Unit filename="../gtest/gtest.h" />
-		<Unit filename="src/hash_function.h" />
+		<Unit filename="src/hash_function.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
 		</Unit>

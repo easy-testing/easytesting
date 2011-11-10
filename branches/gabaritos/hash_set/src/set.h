@@ -1,7 +1,7 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef BRANCHES_GABARITOS_LINEAR_SET_SRC_SET_H_
-#define BRANCHES_GABARITOS_LINEAR_SET_SRC_SET_H_
+#ifndef BRANCHES_GABARITOS_HASH_SET_SRC_SET_H_
+#define BRANCHES_GABARITOS_HASH_SET_SRC_SET_H_
 
 #include "type/type.h"
 
@@ -82,4 +82,4 @@ class set {
   friend class Teste;
 };
 
-#endif  // BRANCHES_GABARITOS_LINEAR_SET_SRC_SET_H_
+#endif  // BRANCHES_GABARITOS_HASH_SET_SRC_SET_H_

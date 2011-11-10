@@ -1,13 +1,12 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef BRANCHES_GABARITOS_LINEAR_SET_TEST_SET_TEST_H_
-#define BRANCHES_GABARITOS_LINEAR_SET_TEST_SET_TEST_H_
+#ifndef BRANCHES_GABARITOS_HASH_SET_TEST_SET_TEST_H_
+#define BRANCHES_GABARITOS_HASH_SET_TEST_SET_TEST_H_
 
 #include <sstream>
 #include <string>
 
 #include "gtest/gtest.h"
-#include "hash_set/src/hash_function.h"
 #include "hash_set/src/set.h"
 #include "list/src/list.h"
 #include "list/src/node.h"
@@ -22,13 +21,15 @@ class Teste : public testing::Test {
     return x->key;
   }
 
+  // TODO(tfn): Retirar isto daqui e usar a função de
+  // "hash_set/src/hash_function.h".
   int hash(std::string x, int max_size) {
-  int h = 0;
-  for (int i = 0; i < x.size(); i++) {
-    h += (int) x[i];
+    int h = 0;
+    for (int i = 0; i < x.size(); i++) {
+      h += (int) x[i];
+    }
+    return h % max_size;
   }
-  return h % max_size;
-}
 
   // Insere k no conjunto c.
   Node* insert(string k, set* c) {
@@ -36,9 +37,10 @@ class Teste : public testing::Test {
     if (x != c->end()) {
       return x;
     } else {
+      c->size_++;
       int j = hash(k, c->capacity_);
       c->table_[j].push_front(k);
-      c->size_++;
+      return c->table_[j].begin();
     }
   }
 
@@ -390,4 +392,4 @@ TEST_F(Teste, Testar_metodo_clear_em_conjunto_com_varios_elementos) {
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // BRANCHES_GABARITOS_LINEAR_SET_TEST_SET_TEST_H_
+#endif  // BRANCHES_GABARITOS_HASH_SET_TEST_SET_TEST_H_
