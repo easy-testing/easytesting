@@ -3,6 +3,7 @@
 
 * Autores: * Thiago Noronha, Gabriel Guedes e Matheus Pacheco
 
+== Sumário ==
 <wiki:toc max_depth="3" />
 
 
