@@ -8,6 +8,7 @@
 
 #include "gtest/gtest.h"
 #include "linear_set/src/set.h"
+#include "list/src/node.h"
 
 using std::string;
 using std::stringstream;
@@ -15,8 +16,8 @@ using std::stringstream;
 // Classe base dos testes.
 class Teste : public testing::Test {
  protected:
-  string Value(set& c, Node* x) {
-    return c.list_.value(x);
+  string Value(Node* x) {
+    return x->key;
   }
 
   Node* insert(string k, set* c) {
@@ -196,7 +197,7 @@ TEST_F(Teste, Testar_metodo_find_em_conjunto_com_varios_elementos) {
     << "-------------------------------------------------------------------\n";
 
   string procurado = "8";
-  string retornado = Value(c, c.find(procurado));
+  string retornado = Value(c.find(procurado));
   ASSERT_EQ(procurado, retornado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
