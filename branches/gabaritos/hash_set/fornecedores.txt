@@ -1,0 +1,5 @@
+4
+Fornecedor_A  2  3  4  5  6  7  8  9 10 100
+Fornecedor_B  2  4  6  8 10 12 14 16 18 100
+Fornecedor_C  3  6  9 12 15 18 21 24 30 100
+Fornecedor_D  6 12 18 24 30 36 42 48 54 100
