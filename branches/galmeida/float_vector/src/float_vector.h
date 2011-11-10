@@ -81,6 +81,12 @@ class FloatVector {
   // Libera a memória alocada para array_.
   ~FloatVector();
 
+  // Declara a classe de teste como friend.
+  // Nada a ser implementado aqui. Isto serve
+  // apenas para facilitar os testes.
+  friend class Teste;
+
+
  private:
   // Número de elementos no vetor.
   int size_;
