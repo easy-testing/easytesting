@@ -16,36 +16,38 @@ using std::stringstream;
 
 class Teste : public testing::Test {
   public:
-
-
-  FloatVector* InitFloatvector0(){
-    FloatVector* v = (FloatVector*)malloc( sizeof(FloatVector) );
+  FloatVector* InitFloatvector0() {
+    FloatVector* v =
+    reinterpret_cast<FloatVector*>(malloc(sizeof(FloatVector)));
     v->size_ = 0;
     v->array_ = NULL;
     return v;
   }
 
-  FloatVector* InitFloatvector1(float e1){
-    FloatVector* v = (FloatVector*)malloc( sizeof(FloatVector) );
+  FloatVector* InitFloatvector1(float e1) {
+    FloatVector* v =
+    reinterpret_cast<FloatVector*>(malloc(sizeof(FloatVector)));
     v->size_ = 1;
-    v->array_ = (float*)malloc(1 * sizeof(float));
+    v->array_ =  reinterpret_cast<float*>(malloc(1 * sizeof(float)));
     v->array_[0] = e1;
     return v;
   }
 
-  FloatVector* InitFloatvector2(float e1, float e2){
-    FloatVector* v = (FloatVector*)malloc( sizeof(FloatVector) );
+  FloatVector* InitFloatvector2(float e1, float e2) {
+    FloatVector* v =
+    reinterpret_cast<FloatVector*>(malloc(sizeof(FloatVector)));
     v->size_ = 2;
-    v->array_ = (float*)malloc(2 * sizeof(float));
+    v->array_ =  reinterpret_cast<float*>(malloc(2 * sizeof(float)));
     v->array_[0] = e1;
     v->array_[1] = e2;
     return v;
   }
 
-  FloatVector* InitFloatvector3(float e1, float e2, float e3){
-    FloatVector* v = (FloatVector*)malloc( sizeof(FloatVector) );
+  FloatVector* InitFloatvector3(float e1, float e2, float e3) {
+    FloatVector* v =
+    reinterpret_cast<FloatVector*>(malloc(sizeof(FloatVector)));
     v->size_ = 3;
-    v->array_ = (float*)malloc(3 * sizeof(float));
+    v->array_ = reinterpret_cast<float*>(malloc(3 * sizeof(float)));
     v->array_[0] = e1;
     v->array_[1] = e2;
     v->array_[2] = e3;
@@ -128,7 +130,7 @@ TEST_F(Teste, Construtor_Copia_Apontadores) {
 
 TEST_F(Teste, Construtor_Copia_NULL) {
   FloatVector v(*v0);
-  ASSERT_EQ(&v[0], (float*) NULL)
+  ASSERT_EQ(&v[0], reinterpret_cast<float*>(NULL))
   << "-------------------------------------------------------------------\n"
   << "Erro na funcao \"FloatVector(FloatVector&)\".                      \n"
   << "-------------------------------------------------------------------\n"
@@ -373,7 +375,8 @@ TEST_F(Teste, Insert_Em_Vetor_Com_2_Elementos_Meio) {
   << "-------------------------------------------------------------------\n"
   << "O elemento nao foi inserido na posicao correta.                    \n"
   << "Esperado: {0, 2, 1}.                                               \n"
-  << "Atual: {" << (*v1)[0] << ", " << (*v1)[1] << ", " << (*v1)[2] << "}.        \n"
+  << "Atual: {" << (*v1)[0] << ", " << (*v1)[1] << ", "
+  << (*v1)[2] << "}                                             .        \n"
   << "-------------------------------------------------------------------\n";
 }
 
@@ -393,7 +396,7 @@ TEST_F(Teste, Insert_Elemento_Fim) {
   << "-------------------------------------------------------------------\n"
   << "O elemento nao foi inserido na posicao correta.                    \n"
   << "Esperado: {0, 2}.                                                  \n"
-  << "Atual: {" << (*v1)[0] << ", " << (*v1)[1] << "}.                         \n"
+  << "Atual: {" << (*v1)[0] << ", " << (*v1)[1] << "}.                   \n"
   << "-------------------------------------------------------------------\n";
 }
 
