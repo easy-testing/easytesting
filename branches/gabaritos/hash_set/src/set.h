@@ -73,11 +73,12 @@ class set {
   // Número de elementos no cojunto.
   int size_;
 
-  // Tabela hash (vetor de listas) que guarda os elementos do cojunto.
+  // Vetor de listas (Tabela hash) que guarda os elementos do cojunto.
   list* table_;
 
-  // Número de listas na tabela hash, ou seja, número de listas no vetor table_.
-  static const int capacity_ = 1000;
+  // Número de entradas na tabela hash, ou seja,
+  // número de listas no vetor table_.
+  static const int capacity_ = 100000;
 
   friend class Teste;
 };

@@ -24,7 +24,7 @@ set::~set() {
   delete [] table_;
 }
 
-// Retorna o primeiro elemento da primeira lista não fazia.
+// Retorna o primeiro elemento da primeira lista não vazia.
 Node* set::begin() {
   for (int i = 0; i < capacity_; i++) {
     if (!table_[i].empty()) {
@@ -34,7 +34,8 @@ Node* set::begin() {
   return end();
 }
 
-// Retorna o "marcador de fim" da última lista da tabela.
+// Retorna o "marcador de fim" do conjunto, ou seja,
+// O sentinela da última lista da tabela.
 Node* set::end() {
   return table_[capacity_ - 1].end();
 }
