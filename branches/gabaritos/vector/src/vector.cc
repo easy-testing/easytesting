@@ -65,7 +65,7 @@ void vector::pop_back() {
 void vector::insert(int i, Type x) {
   resize(size_ + 1);
   for (int j = size_ - 1; j > i; j--) {
-    array_[i] = array_[j - 1];
+    array_[j] = array_[j - 1];
   }
   array_[i] = x;
 }

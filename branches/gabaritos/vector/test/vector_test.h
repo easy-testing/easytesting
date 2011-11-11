@@ -1,72 +1,71 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef FLOAT_VECTOR_TEST_FLOAT_VECTOR_TEST_H_
-#define FLOAT_VECTOR_TEST_FLOAT_VECTOR_TEST_H_
-
-#include "float_vector/src/float_vector.h"
+#ifndef Type_VECTOR_TEST_Type_VECTOR_TEST_H_
+#define Type_VECTOR_TEST_Type_VECTOR_TEST_H_
+#include "vector/src/vector.h"
 #include <string>
 #include "gtest/gtest.h"
 
 using std::string;
 using std::stringstream;
-  using namespace std;
+
 
 // Classe base dos testes.
 
 
 class Teste : public testing::Test {
   public:
-  FloatVector* InitFloatvector0() {
-    FloatVector* v =
-    reinterpret_cast<FloatVector*>(malloc(sizeof(FloatVector)));
+  vector* Initvector0() {
+    vector* v =
+    reinterpret_cast<vector*>(malloc(sizeof(vector)));
     v->size_ = 0;
-    v->array_ = NULL;
+    v->array_ = new Type[v->size_];
     return v;
   }
 
-  FloatVector* InitFloatvector1(float e1) {
-    FloatVector* v =
-    reinterpret_cast<FloatVector*>(malloc(sizeof(FloatVector)));
+  vector* Initvector1(Type e1) {
+    vector* v =
+    reinterpret_cast<vector*>(malloc(sizeof(vector)));
     v->size_ = 1;
-    v->array_ =  reinterpret_cast<float*>(malloc(1 * sizeof(float)));
+    v->array_ =  reinterpret_cast<Type*>(malloc(1 * sizeof(Type)));
     v->array_[0] = e1;
     return v;
   }
 
-  FloatVector* InitFloatvector2(float e1, float e2) {
-    FloatVector* v =
-    reinterpret_cast<FloatVector*>(malloc(sizeof(FloatVector)));
+  vector* Initvector2(Type e1, Type e2) {
+    vector* v =
+    reinterpret_cast<vector*>(malloc(sizeof(vector)));
     v->size_ = 2;
-    v->array_ =  reinterpret_cast<float*>(malloc(2 * sizeof(float)));
+    v->array_ =  reinterpret_cast<Type*>(malloc(2 * sizeof(Type)));
     v->array_[0] = e1;
     v->array_[1] = e2;
     return v;
   }
 
-  FloatVector* InitFloatvector3(float e1, float e2, float e3) {
-    FloatVector* v =
-    reinterpret_cast<FloatVector*>(malloc(sizeof(FloatVector)));
+  vector* Initvector3(Type e1, Type e2, Type e3) {
+    vector* v =
+    reinterpret_cast<vector*>(malloc(sizeof(vector)));
     v->size_ = 3;
-    v->array_ = reinterpret_cast<float*>(malloc(3 * sizeof(float)));
+    v->array_ = reinterpret_cast<Type*>(malloc(3 * sizeof(Type)));
     v->array_[0] = e1;
     v->array_[1] = e2;
     v->array_[2] = e3;
     return v;
   }
 
-  FloatVector* v0;
-  FloatVector* v1;
-  FloatVector* v2;
-  FloatVector* v3;
+  vector* v0;
+  vector* v1;
+  vector* v2;
+  vector* v3;
 
   Teste() {
-    v0 = InitFloatvector0();
-    v1 = InitFloatvector1(0);
-    v2 = InitFloatvector2(0, 1);
-    v3 = InitFloatvector3(0, 1, 2);
+    v0 = Initvector0();
+    v1 = Initvector1(0);
+    v2 = Initvector2(0, 1);
+    v3 = Initvector3(0, 1, 2);
   }
   // Retorna uma string no formato {a, b, c, d, ..., z}.
-  string MostrarVetor(float v[], int n) {
+  string MostrarVetor(Type v[], int n) {
     stringstream output;
     output << "{";
     for (int i = 0; i < n ; i++) {
@@ -81,12 +80,12 @@ class Teste : public testing::Test {
 };
 
 TEST_F(Teste, At_Alteracao_Elemento) {
-  float inesperado = v1->at(0);
+  Type inesperado = v1->at(0);
   v1->at(0) = inesperado + 1;
-  float atual = v1->at(0);
+  Type atual = v1->at(0);
   ASSERT_NE(atual, inesperado)
   << "-------------------------------------------------------------------\n"
-  << "Erro na funcao \"float& at(int)\".                                 \n"
+  << "Erro na funcao \"Type& at(int)\".                                 \n"
   << "-------------------------------------------------------------------\n"
   << "Nao foi possivel alterar um elemento do vetor.                     \n"
   << "Esta funcao ira influenciar todos os outros testes.                \n"
@@ -95,7 +94,7 @@ TEST_F(Teste, At_Alteracao_Elemento) {
 }
 
 TEST_F(Teste, Construtor_Copia_Valores) {
-  FloatVector v(*v3);
+  vector v(*v3);
   int diferencas = 0;
   for (int i = 0; i < 3; i++) {
       if (v[i] != (*v3)[i]) {
@@ -104,14 +103,14 @@ TEST_F(Teste, Construtor_Copia_Valores) {
   }
   ASSERT_EQ(diferencas, 0)
   << "-------------------------------------------------------------------\n"
-  << "Erro na funcao \"FloatVector(FloatVector&)\".                      \n"
+  << "Erro na funcao \"vector(vector&)\".                      \n"
   << "-------------------------------------------------------------------\n"
   << "O vetor criado nao e igual ao vetor passado como parametro.        \n"
   << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Construtor_Copia_Apontadores) {
-  FloatVector v(*v3);
+  vector v(*v3);
   v[0]++;
   int diferencas = 0;
   for (int i = 0; i < 3; i++) {
@@ -121,62 +120,28 @@ TEST_F(Teste, Construtor_Copia_Apontadores) {
   }
   ASSERT_EQ(diferencas, 1)
   << "-------------------------------------------------------------------\n"
-  << "Erro na funcao \"FloatVector(FloatVector&)\".                      \n"
+  << "Erro na funcao \"vector(vector&)\".                      \n"
   << "-------------------------------------------------------------------\n"
   << "O novo vetor esta compartilhando o arranjo do vetor passado.       \n"
   << "como parametro. Deve se criar um novo vetor.                       \n"
   << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Construtor_Copia_NULL) {
-  FloatVector v(*v0);
-  ASSERT_EQ(&v[0], reinterpret_cast<float*>(NULL))
-  << "-------------------------------------------------------------------\n"
-  << "Erro na funcao \"FloatVector(FloatVector&)\".                      \n"
-  << "-------------------------------------------------------------------\n"
-  << "Falha ao criar vetor vazio. array_ deve aponter para NULL.         \n"
-  << "-------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Front_Alteracao_Elemento) {
-  float inesperado = v2->front();
-  v2->at(0) = inesperado + 1;
-  float atual = v2->at(0);
-  ASSERT_NE(atual, inesperado)
-  << "-------------------------------------------------------------------\n"
-  << "Erro na funcao \"float& front(int)\".                              \n"
-  << "-------------------------------------------------------------------\n"
-  << "A funcao esta devolvendo o elemento errado do vetor.               \n"
-  << "-------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Back_Alteracao_Elemento) {
-  float inesperado = v2->back();
-  v2->at(1) = inesperado + 1;
-  float atual = v2->at(1);
-  ASSERT_NE(atual, inesperado)
-  << "-------------------------------------------------------------------\n"
-  << "Erro na funcao \"float& back(int)\".                               \n"
-  << "-------------------------------------------------------------------\n"
-  << "A funcao esta devolvendo o elemento errado do vetor.               \n"
-  << "-------------------------------------------------------------------\n";
-}
-
 TEST_F(Teste, Assign_Vazio_Vazio) {
-  FloatVector v(0);
+  vector v(0);
   v.assign(*v0);
   bool esperado = true;
-  bool atual = (v.size() == v0->size()) && (&v[0] == &(*v0)[0] );
+  bool atual = (v.size() == v0->size());
   ASSERT_EQ(atual, esperado)
   << "-------------------------------------------------------------------\n"
-  << "Erro na funcao \"void assign(FloatVector&)\".                      \n"
+  << "Erro na funcao \"void assign(vector&)\".                      \n"
   << "-------------------------------------------------------------------\n"
   << "Erro ao copiar um vetor vazio para outro vetor vazio.              \n"
   << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Assign_Cheio_Para_Vazio) {
-  FloatVector v(0);
+  vector v(0);
   v.assign(*v3);
   int diferencas = 0;
   if (v.size() != v3->size()) {
@@ -189,20 +154,20 @@ TEST_F(Teste, Assign_Cheio_Para_Vazio) {
   }
   ASSERT_EQ(diferencas, 0)
   << "-------------------------------------------------------------------\n"
-  << "Erro na funcao \"void assign(FloatVector&)\".                      \n"
+  << "Erro na funcao \"void assign(vector&)\".                      \n"
   << "-------------------------------------------------------------------\n"
   << "Os vetores estao diferentes ao final do processo.\n"
   << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Assign_Vazio_Para_Cheio) {
-  FloatVector v(3);
+  vector v(3);
   v.assign(*v0);
   bool esperado = true;
-  bool atual = (v.size() == v0->size()) && (&v[0] == &(*v0)[0]);
+  bool atual = (v.size() == v0->size());
   ASSERT_EQ(atual, esperado)
   << "-------------------------------------------------------------------\n"
-  << "Erro na funcao \"void assign(FloatVector&)\".                      \n"
+  << "Erro na funcao \"void assign(vector&)\".                      \n"
   << "-------------------------------------------------------------------\n"
   << "Os vetores estao diferentes ao final do processo.                  \n"
   << "-------------------------------------------------------------------\n";
@@ -221,7 +186,7 @@ TEST_F(Teste, Assign_Cheio_Para_Cheio) {
   }
   ASSERT_EQ(diferencas, 0)
   << "-------------------------------------------------------------------\n"
-  << "Erro na funcao \"void assign(FloatVector&)\".                      \n"
+  << "Erro na funcao \"void assign(vector&)\".                      \n"
   << "-------------------------------------------------------------------\n"
   << "Os vetores estao diferentes ao final do processo.                  \n"
   << "-------------------------------------------------------------------\n";
@@ -231,7 +196,7 @@ TEST_F(Teste, Assign_Cheio_Para_Cheio_Ponteiros) {
   v2->assign(*v3);
   ASSERT_NE(&v2[0], &v3[0])
   << "-------------------------------------------------------------------\n"
-  << "Erro na funcao \"void assign(FloatVector&)\".                      \n"
+  << "Erro na funcao \"void assign(vector&)\".                      \n"
   << "-------------------------------------------------------------------\n"
   << "Apesar de os elementos serem iguais, cada vetor deve possuir       \n"
   << "seu proprio arranjo.                                               \n"
@@ -249,7 +214,7 @@ TEST_F(Teste, Push_Back_Vazio) {
   }
   ASSERT_EQ(diferencas, 0)
   << "-------------------------------------------------------------------\n"
-  << "Erro na funcao \"void push_back(float)\".                          \n"
+  << "Erro na funcao \"void push_back(Type)\".                          \n"
   << "-------------------------------------------------------------------\n"
   << "Erro ao adicionar um elemento a um vetor vazio.                    \n"
   << "-------------------------------------------------------------------\n";
@@ -269,7 +234,7 @@ TEST_F(Teste, Push_Back_Cheio) {
   }
   ASSERT_EQ(diferencas, 0)
   << "-------------------------------------------------------------------\n"
-  << "Erro na funcao \"void push_back(float)\".                          \n"
+  << "Erro na funcao \"void push_back(Type)\".                          \n"
   << "-------------------------------------------------------------------\n"
   << "Erro ao adicionar um elemento a um vetor com 1 elemento.           \n"
   << "Esperado: {0, 2}.                                                  \n"
@@ -278,12 +243,12 @@ TEST_F(Teste, Push_Back_Cheio) {
 }
 
 TEST_F(Teste, Push_Back_Ponteiro) {
-  float* antes = &(*v0)[0];
+  Type* antes = &(*v0)[0];
   v0->push_back(3.14);
-  float* depois = &(*v0)[0];
+  Type* depois = &(*v0)[0];
   ASSERT_NE(antes, depois)
   << "-------------------------------------------------------------------\n"
-  << "Erro na funcao \"void push_back(float)\".                          \n"
+  << "Erro na funcao \"void push_back(Type)\".                          \n"
   << "-------------------------------------------------------------------\n"
   << "Ao aumentar o vetor deve se criar um novo array.                   \n"
   << "-------------------------------------------------------------------\n";
@@ -295,7 +260,7 @@ TEST_F(Teste, Pop_Back_2_Elementos) {
   if ( v2->size() != 1 ) {
     diferencas++;
   }
-  if ( v2->back() != (*v2)[0] ) {
+  if ( (*v2)[v2->size()-1] != (*v2)[0] ) {
     diferencas++;
   }
   ASSERT_EQ(diferencas, 0)
@@ -313,9 +278,6 @@ TEST_F(Teste, Pop_Back_1_Elemento) {
   if ( v1->size() != 0 ) {
     diferencas++;
   }
-  if ( &(*v1)[0] != NULL ) {
-    diferencas++;
-  }
   ASSERT_EQ(diferencas, 0)
   << "-------------------------------------------------------------------\n"
   << "Erro na funcao \"void pop_back()\".                                \n"
@@ -331,7 +293,7 @@ TEST_F(Teste, Insert_Elemento_0_Tamanho) {
   int atual = v1->size();
   ASSERT_EQ(atual, anterior + 1)
   << "-------------------------------------------------------------------\n"
-  << "Erro na funcao \"void insert(int, float)\".                        \n"
+  << "Erro na funcao \"void insert(int, Type)\".                        \n"
   << "-------------------------------------------------------------------\n"
   << "O tamanho do vetor deve ser aumentado em 1.                        \n"
   << "-------------------------------------------------------------------\n";
@@ -349,7 +311,7 @@ TEST_F(Teste, Insert_Em_Vetor_Vom_1_Elemento) {
 
   ASSERT_EQ(erros, 0)
   << "-------------------------------------------------------------------\n"
-  << "Erro na funcao \"void insert(int, float)\".                        \n"
+  << "Erro na funcao \"void insert(int, Type)\".                        \n"
   << "-------------------------------------------------------------------\n"
   << "O elemento nao foi inserido na posicao correta.                    \n"
   << "Esperado: {2, 0}.                                                  \n"
@@ -371,7 +333,7 @@ TEST_F(Teste, Insert_Em_Vetor_Com_2_Elementos_Meio) {
   }
   ASSERT_EQ(erros, 0)
   << "-------------------------------------------------------------------\n"
-  << "Erro na funcao \"void insert(int, float)\".                        \n"
+  << "Erro na funcao \"void insert(int, Type)\".                        \n"
   << "-------------------------------------------------------------------\n"
   << "O elemento nao foi inserido na posicao correta.                    \n"
   << "Esperado: {0, 2, 1}.                                               \n"
@@ -392,7 +354,7 @@ TEST_F(Teste, Insert_Elemento_Fim) {
   }
   ASSERT_EQ(diferencas, 0)
   << "-------------------------------------------------------------------\n"
-  << "Erro na funcao \"void insert(int, float)\".                        \n"
+  << "Erro na funcao \"void insert(int, Type)\".                        \n"
   << "-------------------------------------------------------------------\n"
   << "O elemento nao foi inserido na posicao correta.                    \n"
   << "Esperado: {0, 2}.                                                  \n"
@@ -401,12 +363,12 @@ TEST_F(Teste, Insert_Elemento_Fim) {
 }
 
 TEST_F(Teste, Insert_Apontador) {
-  float* antes = &(*v1)[0];
+  Type* antes = &(*v1)[0];
   v1->insert(0, 3.14);
-  float* depois = &(*v1)[0];
+  Type* depois = &(*v1)[0];
   ASSERT_NE(antes, depois)
   << "-------------------------------------------------------------------\n"
-  << "Erro na funcao \"void insert(int, float)\".                        \n"
+  << "Erro na funcao \"void insert(int, Type)\".                        \n"
   << "-------------------------------------------------------------------\n"
   << "Deve ser criado um novo arranjo para a insercao.                   \n"
   << "-------------------------------------------------------------------\n";
@@ -481,19 +443,6 @@ TEST_F(Teste, Erase_Meio) {
   << "O elemento nao foi removido corretamente.                          \n"
   << "Esperado: { 0, 2 }.                                                \n"
   << "Atual: " << MostrarVetor(&(*v3)[0], v3->size()) << "                   \n"
-  << "-------------------------------------------------------------------\n";
-}
-
-
-TEST_F(Teste, Erase_Apontador) {
-  float* antes = &(*v1)[0];
-  v1->erase(0);
-  float* depois = &(*v1)[0];
-  ASSERT_NE(antes, depois)
-  << "-------------------------------------------------------------------\n"
-  << "Erro na funcao \"void erase(int)\".                                \n"
-  << "-------------------------------------------------------------------\n"
-  << "Deve ser criado um novo arranjo para a remocao.                    \n"
   << "-------------------------------------------------------------------\n";
 }
 
@@ -623,17 +572,6 @@ TEST_F(Teste, Clear_Size_3) {
   << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Clear_Size_3_Array) {
-  float* esperado = NULL;
-  v3->clear();
-  float* atual = &(*v3)[0];
-  ASSERT_EQ(atual, esperado)
-  << "-------------------------------------------------------------------\n"
-  << "Erro na funcao \"void clear()\".                                   \n"
-  << "-------------------------------------------------------------------\n"
-  << "O arranjo do vetor deve passar a ser NULL.                         \n"
-  << "-------------------------------------------------------------------\n";
-}
 
-#endif  // FLOAT_VECTOR_TEST_FLOAT_VECTOR_TEST_H__
+#endif  // Type_VECTOR_TEST_Type_VECTOR_TEST_H__
 

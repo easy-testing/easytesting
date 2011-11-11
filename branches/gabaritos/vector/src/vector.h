@@ -2,7 +2,6 @@
 
 #ifndef BRANCHES_GABARITOS_VECTOR_SRC_VECTOR_H_
 #define BRANCHES_GABARITOS_VECTOR_SRC_VECTOR_H_
-
 #include "type/type.h"
 
 // Implementa um vetor dinâmico de numeros reais.
@@ -77,12 +76,16 @@ class vector {
   // Libera a memória alocada para array_.
   ~vector();
 
+ friend class Teste;
+
  private:
   // Número de elementos no vetor.
   int size_;
 
   // Vetor alocado dinamicamente.
   Type* array_;
+
+
 };
 
 #endif  // BRANCHES_GABARITOS_VECTOR_SRC_VECTOR_H_

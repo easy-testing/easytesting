@@ -19,6 +19,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <typeinfo>
 #include "vector/src/vector.h"
 
 using std::cout;
