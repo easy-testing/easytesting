@@ -76,8 +76,6 @@ class vector {
   // Libera a memória alocada para array_.
   ~vector();
 
- friend class Teste;
-
  private:
   // Número de elementos no vetor.
   int size_;
@@ -85,7 +83,7 @@ class vector {
   // Vetor alocado dinamicamente.
   Type* array_;
 
-
+  friend class Teste;
 };
 
 #endif  // BRANCHES_GABARITOS_VECTOR_SRC_VECTOR_H_
