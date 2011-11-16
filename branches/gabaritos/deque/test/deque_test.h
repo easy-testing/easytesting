@@ -9,6 +9,7 @@
 #include "deque/src/deque.h"
 #include "deque/src/node.h"
 #include "gtest/gtest.h"
+#include "type/type.h"
 
 using std::string;
 using std::stringstream;
@@ -17,12 +18,12 @@ using std::stringstream;
 class Teste : public testing::Test {
  protected:
   // Retorna um ponteiro para o primeiro elemento do deque.
-  node* Begin(deque& l) {
+  Node* Begin(deque& l) {
     return l.end_->next;
   }
 
   // Retorna um ponteiro para o elemento seguinte ao último elemento do deque.
-  node* End(deque& l) {
+  Node* End(deque& l) {
     return l.end_;
   }
 
@@ -30,7 +31,7 @@ class Teste : public testing::Test {
   string ToString(deque& l) {
     stringstream output;
     output << "{";
-    for (node* i = Begin(l) ; i != End(l) ; i = i->next) {
+    for (Node* i = Begin(l) ; i != End(l) ; i = i->next) {
       if (i == Begin(l))
         output << i->key;
       else
@@ -41,15 +42,15 @@ class Teste : public testing::Test {
   }
 
   // Cria um nó sentinela.
-  node* NewSentinel() {
-    node* aux = new node();
+  Node* NewSentinel() {
+    Node* aux = new Node();
     aux->prev = aux->next = aux;
     return aux;
   }
 
   // Cria uma nó cuja chave é k, o nó anterior é l, e o nó posterior é r.
-  node* NewNode(type k, node* l, node* r) {
-    node* aux = new node();
+  Node* NewNode(Type k, Node* l, Node* r) {
+    Node* aux = new Node();
     aux->key = k;
     aux->prev = l;
     aux->next = r;
@@ -104,7 +105,7 @@ TEST_F(Teste, Testar_metodo_front_em_deque_com_um_elemento) {
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao:  "
-      << "* type deque::front() *\n"
+      << "* Type deque::front() *\n"
       << "------------------------------------------------------------------\n"
       << "deque = " << ToString(l) << "\n\n"
       << "Valor esperado  : " << esperado << "\n"
@@ -120,7 +121,7 @@ TEST_F(Teste, Testar_metodo_front_em_deque_com_mais_de_um_elemento) {
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao:  "
-      << "* type deque::front() *\n"
+      << "* Type deque::front() *\n"
       << "------------------------------------------------------------------\n"
       << "deque = " << ToString(l) << "\n\n"
       << "Valor esperado  : " << esperado << "\n"
@@ -136,7 +137,7 @@ TEST_F(Teste, Testar_metodo_back_em_deque_com_um_elemento) {
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao:  "
-      << "* type deque::back() *\n"
+      << "* Type deque::back() *\n"
       << "------------------------------------------------------------------\n"
       << "deque = " << ToString(l) << "\n\n"
       << "Valor esperado  : " << esperado << "\n"
@@ -152,7 +153,7 @@ TEST_F(Teste, Testar_metodo_back_em_deque_com_mais_de_um_elemento) {
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao:  "
-      << "* type deque::back() *\n"
+      << "* Type deque::back() *\n"
       << "------------------------------------------------------------------\n"
       << "deque = " << ToString(l) << "\n\n"
       << "Valor esperado  : " << esperado << "\n"
@@ -216,7 +217,7 @@ TEST_F(Teste, Testar_metodo_push_front) {
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao:  "
-      << "* void deque::push_front(type x) *\n"
+      << "* void deque::push_front(Type x) *\n"
       << "------------------------------------------------------------------\n"
       << "Lista esperada: " << esperado << "\n"
       << "Lista atual: " << atual << "\n"
@@ -248,7 +249,7 @@ TEST_F(Teste, Testar_metodo_push_back) {
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao:  "
-      << "* void deque::push_back(type x) *\n"
+      << "* void deque::push_back(Type x) *\n"
       << "------------------------------------------------------------------\n"
       << "Lista esperada: " << esperado << "\n"
       << "Lista atual: " << atual << "\n"
@@ -264,7 +265,7 @@ TEST_F(Teste, Testar_metodo_pop_back) {
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao:  "
-      << "* void deque::pop_back(type x) *\n"
+      << "* void deque::pop_back(Type x) *\n"
       << "------------------------------------------------------------------\n"
       << "Lista esperada: " << esperado << "\n"
       << "Lista atual: " << atual << "\n"

@@ -6,7 +6,7 @@
 
 deque::deque() {
   size_ = 0;
-  end_ = new node();
+  end_ = new Node();
   end_->next = end_;
   end_->prev = end_;
 }
@@ -24,38 +24,38 @@ int deque::size() {
   return size_;
 }
 
-type deque::front() {
+Type deque::front() {
   return end_->next->key;
 }
 
-type deque::back() {
+Type deque::back() {
   return end_->prev->key;
 }
 
-void deque::push_front(type k) {
-  node* i = end_->next;  // Ponteiro para o primeiro elemento na fila.
-  node* k_node = new node({k, i->prev, i});
+void deque::push_front(Type k) {
+  Node* i = end_->next;  // Ponteiro para o primeiro elemento na fila.
+  Node* k_node = new Node({k, i->prev, i});
   i->prev->next = k_node;
   i->prev = k_node;
   size_++;
 }
 
 void deque::pop_front() {
-  node* first = end_->next;
+  Node* first = end_->next;
   first->prev->next = first->next;
   first->next->prev = first->prev;
   size_--;
 }
 
-void deque::push_back(type k) {
-  node* k_node = new node({k, end_->prev, end_});
+void deque::push_back(Type k) {
+  Node* k_node = new Node({k, end_->prev, end_});
   end_->prev->next = k_node;
   end_->prev = k_node;
   size_++;
 }
 
 void deque::pop_back() {
-  node* last = end_->prev;
+  Node* last = end_->prev;
   last->prev->next = last->next;
   last->next->prev = last->prev;
   size_--;

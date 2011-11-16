@@ -5,13 +5,12 @@
 
 #include <string>
 
-// Tipo dos elementos contidos no deque.
-typedef std::string  type;
+#include "type/type.h"
 
 // Defite como os elementos do deque serão organizados na memória.
 // É declarado aqui, mas só é implementado em deque.cc para não violar o
 // encapsulamento
-struct node;
+struct Node;
 
 // Implementa um deque de elementos utilizando listas encadeadas.
 class deque {
@@ -31,21 +30,21 @@ class deque {
 
   // Retorna o valor da chave do primeiro elemento do deque em O(1).
   // PRECONDIÇÃO: o deque não pode estar vazio.
-  type front();
+  Type front();
 
   // Retorna o valor da chave do último elemento do deque em O(1).
   // PRECONDIÇÃO: o deque não pode estar vazio.
-  type back();
+  Type back();
 
   // Insere k no início do deque em O(1).
-  void push_front(type k);
+  void push_front(Type k);
 
   // Remove o primeiro elemento do deque em O(1).
   // PRECONDIÇÃO: o deque não pode estar vazio.
   void pop_front();
 
   // Insere k no final do deque em O(1).
-  void push_back(type k);
+  void push_back(Type k);
 
   // Remove o último elemento do deque em O(1).
   // PRECONDIÇÃO: o deque não pode estar vazio.
@@ -60,7 +59,7 @@ class deque {
   int size_;
 
   // Ponteiro para o nó sentinela da lista encadeada.
-  node* end_;
+  Node* end_;
 
   friend class Teste;
 };
