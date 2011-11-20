@@ -64,7 +64,7 @@ class Ponto3D {
   // Vetor coluna igual a {x, y, z, 1}.
   double v_[4];
 
-
+  friend class Teste;
 
 };
 

@@ -13,7 +13,7 @@
   typedef std::string Type;
 #elif TYPE_DOUBLE
   typedef double Type;
-#elif TYPE_FLOAT
+#elif defined TYPE_FLOAT
   typedef float Type;
 #elif TYPE_INT
   typedef int Type;
@@ -21,4 +21,4 @@
   typedef char Type;
 #endif
 
-#endif  BRANCHES_GABARITOS_TYPE_TYPE_H_
+#endif

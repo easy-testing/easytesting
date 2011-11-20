@@ -9,7 +9,7 @@
 #include "matrizes/src/matrizes.h"
 #include "gtest/gtest.h"
 
-#define MAX 100 // Dimensao máxima de uma matriz.
+#define MAX 100  // Dimensao máxima de uma matriz.
 
 using std::string;
 using std::stringstream;
@@ -81,6 +81,26 @@ TEST_F(Teste, Media_Matriz_1x1) {
     << Imprime_1_Matriz(1, 1, 28,  mat)
     << "\n    Media esperada: " << esperado << "\n"
     << "   Media retornada: " << resultado << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Verifica_divisao_correta_na_funcao_media_matriz) {
+  float mat[MAX][MAX] = { {1.0, 1.0, 1.0, 1.0},
+                          {1.0, 1.0, 1.0, 1.0},
+                          {1.0, 1.0, 1.0, 1.0},
+                          {1.0, 1.0, 1.0, 1.0} };
+  float inesperado = 4;
+  float resultado = MediaMatriz(4, mat);
+  ASSERT_NE(inesperado, resultado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao: \"float Media(int n, float matriz[][])\".          \n"
+    << "-------------------------------------------------------------------\n"
+    << "Matriz de Entrada:\n\n"
+    << Imprime_1_Matriz(4, 4, 18, mat)
+    << "\nMedia esperada: " << 1.0 << "\n"
+    << "Media retornada: " << resultado << "\n"
+    << "  Provavelmente a divisao do seu somatorio eh por n, enquanto\n"
+    << "deveria ser por n*n\n"
     << "-------------------------------------------------------------------\n";
 }
 

@@ -42,6 +42,29 @@ TEST_F(Teste, Testa_acesso_a_uma_posicao_invalida_do_vetor_na_funcao_Media) {
     << "-------------------------------------------------------------------\n"
     << "  Sua função pode estar acessando a posição inválida v[n].         \n"
     << "-------------------------------------------------------------------\n";
+
+  float inesperado2 = (8.0 + 14.0 + 1000.0) / n;
+  ASSERT_NE(atual, inesperado2)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao \"float Media(float v[], int n)\".                  \n"
+    << "-------------------------------------------------------------------\n"
+    << "  Sua função pode estar acessando a posição inválida v[n].         \n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testa_iteracao_loop_errada_na_funcao_Media) {
+  int n = 3;
+  float v[3 + 1] = {4.0, 8.0, 14.0};
+  float atual = Media(v, n);
+  float inesperado = (8.0 + 14.0) / n;
+  ASSERT_NE(atual, inesperado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao \"float Media(float v[], int n)\".                  \n"
+    << "-------------------------------------------------------------------\n"
+    << "  Sua funcao esta calculando os elementos do vetor da índice 1\n"
+    << "  ate menor que n, provavelmente voce esta esquecendo do elemento\n"
+    << "  de índice 0.\n"
+    << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_funcao_Media_de_um_vetor_unitario) {
