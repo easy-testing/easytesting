@@ -8,7 +8,7 @@
 // Type define o tipo dos elementos contidos nas estruturas de dados.
 // É definido aqui desta forma para evitar usa templates, que na versão atual
 // de C++ é muito difícil de usar para a maioria dos alunos.
-//
+
 #ifdef TYPE_STRING
   typedef std::string Type;
 #elif TYPE_DOUBLE

@@ -2,6 +2,7 @@
 
 #ifndef BRANCHES_GABARITOS_VECTOR_SRC_VECTOR_H_
 #define BRANCHES_GABARITOS_VECTOR_SRC_VECTOR_H_
+
 #include "type/type.h"
 
 // Implementa um vetor dinâmico de numeros reais.
