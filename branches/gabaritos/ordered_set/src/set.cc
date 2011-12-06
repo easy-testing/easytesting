@@ -38,7 +38,6 @@ bool IsSentinel(Node* p) {
 
 // Retorna o nó da árvore x cuja chave é k em O(log n),
 // ou NULL caso k não esteja na árvore x.
-// PRECONDIÇÃO: x não é uma árvore vazia.
 Node* TreeSearch(Node* x, Type k) {
   while (x != NULL && k != x->key) {
     if (k < x->key) {

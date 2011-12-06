@@ -46,7 +46,7 @@
 #include <iostream>
 #include <string>
 
-#include "linear_set/src/set.h"
+#include "ordered_set/src/set.h"
 
 using std::cin;
 using std::cout;
