@@ -53,26 +53,26 @@ class list {
   // Retorna o número de elementos na lista em O(1).
   int size();
 
-  // Insere x no início da lista em O(1).
-  void push_front(Type x);
+  // Insere k no início da lista em O(1).
+  void push_front(Type k);
 
   // Remove o primeiro elemento da lista em O(1).
   // PRECONDIÇÃO: a lista não pode estar vazia.
   void pop_front();
 
-  // Insere x no final da lista em O(1).
-  void push_back(Type x);
+  // Insere k no final da lista em O(1).
+  void push_back(Type k);
 
   // Remove o último elemento da lista em O(1).
   // PRECONDIÇÃO: a lista não pode estar vazia.
   void pop_back();
 
-  // Insere k antes do elemento indicado por x em O(1) e retorna um ponteiro
+  // Insere k antes do elemento indicado por i em O(1) e retorna um ponteiro
   // para o elemento k.
   Node* insert(Node* i, Type k);
 
-  // Apaga o elemento indicado por x da lista em O(1).
-  // PRECONDIÇÃO: x aponta para um dos elementos da lista.
+  // Apaga o elemento indicado por i da lista em O(1).
+  // PRECONDIÇÃO: i aponta para um dos elementos da lista.
   void erase(Node* i);
 
   // Remove todos os elementos da lista em O(n),

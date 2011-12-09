@@ -60,16 +60,16 @@ int list::size() {
   return size_;
 }
 
-void list::push_front(Type x) {
-  insert(begin(), x);
+void list::push_front(Type k) {
+  insert(begin(), k);
 }
 
 void list::pop_front() {
   erase(begin());
 }
 
-void list::push_back(Type x) {
-  insert(end(), x);
+void list::push_back(Type k) {
+  insert(end(), k);
 }
 
 void list::pop_back() {
@@ -84,10 +84,10 @@ Node* list::insert(Node* i, Type k) {
   return node;
 }
 
-void list::erase(Node* x) {
-  x->prev->next = x->next;
-  x->next->prev = x->prev;
-  delete x;
+void list::erase(Node* i) {
+  i->prev->next = i->next;
+  i->next->prev = i->prev;
+  delete i;
   size_--;
 }
 
