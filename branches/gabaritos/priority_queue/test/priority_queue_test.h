@@ -232,9 +232,9 @@ TEST_F(Teste, Testar_metodo_size_em_priority_queue_com_varios_elementos) {
     << "-------------------------------------------------------------------\n";
 }
 
-// Para realizar a comparacao da priority_queue esperada para a priority_queue do aluno, foi
-// necessario utilizar a comparacao da classe string (imprimir a priority_queue do
-// aluno em uma string).
+// Para realizar a comparacao da priority_queue esperada para a priority_queue
+// do aluno, foi necessario utilizar a comparacao da classe string (imprimir a
+// priority_queue do aluno em uma string).
 TEST_F(Teste, Testar_metodo_push_em_priority_queue_vazia) {
   priority_queue f;
   f.push("10");
