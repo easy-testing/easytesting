@@ -1,7 +1,7 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef RECURSAO_TEST_RECURSAO_TEST_H_
-#define RECURSAO_TEST_RECURSAO_TEST_H_
+#ifndef BRANCHES_GABARITOS_RECURSAO_TEST_RECURSAO_TEST_H_
+#define BRANCHES_GABARITOS_RECURSAO_TEST_RECURSAO_TEST_H_
 
 #include <sstream>
 #include <string>
@@ -271,8 +271,8 @@ TEST_F(Teste, Calculo_da_Raiz_quadrada) {
 }
 
 TEST_F(Teste, Calculo_da_Raiz_quadrada_para_numeros_menores_que_um) {
-  double esperado[] = {0, 0.5, 0.0001, 0.9,};
-  double  entrada[] = {0, 0.25, 0.001, 0.81};
+  double esperado[] = {0, 0.5, 0.0001, 0.9};
+  double    entrada[] = {0, 0.25, 0.001, 0.81};
   int num_testes = 4;
   for (int i = 0; i < num_testes; i ++) {
   ASSERT_NEAR(esperado[i], sqrt_(entrada[i]), 0.001)
@@ -288,4 +288,4 @@ TEST_F(Teste, Calculo_da_Raiz_quadrada_para_numeros_menores_que_um) {
 }
 }  // end namespace
 
-#endif  // RECURSAO_TEST_RECURSAO_TEST_H_
+#endif  // BRANCHES_GABARITOS_RECURSAO_TEST_RECURSAO_TEST_H_
