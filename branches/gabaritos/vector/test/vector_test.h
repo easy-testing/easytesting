@@ -1,7 +1,7 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef Type_VECTOR_TEST_Type_VECTOR_TEST_H_
-#define Type_VECTOR_TEST_Type_VECTOR_TEST_H_
+#ifndef BRANCHES_GABARITOS_VECTOR_TEST_VECTOR_TEST_H_
+#define BRANCHES_GABARITOS_VECTOR_TEST_VECTOR_TEST_H_
 #include "vector/src/vector.h"
 #include <string>
 #include "gtest/gtest.h"
@@ -650,5 +650,5 @@ TEST_F(Teste, Clear_Size_3) {
 }
 
 
-#endif  // Type_VECTOR_TEST_Type_VECTOR_TEST_H__
+#endif  // BRANCHES_GABARITOS_VECTOR_TEST_VECTOR_TEST_H_
 
