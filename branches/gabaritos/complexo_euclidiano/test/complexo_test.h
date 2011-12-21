@@ -1,7 +1,7 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef COMPLEXO_EUCLIDIANO_TEST_COMPLEXO_TEST_H_
-#define COMPLEXO_EUCLIDIANO_TEST_COMPLEXO_TEST_H_
+#ifndef BRANCHES_GABARITOS_COMPLEXO_EUCLIDIANO_TEST_COMPLEXO_TEST_H_
+#define BRANCHES_GABARITOS_COMPLEXO_EUCLIDIANO_TEST_COMPLEXO_TEST_H_
 
 #include "complexo_euclidiano/src/complexo.h"
 
@@ -533,4 +533,4 @@ TEST_F(Teste, Dividir_Numeros_Complexos_sinais_contrarios) {
     << " Resposta esperada:  " << ToString(esperado) << "\n"
     << "-------------------------------------------------------------------\n";
 }
-#endif  // COMPLEXO_EUCLIDIANO_TEST_COMPLEXO_TEST_H_
+#endif  // BRANCHES_GABARITOS_COMPLEXO_EUCLIDIANO_TEST_COMPLEXO_TEST_H_

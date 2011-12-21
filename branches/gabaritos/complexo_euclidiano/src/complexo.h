@@ -1,12 +1,12 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef COMPLEXO_EUCLIDIANO_SRC_COMPLEXO_H_
-#define COMPLEXO_EUCLIDIANO_SRC_COMPLEXO_H_
+#ifndef BRANCHES_GABARITOS_COMPLEXO_EUCLIDIANO_SRC_COMPLEXO_H_
+#define BRANCHES_GABARITOS_COMPLEXO_EUCLIDIANO_SRC_COMPLEXO_H_
 
 // Representa um número complexo.
 struct Complexo {
  private:
- // Parte real;
+  // Parte real;
   double real_;
 
   // Parte imaginária.
@@ -62,4 +62,4 @@ struct Complexo {
   friend class Teste;
 };
 
-#endif  // COMPLEXO_EUCLIDIANO_SRC_COMPLEXO_H_
+#endif  // BRANCHES_GABARITOS_COMPLEXO_EUCLIDIANO_SRC_COMPLEXO_H_
