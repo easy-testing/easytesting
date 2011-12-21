@@ -1,7 +1,7 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef BRANCHES_GABARITOS_ORDERED_SET_SRC_NODE_H_
-#define BRANCHES_GABARITOS_ORDERED_SET_SRC_NODE_H_
+#ifndef BRANCHES_GABARITOS_ORDERED_MULTISET_SRC_NODE_H_
+#define BRANCHES_GABARITOS_ORDERED_MULTISET_SRC_NODE_H_
 
 #include "type/type.h"
 
@@ -13,4 +13,4 @@ struct Node {
   Node* parent;  // Ponteiro para o nó acima.
 };
 
-#endif  // BRANCHES_GABARITOS_ORDERED_SET_SRC_NODE_H_
+#endif  // BRANCHES_GABARITOS_ORDERED_MULTISET_SRC_NODE_H_

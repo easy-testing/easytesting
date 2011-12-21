@@ -1,7 +1,7 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef BRANCHES_GABARITOS_ORDERED_MULTISET_TEST_MULTISET_TEST_H_
-#define BRANCHES_GABARITOS_ORDERED_MULTISET_TEST_MULTISET_TEST_H_
+#ifndef BRANCHES_GABARITOS_ORDERED_MULTISET_TEST_SET_TEST_H_
+#define BRANCHES_GABARITOS_ORDERED_MULTISET_TEST_SET_TEST_H_
 
 #include <sstream>
 #include <string>
@@ -457,4 +457,4 @@ TEST_F(Teste, Testar_metodo_clear_em_conjunto_com_varios_elementos) {
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // BRANCHES_GABARITOS_ORDERED_MULTISET_TEST_MULTISET_TEST_H_
+#endif  // BRANCHES_GABARITOS_ORDERED_MULTISET_TEST_SET_TEST_H_
