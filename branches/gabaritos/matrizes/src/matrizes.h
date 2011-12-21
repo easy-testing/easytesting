@@ -1,7 +1,7 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef MATRIZES_SRC_MATRIZES_H_
-#define MATRIZES_SRC_MATRIZES_H_
+#ifndef BRANCHES_GABARITOS_MATRIZES_SRC_MATRIZES_H_
+#define BRANCHES_GABARITOS_MATRIZES_SRC_MATRIZES_H_
 
 #define MAX 100 // Dimensao máxima de uma matriz.
 
@@ -34,4 +34,4 @@ void MultMatriz(int n, float A[][MAX], float B[][MAX], float P[][MAX]);
 // |   ...     ...     ...     ...   ...|
 void MostraMatriz(int n, int m, float a[][MAX]);
 
-#endif  // MATRIZES_SRC_MATRIZES_H_
+#endif  // BRANCHES_GABARITOS_MATRIZES_SRC_MATRIZES_H_
