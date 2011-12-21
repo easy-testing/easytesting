@@ -4,6 +4,7 @@ cc = g++
 path = ../
 # Nome da lista de exercicios
 program = ponto_3d
+type = _
 
 # Gera o binario do programa e de testes e mantem dependencias
 all: clean main.o $(program).o $(program)_test.o gtest.o
@@ -27,13 +28,13 @@ test: clean $(program).o $(program)_test.o gtest.o
 	@rm -f $(program).o $(program)_test.o gtest.o a.out
 
 main.o:
-	$(cc) -I $(path) -c src/main.cc
+	$(cc) -I $(path) -c src/main.cc -D$(type)
 
 $(program).o:
-	$(cc) -I $(path) -c src/$(program).cc
+	$(cc) -I $(path) -c src/$(program).cc -D$(type)
 
 $(program)_test.o:
-	$(cc) -I $(path) -c test/$(program)_test.cc
+	$(cc) -I $(path) -c test/$(program)_test.cc -D$(type)
 
 gtest.o:
 	$(cc) -I $(path) -c ../gtest/gtest.cc

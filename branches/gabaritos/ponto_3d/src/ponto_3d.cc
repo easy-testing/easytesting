@@ -1,3 +1,5 @@
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+
 #include "ponto_3d/src/ponto_3d.h"
 
 #include <math.h>

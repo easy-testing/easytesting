@@ -1,5 +1,7 @@
-#ifndef _H_
-#define _H_
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+
+#ifndef BRANCHES_GABARITOS_PONTO_3D_SRC_PONTO_3D_H_
+#define BRANCHES_GABARITOS_PONTO_3D_SRC_PONTO_3D_H_
 
 #define PI 3.1415928
 
@@ -70,4 +72,4 @@ class Ponto3D {
 
 
 
-#endif  // _H_
+#endif  // BRANCHES_GABARITOS_PONTO_3D_SRC_PONTO_3D_H_

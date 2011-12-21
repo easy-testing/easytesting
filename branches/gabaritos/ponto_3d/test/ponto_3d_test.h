@@ -1,7 +1,7 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef PONTO_3D_TEST_PONTO_3D_TEST_H_
-#define PONTO_3D_TEST_PONTO_3D_TEST_H_
+#ifndef BRANCHES_GABARITOS_PONTO_3D_TEST_PONTO_3D_TEST_H_
+#define BRANCHES_GABARITOS_PONTO_3D_TEST_PONTO_3D_TEST_H_
 
 #include <sstream>
 #include <string>
@@ -210,4 +210,4 @@ TEST_F(Teste, Rotacionar_no_eixo_Z) {
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // PONTO_3D_TEST_PONTO_3D_TEST_H_
+#endif  // BRANCHES_GABARITOS_PONTO_3D_TEST_PONTO_3D_TEST_H_
