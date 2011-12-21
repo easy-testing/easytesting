@@ -1,7 +1,7 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef COMPLEXO_POLAR_SRC_COMPLEXO_H_
-#define COMPLEXO_POLAR_SRC_COMPLEXO_H_
+#ifndef BRANCHES_GABARITOS_COMPLEXO_POLAR_SRC_COMPLEXO_H_
+#define BRANCHES_GABARITOS_COMPLEXO_POLAR_SRC_COMPLEXO_H_
 
 // Representa um número complexo.
 struct Complexo {
@@ -62,4 +62,4 @@ struct Complexo {
   friend class Teste;
 };
 
-#endif  // COMPLEXO_POLAR_SRC_COMPLEXO_H_
+#endif  // BRANCHES_GABARITOS_COMPLEXO_POLAR_SRC_COMPLEXO_H_

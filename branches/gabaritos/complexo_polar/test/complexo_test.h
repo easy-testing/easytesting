@@ -1,7 +1,7 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef COMPLEXO_POLAR_TEST_COMPLEXO_TEST_H_
-#define COMPLEXO_POLAR_TEST_COMPLEXO_TEST_H_
+#ifndef BRANCHES_GABARITOS_COMPLEXO_POLAR_TEST_COMPLEXO_TEST_H_
+#define BRANCHES_GABARITOS_COMPLEXO_POLAR_TEST_COMPLEXO_TEST_H_
 
 #include "complexo_polar/src/complexo.h"
 
@@ -535,4 +535,4 @@ TEST_F(Teste, Dividir_Numeros_Complexos_sinais_contrarios) {
     << " Resposta esperada:  " << ToString(esperado) << "\n"
     << "-------------------------------------------------------------------\n";
 }
-#endif  // COMPLEXO_POLAR_TEST_COMPLEXO_TEST_H_
+#endif  // BRANCHES_GABARITOS_COMPLEXO_POLAR_TEST_COMPLEXO_TEST_H_
