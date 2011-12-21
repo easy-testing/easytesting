@@ -1,7 +1,7 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef ITERACAO_SRC_ITERACAO_H_
-#define ITERACAO_SRC_ITERACAO_H_
+#ifndef BRANCHES_GABARITOS_ITERACAO_SRC_ITERACAO_H_
+#define BRANCHES_GABARITOS_ITERACAO_SRC_ITERACAO_H_
 
 // Retorna o valor do fatorial de n.
 int fat(int n);
@@ -38,4 +38,4 @@ bool primo(int n);
 // Retorna a raiz quadrada de n >= 1 (com precisão de 0.001).
 double sqrt_(double n);
 
-#endif  // ITERACAO_SRC_ITERACAO_H_
+#endif  // BRANCHES_GABARITOS_ITERACAO_SRC_ITERACAO_H_

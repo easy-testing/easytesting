@@ -1,6 +1,6 @@
 // copyright 2010 Universidade Federal de Minas Gerais (UFMG)
-#ifndef ITERACAO_TEST_ITERACAO_TEST_H_
-#define ITERACAO_TEST_ITERACAO_TEST_H_
+#ifndef BRANCHES_GABARITOS_ITERACAO_TEST_ITERACAO_TEST_H_
+#define BRANCHES_GABARITOS_ITERACAO_TEST_ITERACAO_TEST_H_
 
 #include <sstream>
 #include <string>
@@ -270,4 +270,4 @@ TEST_F(Teste, Calculo_da_Raiz_quadrada) {
 }
 }  // end namespace
 
-#endif  // ITERACAO_TEST_ITERACAO_TEST_H_
+#endif  // BRANCHES_GABARITOS_ITERACAO_TEST_ITERACAO_TEST_H_
