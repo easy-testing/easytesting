@@ -1,7 +1,7 @@
 // copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef FUNCOES_TEST_FUNCOES_TEST_H_
-#define FUNCOES_TEST_FUNCOES_TEST_H_
+#ifndef BRANCHES_GABARITOS_FUNCOES_TEST_FUNCOES_TEST_H_
+#define BRANCHES_GABARITOS_FUNCOES_TEST_FUNCOES_TEST_H_
 
 #include <math.h>
 #include <sstream>
@@ -380,4 +380,4 @@ TEST(Teste, Calculo_raiz_positiva_com_alguns_coeficientes_nulos) {
 
 }  // end namespace
 
-#endif  // FUNCOES_TEST_FUNCOES_TEST_H_
+#endif  // BRANCHES_GABARITOS_FUNCOES_TEST_FUNCOES_TEST_H_
