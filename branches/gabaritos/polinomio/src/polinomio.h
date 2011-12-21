@@ -1,8 +1,8 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef POLINOMIO_SRC_POLINOMIO_H_
+#ifndef BRANCHES_GABARITOS_POLINOMIO_SRC_POLINOMIO_H_
 
-#define POLINOMIO_SRC_POLINOMIO_H_
+#define BRANCHES_GABARITOS_POLINOMIO_SRC_POLINOMIO_H_
 
 class Polinomio {
  public:
@@ -63,4 +63,4 @@ class Polinomio {
   friend class Teste;
 };
 
-#endif  // POLINOMIO_SRC_POLINOMIO_H_
+#endif  // BRANCHES_GABARITOS_POLINOMIO_SRC_POLINOMIO_H_
