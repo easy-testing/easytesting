@@ -1,7 +1,7 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef BRANCHES_GABARITOS_LIST_SRC_NODE_H_
-#define BRANCHES_GABARITOS_LIST_SRC_NODE_H_
+#ifndef BRANCHES_GABARITOS_DEQUE_SRC_NODE_H_
+#define BRANCHES_GABARITOS_DEQUE_SRC_NODE_H_
 
 #include "type/type.h"
 
@@ -12,4 +12,4 @@ struct Node {
   Node* next;  // Ponteiro para o próximo nó.
 };
 
-#endif  // BRANCHES_GABARITOS_LIST_SRC_NODE_H_
+#endif  // BRANCHES_GABARITOS_DEQUE_SRC_NODE_H_
