@@ -76,7 +76,7 @@ TEST_F(Teste, Testa_funcao_Media_com_mais_de_um_valor) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_funcao_Media_com_numeros_nulos) {
+TEST_F(Teste, Testa_funcao_Media_com_todos_os_elementos_iguais_a_zero) {
   int n = 5;
   float v[] = {0, 0, 0, 0, 0};
   float esperado = 0;
@@ -92,7 +92,7 @@ TEST_F(Teste, Testa_funcao_Media_com_numeros_nulos) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_funcao_Media_numeros_positivos_e_negativos) {
+TEST_F(Teste, Testa_funcao_Media_com_numeros_positivos_e_negativos) {
   int n = 6;
   float v[] = {5.3, -4.1, 8.3, -1.5, 0.9, -8.9};
   float esperado = 0;
@@ -108,7 +108,7 @@ TEST_F(Teste, Testa_funcao_Media_numeros_positivos_e_negativos) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Teste_modulo_componentes_positivas) {
+TEST_F(Teste, Testa_funcao_Modulo_com_elementos_positivos) {
   int n = 3;
   float v[3 + 1] = { 1 , 2, 3, 4};
   float atual = Modulo(v, n);
@@ -121,23 +121,7 @@ TEST_F(Teste, Teste_modulo_componentes_positivas) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Teste_Modulo_acesso_correto) {
-  int n = 3;
-  float v[3] = { 1 , 2, 3};
-  float atual = Modulo(v, n);
-  float esperado = sqrt(1+4+9);
-  ASSERT_EQ(atual, esperado)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao \"float Modulo(float v[],int n)\".                  \n"
-    << "-------------------------------------------------------------------\n"
-    << "   v = " << MostrarVetor(v, n) << "\n"
-    << "   n = " << n << "\n"
-    << "Valor esperado: " << esperado << "\n"
-    << "Valor retornado: " << atual << "\n"
-    << "-------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Testa_Modulo_uma_componente_negativa) {
+TEST_F(Teste, Testa_Modulo_um_elemento_negativo) {
   int n = 1;
   float v[] = {-5};
   float esperado = 5;
@@ -153,7 +137,7 @@ TEST_F(Teste, Testa_Modulo_uma_componente_negativa) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Modulo_com_componentes_nulas) {
+TEST_F(Teste, Testa_Modulo_com_varios_elementos_iguais_a_zero) {
   int n = 5;
   float v[] = {0, 0, 0, 0, 0};
   float esperado = 0;
@@ -163,6 +147,26 @@ TEST_F(Teste, Testa_Modulo_com_componentes_nulas) {
     << "Erro na funcao: \"float Media(float v[], int n)\".                 \n"
     << "-------------------------------------------------------------------\n"
     << "  v = " << MostrarVetor(v, n) << "\n"
+    << "  n = " << n << "\n"
+    << "Valor esperado: " << esperado << "\n"
+    << "Valor retornado: " << atual << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+
+TEST_F(Teste, Testa_ProdutoEscalar) {
+  int n = 3;
+  float v[] = {3, 7, 2};
+  float u[] = {1, 1, 9};
+  float esperado = 28;
+  float atual = ProdutoEscalar(v, u, n);
+  ASSERT_EQ(esperado, atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao: \"float ProdutoEscalar(float v[], float u[], int n)\""
+    << ".                 \n"
+    << "-------------------------------------------------------------------\n"
+    << "  v = " << MostrarVetor(v, n) << "\n"
+    << "  u = " << MostrarVetor(u, n) << "\n"
     << "  n = " << n << "\n"
     << "Valor esperado: " << esperado << "\n"
     << "Valor retornado: " << atual << "\n"
@@ -181,26 +185,7 @@ TEST_F(Teste, Testa_ProdutoEscalar_perpendicular) {
     << "float u[], int n)\"\n"
     << "-------------------------------------------------------------------\n"
     << "  v = " << MostrarVetor(v, n) << "\n"
-    << "  v = " << MostrarVetor(u, n) << "\n"
-    << "  n = " << n << "\n"
-    << "Valor esperado: " << esperado << "\n"
-    << "Valor retornado: " << atual << "\n"
-    << "-------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Testa_ProdutoEscalar_aleatorio) {
-  int n = 3;
-  float v[] = {3, 7, 2};
-  float u[] = {1, 1, 9};
-  float esperado = 28;
-  float atual = ProdutoEscalar(v, u, n);
-  ASSERT_EQ(esperado, atual)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: \"float ProdutoEscalar(float v[], float u[], int n)\""
-    << ".                 \n"
-    << "-------------------------------------------------------------------\n"
-    << "  v = " << MostrarVetor(v, n) << "\n"
-    << "  v = " << MostrarVetor(u, n) << "\n"
+    << "  u = " << MostrarVetor(u, n) << "\n"
     << "  n = " << n << "\n"
     << "Valor esperado: " << esperado << "\n"
     << "Valor retornado: " << atual << "\n"
@@ -245,7 +230,7 @@ TEST_F(Teste, Testa_Cosseno_antiparalelo) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Cosseno_45) {
+TEST_F(Teste, Testa_Cosseno_45_graus) {
   int n = 2;
   float v[] = {0, 1};
   float u[] = {1, 1};
@@ -282,7 +267,7 @@ TEST_F(Teste, Testa_acesso_indevido_na_funcao_Variancia) {
 }
 
 
-TEST_F(Teste, Testa_funcao_Variancia_com_numeros_nulos) {
+TEST_F(Teste, Testa_funcao_Variancia_com_varios_numeros_iguais_a_zero) {
   int n = 8;
   float v[] = {0, 0, 0, 0, 0, 0, 0, 0};
   float esperado = 0;
@@ -298,7 +283,7 @@ TEST_F(Teste, Testa_funcao_Variancia_com_numeros_nulos) {
   << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_funcao_Variancia_numeros_positivos_distintos) {
+TEST_F(Teste, Testa_funcao_Variancia_com_numeros_positivos_distintos) {
   int n = 8;
   float v[] = {10, 5, 8, 12, 9, 4, 3, 7};
   float esperado = 8.4375;
@@ -456,7 +441,7 @@ TEST_F(Teste, Testa_acesso_indevido_na_funcao_Menor) {
   << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_funcao_Menor_numeros_positivos_distintos) {
+TEST_F(Teste, Testa_funcao_Menor_com_numeros_positivos_distintos) {
   int n = 7;
   float v[] = {21.21, 20.20, 65, 45.1, 78.02, 66.321, 9.87};
   float esperado = 9.87;
@@ -537,7 +522,7 @@ TEST_F(Teste, Testa_funcao_Menor_com_numeros_positivos_e_negetivos) {
 }
 
 
-TEST_F(Teste, Testa_funcao_ProdutoEscalar_numeros_positivos) {
+TEST_F(Teste, Testa_funcao_ProdutoEscalar_com_numeros_positivos) {
   int n = 8;
   float v[] = {1.4, 5.2, 10, 7.1, 5.3, 2.03, 3.001, 4.1};
   float u[] = {1.1, 2.14, 3.01, 0, 0.02, 4.5, 2.65, 3.2};
@@ -555,7 +540,7 @@ TEST_F(Teste, Testa_funcao_ProdutoEscalar_numeros_positivos) {
   << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_funcao_ProdutoEscalar_numeros_positivos_e_negativos) {
+TEST_F(Teste, Testa_funcao_ProdutoEscalar_com_numeros_positivos_e_negativos) {
   int n = 8;
   float v[] = {1.4, -5.2, -10, 7.1, -5.3, 2.03, 3.001, 4.1};
   float u[] = {1.1, 2.14, -3.01, 0, -0.02, -4.5, 2.65, 3.2};
@@ -627,7 +612,7 @@ TEST_F(Teste, Testa_funcao_ProdutoEscalar_com_vetores_paralelos) {
   << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_funcao_ProdutoEscalar_vetores_opostos) {
+TEST_F(Teste, Testa_funcao_ProdutoEscalar_com_vetores_opostos) {
   int n = 3;
   float v[] = {3, 2, 4};
   float u[] = {-3, -2, -4};
