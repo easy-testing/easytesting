@@ -316,68 +316,6 @@ TEST(Teste, Testa_hipotenusa_triagulo_escaleno) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Testa_raiz_positiva_com_coeficientes_positivos) {
-  float entrada[3] = {1, 5, 6};
-  float resposta = raiz_positiva(entrada[0], entrada[1], entrada[2]);
-  float esperado = -2;
-  ASSERT_FLOAT_EQ(resposta, esperado)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* float raiz_positiva(float, float) *\n"
-    << "-------------------------------------------------------------------\n"
-    << "\nValores de entrada : " << entrada[0] << ", " << entrada[1]
-    << ", " << entrada[2] << "\n\n"
-    << "   Resultado esperado:  " << esperado << "\n"
-    << "   Resultado retornado: " << resposta << "\n\n"
-    << "-------------------------------------------------------------------\n";
-}
-
-TEST(Teste, Testa_raiz_positiva_com_coeficientes_negativos) {
-  float entrada[3] = {-1, -4, -3};
-  float resposta = raiz_positiva(entrada[0], entrada[1], entrada[2]);
-  float esperado = -3;
-  ASSERT_FLOAT_EQ(resposta, esperado)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* float raiz_positiva(float, float) *\n"
-    << "-------------------------------------------------------------------\n"
-    << "\nValores de entrada : " << entrada[0] << ", " << entrada[1]
-    << ", " << entrada[2] << "\n\n"
-    << "   Resultado esperado:  " << esperado << "\n"
-    << "   Resultado retornado: " << resposta << "\n\n"
-    << "-------------------------------------------------------------------\n";
-}
-
-TEST(Teste, Testa_raiz_positiva_com_alguns_coeficientes_nulos) {
-  float entrada[3] = {1, 0, -9};
-  float resposta = raiz_positiva(entrada[0], entrada[1], entrada[2]);
-  float esperado = 3;
-  ASSERT_FLOAT_EQ(resposta, esperado)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* float raiz_positiva(float, float) *\n"
-    << "-------------------------------------------------------------------\n"
-    << "\nValores de entrada : " << entrada[0] << ", " << entrada[1]
-    << ", " << entrada[2] << "\n\n"
-    << "   Resultado esperado:  " << esperado << "\n"
-    << "   Resultado retornado: " << resposta << "\n\n"
-    << "-------------------------------------------------------------------\n";
-
-  float entrada2[3] = {1, 5, 0};
-  float resposta2 = raiz_positiva(entrada2[0], entrada2[1], entrada2[2]);
-  float esperado2 = 0;
-  ASSERT_FLOAT_EQ(resposta2, esperado2)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* float raiz_positiva(float, float) *\n"
-    << "-------------------------------------------------------------------\n"
-    << "\nValores de entrada : " << entrada2[0] << ", " << entrada2[1]
-    << ", " << entrada2[2] << "\n\n"
-    << "   Resultado esperado:  " << esperado2 << "\n"
-    << "   Resultado retornado: " << resposta2 << "\n\n"
-    << "-------------------------------------------------------------------\n";
-}
-
 }  // end namespace
 
 #endif  // BRANCHES_GABARITOS_FUNCOES_TEST_FUNCOES_TEST_H_
