@@ -1,7 +1,7 @@
 // copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef FUNCOES_TEST_FUNCOES_TEST_H_
-#define FUNCOES_TEST_FUNCOES_TEST_H_
+#ifndef BRANCHES_GABARITOS_FUNCOES_TEST_FUNCOES_TEST_H_
+#define BRANCHES_GABARITOS_FUNCOES_TEST_FUNCOES_TEST_H_
 
 #include <math.h>
 #include <sstream>
@@ -12,7 +12,7 @@
 
 namespace Teste {
 
-TEST(Teste, Calculo_media_positiva) {
+TEST(Teste, Testa_media_com_soma_positiva) {
   float entrada[3] = {2.50, 4.45, -1.25};
   float resposta = media(entrada[0], entrada[1], entrada[2]);
   float esperado = 1.9;
@@ -28,7 +28,7 @@ TEST(Teste, Calculo_media_positiva) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Calculo_media_negativa) {
+TEST(Teste, Testa_media_com_soma_negativa) {
   float entrada[3] = {-3.69, 1.50, -2.40};
   float resposta = media(entrada[0], entrada[1], entrada[2]);
   float esperado = -1.53;
@@ -44,7 +44,7 @@ TEST(Teste, Calculo_media_negativa) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Calculo_media_nula) {
+TEST(Teste, Testa_media_com_soma_igual_a_zero) {
   float entrada[3] = {2.50, -1.20, -1.30};
   float resposta = media(entrada[0], entrada[1], entrada[2]);
   float esperado = 0;
@@ -60,7 +60,7 @@ TEST(Teste, Calculo_media_nula) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Calculo_media_ponderada_positiva) {
+TEST(Teste, Testa_media_ponderada_com_soma_positiva) {
   float entrada[3] = {2.50, 4.45, -1.25};
   float resposta = media_ponderada(entrada[0], entrada[1], entrada[2]);
   float esperado = 1.5875;
@@ -76,7 +76,7 @@ TEST(Teste, Calculo_media_ponderada_positiva) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Calculo_media_ponderada_negativa) {
+TEST(Teste, Testa_media_ponderada_com_soma_negativa) {
   float entrada[3] = {-1.7, -4.1, -2.9};
   float resposta = media_ponderada(entrada[0], entrada[1], entrada[2]);
   float esperado = -3;
@@ -92,7 +92,7 @@ TEST(Teste, Calculo_media_ponderada_negativa) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Calculo_media_ponderada_nula) {
+TEST(Teste, Testa_media_ponderada_com_soma_igual_a_zero) {
   float entrada[3] = {3.5, 3, -4.5};
   float resposta = media_ponderada(entrada[0], entrada[1], entrada[2]);
   float esperado = 0;
@@ -108,7 +108,7 @@ TEST(Teste, Calculo_media_ponderada_nula) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Calculo_perimetro_circulo) {
+TEST(Teste, Testa_perimetro_circulo) {
   float entrada = 1000;
   float resposta = perimetro(entrada);
   float esperado = 2 * M_PI * entrada;
@@ -123,7 +123,7 @@ TEST(Teste, Calculo_perimetro_circulo) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Calculo_area_circulo) {
+TEST(Teste, Testa_area_circulo) {
   float entrada = 100;
   float resposta = area_circulo(entrada);
   float esperado = M_PI * entrada * entrada;
@@ -138,7 +138,7 @@ TEST(Teste, Calculo_area_circulo) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Calculo_area_triangulo_acutangulo) {
+TEST(Teste, Testa_area_triangulo_acutangulo) {
   float entrada[2] = {10.5, 20.1};
   float resposta = area_triangulo(entrada[0], entrada[1]);
   float esperado = 105.525;
@@ -154,7 +154,7 @@ TEST(Teste, Calculo_area_triangulo_acutangulo) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Calculo_area_triangulo_retangulo) {
+TEST(Teste, Testa_area_triangulo_retangulo) {
   float entrada[2] = {10.5, 10.5};
   float resposta = area_triangulo(entrada[0], entrada[1]);
   float esperado = 55.125;
@@ -170,7 +170,7 @@ TEST(Teste, Calculo_area_triangulo_retangulo) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Calculo_area_triangulo_obtusangulo) {
+TEST(Teste, Testa_area_triangulo_obtusangulo) {
   float entrada[2] = {15.4, 7.5};
   float resposta = area_triangulo(entrada[0], entrada[1]);
   float esperado = 57.75;
@@ -186,7 +186,7 @@ TEST(Teste, Calculo_area_triangulo_obtusangulo) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Calculo_area_caixa_quadrada) {
+TEST(Teste, Testa_area_caixa_quadrada) {
   float entrada[3] = {3.5, 3.5, 3.5};
   float resposta = area_caixa(entrada[0], entrada[1], entrada[2]);
   float esperado = 73.5;
@@ -202,7 +202,7 @@ TEST(Teste, Calculo_area_caixa_quadrada) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Calculo_area_caixa_retangular) {
+TEST(Teste, testa_area_caixa_retangular) {
   float entrada[3] = {5.5, 7.5, 10.5};
   float resposta = area_caixa(entrada[0], entrada[1], entrada[2]);
   float esperado = 355.5;
@@ -218,7 +218,7 @@ TEST(Teste, Calculo_area_caixa_retangular) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Calculo_volume_caixa_quadrada) {
+TEST(Teste, Testa_volume_caixa_quadrada) {
   float entrada[3] = {5.3, 5.3, 5.3};
   float resposta = volume_caixa(entrada[0], entrada[1], entrada[2]);
   float esperado = 148.877;
@@ -234,7 +234,7 @@ TEST(Teste, Calculo_volume_caixa_quadrada) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Calculo_volume_caixa_retangular) {
+TEST(Teste, Testa_volume_caixa_retangular) {
   float entrada[3] = {4.2, 3.1, 8.4};
   float resposta = volume_caixa(entrada[0], entrada[1], entrada[2]);
   float esperado = 109.368;
@@ -250,7 +250,7 @@ TEST(Teste, Calculo_volume_caixa_retangular) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Calculo_area_cilindro) {
+TEST(Teste, Testa_area_cilindro) {
   float raio = 2;
   float altura = 100;
   float resposta = area_cilindro(raio, altura);
@@ -268,7 +268,7 @@ TEST(Teste, Calculo_area_cilindro) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Calculo_volume_cilindro) {
+TEST(Teste, Testa_volume_cilindro) {
   float raio = 2;
   float altura = 100;
   float resposta = volume_cilindro(raio, altura);
@@ -284,7 +284,7 @@ TEST(Teste, Calculo_volume_cilindro) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Calculo_hipotenusa_triagulo_isosceles) {
+TEST(Teste, Testa_hipotenusa_triagulo_isosceles) {
   float entrada[2] = {100, 100};
   float resposta = hipotenusa(entrada[0], entrada[1]);
   float esperado = 100 * sqrt(2);
@@ -300,7 +300,7 @@ TEST(Teste, Calculo_hipotenusa_triagulo_isosceles) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Calculo_hipotenusa_triagulo_escaleno) {
+TEST(Teste, Testa_hipotenusa_triagulo_escaleno) {
   float entrada[2] = {100, 50};
   float resposta = hipotenusa(entrada[0], entrada[1]);
   float esperado = 50 * sqrt(5);
@@ -316,7 +316,7 @@ TEST(Teste, Calculo_hipotenusa_triagulo_escaleno) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Calculo_raiz_positiva_com_coeficientes_positivos) {
+TEST(Teste, Testa_raiz_positiva_com_coeficientes_positivos) {
   float entrada[3] = {1, 5, 6};
   float resposta = raiz_positiva(entrada[0], entrada[1], entrada[2]);
   float esperado = -2;
@@ -332,7 +332,7 @@ TEST(Teste, Calculo_raiz_positiva_com_coeficientes_positivos) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Calculo_raiz_positiva_com_coeficientes_negativos) {
+TEST(Teste, Testa_raiz_positiva_com_coeficientes_negativos) {
   float entrada[3] = {-1, -4, -3};
   float resposta = raiz_positiva(entrada[0], entrada[1], entrada[2]);
   float esperado = -3;
@@ -348,7 +348,7 @@ TEST(Teste, Calculo_raiz_positiva_com_coeficientes_negativos) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST(Teste, Calculo_raiz_positiva_com_alguns_coeficientes_nulos) {
+TEST(Teste, Testa_raiz_positiva_com_alguns_coeficientes_nulos) {
   float entrada[3] = {1, 0, -9};
   float resposta = raiz_positiva(entrada[0], entrada[1], entrada[2]);
   float esperado = 3;
@@ -380,4 +380,4 @@ TEST(Teste, Calculo_raiz_positiva_com_alguns_coeficientes_nulos) {
 
 }  // end namespace
 
-#endif  // FUNCOES_TEST_FUNCOES_TEST_H_
+#endif  // BRANCHES_GABARITOS_FUNCOES_TEST_FUNCOES_TEST_H_
