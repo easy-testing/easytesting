@@ -116,16 +116,6 @@ void Operacao(int op) {
       cin >> c;
       cout << "\nResultado: " << hipotenusa(b, c) << endl;
       break;
-    case 10:  // Raiz positiva
-      cout << "Sendo a funcao do segundo grau definida como ax2 + bx + c\n";
-      cout << "Digite o coeficiente a: ";
-      cin >> a;
-      cout << "Digite o coeficiente b: ";
-      cin >> b;
-      cout << "Digite o coeficiente c: ";
-      cin >> c;
-      cout << "\nResultado: " << raiz_positiva(a, b, c) << endl;
-      break;
   }
 }
 
