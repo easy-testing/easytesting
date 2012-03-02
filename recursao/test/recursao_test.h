@@ -1,7 +1,7 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef BRANCHES_GABARITOS_RECURSAO_TEST_RECURSAO_TEST_H_
-#define BRANCHES_GABARITOS_RECURSAO_TEST_RECURSAO_TEST_H_
+#ifndef TRUNK_RECURSAO_TEST_RECURSAO_TEST_H_
+#define TRUNK_RECURSAO_TEST_RECURSAO_TEST_H_
 
 #include <sstream>
 #include <string>
@@ -223,4 +223,4 @@ TEST(Teste, Testa_da_Soma_dos_digitos) {
 }
 }  // end namespace
 
-#endif  // BRANCHES_GABARITOS_RECURSAO_TEST_RECURSAO_TEST_H_
+#endif  // TRUNK_RECURSAO_TEST_RECURSAO_TEST_H_
