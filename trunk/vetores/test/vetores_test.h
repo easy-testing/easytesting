@@ -1,7 +1,7 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef VETORES_TEST_VETORES_TEST_H_
-#define VETORES_TEST_VETORES_TEST_H_
+#ifndef TRUNK_VETORES_TEST_VETORES_TEST_H_
+#define TRUNK_VETORES_TEST_VETORES_TEST_H_
 #include <cmath>
 #include <sstream>
 #include <string>
@@ -650,4 +650,4 @@ TEST_F(Teste, Testa_funcao_ProdutoEscalar_vetores_perpendiculares) {
 
 }  // Fim do namespace vazio.
 
-#endif  // VETORES_TEST_VETORES_TEST_H_
+#endif  // TRUNK_VETORES_TEST_VETORES_TEST_H_

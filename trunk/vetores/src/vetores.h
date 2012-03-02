@@ -1,7 +1,7 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef VETORES_SRC_VETORES_H_
-#define VETORES_SRC_VETORES_H_
+#ifndef TRUNK_VETORES_SRC_VETORES_H_
+#define TRUNK_VETORES_SRC_VETORES_H_
 
 // Calcula a média dos números de um vetor.
 float Media(float v[], int n);
@@ -28,4 +28,4 @@ float CossenoVetores(float v[], float u[], int n);
 // no formato {v[0], v[1], ..., v[n-1]}.
 void MostraVetor(float v[], int n);
 
-#endif  // VETORES_SRC_VETORES_H_
+#endif  // TRUNK_VETORES_SRC_VETORES_H_
