@@ -1,9 +1,9 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 //
-// Lista de exercícios sobre algoritmos iterativos.
+// Lista de exercícios sobre algoritmos recursivos.
 //
 // QUESTÃO 1:
-// Implemente em iteracao.cc as funções descritas em iteracao.h.
+// Implemente em recursao.cc as funções descritas em recursao.h.
 //
 // QUESTÃO 2:
 // Escreva um programa que (i) apresenta um menu com as funções que você
@@ -12,12 +12,12 @@
 
 #include <iostream>
 
-#include "iteracao/src/iteracao.h"
+#include "recursao/src/recursao.h"
 
 using namespace std;
 
 // Retorna um numero inteiro indicando a opcao escolhida pelo usuario
-int Menu() {
+int LerOpcaoDoMenu() {
   int op;
   cout << "*****************************************************************";
   cout << "\n                        MENU PRINCIPAL\n";
@@ -32,8 +32,6 @@ int Menu() {
   cout << "7.  Resto da Divisao\n";
   cout << "8.  Divisao Inteira\n";
   cout << "9.  Soma dos Digitos\n";
-  cout << "10. Raiz Quadrada\n";
-  cout << "11. Determinar se numero e primo\n\n";
   cout << "Escolha a operacao que deseja fazer: ";
   cin >> op;
   while (op < 1 || op > 11) {
@@ -43,19 +41,19 @@ int Menu() {
   return op;
 }
 
-// Recebe como parametro a opcao escolhida pelo usuario e
-// apos entrada de valores, imprime o resultado desejado
-void Operacao(int op) {
+// Recebe como parâmetro a opção escolhida pelo usuário e
+// após a entrada de valores, imprime o resultado desejado.
+void ExecutarOperacao(int op) {
   int n;
   int k;
   int a, b, c;
   switch (op) {
-    case 1:  // Fatoracao
+    case 1:  // Fatoração
       cout << "Digite o valor de um numero para o calculo do seu fatorial: ";
       cin >> n;
       cout << "\nResposta: " << fat(n) << endl;
       break;
-    case 2:  // Potenciacao
+    case 2:  // Potenciação
       cout << "Digite o valor da base da potencia: ";
       cin >> k;
       cout << "Digite o valor do expoente da potencia: ";
@@ -69,14 +67,14 @@ void Operacao(int op) {
       cin >> b;
       cout << "\nResposta: " << mmc(a, b) << endl;
       break;
-    case 4:  // MDC entre dois numeros
+    case 4:  // MDC entre dois números
       cout << "Digite o primeiro numero: ";
       cin >> a;
       cout << "Digite o segundo numero: ";
       cin >> b;
       cout << "\nResposta: " << mdc(a, b) << endl;
       break;
-    case 5:  // MDC entre tres numeros
+    case 5:  // MDC entre três números
       cout << "Digite o primeiro numero: ";
       cin >> a;
       cout << "Digite o segundo numero: ";
@@ -90,48 +88,32 @@ void Operacao(int op) {
       cin >> n;
       cout << "\nResposta: " << fib(n) << endl;
       break;
-    case 7:  // Resto da divisao
+    case 7:  // Resto da divisão
       cout << "Digite o valor do dividendo: ";
       cin >> a;
       cout << "Digite o valor do divisor: ";
       cin >> b;
       cout << "\nResposta: " << resto(a, b) << endl;
       break;
-    case 8:  // Divisao inteira
+    case 8:  // Divisão inteira
       cout << "Digite o valor do dividendo: ";
       cin >> a;
       cout << "Digite o valor do divisor: ";
       cin >> b;
       cout << "\nResposta: " << div_(a, b) << endl;
       break;
-    case 9:  // Soma dos digitos
+    case 9:  // Soma dos dígitos
       cout << "Digite um numero: ";
       cin >> n;
       cout << "\nResposta: " << dig(n) << endl;
       break;
-    case 10:  // Raiz quadrada
-      double d;
-      cout << "Digite um valor para que se calcule a raiz quadrada: ";
-      cin >> d;
-      cout << "\nResposta: " << sqrt_(d) << endl;
-      break;
-    case 11:  // Determinar se numero e primo
-      cout << "Digite um valor para determinar se e primo ou nao: ";
-      cin >> n;
-      cout << "\nResposta: ";
-      if (primo(n))
-        cout << "Primo\n";
-      else
-        cout << "Nao Primo\n";
-      break;
   }
 }
 
-// Executa diversar funções recursivas.
+// Executa diversar funções.
 int main() {
-  int opcao = Menu();
-  Operacao(opcao);
+  int opcao = LerOpcaoDoMenu();
+  ExecutarOperacao(opcao);
   return 0;
 }
-
 

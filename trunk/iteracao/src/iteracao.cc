@@ -3,8 +3,6 @@
 #include "iteracao/src/iteracao.h"
 
 #include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 int fat(int n) {
   int f = 1;
@@ -25,11 +23,11 @@ int pow(int k, int n) {
 }
 
 int mdc(int a, int b) {
-  int r = a%b;
+  int r = a % b;
   while (r != 0) {
     a = b;
     b = r;
-    r = a%b;
+    r = a % b;
   }
   return b;
 }

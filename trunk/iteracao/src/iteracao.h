@@ -32,10 +32,4 @@ int div_(int a, int b);
 // Por exemplo: dig(123) retorna 6.
 int dig(int n);
 
-// Retorna verdadeiro se n eh primo e false caso contrario.
-bool primo(int n);
-
-// Retorna a raiz quadrada de n >= 1 (com precisão de 0.001).
-double sqrt_(double n);
-
 #endif  // BRANCHES_GABARITOS_ITERACAO_SRC_ITERACAO_H_

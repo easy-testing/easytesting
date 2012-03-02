@@ -1,10 +1,11 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
 #include "recursao/src/recursao.h"
+
 #include <math.h>
 
 int fat(int n) {
-  if ((n == 1) or (n == 0))
+  if (n == 1 || n == 0)
     return 1;
   else
     return n * fat(n-1);
@@ -21,7 +22,7 @@ int mdc(int a, int b) {
   if (a % b == 0)
     return b;
   else
-    return mdc(b, a%b);
+    return mdc(b, a % b);
 }
 
 int mdc3(int a, int b, int c) {
@@ -61,34 +62,4 @@ int dig(int n) {
     return n;
   else
     return n % 10 + dig(n / 10);
-}
-
-bool TemDivisorPrimoMenorQueK(int n, int k) {
-  if (k == 1)
-    return false;
-  else if (n % k == 0)
-    return true;
-  else
-    return TemDivisorPrimoMenorQueK(n, k - 1);
-}
-
-bool primo(int n) {
-  if (n <= 1)
-    return false;
-  else if (n == 2)
-    return true;
-  else
-    return !TemDivisorPrimoMenorQueK(n, n - 1);
-}
-
-double sqrt_aux(double n, double x) {
-  if (fabs(x * x - n) < 0.001) {
-    return x;
-  } else {
-    return  sqrt_aux(n, x - (x * x - n) / (2 * x));
-  }
-}
-
-double sqrt_(double n) {
-  return sqrt_aux(n, n);
 }
