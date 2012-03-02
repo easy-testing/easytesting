@@ -1,7 +1,7 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef BRANCHES_GABARITOS_ITERACAO_SRC_ITERACAO_H_
-#define BRANCHES_GABARITOS_ITERACAO_SRC_ITERACAO_H_
+#ifndef TRUNK_ITERACAO_SRC_ITERACAO_H_
+#define TRUNK_ITERACAO_SRC_ITERACAO_H_
 
 // Retorna o valor do fatorial de n.
 int fat(int n);
@@ -32,4 +32,4 @@ int div_(int a, int b);
 // Por exemplo: dig(123) retorna 6.
 int dig(int n);
 
-#endif  // BRANCHES_GABARITOS_ITERACAO_SRC_ITERACAO_H_
+#endif  // TRUNK_ITERACAO_SRC_ITERACAO_H_
