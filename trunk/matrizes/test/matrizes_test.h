@@ -6,10 +6,8 @@
 #include <sstream>
 #include <string>
 
-#include "matrizes/src/matrizes.h"
 #include "gtest/gtest.h"
-
-#define MAX 100  // Dimensao máxima de uma matriz.
+#include "matrizes/src/matrizes.h"
 
 using std::string;
 using std::stringstream;

@@ -3,7 +3,7 @@
 #ifndef TRUNK_FUNCOES_TEST_FUNCOES_TEST_H_
 #define TRUNK_FUNCOES_TEST_FUNCOES_TEST_H_
 
-#include <math.h>
+#include <cmath>
 #include <sstream>
 #include <string>
 

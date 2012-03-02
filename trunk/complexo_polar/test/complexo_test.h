@@ -1,12 +1,11 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef BRANCHES_GABARITOS_COMPLEXO_POLAR_TEST_COMPLEXO_TEST_H_
-#define BRANCHES_GABARITOS_COMPLEXO_POLAR_TEST_COMPLEXO_TEST_H_
+#ifndef TRUNK_COMPLEXO_POLAR_TEST_COMPLEXO_TEST_H_
+#define TRUNK_COMPLEXO_POLAR_TEST_COMPLEXO_TEST_H_
 
 #include "complexo_polar/src/complexo.h"
 
-#include <math.h>
-
+#include <cmath>
 #include <sstream>
 #include <string>
 
@@ -23,22 +22,22 @@ class Teste : public testing::Test {
     c->arg_ = atan2(b, a);
   }
 
-  double real(Complexo& x) {
+  double real(const Complexo& x) {
     return x.mod_ * cos(x.arg_);
   }
 
-  double imag(Complexo& x) {
+  double imag(const Complexo& x) {
     return x.mod_ * sin(x.arg_);
   }
 
-  bool Igual(Complexo x, Complexo y) {
+  bool igual(const Complexo& x, const Complexo& y) {
     return fabs(x.mod_ - y.mod_) <= 1E-6 &&
            fabs(sin(x.arg_) - sin(y.arg_)) <= 1E-6 &&
            fabs(cos(x.arg_) - cos(y.arg_)) <= 1E-6;
   }
 
   // Retorna string no formato [x + yi]
-  string ToString(Complexo& z) {
+  string ToString(const Complexo& z) {
     stringstream output;
     output << real(z);
     if (imag(z) >= 0.0) {
@@ -85,7 +84,7 @@ TEST_F(Teste, Testa_construtor_sem_parametros) {
   Complexo atual;
   Complexo esperado;
   Inicializar(0, 0, &esperado);
-  ASSERT_TRUE(Igual(esperado, atual))
+  ASSERT_TRUE(igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro no construtor: \"Complexo::Complexo()\" \n"
     << "-------------------------------------------------------------------\n"
@@ -98,7 +97,7 @@ TEST_F(Teste, Testa_construtor_com_um_paramentro) {
   Complexo atual(-13);
   Complexo esperado;
   Inicializar(-13, 0, &esperado);
-  ASSERT_TRUE(Igual(esperado, atual))
+  ASSERT_TRUE(igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro no construtor: \"Complexo::Complexo(double a)\" \n"
     << "-------------------------------------------------------------------\n"
@@ -111,7 +110,7 @@ TEST_F(Teste, Testa_construtor_com_dois_paramentros) {
   Complexo atual(3.14, -1.4142);
   Complexo esperado;
   Inicializar(3.14, -1.4142, &esperado);
-  ASSERT_TRUE(Igual(esperado, atual))
+  ASSERT_TRUE(igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro no construtor: \"Complexo::Complexo(double a, double b)\" \n"
     << "-------------------------------------------------------------------\n"
@@ -208,7 +207,7 @@ TEST_F(Teste, Testa_igualdade_de_numeros_diferentes_com_mesma_parte_imag) {
 TEST_F(Teste, Testa_atribuicao_de_numeros_complexos) {
   Complexo esperado(1.4142, -3.14);
   Complexo atual = esperado;
-  ASSERT_TRUE(Igual(esperado, atual))
+  ASSERT_TRUE(igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro no construtor: \"void Complexo::operator=(Complexo x)\" \n"
     << "-------------------------------------------------------------------\n"
@@ -222,7 +221,7 @@ TEST_F(Teste, Testa_conjugado_de_numero_complexo_nulo) {
   Complexo atual;
   atual = x.conjugado();
   Complexo esperado(0.0, 0.0);
-  ASSERT_TRUE(Igual(esperado, atual))
+  ASSERT_TRUE(igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  \"Complexo Complexo::conjugado()\" \n"
     << "-------------------------------------------------------------------\n"
@@ -236,7 +235,7 @@ TEST_F(Teste, Testa_conjugado_de_numero_com_parte_imaginaria_negativa) {
   Complexo atual;
   atual = x.conjugado();
   Complexo esperado(1.0, 3.14);
-  ASSERT_TRUE(Igual(esperado, atual))
+  ASSERT_TRUE(igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  \"Complexo Complexo::conjugado()\" \n"
     << "-------------------------------------------------------------------\n"
@@ -250,7 +249,7 @@ TEST_F(Teste, Testa_conjugado_de_numero_com_parte_imaginaria_positiva) {
   Complexo atual;
   atual = x.conjugado();
   Complexo esperado(1.0, -3.14);
-  ASSERT_TRUE(Igual(esperado, atual))
+  ASSERT_TRUE(igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  \"Complexo Complexo::conjugado()\" \n"
     << "-------------------------------------------------------------------\n"
@@ -263,7 +262,7 @@ TEST_F(Teste, Testa_simetrico_complexo_positivo) {
   Complexo x(1, 1);
   Complexo esperado(-1, -1);
   Complexo atual = x.simetrico().simetrico().simetrico();
-  ASSERT_TRUE(Igual(esperado, atual))
+  ASSERT_TRUE(igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  \"Complexo Complexo::simetrico()\" \n"
     << "-------------------------------------------------------------------\n"
@@ -276,7 +275,7 @@ TEST_F(Teste, Testa_simetrico_complexo_negativo) {
   Complexo x(-1, -1);
   Complexo esperado(1, 1);
   Complexo atual = x.simetrico().simetrico().simetrico();
-  ASSERT_TRUE(Igual(esperado, atual))
+  ASSERT_TRUE(igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  \"Complexo Complexo::simetrico()\" \n"
     << "-------------------------------------------------------------------\n"
@@ -285,11 +284,11 @@ TEST_F(Teste, Testa_simetrico_complexo_negativo) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_simetrico_complexo_mod_nulo) {
+TEST_F(Teste, Testa_simetrico_complexo_real_nula) {
   Complexo x(0, -1);
   Complexo esperado(0, 1);
   Complexo atual = x.simetrico().simetrico().simetrico();
-  ASSERT_TRUE(Igual(esperado, atual))
+  ASSERT_TRUE(igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  \"Complexo Complexo::simetrico()\" \n"
     << "-------------------------------------------------------------------\n"
@@ -298,11 +297,11 @@ TEST_F(Teste, Testa_simetrico_complexo_mod_nulo) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_simetrico_complexo_arg_nulo) {
-  Complexo x(3);
-  Complexo esperado(-3);
+TEST_F(Teste, Testa_simetrico_complexo_imaginario_nula) {
+  Complexo x(-1);
+  Complexo esperado(1);
   Complexo atual = x.simetrico().simetrico().simetrico();
-  ASSERT_TRUE(Igual(esperado, atual))
+  ASSERT_TRUE(igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  \"Complexo Complexo::simetrico()\" \n"
     << "-------------------------------------------------------------------\n"
@@ -316,7 +315,7 @@ TEST_F(Teste, Testa_inverso_de_numero_complexo) {
   Complexo atual;
   atual = x.inverso();
   Complexo esperado(0.06, -0.08);
-  ASSERT_TRUE(Igual(esperado, atual))
+  ASSERT_TRUE(igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  \"Complexo Complexo::inverso()\" \n"
     << "-------------------------------------------------------------------\n"
@@ -330,7 +329,7 @@ TEST_F(Teste, Testa_soma_de_numeros_complexos_nulos) {
   Complexo y;
   Complexo atual = x + y;
   Complexo esperado(2, 3);
-  ASSERT_TRUE(Igual(esperado, atual))
+  ASSERT_TRUE(igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"Complexo Complexo::operator+(Complexo y)\" \n"
     << "-------------------------------------------------------------------\n"
@@ -346,7 +345,7 @@ TEST_F(Teste, Testa_soma_de_numeros_complexos_positivos) {
   Complexo y(3.6, 1.5);
   Complexo atual = x + y;
   Complexo esperado(7.7, 3.9);
-  ASSERT_TRUE(Igual(esperado, atual))
+  ASSERT_TRUE(igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"Complexo Complexo::operator+(Complexo y)\" \n"
     << "-------------------------------------------------------------------\n"
@@ -362,7 +361,7 @@ TEST_F(Teste, Somar_Numeros_Complexos_Negativos) {
   Complexo y(-3.6, -1.5);
   Complexo atual = x + y;
   Complexo esperado(-7.7, -3.9);
-  ASSERT_TRUE(Igual(esperado, atual))
+  ASSERT_TRUE(igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"Complexo Complexo::operator+(Complexo y)\" \n"
     << "-------------------------------------------------------------------\n"
@@ -378,7 +377,7 @@ TEST_F(Teste, Somar_Numeros_Complexos_de_sinais_opostos) {
   Complexo y(3.6, -1.5);
   Complexo atual = x + y;
   Complexo esperado(-0.5, 0.9);
-  ASSERT_TRUE(Igual(esperado, atual))
+  ASSERT_TRUE(igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"Complexo Complexo::operator+(Complexo y)\" \n"
     << "-------------------------------------------------------------------\n"
@@ -393,7 +392,7 @@ TEST_F(Teste, Subtrair_Numeros_Complexos_Nulos) {
   Complexo y;
   Complexo atual = x - y;
   Complexo esperado(2.4, 1.1);
-  ASSERT_TRUE(Igual(esperado, atual))
+  ASSERT_TRUE(igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"Complexo Complexo::operator-(Complexo y)\" \n"
     << "-------------------------------------------------------------------\n"
@@ -409,7 +408,7 @@ TEST_F(Teste, Subtrair_Numeros_Complexos_Positivos) {
   Complexo y(3.5, 0.8);
   Complexo atual = x - y;
   Complexo esperado(-1.1, 0.3);
-  ASSERT_TRUE(Igual(esperado, atual))
+  ASSERT_TRUE(igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"Complexo Complexo::operator-(Complexo y)\" \n"
     << "-------------------------------------------------------------------\n"
@@ -425,7 +424,7 @@ TEST_F(Teste, Subtrair_Numeros_Complexos_Negativos) {
   Complexo y(-2.2, -4.7);
   Complexo atual = x - y;
   Complexo esperado(-1.3, 4.6);
-  ASSERT_TRUE(Igual(esperado, atual))
+  ASSERT_TRUE(igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"Complexo Complexo::operator-(Complexo y)\" \n"
     << "-------------------------------------------------------------------\n"
@@ -441,7 +440,7 @@ TEST_F(Teste, Subtrair_Numeros_Complexos_de_sinais_opostos) {
   Complexo y(3.5, -0.1);
   Complexo atual = x - y;
   Complexo esperado(-7.0, 0.2);
-  ASSERT_TRUE(Igual(esperado, atual))
+  ASSERT_TRUE(igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: \"Complexo Complexo::operator-(Complexo y)\" \n"
     << "-------------------------------------------------------------------\n"
@@ -458,7 +457,7 @@ TEST_F(Teste, Multiplicar_Numeros_Complexos_Nulos) {
   Complexo z;
   x = y * z;
   Complexo esperado(0, 0);
-  ASSERT_TRUE(Igual(esperado, x))
+  ASSERT_TRUE(igual(esperado, x))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  \"Complexo Complexo::operator*(Complexo)\"        \n"
     << "-------------------------------------------------------------------\n"
@@ -474,7 +473,7 @@ TEST_F(Teste, Multiplicar_Numeros_Complexos_mesmo_sinal) {
   Complexo z(3.6, 1.5);
   Complexo atual = y * z;
   Complexo esperado(11.16, 14.79);
-  ASSERT_TRUE(Igual(esperado, atual))
+  ASSERT_TRUE(igual(esperado, atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  \"Complexo Complexo::operator*(Complexo)\"        \n"
     << "-------------------------------------------------------------------\n"
@@ -491,7 +490,7 @@ TEST_F(Teste, Multiplicar_Numeros_Complexos_sinais_contrarios) {
   Complexo z(-3.6, 1.8);
   x = y * z;
   Complexo esperado(-6.84, 14.22);
-  ASSERT_TRUE(Igual(esperado, x))
+  ASSERT_TRUE(igual(esperado, x))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  \"Complexo Complexo::operator*(Complexo)\"        \n"
     << "-------------------------------------------------------------------\n"
@@ -508,7 +507,7 @@ TEST_F(Teste, Dividir_Numeros_Complexos_mesmo_sinal) {
   Complexo z(4, 2);
   x = y / z;
   Complexo esperado(1.7, -0.6);
-  ASSERT_TRUE(Igual(esperado, x))
+  ASSERT_TRUE(igual(esperado, x))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  \"Complexo Complexo::operator/(Complexo)\"        \n"
     << "-------------------------------------------------------------------\n"
@@ -525,7 +524,7 @@ TEST_F(Teste, Dividir_Numeros_Complexos_sinais_contrarios) {
   Complexo z(-4, -2);
   x = y / z;
   Complexo esperado(-2.1, -0.2);
-  ASSERT_TRUE(Igual(esperado, x))
+  ASSERT_TRUE(igual(esperado, x))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  \"Complexo Complexo::operator/(Complexo)\"        \n"
     << "-------------------------------------------------------------------\n"
@@ -535,4 +534,4 @@ TEST_F(Teste, Dividir_Numeros_Complexos_sinais_contrarios) {
     << " Resposta esperada:  " << ToString(esperado) << "\n"
     << "-------------------------------------------------------------------\n";
 }
-#endif  // BRANCHES_GABARITOS_COMPLEXO_POLAR_TEST_COMPLEXO_TEST_H_
+#endif  // TRUNK_COMPLEXO_POLAR_TEST_COMPLEXO_TEST_H_

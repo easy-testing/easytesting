@@ -1,6 +1,7 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
 #include "vetores/src/vetores.h"
+
 #include <cmath>
 #include <iostream>
 

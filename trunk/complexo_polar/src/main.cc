@@ -10,7 +10,7 @@
 // como parâmetro para as funções desta biblioteca são medidos em radianos
 // e não em graus.
 //
-// (ii) A constante M_PI, definida em math.h, armazena o valor de pi com
+// (ii) A constante M_PI, definida em <cmath>, armazena o valor de pi com
 // 21 casas decimais.
 //
 // (iii) A função atan2(x, y) retorna o valor do arco tangente de x/y.
@@ -44,12 +44,15 @@
 // "Números Complexos - Coordenadas Euclidianas" e observe que este programas
 // são executados sem nenhuma alteração.
 
-#include <math.h>
+#include <cmath>
 #include <iostream>
+
 #include "complexo_polar/src/complexo.h"
 
 using namespace std;
 
+// Recebe o valor dos coeficientes a, b, c (a.x^2 + b.x + c) e retorna através
+// de r1 e r2 raízes (possivelmente complexas) desta equação.
 void CalcularRaizes(float a, float b, float c, Complexo* r1, Complexo* r2) {
   float delta = b * b - 4 * a * c;
   if (delta >= 0.0) {
@@ -61,8 +64,8 @@ void CalcularRaizes(float a, float b, float c, Complexo* r1, Complexo* r2) {
   }
 }
 
-// Le os coeficientes de uma equacao de segundo grau do teclado e
-// imprime na tela as raízes da equacao.
+// Lê os coeficientes de uma equação de segundo grau do teclado e
+// imprime na tela as raízes da equação.
 int main() {
   cout << "Digite os coeficientes da equacao de segundo grau";
   cout << " f(x) = a.x^2 + b.x + c" << endl;

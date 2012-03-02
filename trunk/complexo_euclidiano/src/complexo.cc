@@ -2,7 +2,7 @@
 
 #include "complexo_euclidiano/src/complexo.h"
 
-#include <math.h>
+#include <cmath>
 
 Complexo::Complexo() {
   real_ = 0.0;

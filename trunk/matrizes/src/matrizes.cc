@@ -2,7 +2,6 @@
 
 #include "matrizes/src/matrizes.h"
 
-#include <stdio.h>
 #include <iostream>
 
 using namespace std;
