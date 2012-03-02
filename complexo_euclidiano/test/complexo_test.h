@@ -5,8 +5,7 @@
 
 #include "complexo_euclidiano/src/complexo.h"
 
-#include <math.h>
-
+#include <cmath>
 #include <sstream>
 #include <string>
 

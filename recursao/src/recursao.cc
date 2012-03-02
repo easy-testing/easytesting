@@ -2,7 +2,7 @@
 
 #include "recursao/src/recursao.h"
 
-#include <math.h>
+#include <cmath>
 
 int fat(int n) {
   if (n == 1 || n == 0)

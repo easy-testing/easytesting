@@ -2,7 +2,7 @@
 
 #include "iteracao/src/iteracao.h"
 
-#include <math.h>
+#include <cmath>
 
 int fat(int n) {
   int f = 1;

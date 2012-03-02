@@ -2,7 +2,7 @@
 
 #include "funcoes/src/funcoes.h"
 
-#include <math.h>
+#include <cmath>
 
 float media(float a, float b, float c) {
   return (a + b + c) / 3.0;

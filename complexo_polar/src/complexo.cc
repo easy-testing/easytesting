@@ -2,7 +2,7 @@
 
 #include "complexo_polar/src/complexo.h"
 
-#include <math.h>
+#include <cmath>
 
 Complexo::Complexo() {
   mod_ = 0.0;

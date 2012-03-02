@@ -6,8 +6,8 @@
 #include <sstream>
 #include <string>
 
-#include "iteracao/src/iteracao.h"
 #include "gtest/gtest.h"
+#include "iteracao/src/iteracao.h"
 
 using std::string;
 using std::stringstream;

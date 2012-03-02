@@ -2,11 +2,13 @@
 
 #ifndef TRUNK_VETORES_TEST_VETORES_TEST_H_
 #define TRUNK_VETORES_TEST_VETORES_TEST_H_
+
 #include <cmath>
 #include <sstream>
 #include <string>
-#include "vetores/src/vetores.h"
+
 #include "gtest/gtest.h"
+#include "vetores/src/vetores.h"
 
 using std::string;
 using std::stringstream;
