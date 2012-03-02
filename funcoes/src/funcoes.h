@@ -1,5 +1,7 @@
-#ifndef BRANCHES_GABARITOS_FUNCOES_SRC_FUNCOES_H_
-#define BRANCHES_GABARITOS_FUNCOES_SRC_FUNCOES_H_
+// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+
+#ifndef TRUNK_FUNCOES_SRC_FUNCOES_H_
+#define TRUNK_FUNCOES_SRC_FUNCOES_H_
 
 // Calcula a média de a, b e c.
 float media(float a, float b, float c);
@@ -32,4 +34,4 @@ float volume_cilindro(float r, float h);
 // cujos lados conhecidos são b e c.
 float hipotenusa(float b, float c);
 
-#endif  // BRANCHES_GABARITOS_FUNCOES_SRC_FUNCOES_H_
+#endif  // TRUNK_FUNCOES_SRC_FUNCOES_H_

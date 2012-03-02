@@ -1,7 +1,7 @@
 // copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef BRANCHES_GABARITOS_FUNCOES_TEST_FUNCOES_TEST_H_
-#define BRANCHES_GABARITOS_FUNCOES_TEST_FUNCOES_TEST_H_
+#ifndef TRUNK_FUNCOES_TEST_FUNCOES_TEST_H_
+#define TRUNK_FUNCOES_TEST_FUNCOES_TEST_H_
 
 #include <math.h>
 #include <sstream>
@@ -318,4 +318,4 @@ TEST(Teste, Testa_hipotenusa_triagulo_escaleno) {
 
 }  // end namespace
 
-#endif  // BRANCHES_GABARITOS_FUNCOES_TEST_FUNCOES_TEST_H_
+#endif  // TRUNK_FUNCOES_TEST_FUNCOES_TEST_H_
