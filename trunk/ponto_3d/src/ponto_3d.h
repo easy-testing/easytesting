@@ -1,5 +1,7 @@
-#ifndef _H_
-#define _H_
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+
+#ifndef TRUNK_PONTO_3D_SRC_PONTO_3D_H_
+#define TRUNK_PONTO_3D_SRC_PONTO_3D_H_
 
 #define PI 3.1415928
 
@@ -7,7 +9,7 @@
 
 using std::ostream;
 
-// Implementa um ponto num espaco tridimensional.
+// Implementa um ponto num espaço tridimensional.
 class Ponto3D {
  public:
   // Cria um ponto com coordenadas (0.0, 0.0, 0.0).
@@ -16,20 +18,17 @@ class Ponto3D {
   // Cria um ponto com coordenadas (x, y, z).
   Ponto3D(double x, double y, double z);
 
-  // Cria um ponto com as mesmas coordenadas de p.
-  Ponto3D(Ponto3D& p);
-
   // Retorna a coordenada x do ponto.
-  double& x() { return v_[0]; }
+  double x() { return v_[0]; }
 
   // Retorna a coordenada y do ponto.
-  double& y() { return v_[1]; }
+  double y() { return v_[1]; }
 
   // Retorna a coordenada z do ponto.
-  double& z() { return v_[2]; }
+  double z() { return v_[2]; }
 
-  // Faz com que as coordenadas do ponto corrente sejam igual as de p.
-  void operator=(Ponto3D& p);
+  // Faz com que as coordenadas do ponto corrente sejam iguais as de p.
+  void operator=(Ponto3D p);
 
   // Translada o ponto em qualquer dos eixos.
   void Transladar(double dx, double dy, double dz);
@@ -37,20 +36,16 @@ class Ponto3D {
   // Muda a escala do ponto em qualquer dos eixos.
   void MudarEscala(double fx, double fy, double fz);
 
-  // Rotaciona o ponto 'ang' radianos em torno do eixo 'e'.
-  // Os valores válidos para 'e' são 'X', 'Y', ou 'Z'.
-  void Rotacionar(char e, double ang);
+  // Rotaciona o ponto 'rad' radianos em torno do eixo x.
+  void RotacionarX(double rad);
+
+  // Rotaciona o ponto 'rad' radianos em torno do eixo y.
+  void RotacionarY(double rad);
+
+  // Rotaciona o ponto 'rad' radianos em torno do eixo z.
+  void RotacionarZ(double rad);
 
  private:
-  // Rotaciona o ponto em torno do eixo x. 'rad' é dado em radianos.
-  void RotacionarEmX(double rad);
-
-  // Rotaciona o ponto em torno do eixo y. 'rad' é dado em radianos.
-  void RotacionarEmY(double rad);
-
-  // Rotaciona o ponto em torno do eixo z. 'rad' é dado em radianos.
-  void RotacionarEmZ(double rad);
-
   // Deixa a matriz quadrada 'm'igual a uma matriz identidade.
   void Identizar(double m[4][4]);
 
@@ -67,6 +62,4 @@ class Ponto3D {
   friend class Teste;
 };
 
-
-
-#endif  // _H_
+#endif  // TRUNK_PONTO_3D_SRC_PONTO_3D_H_

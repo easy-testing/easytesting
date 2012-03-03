@@ -1,8 +1,8 @@
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+
 #include "ponto_3d/src/ponto_3d.h"
 
-#include <math.h>
-
-#include <ostream>
+#include <cmath>
 
 Ponto3D::Ponto3D() {
   v_[0] = 0.0;
@@ -18,14 +18,7 @@ Ponto3D::Ponto3D(double x, double y, double z) {
   v_[3] = 1.0;
 }
 
-Ponto3D::Ponto3D(Ponto3D& p) {
-  v_[0] = p.x();
-  v_[1] = p.y();
-  v_[2] = p.z();
-  v_[3] = 1.0;
-}
-
-void Ponto3D::operator=(Ponto3D& p) {
+void Ponto3D::operator=(Ponto3D p) {
   v_[0] = p.x();
   v_[1] = p.y();
   v_[2] = p.z();
@@ -54,17 +47,7 @@ void Ponto3D::MudarEscala(double fx, double fy, double fz) {
   Atribuir(u, v_);
 }
 
-void Ponto3D::Rotacionar(char e, double ang) {
-  if (e == 'X') {
-    RotacionarEmX(ang);
-  } else if (e == 'Y') {
-    RotacionarEmY(ang);
-  } else {  // e == 'z'
-    RotacionarEmZ(ang);
-  }
-}
-
-void Ponto3D::RotacionarEmX(double rad) {
+void Ponto3D::RotacionarX(double rad) {
   double m[4][4];
   Identizar(m);
   m[1][1] = cos(rad);
@@ -76,7 +59,7 @@ void Ponto3D::RotacionarEmX(double rad) {
   Atribuir(u, v_);
 }
 
-void Ponto3D::RotacionarEmY(double rad) {
+void Ponto3D::RotacionarY(double rad) {
   double m[4][4];
   Identizar(m);
   m[0][0] = cos(rad);
@@ -88,7 +71,7 @@ void Ponto3D::RotacionarEmY(double rad) {
   Atribuir(u, v_);
 }
 
-void Ponto3D::RotacionarEmZ(double rad) {
+void Ponto3D::RotacionarZ(double rad) {
   double m[4][4];
   Identizar(m);
   m[0][0] = cos(rad);

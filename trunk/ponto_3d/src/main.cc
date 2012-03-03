@@ -1,45 +1,50 @@
-#include <math.h>
+// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#include <iostream>
+#include <cmath>
 #include <fstream>
-#include <ostream>
+#include <iostream>
 
 #include "ponto_3d/src/ponto_3d.h"
 
-using std::cout;
-using std::endl;
-using std::ifstream;
-using std::ofstream;
-using std::ostream;
+using namespace std;
 
 int main() {
   ifstream fin("entrada.txt");
   int n;
   fin >> n;
   Ponto3D* pontos = new Ponto3D[n];
+  double x, y, z;
   for (int i = 0; i < n; i++) {
-    fin >> pontos[i].x() >> pontos[i].y() >> pontos[i].z();
+    fin >> x >> y >> z;
+    pontos[i] = Ponto3D(x, y, z);
   }
   char operacao;
   while (fin >> operacao) {
     if (operacao == 'T') {
-      float dx, dy, dz;
+      double dx, dy, dz;
       fin >> dx >> dy >> dz;
       for (int i = 0; i < n; i++) {
         pontos[i].Transladar(dx, dy, dz);
       }
     } else if (operacao == 'E') {
-      float fx, fy, fz;
+      double fx, fy, fz;
       fin >> fx >> fy >> fz;
       for (int i = 0; i < n; i++) {
         pontos[i].MudarEscala(fx, fy, fz);
       }
     } else {  // operacao == 'R'
-      float graus;
+      double graus;
       char eixo;
       fin >> eixo  >> graus;
+      double ang = (graus * M_PI) / 180;
       for (int i = 0; i < n; i++) {
-        pontos[i].Rotacionar(eixo, (graus * M_PI) / 180);
+        if (eixo == 'X') {
+          pontos[i].RotacionarX(ang);
+        } else if (eixo == 'Y') {
+          pontos[i].RotacionarY(ang);
+        } else {  // eixo == 'Z'
+          pontos[i].RotacionarZ(ang);
+        }
       }
     }
   }
