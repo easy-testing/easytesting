@@ -42,7 +42,6 @@
 
 using namespace std;
 
-// Gabarito da Questão 3.
 float AreaPolinomio(int g, float v[], float a, float b) {
   float u[MAX];
   Integrar(g, v, u);

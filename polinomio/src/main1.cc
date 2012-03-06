@@ -42,7 +42,6 @@
 
 using namespace std;
 
-// Gabarito da Questão 2.
 int main() {
   ifstream fin("input1.txt");
   int g;
