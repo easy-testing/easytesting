@@ -1,18 +1,18 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 //
-// Lista de exercícios sobre estruturas de dados heterogêneas - Registros.
+// Lista de exercícios sobre Tipos Abstratos de Dados (TAD)-Figuras geométricas.
 //
 // QUESTÃO 1:
-// Implemente em ponto.cc o struct Ponto que está em ponto.h.
+// Implemente em ponto.cc o TAD Ponto que está em ponto.h.
 //
 // QUESTÃO 2:
-// Implemente em triangulo.cc o struct Triangulo que está em Triangulo.h.
+// Implemente em triangulo.cc o TAD Triangulo que está em Triangulo.h.
 //
 // QUESTÃO 3:
-// Implemente em retangulo.cc o struct Retangulo que está em retangulo.h.
+// Implemente em retangulo.cc o TAD Retangulo que está em retangulo.h.
 //
 // QUESTÃO 4:
-// Implemente em circunferencia.cc o struct Circunferencia que está
+// Implemente em circunferencia.cc o TAD Circunferencia que está
 // em circunferencia.h.
 //
 // QUESTÃO 5:
@@ -28,7 +28,7 @@
 // lista com o nome e a distância entre você e todos os restaurantes que
 // estão a menos de d Km da sua posição atual. Assuma que BH tem no máximo
 // 4.000 bares.
-// Por favor, use os structs Ponto e Circunferencia definidos acima.
+// Por favor, use os TAD Ponto e Circunferencia definidos acima.
 //
 // QUESTÃO 6: DESAFIO!
 // Resolva o mesmo problema da questão 6, mas imprima os bares ordenados,
@@ -39,30 +39,32 @@
 #include <fstream>
 #include <string>
 
-#include "registros/src/circunferencia.h"
-#include "registros/src/ponto.h"
+#include "classes/src/circunferencia.h"
+#include "classes/src/ponto.h"
 
 using namespace std;
 
 // Gabarito da questão 5.
 int main() {
-  ifstream input;
-  Ponto bar[4000];
-  string nome;
-  int num_bares = 0;
-  float a, b, dist_max;
+  float a, b;
   cout << "Digite as coordenadas x e y de onde voce se encontra: ";
   cin >> a >> b;
-  Ponto centro = {a, b};
+  Ponto centro(a, b);
   cout << endl << "Digite a distancia maxima a caminhar: ";
-  cin >> dist_max;
-  input.open("input.txt");
-  while (input >> nome >> a >> b) {
-    bar[num_bares].x = a;
-    bar[num_bares].y = b;
-    if (Distancia(centro, bar[num_bares]) <= dist_max) {
+  float raio;
+  cin >> raio;
+  Circunferencia c(raio, centro);
+
+  ifstream input("input.txt");
+  string nome;
+  float x, y;
+  Ponto bar[4000];
+  int num_bares = 0;
+  while (input >> nome >> x >> y) {
+    bar[num_bares] = Ponto(x, y);
+    if (c.contem(bar[num_bares])) {
       cout << "Bar: " << nome << "\t\t"
-           << "Distancia: " << Distancia(centro, bar[num_bares])<< endl;
+           << "Distancia: " << centro.distancia(bar[num_bares])<< endl;
     }
     num_bares++;
   }

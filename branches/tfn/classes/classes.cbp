@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="registros" />
+		<Option title="classes" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -33,12 +33,6 @@
 			<Add option="-fexceptions" />
 			<Add directory=".." />
 		</Compiler>
-		<Unit filename="../gtest/gtest.cc">
-			<Option target="EasyTesting" />
-		</Unit>
-		<Unit filename="../gtest/gtest.h">
-			<Option target="EasyTesting" />
-		</Unit>
 		<Unit filename="src/circunferencia.cc" />
 		<Unit filename="src/circunferencia.h" />
 		<Unit filename="src/main.cc">
@@ -50,12 +44,6 @@
 		<Unit filename="src/retangulo.h" />
 		<Unit filename="src/triangulo.cc" />
 		<Unit filename="src/triangulo.h" />
-		<Unit filename="test/registros_test.cc">
-			<Option target="EasyTesting" />
-		</Unit>
-		<Unit filename="test/registros_test.h">
-			<Option target="EasyTesting" />
-		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />

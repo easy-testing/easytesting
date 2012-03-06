@@ -1,4 +1,0 @@
-Pinguim 2 3
-Albanos 4 8
-222 10 3
-Xapuri 25 44

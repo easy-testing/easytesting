@@ -1,6 +1,6 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#include "registros/test/registros_test.h"
+#include "classes/test/classes_test.h"
 
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);
