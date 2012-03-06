@@ -1,27 +1,26 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef BRANCHES_GABARITOS_POLINOMIO_SRC_POLINOMIO_H_
+#ifndef TRUNK_POLINOMIO_SRC_POLINOMIO_H_
+#define TRUNK_POLINOMIO_SRC_POLINOMIO_H_
 
-#define BRANCHES_GABARITOS_POLINOMIO_SRC_POLINOMIO_H_
-
-// Retorna verdadeiro se o polinomio v de grau g é nulo (g < 0), false c.c.
+// Retorna verdadeiro se o polinomio v de grau g Ã© nulo (g < 0), false c.c.
 bool nulo(int g, float v[]);
 
-// Retorna o valor do polinômio v de grau g no ponto x.
+// Retorna o valor do polinÃ´mio v de grau g no ponto x.
 float Avaliar(int g, float v[], float x);
 
-// Faz com que o polinômio u fique igual ao polinômio v de grau g.
+// Faz com que o polinÃ´mio u fique igual ao polinÃ´mio v de grau g.
 void Atribuir(int g, float v[], float u[]);
 
-// Faz com que o polinômio u fique igual a derivada do polinômio v de grau g.
-// v não pode ser nulo.
+// Faz com que o polinÃ´mio u fique igual a derivada do polinÃ´mio v de grau g.
+// v nÃ£o pode ser nulo.
 void Derivar(int g, float v[], float u[]);
 
-// Faz com que o polinômio u fique igual a integral do polinômio v de grau g.
-// v não pode ser nulo.
+// Faz com que o polinÃ´mio u fique igual a integral do polinÃ´mio v de grau g.
+// v nÃ£o pode ser nulo.
 void Integrar(int g, float v[], float u[]);
 
-// Imprime o polinômio v de grau g no formato
+// Imprime o polinÃ´mio v de grau g no formato
 // "v[0] + v[1]*x + v[2]*x^2 + ... + v[g]*^g", para todos os v[i] > 0.
 // Por exemplo:
 //   v={7} imprime "7".
@@ -31,7 +30,6 @@ void Integrar(int g, float v[], float u[]);
 //   v={-5, 0, 1} imprime "-5 + x^2"
 //   v={0, -1, 1} imrpime "-x + x^2",
 //   v={0, 1, -1} imprime "x - x^2",
-
 void Imprimir(int g, float v[]);
 
-#endif  // BRANCHES_GABARITOS_POLINOMIO_SRC_POLINOMIO_H_
+#endif  // TRUNK_POLINOMIO_SRC_POLINOMIO_H_
