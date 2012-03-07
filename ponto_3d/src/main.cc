@@ -15,8 +15,8 @@
 // transformação de mudança de escala. Para as transformações do tipo T e E são
 // informados os valores dos deslocamentos ou fatores de escala para os
 // eixos X, Y e Z, respectivamente. Para transformações do tipo R são
-// informados o eixo de rotação e o ângulo (EM GRAUS). Um exemplo do arquivo de
-// entrada é apresentado a seguir.
+// informados o eixo de rotação (X, Y, ou Z) e o ângulo de rotação (EM GRAUS).
+// Um exemplo do arquivo de entrada é apresentado a seguir.
 //
 // ---------------------------
 // 8
@@ -36,7 +36,7 @@
 // A saída do programa deve ser gravada no arquivo saida.txt.
 // A primeira linha deste arquivo deve conter o número n de pontos
 // tridimensionais. As n linhas seguintes devem conter as coordenadas dos
-// pontos após as transformações serem executadas.
+// pontos após todas as transformações serem executadas.
 // Use três casas decimais na saída e separe as coordenadas com um único espaço.
 // Um exemplo do arquivo da saída (dada a entrada acima) é apresentado a seguir.
 //
