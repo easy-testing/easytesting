@@ -30,7 +30,7 @@ void MostrarMenu() {
   cout << "3 - Consultar por telefone: Le uma data do teclado e Imprime o nome "
        << "de todas as pessoas cujo aniversário é nesta data.\n";
   cout << "4 - Apagar entrada: Le um nome do teclado e remove os dados "
-       << "associados a este nome da agenda.";
+       << "associados a este nome da agenda.\n";
   cout << "5 - Listar agenda: Lista todas as entradas na agenda\n";
   cout << "6 - Salvar agenda: Salva em arquivo as alterações na agenda.\n";
   cout << "7 - Sair.\n";
