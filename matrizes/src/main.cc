@@ -45,53 +45,9 @@
 // lê de um arquivo uma matriz triangular inferior e um vetor que representam
 // um sistema de equações e imprime na tela a solução deste sistema.
 
-#include <fstream>
-#include <iostream>
-
 #include "matrizes/src/matrizes.h"
 
-using namespace std;
-
-void ImprimirVetor(int n, float v[]) {
-  cout << "{ ";
-  for (int i = 0; i < n; i++) {
-    cout << v[i] << " ";
-  }
-  cout << "}\n";
-}
-
-void ResolverSistema(int n, float a[][MAX], float b[], float x[]) {
-  for (int i = 0; i < n; i++) {
-    float soma = 0;
-    for (int j = 0 ; j < i ; j++) {
-      soma += a[i][j] * x[j];
-    }
-    x[i] = b[i] - soma / a[i][i];
-  }
-}
-
 int main(void) {
-  ifstream fin("input.txt");
-  int n;
-  fin >> n;
-  float a[MAX][MAX];
-  for (int i = 0 ; i < n ; i++) {
-    for (int j = 0 ; j < n ; j++) {
-      if (j <= i) {
-        fin >> a[i][j];
-      } else {
-        a[i][j] = 0;
-      }
-    }
-  }
-  float b[MAX];
-  for (int i = 0 ; i < n ; i++) {
-    fin >> b[i];
-  }
-
-  float x[MAX];
-  ResolverSistema(n, a, b, x);
-  ImprimirVetor(n, x);
-  return 0;
+  return 0;  // TODO.
 }
 
