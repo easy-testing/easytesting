@@ -38,10 +38,6 @@ int dig(int n) {
   return 0;  // TODO.
 }
 
-bool primo(int n) {
-  return false;  // TODO.
-}
-
 double sqrt_(double n) {
   return 0;  // TODO.
 }
