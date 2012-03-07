@@ -33,29 +33,8 @@
 // Questão 3.
 // Vide arquivo main2.cc
 
-#include <fstream>
-#include <iostream>
-
 #include "polinomio/src/polinomio.h"
 
-#define MAX 100
-
-using namespace std;
-
 int main() {
-  ifstream fin("input1.txt");
-  int g;
-  fin >> g;
-  float v[MAX];
-  for (int i = 0; i <= g; i++) {
-    fin >> v[i];
-  }
-  Imprimir(g, v);
-  while (true) {
-    cout << "Digite o valor de x: ";
-    float x;
-    cin >> x;
-    cout << "P(" << x << ") = " << Avaliar(g, v, x) << endl;
-  }
-  return 0;
+  return 0;  // TODO.
 }
