@@ -81,19 +81,6 @@ int dig(int n) {
   return soma;
 }
 
-bool primo(int n) {
-  if (n < 2) {
-    return false;
-  } else {
-      for (int i = 2; i < n; i++) {
-         if (n % i == 0) {
-            return false;
-         }
-      }
-      return true;
-  }
-}
-
 double sqrt_(double n) {
   double x = n;
   while (fabs(x * x - n) >= 0.001) {
