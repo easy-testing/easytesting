@@ -13,6 +13,14 @@ Circunferencia::Circunferencia(float r, Ponto p) {
   centro_ = p;
 }
 
+Ponto Circunferencia::centro() {
+  return centro_;
+}
+
+float Circunferencia::raio() {
+  return raio_;
+}
+
 void Circunferencia::operator=(Circunferencia c) {
   raio_ = c.raio_;
   centro_ = c.centro_;

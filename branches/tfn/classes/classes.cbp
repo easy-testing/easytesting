@@ -44,6 +44,18 @@
 		<Unit filename="src/retangulo.h" />
 		<Unit filename="src/triangulo.cc" />
 		<Unit filename="src/triangulo.h" />
+		<Unit filename="test/classes_test.cc">
+			<Option target="EasyTesting" />
+		</Unit>
+		<Unit filename="test/classes_test.h">
+			<Option target="EasyTesting" />
+		</Unit>
+		<Unit filename="../gtest/gtest.cc">
+			<Option target="EasyTesting" />
+		</Unit>
+		<Unit filename="../gtest/gtest.h">
+			<Option target="EasyTesting" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />

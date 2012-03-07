@@ -18,40 +18,40 @@ using std::stringstream;
 
 namespace Teste {
 
-//class Teste : public testing::Test {
-// protected:
-//  // Retorna uma string no formato (x, y).
-//  string MostrarPonto(Ponto& p) {
-//    stringstream output;
-//    output << "(" << p.x << ", " << p.y << ")";
-//    return output.str();
-//  }
-//
-//  // Retorna uma string no formato {(a,b), (c,d), (e,f)}.
-//  string MostrarTriangulo(Triangulo& t) {
-//    stringstream output;
-//    output << "{(" << t.p1.x << "," << t.p1.y << "), ";
-//    output << "(" << t.p2.x << "," << t.p2.y << "), ";
-//    output << "(" << t.p3.x << "," << t.p3.y << ")}";
-//    return output.str();
-//  }
-//
-//  // Retorna uma string no formato retangulo {(x,y), (a,b)}.
-//  string MostrarRetangulo(Retangulo& r) {
-//    stringstream output;
-//    output << "{(" << r.se.x << "," << r.se.y << "), ";
-//    output << "(" << r.id.x << "," << r.id.y << ")} ";
-//    return output.str();
-//  }
-//
-//  // Retorna string no formto '{centro = (x,y), raio = r}'.
-//  string MostrarCircunferencia(Circunferencia& c) {
-//    stringstream output;
-//    output << "{centro = (" << c.centro.x << "," << c.centro.y << "), ";
-//    output << "raio = " << c.raio << ")}\n";
-//    return output.str();
-//  }
-//};
+class Teste : public testing::Test {
+ protected:
+  // Retorna uma string no formato (x, y).
+  string MostrarPonto(Ponto& p) {
+    stringstream output;
+    output << "(" << p.x() << ", " << p.y() << ")";
+    return output.str();
+  }
+
+  // Retorna uma string no formato {(a,b), (c,d), (e,f)}.
+  string MostrarTriangulo(Triangulo& t) {
+    stringstream output;
+    output << "{(" << t.primeiro().x() << "," << t.primeiro().y() << "), ";
+    output << "(" << t.segundo().x() << "," << t.segundo().y() << "), ";
+    output << "(" << t.terceiro().x() << "," << t.terceiro().y() << ")}";
+    return output.str();
+  }
+
+  // Retorna uma string no formato retangulo {(x,y), (a,b)}.
+  string MostrarRetangulo(Retangulo& r) {
+    stringstream output;
+    output << "{(" << r.se().x() << "," << r.se().y() << "), ";
+    output << "(" << r.id().x() << "," << r.id().y() << ")} ";
+    return output.str();
+  }
+
+  // Retorna string no formto '{centro = (x,y), raio = r}'.
+  string MostrarCircunferencia(Circunferencia& c) {
+    stringstream output;
+    output << "{centro = (" << c.centro().x() << "," << c.centro().y() << "), ";
+    output << "raio = " << c.raio() << ")}\n";
+    return output.str();
+  }
+};
 //
 //TEST_F(Teste, PONTO_funcao_distancia_pontos_no_mesmo_lugar) {
 //  Ponto p1 = {0, 0};

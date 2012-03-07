@@ -14,6 +14,12 @@ class Circunferencia {
   // Constrói uma circunferência de raio 'r' e centro p.
   Circunferencia(float r, Ponto p);
 
+  // Retorna o ponto que está no centro da circunferência.
+  Ponto centro();
+
+  // Retorna o valor do raio da circunferência.
+  float raio();
+
   // Retorna o perímetro da circunferência.
   float perimetro();
 
