@@ -33,34 +33,8 @@
 // [a, b] e exibe a área da figura definida por P(x) no intervalo[a, b].
 // Você pode assumir que o grau máximo do polinômio é 99.
 
-#include <fstream>
-#include <iostream>
-
 #include "polinomio/src/polinomio.h"
 
-#define MAX 100
-
-using namespace std;
-
-float AreaPolinomio(int g, float v[], float a, float b) {
-  float u[MAX];
-  Integrar(g, v, u);
-  Imprimir(g + 1, u);
-  return Avaliar(g + 1, u, b) - Avaliar(g + 1, u, a);
-}
-
 int main() {
-  ifstream fin("input2.txt");
-  int g;
-  fin >> g;
-  float v[MAX];
-  for (int i = 0; i <= g; i++) {
-    fin >> v[i];
-  }
-  float a;
-  fin >> a;
-  float b;
-  fin >> b;
-  cout << "Area = " << AreaPolinomio(g, v, a, b) << endl;
-  return 0;
+  return 0;  // TODO.
 }
