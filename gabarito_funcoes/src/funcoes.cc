@@ -2,42 +2,44 @@
 
 #include "funcoes/src/funcoes.h"
 
+#include <cmath>
+
 float media(float a, float b, float c) {
-  return 0;  // TODO.
+  return (a + b + c) / 3.0;
 }
 
 float media_ponderada(float a, float b, float c) {
-  return 0;  // TODO.
+  return (3 * a + 4 * b + 5 * c) / 12.0;
 }
 
 float perimetro(float r) {
-  return 0;  // TODO.
+  return 2 * M_PI * r;
 }
 
 float area_circulo(float r) {
-  return 0;  // TODO.
+  return M_PI * r * r;
 }
 
 float area_triangulo(float b, float c) {
-  return 0;  // TODO.
+  return b * c / 2.0;
 }
 
 float area_caixa(float a, float b, float c) {
-  return 0;  // TODO.
+  return 2 * (a * b + a * c + b * c);
 }
 
 float volume_caixa(float a, float b, float c) {
-  return 0;  // TODO.
+  return a * b * c;
 }
 
 float area_cilindro(float r, float h) {
-  return 0;  // TODO.
+  return perimetro(r) * h + 2 * area_circulo(r);
 }
 
 float volume_cilindro(float r, float h) {
-  return 0;  // TODO.
+  return area_circulo(r) * h;
 }
 
 float hipotenusa(float b, float c) {
-  return 0;  // TODO.
+  return sqrt( b * b + c * c);
 }
