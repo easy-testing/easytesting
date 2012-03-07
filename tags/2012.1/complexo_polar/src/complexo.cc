@@ -2,86 +2,69 @@
 
 #include "complexo_polar/src/complexo.h"
 
-#include <cmath>
-
 Complexo::Complexo() {
-  mod_ = 0.0;
-  arg_ = 0.0;
+  // TODO.
 }
 
 Complexo::Complexo(double a) {
-  mod_ = fabs(a);
-  arg_ = atan2(0, a);
+  // TODO.
 }
 
 Complexo::Complexo(double a, double b) {
-  mod_ = sqrt(a * a + b * b);
-  arg_ = atan2(b, a);
+  // TODO.
 }
 
 double Complexo::real() {
-  return mod_ * cos(arg_);
+  return 0;  // TODO.
 }
 
 double Complexo::imag() {
-  return mod_ * sin(arg_);
+  return 0;  // TODO.
 }
 
 bool Complexo::operator==(Complexo x) {
-  return fabs(x.mod_ - mod_) <= 1E-6 &&
-         fabs(sin(x.arg_) - sin(arg_)) <= 1E-6 &&
-         fabs(cos(x.arg_) - cos(arg_)) <= 1E-6;
+  return false;  // TODO.
 }
 
 void Complexo::operator=(Complexo x) {
-  mod_ = x.mod_;
-  arg_ = x.arg_;
+  // TODO.
 }
 
 double Complexo::modulo() {
-  return mod_;
+  return 0;  // TODO.
 }
 
 Complexo Complexo::conjugado() {
-  Complexo c;
-  c.mod_ = mod_;
-  c.arg_ = -arg_;
+  Complexo c;  // TODO.
   return c;
 }
 
 Complexo Complexo::simetrico() {
-  Complexo c;
-  c.mod_ = mod_;
-  c.arg_ = arg_ + M_PI;
+  Complexo c;  // TODO.
   return c;
 }
 
 Complexo Complexo::inverso() {
-  Complexo i;
-  i.mod_ = 1.0 / mod_;
-  i.arg_ = -arg_;
+  Complexo i;  // TODO.
   return i;
 }
 
 Complexo Complexo::operator+(Complexo y) {
-  Complexo s(real() + y.real(), imag() + y.imag());
+  Complexo s;  // TODO.
   return s;
 }
 
 Complexo Complexo::operator-(Complexo y) {
-  return *this + y.simetrico();
+  Complexo s;  // TODO.
+  return s;
 }
 
 Complexo Complexo::operator*(Complexo y) {
-  Complexo p;
-  p.mod_ = mod_ * y.mod_;
-  p.arg_ = arg_ + y.arg_;
+  Complexo p;  // TODO.
   return p;
 }
 
 Complexo Complexo::operator/(Complexo y) {
-  Complexo q;
-  q.mod_ = mod_ / y.mod_;
-  q.arg_ = arg_ - y.arg_;
+  Complexo q;  // TODO.
   return q;
 }
