@@ -34,7 +34,6 @@
 			<Add directory=".." />
 			<Add directory="." />
 		</Compiler>
-		<Unit filename="src/agenda.cc" />
 		<Unit filename="src/agenda.h" />
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
