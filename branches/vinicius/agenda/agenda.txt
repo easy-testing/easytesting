@@ -1,6 +1,29 @@
-Thiago Noronha
-34091010
-25 03 1970
-João da Silva
-34082537
-23 09 2000
+Jose Maria
+1234567
+12 12 1332
+jose@ufmg.br
+Vinícius Morais
+91155778
+03 10 1985
+vwcmorais@gmail.com
+thiago
+21212121
+21 02 1988
+thiago@gmail.com
+Maria
+9991101
+21 01 2012
+maria@dcc.ufmg.br
+Maria Joao
+2121
+21
+21
+Marcos
+242442
+42 02/20
+maarcos@dcc.ufmg.br
+0
+maarcos@dcc.ufmg.br
+242442
+42 02/20
+maarcos@dcc.ufmg.br
