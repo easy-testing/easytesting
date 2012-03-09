@@ -10,61 +10,83 @@ struct Node {
 };
 
 list::list() {
-  // TODO.
+  size_ = 0;
+  end_ = new Node;
+  end_->next = end_;
+  end_->prev = end_;
 }
 
 list::list(list& l) {
-  // TODO.
+  size_ = 0;
+  end_ = new Node;
+  end_->next = end_;
+  end_->prev = end_;
+  merge(l);
 }
 
 list::~list() {
-  // TODO.
+  clear();
+  delete end_;
 }
 
 int list::size() {
-  return 0;  // TODO.
+  return size_;
 }
 
 bool list::empty() {
-  return false;  // TODO.
+  return size_ == 0;
 }
 
 Node* list::begin() {
-  return end_;  // TODO.
+  return end_->next;
 }
 
 Node* list::end() {
-  return end_;  // TODO.
+  return end_;
 }
 
 Node* list::next(Node* i) {
-  return end_;  // TODO.
+  return i->next;
 }
 
 Node* list::prev(Node* i) {
-  return end_;  // TODO.
+  return i->prev;
 }
 
 LType& list::operator[](Node* i) {
-  return end_->key;  // TODO.
+  return i->key;
 }
 
 void list::operator=(list& l) {
-  // TODO.
+  clear();
+  merge(l);
 }
 
 void list::insert(Node* i, LType k) {
-  // TODO.
+  Node* node = new Node;
+  node->key = k;
+  node->prev = i->prev;
+  node->next = i;
+  i->prev->next = node;
+  i->prev = node;
+  size_++;
 }
 
 void list::erase(Node* i) {
-  // TODO.
+  i->prev->next = i->next;
+  i->next->prev = i->prev;
+  delete i;
+  size_--;
 }
 
 void list::clear() {
-  // TODO.
+  while (!empty()) {
+    erase(begin());
+  }
 }
 
 void list::merge(list& l) {
-  // TODO.
+  for (Node* i = l.begin(); i != l.end(); i = i->next) {
+    insert(end(), i->key);
+  }
 }
