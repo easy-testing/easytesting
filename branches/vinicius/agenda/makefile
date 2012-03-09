@@ -7,9 +7,9 @@ program = agenda
 type = _
 
 # Gera o binario do programa e de testes e mantem dependencias
-all: clean main.o $(program).o $(program)_test.o gtest.o
-	$(cc) -I $(path) main.o $(program).o -o main
-	$(cc) -I $(path) $(program).o $(program)_test.o gtest.o -o easy_testing
+all: clean main.o $(program)_test.o gtest.o
+	$(cc) -I $(path) main.o -o main
+	$(cc) -I $(path) $(program)_test.o gtest.o -o easy_testing
 	@echo "--------------------------------------------------------------"
 	@echo "main: executa o programa em main.cc."
 	@echo "easy_testing: testa as funções implementadas em $(program).cc."
@@ -30,8 +30,6 @@ test: clean $(program).o $(program)_test.o gtest.o
 main.o:
 	$(cc) -I $(path) -c src/main.cc -D$(type)
 
-$(program).o:
-	$(cc) -I $(path) -c src/$(program).cc -D$(type)
 
 $(program)_test.o:
 	$(cc) -I $(path) -c test/$(program)_test.cc -D$(type)
@@ -40,4 +38,4 @@ gtest.o:
 	$(cc) -I $(path) -c ../gtest/gtest.cc
 
 clean:
-	@rm -f main.o $(program).o $(program)_test.o gtest.o a.out
+	@rm -f main easy_testing main.o $(program).o $(program)_test.o gtest.o a.out
