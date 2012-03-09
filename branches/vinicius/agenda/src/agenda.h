@@ -4,13 +4,16 @@
 #define TRUNK_VETORES_SRC_VETORES_H_
 
 #include <string>
+#define MAX 1000
 
 using namespace std;
 
-struct Entrada {
+struct Contato {
   string nome;
   string telefone;
   string aniversario;
-};
+  string email;
+}contatos[MAX];
+
 
 #endif  // TRUNK_VETORES_SRC_VETORES_H_
