@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-DVType=float" />
 				</Compiler>
 			</Target>
 			<Target title="Main">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-DVType=double" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />

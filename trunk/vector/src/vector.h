@@ -1,28 +1,23 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef BRANCHES_GABARITOS_VECTOR_SRC_VECTOR_H_
-#define BRANCHES_GABARITOS_VECTOR_SRC_VECTOR_H_
+#ifndef TRUNK_VECTOR_SRC_VECTOR_H_
+#define TRUNK_VECTOR_SRC_VECTOR_H_
 
-// Implementa um vetor dinâmico de numeros reais.
+// Implementa um vetor dinâmico de números reais.
+// Tipo dos elementos contidos no vetor é definido em VType.
 class vector {
  public:
-  // Tipo dos elementos contidos no vetor.
-  typedef float type;
-
   // Cria um vetor vazio.
   vector();
 
-  // Cria um vetor com n elementos. O valor dos n elementos eh indeterminado
-  // (ou seja, pode ser qualquer número real).
+  // Cria um vetor com n elementos. O valor dos n elementos é indeterminado
+  // (ou seja, pode ser qualquer valor).
   vector(int n);
 
   // Cria um vetor idêntico a v.
   vector(vector& v);
 
-  // Testa se o vetor está vazio.
-  bool empty();
-
-  // Retorna o numero de elementos no vetor.
+  // Retorna o número de elementos no vetor.
   int size();
 
   // Altera o tamanho do vetor para n elementos.
@@ -33,29 +28,23 @@ class vector {
   void resize(int n);
 
   // Retorna uma referência ao elemento de índice i no vetor.
-  type& at(int i);
-  type& operator[](int i) {return at(i);}
-
-  // Retorna uma referência ao primeiro elemento no vetor.
-  type& front();
-
-  // Retorna uma referência ao último elemento no vetor.
-  type& back();
+  // Precondição: i deve ser um índice válido do vetor.
+  VType& operator[](int i);
 
   // Faz com que o vetor corrente fique igual ao vetor v.
-  void assign(vector& v);
-  void operator=(vector& v) {assign(v);}
+  void operator=(vector& v);
 
   // Insere o elemento x no final do vetor.
   // Esta operação aumenta o número de elementos do vetor em uma unidade.
   // Por exemplo: se "v = {1.0, 3.0, 5.0}", após "v.push_back(-7.0)",
   // "v = {1.0, 3.0, 5.0, -7.0}".
-  void push_back(type x);
+  void push_back(VType x);
 
   // Remove o último elemento do vetor.
   // Esta operação diminui o número de elementos no vetor em uma unidade.
   // Por exemplo: se "v = {1.0, 3.0, 5.0}", após "v.pop_back()",
   // "v = {1.0, 3.0}".
+  // Precondição: O vetor deve ter pelo menos um elemento.
   void pop_back();
 
   // Insere o elemento x antes do elemento de índice 'index'.
@@ -65,7 +54,8 @@ class vector {
   // Esta operação aumenta o número de elementos no vetor em uma unidade.
   // Por exemplo: se "v = {1.0, 3.0, 5.0}", após "v.insert(1, -7.0)",
   // "v = {1.0, -7.0, 3.0, 5.0}".
-  void insert(int index, type x);
+  // Precondição: 0 <= i <= size_.
+  void insert(int index, VType x);
 
   // Remove o elemento de índice 'index' do vetor.
   // Todos os elementos com índice maior que 'index' são deslocados para
@@ -73,13 +63,8 @@ class vector {
   // Esta operação diminui o número de elementos no vetor em uma unidade.
   // Por exemplo: se "v = {1.0, 3.0, 5.0}", após "v.erase(1)",
   // "v = {1.0, 5.0}".
+  // Precondição: i deve ser um índice válido do vetor.
   void erase(int index);
-
-  // Remove todos os elementos do vetor.
-  // Ao final, o número de elementos no vetor é igual a zero.
-  // Por exemplo: se "v = {1.0, 3.0, 5.0}", após "v.clear()",
-  // "v = {}".
-  void clear();
 
   // Libera a memória alocada para array_.
   ~vector();
@@ -89,9 +74,9 @@ class vector {
   int size_;
 
   // Vetor alocado dinamicamente.
-  type* array_;
+  VType* array_;
 
   friend class Teste;
 };  // end class vector.
 
-#endif  // BRANCHES_GABARITOS_VECTOR_SRC_VECTOR_H_
+#endif  // TRUNK_VECTOR_SRC_VECTOR_H_
