@@ -316,7 +316,7 @@ TEST_F(Teste, Testa_Insert_no_meio_da_lista_nao_vazia) {
       << "Erro na funcao: void list::insert(Node* i, LType k) *\n"
       << "------------------------------------------------------------------\n"
       << "l = [ 1 3 4 ] \n"
-      << "\"l.insert(<ponteiro para 3>, \"2\")\" resultou em: "
+      << "\"l.insert(<ponteiro para 3>, 2)\" resultou em: "
       << "l = " << atual << "\n"
       << "Resultado esperado: l = " << esperado << "\n"
       << "------------------------------------------------------------------\n";
