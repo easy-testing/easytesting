@@ -1,13 +1,13 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_STACK_TEST_STACK_TEST_H_
-#define TRUNK_STACK_TEST_STACK_TEST_H_
+#ifndef BRANCHES_GABARITOS_QUEUE_TEST_QUEUE_TEST_H_
+#define BRANCHES_GABARITOS_QUEUE_TEST_QUEUE_TEST_H_
 
 #include <sstream>
 #include <string>
 
 #include "gtest/gtest.h"
-#include "stack/src/stack.h"
+#include "queue/src/queue.h"
 
 using std::string;
 using std::stringstream;
@@ -31,17 +31,17 @@ class Teste : public testing::Test {
     return aux;
   }
 
-  // Retorna um ponteiro para o primeiro elemento da pilha.
+  // Retorna um ponteiro para o primeiro elemento da fila.
   Node* begin(const stack& l) {
     return l.end_->next;
   }
 
-  // Retorna um ponteiro para o elemento seguinte ao ultimo elemento da pilha.
+  // Retorna um ponteiro para o elemento seguinte ao ultimo elemento da fila.
   Node* end(const stack& l) {
     return l.end_;
   }
 
-  // Retorna o número de elementos na pilha.
+  // Retorna o número de elementos na fila.
   int size(const stack& l) {
     return l.size_;
   }
@@ -83,19 +83,19 @@ TEST_F(Teste, Testa_construtor_vazio) {
     << "-------------------------------------------------------------------\n"
     << "Erro no construtor: stack::stack()\n"
     << "-------------------------------------------------------------------\n"
-    << " Número de elementos na pilha maior que zero.\n"
+    << " Número de elementos na fila maior que zero.\n"
     << "-------------------------------------------------------------------\n";
 
   ASSERT_EQ(end(atual)->prev, end(atual))
     << "-------------------------------------------------------------------\n"
     << "Erro no construtor: stack::stack()\n"
     << "-------------------------------------------------------------------\n"
-    << " Em uma pilha vazia, end_->prev_ = end_.\n"
+    << " Em uma fila vazia, end_->prev_ = end_.\n"
     << "-------------------------------------------------------------------\n";
 }
 
 
-TEST_F(Teste, Testa_Size_para_pilha_vazia) {
+TEST_F(Teste, Testa_Size_para_fila_vazia) {
   stack p;
   int esperado = 0;
   int atual = p.size();
@@ -109,7 +109,7 @@ TEST_F(Teste, Testa_Size_para_pilha_vazia) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Size_para_pilha_nao_vazia) {
+TEST_F(Teste, Testa_Size_para_fila_nao_vazia) {
   stack p;
   CriaStack3("a", "b", "c", &p);
   int esperado = 3;
@@ -124,17 +124,17 @@ TEST_F(Teste, Testa_Size_para_pilha_nao_vazia) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Empty_com_pilha_vazia) {
+TEST_F(Teste, Testa_Empty_com_fila_vazia) {
   stack p;
   ASSERT_TRUE(p.empty())
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: bool stack::empty() \n"
       << "------------------------------------------------------------------\n"
-      << " A pilha esta vazia e a funcao retornou FALSE.\n"
+      << " A fila esta vazia e a funcao retornou FALSE.\n"
       << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Empty_com_pilha_nao_vazia) {
+TEST_F(Teste, Testa_Empty_com_fila_nao_vazia) {
   stack p;
   CriaStack3("12", "14", "15", &p);
   ASSERT_FALSE(p.empty())
@@ -142,26 +142,26 @@ TEST_F(Teste, Testa_Empty_com_pilha_nao_vazia) {
       << "Erro na funcao: bool stack::empty() \n"
       << "------------------------------------------------------------------\n"
       << " Erro na chamada da funcao : bool stack::empty()\n"
-      << " A pilha tem pelo menos um elemento e a funcao retornou TRUE."
+      << " A fila tem pelo menos um elemento e a funcao retornou TRUE."
       << "------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Top) {
   stack p;
   CriaStack3("12", "14", "15", &p);
-  LType atual = p.top();
+  LType atual = p.front();
   LType esperado = "12";
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: VType stack::top()\n"
+    << "Erro na funcao: VType stack::front()\n"
     << "-------------------------------------------------------------------\n"
     << " p = " << "[ 12 14 15 ]" << "\n"
-    << " \"p.top()\" retornou: " << atual << "\n"
+    << " \"p.front()\" retornou: " << atual << "\n"
     << " Valor esperado: " << esperado << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Push_em_pilha_vazia) {
+TEST_F(Teste, Testa_Push_em_fila_vazia) {
   stack p;
   p.push("10");
   string atual = ToString(p);
@@ -176,7 +176,7 @@ TEST_F(Teste, Testa_Push_em_pilha_vazia) {
       << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Push_em_pilha_nao_vazia) {
+TEST_F(Teste, Testa_Push_em_fila_nao_vazia) {
   stack p;
   CriaStack3("2", "3", "4", &p);
   p.push("1");
@@ -193,7 +193,7 @@ TEST_F(Teste, Testa_Push_em_pilha_nao_vazia) {
       << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Pop_em_pilha_unitaria) {
+TEST_F(Teste, Testa_Pop_em_fila_unitaria) {
   stack p;
   p.push("10");
   p.pop();
@@ -209,7 +209,7 @@ TEST_F(Teste, Testa_Pop_em_pilha_unitaria) {
       << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Pop_em_pilha_nao_vazia) {
+TEST_F(Teste, Testa_Pop_em_fila_nao_vazia) {
   stack p;
   CriaStack3("2", "3", "4", &p);
   p.pop();
@@ -237,7 +237,7 @@ TEST_F(Teste, Testa_operador_Assign) {
     << "Erro na funcao: void stack::operator=(stack& p)\n"
     << "-------------------------------------------------------------------\n"
     << " Não basta apenas copiar o ponteiro para \"end_\". \n"
-    << " Você tem que copiar todos os elementos de l para a pilha corrente.\n"
+    << " Você tem que copiar todos os elementos de l para a fila corrente.\n"
     << "-------------------------------------------------------------------\n";
 
   ASSERT_EQ(ToString(esperado), ToString(atual))
@@ -250,4 +250,4 @@ TEST_F(Teste, Testa_operador_Assign) {
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // TRUNK_STACK_TEST_STACK_TEST_H_
+#endif  // BRANCHES_GABARITOS_QUEUE_TEST_QUEUE_TEST_H_
