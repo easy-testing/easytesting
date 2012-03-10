@@ -38,7 +38,7 @@ class list {
   Node* end();
 
   // Retorna o elemento seguinte ao indicado por i na lista em (1).
-  // Retorna o valor do elemento indicado por i em (1).
+  // Precondição: i aponta para um dos elementos da lista.
   Node* next(Node* i);
 
   // Retorna o elemento anterior ao indicado por i na lista em (1).
