@@ -1,43 +1,22 @@
 # Compilador utilizado
-cc = g++
+cc = g++ -std=c++0x
 # PATH raiz para includes
-path = ../
+path = ..
 # Nome da lista de exercicios
 program = queue
-type = _
+# Tipo dos elementos do vetor no main
+type_main = std::string
+# Tipo dos elementos do vetor nos testes
+type_test = std::string
 
-# Gera o binario do programa e de testes e mantem dependencias
-all: clean main.o $(program).o $(program)_test.o gtest.o
-	$(cc) -I $(path) main.o $(program).o -o main
-	$(cc) -I $(path) $(program).o $(program)_test.o gtest.o -o easy_testing
+# Gera o binarios do programa e dos testes
+all:
+	$(cc) -D LType=$(type_main) -I $(path) src/$(program).cc src/main.cc -o main
+	$(cc) -D LType=$(type_test) -I $(path) src/$(program).cc test/$(program)_test.cc ../gtest/gtest.cc -o easy_testing
 	@echo "--------------------------------------------------------------"
 	@echo "main: executa o programa em main.cc."
-	@echo "easy_testing: testa as funções implementadas em $(program).cc."
+	@echo "easy_testing: executa os testes dos exercícios."
 	@echo "--------------------------------------------------------------"
 
-# Roda o programa e deleta dependencias e o binario
-run: clean main.o $(program).o
-	$(cc) -I $(path) main.o $(program).o
-	@./a.out
-	@rm -f $(program).o main.o a.out
-
-# Roda testes e deleta dependencias e o binario
-test: clean $(program).o $(program)_test.o gtest.o
-	$(cc) -I $(path) $(program).o $(program)_test.o gtest.o
-	@./a.out
-	@rm -f $(program).o $(program)_test.o gtest.o a.out
-
-main.o:
-	$(cc) -I $(path) -c src/main.cc -D$(type)
-
-$(program).o:
-	$(cc) -I $(path) -c src/$(program).cc -D$(type) -std=c++0x
-
-$(program)_test.o:
-	$(cc) -I $(path) -c test/$(program)_test.cc -D$(type)
-
-gtest.o:
-	$(cc) -I $(path) -c ../gtest/gtest.cc
-
 clean:
-	@rm -f main.o $(program).o $(program)_test.o gtest.o a.out
+	@rm -f main easy_testing

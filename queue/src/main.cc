@@ -1,6 +1,6 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 //
-// Lista sobre Filas.
+// Lista de exercícios sobre listas encadeadas - fila.
 //
 // Questão 1.
 // Implemente em queue.h e queue.cc o TAD queue, utilizando listas encadeadas.
@@ -23,7 +23,7 @@
 // DICA: Use duas filas: uma para armazenar os nomes dos clientes
 // prioritários e outra para armazenar os nomes dos clientes não prioritários.
 
-#include <ctdlib>
+#include <cstdlib>
 #include <fstream>
 #include <iostream>
 #include <string>

@@ -1,6 +1,6 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 //
-// Implementação do TAD list utilizando Listas Encadeadas.
+// Lista de exercícios sobre listas encadeadas - lista.
 //
 // Questão 1.
 // Implemente em list.h e list.cc o TAD list, utilizando listas encadeadas.

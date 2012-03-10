@@ -67,6 +67,7 @@ void list::insert(Node* i, LType k) {
   node->key = k;
   node->prev = i->prev;
   node->next = i;
+
   i->prev->next = node;
   i->prev = node;
   size_++;

@@ -1,6 +1,6 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 //
-// Lista de exercícios sobre Pilhas.
+// Lista de exercícios sobre listas encadeadas - pilha.
 //
 // Questão 1.
 // Implemente em stack.h e stack.cc o TAD stack, utilizando listas ligadas.
@@ -69,5 +69,6 @@ int main() {
 
   // Imprime a expressão em notação infixada.
   ImprimirInfixado(&expressao);
+  cout << endl;
   return 0;
 }
