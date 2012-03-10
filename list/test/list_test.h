@@ -36,7 +36,7 @@ class Teste : public testing::Test {
     return l.end_->next;
   }
 
-  // Retorna um ponteiro para o elemento seguinte ao ultimo elemento da lista.
+  // Retorna um ponteiro para o elemento seguinte ao último elemento da lista.
   Node* end(const list& l) {
     return l.end_;
   }
@@ -57,9 +57,8 @@ class Teste : public testing::Test {
     return sout.str();
   }
 
-  // Preenche a lista com 3 elementos.
-  // 'd' deve ter sido criada com construtor vazio.
-  void CriaList3(LType x1, LType x2, LType x3, list* d) {
+  // Preenche a lista d com 3 elementos. 'd' deve ser uma pilha vazia.
+  void CriaLista(LType x1, LType x2, LType x3, list* d) {
     d->end_->next = NewNode(x1, d->end_, NULL);
     d->end_->next->next = NewNode(x2, d->end_->next, NULL);
     d->end_->next->next->next = d->end_->prev =
@@ -70,32 +69,29 @@ class Teste : public testing::Test {
 
 TEST_F(Teste, Testa_construtor_vazio) {
   list atual;
-
   ASSERT_EQ(0, size(atual))
     << "-------------------------------------------------------------------\n"
     << "Erro no construtor: list::list()\n"
     << "-------------------------------------------------------------------\n"
     << " Número de elementos na lista maior que zero.\n"
     << "-------------------------------------------------------------------\n";
-
-  ASSERT_EQ(begin(atual), end(atual))
+  ASSERT_EQ(end(atual)->next, end(atual))
     << "-------------------------------------------------------------------\n"
     << "Erro no construtor: list::list()\n"
     << "-------------------------------------------------------------------\n"
-    << " Em uma lista vazia, l.begin() = l.end() = ao no sentinela.\n"
+    << " Em uma lista encadeada vazia, end_->next = end_.\n"
     << "-------------------------------------------------------------------\n";
-
   ASSERT_EQ(end(atual)->prev, end(atual))
     << "-------------------------------------------------------------------\n"
     << "Erro no construtor: list::list()\n"
     << "-------------------------------------------------------------------\n"
-    << " Em uma lista vazia, end_->prev_ = end_.\n"
+    << " Em uma lista encadeada vazia, end_->prev_ = end_.\n"
     << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_construtor_por_copia) {
   list esperado;
-  CriaList3("a", "b", "c", &esperado);
+  CriaLista("a", "b", "c", &esperado);
   list atual(esperado);
   ASSERT_EQ(ToString(esperado), ToString(atual))
     << "-------------------------------------------------------------------\n"
@@ -116,14 +112,14 @@ TEST_F(Teste, Testa_Size_para_lista_vazia) {
     << "Erro na funcao: int list::size()\n"
     << "-------------------------------------------------------------------\n"
     << " l = " << ToString(l) << "\n"
-    << " l.sise() retornou: " << atual << "\n"
+    << " \"l.sise()\" retornou: " << atual << "\n"
     << " Valor esperado: " << esperado << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Size_para_lista_nao_vazia) {
   list l;
-  CriaList3("a", "b", "c", &l);
+  CriaLista("a", "b", "c", &l);
   int esperado = 3;
   int atual = l.size();
   ASSERT_EQ(esperado, atual)
@@ -148,12 +144,11 @@ TEST_F(Teste, Testa_Empty_com_lista_vazia) {
 
 TEST_F(Teste, Testa_Empty_com_lista_nao_vazia) {
   list l;
-  CriaList3("12", "14", "15", &l);
+  CriaLista("12", "14", "15", &l);
   ASSERT_FALSE(l.empty())
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: bool list::empty() \n"
       << "------------------------------------------------------------------\n"
-      << " Erro na chamada da funcao : bool list::empty()\n"
       << " A lista tem pelo menos um elemento e a funcao retornou TRUE."
       << "------------------------------------------------------------------\n";
 }
@@ -170,7 +165,7 @@ TEST_F(Teste, Testa_Begin_com_lista_vazia) {
 
 TEST_F(Teste, Testa_Begin_com_lista_nao_vazia) {
   list l;
-  CriaList3("1", "2", "3", &l);
+  CriaLista("1", "2", "3", &l);
   LType atual = l.begin()->key;
   LType esperado = "1";
   ASSERT_EQ(esperado, atual)
@@ -195,7 +190,7 @@ TEST_F(Teste, Testa_End_com_lista_vazia) {
 
 TEST_F(Teste, Testa_End_com_lista_nao_vazia) {
   list l;
-  CriaList3("1", "2", "3", &l);
+  CriaLista("1", "2", "3", &l);
   ASSERT_EQ(end(l), l.end())
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: Node* list::begin() \n"
@@ -207,7 +202,7 @@ TEST_F(Teste, Testa_End_com_lista_nao_vazia) {
 
 TEST_F(Teste, Testa_Next) {
   list l;
-  CriaList3("1", "2", "3", &l);
+  CriaLista("1", "2", "3", &l);
   LType atual = l.next(l.begin())->key;
   LType esperado = "2";
   ASSERT_EQ(esperado, atual)
@@ -222,7 +217,7 @@ TEST_F(Teste, Testa_Next) {
 
 TEST_F(Teste, Testa_Prev) {
   list l;
-  CriaList3("1", "2", "3", &l);
+  CriaLista("1", "2", "3", &l);
   LType atual = l.prev(l.end())->key;
   LType esperado = "3";
   ASSERT_EQ(esperado, atual)
@@ -237,7 +232,7 @@ TEST_F(Teste, Testa_Prev) {
 
 TEST_F(Teste, Testa_operador_At_para_acesso) {
   list l;
-  CriaList3("12", "14", "15", &l);
+  CriaLista("12", "14", "15", &l);
   LType atual = l[l.begin()];
   LType esperado = "12";
   ASSERT_EQ(esperado, atual)
@@ -252,7 +247,7 @@ TEST_F(Teste, Testa_operador_At_para_acesso) {
 
 TEST_F(Teste, Testa_operador_At_para_atribuicao) {
   list l;
-  CriaList3("12", "14", "15", &l);
+  CriaLista("12", "14", "15", &l);
   l[l.begin()] = "-1";
   string atual = ToString(l);
   string esperado = "[ -1 14 15 ]";
@@ -268,10 +263,9 @@ TEST_F(Teste, Testa_operador_At_para_atribuicao) {
 
 TEST_F(Teste, Testa_operador_Assign) {
   list esperado;
-  CriaList3("12", "14", "15", &esperado);
+  CriaLista("12", "14", "15", &esperado);
   list atual;
   atual = esperado;
-
   ASSERT_NE(end(esperado), end(atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: void list::operator=(list& l)\n"
@@ -279,7 +273,6 @@ TEST_F(Teste, Testa_operador_Assign) {
     << " Não basta apenas copiar o ponteiro para \"end_\". \n"
     << " Você tem que copiar todos os elementos de l para a lista corrente.\n"
     << "-------------------------------------------------------------------\n";
-
   ASSERT_EQ(ToString(esperado), ToString(atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: void list::operator=(list& l)\n"
@@ -307,7 +300,7 @@ TEST_F(Teste, Testa_Insert_no_inicio_de_lista_vazia) {
 
 TEST_F(Teste, Testa_Insert_no_meio_da_lista_nao_vazia) {
   list l;
-  CriaList3("1", "3", "4", &l);
+  CriaLista("1", "3", "4", &l);
   l.insert(l.begin()->next, "2");
   string atual = ToString(l);
   string esperado("[ 1 2 3 4 ]");
@@ -340,7 +333,7 @@ TEST_F(Teste, Testa_Erase_em_lista_unitaria) {
 
 TEST_F(Teste, Testa_erase_no_meio_da_lista_nao_vazia) {
   list l;
-  CriaList3("1", "2", "3", &l);
+  CriaLista("1", "2", "3", &l);
   l.erase(l.begin()->next);
   string atual = ToString(l);
   string esperado("[ 1 3 ]");
@@ -356,9 +349,9 @@ TEST_F(Teste, Testa_erase_no_meio_da_lista_nao_vazia) {
 
 TEST_F(Teste, Testa_Merge) {
   list l1;
-  CriaList3("1", "2", "3", &l1);
+  CriaLista("1", "2", "3", &l1);
   list l2;
-  CriaList3("4", "5", "6", &l2);
+  CriaLista("4", "5", "6", &l2);
   l1.merge(l2);
   string atual = ToString(l1);
   string esperado("[ 1 2 3 4 5 6 ]");
@@ -375,7 +368,7 @@ TEST_F(Teste, Testa_Merge) {
 
 TEST_F(Teste, Testa_Clear) {
   list l;
-  CriaList3("1", "4", "7", &l);
+  CriaLista("1", "4", "7", &l);
   l.clear();
   string atual = ToString(l);
   string esperado("[ ]");

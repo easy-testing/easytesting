@@ -1,7 +1,7 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef BRANCHES_GABARITOS_QUEUE_TEST_QUEUE_TEST_H_
-#define BRANCHES_GABARITOS_QUEUE_TEST_QUEUE_TEST_H_
+#ifndef TRUNK_QUEUE_TEST_QUEUE_TEST_H_
+#define TRUNK_QUEUE_TEST_QUEUE_TEST_H_
 
 #include <sstream>
 #include <string>
@@ -12,7 +12,7 @@
 using std::string;
 using std::stringstream;
 
-// Implementa um nó da stacka encadeada.
+// Implementa um nó da queuea encadeada.
 struct Node {
   LType key;  // Valor da chave do nó.
   Node* prev;  // Ponteiro para o nó anterior.
@@ -23,7 +23,7 @@ struct Node {
 class Teste : public testing::Test {
  protected:
   // Cria uma nó cuja chave é k, o nó anterior é l, e o nó posterior é r.
-  Node* NewNode(string k, Node* l, Node* r) {
+  Node* NewNode(LType k, Node* l, Node* r) {
     Node* aux = new Node();
     aux->key = k;
     aux->prev = l;
@@ -32,41 +32,33 @@ class Teste : public testing::Test {
   }
 
   // Retorna um ponteiro para o primeiro elemento da fila.
-  Node* begin(const stack& l) {
-    return l.end_->next;
+  Node* begin(const queue& q) {
+    return q.end_->next;
   }
 
-  // Retorna um ponteiro para o elemento seguinte ao ultimo elemento da fila.
-  Node* end(const stack& l) {
-    return l.end_;
+  // Retorna um ponteiro para o elemento seguinte ao último elemento da fila.
+  Node* end(const queue& q) {
+    return q.end_;
   }
 
   // Retorna o número de elementos na fila.
-  int size(const stack& l) {
-    return l.size_;
-  }
-
-  // Preenche a stack passada como parametro com 1 numero.
-  // 'p' deve ser uma stack vazia.
-  void CriaStack1(string x, stack& p) {
-    p.end_->prev = p.end_->next = NewNode(x, p.end_, p.end_);
-    p.size_ = 1;
+  int size(const queue& q) {
+    return q.size_;
   }
 
   // Retorna uma string no formato [a b c d ... ].
-  string ToString(const stack& l) {
+  string ToString(const queue& q) {
     stringstream sout;
     sout << "[ ";
-    for (Node* i = begin(l) ; i != end(l) ; i = i->next) {
+    for (Node* i = begin(q) ; i != end(q) ; i = i->next) {
       sout << i->key << " ";
     }
     sout << "]";
     return sout.str();
   }
 
-  // Preenche a stack passada como parametro com 3 numeros.
-  // 'd' deve ser uma stack vazia.
-  void CriaStack3(LType x1, LType x2, LType x3, stack* d) {
+  // Preenche a fila d com 3 números. 'd' deve ser uma fila vazia.
+  void CriaFila(LType x1, LType x2, LType x3, queue* d) {
     d->end_->next = NewNode(x1, d->end_, NULL);
     d->end_->next->next = NewNode(x2, d->end_->next, NULL);
     d->end_->next->next->next = d->end_->prev =
@@ -75,179 +67,192 @@ class Teste : public testing::Test {
   }
 };
 
-
 TEST_F(Teste, Testa_construtor_vazio) {
-  stack atual;
-
+  queue atual;
   ASSERT_EQ(0, size(atual))
     << "-------------------------------------------------------------------\n"
-    << "Erro no construtor: stack::stack()\n"
+    << "Erro no construtor: queue::queue()\n"
     << "-------------------------------------------------------------------\n"
     << " Número de elementos na fila maior que zero.\n"
     << "-------------------------------------------------------------------\n";
-
+  ASSERT_EQ(end(atual)->next, end(atual))
+    << "-------------------------------------------------------------------\n"
+    << "Erro no construtor: queue::queue()\n"
+    << "-------------------------------------------------------------------\n"
+    << " Em uma lista encadeada vazia, end_->next = end_.\n"
+    << "-------------------------------------------------------------------\n";
   ASSERT_EQ(end(atual)->prev, end(atual))
     << "-------------------------------------------------------------------\n"
-    << "Erro no construtor: stack::stack()\n"
+    << "Erro no construtor: queue::queue()\n"
     << "-------------------------------------------------------------------\n"
-    << " Em uma fila vazia, end_->prev_ = end_.\n"
+    << " Em uma lista encadeada vazia, end_->prev_ = end_.\n"
     << "-------------------------------------------------------------------\n";
 }
 
-
 TEST_F(Teste, Testa_Size_para_fila_vazia) {
-  stack p;
+  queue q;
   int esperado = 0;
-  int atual = p.size();
+  int atual = q.size();
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: int stack::size()\n"
+    << "Erro na funcao: int queue::size()\n"
     << "-------------------------------------------------------------------\n"
-    << " p = " << ToString(p) << "\n"
-    << " p.sise() retornou: " << atual << "\n"
+    << " q = " << ToString(q) << "\n"
+    << " \"q.sise()\" retornou: " << atual << "\n"
     << " Valor esperado: " << esperado << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Size_para_fila_nao_vazia) {
-  stack p;
-  CriaStack3("a", "b", "c", &p);
+  queue q;
+  CriaFila("a", "b", "c", &q);
   int esperado = 3;
-  int atual = p.size();
+  int atual = q.size();
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: int stack::size()\n"
+    << "Erro na funcao: int queue::size()\n"
     << "-------------------------------------------------------------------\n"
-    << " p = " << ToString(p) << "\n"
-    << " \"p.sise()\" retornou: " << atual << "\n"
+    << " q = " << ToString(q) << "\n"
+    << " \"q.sise()\" retornou: " << atual << "\n"
     << " Valor esperado: " << esperado << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Empty_com_fila_vazia) {
-  stack p;
-  ASSERT_TRUE(p.empty())
+  queue q;
+  ASSERT_TRUE(q.empty())
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: bool stack::empty() \n"
+      << "Erro na funcao: bool queue::empty() \n"
       << "------------------------------------------------------------------\n"
       << " A fila esta vazia e a funcao retornou FALSE.\n"
       << "------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Empty_com_fila_nao_vazia) {
-  stack p;
-  CriaStack3("12", "14", "15", &p);
-  ASSERT_FALSE(p.empty())
+  queue q;
+  CriaFila("12", "14", "15", &q);
+  ASSERT_FALSE(q.empty())
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: bool stack::empty() \n"
+      << "Erro na funcao: bool queue::empty() \n"
       << "------------------------------------------------------------------\n"
-      << " Erro na chamada da funcao : bool stack::empty()\n"
       << " A fila tem pelo menos um elemento e a funcao retornou TRUE."
       << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Top) {
-  stack p;
-  CriaStack3("12", "14", "15", &p);
-  LType atual = p.front();
+TEST_F(Teste, Testa_Front) {
+  queue q;
+  CriaFila("12", "14", "15", &q);
+  LType atual = q.front();
   LType esperado = "12";
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: VType stack::front()\n"
+    << "Erro na funcao: VType queue::front()\n"
     << "-------------------------------------------------------------------\n"
-    << " p = " << "[ 12 14 15 ]" << "\n"
-    << " \"p.front()\" retornou: " << atual << "\n"
+    << " q = " << "[ 12 14 15 ]" << "\n"
+    << " \"q.front()\" retornou: " << atual << "\n"
+    << " Valor esperado: " << esperado << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testa_Back) {
+  queue q;
+  CriaFila("12", "14", "15", &q);
+  LType atual = q.back();
+  LType esperado = "15";
+  ASSERT_EQ(esperado, atual)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao: VType queue::back()\n"
+    << "-------------------------------------------------------------------\n"
+    << " q = " << "[ 12 14 15 ]" << "\n"
+    << " \"q.back()\" retornou: " << atual << "\n"
     << " Valor esperado: " << esperado << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Push_em_fila_vazia) {
-  stack p;
-  p.push("10");
-  string atual = ToString(p);
+  queue q;
+  q.push("10");
+  string atual = ToString(q);
   string esperado("[ 10 ]");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void stack::push(LType k) *\n"
+      << "Erro na funcao: void queue::push(LType k) *\n"
       << "------------------------------------------------------------------\n"
-      << "p = [ ] \n"
-      << "\"p.push(10)\" resultou em: p = " << atual << "\n"
-      << "Resultado esperado: p = " << esperado << "\n"
+      << "q = [ ] \n"
+      << "\"q.push(10)\" resultou em: p = " << atual << "\n"
+      << "Resultado esperado: q = " << esperado << "\n"
       << "------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Push_em_fila_nao_vazia) {
-  stack p;
-  CriaStack3("2", "3", "4", &p);
-  p.push("1");
-  string atual = ToString(p);
+  queue q;
+  CriaFila("1", "2", "3", &q);
+  q.push("4");
+  string atual = ToString(q);
   string esperado("[ 1 2 3 4 ]");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void stack::push(LType k) *\n"
+      << "Erro na funcao: void queue::push(LType k) *\n"
       << "------------------------------------------------------------------\n"
-      << "l = [ 2 3 4 ] \n"
-      << "\"p.push(1)\" resultou em: "
-      << "p = " << atual << "\n"
-      << "Resultado esperado: p = " << esperado << "\n"
+      << "q = [ 1 2 3 ] \n"
+      << "\"q.push(4)\" resultou em: "
+      << "q = " << atual << "\n"
+      << "Resultado esperado: q = " << esperado << "\n"
       << "------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Pop_em_fila_unitaria) {
-  stack p;
-  p.push("10");
-  p.pop();
-  string atual = ToString(p);
+  queue q;
+  q.push("10");
+  q.pop();
+  string atual = ToString(q);
   string esperado("[ ]");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void stack::pop() *\n"
+      << "Erro na funcao: void queue::pop() *\n"
       << "------------------------------------------------------------------\n"
-      << "p = [ 10 ] \n"
-      << "\"l.pop()\" resultou em: p = " << atual << "\n"
-      << "Resultado esperado: p = " << esperado << "\n"
+      << "q = [ 10 ] \n"
+      << "\"q.pop()\" resultou em: q = " << atual << "\n"
+      << "Resultado esperado: q = " << esperado << "\n"
       << "------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Pop_em_fila_nao_vazia) {
-  stack p;
-  CriaStack3("2", "3", "4", &p);
-  p.pop();
-  string atual = ToString(p);
+  queue q;
+  CriaFila("2", "3", "4", &q);
+  q.pop();
+  string atual = ToString(q);
   string esperado("[ 3 4 ]");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void stack::push(LType k) *\n"
+      << "Erro na funcao: void queue::push(LType k) *\n"
       << "------------------------------------------------------------------\n"
-      << "l = [ 2 3 4 ] \n"
-      << "\"p.pop()\" resultou em: "
-      << "p = " << atual << "\n"
-      << "Resultado esperado: p = " << esperado << "\n"
+      << "q = [ 2 3 4 ] \n"
+      << "\"q.pop()\" resultou em: q = " << atual << "\n"
+      << "Resultado esperado: q = " << esperado << "\n"
       << "------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_operador_Assign) {
-  stack esperado;
-  CriaStack3("12", "14", "15", &esperado);
-  stack atual;
+  queue esperado;
+  CriaFila("12", "14", "15", &esperado);
+  queue atual;
   atual = esperado;
-
   ASSERT_NE(end(esperado), end(atual))
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: void stack::operator=(stack& p)\n"
+    << "Erro na funcao: void queue::operator=(queue& p)\n"
     << "-------------------------------------------------------------------\n"
     << " Não basta apenas copiar o ponteiro para \"end_\". \n"
     << " Você tem que copiar todos os elementos de l para a fila corrente.\n"
     << "-------------------------------------------------------------------\n";
-
   ASSERT_EQ(ToString(esperado), ToString(atual))
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: void stack::operator=(stack& p)\n"
+    << "Erro na funcao: void queue::operator=(queue& p)\n"
     << "-------------------------------------------------------------------\n"
-    << " p = " << ToString(esperado) << "\n"
-    << " \"u = p\" resultou em: u = " << ToString(atual) << "\n"
-    << " Resultado esperado: u = " << ToString(esperado) << "\n"
+    << " q = " << ToString(esperado) << "\n"
+    << " \"f = q\" resultou em: f = " << ToString(atual) << "\n"
+    << " Resultado esperado: f = " << ToString(esperado) << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // BRANCHES_GABARITOS_QUEUE_TEST_QUEUE_TEST_H_
+#endif  // TRUNK_QUEUE_TEST_QUEUE_TEST_H_

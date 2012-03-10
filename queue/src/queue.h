@@ -1,7 +1,7 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef BRANCHES_GABARITOS_QUEUE_SRC_QUEUE_H_
-#define BRANCHES_GABARITOS_QUEUE_SRC_QUEUE_H_
+#ifndef TRUNK_QUEUE_SRC_QUEUE_H_
+#define TRUNK_QUEUE_SRC_QUEUE_H_
 
 #include <string>
 
@@ -55,4 +55,4 @@ class queue {
   friend class Teste;
 };
 
-#endif  // BRANCHES_GABARITOS_QUEUE_SRC_QUEUE_H_
+#endif  // TRUNK_QUEUE_SRC_QUEUE_H_

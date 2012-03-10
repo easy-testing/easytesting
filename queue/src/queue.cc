@@ -62,7 +62,7 @@ void queue::operator=(queue& q) {
     pop();
   }
   // Insere os elementos de q de trás para frente na pilha corrente.
-  for (Node* i = q.end_->next; i != q.end_; i = i->prev) {
+  for (Node* i = q.end_->next; i != q.end_; i = i->next) {
     push(i->key);
   }
 }

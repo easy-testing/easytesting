@@ -32,18 +32,18 @@ class Teste : public testing::Test {
   }
 
   // Retorna um ponteiro para o primeiro elemento da pilha.
-  Node* begin(const stack& l) {
-    return l.end_->next;
+  Node* begin(const stack& p) {
+    return p.end_->next;
   }
 
-  // Retorna um ponteiro para o elemento seguinte ao ultimo elemento da pilha.
-  Node* end(const stack& l) {
-    return l.end_;
+  // Retorna um ponteiro para o elemento seguinte ao último elemento da pilha.
+  Node* end(const stack& p) {
+    return p.end_;
   }
 
   // Retorna o número de elementos na pilha.
-  int size(const stack& l) {
-    return l.size_;
+  int size(const stack& p) {
+    return p.size_;
   }
 
   // Preenche a stack passada como parametro com 1 numero.
@@ -54,19 +54,18 @@ class Teste : public testing::Test {
   }
 
   // Retorna uma string no formato [a b c d ... ].
-  string ToString(const stack& l) {
+  string ToString(const stack& p) {
     stringstream sout;
     sout << "[ ";
-    for (Node* i = begin(l) ; i != end(l) ; i = i->next) {
+    for (Node* i = begin(p) ; i != end(p) ; i = i->next) {
       sout << i->key << " ";
     }
     sout << "]";
     return sout.str();
   }
 
-  // Preenche a stack passada como parametro com 3 numeros.
-  // 'd' deve ser uma stack vazia.
-  void CriaStack3(LType x1, LType x2, LType x3, stack* d) {
+  // Preenche a pilha d com 3 números. 'd' deve ser uma pilha vazia.
+  void CriaPilha(LType x1, LType x2, LType x3, stack* d) {
     d->end_->next = NewNode(x1, d->end_, NULL);
     d->end_->next->next = NewNode(x2, d->end_->next, NULL);
     d->end_->next->next->next = d->end_->prev =
@@ -75,25 +74,27 @@ class Teste : public testing::Test {
   }
 };
 
-
 TEST_F(Teste, Testa_construtor_vazio) {
   stack atual;
-
   ASSERT_EQ(0, size(atual))
     << "-------------------------------------------------------------------\n"
     << "Erro no construtor: stack::stack()\n"
     << "-------------------------------------------------------------------\n"
     << " Número de elementos na pilha maior que zero.\n"
     << "-------------------------------------------------------------------\n";
-
+  ASSERT_EQ(end(atual)->next, end(atual))
+    << "-------------------------------------------------------------------\n"
+    << "Erro no construtor: stack::stack()\n"
+    << "-------------------------------------------------------------------\n"
+    << " Em uma lista encadeada vazia, end_->next = end_.\n"
+    << "-------------------------------------------------------------------\n";
   ASSERT_EQ(end(atual)->prev, end(atual))
     << "-------------------------------------------------------------------\n"
     << "Erro no construtor: stack::stack()\n"
     << "-------------------------------------------------------------------\n"
-    << " Em uma pilha vazia, end_->prev_ = end_.\n"
+    << " Em uma lista encadeada vazia, end_->prev_ = end_.\n"
     << "-------------------------------------------------------------------\n";
 }
-
 
 TEST_F(Teste, Testa_Size_para_pilha_vazia) {
   stack p;
@@ -104,14 +105,14 @@ TEST_F(Teste, Testa_Size_para_pilha_vazia) {
     << "Erro na funcao: int stack::size()\n"
     << "-------------------------------------------------------------------\n"
     << " p = " << ToString(p) << "\n"
-    << " p.sise() retornou: " << atual << "\n"
+    << " \"p.sise()\" retornou: " << atual << "\n"
     << " Valor esperado: " << esperado << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Size_para_pilha_nao_vazia) {
   stack p;
-  CriaStack3("a", "b", "c", &p);
+  CriaPilha("a", "b", "c", &p);
   int esperado = 3;
   int atual = p.size();
   ASSERT_EQ(esperado, atual)
@@ -136,19 +137,18 @@ TEST_F(Teste, Testa_Empty_com_pilha_vazia) {
 
 TEST_F(Teste, Testa_Empty_com_pilha_nao_vazia) {
   stack p;
-  CriaStack3("12", "14", "15", &p);
+  CriaPilha("12", "14", "15", &p);
   ASSERT_FALSE(p.empty())
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: bool stack::empty() \n"
       << "------------------------------------------------------------------\n"
-      << " Erro na chamada da funcao : bool stack::empty()\n"
       << " A pilha tem pelo menos um elemento e a funcao retornou TRUE."
       << "------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Top) {
   stack p;
-  CriaStack3("12", "14", "15", &p);
+  CriaPilha("12", "14", "15", &p);
   LType atual = p.top();
   LType esperado = "12";
   ASSERT_EQ(esperado, atual)
@@ -178,7 +178,7 @@ TEST_F(Teste, Testa_Push_em_pilha_vazia) {
 
 TEST_F(Teste, Testa_Push_em_pilha_nao_vazia) {
   stack p;
-  CriaStack3("2", "3", "4", &p);
+  CriaPilha("2", "3", "4", &p);
   p.push("1");
   string atual = ToString(p);
   string esperado("[ 1 2 3 4 ]");
@@ -186,7 +186,7 @@ TEST_F(Teste, Testa_Push_em_pilha_nao_vazia) {
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: void stack::push(LType k) *\n"
       << "------------------------------------------------------------------\n"
-      << "l = [ 2 3 4 ] \n"
+      << "p = [ 2 3 4 ] \n"
       << "\"p.push(1)\" resultou em: "
       << "p = " << atual << "\n"
       << "Resultado esperado: p = " << esperado << "\n"
@@ -204,14 +204,14 @@ TEST_F(Teste, Testa_Pop_em_pilha_unitaria) {
       << "Erro na funcao: void stack::pop() *\n"
       << "------------------------------------------------------------------\n"
       << "p = [ 10 ] \n"
-      << "\"l.pop()\" resultou em: p = " << atual << "\n"
+      << "\"p.pop()\" resultou em: p = " << atual << "\n"
       << "Resultado esperado: p = " << esperado << "\n"
       << "------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_Pop_em_pilha_nao_vazia) {
   stack p;
-  CriaStack3("2", "3", "4", &p);
+  CriaPilha("2", "3", "4", &p);
   p.pop();
   string atual = ToString(p);
   string esperado("[ 3 4 ]");
@@ -220,18 +220,16 @@ TEST_F(Teste, Testa_Pop_em_pilha_nao_vazia) {
       << "Erro na funcao: void stack::push(LType k) *\n"
       << "------------------------------------------------------------------\n"
       << "l = [ 2 3 4 ] \n"
-      << "\"p.pop()\" resultou em: "
-      << "p = " << atual << "\n"
+      << "\"p.pop()\" resultou em: p = " << atual << "\n"
       << "Resultado esperado: p = " << esperado << "\n"
       << "------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_operador_Assign) {
   stack esperado;
-  CriaStack3("12", "14", "15", &esperado);
+  CriaPilha("12", "14", "15", &esperado);
   stack atual;
   atual = esperado;
-
   ASSERT_NE(end(esperado), end(atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: void stack::operator=(stack& p)\n"
@@ -239,7 +237,6 @@ TEST_F(Teste, Testa_operador_Assign) {
     << " Não basta apenas copiar o ponteiro para \"end_\". \n"
     << " Você tem que copiar todos os elementos de l para a pilha corrente.\n"
     << "-------------------------------------------------------------------\n";
-
   ASSERT_EQ(ToString(esperado), ToString(atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: void stack::operator=(stack& p)\n"
