@@ -3,7 +3,7 @@
 #ifndef BRANCHES_GABARITOS_ORDERED_SET_SRC_SET_H_
 #define BRANCHES_GABARITOS_ORDERED_SET_SRC_SET_H_
 
-#include "type/type.h"
+#include<string>
 
 // Defite como os elementos do conjunto serão organizados na memória.
 // É declarado aqui, mas só é implementado em set.cc para não violar o
@@ -34,12 +34,16 @@ class set {
   // Retorna um ponteiro para o "marcador de fim" do conjunto em O(1).
   Node* end();
 
-  // Retorna um ponteiro para o sucessor do elemento indicado por x no conjunto,
-  // ou seja, o menor elemento maior que aquele indicado por x em O(log n).
+  // Retorna o elemento seguinte ao indicado por x no conjunto em (log n).
+  // Precondição: x aponta para um dos elementos do conjunto.
   Node* next(Node* x);
 
+  // Retorna o elemento anterior ao indicado por x no conjunto em (log n).
+  // Precondição: x aponta para um dos elementos da lista ou para list::end().
+  Node* prev(Node* x);
+
   // Retorna o valor do elemento indicado por x em (1).
-  Type value(Node* x);
+  TType& operator[](Node* x);
 
   // Testa se o cojunto está vazio em O(1).
   bool empty();
@@ -51,29 +55,32 @@ class set {
   // ou um ponteiro para set::end() caso k não pertença ao conjunto.
   // OBS: Note que esta função NÃO retorna bool. Para testar se um elemento 'a'
   // pertence a um conjunto 'c', você deve escrever "if (c.find(a) != c.end())".
-  Node* find(Type k);
+  Node* find(TType k);
 
   // Insere k no conjunto em O(log n) e retorna um ponteiro para este elemento.
   // Caso k já pertença ao conjunto, um novo elemento NÃO é inserido no conjunto
   // e a função retorna um ponteiro o para o elemento k já existente.
-  Node* insert(Type k);
+  Node* insert(TType k);
 
   // Remove k do conjunto (caso lá ele esteja) em O(log n).
-  void erase(Type k);
+  void erase(TType k);
 
-  // Remove todos os elementos do conjunto em O(n*log n).
+  // Remove todos os elementos do conjunto em O(n*log n),
+  // onde n é o número de elementos no conjunto.
   void clear();
 
   // Faz com que o conjunto corrente contenha exatamente os mesmos elementos
-  // do cojunto s em O(m*log m), onde m = s.size().
+  // do cojunto s em O(n*log n + m*log m), onde m = s.size() e n é o número
+  // de elementos no conjunto corrente..
   void operator=(set& s);
 
  private:
   // Número de elementos no conjunto.
   int size_;
 
-  // Nó sentinela da árvore binária de busca que representa o conjunto.
-  Node* end_;
+  // Ponteiro para a raiz da árvore.
+  // "root_ == NULL" se o conjunto é vazio.
+  Node* root_;
 
   friend class Teste;
 };

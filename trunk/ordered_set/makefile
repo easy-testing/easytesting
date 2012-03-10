@@ -1,24 +1,20 @@
 # Compilador utilizado
-cc = g++ -std=c++0x
+cc = g++
 # PATH raiz para includes
 path = ..
 # Nome da lista de exercicios
-program = deque
-# Tipo dos elementos do vetor no main1
-type_main1 = float
-# Tipo dos elementos do vetor no main2
-type_main2 = std::string
+program = set
+# Tipo dos elementos do vetor no main
+type_main = int
 # Tipo dos elementos do vetor nos testes
 type_test = std::string
 
 # Gera o binarios do programa e dos testes
 all:
-	$(cc) -D LType=$(type_main1) -I $(path) src/$(program).cc src/main1.cc -o main1
-	$(cc) -D LType=$(type_main2) -I $(path) src/$(program).cc src/main2.cc -o main2
+	$(cc) -D LType=$(type_main) -I $(path) src/$(program).cc src/main.cc -o main
 	$(cc) -D LType=$(type_test) -I $(path) src/$(program).cc test/$(program)_test.cc ../gtest/gtest.cc -o easy_testing
 	@echo "--------------------------------------------------------------"
-	@echo "main1: executa o programa em main1.cc."
-	@echo "main2: executa o programa em main2.cc."
+	@echo "main: executa o programa em main.cc."
 	@echo "easy_testing: executa os testes dos exercícios."
 	@echo "--------------------------------------------------------------"
 

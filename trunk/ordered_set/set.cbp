@@ -13,6 +13,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-TType=std::string" />
+					<Add option="-DTType=std::string" />
 				</Compiler>
 			</Target>
 			<Target title="Main">
@@ -22,6 +24,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-TType=std::string" />
+					<Add option="-DTType=std::string" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -36,12 +40,10 @@
 		</Compiler>
 		<Unit filename="../gtest/gtest.cc" />
 		<Unit filename="../gtest/gtest.h" />
-		<Unit filename="../list/src/list.h" />
-		<Unit filename="../list/src/node.h" />
-		<Unit filename="src/binary_search_tree.h" />
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
 		</Unit>
+		<Unit filename="src/set.cc" />
 		<Unit filename="src/set.h" />
 		<Unit filename="test/set_test.cc">
 			<Option target="EasyTesting" />
