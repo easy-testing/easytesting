@@ -1,15 +1,13 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef BRANCHES_GABARITOS_STACK_SRC_STACK_H_
-#define BRANCHES_GABARITOS_STACK_SRC_STACK_H_
+#ifndef TRUNK_STACK_SRC_STACK_H_
+#define TRUNK_STACK_SRC_STACK_H_
 
 #include <string>
 
-#include "type/type.h"
-
-// Defite como os elementos do conjunto serão organizados na memória.
+// Defite como os elementos da pilha serão organizados na memória.
 // É declarado aqui, mas só é implementado em list.cc para não violar o
-// encapsulamento
+// encapsulamento.
 struct Node;
 
 // Implementa uma pilha de elementos utilizando Listas Encadeadas.
@@ -29,24 +27,28 @@ class stack {
   int size();
 
   // Retorna o elemento que está no topo da pilha em O(1).
-  // PRECONDIÇÃO: a pilha não pode estar vazia.
-  Type top();
+  // Precondição: a pilha não pode estar vazia.
+  LType top();
 
   // Insere k no topo da pilha em O(1).
-  void push(Type k);
+  void push(LType k);
 
   // Remove o elemento que está no topo da pilha em O(1).
-  // PRECONDIÇÃO: a pilha não pode estar vazia.
+  // Precondição: a pilha não pode estar vazia.
   void pop();
+
+  // Faz a pilha corrente ficar igual a p em O(n + m),
+  // onde m = p.size() e n é o número de elementos na pilha corrente.
+  void operator=(stack& p);
 
  private:
   // Número de elementos na pilha.
   int size_;
 
-  // Ponteiro para o nó sentinela da lista ligada.
+  // Ponteiro para o nó sentinela da lista encadeada.
   Node* end_;
 
   friend class Teste;
 };
 
-#endif  // BRANCHES_GABARITOS_STACK_SRC_STACK_H_
+#endif  // TRUNK_STACK_SRC_STACK_H_

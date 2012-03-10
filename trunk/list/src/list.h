@@ -7,7 +7,7 @@
 
 // Defite como os elementos da lista serão organizados na memória.
 // É declarado aqui, mas só é implementado em list.cc para não violar o
-// encapsulamento
+// encapsulamento.
 struct Node;
 
 // Implementa uma lista de elementos utilizando Listas Encadeadas.
@@ -48,7 +48,8 @@ class list {
   // Retorna o valor do elemento indicado por i em (1).
   LType& operator[](Node* i);
 
-  // Faz a lista corrente ficar igual a l em O(m), onde m = l.size().
+  // Faz a lista corrente ficar igual a l em O(n + m),
+  // onde m = l.size() e n é o número de elementos na lista corrente.
   void operator=(list& l);
 
   // Insere k antes do elemento indicado por i em O(1).
@@ -56,6 +57,7 @@ class list {
 
   // Apaga o elemento indicado por i em O(1).
   // Precondição: i aponta para um dos elementos da lista.
+  // Pós-condição: i não é mais um ponteiro válido.
   void erase(Node* i);
 
   // Remove todos os elementos da lista em O(n),

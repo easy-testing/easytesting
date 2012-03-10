@@ -13,7 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add option="-DTYPE_STRING" />
+					<Add option="-DLType=std::string" />
 				</Compiler>
 			</Target>
 			<Target title="Main">
@@ -23,7 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add option="-DTYPE_STRING" />
+					<Add option="-DLType=std::string" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -40,7 +40,6 @@
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
 		</Unit>
-		<Unit filename="src/node.h" />
 		<Unit filename="src/stack.cc" />
 		<Unit filename="src/stack.h" />
 		<Unit filename="test/stack_test.cc">
