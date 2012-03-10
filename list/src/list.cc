@@ -86,7 +86,7 @@ void list::clear() {
 }
 
 void list::merge(list& l) {
-  for (Node* i = l.begin(); i != l.end(); i = i->next) {
-    insert(end(), i->key);
+  for (Node* i = l.begin(); i != l.end(); i = l.next(i)) {
+    insert(end(), l[i]);
   }
 }

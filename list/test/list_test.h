@@ -46,7 +46,7 @@ class Teste : public testing::Test {
     return l.size_;
   }
 
-  // Retorna uma string no formato {a b c d...}.
+  // Retorna uma string no formato [a b c d ... z ].
   string ToString(const list& l) {
     stringstream sout;
     sout << "[ ";
@@ -299,7 +299,7 @@ TEST_F(Teste, Testa_Insert_no_inicio_de_lista_vazia) {
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: void list::insert(Node* i, LType k) *\n"
       << "------------------------------------------------------------------\n"
-      << "l = [] \n"
+      << "l = [ ] \n"
       << "\"l.insert(l.begin(l), 10)\" resultou em: l = " << atual << "\n"
       << "Resultado esperado: l = " << esperado << "\n"
       << "------------------------------------------------------------------\n";
@@ -316,7 +316,7 @@ TEST_F(Teste, Testa_Insert_no_meio_da_lista_nao_vazia) {
       << "Erro na funcao: void list::insert(Node* i, LType k) *\n"
       << "------------------------------------------------------------------\n"
       << "l = [ 1 3 4 ] \n"
-      << "\"l.insert(<ponteiro para 3>, \"2\")\" resultou em: "
+      << "\"l.insert(<ponteiro para 3>, 2)\" resultou em: "
       << "l = " << atual << "\n"
       << "Resultado esperado: l = " << esperado << "\n"
       << "------------------------------------------------------------------\n";
@@ -330,7 +330,7 @@ TEST_F(Teste, Testa_Erase_em_lista_unitaria) {
   string esperado("[ ]");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void list::erase(Node* i, LType k) *\n"
+      << "Erro na funcao: void list::erase(Node* i) *\n"
       << "------------------------------------------------------------------\n"
       << "l = [ 10 ] \n"
       << "\"l.erase(l.begin(l))\" resultou em: l = " << atual << "\n"
