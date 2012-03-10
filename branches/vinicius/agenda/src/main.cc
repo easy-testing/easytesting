@@ -30,13 +30,11 @@ void MostrarMenu() {
     cout << "1 - Inserir Contato: Insere mais um Contato na agenda.\n";
     cout << "2 - Consultar por nome: Le um nome do teclado "
                   << "e imprime as informações do Contato.\n";
-    cout << "3 - Consultar por telefone: Le uma data do teclado"
-                  << " e imprime as informações do contato.\n";
-    cout << "4 - Apagar Contato: Le um nome do "
+    cout << "3 - Apagar Contato: Le um nome do "
                   << "teclado e remove os dados do contato.\n";
-    cout << "5 - Listar agenda: Lista todos os contatos na agenda\n";
-    cout << "6 - Salvar agenda: Salva em arquivo as alterações na agenda.\n";
-    cout << "7 - Sair.\n";
+    cout << "4 - Listar agenda: Lista todos os contatos na agenda\n";
+    cout << "5 - Salvar agenda: Salva em arquivo as alterações na agenda.\n";
+    cout << "6 - Sair.\n";
 }
 
 int LerOpcao() {
@@ -44,7 +42,7 @@ int LerOpcao() {
     do {
         cout << "> ";
         cin >> x;
-    } while (x < 1 || x > 7);
+    } while (x < 1 || x > 6);
     return x;
 }
 
@@ -117,20 +115,6 @@ Contato ConsultarContatoPorNome(string nome,
     return contato;
 }
 
-void ConsultarPorTelefone(string telefone,
-                             int num_contatos, Contato contatos[]) {
-    bool contato_encontrado = false;
-
-    for (int i =0; i < num_contatos; ++i) {
-        if (contatos[i].telefone == telefone) {
-            Imprimir(contatos[i]);
-            contato_encontrado = true;
-        }
-    }
-
-    if (!contato_encontrado)
-        cout << "Nenhum contato encontrado! " << endl;
-}
 
 bool InserirContatoNaAgenda(Contato c,
                             int &num_contatos, Contato contatos[]) {
@@ -223,21 +207,17 @@ int main() {
                                      num_contatos, contatos);
             break;
         case 3:
-            ConsultarPorTelefone(LerTelefoneDoTeclado(),
-                                 num_contatos, contatos);
-            break;
-        case 4:
             ApagarContato(LerNomeDoTeclado(),
                           num_contatos, contatos);
             break;
-        case 5:
+        case 4:
             ListarAgenda(num_contatos, contatos);
             break;
-        case 6:
+        case 5:
             SalvarAgenda(nome_arquivo, num_contatos, contatos);
             break;
         }
-    } while (op < 7);
+    } while (op < 6);
 
     return 0;
 }
