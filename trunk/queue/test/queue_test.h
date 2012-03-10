@@ -12,7 +12,7 @@
 using std::string;
 using std::stringstream;
 
-// Implementa um nó da queuea encadeada.
+// Implementa um nó da lista encadeada.
 struct Node {
   LType key;  // Valor da chave do nó.
   Node* prev;  // Ponteiro para o nó anterior.
@@ -24,7 +24,7 @@ class Teste : public testing::Test {
  protected:
   // Cria uma nó cuja chave é k, o nó anterior é l, e o nó posterior é r.
   Node* NewNode(LType k, Node* l, Node* r) {
-    Node* aux = new Node();
+    Node* aux = new Node;
     aux->key = k;
     aux->prev = l;
     aux->next = r;
@@ -179,7 +179,7 @@ TEST_F(Teste, Testa_Push_em_fila_vazia) {
       << "Erro na funcao: void queue::push(LType k) *\n"
       << "------------------------------------------------------------------\n"
       << "q = [ ] \n"
-      << "\"q.push(10)\" resultou em: p = " << atual << "\n"
+      << "\"q.push(10)\" resultou em: q = " << atual << "\n"
       << "Resultado esperado: q = " << esperado << "\n"
       << "------------------------------------------------------------------\n";
 }
@@ -195,8 +195,7 @@ TEST_F(Teste, Testa_Push_em_fila_nao_vazia) {
       << "Erro na funcao: void queue::push(LType k) *\n"
       << "------------------------------------------------------------------\n"
       << "q = [ 1 2 3 ] \n"
-      << "\"q.push(4)\" resultou em: "
-      << "q = " << atual << "\n"
+      << "\"q.push(4)\" resultou em: q = " << atual << "\n"
       << "Resultado esperado: q = " << esperado << "\n"
       << "------------------------------------------------------------------\n";
 }
@@ -225,7 +224,7 @@ TEST_F(Teste, Testa_Pop_em_fila_nao_vazia) {
   string esperado("[ 3 4 ]");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void queue::push(LType k) *\n"
+      << "Erro na funcao: void queue::pop() *\n"
       << "------------------------------------------------------------------\n"
       << "q = [ 2 3 4 ] \n"
       << "\"q.pop()\" resultou em: q = " << atual << "\n"

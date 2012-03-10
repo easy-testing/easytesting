@@ -12,7 +12,7 @@
 using std::string;
 using std::stringstream;
 
-// Implementa um nó da stacka encadeada.
+// Implementa um nó da lista encadeada.
 struct Node {
   LType key;  // Valor da chave do nó.
   Node* prev;  // Ponteiro para o nó anterior.
@@ -24,7 +24,7 @@ class Teste : public testing::Test {
  protected:
   // Cria uma nó cuja chave é k, o nó anterior é l, e o nó posterior é r.
   Node* NewNode(string k, Node* l, Node* r) {
-    Node* aux = new Node();
+    Node* aux = new Node;
     aux->key = k;
     aux->prev = l;
     aux->next = r;
@@ -217,7 +217,7 @@ TEST_F(Teste, Testa_Pop_em_pilha_nao_vazia) {
   string esperado("[ 3 4 ]");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void stack::push(LType k) *\n"
+      << "Erro na funcao: void stack::pop() *\n"
       << "------------------------------------------------------------------\n"
       << "l = [ 2 3 4 ] \n"
       << "\"p.pop()\" resultou em: p = " << atual << "\n"

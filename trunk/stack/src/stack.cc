@@ -11,7 +11,7 @@ struct Node {
 
 stack::stack() {
   size_ = 0;
-  end_ = new Node();
+  end_ = new Node;
   end_->next = end_;
   end_->prev = end_;
 }
@@ -37,7 +37,11 @@ LType stack::top() {
 
 void stack::push(LType k) {
   Node* i = end_->next;  // Ponteiro para o primeiro elemento na pilha.
-  Node* node = new Node({k, i->prev, i});
+  Node* node = new Node;
+  node->key = k;
+  node->prev = i->prev;
+  node->next = i;
+
   i->prev->next = node;
   i->prev = node;
   size_++;

@@ -1,15 +1,13 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef BRANCHES_GABARITOS_DEQUE_SRC_DEQUE_H_
-#define BRANCHES_GABARITOS_DEQUE_SRC_DEQUE_H_
+#ifndef TRUNK_DEQUE_SRC_DEQUE_H_
+#define TRUNK_DEQUE_SRC_DEQUE_H_
 
 #include <string>
 
-#include "type/type.h"
-
 // Defite como os elementos do deque serão organizados na memória.
 // É declarado aqui, mas só é implementado em deque.cc para não violar o
-// encapsulamento
+// encapsulamento.
 struct Node;
 
 // Implementa um deque de elementos utilizando listas encadeadas.
@@ -29,30 +27,30 @@ class deque {
   int size();
 
   // Retorna o valor da chave do primeiro elemento do deque em O(1).
-  // PRECONDIÇÃO: o deque não pode estar vazio.
-  Type front();
+  // Precondição: o deque não pode estar vazio.
+  LType front();
 
   // Retorna o valor da chave do último elemento do deque em O(1).
-  // PRECONDIÇÃO: o deque não pode estar vazio.
-  Type back();
+  // Precondição: o deque não pode estar vazio.
+  LType back();
 
   // Insere k no início do deque em O(1).
-  void push_front(Type k);
+  void push_front(LType k);
 
   // Remove o primeiro elemento do deque em O(1).
-  // PRECONDIÇÃO: o deque não pode estar vazio.
+  // Precondição: o deque não pode estar vazio.
   void pop_front();
 
   // Insere k no final do deque em O(1).
-  void push_back(Type k);
+  void push_back(LType k);
 
   // Remove o último elemento do deque em O(1).
-  // PRECONDIÇÃO: o deque não pode estar vazio.
+  // Precondição: o deque não pode estar vazio.
   void pop_back();
 
-  // Remove todos os elementos do deque em O(n),
-  // onde n é o número de elementos no deque.
-  void clear();
+  // Faz o deque corrente ficar igual a d em O(n + m),
+  // onde m = d.size() e n é o número de elementos no deque corrente.
+  void operator=(deque& d);
 
  private:
   // Número de elementos no deque.
@@ -64,4 +62,5 @@ class deque {
   friend class Teste;
 };
 
-#endif  // BRANCHES_GABARITOS_DEQUE_SRC_DEQUE_H_
+#endif  // TRUNK_DEQUE_SRC_DEQUE_H_
+

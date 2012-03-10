@@ -24,7 +24,7 @@ class Teste : public testing::Test {
  protected:
   // Cria uma nó cuja chave é k, o nó anterior é l, e o nó posterior é r.
   Node* NewNode(LType k, Node* l, Node* r) {
-    Node* aux = new Node();
+    Node* aux = new Node;
     aux->key = k;
     aux->prev = l;
     aux->next = r;

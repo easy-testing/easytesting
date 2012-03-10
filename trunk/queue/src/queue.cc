@@ -11,7 +11,7 @@ struct Node {
 
 queue::queue() {
   size_ = 0;
-  end_ = new Node();
+  end_ = new Node;
   end_->next = end_;
   end_->prev = end_;
 }
@@ -42,7 +42,11 @@ LType queue::back() {
 }
 
 void queue::push(LType k) {
-  Node* node = new Node({k, end_->prev, end_});
+  Node* node = new Node;
+  node->key = k;
+  node->prev = end_->prev;
+  node->next = end_;
+
   end_->prev->next = node;
   end_->prev = node;
   size_++;
@@ -61,7 +65,7 @@ void queue::operator=(queue& q) {
   while (!empty()) {
     pop();
   }
-  // Insere os elementos de q de trás para frente na pilha corrente.
+  // Insere os elementos de q na fila corrente.
   for (Node* i = q.end_->next; i != q.end_; i = i->next) {
     push(i->key);
   }
