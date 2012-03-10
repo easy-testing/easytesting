@@ -21,8 +21,8 @@
 // O programa deve imprimir "( ( ( 4 + ( 3 * 4 ) ) / 2 ) - 1 )".
 
 #include <cstdlib>
-#include <iostream>
 #include <fstream>
+#include <iostream>
 #include <string>
 
 #include "stack/src/stack.h"

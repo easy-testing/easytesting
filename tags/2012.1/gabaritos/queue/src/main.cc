@@ -23,9 +23,10 @@
 // DICA: Use duas filas: uma para armazenar os nomes dos clientes
 // prioritários e outra para armazenar os nomes dos clientes não prioritários.
 
-#include <ctdlib>
-#include <fstream>
+#include <stdlib.h>
+
 #include <iostream>
+#include <fstream>
 #include <string>
 
 #include "queue/src/queue.h"
