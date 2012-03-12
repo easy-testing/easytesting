@@ -4,7 +4,7 @@
 
 // Implementa um nó da lista encadeada.
 struct Node {
-  LType key;  // Valor da chave do nó.
+  SType key;  // Valor da chave do nó.
   Node* prev;  // Ponteiro para o nó anterior.
   Node* next;  // Ponteiro para o próximo nó.
 };
@@ -31,11 +31,11 @@ int stack::size() {
   return size_;
 }
 
-LType stack::top() {
+SType stack::top() {
   return end_->next->key;
 }
 
-void stack::push(LType k) {
+void stack::push(SType k) {
   Node* i = end_->next;  // Ponteiro para o primeiro elemento na pilha.
   Node* node = new Node;
   node->key = k;

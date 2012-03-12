@@ -2,20 +2,20 @@
 
 #include "ordered_set/src/set.h"
 
-// Defite como os elementos da Ã¡rvore serÃ£o organizados na memÃ³ria.
+// Defite como os elementos da árvore serão organizados na memória.
 struct Node {
-  TType key;  // Valor da chave do nÃ³.
-  Node* left;  // Ponteiro para o nÃ³ a esquerda.
-  Node* right;  // Ponteiro para o nÃ³ a direita.
-  Node* parent;  // Ponteiro para o nÃ³ acima.
+  SType key;  // Valor da chave do nó.
+  Node* left;  // Ponteiro para o nó a esquerda.
+  Node* right;  // Ponteiro para o nó a direita.
+  Node* parent;  // Ponteiro para o nó acima.
 };
 
-// ImplementaÃ§Ã£o das funÃ§Ãµes auxiliares que operam sobre os nÃ³s da Ã¡rvore.
+// Implementação das funções auxiliares que operam sobre os nós da árvore.
 ////////////////////////////////////////////////////////////////////////////////
 
-// Retorna o nÃ³ da Ã¡rvore x cuja chave Ã© k em O(log n),
-// ou NULL caso k nÃ£o esteja na Ã¡rvore x.
-Node* TreeSearch(Node* x, TType k) {
+// Retorna o nó da árvore x cuja chave é k em O(log n),
+// ou NULL caso k não esteja na árvore x.
+Node* TreeSearch(Node* x, SType k) {
   while (x != NULL && k != x->key) {
     if (k < x->key) {
       x = x->left;
@@ -26,8 +26,8 @@ Node* TreeSearch(Node* x, TType k) {
   return x;
 }
 
-// Retorna o nÃ³ com o menor elemento da Ã¡rvore x em O(log n).
-// PRECONDIÃ‡ÃƒO: x nÃ£o Ã© uma Ã¡rvore vazia.
+// Retorna o nó com o menor elemento da árvore x em O(log n).
+// PRECONDIÇÃO: x não é uma árvore vazia.
 Node* TreeMinimum(Node* x) {
   while (x->left != NULL) {
     x = x->left;
@@ -35,9 +35,9 @@ Node* TreeMinimum(Node* x) {
   return x;
 }
 
-// Dado o nÃ³ x, retorna o sucessor de x, ou seja, o nÃ³ cuja chave Ã© o menor
-// elemento maior que a chave de x. Caso x seja o maior elemento da Ã¡rvore,
-// retorna o nÃ³ sentinela.
+// Dado o nó x, retorna o sucessor de x, ou seja, o nó cuja chave é o menor
+// elemento maior que a chave de x. Caso x seja o maior elemento da árvore,
+// retorna o nó sentinela.
 Node* TreeSuccerssor(Node* x) {
   if (x->right != NULL) {
     return TreeMinimum(x->right);
@@ -51,10 +51,10 @@ Node* TreeSuccerssor(Node* x) {
   }
 }
 
-// Insere uma FOLHA z na Ã¡rvore cujo nÃ³ raiz Ã© 'root' de forma consistente.
-// NOTA: Esta funÃ§Ã£o NÃƒO aloca a memÃ³ria para z.
+// Insere uma FOLHA z na árvore cujo nó raiz é 'root' de forma consistente.
+// NOTA: Esta função NÃO aloca a memória para z.
 void TreeInsert(Node*& root, Node* z) {
-  // Procura qual vai ser o pai y de z na Ã¡rvore.
+  // Procura qual vai ser o pai y de z na árvore.
   Node* y = NULL;
   Node* x = root;
   while (x != NULL) {
@@ -65,10 +65,10 @@ void TreeInsert(Node*& root, Node* z) {
       x = x->right;
     }
   }
-  // Insere z em baixo do nÃ³ y.
+  // Insere z em baixo do nó y.
   z->parent = y;
   if (y == NULL) {
-    root = z;  // z se torna a raiz da Ã¡rvore.
+    root = z;  // z se torna a raiz da árvore.
   } else if (z->key < y->key) {
     y->left = z;
   } else  {
@@ -76,19 +76,40 @@ void TreeInsert(Node*& root, Node* z) {
   }
 }
 
-// Desconecta o nÃ³ z da Ã¡rvore de forma consistente e depois retorna z.
-// NOTA: Esta funÃ§Ã£o NÃƒO desaloca a memÃ³ria alocada para z.
+// Desconecta o nó z da árvore de forma consistente e depois retorna z.
+// NOTA: Esta função NÃO desaloca a memória alocada para z.
 Node* TreeDelete(Node*& root, Node* z) {
-  Node* y;
+  Node* y;  // Nó que será desconectado da árvore.
   if (z->left == NULL || z->right == NULL) {
     y = z;
   } else {
     y = TreeSuccerssor(z);
   }
-
+  Node* x; // Nó que vai ser o novo filho do pai de y.
+  if (y->left != NULL) {
+    x = y->left;
+  } else {
+    x = y->right;
+  }
+  if (x != NULL) {
+    x->parent = y->parent;
+  }
+  if (y->parent == NULL) {
+    root = x;
+  } else {
+    if (y == y->parent->left) {
+      y->parent->left = x;
+    } else {
+      y->parent->right = x;
+    }
+  }
+  if (y->key != z->key) {
+    z->key = y->key;
+  }
+  return y;
 }
 
-// ImplementaÃ§Ã£o das funÃ§Ãµes do TAD set.
+// Implementação das funções do TAD set.
 ////////////////////////////////////////////////////////////////////////////////
 
 set::set() {
@@ -104,7 +125,7 @@ set::set(set& s) {
 }
 
 set::~set() {
-  clear();
+  //clear();
 }
 
 Node* set::begin() {
@@ -123,7 +144,7 @@ Node* set::next(Node* x) {
   return TreeSuccerssor(x);
 }
 
-TType& set::operator[](Node* x) {
+SType& set::operator[](Node* x) {
   return x->key;
 }
 
@@ -135,11 +156,11 @@ int set::size() {
 return size_;
 }
 
-Node* set::find(TType k) {
+Node* set::find(SType k) {
   return TreeSearch(root_, k);
 }
 
-Node* set::insert(TType k) {
+Node* set::insert(SType k) {
   Node* z = find(k);
   if (z == NULL) {
     z = new Node;
@@ -151,7 +172,7 @@ Node* set::insert(TType k) {
   return z;
 }
 
-void set::erase(TType k) {
+void set::erase(SType k) {
   Node* z = find(k);
   if (z != NULL) {
     delete TreeDelete(root_, z);

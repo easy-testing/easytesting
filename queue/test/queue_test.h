@@ -14,7 +14,7 @@ using std::stringstream;
 
 // Implementa um nó da lista encadeada.
 struct Node {
-  LType key;  // Valor da chave do nó.
+  QType key;  // Valor da chave do nó.
   Node* prev;  // Ponteiro para o nó anterior.
   Node* next;  // Ponteiro para o próximo nó.
 };
@@ -23,7 +23,7 @@ struct Node {
 class Teste : public testing::Test {
  protected:
   // Cria uma nó cuja chave é k, o nó anterior é l, e o nó posterior é r.
-  Node* NewNode(LType k, Node* l, Node* r) {
+  Node* NewNode(QType k, Node* l, Node* r) {
     Node* aux = new Node;
     aux->key = k;
     aux->prev = l;
@@ -58,7 +58,7 @@ class Teste : public testing::Test {
   }
 
   // Preenche a fila d com 3 números. 'd' deve ser uma fila vazia.
-  void CriaFila(LType x1, LType x2, LType x3, queue* d) {
+  void CriaFila(QType x1, QType x2, QType x3, queue* d) {
     d->end_->next = NewNode(x1, d->end_, NULL);
     d->end_->next->next = NewNode(x2, d->end_->next, NULL);
     d->end_->next->next->next = d->end_->prev =
@@ -142,8 +142,8 @@ TEST_F(Teste, Testa_Empty_com_fila_nao_vazia) {
 TEST_F(Teste, Testa_Front) {
   queue q;
   CriaFila("12", "14", "15", &q);
-  LType atual = q.front();
-  LType esperado = "12";
+  QType atual = q.front();
+  QType esperado = "12";
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: VType queue::front()\n"
@@ -157,8 +157,8 @@ TEST_F(Teste, Testa_Front) {
 TEST_F(Teste, Testa_Back) {
   queue q;
   CriaFila("12", "14", "15", &q);
-  LType atual = q.back();
-  LType esperado = "15";
+  QType atual = q.back();
+  QType esperado = "15";
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: VType queue::back()\n"
@@ -176,7 +176,7 @@ TEST_F(Teste, Testa_Push_em_fila_vazia) {
   string esperado("[ 10 ]");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void queue::push(LType k) *\n"
+      << "Erro na funcao: void queue::push(QType k) *\n"
       << "------------------------------------------------------------------\n"
       << "q = [ ] \n"
       << "\"q.push(10)\" resultou em: q = " << atual << "\n"
@@ -192,7 +192,7 @@ TEST_F(Teste, Testa_Push_em_fila_nao_vazia) {
   string esperado("[ 1 2 3 4 ]");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void queue::push(LType k) *\n"
+      << "Erro na funcao: void queue::push(QType k) *\n"
       << "------------------------------------------------------------------\n"
       << "q = [ 1 2 3 ] \n"
       << "\"q.push(4)\" resultou em: q = " << atual << "\n"

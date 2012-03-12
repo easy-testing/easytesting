@@ -27,7 +27,7 @@ using std::ifstream;
 
 void FiltraPositivos(vector& v) {
   for (int i = 0; i < v.size(); i++) {
-    if (v.at(i) <= 0.0) {
+    if (v[i] <= 0.0) {
       v.erase(i);
       i--;
     }
@@ -40,11 +40,11 @@ int main() {
   fin >> n;
   vector v(n);
   for (int i = 0; i < n; i++) {
-    fin >> v.at(i);
+    fin >> v[i];
   }
   FiltraPositivos(v);
   for (int i = 0; i < v.size(); i++) {
-    cout << v.at(i) << endl;
+    cout << v[i] << endl;
   }
   return 0;
 }
