@@ -5,7 +5,7 @@
 
 #include <string>
 
-// Defite como os elementos da pilha serão organizados na memória.
+// Define como os elementos da pilha serão organizados na memória.
 // É declarado aqui, mas só é implementado em list.cc para não violar o
 // encapsulamento.
 struct Node;
@@ -28,10 +28,10 @@ class stack {
 
   // Retorna o elemento que está no topo da pilha em O(1).
   // Precondição: a pilha não pode estar vazia.
-  LType top();
+  SType top();
 
   // Insere k no topo da pilha em O(1).
-  void push(LType k);
+  void push(SType k);
 
   // Remove o elemento que está no topo da pilha em O(1).
   // Precondição: a pilha não pode estar vazia.

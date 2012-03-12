@@ -4,7 +4,7 @@
 
 // Implementa um nó da lista encadeada.
 struct Node {
-  LType key;  // Valor da chave do nó.
+  QType key;  // Valor da chave do nó.
   Node* prev;  // Ponteiro para o nó anterior.
   Node* next;  // Ponteiro para o próximo nó.
 };
@@ -33,15 +33,15 @@ int queue::size() {
   return size_;
 }
 
-LType queue::front() {
+QType queue::front() {
   return end_->next->key;
 }
 
-LType queue::back() {
+QType queue::back() {
   return end_->prev->key;
 }
 
-void queue::push(LType k) {
+void queue::push(QType k) {
   Node* node = new Node;
   node->key = k;
   node->prev = end_->prev;

@@ -14,7 +14,7 @@ using std::stringstream;
 
 // Implementa um nó da lista encadeada.
 struct Node {
-  LType key;  // Valor da chave do nó.
+  SType key;  // Valor da chave do nó.
   Node* prev;  // Ponteiro para o nó anterior.
   Node* next;  // Ponteiro para o próximo nó.
 };
@@ -65,7 +65,7 @@ class Teste : public testing::Test {
   }
 
   // Preenche a pilha d com 3 números. 'd' deve ser uma pilha vazia.
-  void CriaPilha(LType x1, LType x2, LType x3, stack* d) {
+  void CriaPilha(SType x1, SType x2, SType x3, stack* d) {
     d->end_->next = NewNode(x1, d->end_, NULL);
     d->end_->next->next = NewNode(x2, d->end_->next, NULL);
     d->end_->next->next->next = d->end_->prev =
@@ -149,8 +149,8 @@ TEST_F(Teste, Testa_Empty_com_pilha_nao_vazia) {
 TEST_F(Teste, Testa_Top) {
   stack p;
   CriaPilha("12", "14", "15", &p);
-  LType atual = p.top();
-  LType esperado = "12";
+  SType atual = p.top();
+  SType esperado = "12";
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: VType stack::top()\n"
@@ -168,7 +168,7 @@ TEST_F(Teste, Testa_Push_em_pilha_vazia) {
   string esperado("[ 10 ]");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void stack::push(LType k) *\n"
+      << "Erro na funcao: void stack::push(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << "p = [ ] \n"
       << "\"p.push(10)\" resultou em: p = " << atual << "\n"
@@ -184,7 +184,7 @@ TEST_F(Teste, Testa_Push_em_pilha_nao_vazia) {
   string esperado("[ 1 2 3 4 ]");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void stack::push(LType k) *\n"
+      << "Erro na funcao: void stack::push(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << "p = [ 2 3 4 ] \n"
       << "\"p.push(1)\" resultou em: "

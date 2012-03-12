@@ -5,7 +5,7 @@
 
 #include <string>
 
-// Defite como os elementos da fila serão organizados na memória.
+// Define como os elementos da fila serão organizados na memória.
 // É declarado aqui, mas só é implementado em queue.cc para não violar o
 // encapsulamento.
 struct Node;
@@ -28,14 +28,14 @@ class queue {
 
   // Retorna o elemento que está no início da fila em O(1).
   // Precondição: a fila não pode estar vazia.
-  LType front();
+  QType front();
 
   // Retorna o elemento que está no final da fila em O(1).
   // Precondição: a fila não pode estar vazia.
-  LType back();
+  QType back();
 
   // Insere k no final da fila em O(1).
-  void push(LType k);
+  void push(QType k);
 
   // Remove o elemento que está no início da fila em O(1).
   // Precondição: a fila não pode estar vazia.

@@ -5,16 +5,16 @@
 
 #include<string>
 
-// Defite como os elementos do conjunto ser√£o organizados na mem√≥ria.
-// √â declarado aqui, mas s√≥ √© implementado em set.cc para n√£o violar o
-// encapsulamento
+// Define como os elementos do conjunto ser„o organizados na memÛria.
+// … declarado aqui, mas sÛ È implementado em set.cc para n„o violar o
+// encapsulamento.
 struct Node;
 
-// Implementa um conjunto utilizando √°rvores bin√°rias de busca.
-// NOTA: O c√°lculo da complexidade das fun√ß√µes assume que a √°rvore est√°
-// balanceada, ou seja, considera-se que a altura da arvore √© O(log n), onde n
-// √© a cardinalidade do conjunto. Entretanto, isto n√£o √© garantido nesta
-// implenta√ß√£o.
+// Implementa um conjunto utilizando ·rvores bin·rias de busca.
+// NOTA: O c·lculo da complexidade das funÁıes assume que a ·rvore est·
+// balanceada, ou seja, considera-se que a altura da arvore È O(log n), onde n
+// È a cardinalidade do conjunto. Entretanto, isto n„o È garantido nesta
+// implentaÁ„o.
 class set {
  public:
   // Cria um conjunto vazio em O(1).
@@ -24,7 +24,7 @@ class set {
   // onde m = s.size().
   set(set& s);
 
-  // Libera toda a mem√≥ria alocada para o conjunto em O(n*log n).
+  // Libera toda a memÛria alocada para o conjunto em O(n*log n).
   ~set();
 
   // Retorna um ponteiro para o MENOR elemento do conjunto em O(log n).
@@ -35,51 +35,51 @@ class set {
   Node* end();
 
   // Retorna o elemento seguinte ao indicado por x no conjunto em (log n).
-  // Precondi√ß√£o: x aponta para um dos elementos do conjunto.
+  // PrecondiÁ„o: x aponta para um dos elementos do conjunto.
   Node* next(Node* x);
 
   // Retorna o elemento anterior ao indicado por x no conjunto em (log n).
-  // Precondi√ß√£o: x aponta para um dos elementos da lista ou para list::end().
+  // PrecondiÁ„o: x aponta para um dos elementos da lista ou para list::end().
   Node* prev(Node* x);
 
   // Retorna o valor do elemento indicado por x em (1).
-  TType& operator[](Node* x);
+  SType& operator[](Node* x);
 
-  // Testa se o cojunto est√° vazio em O(1).
+  // Testa se o cojunto est· vazio em O(1).
   bool empty();
 
-  // Retorna o n√∫mero de elementos no conjunto em O(1).
+  // Retorna o n˙mero de elementos no conjunto em O(1).
   int size();
 
   // Retorna um ponteiro para o elemento k em O(log n),
-  // ou um ponteiro para set::end() caso k n√£o perten√ßa ao conjunto.
-  // OBS: Note que esta fun√ß√£o N√ÉO retorna bool. Para testar se um elemento 'a'
-  // pertence a um conjunto 'c', voc√™ deve escrever "if (c.find(a) != c.end())".
-  Node* find(TType k);
+  // ou um ponteiro para set::end() caso k n„o pertenÁa ao conjunto.
+  // OBS: Note que esta funÁ„o N√O retorna bool. Para testar se um elemento 'a'
+  // pertence a um conjunto 'c', vocÍ deve escrever "if (c.find(a) != c.end())".
+  Node* find(SType k);
 
   // Insere k no conjunto em O(log n) e retorna um ponteiro para este elemento.
-  // Caso k j√° perten√ßa ao conjunto, um novo elemento N√ÉO √© inserido no conjunto
-  // e a fun√ß√£o retorna um ponteiro o para o elemento k j√° existente.
-  Node* insert(TType k);
+  // Caso k j· pertenÁa ao conjunto, um novo elemento N√O È inserido no conjunto
+  // e a funÁ„o retorna um ponteiro o para o elemento k j· existente.
+  Node* insert(SType k);
 
-  // Remove k do conjunto (caso l√° ele esteja) em O(log n).
-  void erase(TType k);
+  // Remove k do conjunto (caso l· ele esteja) em O(log n).
+  void erase(SType k);
 
   // Remove todos os elementos do conjunto em O(n*log n),
-  // onde n √© o n√∫mero de elementos no conjunto.
+  // onde n È o n˙mero de elementos no conjunto.
   void clear();
 
   // Faz com que o conjunto corrente contenha exatamente os mesmos elementos
-  // do cojunto s em O(n*log n + m*log m), onde m = s.size() e n √© o n√∫mero
+  // do cojunto s em O(n*log n + m*log m), onde m = s.size() e n È o n˙mero
   // de elementos no conjunto corrente..
   void operator=(set& s);
 
  private:
-  // N√∫mero de elementos no conjunto.
+  // N˙mero de elementos no conjunto.
   int size_;
 
-  // Ponteiro para a raiz da √°rvore.
-  // "root_ == NULL" se o conjunto √© vazio.
+  // Ponteiro para a raiz da ·rvore.
+  // "root_ == NULL" se o conjunto È vazio.
   Node* root_;
 
   friend class Teste;

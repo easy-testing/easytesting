@@ -5,7 +5,7 @@
 
 #include <string>
 
-// Defite como os elementos da lista serão organizados na memória.
+// Define como os elementos da lista serão organizados na memória.
 // É declarado aqui, mas só é implementado em list.cc para não violar o
 // encapsulamento.
 struct Node;
