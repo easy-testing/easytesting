@@ -8,7 +8,6 @@
 // Questão 2.
 // Escreva uma função "void Imprimir(set& s)" que recebe
 // como parâmetro um conjunto s e imprime os elementos de s na tela.
-// DICA: Utilize a função set<type>::ToList(list<type>* l).
 //
 // Questão 3.
 // Escreva uma função
@@ -16,20 +15,25 @@
 // 'a' e 'b' e atribui a 'inter' o resultado da interseção de 'a' e 'b'.
 //
 // Questão 4.
+// Escreva uma função
+// "void Uniao(set& a, set& b, set* uniao)" que recebe dois conjuntos
+// 'a' e 'b' e atribui a 'uniao' o resultado da união de 'a' e 'b'.
+//
+// Questão 5.
 // Escreva um programa que gerencia os fornecedores para compra de peças
 // em uma montadora de carros. As peças são identificadas por números inteiros
 // entre 1 e 100 e os fornecedores são identificados por uma string.
 //
 // O sistema deve ler de um arquivo o nome dos fornecedores de peças e a lista
-// das peças que cada fornecedor vende. Assuma que cada fornecedor sempre
-// oferece exatamente 10 peças diferentes para venda. Tome como EXEMPLO o
+// das peças que cada fornecedor vende. Tome como EXEMPLO o
 // arquivo "fornecedores.txt". A  primeira linha deste arquivo contém o número n
-// de fornecedores. As n linhas seguintes contêm uma string com o nome do
-// de um fornecedor seguida de 10 números inteiros que são as peças vendidas
-// por este fornecedor.
+// de fornecedores. As n linhas seguintes contêm uma string com o nome de um
+// fornecedor, seguida de um número 'm' (de peças que o fornecedor vende),
+// que por sua vez é seguido de 'm' números naturais, cada um deles referente a
+// uma das peças vendidas pelo fornecedor.
 //
 // O seu programa deve inicialmente exibir o conjunto com todos os
-// fornecedores, ,que são candidatos para fornecer um pedido com várias peças.
+// fornecedores e o conjunto de todas as peças.
 // A cada iteração, o usuário deve ser capaz de digitar o número
 // de uma peça e o sistema deve eliminar do conjunto de fornecedores candidatos
 // aqueles que não vendem a última peça digitada. O programa deve continuar
@@ -42,19 +46,16 @@
 // peça. A cada iteração em que uma peça 'p' for digitada, você deve fazer a
 // interseção do conjunto 'candidatos' com o conjunto 'pecas[p - 1]'.
 
+#include <cstdlib>
 #include <fstream>
 #include <iostream>
 #include <string>
 
 #include "ordered_set/src/set.h"
 
-using std::cin;
-using std::cout;
-using std::endl;
-using std::ifstream;
-using std::string;
+using namespace std;
 
-
+// Questão 2.
 void Imprimir(set& c) {
   cout << "{ ";
   for (Node* i = c.begin(); i != c.end(); i = c.next(i)) {
@@ -63,6 +64,7 @@ void Imprimir(set& c) {
   cout << "} = " << c.size() << endl;
 }
 
+// Questão 3.
 void Intersecao(set& a, set& b, set* inter) {
   // Percorre todos os elementos do cojunto 'a' e insere em 'inter' todos
   // aqueles que também estão no cojunto 'b'.
@@ -74,26 +76,47 @@ void Intersecao(set& a, set& b, set* inter) {
   }
 }
 
+// Questão 4.
+void Uniao(set& a, set& b, set* uniao) {
+  // Inicialmente, faz 'uniao' ficar igual a 'b'.
+  *uniao = b;
+  // Em seguida, insere em 'uniao' também os elementos em a.
+  for (Node* i = a.begin(); i != a.end(); i = a.next(i)) {
+    uniao->insert(a[i]);
+  }
+}
+
+// Questão 5.
 int main() {
-  // pecas[i] contém os fornecedores da peça i + 1.
-  set pecas[100];
-  set candidatos;
+  set pecas[100];  // pecas[i] contém os fornecedores da peça i + 1.
+  set candidatos;  // Conjunto de fornecedores.
+  set todas_as_pecas;  // Conjunto das peças vendidas por algum fornecedor.
 
   // Inicializa o cojunto de fornecedores candidatos e o vetor de fornecedores
   // de cada peça.
   ifstream fin("fornecedores.txt");
-  int n;
+  int n;  // Número de fornecedores.
   fin >> n;
   for (int i = 0; i < n; i++) {
     string nome_fornecedor;
     fin >> nome_fornecedor;
     candidatos.insert(nome_fornecedor);
-    for (int j = 0; j < 10; j++) {
-      int num_peca;
+    int m;  // Número de peças vendidas pelo fornecedor i.
+    fin >> m;
+    for (int j = 0; j < m; j++) {
+      string num_peca;
       fin >> num_peca;
-      pecas[num_peca - 1].insert(nome_fornecedor);
+      pecas[atoi(num_peca.c_str()) - 1].insert(nome_fornecedor);
+      todas_as_pecas.insert(num_peca);
     }
   }
+
+  // Imprime todos os fonecedores e peças.
+  cout << "Fornecedores: ";
+  Imprimir(candidatos);
+  cout << "Pecas: ";
+  Imprimir(todas_as_pecas);
+  cout << endl;
 
   // Filtra iterativamente o cojunto de fornecedores candidatos.
   int num_peca = -1;

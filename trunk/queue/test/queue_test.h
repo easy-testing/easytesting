@@ -135,7 +135,7 @@ TEST_F(Teste, Testa_Empty_com_fila_nao_vazia) {
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: bool queue::empty() \n"
       << "------------------------------------------------------------------\n"
-      << " A fila tem pelo menos um elemento e a funcao retornou TRUE."
+      << " A fila tem pelo menos um elemento e a funcao retornou TRUE.\n"
       << "------------------------------------------------------------------\n";
 }
 

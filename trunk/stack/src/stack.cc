@@ -16,13 +16,6 @@ stack::stack() {
   end_->prev = end_;
 }
 
-stack::~stack() {
-  while (!empty()) {
-    pop();  // A função pop() libera a memórima de cada nó removido da pilha.
-  }
-  delete end_;
-}
-
 bool stack::empty() {
   return size_ == 0;
 }
@@ -64,4 +57,11 @@ void stack::operator=(stack& p) {
   for (Node* i = p.end_->prev; i != p.end_; i = i->prev) {
     push(i->key);
   }
+}
+
+stack::~stack() {
+  while (!empty()) {
+    pop();  // A função pop() libera a memórima de cada nó removido da pilha.
+  }
+  delete end_;
 }

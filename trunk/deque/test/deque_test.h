@@ -135,7 +135,7 @@ TEST_F(Teste, Testa_Empty_com_deque_nao_vazio) {
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: bool deque::empty() \n"
       << "------------------------------------------------------------------\n"
-      << " o deque tem pelo menos um elemento e a funcao retornou TRUE."
+      << " o deque tem pelo menos um elemento e a funcao retornou TRUE.\n"
       << "------------------------------------------------------------------\n";
 }
 

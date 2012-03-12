@@ -16,15 +16,6 @@ queue::queue() {
   end_->prev = end_;
 }
 
-queue::~queue() {
-  // Primeiramente, remove todos os elementos da fila.
-  while (!empty()) {
-    pop();  // A função pop() libera a memórima de cada nó removido da fila;
-  }
-  // Em seguida, libera a memória alocada ao sentinela.
-  delete end_;
-}
-
 bool queue::empty() {
   return size_ == 0;
 }
@@ -69,4 +60,13 @@ void queue::operator=(queue& q) {
   for (Node* i = q.end_->next; i != q.end_; i = i->next) {
     push(i->key);
   }
+}
+
+queue::~queue() {
+  // Primeiramente, remove todos os elementos da fila.
+  while (!empty()) {
+    pop();  // A função pop() libera a memórima de cada nó removido da fila;
+  }
+  // Em seguida, libera a memória alocada ao sentinela.
+  delete end_;
 }

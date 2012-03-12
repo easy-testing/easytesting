@@ -142,7 +142,7 @@ TEST_F(Teste, Testa_Empty_com_pilha_nao_vazia) {
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: bool stack::empty() \n"
       << "------------------------------------------------------------------\n"
-      << " A pilha tem pelo menos um elemento e a funcao retornou TRUE."
+      << " A pilha tem pelo menos um elemento e a funcao retornou TRUE.\n"
       << "------------------------------------------------------------------\n";
 }
 
