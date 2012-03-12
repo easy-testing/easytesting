@@ -1,5 +1,5 @@
-// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
-
+// Copyright 2012 Universidade Federal de Minas Gerais (UFMG)
+//
 #ifndef TRUNK_VETORES_SRC_VETORES_H_
 #define TRUNK_VETORES_SRC_VETORES_H_
 
@@ -10,7 +10,4 @@ struct Contato {
     std::string telefone;
     std::string aniversario;
 };
-
-
-
 #endif  // TRUNK_VETORES_SRC_VETORES_H_
