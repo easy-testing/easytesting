@@ -85,12 +85,13 @@ Node* TreeDelete(Node*& root, Node* z) {
   } else {
     y = TreeSuccerssor(z);
   }
-  Node* x; // Nó que vai ser o novo filho do pai de y.
+    Node* x; // Nó que vai ser o novo filho do pai de y.
   if (y->left != NULL) {
     x = y->left;
   } else {
     x = y->right;
   }
+
   if (x != NULL) {
     x->parent = y->parent;
   }
@@ -103,10 +104,10 @@ Node* TreeDelete(Node*& root, Node* z) {
       y->parent->right = x;
     }
   }
-  if (y->key != z->key) {
+    if (y->key != z->key) {
     z->key = y->key;
   }
-  return y;
+    return y;
 }
 
 // Implementação das funções do TAD set.
@@ -118,14 +119,11 @@ set::set() {
 }
 
 set::set(set& s) {
+  root_ = NULL;
   size_ = 0;
   for (Node* i = s.begin(); i != s.end(); i = s.next(i)) {
     insert(i->key);
   }
-}
-
-set::~set() {
-  //clear();
 }
 
 Node* set::begin() {
@@ -144,7 +142,7 @@ Node* set::next(Node* x) {
   return TreeSuccerssor(x);
 }
 
-SType& set::operator[](Node* x) {
+SType set::operator[](Node* x) {
   return x->key;
 }
 
@@ -160,16 +158,14 @@ Node* set::find(SType k) {
   return TreeSearch(root_, k);
 }
 
-Node* set::insert(SType k) {
-  Node* z = find(k);
-  if (z == NULL) {
-    z = new Node;
+void set::insert(SType k) {
+  if (find(k) == end()) {
+    Node* z = new Node;
     z->key = k;
     z->parent = z->left = z->right = NULL;
     TreeInsert(root_, z);
     size_++;
   }
-  return z;
 }
 
 void set::erase(SType k) {
@@ -193,3 +189,6 @@ void set::operator=(set& s) {
   }
 }
 
+set::~set() {
+  clear();
+}

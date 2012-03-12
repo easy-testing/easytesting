@@ -24,11 +24,6 @@ list::list(list& l) {
   merge(l);
 }
 
-list::~list() {
-  clear();
-  delete end_;
-}
-
 int list::size() {
   return size_;
 }
@@ -45,16 +40,16 @@ Node* list::end() {
   return end_;
 }
 
-Node* list::next(Node* i) {
-  return i->next;
+Node* list::next(Node* x) {
+  return x->next;
 }
 
-Node* list::prev(Node* i) {
-  return i->prev;
+Node* list::prev(Node* x) {
+  return x->prev;
 }
 
-LType& list::operator[](Node* i) {
-  return i->key;
+LType& list::operator[](Node* x) {
+  return x->key;
 }
 
 void list::operator=(list& l) {
@@ -62,21 +57,21 @@ void list::operator=(list& l) {
   merge(l);
 }
 
-void list::insert(Node* i, LType k) {
+void list::insert(Node* x, LType k) {
   Node* node = new Node;
   node->key = k;
-  node->prev = i->prev;
-  node->next = i;
+  node->prev = x->prev;
+  node->next = x;
 
-  i->prev->next = node;
-  i->prev = node;
+  x->prev->next = node;
+  x->prev = node;
   size_++;
 }
 
-void list::erase(Node* i) {
-  i->prev->next = i->next;
-  i->next->prev = i->prev;
-  delete i;
+void list::erase(Node* x) {
+  x->prev->next = x->next;
+  x->next->prev = x->prev;
+  delete x;
   size_--;
 }
 
@@ -90,4 +85,9 @@ void list::merge(list& l) {
   for (Node* i = l.begin(); i != l.end(); i = l.next(i)) {
     insert(end(), l[i]);
   }
+}
+
+list::~list() {
+  clear();
+  delete end_;
 }

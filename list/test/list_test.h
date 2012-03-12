@@ -149,7 +149,7 @@ TEST_F(Teste, Testa_Empty_com_lista_nao_vazia) {
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: bool list::empty() \n"
       << "------------------------------------------------------------------\n"
-      << " A lista tem pelo menos um elemento e a funcao retornou TRUE."
+      << " A lista tem pelo menos um elemento e a funcao retornou TRUE.\n"
       << "------------------------------------------------------------------\n";
 }
 
@@ -193,7 +193,7 @@ TEST_F(Teste, Testa_End_com_lista_nao_vazia) {
   CriaLista("1", "2", "3", &l);
   ASSERT_EQ(end(l), l.end())
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* list::begin() \n"
+      << "Erro na funcao: Node* list::end() \n"
       << "------------------------------------------------------------------\n"
       << " l = " << ToString(l) << "\n"
       << " \"l.end()\" nao retornou o valor de \"l.end_\"\n"
@@ -207,10 +207,10 @@ TEST_F(Teste, Testa_Next) {
   LType esperado = "2";
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* list::begin() \n"
+      << "Erro na funcao: Node* list::next(Node* x) \n"
       << "------------------------------------------------------------------\n"
       << " l = " << ToString(l) << "\n"
-      << " \"*l.next(l.begin())\" retornou: " << atual << "\n"
+      << " \"l[l.next(l.begin())]\" retornou: " << atual << "\n"
       << " Valor esperado: " << esperado << "\n"
       << "------------------------------------------------------------------\n";
 }
@@ -222,10 +222,10 @@ TEST_F(Teste, Testa_Prev) {
   LType esperado = "3";
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* list::begin() \n"
+      << "Erro na funcao: Node* list::prev() \n"
       << "------------------------------------------------------------------\n"
       << " l = " << ToString(l) << "\n"
-      << " \"*l.next(l.end())\" retornou: " << atual << "\n"
+      << " \"l[l.prev(l.end())]\" retornou: " << atual << "\n"
       << " Valor esperado: " << esperado << "\n"
       << "------------------------------------------------------------------\n";
 }
@@ -237,7 +237,7 @@ TEST_F(Teste, Testa_operador_At_para_acesso) {
   LType esperado = "12";
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: VType& list::operator[](int i)\n"
+    << "Erro na funcao: LType& list::operator[](Node* x)\n"
     << "-------------------------------------------------------------------\n"
     << " l = " << "[ 12 14 15 ]" << "\n"
     << " \"l[l.begin()]\" retornou: " << atual << "\n"
@@ -253,7 +253,7 @@ TEST_F(Teste, Testa_operador_At_para_atribuicao) {
   string esperado = "[ -1 14 15 ]";
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: VType& list::operator[](int i)\n"
+    << "Erro na funcao: LType& list::operator[](Node* x)\n"
     << "-------------------------------------------------------------------\n"
     << " l = " << "[ 12 14 15 ]" << "\n"
     << " \"l[l.begin()] = -1\" resultou em: l = " << atual << "\n"
@@ -277,7 +277,7 @@ TEST_F(Teste, Testa_operador_Assign) {
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: void list::operator=(list& l)\n"
     << "-------------------------------------------------------------------\n"
-    << " u = " << ToString(esperado) << "\n"
+    << " l = " << ToString(esperado) << "\n"
     << " \"u = l\" resultou em: u = " << ToString(atual) << "\n"
     << " Resultado esperado: u = " << ToString(esperado) << "\n"
     << "-------------------------------------------------------------------\n";
@@ -290,10 +290,10 @@ TEST_F(Teste, Testa_Insert_no_inicio_de_lista_vazia) {
   string esperado("[ 10 ]");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void list::insert(Node* i, LType k) *\n"
+      << "Erro na funcao: void list::insert(Node* x, LType k) *\n"
       << "------------------------------------------------------------------\n"
       << "l = [ ] \n"
-      << "\"l.insert(l.begin(l), 10)\" resultou em: l = " << atual << "\n"
+      << "\"l.insert(l.begin(), 10)\" resultou em: l = " << atual << "\n"
       << "Resultado esperado: l = " << esperado << "\n"
       << "------------------------------------------------------------------\n";
 }
@@ -306,11 +306,10 @@ TEST_F(Teste, Testa_Insert_no_meio_da_lista_nao_vazia) {
   string esperado("[ 1 2 3 4 ]");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void list::insert(Node* i, LType k) *\n"
+      << "Erro na funcao: void list::insert(Node* x, LType k) *\n"
       << "------------------------------------------------------------------\n"
       << "l = [ 1 3 4 ] \n"
-      << "\"l.insert(<ponteiro para 3>, 2)\" resultou em: "
-      << "l = " << atual << "\n"
+      << "\"l.insert(<ponteiro para 3>, 2)\" resultou em: l = " << atual << "\n"
       << "Resultado esperado: l = " << esperado << "\n"
       << "------------------------------------------------------------------\n";
 }
@@ -323,7 +322,7 @@ TEST_F(Teste, Testa_Erase_em_lista_unitaria) {
   string esperado("[ ]");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void list::erase(Node* i) *\n"
+      << "Erro na funcao: void list::erase(Node* x) *\n"
       << "------------------------------------------------------------------\n"
       << "l = [ 10 ] \n"
       << "\"l.erase(l.begin(l))\" resultou em: l = " << atual << "\n"
@@ -339,7 +338,7 @@ TEST_F(Teste, Testa_erase_no_meio_da_lista_nao_vazia) {
   string esperado("[ 1 3 ]");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void list::erase(Node* i) *\n"
+      << "Erro na funcao: void list::erase(Node* x) *\n"
       << "------------------------------------------------------------------\n"
       << "l = [ 1 2 3 ] \n"
       << "\"l.erase(<ponterio para 2>)\" resultou em: l = " << atual << "\n"

@@ -1,4 +1,5 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef BRANCHES_GABARITOS_ORDERED_SET_TEST_SET_TEST_H_
 #define BRANCHES_GABARITOS_ORDERED_SET_TEST_SET_TEST_H_
@@ -42,6 +43,26 @@ class Teste : public testing::Test {
     return NULL;
   }
 
+  // Dado o nó x, retorna o sucessor de x, ou seja, o nó cuja chave é o menor
+  // elemento maior que a chave de x. Caso x seja o maior elemento da árvore,
+  // retorna o nó sentinela.
+  Node* TreeSuccerssor(Node* x) {
+    if (x->right != NULL) {
+      x = x->right;
+      while (x->left != NULL) {
+        x = x->left;
+      }
+      return x;
+    } else {
+      Node* y = x->parent;
+      while (y != NULL && x == y->right) {
+        x = y;
+        y = y->parent;
+      }
+      return y;
+    }
+  }
+
   // Retorna o número de elementos no conjunto.
   int size(const set& s) {
     return s.size_;
@@ -79,10 +100,10 @@ class Teste : public testing::Test {
   }
 
   // Insere em um conjunto c, n elementos contidos no vetor v
-  void CriaSet(set& c, int n, string v[]) {
-    for (int i = 0; i < n; ++i) {
-      insert(v[i], &c);
-    }
+  void CriaConjunto(SType x1, SType x2, SType x3, set* s) {
+    insert(x2, s);
+    insert(x1, s);
+    insert(x3, s);
   }
 
   // Retorna uma string contendo os elementos do conjunto c
@@ -90,7 +111,7 @@ class Teste : public testing::Test {
   string ToString(set& c) {
     stringstream out;
     out << "{ ";
-    for (Node* i = c.begin(); i != c.end(); i = c.next(i)) {
+    for (Node* i = c.begin(); i != c.end(); i = TreeSuccerssor(i)) {
       out << i->key << " ";
     }
     out << "}";
@@ -117,327 +138,371 @@ TEST_F(Teste, Testa_construtor_vazio) {
 
 TEST_F(Teste, Testar_Construtor_por_copia_vazio) {
   set c;
-  set d(c);
-  string atual = ToString(c);
-  string esperado = ToString(d);
+  set s(c);
+  string atual = ToString(s);
+  string esperado = "{ }";
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro no construtor: set::set(set& c) \n"
     << "-------------------------------------------------------------------\n"
-    << "Construtor por copia nao criou conjunto igual ao parametro passado\n\n"
-    << "  Conjunto esperado: " << esperado << "\n"
-    << "  Conjunto criado: " << atual << "\n"
+    << " c = { }\n"
+    << " Conjunto criado: " << atual << "\n"
+    << " Conjunto esperado: " << esperado << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testar_Construtor_por_copia_varios_elementos) {
+TEST_F(Teste, Testar_Construtor_por_copia_com_varios_elementos) {
   set c;
-  string v[] = {"1", "3", "5", "8", "2"};
-  CriaSet(c, 5, v);
-  set d(c);
-  string atual = ToString(c);
-  string esperado = ToString(d);
+  CriaConjunto("1", "2", "3", &c);
+  set s(c);
+  string atual = ToString(s);
+  string esperado = "{ 1 2 3 }";
   ASSERT_EQ(atual, esperado)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* set::set(set c) *\n"
+    << "Erro no construtor: set::set(set& c) \n"
     << "-------------------------------------------------------------------\n"
-    << "Construtor por copia nao criou conjunto igual ao parametro passado\n\n"
-    << "  Conjunto esperado: " << esperado << "\n"
-    << "  Conjunto criado:   " << atual << "\n"
+    << " c = { }\n"
+    << " Conjunto criado: " << atual << "\n"
+    << " Conjunto esperado: " << esperado << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testar_metodo_empty_em_conjunto_vazio) {
-  set c;
-  ASSERT_TRUE(c.empty())
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* bool set::empty() *\n"
-    << "-------------------------------------------------------------------\n"
-    << "O conjunto esta vazio e a funcao retornou FALSE.\n"
-    << "-------------------------------------------------------------------\n";
-}
+//TEST_F(Teste, Testar_metodo_find_em_conjunto_vazio) {
+//  set c;
+//  ASSERT_EQ(c.end(), c.find("4"))
+//    << "-------------------------------------------------------------------\n"
+//    << "Erro na funcao:  "
+//    << "* Node* set::find(SType k) *\n"
+//    << "-------------------------------------------------------------------\n"
+//    << "Funcao retornou algo diferente de NULL para a procura de um \n"
+//    << "elemento nao contido no conjunto\n"
+//    << "-------------------------------------------------------------------\n";
+//}
+//
+//TEST_F(Teste, Testar_metodo_find_em_conjunto_com_varios_elementos) {
+//  set c;
+//  string v[] = {"8", "5", "3", "15"};
+//  CriaSet(c, 4, v);
+//  ASSERT_EQ(c.end(), c.find("4"))
+//    << "-------------------------------------------------------------------\n"
+//    << "Erro na funcao:  "
+//    << "* Node* set::find(SType k) *\n"
+//    << "-------------------------------------------------------------------\n"
+//    << "Funcao retornou algo diferente de NULL para a procura de um \n"
+//    << "elemento nao contido no conjunto\n"
+//    << "-------------------------------------------------------------------\n";
+//
+//  string procurado = "8";
+//  string retornado = c.find(procurado)->key;
+//  ASSERT_EQ(procurado, retornado)
+//    << "-------------------------------------------------------------------\n"
+//    << "Erro na funcao:  "
+//    << "* Node* set::find(SType k) *\n"
+//    << "-------------------------------------------------------------------\n"
+//    << " Conjunto: " << ToString(c) << "\n"
+//    << " Elemento procurado: " << procurado << "\n"
+//    << " Elemento retornando: " << procurado << "\n"
+//    << "-------------------------------------------------------------------\n";
+//}
 
-TEST_F(Teste, Testar_metodo_empty_em_conjunto_unitario) {
-  set c;
-  string v[] = {"3"};
-  CriaSet(c, 1, v);
-  ASSERT_FALSE(c.empty())
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* bool set::empty() *\n"
-    << "-------------------------------------------------------------------\n"
-    << "O conjunto possui um elemento e a funcao retornou TRUE.\n"
-    << "-------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Testar_metodo_empty_em_conjunto_com_varios_elementos) {
-  set c;
-  string v[] = {"3", "8", "5", "6", "4", "7"};
-  CriaSet(c, 6, v);
-  ASSERT_FALSE(c.empty())
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* bool set::empty() *\n"
-    << "-------------------------------------------------------------------\n"
-    << "O conjunto possui varios elementos e a funcao retornou TRUE.\n"
-    << "-------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Testar_metodo_size_em_conjunto_vazio) {
-  set c;
-  int atual = c.size();
+TEST_F(Teste, Testa_Size_para_conjunto_vazio) {
+  set s;
   int esperado = 0;
+  int atual = s.size();
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* int set::size() *\n"
+    << "Erro na funcao: int set::size()\n"
     << "-------------------------------------------------------------------\n"
-    << "Valor esperado  : " << esperado << "\n"
-    << "Valor retornado : " << atual << "\n"
+    << " s = " << ToString(s) << "\n"
+    << " \"s.sise()\" retornou: " << atual << "\n"
+    << " Valor esperado: " << esperado << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testar_metodo_size_em_conjunto_unitario) {
-  set c;
-  string v[] = {"3"};
-  CriaSet(c, 1, v);
-  int atual = c.size();
-  int esperado = 1;
-  ASSERT_EQ(esperado, atual)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* int set::size() *\n"
-    << "-------------------------------------------------------------------\n"
-    << "Valor esperado  : " << esperado << "\n"
-    << "Valor retornado : " << atual << "\n"
-    << "-------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Testar_metodo_size_em_conjunto_com_varios_elementos) {
-  set c;
-  string v[] = {"3", "0", "4"};
-  CriaSet(c, 3, v);
-  int atual = c.size();
+TEST_F(Teste, Testa_Size_para_conjunto_nao_vazio) {
+  set s;
+  CriaConjunto("a", "b", "c", &s);
   int esperado = 3;
+  int atual = s.size();
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* int set::size() *\n"
+    << "Erro na funcao: int set::size()\n"
     << "-------------------------------------------------------------------\n"
-    << "Conjunto  : " << ToString(c)  << "\n"
-    << "Valor esperado  : " << esperado << "\n"
-    << "Valor retornado : " << atual << "\n"
+    << " s = " << ToString(s) << "\n"
+    << " \"s.sise()\" retornou: " << atual << "\n"
+    << " Valor esperado: " << esperado << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testar_metodo_find_em_conjunto_vazio) {
-  set c;
-  ASSERT_EQ(c.end(), c.find("4"))
+TEST_F(Teste, Testa_Empty_com_conjunto_vazio) {
+  set s;
+  ASSERT_TRUE(s.empty())
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao: bool set::empty() \n"
+      << "------------------------------------------------------------------\n"
+      << " o conjunto esta vazio e a funcao retornou FALSE.\n"
+      << "------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testa_Empty_com_conjunto_nao_vazio) {
+  set s;
+  CriaConjunto("12", "14", "15", &s);
+  ASSERT_FALSE(s.empty())
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao: bool set::empty() \n"
+      << "------------------------------------------------------------------\n"
+      << " o conjunto tem pelo menos um elemento e a funcao retornou TRUE.\n"
+      << "------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testa_Begin_com_conjunto_vazio) {
+  set s;
+  ASSERT_EQ(NULL, s.begin())
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao: Node* set::begin() \n"
+      << "------------------------------------------------------------------\n"
+      << " begin() nao retorna NULL no conjunto vazio.\n"
+      << "------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testa_Begin_com_conjunto_nao_vazio) {
+  set s;
+  CriaConjunto("1", "2", "3", &s);
+  SType atual = s.begin()->key;
+  SType esperado = "1";
+  ASSERT_EQ(esperado, atual)
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao: Node* set::begin() \n"
+      << "------------------------------------------------------------------\n"
+      << " s = " << ToString(s) << "\n"
+      << " \"s[s.begin()]\" retornou: " << atual << "\n"
+      << " Valor esperado: " << esperado << "\n"
+      << "------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testa_End_com_conjunto_vazio) {
+  set s;
+  ASSERT_EQ(NULL, s.end())
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao: Node* set::end() \n"
+      << "------------------------------------------------------------------\n"
+      << " end() nao retorna end_ no conjunto vazio.\n"
+      << "------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testa_End_com_conjunto_nao_vazio) {
+  set s;
+  CriaConjunto("1", "2", "3", &s);
+  ASSERT_EQ(NULL, s.end())
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao: Node* set::end() \n"
+      << "------------------------------------------------------------------\n"
+      << " s = " << ToString(s) << "\n"
+      << " end() nao retornou NULL.\n"
+      << "------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testa_Next) {
+  set s;
+  CriaConjunto("1", "2", "3", &s);
+  SType atual = s.next(s.begin())->key;
+  SType esperado = "2";
+  ASSERT_EQ(esperado, atual)
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao: Node* set::next(Node* x) \n"
+      << "------------------------------------------------------------------\n"
+      << " s = " << ToString(s) << "\n"
+      << " \"s[s.next(s.begin())]\" retornou: " << atual << "\n"
+      << " Valor esperado: " << esperado << "\n"
+      << "------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testa_operador_At) {
+  set s;
+  CriaConjunto("1", "2", "3", &s);
+  SType atual = s[s.begin()];
+  SType esperado = "1";
+  ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* Node* set::find(SType k) *\n"
+    << "Erro na funcao: SType& set::operator[](Node* x)\n"
     << "-------------------------------------------------------------------\n"
-    << "Funcao retornou algo diferente de NULL para a procura de um \n"
-    << "elemento nao contido no conjunto\n"
+    << " s = " << "{ 1 14 15 }" << "\n"
+    << " \"s[s.begin()]\" retornou: " << atual << "\n"
+    << " Valor esperado: " << esperado << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testar_metodo_find_em_conjunto_com_varios_elementos) {
-  set c;
-  string v[] = {"8", "5", "3", "15"};
-  CriaSet(c, 4, v);
-  ASSERT_EQ(c.end(), c.find("4"))
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* Node* set::find(SType k) *\n"
-    << "-------------------------------------------------------------------\n"
-    << "Funcao retornou algo diferente de NULL para a procura de um \n"
-    << "elemento nao contido no conjunto\n"
-    << "-------------------------------------------------------------------\n";
-
-  string procurado = "8";
-  string retornado = c.find(procurado)->key;
-  ASSERT_EQ(procurado, retornado)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* Node* set::find(SType k) *\n"
-    << "-------------------------------------------------------------------\n"
-    << " Conjunto: " << ToString(c) << "\n"
-    << " Elemento procurado: " << procurado << "\n"
-    << " Elemento retornando: " << procurado << "\n"
-    << "-------------------------------------------------------------------\n";
+TEST_F(Teste, Testa_Insert_em_conjunto_vazio) {
+  set s;
+  s.insert("10");
+  string atual = ToString(s);
+  string esperado("{ 10 }");
+  ASSERT_EQ(esperado, atual)
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao: void set::insert(SType k) *\n"
+      << "------------------------------------------------------------------\n"
+      << " s = { } \n"
+      << " \"s.insert(10)\" resultou em: s = " << atual << "\n"
+      << " Resultado esperado: s = " << esperado << "\n"
+      << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testar_metodo_insert_em_conjunto_vazio) {
-  set c;
-  c.insert("4");
-  string atual = ToString(c);
-  string esperado = "{ 4 }";
-  ASSERT_EQ(atual, esperado)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* Node* set::insert(SType k) *\n"
-    << "-------------------------------------------------------------------\n"
-    << "Conjunto esperado: " << esperado << "\n"
-    << "Conjunto formado: " << atual << "\n"
-    << "-------------------------------------------------------------------\n";
-  int size_esperado = 1;
-  int size_atual = c.size();
-  ASSERT_EQ(size_esperado, size_atual)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* Node* set::insert(SType k) *\n"
-    << "-------------------------------------------------------------------\n"
-    << " A função inseriu corretamente um elemento no conjunto porem\n"
-    << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
-    << " Tamanho Esperado: " << size_esperado << "\n"
-    << " Tamanho Retornado: " << size_atual << "\n"
-    << "-------------------------------------------------------------------\n";
+TEST_F(Teste, Testa_Insert_em_conjunto_nao_vazio) {
+  set s;
+  CriaConjunto("1", "3", "4", &s);
+  s.insert("2");
+  string atual = ToString(s);
+  string esperado("{ 1 2 3 4 }");
+  ASSERT_EQ(esperado, atual)
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao: void set::insert(SType k) *\n"
+      << "------------------------------------------------------------------\n"
+      << " l = { 1 3 4 } \n"
+      << " \"s.insert(2)\" resultou em: s = " << atual << "\n"
+      << " Resultado esperado: s = " << esperado << "\n"
+      << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testar_metodo_insert_para_elemento_nao_contido_em_conjunto) {
-  set c;
-  string v[] = {"5", "4", "7"};
-  CriaSet(c, 3, v);
-  c.insert("8");
-  string atual = ToString(c);
-  string esperado = "{ 4 5 7 8 }";
-  ASSERT_EQ(atual, esperado)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* Node* set::insert(SType k) *\n"
-    << "-------------------------------------------------------------------\n"
-    << " Conjunto esperado: " << esperado << "\n"
-    << " Conjunto formado: " << atual << "\n"
-    << "-------------------------------------------------------------------\n";
-  int size_esperado = 4;
-  int size_atual = c.size();
-  ASSERT_EQ(size_esperado, size_atual)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* Node* set::insert(SType k) *\n"
-    << "-------------------------------------------------------------------\n"
-    << " A função inseriu corretamente um elemento no conjunto porem\n"
-    << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
-    << "  Tamanho Esperado: " << size_esperado << "\n"
-    << " Tamanho Retornado: " << size_atual << "\n"
-    << "-------------------------------------------------------------------\n";
+TEST_F(Teste, Testa_Erase_em_conjunto_unitario) {
+  set s;
+  s.insert("10");
+  s.erase("10");
+  string atual = ToString(s);
+  string esperado("{ }");
+  ASSERT_TRUE(begin(s) == NULL)
+    << "------------------------------------------------------------------\n"
+    << "Erro na funcao: void set::erase(SType k) *\n"
+    << "------------------------------------------------------------------\n"
+    << " s = { 10 } \n"
+    << " Resultado esperado: s = " << esperado << "\n"
+    << " DICA: s.root_ deveria apontar para NULL num conjunto vazio.\n"
+    << "------------------------------------------------------------------\n";
+  ASSERT_EQ(esperado, atual)
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao: void set::erase(SType k) *\n"
+      << "------------------------------------------------------------------\n"
+      << " s = { 10 } \n"
+      << " \"s.erase(10)\" resultou em: s = " << atual << "\n"
+      << " Resultado esperado: s = " << esperado << "\n"
+      << " DICA: Verifique se voce esta atualizando \"s.root_\".\n"
+      << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testar_metodo_insert_para_elemento_contido_em_conjunto) {
-  set c;
-  string v[] = {"4", "5", "1", "3"};
-  CriaSet(c, 4, v);
-  c.insert("5");
-  string atual = ToString(c);
-  string esperado = "{ 1 3 4 5 }";
-  ASSERT_EQ(atual, esperado)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* Node* set::insert(SType k) *\n"
-    << "-------------------------------------------------------------------\n"
-    << " Conjunto esperado: " << esperado << "\n"
-    << "  Conjunto formado: " << atual << "\n"
-    << "-------------------------------------------------------------------\n";
-  int size_esperado = 4;
-  int size_atual = c.size();
-  ASSERT_EQ(size_esperado, size_atual)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* Node* set::insert(SType k) *\n"
-    << "-------------------------------------------------------------------\n"
-    << " A função corretamente nao inseriu um elemento no conjunto pois ja\n"
-    << " possuia o elemento porem alterou o valor do tamanho do conjunto\n\n"
-    << "  Tamanho Esperado: " << size_esperado << "\n"
-    << " Tamanho Retornado: " << size_atual << "\n"
-    << "-------------------------------------------------------------------\n";
+TEST_F(Teste, Testa_erase_em_no_sem_filhos) {
+  set s;
+  insert("2", &s);
+  insert("1", &s);
+  insert("3", &s);
+  s.erase("3");
+  string atual = ToString(s);
+  string esperado("{ 1 2 }");
+  ASSERT_EQ(esperado, atual)
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao: void set::erase(SType k) *\n"
+      << "------------------------------------------------------------------\n"
+      << " s = { 1 2 3 } \n"
+      << " \"s.erase(3)\" resultou em: s = " << atual << "\n"
+      << " Resultado esperado: s = " << esperado << "\n"
+      << " DICA: Verifique se voce esta removendo corretamente da arvore\n"
+      << " um no sem filhos.\n"
+      << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testar_metodo_erase_em_conjunto_com_varios_elementos_com_exito) {
-  set c;
-  string v[] = {"4", "6", "7", "8"};
-  CriaSet(c, 4, v);
-  c.erase("6");
-  string atual = ToString(c);
-  string esperado = "{ 4 7 8 }";
-  ASSERT_EQ(atual, esperado)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* void set::erase(SType x) *\n"
-    << "-------------------------------------------------------------------\n"
-    << " Conjunto esperado: " << esperado << "\n"
-    << "  Conjunto formado: " << atual << "\n"
-    << "-------------------------------------------------------------------\n";
+TEST_F(Teste, Testa_erase_em_no_sem_subarvore_direita) {
+  set s;
+  insert("2", &s);
+  insert("1", &s);
+  s.erase("2");
+  string atual = ToString(s);
+  string esperado("{ 1 }");
+  ASSERT_EQ(esperado, atual)
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao: void set::erase(SType k) *\n"
+      << "------------------------------------------------------------------\n"
+      << " s = { 1 2 } \n"
+      << " \"s.erase(2)\" resultou em: s = " << atual << "\n"
+      << " Resultado esperado: s = " << esperado << "\n"
+      << " DICA: Verifique se voce esta removendo corretamente da arvore\n"
+      << " um no que nao tem a subarvore direita.\n"
+      << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testar_metodo_erase_em_conjunto_com_varios_elementos_sem_exito) {
-  set c;
-  string v[] = {"4", "6", "7", "8"};
-  CriaSet(c, 4, v);
-  c.erase("5");
-  string atual = ToString(c);
-  string esperado = "{ 4 6 7 8 }";
-  ASSERT_EQ(atual, esperado)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* void set::erase(SType x) *\n"
-    << "-------------------------------------------------------------------\n"
-    << " Conjunto esperado: " << esperado << "\n"
-    << "  Conjunto formado: " << atual << "\n"
-    << "-------------------------------------------------------------------\n";
+TEST_F(Teste, Testa_erase_em_no_sem_subarvore_esquerda) {
+  set s;
+  insert("2", &s);
+  insert("3", &s);
+  s.erase("2");
+  string atual = ToString(s);
+  string esperado("{ 3 }");
+  ASSERT_EQ(esperado, atual)
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao: void set::erase(SType k) *\n"
+      << "------------------------------------------------------------------\n"
+      << " s = { 1 2 } \n"
+      << " \"s.erase(2)\" resultou em: s = " << atual << "\n"
+      << " Resultado esperado: s = " << esperado << "\n"
+      << " DICA: Verifique se voce esta removendo corretamente da arvore\n"
+         " um no que nao tem a subarvore esquerda.\n"
+      << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testar_metodo_clear_em_conjunto_vazio) {
-  set c;
-  c.clear();
-  ASSERT_TRUE(c.empty())
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* void set::clear() *\n"
-    << "-------------------------------------------------------------------\n"
-    << "Apos executar a funcao clear() o teste acusou haver\n"
-    << "um ou mais elementos no conjunto\n"
-    << "-------------------------------------------------------------------\n";
-  int size_esperado = 0;
-  int size_atual = c.size();
-  ASSERT_EQ(size_esperado, size_atual)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* void set::clear(SType k) *\n"
-    << "-------------------------------------------------------------------\n"
-    << "A função limpou corretamente o conteudo do conjunto porem\n"
-    << "nao alterou corretamente o valor do tamanho do conjunto.\n\n"
-    << "Tamanho Esperado: " << size_esperado << "\n"
-    << "Tamanho Retornado: " << size_atual << "\n"
-    << "-------------------------------------------------------------------\n";
+TEST_F(Teste, Testa_erase_em_no_com_os_dois_filhos) {
+  set s;
+  insert("2", &s);
+  insert("1", &s);
+  insert("4", &s);
+  insert("3", &s);
+  s.erase("2");
+  string atual = ToString(s);
+  string esperado("{ 1 3 4 }");
+  ASSERT_EQ(esperado, atual)
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao: void set::erase(SType k) *\n"
+      << "------------------------------------------------------------------\n"
+      << " s = { 1 2 3 4} \n"
+      << " \"s.erase(2)\" resultou em: s = " << atual << "\n"
+      << " Resultado esperado: s = " << esperado << "\n"
+      << " DICA: Verifique se voce esta removendo corretamente da arvore\n"
+         " um no que tem as duas subarvores nao vazias.\n"
+      << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testar_metodo_clear_em_conjunto_com_varios_elementos) {
-  set c;
-  string v[] = {"10", "5", "9"};
-  CriaSet(c, 3, v);
-  c.clear();
-  ASSERT_TRUE(c.empty())
+TEST_F(Teste, Testa_Clear) {
+  set s;
+  CriaConjunto("1", "2", "3", &s);
+  s.clear();
+  string atual = ToString(s);
+  string esperado("{ }");
+  ASSERT_EQ(esperado, atual)
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao: void set::clear() \n"
+      << "------------------------------------------------------------------\n"
+      << " s = { 1 4 7 } \n"
+      << " \"s.clear()\" resultou em: s = " << atual << "\n"
+      << " Resultado esperado: s = " << esperado << "\n"
+      << "------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testa_operador_Assign) {
+  set esperado;
+  CriaConjunto("1", "2", "3", &esperado);
+  set atual;
+  atual = esperado;
+  ASSERT_NE(begin(esperado), begin(atual))
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* void set::clear() *\n"
+    << "Erro na funcao: void set::operator=(set& s)\n"
     << "-------------------------------------------------------------------\n"
-    << "Apos executar a funcao clear() o teste acusou haver\n"
-    << "um ou mais elementos no conjunto\n"
+    << " Não basta apenas copiar o ponteiro para \"root_\". \n"
+    << " Você tem que copiar todos os elementos de s para o\n"
+       " conjunto corrente.\n"
     << "-------------------------------------------------------------------\n";
-  int size_esperado = 0;
-  int size_atual = c.size();
-  ASSERT_EQ(size_esperado, size_atual)
+  ASSERT_EQ(ToString(esperado), ToString(atual))
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* void set::clear(SType k) *\n"
+    << "Erro na funcao: void set::operator=(set& s)\n"
     << "-------------------------------------------------------------------\n"
-    << " A função limpou corretamente o conteudo do conjunto porem\n"
-    << " nao alterou corretamente o valor do tamanho do conjunto\n\n"
-    << " Tamanho Esperado: " << size_esperado << "\n"
-    << " Tamanho Retornado: " << size_atual << "\n"
+    << " s = " << ToString(esperado) << "\n"
+    << " \"u = s\" resultou em: u = " << ToString(atual) << "\n"
+    << " Resultado esperado: u = " << ToString(esperado) << "\n"
     << "-------------------------------------------------------------------\n";
 }
 

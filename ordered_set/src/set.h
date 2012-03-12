@@ -20,8 +20,7 @@ class set {
   // Cria um conjunto vazio em O(1).
   set();
 
-  // Cria um conjunto com os mesmos elementos de s em O(m*log m),
-  // onde m = s.size().
+  // Cria um conjunto com os mesmos elementos de s.
   set(set& s);
 
   // Libera toda a memória alocada para o conjunto em O(n*log n).
@@ -43,7 +42,7 @@ class set {
   Node* prev(Node* x);
 
   // Retorna o valor do elemento indicado por x em (1).
-  SType& operator[](Node* x);
+  SType operator[](Node* x);
 
   // Testa se o cojunto está vazio em O(1).
   bool empty();
@@ -60,17 +59,17 @@ class set {
   // Insere k no conjunto em O(log n) e retorna um ponteiro para este elemento.
   // Caso k já pertença ao conjunto, um novo elemento NÃO é inserido no conjunto
   // e a função retorna um ponteiro o para o elemento k já existente.
-  Node* insert(SType k);
+  void insert(SType k);
 
   // Remove k do conjunto (caso lá ele esteja) em O(log n).
   void erase(SType k);
 
-  // Remove todos os elementos do conjunto em O(n*log n),
+  // Remove todos os elementos do conjunto,
   // onde n é o número de elementos no conjunto.
   void clear();
 
   // Faz com que o conjunto corrente contenha exatamente os mesmos elementos
-  // do cojunto s em O(n*log n + m*log m), onde m = s.size() e n é o número
+  // do cojunto s, onde m = s.size() e n é o número
   // de elementos no conjunto corrente..
   void operator=(set& s);
 

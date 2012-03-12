@@ -34,31 +34,31 @@ class list {
   Node* begin();
 
   // Retorna um ponteiro para o "marcador de fim" da lista em O(1).
-  // Nota: list::end() não é considerado um elemento válido da lista.
+  // Nota: list::end() não é considerado um elemento da lista.
   Node* end();
 
-  // Retorna o elemento seguinte ao indicado por i na lista em (1).
-  // Precondição: i aponta para um dos elementos da lista.
-  Node* next(Node* i);
+  // Retorna o elemento seguinte ao indicado por x na lista em (1).
+  // Precondição: x aponta para um dos elementos da lista.
+  Node* next(Node* x);
 
-  // Retorna o elemento anterior ao indicado por i na lista em (1).
-  // Precondição: i aponta para um dos elementos da lista ou para list::end().
-  Node* prev(Node* i);
+  // Retorna o elemento anterior ao indicado por x na lista em (1).
+  // Precondição: x aponta para um dos elementos da lista.
+  Node* prev(Node* x);
 
-  // Retorna o valor do elemento indicado por i em (1).
-  LType& operator[](Node* i);
+  // Retorna o valor do elemento indicado por x em (1).
+  LType& operator[](Node* x);
 
   // Faz a lista corrente ficar igual a l em O(n + m),
   // onde m = l.size() e n é o número de elementos na lista corrente.
   void operator=(list& l);
 
-  // Insere k antes do elemento indicado por i em O(1).
-  void insert(Node* i, LType k);
+  // Insere k antes do elemento indicado por x em O(1).
+  void insert(Node* x, LType k);
 
-  // Apaga o elemento indicado por i em O(1).
-  // Precondição: i aponta para um dos elementos da lista.
-  // Pós-condição: i não é mais um ponteiro válido.
-  void erase(Node* i);
+  // Apaga o elemento indicado por x em O(1).
+  // Precondição: x aponta para um dos elementos da lista.
+  // Pós-condição: x não é mais um ponteiro válido.
+  void erase(Node* x);
 
   // Remove todos os elementos da lista em O(n),
   // onde n é o número de elementos na lista.
