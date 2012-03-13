@@ -14,7 +14,8 @@ struct Node;
 // NOTA: O cálculo da complexidade das funções assume que a árvore está
 // balanceada, ou seja, considera-se que a altura da arvore é O(log n), onde n
 // é a cardinalidade do conjunto. Entretanto, isto não é garantido nesta
-// implentação.
+// implentação. Para simplificar as funções de complexidade,
+// denota-se n = size_.
 class set {
  public:
   // Cria um conjunto vazio em O(1).
@@ -23,7 +24,7 @@ class set {
   // Cria um conjunto com os mesmos elementos de s.
   set(set& s);
 
-  // Libera toda a memória alocada para o conjunto em O(n*log n).
+  // Libera toda a memória alocada para o conjunto.
   ~set();
 
   // Retorna um ponteiro para o MENOR elemento do conjunto em O(log n).
@@ -31,17 +32,18 @@ class set {
   Node* begin();
 
   // Retorna um ponteiro para o "marcador de fim" do conjunto em O(1).
+  // Nota: end() não é um elemento do conjunto.
   Node* end();
 
-  // Retorna o elemento seguinte ao indicado por x no conjunto em (log n).
+  // Retorna o elemento seguinte ao indicado por x no conjunto em O(log n).
   // Precondição: x aponta para um dos elementos do conjunto.
   Node* next(Node* x);
 
-  // Retorna o elemento anterior ao indicado por x no conjunto em (log n).
-  // Precondição: x aponta para um dos elementos da lista ou para list::end().
+  // Retorna o elemento anterior ao indicado por x no conjunto em O(log n).
+  // Precondição: x aponta para um dos elementos do conjunto.
   Node* prev(Node* x);
 
-  // Retorna o valor do elemento indicado por x em (1).
+  // Retorna o valor do elemento indicado por x em O(1).
   SType operator[](Node* x);
 
   // Testa se o cojunto está vazio em O(1).
@@ -64,13 +66,11 @@ class set {
   // Remove k do conjunto (caso lá ele esteja) em O(log n).
   void erase(SType k);
 
-  // Remove todos os elementos do conjunto,
-  // onde n é o número de elementos no conjunto.
+  // Remove todos os elementos do conjunto.
   void clear();
 
   // Faz com que o conjunto corrente contenha exatamente os mesmos elementos
-  // do cojunto s, onde m = s.size() e n é o número
-  // de elementos no conjunto corrente..
+  // do cojunto s.
   void operator=(set& s);
 
  private:

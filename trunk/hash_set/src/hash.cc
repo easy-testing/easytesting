@@ -1,11 +1,9 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef BRANCHES_GABARITOS_HASH_SET_SRC_HASH_FUNCTION_H_
-#define BRANCHES_GABARITOS_HASH_SET_SRC_HASH_FUNCTION_H_
+#include "hash_set/src/hash.h"
 
-#include <math.h>
-#include <stdlib.h>
-
+#include <cmath>
+#include <cstdlib>
 #include <string>
 
 int hash(int x, int max_size) {
@@ -23,5 +21,3 @@ int hash(std::string& x, int max_size) {
   }
   return h % max_size;
 }
-
-#endif  // BRANCHES_GABARITOS_HASH_SET_SRC_HASH_FUNCTION_H_

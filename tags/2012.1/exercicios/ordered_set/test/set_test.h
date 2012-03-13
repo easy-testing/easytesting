@@ -24,17 +24,20 @@ struct Node {
 // Classe base dos testes.
 class Teste : public testing::Test {
  protected:
-  Node* NewNode(SType k, Node* l, Node* r, Node* p) {
-    Node* aux = new Node();
-    aux->key = k;
-    aux->left = l;
-    aux->right = r;
-    aux->parent = p;
-    return aux;
-  }
-    // Retorna um ponteiro para o primeiro elemento do conjunto.
-  Node* begin(const set& s) {
+  // Retorna a raiz da árvore de s.
+  Node* root(const set& s) {
     return s.root_;
+  }
+
+  // Retorna um ponteiro para o primeiro elemento do conjunto.
+  Node* begin(const set& s) {
+    Node* x = s.root_;
+    if (x != NULL) {
+      while (x->left != NULL) {
+        x = x->left;
+      }
+    }
+    return x;
   }
 
   // Retorna um ponteiro para o elemento seguinte ao último elemento
@@ -46,7 +49,7 @@ class Teste : public testing::Test {
   // Dado o nó x, retorna o sucessor de x, ou seja, o nó cuja chave é o menor
   // elemento maior que a chave de x. Caso x seja o maior elemento da árvore,
   // retorna o nó sentinela.
-  Node* TreeSuccerssor(Node* x) {
+  Node* next(Node* x) {
     if (x->right != NULL) {
       x = x->right;
       while (x->left != NULL) {
@@ -94,24 +97,26 @@ class Teste : public testing::Test {
   }
 
   void insert(SType k, set* c) {
-    Node* z = NewNode(k, NULL, NULL, NULL);
+    Node* z = new Node;
+    z->key = k;
+    z->left = z->right = z->parent = NULL;
     TreeInsert(c->root_, z);
     c->size_++;
   }
 
-  // Insere em um conjunto c, n elementos contidos no vetor v
+  // Cria uma conjunto com três elementos.
   void CriaConjunto(SType x1, SType x2, SType x3, set* s) {
     insert(x2, s);
     insert(x1, s);
     insert(x3, s);
   }
 
-  // Retorna uma string contendo os elementos do conjunto c
+  // Retorna uma string contendo os elementos do conjunto s
   // no formato { c1 c2 c3 c4 }
-  string ToString(set& c) {
+  string ToString(set& s) {
     stringstream out;
     out << "{ ";
-    for (Node* i = c.begin(); i != c.end(); i = TreeSuccerssor(i)) {
+    for (Node* i = s.begin(); i != end(s); i = next(i)) {
       out << i->key << " ";
     }
     out << "}";
@@ -127,7 +132,7 @@ TEST_F(Teste, Testa_construtor_vazio) {
     << "-------------------------------------------------------------------\n"
     << " Em um conjunto vazio, size_ = 0.\n"
     << "-------------------------------------------------------------------\n";
-  ASSERT_TRUE(begin(atual) == NULL)
+  ASSERT_TRUE(root(atual) == NULL)
     << "-------------------------------------------------------------------\n"
     << "Erro no construtor: set::set()\n"
     << "-------------------------------------------------------------------\n"
@@ -187,7 +192,7 @@ TEST_F(Teste, Testa_Find_retorna_true) {
   insert("4", &s);
   insert("3", &s);
   Node* atual = s.find("3");
-  Node* esperado = begin(s)->right->left;
+  Node* esperado = root(s)->right->left;
   ASSERT_TRUE(atual == esperado)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: Node* set::find(SType k) \n"
@@ -432,7 +437,24 @@ TEST_F(Teste, Testa_Insert_em_conjunto_nao_vazio) {
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: void set::insert(SType k) *\n"
       << "------------------------------------------------------------------\n"
-      << " l = { 1 3 4 } \n"
+      << " s = { 1 3 4 } \n"
+      << " \"s.insert(2)\" resultou em: s = " << atual << "\n"
+      << " Resultado esperado: s = " << esperado << "\n"
+      << "------------------------------------------------------------------\n";
+}
+
+
+TEST_F(Teste, Testa_Insert_com_elemento_que_ja_esta_la) {
+  set s;
+  CriaConjunto("1", "2", "3", &s);
+  s.insert("2");
+  string atual = ToString(s);
+  string esperado("{ 1 2 3 }");
+  ASSERT_EQ(esperado, atual)
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao: void set::insert(SType k) *\n"
+      << "------------------------------------------------------------------\n"
+      << " l = { 1 2 3 } \n"
       << " \"s.insert(2)\" resultou em: s = " << atual << "\n"
       << " Resultado esperado: s = " << esperado << "\n"
       << "------------------------------------------------------------------\n";
@@ -444,13 +466,21 @@ TEST_F(Teste, Testa_Erase_em_conjunto_unitario) {
   s.erase("10");
   string atual = ToString(s);
   string esperado("{ }");
-  ASSERT_TRUE(begin(s) == NULL)
+  ASSERT_EQ(0, size(s))
     << "------------------------------------------------------------------\n"
     << "Erro na funcao: void set::erase(SType k) *\n"
     << "------------------------------------------------------------------\n"
     << " s = { 10 } \n"
     << " Resultado esperado: s = " << esperado << "\n"
-    << " DICA: s.root_ deveria apontar para NULL num conjunto vazio.\n"
+    << " Ao apagar um elemento, você tem que decrementar size_"
+    << "------------------------------------------------------------------\n";
+  ASSERT_TRUE(root(s) == NULL)
+    << "------------------------------------------------------------------\n"
+    << "Erro na funcao: void set::erase(SType k) *\n"
+    << "------------------------------------------------------------------\n"
+    << " s = { 10 } \n"
+    << " Resultado esperado: s = " << esperado << "\n"
+    << " DICA: root_ deveria apontar para NULL num conjunto vazio.\n"
     << "------------------------------------------------------------------\n";
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
@@ -459,7 +489,7 @@ TEST_F(Teste, Testa_Erase_em_conjunto_unitario) {
       << " s = { 10 } \n"
       << " \"s.erase(10)\" resultou em: s = " << atual << "\n"
       << " Resultado esperado: s = " << esperado << "\n"
-      << " DICA: Verifique se voce esta atualizando \"s.root_\".\n"
+      << " DICA: Verifique se voce esta atualizando \"sroot_\".\n"
       << "------------------------------------------------------------------\n";
 }
 
@@ -552,7 +582,7 @@ TEST_F(Teste, Testa_Clear) {
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: void set::clear() \n"
       << "------------------------------------------------------------------\n"
-      << " s = { 1 4 7 } \n"
+      << " s = { 1 2 3 } \n"
       << " \"s.clear()\" resultou em: s = " << atual << "\n"
       << " Resultado esperado: s = " << esperado << "\n"
       << "------------------------------------------------------------------\n";
@@ -563,7 +593,7 @@ TEST_F(Teste, Testa_operador_Assign) {
   CriaConjunto("1", "2", "3", &esperado);
   set atual;
   atual = esperado;
-  ASSERT_NE(begin(esperado), begin(atual))
+  ASSERT_NE(root(esperado), root(atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: void set::operator=(set& s)\n"
     << "-------------------------------------------------------------------\n"
