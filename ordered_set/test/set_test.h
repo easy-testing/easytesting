@@ -443,19 +443,44 @@ TEST_F(Teste, Testa_Insert_em_conjunto_nao_vazio) {
       << "------------------------------------------------------------------\n";
 }
 
+
+TEST_F(Teste, Testa_Insert_com_elemento_que_ja_esta_la) {
+  set s;
+  CriaConjunto("1", "2", "3", &s);
+  s.insert("2");
+  string atual = ToString(s);
+  string esperado("{ 1 2 3 }");
+  ASSERT_EQ(esperado, atual)
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao: void set::insert(SType k) *\n"
+      << "------------------------------------------------------------------\n"
+      << " l = { 1 2 3 } \n"
+      << " \"s.insert(2)\" resultou em: s = " << atual << "\n"
+      << " Resultado esperado: s = " << esperado << "\n"
+      << "------------------------------------------------------------------\n";
+}
+
 TEST_F(Teste, Testa_Erase_em_conjunto_unitario) {
   set s;
   s.insert("10");
   s.erase("10");
   string atual = ToString(s);
   string esperado("{ }");
+  ASSERT_EQ(0, size(s))
+    << "------------------------------------------------------------------\n"
+    << "Erro na funcao: void set::erase(SType k) *\n"
+    << "------------------------------------------------------------------\n"
+    << " s = { 10 } \n"
+    << " Resultado esperado: s = " << esperado << "\n"
+    << " Ao apagar um elemento, você tem que decrementar size_"
+    << "------------------------------------------------------------------\n";
   ASSERT_TRUE(root(s) == NULL)
     << "------------------------------------------------------------------\n"
     << "Erro na funcao: void set::erase(SType k) *\n"
     << "------------------------------------------------------------------\n"
     << " s = { 10 } \n"
     << " Resultado esperado: s = " << esperado << "\n"
-    << " DICA: s.root_ deveria apontar para NULL num conjunto vazio.\n"
+    << " DICA: root_ deveria apontar para NULL num conjunto vazio.\n"
     << "------------------------------------------------------------------\n";
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
@@ -464,7 +489,7 @@ TEST_F(Teste, Testa_Erase_em_conjunto_unitario) {
       << " s = { 10 } \n"
       << " \"s.erase(10)\" resultou em: s = " << atual << "\n"
       << " Resultado esperado: s = " << esperado << "\n"
-      << " DICA: Verifique se voce esta atualizando \"s.root_\".\n"
+      << " DICA: Verifique se voce esta atualizando \"sroot_\".\n"
       << "------------------------------------------------------------------\n";
 }
 
@@ -557,7 +582,7 @@ TEST_F(Teste, Testa_Clear) {
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: void set::clear() \n"
       << "------------------------------------------------------------------\n"
-      << " s = { 1 4 7 } \n"
+      << " s = { 1 2 3 } \n"
       << " \"s.clear()\" resultou em: s = " << atual << "\n"
       << " Resultado esperado: s = " << esperado << "\n"
       << "------------------------------------------------------------------\n";

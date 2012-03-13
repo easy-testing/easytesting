@@ -8,8 +8,8 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="EasyTesting">
-				<Option output="bin/debug/set" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/debug/" />
+				<Option output="bin/easytesting/set" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/easytesting/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -19,8 +19,8 @@
 				</Compiler>
 			</Target>
 			<Target title="Main">
-				<Option output="bin/release/set" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/release/" />
+				<Option output="bin/main/set" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/main/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -41,6 +41,8 @@
 		</Compiler>
 		<Unit filename="../gtest/gtest.cc" />
 		<Unit filename="../gtest/gtest.h" />
+		<Unit filename="src/hash.cc" />
+		<Unit filename="src/hash.h" />
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
 		</Unit>
@@ -49,7 +51,9 @@
 		<Unit filename="test/set_test.cc">
 			<Option target="EasyTesting" />
 		</Unit>
-		<Unit filename="test/set_test.h" />
+		<Unit filename="test/set_test.h">
+			<Option target="EasyTesting" />
+		</Unit>
 		<Unit filename="../list/src/list.cc" />
 		<Unit filename="../list/src/list.h" />
 		<Extensions>
