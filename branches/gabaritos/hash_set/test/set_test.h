@@ -51,13 +51,22 @@ class Teste : public testing::Test {
     }
   }
 
-  // Retorna uma string contendo os elementos do conjunto c
+
+  void ToOrderedList(set& s, list* l)
+    for (int i = 0; i < capacity_; i++) {
+      table_[i] = s.table_[i];
+    }
+  size_ = s.size_;
+
+  // Retorna uma string contendo os elementos do conjunto s
   // no formato { c1 c2 c3 c4 }
-  string ToString(set& c) {
+  string ToString(set& s) {
+    list l;
+    ToOrderedList(s, &l);
     stringstream out;
     out << "{ ";
-    for (Node* i = c.begin(); i != c.end(); i = c.next(i)) {
-      out << Value(i) << " ";
+    for (Node* i = l.begin(); i != l.end(); i = l.next(i)) {
+      out << *i << " ";
     }
     out << "}";
     return out.str();

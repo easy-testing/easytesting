@@ -3,12 +3,12 @@
 #ifndef TRUNK_ORDERED_SET_SRC_SET_H_
 #define TRUNK_ORDERED_SET_SRC_SET_H_
 
-#include<string>
+#include <string>
 
-// Define como os elementos do conjunto serão organizados na memória.
-// É declarado aqui, mas só é implementado em set.cc para não violar o
-// encapsulamento.
-struct Node;
+#include "hash_set/src/hash_function.h"
+#include "list/src/list.h"
+
+#define SType LType
 
 // Implementa um conjunto utilizando árvores binárias de busca.
 // NOTA: O cálculo da complexidade das funções assume que a árvore está
@@ -74,12 +74,14 @@ class set {
   void operator=(set& s);
 
  private:
-  // Número de elementos no conjunto.
+  // Número de elementos no cojunto.
   int size_;
 
-  // Ponteiro para a raiz da árvore.
-  // "root_ == NULL" se o conjunto é vazio.
-  Node* root_;
+  // Número de listas no vetor table_.
+  static const int capacity_ = 100000;
+
+  // Vetor de listas que guarda os elementos do cojunto.
+  list table_[capacity_];
 
   friend class Teste;
 };
