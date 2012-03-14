@@ -3,7 +3,7 @@ cc = g++
 # PATH raiz para includes
 path = ../
 # Nome da lista de exercicios
-program = funcoes
+program = condicionais
 type = _
 
 # Gera o binario do programa e de testes e mantem dependencias
