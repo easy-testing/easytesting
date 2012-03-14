@@ -38,10 +38,12 @@ class set {
   Node* end();
 
   // Retorna o elemento seguinte ao indicado por x no conjunto em O(m).
+  // Se x aponta para o último elemento do conjunto, retorna set::end();
   // Precondição: x aponta para um dos elementos do conjunto.
   Node* next(Node* x);
 
   // Retorna o elemento anterior ao indicado por x no conjunto em O(m).
+  // Se x aponta para o primeiro elemento do conjunto, retorna set::end();
   // Precondição: x aponta para um dos elementos da lista.
   Node* prev(Node* x);
 

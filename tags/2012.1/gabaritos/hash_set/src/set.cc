@@ -54,14 +54,17 @@ Node* set::next(Node* x) {
   }
 }
 
+// Se x não é o primeiro elemento da lista que o contém, retorna o elemento
+// anterior a x nesta lista. Caso contrário, retorna o último elemento da
+// primeira lista não vazia anterior a lista de x .
 Node* set::prev(Node* x) {
   int j = hash(x->key, kCapacity_);
-  if (x->next != table_[j].end()) {
-    return x->next;
+  if (x != table_[j].begin()) {
+    return x->prev;
   } else {
-    for (int i = j + 1; i < kCapacity_; i++) {
+    for (int i = j - 1; i >= 0; i--) {
       if (!table_[i].empty()) {
-        return table_[i].begin();
+        return table_[i].end()->prev;
       }
     }
     return end();

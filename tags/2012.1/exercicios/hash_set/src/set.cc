@@ -11,117 +11,68 @@ struct Node {
 };
 
 set::set() {
-  size_ = 0;
+  // TODO.
 }
 
 set::set(set& s) {
-  for (int i = 0; i < kCapacity_; i++) {
-    table_[i] = s.table_[i];
-  }
-  size_ = s.size_;
+  // TODO.
 }
 
 // Retorna o primeiro elemento da primeira lista não vazia.
 Node* set::begin() {
-  for (int i = 0; i < kCapacity_; i++) {
-    if (!table_[i].empty()) {
-      return table_[i].begin();
-    }
-  }
-  return end();
+  return NULL;  // TODO.
 }
 
 // Retorna o "marcador de fim" do conjunto, ou seja,
 // O sentinela da última lista da tabela.
 Node* set::end() {
-  return table_[kCapacity_ - 1].end();
+  return NULL;  // TODO.
 }
 
 // Se x não é o último elemento da lista que o contém, retorna o elemento
 // seguinte a x nesta lista. Caso contrário, retorna o primeiro elemento da
 // próxima lista não vazia da tabela.
 Node* set::next(Node* x) {
-  int j = hash(x->key, kCapacity_);
-  if (x->next != table_[j].end()) {
-    return x->next;
-  } else {
-    for (int i = j + 1; i < kCapacity_; i++) {
-      if (!table_[i].empty()) {
-        return table_[i].begin();
-      }
-    }
-    return end();
-  }
+  return NULL;  // TODO.
 }
 
+// Se x não é o primeiro elemento da lista que o contém, retorna o elemento
+// anterior a x nesta lista. Caso contrário, retorna o último elemento da
+// primeira lista não vazia anterior a lista de x .
 Node* set::prev(Node* x) {
-  int j = hash(x->key, kCapacity_);
-  if (x->next != table_[j].end()) {
-    return x->next;
-  } else {
-    for (int i = j + 1; i < kCapacity_; i++) {
-      if (!table_[i].empty()) {
-        return table_[i].begin();
-      }
-    }
-    return end();
-  }
+  return NULL;  // TODO.
 }
 
 SType set::operator[](Node* x) {
-  return x->key;
+  return x->key;  // TODO.
 }
 
 bool set::empty() {
-  return size_ == 0;
+  return false;  // TODO.
 }
 
 int set::size() {
-  return size_;
+  return 0;  // TODO.
 }
 
 Node* set::find(SType k) {
-  // Procura pelo elemento k na lista onde k pode estar.
-  int j = hash(k, kCapacity_);
-  Node* i;
-  for (i = table_[j].begin(); i != table_[j].end(); i = table_[j].next(i)) {
-    if (i->key == k) {
-       return i;
-    }
-  }
-  return end();
+  return NULL;  // TODO.
 }
 
 void set::insert(SType k) {
-  Node* x = find(k);
-  if (x == end()) {
-    int j = hash(k, kCapacity_);
-    table_[j].insert(table_[j].begin(), k);
-    size_++;
-  }
+  // TODO.
 }
 
 void set::erase(SType k) {
-  Node* x = find(k);
-  if (x != end()) {
-    int j = hash(k, kCapacity_);
-    table_[j].erase(x);
-    size_--;
-  }
+  // TODO.
 }
 
 void set::clear() {
-  for (int i = 0; i < kCapacity_; i++) {
-    table_[i].clear();
-  }
-  size_ = 0;
+  // TODO.
 }
 
 void set::operator=(set& s) {
-  for (int i = 0; i < kCapacity_; i++) {
-    table_[i] = s.table_[i];
-  }
-  size_ = s.size_;
+  // TODO.
 }
 
 set::~set() {
