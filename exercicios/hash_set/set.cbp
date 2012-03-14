@@ -43,6 +43,8 @@
 		<Unit filename="../gtest/gtest.h" />
 		<Unit filename="src/hash.cc" />
 		<Unit filename="src/hash.h" />
+		<Unit filename="src/list.cc" />
+		<Unit filename="src/list.h" />
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
 		</Unit>
@@ -54,8 +56,6 @@
 		<Unit filename="test/set_test.h">
 			<Option target="EasyTesting" />
 		</Unit>
-		<Unit filename="../list/src/list.cc" />
-		<Unit filename="../list/src/list.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -291,6 +291,47 @@ TEST_F(Teste, Testa_Next_em_outra_lista) {
       << "------------------------------------------------------------------\n";
 }
 
+TEST_F(Teste, Testa_Pred_na_mesma_lista) {
+  set s;
+  insert("21", &s);
+  insert("12", &s);
+  SType primeiro = begin(s)->key;
+  SType segundo = next(begin(s), s)->key;
+  SType atual = s.prev(s.find(segundo))->key;
+  ASSERT_EQ(primeiro, atual)
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao: Node* set::prev(Node* x) \n"
+      << "------------------------------------------------------------------\n"
+      << " s = " << ToString(s) << "\n"
+      << " \"s[s.prev(s.find(\"" << segundo <<  "\"))]\" retornou: "
+      << atual << "\n"
+      << " Valor esperado: " << primeiro << "\n"
+      << " DICA: Verifique o caso onde o elemento anterior esta na mesma\n"
+      << " lista que 'x'.\n"
+      << "------------------------------------------------------------------\n";
+}
+
+
+TEST_F(Teste, Testa_Pred_em_outra_lista) {
+  set s;
+  insert("1", &s);
+  insert("5", &s);
+  SType primeiro = begin(s)->key;
+  SType segundo = next(begin(s), s)->key;
+  SType atual = s.prev(s.find(segundo))->key;
+  ASSERT_EQ(primeiro, atual)
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao: Node* set::prev(Node* x) \n"
+      << "------------------------------------------------------------------\n"
+      << " s = " << ToString(s) << "\n"
+      << " \"s[s.prev(s.find(\"" << segundo <<  "\"))]\" retornou: "
+      << atual << "\n"
+      << " Valor esperado: " << primeiro << "\n"
+      << " DICA: Verifique o caso onde o elemento anterior NÃO esta na mesma\n"
+      << " lista que 'x'.\n"
+      << "------------------------------------------------------------------\n";
+}
+
 TEST_F(Teste, Testa_operador_At) {
   set s;
   CriaConjunto("1", "2", "3", &s);

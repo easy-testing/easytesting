@@ -2,7 +2,7 @@
 
 #include "ordered_set/src/set.h"
 
-// Defite como os elementos da árvore serão organizados na memória.
+// Define como os elementos da árvore serão organizados na memória.
 struct Node {
   SType key;  // Valor da chave do nó.
   Node* left;  // Ponteiro para o nó a esquerda.
