@@ -68,7 +68,7 @@ Node* set::find(SType k) {
 // Dica: Implemente uma função "void TreeInsert(Node*& root, Node* z)"
 // que insere uma FOLHA z na árvore cujo nó raiz é 'root' de forma consistente.
 // Vide livro "Algoritmos: Teoria e Prática".
-// Não esqueça de alocar a memória o nó para z.
+// Não esqueça de alocar a memória para o nó z.
 void set::insert(SType k) {
   // TODO.
 }
