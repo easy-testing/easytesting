@@ -13,7 +13,7 @@
 using std::string;
 using std::stringstream;
 
-// Defite como os elementos da árvore serão organizados na memória.
+// Define como os elementos da árvore serão organizados na memória.
 struct Node {
   SType key;  // Valor da chave do nó.
   Node* left;  // Ponteiro para o nó a esquerda.
@@ -116,7 +116,7 @@ class Teste : public testing::Test {
   string ToString(set& s) {
     stringstream out;
     out << "{ ";
-    for (Node* i = s.begin(); i != end(s); i = next(i)) {
+    for (Node* i = begin(s); i != end(s); i = next(i)) {
       out << i->key << " ";
     }
     out << "}";
@@ -454,7 +454,7 @@ TEST_F(Teste, Testa_Insert_com_elemento_que_ja_esta_la) {
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: void set::insert(SType k) *\n"
       << "------------------------------------------------------------------\n"
-      << " l = { 1 2 3 } \n"
+      << " s = { 1 2 3 } \n"
       << " \"s.insert(2)\" resultou em: s = " << atual << "\n"
       << " Resultado esperado: s = " << esperado << "\n"
       << "------------------------------------------------------------------\n";
@@ -493,7 +493,7 @@ TEST_F(Teste, Testa_Erase_em_conjunto_unitario) {
       << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_erase_em_no_sem_filhos) {
+TEST_F(Teste, Testa_Erase_em_no_sem_filhos) {
   set s;
   insert("2", &s);
   insert("1", &s);
@@ -513,7 +513,7 @@ TEST_F(Teste, Testa_erase_em_no_sem_filhos) {
       << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_erase_em_no_sem_subarvore_direita) {
+TEST_F(Teste, Testa_Erase_em_no_sem_subarvore_direita) {
   set s;
   insert("2", &s);
   insert("1", &s);
@@ -532,7 +532,7 @@ TEST_F(Teste, Testa_erase_em_no_sem_subarvore_direita) {
       << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_erase_em_no_sem_subarvore_esquerda) {
+TEST_F(Teste, Testa_Erase_em_no_sem_subarvore_esquerda) {
   set s;
   insert("2", &s);
   insert("3", &s);
@@ -551,7 +551,7 @@ TEST_F(Teste, Testa_erase_em_no_sem_subarvore_esquerda) {
       << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_erase_em_no_com_os_dois_filhos) {
+TEST_F(Teste, Testa_Erase_em_no_com_os_dois_filhos) {
   set s;
   insert("2", &s);
   insert("1", &s);

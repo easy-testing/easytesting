@@ -132,7 +132,7 @@ Node* TreeDelete(Node*& root, Node* z) {
     if (y->key != z->key) {
     z->key = y->key;
   }
-    return y;
+  return y;
 }
 
 // Implementação das funções do TAD set.
@@ -180,7 +180,7 @@ bool set::empty() {
 }
 
 int set::size() {
-return size_;
+  return size_;
 }
 
 Node* set::find(SType k) {

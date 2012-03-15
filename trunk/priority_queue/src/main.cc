@@ -3,22 +3,22 @@
 // Lista sobre Filas de Prioridade.
 //
 // Questão 1.
-// Implemente em priority_queue.h e priority_queue.cc o TAD queue,
+// Implemente em priority_queue.h e priority_queue.cc o TAD priority_queue,
 // utilizando árvores binárias de busca.
+//
+// Questão 2.
+// Implemente uma função "void PriorityQueueSort(int n, float v[])" que ordena
+// os elementos de um vetor utilizando uma priority_queue.
+//
+// Questão 3.
+// Escreva um programa para testar a função da questão anterior.
 
-#include <stdlib.h>
-
-#include <iostream>
 #include <fstream>
-#include <string>
+#include <iostream>
 
-#include "type/type.h"
 #include "priority_queue/src/priority_queue.h"
 
-using std::cin;
-using std::cout;
-using std::endl;
-using std::string;
+using namespace std;
 
 void Print(int n, float v[]) {
   cout << "{";
