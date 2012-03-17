@@ -1,6 +1,6 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2012 Universidade Federal de Minas Gerais (UFMG)
 //
-// Lista de exerciios sobre condicionais em C++.
+// Lista de exercicios sobre condicionais em C++.
 //
 // QUESTAO 1:
 // Implemente em condicionais.cc as funcoes descritas em condicionais.h.
