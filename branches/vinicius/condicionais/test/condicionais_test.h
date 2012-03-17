@@ -1,7 +1,7 @@
-// copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// copyright 2012 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_FUNCOES_TEST_FUNCOES_TEST_H_
-#define TRUNK_FUNCOES_TEST_FUNCOES_TEST_H_
+#ifndef TRUNK_FUNCOES_TEST_CONDICIONAIS_TEST_H_
+#define TRUNK_FUNCOES_TEST_CONDICIONAIS_TEST_H_
 
 #include <cmath>
 #include <sstream>
@@ -11,311 +11,247 @@
 #include "gtest/gtest.h"
 
 namespace Teste {
+TEST(Teste, Testa_menor) {
+  int entrada_x = 2;
+  int entrada_y = 3;
+  int resposta = menor(entrada_x, entrada_y);
+  int esperado = 2;
+  ASSERT_EQ(resposta, esperado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* int menor(int x, int y); *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValores de entrada : " << entrada_x << ", " << entrada_y << "\n\n"
+    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado retornado: " << resposta << "\n\n"
+    << "-------------------------------------------------------------------\n";
+}
+//
+TEST(Teste, Testa_maior_entre_dois_numeros) {
+  int entrada_x = 2;
+  int entrada_y = 3;
+  int resposta = maior(entrada_x, entrada_y);
+  int esperado = 3;
+  ASSERT_EQ(resposta, esperado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* int maior(int x, int y); *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValores de entrada : " << entrada_x << ", " <<  entrada_y << "\n\n"
+    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado retornado: " << resposta << "\n\n"
+    << "-------------------------------------------------------------------\n";
+}
+//
+TEST(Teste, Testa_maior_entre_tres_numeros) {
+  int entrada_x = 2;
+  int entrada_y = 3;
+  int entrada_z = 10;
+  int resposta = maior(entrada_x, entrada_y, entrada_z);
+  int esperado = 10;
+  ASSERT_EQ(resposta, esperado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* int maior(int x, int y, int z); *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValores de entrada : " << entrada_x << ", "
+    << entrada_y << ", " << entrada_z << "\n\n"
+    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado retornado: " << resposta << "\n\n"
+    << "-------------------------------------------------------------------\n";
+}
+//
+TEST(Teste, Testa_verifica_sinal_negativo) {
+  int entrada_x = -1;
+  bool resposta = verifica_sinal(entrada_x);
+  bool esperado = false;
+  ASSERT_FALSE(resposta)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* bool verifica_sinal(int x) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValores de entrada : " << entrada_x << "\n\n"
+    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado retornado: " << resposta << "\n\n"
+    << "-------------------------------------------------------------------\n";
+}
+//
+TEST(Teste, Testa_verifica_sinal_positivo) {
+  int entrada_x = 10;
+  bool resposta = verifica_sinal(entrada_x);
+  bool esperado = true;
+  ASSERT_TRUE(resposta)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* bool verifica_sinal(int x) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValores de entrada : " << entrada_x << "\n\n"
+    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado retornado: " << resposta << "\n\n"
+    << "-------------------------------------------------------------------\n";
+}
+//
+TEST(Teste, Testa_verifica_se_par) {
+  int entrada_x = 2;
+  bool resposta = verifica_par_impar(entrada_x);
+  bool esperado = true;
+  ASSERT_TRUE(resposta)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* bool verifica_par_impar(int x) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValores de entrada : " << entrada_x << "\n\n"
+    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado retornado: " << resposta << "\n\n"
+    << "-------------------------------------------------------------------\n";
+}
 
-//TEST(Teste, Testa_media_com_soma_positiva) {
-//  float entrada[3] = {2.50, 4.45, -1.25};
-//  float resposta = media(entrada[0], entrada[1], entrada[2]);
-//  float esperado = 1.9;
-//  ASSERT_FLOAT_EQ(resposta, esperado)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  "
-//    << "* float media(float, float, float) *\n"
-//    << "-------------------------------------------------------------------\n"
-//    << "\nValores de entrada : " << entrada[0] << ", " << entrada[1]
-//    << ", " << entrada[2] << "\n\n"
-//    << "   Resultado esperado:  " << esperado << "\n"
-//    << "   Resultado retornado: " << resposta << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
 //
-//TEST(Teste, Testa_media_com_soma_negativa) {
-//  float entrada[3] = {-3.69, 1.50, -2.40};
-//  float resposta = media(entrada[0], entrada[1], entrada[2]);
-//  float esperado = -1.53;
-//  ASSERT_FLOAT_EQ(resposta, esperado)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  "
-//    << "* float media(float, float, float) *\n"
-//    << "-------------------------------------------------------------------\n"
-//    << "\nValores de entrada : " << entrada[0] << ", " << entrada[1]
-//    << ", " << entrada[2] << "\n\n"
-//    << "   Resultado esperado:  " << esperado << "\n"
-//    << "   Resultado retornado: " << resposta << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
+TEST(Teste, Testa_verifica_se_impar) {
+  int entrada_x = 1;
+  bool resposta = verifica_par_impar(entrada_x);
+  bool esperado = false;
+  ASSERT_FALSE(resposta)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* bool verifica_par_impar(int x) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValores de entrada : " << entrada_x << "\n\n"
+    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado retornado: " << resposta << "\n\n"
+    << "-------------------------------------------------------------------\n";
+}
 //
-//TEST(Teste, Testa_media_com_soma_igual_a_zero) {
-//  float entrada[3] = {2.50, -1.20, -1.30};
-//  float resposta = media(entrada[0], entrada[1], entrada[2]);
-//  float esperado = 0;
-//  ASSERT_FLOAT_EQ(resposta, esperado)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  "
-//    << "* float media(float, float, float) *\n"
-//    << "-------------------------------------------------------------------\n"
-//    << "\nValores de entrada : " << entrada[0] << ", " << entrada[1]
-//    << ", " << entrada[2] << "\n\n"
-//    << "   Resultado esperado:  " << esperado << "\n"
-//    << "   Resultado retornado: " << resposta << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
+TEST(Teste, Testa_potenciacao) {
+  int entrada_x = 2;
+  int entrada_y = 3;
+  int resposta = potenciacao(entrada_x, entrada_y);
+  int esperado = 9;
+  ASSERT_EQ(resposta, esperado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* int potenciacao(int x, int y) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValores de entrada : " << entrada_x << ", " << entrada_y  << "\n\n"
+    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado retornado: " << resposta << "\n\n"
+    << "-------------------------------------------------------------------\n";
+}
 //
-//TEST(Teste, Testa_media_ponderada_com_soma_positiva) {
-//  float entrada[3] = {2.50, 4.45, -1.25};
-//  float resposta = media_ponderada(entrada[0], entrada[1], entrada[2]);
-//  float esperado = 1.5875;
-//  ASSERT_FLOAT_EQ(resposta, esperado)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  "
-//    << "* float media_ponderada(float, float, float) *\n"
-//    << "-------------------------------------------------------------------\n"
-//    << "\nValores de entrada : " << entrada[0] << ", " << entrada[1]
-//    << ", " << entrada[2] << "\n\n"
-//    << "   Resultado esperado:  " << esperado << "\n"
-//    << "   Resultado retornado: " << resposta << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST(Teste, Testa_media_ponderada_com_soma_negativa) {
-//  float entrada[3] = {-1.7, -4.1, -2.9};
-//  float resposta = media_ponderada(entrada[0], entrada[1], entrada[2]);
-//  float esperado = -3;
-//  ASSERT_FLOAT_EQ(resposta, esperado)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  "
-//    << "* float media_ponderada(float, float, float) *\n"
-//    << "-------------------------------------------------------------------\n"
-//    << "\nValores de entrada : " << entrada[0] << ", " << entrada[1]
-//    << ", " << entrada[2] << "\n\n"
-//    << "   Resultado esperado:  " << esperado << "\n"
-//    << "   Resultado retornado: " << resposta << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST(Teste, Testa_media_ponderada_com_soma_igual_a_zero) {
-//  float entrada[3] = {3.5, 3, -4.5};
-//  float resposta = media_ponderada(entrada[0], entrada[1], entrada[2]);
-//  float esperado = 0;
-//  ASSERT_FLOAT_EQ(resposta, esperado)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  "
-//    << "* float media_ponderada(float, float, float) *\n"
-//    << "-------------------------------------------------------------------\n"
-//    << "\nValores de entrada : " << entrada[0] << ", " << entrada[1]
-//    << ", " << entrada[2] << "\n\n"
-//    << "   Resultado esperado:  " << esperado << "\n"
-//    << "   Resultado retornado: " << resposta << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST(Teste, Testa_perimetro_circulo) {
-//  float entrada = 1000;
-//  float resposta = perimetro(entrada);
-//  float esperado = 2 * M_PI * entrada;
-//  ASSERT_FLOAT_EQ(resposta, esperado)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  "
-//    << "* float perimetro(float) *\n"
-//    << "-------------------------------------------------------------------\n"
-//    << "\nValores de entrada : " << entrada << "\n\n"
-//    << "   Resultado esperado:  " << esperado << "\n"
-//    << "   Resultado retornado: " << resposta << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST(Teste, Testa_area_circulo) {
-//  float entrada = 100;
-//  float resposta = area_circulo(entrada);
-//  float esperado = M_PI * entrada * entrada;
-//  ASSERT_FLOAT_EQ(resposta, esperado)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  "
-//    << "* float area_circulo(float) *\n"
-//    << "-------------------------------------------------------------------\n"
-//    << "\nValores de entrada : " << entrada << "\n\n"
-//    << "   Resultado esperado:  " << esperado << "\n"
-//    << "   Resultado retornado: " << resposta << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST(Teste, Testa_area_triangulo_acutangulo) {
-//  float entrada[2] = {10.5, 20.1};
-//  float resposta = area_triangulo(entrada[0], entrada[1]);
-//  float esperado = 105.525;
-//  ASSERT_FLOAT_EQ(resposta, esperado)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  "
-//    << "* float area_triangulo(float, float) *\n"
-//    << "-------------------------------------------------------------------\n"
-//    << "\nValores de entrada : " << entrada[0]
-//    << ", " << entrada[1] << "\n\n"
-//    << "   Resultado esperado:  " << esperado << "\n"
-//    << "   Resultado retornado: " << resposta << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST(Teste, Testa_area_triangulo_retangulo) {
-//  float entrada[2] = {10.5, 10.5};
-//  float resposta = area_triangulo(entrada[0], entrada[1]);
-//  float esperado = 55.125;
-//  ASSERT_FLOAT_EQ(resposta, esperado)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  "
-//    << "* float area_triangulo(float, float) *\n"
-//    << "-------------------------------------------------------------------\n"
-//    << "\nValores de entrada : " << entrada[0]
-//    << ", " << entrada[1] << "\n\n"
-//    << "   Resultado esperado:  " << esperado << "\n"
-//    << "   Resultado retornado: " << resposta << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST(Teste, Testa_area_triangulo_obtusangulo) {
-//  float entrada[2] = {15.4, 7.5};
-//  float resposta = area_triangulo(entrada[0], entrada[1]);
-//  float esperado = 57.75;
-//  ASSERT_FLOAT_EQ(resposta, esperado)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  "
-//    << "* float area_triangulo(float, float) *\n"
-//    << "-------------------------------------------------------------------\n"
-//    << "\nValores de entrada : " << entrada[0]
-//    << ", " << entrada[1] << "\n\n"
-//    << "   Resultado esperado:  " << esperado << "\n"
-//    << "   Resultado retornado: " << resposta << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST(Teste, Testa_area_caixa_quadrada) {
-//  float entrada[3] = {3.5, 3.5, 3.5};
-//  float resposta = area_caixa(entrada[0], entrada[1], entrada[2]);
-//  float esperado = 73.5;
-//  ASSERT_FLOAT_EQ(resposta, esperado)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  "
-//    << "* float area_caixa(float, float, float) *\n"
-//    << "-------------------------------------------------------------------\n"
-//    << "\nValores de entrada : " << entrada[0] << ", " << entrada[1]
-//    << ", " << entrada[2] << "\n\n"
-//    << "   Resultado esperado:  " << esperado << "\n"
-//    << "   Resultado retornado: " << resposta << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST(Teste, testa_area_caixa_retangular) {
-//  float entrada[3] = {5.5, 7.5, 10.5};
-//  float resposta = area_caixa(entrada[0], entrada[1], entrada[2]);
-//  float esperado = 355.5;
-//  ASSERT_FLOAT_EQ(resposta, esperado)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  "
-//    << "* float area_caixa(float, float, float) *\n"
-//    << "-------------------------------------------------------------------\n"
-//    << "\nValores de entrada : " << entrada[0] << ", " << entrada[1]
-//    << ", " << entrada[2] << "\n\n"
-//    << "   Resultado esperado:  " << esperado << "\n"
-//    << "   Resultado retornado: " << resposta << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST(Teste, Testa_volume_caixa_quadrada) {
-//  float entrada[3] = {5.3, 5.3, 5.3};
-//  float resposta = volume_caixa(entrada[0], entrada[1], entrada[2]);
-//  float esperado = 148.877;
-//  ASSERT_FLOAT_EQ(resposta, esperado)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  "
-//    << "* float volume_caixa(float, float, float) *\n"
-//    << "-------------------------------------------------------------------\n"
-//    << "\nValores de entrada : " << entrada[0] << ", " << entrada[1]
-//    << ", " << entrada[2] << "\n\n"
-//    << "   Resultado esperado:  " << esperado << "\n"
-//    << "   Resultado retornado: " << resposta << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST(Teste, Testa_volume_caixa_retangular) {
-//  float entrada[3] = {4.2, 3.1, 8.4};
-//  float resposta = volume_caixa(entrada[0], entrada[1], entrada[2]);
-//  float esperado = 109.368;
-//  ASSERT_FLOAT_EQ(resposta, esperado)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  "
-//    << "* float volume_caixa(float, float, float) *\n"
-//    << "-------------------------------------------------------------------\n"
-//    << "\nValores de entrada : " << entrada[0] << ", " << entrada[1]
-//    << ", " << entrada[2] << "\n\n"
-//    << "   Resultado esperado:  " << esperado << "\n"
-//    << "   Resultado retornado: " << resposta << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST(Teste, Testa_area_cilindro) {
-//  float raio = 2;
-//  float altura = 100;
-//  float resposta = area_cilindro(raio, altura);
-//  float esperado = (2 * M_PI * raio) * altura + 2 * (M_PI * raio * raio);
-//
-//  ASSERT_FLOAT_EQ(resposta, esperado)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  "
-//    << "* float area_cilindro(float, float) *\n"
-//    << "-------------------------------------------------------------------\n"
-//    << "\nValores de entrada : " << raio
-//    << ", " << altura << "\n\n"
-//    << "   Resultado esperado:  " << esperado << "\n"
-//    << "   Resultado retornado: " << resposta << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST(Teste, Testa_volume_cilindro) {
-//  float raio = 2;
-//  float altura = 100;
-//  float resposta = volume_cilindro(raio, altura);
-//  float esperado = (M_PI * raio * raio) * altura;
-//  ASSERT_FLOAT_EQ(resposta, esperado)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  "
-//    << "* float volume_cilindro(float, float) *\n"
-//    << "-------------------------------------------------------------------\n"
-//    << "\nValores de entrada : " << raio << ", " << altura << "\n\n"
-//    << "   Resultado esperado:  " << esperado << "\n"
-//    << "   Resultado retornado: " << resposta << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST(Teste, Testa_hipotenusa_triagulo_isosceles) {
-//  float entrada[2] = {100, 100};
-//  float resposta = hipotenusa(entrada[0], entrada[1]);
-//  float esperado = 100 * sqrt(2);
-//  ASSERT_FLOAT_EQ(resposta, esperado)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  "
-//    << "* float hipotenusa(float, float) *\n"
-//    << "-------------------------------------------------------------------\n"
-//    << "\nValores de entrada : " << entrada[0]
-//    << ", " << entrada[1] << "\n\n"
-//    << "   Resultado esperado:  " << esperado << "\n"
-//    << "   Resultado retornado: " << resposta << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
-//
-//TEST(Teste, Testa_hipotenusa_triagulo_escaleno) {
-//  float entrada[2] = {100, 50};
-//  float resposta = hipotenusa(entrada[0], entrada[1]);
-//  float esperado = 50 * sqrt(5);
-//  ASSERT_FLOAT_EQ(resposta, esperado)
-//    << "-------------------------------------------------------------------\n"
-//    << "Erro na funcao:  "
-//    << "* float hipotenusa(float, float) *\n"
-//    << "-------------------------------------------------------------------\n"
-//    << "\nValores de entrada : " << entrada[0]
-//    << ", " << entrada[1] << "\n\n"
-//    << "   Resultado esperado:  " << esperado << "\n"
-//    << "   Resultado retornado: " << resposta << "\n\n"
-//    << "-------------------------------------------------------------------\n";
-//}
+TEST(Teste, Testa_divisao) {
+  int entrada_x = 8;
+  int entrada_y = 2;
+  int r;
+  int resposta = divisao(entrada_x, entrada_y, r);
+  int resposta2 = r;
+  int esperado = 4;
+  int esperado2 = true;
+  ASSERT_EQ(resposta2, esperado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* bool divisao(int a, int b, int &r) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValores de entrada : " << entrada_x << ", " <<entrada_y  << "\n\n"
+    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado retornado: " << resposta << "\n\n"
+    << "-------------------------------------------------------------------\n";
 
+ASSERT_TRUE(resposta)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* bool divisao(int a, int b, int &r) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValores de entrada : " << entrada_x << ", " << entrada_y  << "\n\n"
+    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado retornado: " << resposta << "\n\n"
+    << "-------------------------------------------------------------------\n";
+}
+//
+TEST(Teste, Testa_divisao_por_zero) {
+  int entrada_x = 8;
+  int entrada_y = 0;
+  int r = -1;
+  int resposta = divisao(entrada_x, entrada_y, r);
+  int resposta2 = r;
+  int esperado = -1;
+  bool esperado2 = false;
+  ASSERT_EQ(resposta2, esperado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* bool divisao(int a, int b, int &r) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValores de entrada : " << entrada_x << ", " << entrada_y  << "\n\n"
+    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado retornado: " << resposta << "\n\n"
+    << "-------------------------------------------------------------------\n";
+
+ASSERT_FALSE(resposta)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* bool divisao(int a, int b, int &r) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValores de entrada : " << entrada_x << ", " << entrada_y  << "\n\n"
+    << "   Resultado esperado:  " << esperado2 << "\n"
+    << "   Resultado retornado: " << resposta2 << "\n\n"
+    << "-------------------------------------------------------------------\n";
+}
+//
+TEST(Teste, Testa_triangulo_equilatero) {
+  int entrada_a = 4;
+  int entrada_b = 4;
+  int entrada_c = 4;
+
+   int resposta = tipo_triangulo(entrada_a, entrada_b, entrada_c);
+  int esperado = 1;
+  ASSERT_EQ(resposta, esperado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* int tipo_triangulo(int a, int b, int c) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValores de entrada : " << entrada_a << ", "
+    <<  entrada_b <<  ", " <<  entrada_c << "\n\n"
+    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado retornado: " << resposta << "\n\n"
+    << "-------------------------------------------------------------------\n";
+}
+//
+TEST(Teste, Testa_triangulo_isosceles) {
+  int entrada_a = 3;
+  int entrada_b = 4;
+  int entrada_c = 4;
+
+  int resposta = tipo_triangulo(entrada_a, entrada_b, entrada_c);
+  int esperado = 2;
+  ASSERT_EQ(resposta, esperado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* int tipo_triangulo(int a, int b, int c) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValores de entrada : " << entrada_a << ", "
+    <<  entrada_b  << ", " <<  entrada_c << "\n\n"
+    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado retornado: " << resposta << "\n\n"
+    << "-------------------------------------------------------------------\n";
+}
+//
+TEST(Teste, Testa_triangulo_escaleno) {
+  int entrada_a = 2;
+  int entrada_b = 3;
+  int entrada_c = 4;
+
+  int resposta = tipo_triangulo(entrada_a, entrada_b, entrada_c);
+  int esperado = 3;
+  ASSERT_EQ(resposta, esperado)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* int tipo_triangulo(int a, int b, int c) *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValores de entrada : " << entrada_a << ", "
+    <<  entrada_b << ", " <<  entrada_c << "\n\n"
+    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado retornado: " << resposta << "\n\n"
+    << "-------------------------------------------------------------------\n";
+}
 }  // end namespace
 
-#endif  // TRUNK_FUNCOES_TEST_FUNCOES_TEST_H_
+#endif  // TRUNK_FUNCOES_TEST_CONDICIONAIS_TEST_H_

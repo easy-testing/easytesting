@@ -3,6 +3,7 @@
 	<FileVersion major="1" minor="6" />
 	<Project>
 		<Option title="funcoes" />
+		<Option makefile="makefile" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -15,8 +16,8 @@
 					<Add option="-g" />
 				</Compiler>
 			</Target>
-			<Target title="Main">
-				<Option output="bin/release/funcoes" prefix_auto="1" extension_auto="1" />
+			<Target title="Main1">
+				<Option output="bin/release/main1" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -27,6 +28,12 @@
 					<Add option="-s" />
 				</Linker>
 			</Target>
+			<Target title="Main2">
+				<Option output="bin/release/main2" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
@@ -34,10 +41,19 @@
 			<Add directory=".." />
 			<Add directory="." />
 		</Compiler>
-		<Unit filename="src/condicionais.cc" />
-		<Unit filename="src/condicionais.h" />
-		<Unit filename="src/main.cc">
-			<Option target="Main" />
+		<Unit filename="src/condicionais.cc">
+			<Option target="EasyTesting" />
+			<Option target="Main1" />
+		</Unit>
+		<Unit filename="src/condicionais.h">
+			<Option target="EasyTesting" />
+			<Option target="Main1" />
+		</Unit>
+		<Unit filename="src/main1.cc">
+			<Option target="Main1" />
+		</Unit>
+		<Unit filename="src/main2.cc">
+			<Option target="Main2" />
 		</Unit>
 		<Unit filename="test/condicionais_test.cc">
 			<Option target="EasyTesting" />
