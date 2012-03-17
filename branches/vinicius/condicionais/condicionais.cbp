@@ -49,9 +49,6 @@
 			<Option target="EasyTesting" />
 			<Option target="Main1" />
 		</Unit>
-		<Unit filename="src/main1.cc">
-			<Option target="Main1" />
-		</Unit>
 		<Unit filename="src/main2.cc">
 			<Option target="Main2" />
 		</Unit>

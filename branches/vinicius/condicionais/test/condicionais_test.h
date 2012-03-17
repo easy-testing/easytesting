@@ -61,39 +61,9 @@ TEST(Teste, Testa_maior_entre_tres_numeros) {
     << "-------------------------------------------------------------------\n";
 }
 //
-TEST(Teste, Testa_verifica_sinal_negativo) {
-  int entrada_x = -1;
-  bool resposta = verifica_sinal(entrada_x);
-  bool esperado = false;
-  ASSERT_FALSE(resposta)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* bool verifica_sinal(int x) *\n"
-    << "-------------------------------------------------------------------\n"
-    << "\nValores de entrada : " << entrada_x << "\n\n"
-    << "   Resultado esperado:  " << esperado << "\n"
-    << "   Resultado retornado: " << resposta << "\n\n"
-    << "-------------------------------------------------------------------\n";
-}
-//
-TEST(Teste, Testa_verifica_sinal_positivo) {
-  int entrada_x = 10;
-  bool resposta = verifica_sinal(entrada_x);
-  bool esperado = true;
-  ASSERT_TRUE(resposta)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* bool verifica_sinal(int x) *\n"
-    << "-------------------------------------------------------------------\n"
-    << "\nValores de entrada : " << entrada_x << "\n\n"
-    << "   Resultado esperado:  " << esperado << "\n"
-    << "   Resultado retornado: " << resposta << "\n\n"
-    << "-------------------------------------------------------------------\n";
-}
-//
 TEST(Teste, Testa_verifica_se_par) {
   int entrada_x = 2;
-  bool resposta = verifica_par_impar(entrada_x);
+  bool resposta = par(entrada_x);
   bool esperado = true;
   ASSERT_TRUE(resposta)
     << "-------------------------------------------------------------------\n"
@@ -109,7 +79,7 @@ TEST(Teste, Testa_verifica_se_par) {
 //
 TEST(Teste, Testa_verifica_se_impar) {
   int entrada_x = 1;
-  bool resposta = verifica_par_impar(entrada_x);
+  bool resposta = par(entrada_x);
   bool esperado = false;
   ASSERT_FALSE(resposta)
     << "-------------------------------------------------------------------\n"
@@ -138,117 +108,78 @@ TEST(Teste, Testa_potenciacao) {
     << "-------------------------------------------------------------------\n";
 }
 //
-TEST(Teste, Testa_divisao) {
-  int entrada_x = 8;
-  int entrada_y = 2;
-  int r;
-  int resposta = divisao(entrada_x, entrada_y, r);
-  int resposta2 = r;
-  int esperado = 4;
-  int esperado2 = true;
-  ASSERT_EQ(resposta2, esperado)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* bool divisao(int a, int b, int &r) *\n"
-    << "-------------------------------------------------------------------\n"
-    << "\nValores de entrada : " << entrada_x << ", " <<entrada_y  << "\n\n"
-    << "   Resultado esperado:  " << esperado << "\n"
-    << "   Resultado retornado: " << resposta << "\n\n"
-    << "-------------------------------------------------------------------\n";
-
-ASSERT_TRUE(resposta)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* bool divisao(int a, int b, int &r) *\n"
-    << "-------------------------------------------------------------------\n"
-    << "\nValores de entrada : " << entrada_x << ", " << entrada_y  << "\n\n"
-    << "   Resultado esperado:  " << esperado << "\n"
-    << "   Resultado retornado: " << resposta << "\n\n"
-    << "-------------------------------------------------------------------\n";
-}
-//
-TEST(Teste, Testa_divisao_por_zero) {
-  int entrada_x = 8;
-  int entrada_y = 0;
-  int r = -1;
-  int resposta = divisao(entrada_x, entrada_y, r);
-  int resposta2 = r;
-  int esperado = -1;
-  bool esperado2 = false;
-  ASSERT_EQ(resposta2, esperado)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* bool divisao(int a, int b, int &r) *\n"
-    << "-------------------------------------------------------------------\n"
-    << "\nValores de entrada : " << entrada_x << ", " << entrada_y  << "\n\n"
-    << "   Resultado esperado:  " << esperado << "\n"
-    << "   Resultado retornado: " << resposta << "\n\n"
-    << "-------------------------------------------------------------------\n";
-
-ASSERT_FALSE(resposta)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao:  "
-    << "* bool divisao(int a, int b, int &r) *\n"
-    << "-------------------------------------------------------------------\n"
-    << "\nValores de entrada : " << entrada_x << ", " << entrada_y  << "\n\n"
-    << "   Resultado esperado:  " << esperado2 << "\n"
-    << "   Resultado retornado: " << resposta2 << "\n\n"
-    << "-------------------------------------------------------------------\n";
-}
-//
 TEST(Teste, Testa_triangulo_equilatero) {
-  int entrada_a = 4;
-  int entrada_b = 4;
-  int entrada_c = 4;
+  float entrada_a = 5;
+  float entrada_b = 5;
+  float entrada_c = 5;
 
-  int resposta = tipo_triangulo(entrada_a, entrada_b, entrada_c);
-  int esperado = 1;
-  ASSERT_EQ(resposta, esperado)
+  bool resposta = equilatero(entrada_a, entrada_b, entrada_c);
+  ASSERT_TRUE(resposta)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* int tipo_triangulo(int a, int b, int c) *\n"
+    << "* bool equilatero(float a, float b, float c) *\n"
     << "-------------------------------------------------------------------\n"
     << "\nValores de entrada : " << entrada_a << ", "
     <<  entrada_b <<  ", " <<  entrada_c << "\n\n"
-    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado esperado:  " << true << "\n"
     << "   Resultado retornado: " << resposta << "\n\n"
     << "-------------------------------------------------------------------\n";
 }
 //
 TEST(Teste, Testa_triangulo_isosceles) {
-  int entrada_a = 3;
-  int entrada_b = 4;
-  int entrada_c = 4;
+  float entrada_a = 3;
+  float entrada_b = 4;
+  float entrada_c = 4;
 
-  int resposta = tipo_triangulo(entrada_a, entrada_b, entrada_c);
-  int esperado = 2;
-  ASSERT_EQ(resposta, esperado)
+  bool resposta = isosceles(entrada_a, entrada_b, entrada_c);
+  ASSERT_TRUE(resposta)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* int tipo_triangulo(int a, int b, int c) *\n"
+    << "* boll isosceles(float a, float b, float c) *\n"
     << "-------------------------------------------------------------------\n"
     << "\nValores de entrada : " << entrada_a << ", "
     <<  entrada_b  << ", " <<  entrada_c << "\n\n"
-    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado esperado:  " << true << "\n"
     << "   Resultado retornado: " << resposta << "\n\n"
     << "-------------------------------------------------------------------\n";
 }
 //
 TEST(Teste, Testa_triangulo_escaleno) {
-  int entrada_a = 2;
-  int entrada_b = 3;
-  int entrada_c = 4;
+  float entrada_a = 2;
+  float entrada_b = 3;
+  float entrada_c = 4;
 
-  int resposta = tipo_triangulo(entrada_a, entrada_b, entrada_c);
-  int esperado = 3;
-  ASSERT_EQ(resposta, esperado)
+  bool resposta = escaleno(entrada_a, entrada_b, entrada_c);
+
+  ASSERT_TRUE(resposta)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao:  "
-    << "* int tipo_triangulo(int a, int b, int c) *\n"
+    << "* bool escaleno(float a, float b, float c) *\n"
     << "-------------------------------------------------------------------\n"
     << "\nValores de entrada : " << entrada_a << ", "
     <<  entrada_b << ", " <<  entrada_c << "\n\n"
-    << "   Resultado esperado:  " << esperado << "\n"
+    << "   Resultado esperado:  " << true << "\n"
+    << "   Resultado retornado: " << resposta << "\n\n"
+    << "-------------------------------------------------------------------\n";
+}
+//
+TEST(Teste, Testa_signo) {
+  int dia = 3;
+  int mes = 10;
+  bool respo_bool;
+  std::string resposta = signo(dia, mes);
+  std::string esperado = "Libra";
+  respo_bool = false;
+  if (resposta == esperado) {
+    respo_bool = true;
+  }
+  ASSERT_TRUE(respo_bool)
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao:  "
+    << "* string signo(int dia, int mes); *\n"
+    << "-------------------------------------------------------------------\n"
+    << "\nValores de entrada : " << dia << ", " << mes << ", " << "\n\n"
+    << "   Resultado esperado:  " << true << "\n"
     << "   Resultado retornado: " << resposta << "\n\n"
     << "-------------------------------------------------------------------\n";
 }
