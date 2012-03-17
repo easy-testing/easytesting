@@ -1,20 +1,20 @@
 // Copyright 2012 Universidade Federal de Minas Gerais (UFMG)
 //
-// Lista de exercícios sobre condicionais em C++.
+// Lista de exercicios sobre condicionais em C++.
 //
-// QUESTÃO 1:
+// QUESTAO 1:
 // main.cc
 //
-// QUESTÃO 2:
+// QUESTAO 2:
 // main.cc
 //
-// QUESTÃO 3:
+// QUESTAO 3:
 // Desenvolva um programa que recebe o sexo ('f' ou 'm'), a idade,
-// dia e mês de nascimento e salário de um funcionário e informa de
-// forma literal seu sexo ("femino" ou "masculino"), se este é maior de idade,
-// seu signo e o novo salário reajustado. O funcionário terá seu salário
-// reajustado em 10% caso seu salário seja superior ou igual a R$ 2.500,
-// 15% se o o salário for inferior a R$ 2500,00 ou 20% caso seu salário
+// dia e mes de nascimento e salario de um funcionario e informa de
+// forma literal seu sexo ("femino" ou "masculino"), se este e maior de idade,
+// seu signo e o novo salario reajustado. O funcionario tera seu salario
+// reajustado em 10% caso seu salario seja superior ou igual a R$ 2.500,
+// 15% se o o salario for inferior a R$ 2500,00 ou 20% caso seu salario
 // seja menor que R$ 1500,00.
 
 #include <iostream>
@@ -23,16 +23,16 @@
 using namespace std;
 
 // Recebe a idade de uma pessoa e
-// retorna verdadeiro se ela for maior de idade ou falso caso contrário.
+// retorna verdadeiro se ela for maior de idade ou falso caso contrario.
 bool verifica_maioridade(int idade) {
-    if(idade >= 18) {
+    if (idade >= 18) {
         return true;
-    }else {
+    } else {
         return false;
     }
 }
 
-// Recebe o dia e o mês de nascimento e informa o signo da pessoa.
+// Recebe o dia e o me de nascimento e informa o signo da pessoa.
 void signo(int dia, int mes) {
     if (mes == 3) {
         if (dia <= 22) {
@@ -66,12 +66,12 @@ void signo(int dia, int mes) {
         if (dia <= 22) {
             cout << "Cancer"  << endl;
         } else if (dia >= 23) {
-            cout << "Leão"  << endl;
+            cout << "Leao"  << endl;
         }
     }
     if (mes == 8) {
         if (dia <= 23) {
-            cout << "Leão"  << endl;
+            cout << "Leao"  << endl;
         } else if (dia >= 24) {
             cout << "Virgem"  << endl;
         }
@@ -87,12 +87,12 @@ void signo(int dia, int mes) {
         if (dia <= 23) {
             cout << "Libra"  << endl;
         } else if (dia >= 24) {
-            cout << "Escorpião"  << endl;
+            cout << "Escorpiao"  << endl;
         }
     }
     if (mes == 11) {
-        if(dia <= 22) {
-            cout << "Escorpião"  << endl;
+        if (dia <= 22) {
+            cout << "Escorpiao"  << endl;
         } else if (dia >= 23) {
             cout << "Sargitario"  << endl;
         }
@@ -125,8 +125,8 @@ double reajuste(double salario) {
     // Superior ou igual a R$ 2.500
     if (salario >= 2500.00) {
         novo_salario += (salario*0.10);
-    } else // Inferior a R$ 2500,00 a superior ou igual a R$ 1500,00
-        if(salario >= 1500.00) {
+         // Inferior a R$ 2500,00 a superior ou igual a R$ 1500,00
+    } else if (salario >= 1500.00) {
             // Menor que R$ 1500,00.
             novo_salario += (salario*0.15);
         } else {
@@ -158,7 +158,7 @@ int main() {
     }
 
     cout << "Signo: ";
-    signo(dia,mes);
+    signo(dia, mes);
     cout << "Novo salario: " << reajuste(salario);
     return 0;
 }

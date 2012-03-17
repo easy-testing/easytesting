@@ -20,13 +20,13 @@ int maior(int x, int y) {
 
 int maior(int x, int y, int z) {
     if ((x > y) && (x > z)) {
-        // Verifica se x é maior
+        // Verifica se x eh maior
         return x;
     } else if (y > z) {
-        // Verifica se y é maior.
+        // Verifica se y eh maior.
         return y;
     } else {
-        // Se z é maior.
+        // Se z eh maior.
         return z;
     }
 }
@@ -40,7 +40,7 @@ bool verifica_sinal(int x) {
 }
 
 bool verifica_par_impar(int x) {
-    if (x%2==0) {
+    if (x%2 == 0) {
         return true;
     } else {
         return false;
@@ -49,13 +49,13 @@ bool verifica_par_impar(int x) {
 
 int potenciacao(int x, int y) {
     int base = maior(x, y);
-    int expoente = menor(x,y);
-    return pow(base,expoente);
+    int expoente = menor(x, y);
+    return pow(base, expoente);
 }
 
-bool divisao(int a, int b, int &r) {
-    if(b > 0) {
-        r = (a/b);
+bool divisao(int a, int b, int& r) {
+    if (b > 0) {
+        r = (a / b);
         return true;
     } else {
         return false;
@@ -66,7 +66,7 @@ int tipo_triangulo(int a, int b, int c) {
     if ((a < b + c) && (b < a + b) && (b < a +b)) {
         if ((a == b) && (a == c)) {
             return 1;
-        } else if((a == b) || (a == c) || (b == c)) {
+        } else if ( (a == b) || (a == c) || (b == c) ) {
             return 2;
         } else {
             return 3;

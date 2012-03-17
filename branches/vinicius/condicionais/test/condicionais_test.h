@@ -201,7 +201,7 @@ TEST(Teste, Testa_triangulo_equilatero) {
   int entrada_b = 4;
   int entrada_c = 4;
 
-   int resposta = tipo_triangulo(entrada_a, entrada_b, entrada_c);
+  int resposta = tipo_triangulo(entrada_a, entrada_b, entrada_c);
   int esperado = 1;
   ASSERT_EQ(resposta, esperado)
     << "-------------------------------------------------------------------\n"

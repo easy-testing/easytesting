@@ -1,14 +1,14 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 //
-// Lista de exercícios sobre condicionais em C++.
+// Lista de exerciios sobre condicionais em C++.
 //
-// QUESTÃO 1:
-// Implemente em condicionais.cc as funções descritas em condicionais.h.
+// QUESTAO 1:
+// Implemente em condicionais.cc as funcoes descritas em condicionais.h.
 //
-// QUESTÃO 2:
-// Escreva um programa que (i) apresenta um menu com as funções que você
-// programaou na questão anterior e após o usuário escolher uma das funções
-// (ii) lê o valor dos parâmetros e (iii) exibe o resultado da função.
+// QUESTAO 2:
+// Escreva um programa que (i) apresenta um menu com as funcoes que voce
+// programaou na questao anterior e apos o usuario escolher uma das funcoes
+// (ii) le o valor dos parametros e (iii) exibe o resultado da funcao.
 //
 // QUESTÃO 3:
 // arquivo: main2.cc
@@ -45,7 +45,7 @@ int Menu() {
 // Recebe como parametro a opcao escolhida pelo usuario e
 // apos entrada de valores, imprime o resultado desejado
 void Operacao(int op) {
-    int a, b, c,r;
+    int a, b, c, r;
     switch (op) {
     case 1:  // Menor valor entre dois numeros.";
         cout << "Digite o valor do primeiro numero: ";
@@ -54,7 +54,7 @@ void Operacao(int op) {
         cin >> b;
         cout << "\nMenor: " << menor(a, b) << ".\n"<< endl;
         break;
-    case 2: // Maior valor entre dois numeros
+    case 2:  //  Maior valor entre dois numeros.
         cout << "Digite o valor do primeiro numero: ";
         cin >> a;
         cout << "Digite o valor do segundo numero: ";
@@ -101,9 +101,9 @@ void Operacao(int op) {
         cout << "Digite o valor do segundo numero: ";
         cin >> b;
         int r;
-        if (divisao(a, b, r)){
+        if ( divisao(a, b, r) ) {
              cout << "\nResultado: " << r << endl;
-        }else{
+        } else {
             cout << "\nErro: Divisao por zero.\n"<< endl;
         }
         break;
@@ -115,7 +115,7 @@ void Operacao(int op) {
         cout << "Digite o valor do terceiro numero: ";
         cin >> c;
         int retorno = tipo_triangulo(a, b, c);
-        if(retorno == 1) {
+        if (retorno == 1) {
             cout << "\nResultados: Triangulo equilatero.\n" << endl;
         } else if (retorno == 2) {
             cout << "\nResultados: Triangulo isosceles.\n" << endl;
@@ -127,12 +127,12 @@ void Operacao(int op) {
 }
 
 int main() {
-    while(true){
+    while (true) {
         int op = Menu();
-        if (op == 9){
+        if (op == 9) {
             cout << '\a';
             break;
-        }else{
+        } else {
             Operacao(op);
         }
     }
