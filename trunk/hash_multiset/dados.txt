@@ -1,0 +1,9 @@
+7
+ab
+ba
+ab
+cc
+ba
+ab
+ba
+
