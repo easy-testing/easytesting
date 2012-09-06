@@ -29,12 +29,14 @@ SType stack::top() {
 }
 
 void stack::push(SType k) {
-  Node* first = end_->next;  // Ponteiro para o primeiro elemento na pilha.
+  // Ponteiro para o primeiro elemento na pilha.
+  Node* first = end_->next;
+  // Cria um novo nó e define o valor dos seus campos.
   Node* node = new Node;
   node->key = k;
   node->prev = first->prev;
   node->next = first;
-
+  // Ajusta o valor dos ponteiros dos nós adjacentes ao novo nó.
   first->prev->next = node;
   first->prev = node;
   size_++;
