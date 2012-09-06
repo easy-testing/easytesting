@@ -11,6 +11,8 @@
 struct Node;
 
 // Implementa uma pilha de elementos utilizando Listas Encadeadas.
+// O tipo dos elementos contidos na pilha é definido por SType.
+// O valor de SType deve ser definido em tempo de compilação.
 class stack {
  public:
   // Cria uma pilha vazia em O(1).
