@@ -11,6 +11,8 @@
 struct Node;
 
 // Implementa uma fila de elementos utilizando listas encadeadas.
+// O tipo dos elementos contidos na fila é definido por QType.
+// O valor de QType deve ser definido em tempo de compilação.
 class queue {
  public:
   // Cria uma fila vazia em O(1).

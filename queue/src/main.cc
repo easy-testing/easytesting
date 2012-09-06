@@ -8,6 +8,7 @@
 // Questão 2.
 // Escreva uma função "void Imprimir(queue& q)" que recebe
 // como parâmetro uma fila q e imprime os elemento de q na tela.
+// Pós-condição: a fila 'q' não é alterada.
 //
 // Questão 3.
 // Escreva um programa que gerencia uma fila de banco. Ao entrar na fila,
@@ -18,8 +19,8 @@
 // que você vai implementar deve apresentar duas opções: "(1) Entrar na fila" e
 // "(2) Próximo da fila". Na Primeira, o sistema deve cadastrar o nome e a
 // idade do cliente. Já na segunda opção, ele deve imprimir o nome do
-// próximo cliente que está esperando e retirá-lo da fila, ou imprimir uma
-// mensagem indicando que a fila está vazia.
+// próximo cliente que está esperando e retirá-lo da fila, ou se for o caso
+// imprimir uma mensagem indicando que a fila está vazia.
 // DICA: Use duas filas: uma para armazenar os nomes dos clientes
 // prioritários e outra para armazenar os nomes dos clientes não prioritários.
 
@@ -30,7 +31,10 @@
 
 #include "queue/src/queue.h"
 
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::string;
 
 // Questão 2.
 ////////////////////////////////////////////////////////////////////////////////
@@ -92,7 +96,6 @@ int main() {
       cout << ">> ";
       cin >> opcao;
     } while (opcao < 0 || opcao > 3);
-
     // Executa a solicitação do usuário.
     if (opcao == 1) {
       string nome;

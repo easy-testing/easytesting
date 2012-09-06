@@ -33,11 +33,12 @@ QType queue::back() {
 }
 
 void queue::push(QType k) {
+  // Cria um novo nó e define o valor dos seus campos.
   Node* node = new Node;
   node->key = k;
   node->prev = end_->prev;
   node->next = end_;
-
+  // Ajusta o valor dos ponteiros dos nós adjacentes ao novo nó.
   end_->prev->next = node;
   end_->prev = node;
   size_++;
