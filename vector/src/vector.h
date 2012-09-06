@@ -4,7 +4,8 @@
 #define TRUNK_VECTOR_SRC_VECTOR_H_
 
 // Implementa um vetor dinâmico de números reais.
-// Tipo dos elementos contidos no vetor é definido em VType.
+// O tipo dos elementos contidos no vetor é definido por VType.
+// O valor de VType deve ser definido em tempo de compilação.
 class vector {
  public:
   // Cria um vetor vazio.
@@ -48,13 +49,12 @@ class vector {
   void pop_back();
 
   // Insere o elemento x antes do elemento de índice 'index'.
-  // Os valores válidos para 'index' estão no intervalo [0, size_].
   // Todos os elementos com índice igual ou maior que 'index' são deslocados
   // para a direita.
   // Esta operação aumenta o número de elementos no vetor em uma unidade.
   // Por exemplo: se "v = {1.0, 3.0, 5.0}", após "v.insert(1, -7.0)",
   // "v = {1.0, -7.0, 3.0, 5.0}".
-  // Precondição: 0 <= i <= size_.
+  // Precondição: 0 <= index <= size_.
   void insert(int index, VType x);
 
   // Remove o elemento de índice 'index' do vetor.
@@ -63,7 +63,7 @@ class vector {
   // Esta operação diminui o número de elementos no vetor em uma unidade.
   // Por exemplo: se "v = {1.0, 3.0, 5.0}", após "v.erase(1)",
   // "v = {1.0, 5.0}".
-  // Precondição: i deve ser um índice válido do vetor.
+  // Precondição: 0 <= index < size_.
   void erase(int index);
 
   // Libera a memória alocada para array_.
