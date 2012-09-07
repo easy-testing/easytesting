@@ -53,22 +53,6 @@ TEST_F(Teste, Testa_construtor_unitario) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_construtor_por_copia) {
-  vector esperado(3);
-  array(esperado)[0] = 10;
-  array(esperado)[1] = 20;
-  array(esperado)[2] = 30;
-  vector atual(esperado);
-  ASSERT_EQ(ToString(esperado), ToString(atual))
-    << "-------------------------------------------------------------------\n"
-    << "Erro no construtor: vector::vector(vector& v)\n"
-    << "-------------------------------------------------------------------\n"
-    << " v = " << ToString(esperado) << "\n"
-    << " vetor esperado = " << ToString(esperado) << "\n"
-    << " vetor criado = " << ToString(atual) << "\n"
-    << "-------------------------------------------------------------------\n";
-}
-
 TEST_F(Teste, Testa_Size_para_vetor_vazio) {
   vector v;
   int esperado = 0;
@@ -108,7 +92,8 @@ TEST_F(Teste, Testa_Resize_aumentando_o_tamanho_do_vetor) {
   array(esperado)[0] = 10;
   array(esperado)[1] = 20;
 
-  vector atual(v);
+  vector atual;
+  atual = v;
   atual.resize(esperado.size());
 
   ASSERT_EQ(esperado.size(), atual.size())
@@ -146,7 +131,8 @@ TEST_F(Teste, Testa_Resize_diminuindo_o_tamanho_do_vetor) {
   array(esperado)[0] = 10;
   array(esperado)[1] = 20;
 
-  vector atual(v);
+  vector atual;
+  atual = v;
   atual.resize(esperado.size());
 
   ASSERT_EQ(esperado.size(), atual.size())
@@ -244,7 +230,8 @@ TEST_F(Teste, Testa_push_back) {
   array(esperado)[1] = 20;
   array(esperado)[2] = 30;
 
-  vector atual(v);
+  vector atual;
+  atual = v;
   atual.push_back(30);
   ASSERT_EQ(ToString(esperado), ToString(atual))
     << "-------------------------------------------------------------------\n"
@@ -266,7 +253,8 @@ TEST_F(Teste, Testa_pop_back) {
   array(esperado)[0] = 10;
   array(esperado)[1] = 20;
 
-  vector atual(v);
+  vector atual;
+  atual = v;
   atual.pop_back();
   ASSERT_EQ(ToString(esperado), ToString(atual))
     << "-------------------------------------------------------------------\n"
@@ -288,7 +276,8 @@ TEST_F(Teste, Testa_Insert_no_meio) {
   array(esperado)[1] = -7;
   array(esperado)[2] = 20;
 
-  vector atual(v);
+  vector atual;
+  atual = v;
   atual.insert(1, -7);
   ASSERT_EQ(ToString(esperado), ToString(atual))
     << "-------------------------------------------------------------------\n"
@@ -310,7 +299,8 @@ TEST_F(Teste, Testa_Insert_no_fim) {
   array(esperado)[1] = 20;
   array(esperado)[2] = -7;
 
-  vector atual(v);
+  vector atual;
+  atual = v;
   atual.insert(v.size(), -7);
   ASSERT_EQ(ToString(esperado), ToString(atual))
     << "-------------------------------------------------------------------\n"
@@ -332,7 +322,8 @@ TEST_F(Teste, Testa_Erase) {
   array(esperado)[0] = 10;
   array(esperado)[1] = 30;
 
-  vector atual(v);
+  vector atual;
+  atual = v;
   atual.erase(1);
   ASSERT_EQ(ToString(esperado), ToString(atual))
     << "-------------------------------------------------------------------\n"

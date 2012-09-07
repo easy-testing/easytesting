@@ -15,9 +15,6 @@ class vector {
   // (ou seja, pode ser qualquer valor).
   vector(int n);
 
-  // Cria um vetor idêntico a v.
-  vector(vector& v);
-
   // Retorna o número de elementos no vetor.
   int size();
 
@@ -70,6 +67,7 @@ class vector {
   ~vector();
 
  private:
+  vector(vector& v) {}
   // Número de elementos no vetor.
   int size_;
 
