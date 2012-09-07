@@ -89,20 +89,6 @@ TEST_F(Teste, Testa_construtor_vazio) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_construtor_por_copia) {
-  list esperado;
-  CriaLista("a", "b", "c", &esperado);
-  list atual(esperado);
-  ASSERT_EQ(ToString(esperado), ToString(atual))
-    << "-------------------------------------------------------------------\n"
-    << "Erro no construtor: list::list(list& v)\n"
-    << "-------------------------------------------------------------------\n"
-    << " l = " << ToString(esperado) << "\n"
-    << " lista esperada = " << ToString(esperado) << "\n"
-    << " lista criado = " << ToString(atual) << "\n"
-    << "-------------------------------------------------------------------\n";
-}
-
 TEST_F(Teste, Testa_Size_para_lista_vazia) {
   list l;
   int esperado = 0;
@@ -261,7 +247,7 @@ TEST_F(Teste, Testa_operador_At_para_atribuicao) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_operador_Assign) {
+TEST_F(Teste, Testa_operador_de_atribuicao_a_lista_vazia) {
   list esperado;
   CriaLista("12", "14", "15", &esperado);
   list atual;
@@ -273,6 +259,22 @@ TEST_F(Teste, Testa_operador_Assign) {
     << " Não basta apenas copiar o ponteiro para \"end_\". \n"
     << " Você tem que copiar todos os elementos de l para a lista corrente.\n"
     << "-------------------------------------------------------------------\n";
+  ASSERT_EQ(ToString(esperado), ToString(atual))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao: void list::operator=(list& l)\n"
+    << "-------------------------------------------------------------------\n"
+    << " l = " << ToString(esperado) << "\n"
+    << " \"u = l\" resultou em: u = " << ToString(atual) << "\n"
+    << " Resultado esperado: u = " << ToString(esperado) << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testa_operador_de_atribuicao_a_lista_nao_vazia) {
+  list esperado;
+  CriaLista("1", "2", "3", &esperado);
+  list atual;
+  CriaLista("4", "5", "6", &atual);
+  atual = esperado;
   ASSERT_EQ(ToString(esperado), ToString(atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: void list::operator=(list& l)\n"

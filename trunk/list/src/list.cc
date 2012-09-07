@@ -16,20 +16,12 @@ list::list() {
   end_->prev = end_;
 }
 
-list::list(list& l) {
-  size_ = 0;
-  end_ = new Node;
-  end_->next = end_;
-  end_->prev = end_;
-  merge(l);
+bool list::empty() {
+  return size_ == 0;
 }
 
 int list::size() {
   return size_;
-}
-
-bool list::empty() {
-  return size_ == 0;
 }
 
 Node* list::begin() {
@@ -58,11 +50,12 @@ void list::operator=(list& l) {
 }
 
 void list::insert(Node* x, LType k) {
+  // Cria um novo nó e define o valor dos seus campos.
   Node* node = new Node;
   node->key = k;
   node->prev = x->prev;
   node->next = x;
-
+  // Ajusta o valor dos ponteiros dos nós adjacentes ao novo nó.
   x->prev->next = node;
   x->prev = node;
   size_++;
