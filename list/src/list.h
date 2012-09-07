@@ -11,17 +11,13 @@
 struct Node;
 
 // Implementa uma lista de elementos utilizando Listas Encadeadas.
+// O tipo dos elementos contidos na lista é definido por LType.
+// O valor de LType deve ser definido em tempo de compilação.
+// Para simplificar as funções de complexidade, denota-se n = size_.
 class list {
  public:
   // Cria uma lista vazia em O(1).
   list();
-
-  // Cria a lista com os mesmos elementos de l em O(m), onde m = l.size().
-  list(list& l);
-
-  // Libera toda a memória alocada para a lista em O(n),
-  // onde n é o número de elementos na lista.
-  ~list();
 
   // Retorna o número de elementos na lista em O(1).
   int size();
@@ -48,8 +44,7 @@ class list {
   // Retorna o valor do elemento indicado por x em (1).
   LType& operator[](Node* x);
 
-  // Faz a lista corrente ficar igual a l em O(n + m),
-  // onde m = l.size() e n é o número de elementos na lista corrente.
+  // Faz a lista corrente ficar igual a l em O(n + m), onde m = l.size().
   void operator=(list& l);
 
   // Insere k antes do elemento indicado por x em O(1).
@@ -60,13 +55,15 @@ class list {
   // Pós-condição: x não é mais um ponteiro válido.
   void erase(Node* x);
 
-  // Remove todos os elementos da lista em O(n),
-  // onde n é o número de elementos na lista.
+  // Remove todos os elementos da lista em O(n).
   void clear();
 
   // Concatena os elementos de l no final da lista corrente em O(m),
   // onde m = l.size().
   void merge(list& l);
+
+  // Libera toda a memória alocada para a lista em O(n).
+  ~list();
 
  private:
   // Número de elementos na lista.
