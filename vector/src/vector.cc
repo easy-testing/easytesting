@@ -14,14 +14,6 @@ vector::vector(int n) {
   array_ = new VType[size_];
 }
 
-vector::vector(vector& v) {
-  size_ = v.size_;
-  array_ = new VType[size_];
-  for (int i = 0; i < size_; i++) {
-    array_[i] = v.array_[i];
-  }
-}
-
 int vector::size() {
   return size_;
 }
