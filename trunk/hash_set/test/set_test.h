@@ -111,37 +111,6 @@ TEST_F(Teste, Testa_construtor_vazio) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testar_Construtor_por_copia_vazio) {
-  set c;
-  set s(c);
-  string atual = ToString(s);
-  string esperado = ToString(c);
-  ASSERT_EQ(esperado, atual)
-    << "-------------------------------------------------------------------\n"
-    << "Erro no construtor: set::set(set& s) \n"
-    << "-------------------------------------------------------------------\n"
-    << " s = { }\n"
-    << " Conjunto criado: " << atual << "\n"
-    << " Conjunto esperado: " << esperado << "\n"
-    << "-------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Testar_Construtor_por_copia_com_varios_elementos) {
-  set c;
-  CriaConjunto("1", "2", "3", &c);
-  set s(c);
-  string atual = ToString(s);
-  string esperado = ToString(c);
-  ASSERT_EQ(esperado, atual)
-    << "-------------------------------------------------------------------\n"
-    << "Erro no construtor: set::set(set& s) \n"
-    << "-------------------------------------------------------------------\n"
-    << " s = { }\n"
-    << " Conjunto criado: " << atual << "\n"
-    << " Conjunto esperado: " << esperado << "\n"
-    << "-------------------------------------------------------------------\n";
-}
-
 TEST_F(Teste, Testa_Find_em_conjunto_vazio) {
   set s;
   Node* atual = s.find("4");

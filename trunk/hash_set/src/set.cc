@@ -14,13 +14,6 @@ set::set() {
   size_ = 0;
 }
 
-set::set(set& s) {
-  for (int i = 0; i < kCapacity_; i++) {
-    table_[i] = s.table_[i];
-  }
-  size_ = s.size_;
-}
-
 // Retorna o primeiro elemento da primeira lista não vazia.
 Node* set::begin() {
   for (int i = 0; i < kCapacity_; i++) {
