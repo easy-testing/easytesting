@@ -39,7 +39,7 @@ class set {
 
   // Retorna o elemento anterior ao indicado por x no conjunto em O(1).
   // Se x aponta para o primeiro elemento do conjunto, retorna set::end();
-  // Precondição: x aponta para um dos elementos do cojunto.
+  // Precondição: x aponta para um dos elementos do cojunto, ou para set::end().
   Node* prev(Node* x);
 
   // Retorna o valor do elemento indicado por x em (1).
