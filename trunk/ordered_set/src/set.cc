@@ -143,14 +143,6 @@ set::set() {
   size_= 0;
 }
 
-set::set(set& s) {
-  root_ = NULL;
-  size_ = 0;
-  for (Node* i = s.begin(); i != s.end(); i = s.next(i)) {
-    insert(i->key);
-  }
-}
-
 Node* set::begin() {
   if (empty()) {
     return NULL;
@@ -168,7 +160,11 @@ Node* set::next(Node* x) {
 }
 
 Node* set::prev(Node* x) {
-  return TreePredecessor(x);
+  if (x == end()) {
+    return TreeMaximum(root_);
+  } else {
+    return TreePredecessor(x);
+  }
 }
 
 SType set::operator[](Node* x) {
