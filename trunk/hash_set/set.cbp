@@ -13,9 +13,11 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-std=c++0x" />
 					<Add option="-g" />
 					<Add option="-TType=std::string" />
 					<Add option="-DLType=std::string" />
+					<Add option="-DSType=std::string" />
 				</Compiler>
 			</Target>
 			<Target title="Main">
@@ -25,8 +27,10 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-std=c++0x" />
 					<Add option="-TType=std::string" />
 					<Add option="-DLType=std::string" />
+					<Add option="-DSType=std::string" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -34,6 +38,7 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-std=c++0x" />
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 			<Add directory=".." />
@@ -41,8 +46,6 @@
 		</Compiler>
 		<Unit filename="../gtest/gtest.cc" />
 		<Unit filename="../gtest/gtest.h" />
-		<Unit filename="src/hash.cc" />
-		<Unit filename="src/hash.h" />
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
 		</Unit>

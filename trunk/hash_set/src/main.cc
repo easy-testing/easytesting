@@ -50,10 +50,15 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <unordered_set>
 
 #include "hash_set/src/set.h"
 
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::ifstream;
+using std::string;
 
 // Questão 2.
 void Imprimir(set& c) {

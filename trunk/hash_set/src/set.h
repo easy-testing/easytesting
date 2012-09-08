@@ -7,11 +7,7 @@
 #include <cstdlib>
 #include <string>
 
-#include "hash_set/src/hash.h"
-
 #include "list/src/list.h"
-
-#define SType LType
 
 // Implementa um conjunto utilizando tabela hash.
 // NOTA: O cálculo da complexidade das funções assume que a função de hash
@@ -77,14 +73,20 @@ class set {
   ~set();
 
  private:
+  // Função que calcula o hash dos elementos.
+  int hash(SType k);
+
+  // Função que altera o número de linhas da tabela e re-distribui os elementos.
+  void rehash(int m);
+
   // Número de elementos no cojunto.
   int size_;
 
   // Número de listas no vetor table_.
-  static const int kCapacity_ = 1000;
+  int capacity_;
 
   // Vetor de listas que guarda os elementos do cojunto.
-  list table_[kCapacity_];
+  list* table_;
 
   friend class Teste;
 };
