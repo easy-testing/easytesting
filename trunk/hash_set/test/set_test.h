@@ -5,6 +5,7 @@
 
 #include <cmath>
 #include <cstdlib>
+#include <set>
 #include <sstream>
 #include <string>
 
@@ -44,14 +45,14 @@ class Teste : public testing::Test {
   // Insere k em s.
   // Precondição: k não está em s.
   void insert(SType k, set* s) {
-    int j = hash(k, s->kCapacity_);
+    int j = s->hash(k);
     s->table_[j].insert(s->table_[j].begin(), k);
     s->size_++;
   }
 
   // Retorna o primeiro elemento do conjunto.
   Node* begin(set& s) {
-    for (int i = 0; i < s.kCapacity_; i++) {
+    for (int i = 0; i < s.capacity_; i++) {
       if (!s.table_[i].empty()) {
         return s.table_[i].begin();
       }
@@ -61,16 +62,16 @@ class Teste : public testing::Test {
 
   // Retorna o "marcador de fim" do conjunto.
   Node* end(set& s) {
-    return s.table_[s.kCapacity_ - 1].end();
+    return s.table_[s.capacity_ - 1].end();
   }
 
   // Retorna o elemento seguinte a 'x' no conjunto.
   Node* next(Node* x, set& s) {
-    int j = hash(x->key, s.kCapacity_);
+    int j = s.hash(x->key);
     if (x->next != s.table_[j].end()) {
       return x->next;
     } else {
-      for (int i = j + 1; i < s.kCapacity_; i++) {
+      for (int i = j + 1; i < s.capacity_; i++) {
         if (!s.table_[i].empty()) {
           return s.table_[i].begin();
         }
@@ -81,7 +82,7 @@ class Teste : public testing::Test {
 
   // Retorna o elemento anterior a 'x' no conjunto.
   Node* prev(Node* x, set& s) {
-    int j = hash(x->key, s.kCapacity_);
+    int j = s.hash(x->key);
     if (x != s.table_[j].begin()) {
       return x->prev;
     } else {
@@ -97,7 +98,7 @@ class Teste : public testing::Test {
   // Retorna um ponteiro para o elemento k de s.
   Node* find(SType k, set& s) {
     // Procura pelo elemento k na lista onde k pode estar.
-    int j = hash(k, s.kCapacity_);
+    int j = s.hash(k);
     for (Node* i = s.table_[j].begin();
           i != s.table_[j].end();
           i = s.table_[j].next(i)) {
@@ -111,10 +112,14 @@ class Teste : public testing::Test {
   // Retorna uma string contendo os elementos do conjunto
   // no formato { c1 c2 c3 c4 } e ordenados do maior para o menor.
   string ToString(set& s) {
+    std::set<string> ord_s;
+    for (Node* i = begin(s); i != end(s); i = next(i, s)) {
+      ord_s.insert(key(i, s));
+    }
     stringstream out;
     out << "{ ";
-    for (Node* i = begin(s); i != end(s); i = next(i, s)) {
-      out << key(i, s) << " ";
+    for (std::set<string>::iterator i = ord_s.begin(); i != ord_s.end(); i++) {
+      out << *i << " ";
     }
     out << "}";
     return out.str();
