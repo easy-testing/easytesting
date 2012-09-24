@@ -27,7 +27,7 @@ test: clean $(program).o $(program)_test.o gtest.o
 	@./a.out
 	@rm -f $(program).o $(program)_test.o gtest.o a.out
 
-main1.o:
+main.o:
 	$(cc) -I $(path) -c src/main.cc -D$(type)
 
 $(program).o:
