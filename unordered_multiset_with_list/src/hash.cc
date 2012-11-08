@@ -1,6 +1,6 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#include "hash_multiset/src/hash.h"
+#include "unordered_multiset_with_list/src/hash.h"
 
 #include <cmath>
 #include <cstdlib>
