@@ -10,7 +10,7 @@
 #include <string>
 
 #include "gtest/gtest.h"
-#include "ordered_set_with_linked_list/src/set.h"
+#include "ordered_set_with_list/src/set.h"
 
 using std::priority_queue;
 using std::string;
