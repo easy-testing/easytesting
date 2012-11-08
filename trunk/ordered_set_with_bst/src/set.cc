@@ -1,6 +1,6 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#include "ordered_set/src/set.h"
+#include "ordered_set_with_bst/src/set.h"
 
 // Define como os elementos da árvore serão organizados na memória.
 struct Node {
