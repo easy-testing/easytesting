@@ -1,6 +1,6 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#include "hash_multiset/src/multiset.h"
+#include "unordered_multiset_with_list/src/multiset.h"
 #include "list/src/list.h"
 
 // Implementa um nó da lista encadeada.
