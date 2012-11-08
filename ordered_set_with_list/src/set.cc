@@ -1,6 +1,6 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#include "ordered_set_with_linked_list/src/set.h"
+#include "ordered_set_with_list/src/set.h"
 
 set::set() {
   // Nada a fazer, já que o construtor list::list() já inicializa a

@@ -1,6 +1,6 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#include "ordered_set_with_linked_list/test/set_test.h"
+#include "ordered_set_with_list/test/set_test.h"
 
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);

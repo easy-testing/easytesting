@@ -51,7 +51,7 @@
 #include <iostream>
 #include <string>
 
-#include "ordered_set_with_linked_list/src/set.h"
+#include "ordered_set_with_list/src/set.h"
 
 using namespace std;
 
