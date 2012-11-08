@@ -52,7 +52,7 @@ Node* set::find(SType k) {
       return end();
     }
   }
-  return end(); // k é maior que todos os elementos contidos no conjunto.
+  return end();  // k é maior que todos os elementos contidos no conjunto.
 }
 
 void set::insert(SType k) {
