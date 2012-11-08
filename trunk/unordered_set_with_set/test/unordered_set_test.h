@@ -10,7 +10,7 @@
 #include <string>
 
 #include "gtest/gtest.h"
-#include "unordered_set_with_linked_list/src/set.h"
+#include "unordered_set_with_set/src/unordered_set.h"
 #include "list/src/list.h"
 
 using std::string;
