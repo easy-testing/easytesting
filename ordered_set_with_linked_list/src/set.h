@@ -5,14 +5,16 @@
 
 #include <string>
 
-#include "list/src/list.h"
+// Define como os elementos da lista encadeada serão organizados na memória.
+// É declarado aqui, mas só é implementado em list.cc para não violar o
+// encapsulamento.
+struct Node;
 
-// Implementa um conjunto de elementos utilizando o TAD list,
-// que por sua vez foi implementado utilizando listas encadeadas.
-// Nesta implementão, os elementos do conjunto são ordenados na lista encadeada
-// do menor para o maior.
+// Implementa um conjunto de elementos utilizando listas encadeadas.
+// Nesta implementão, os elementos do conjunto são ordenados na lista
+// encadeada do menor para o maior.
 // O tipo dos elementos contidos no conjunto é definido por SType.
-// O valor de SType deve ser definido em tempo de compilação.
+// O valor de SType é um #define declarado em tempo de compilação.
 // Para simplificar as funções de complexidade, denota-se n = size_.
 class set {
  public:
@@ -25,7 +27,7 @@ class set {
   // Retorna o número de elementos no conjunto em O(1).
   int size();
 
-  // Retorna um ponteiro para o primeiro elemento do conjunto em O(1).
+  // Retorna um ponteiro para o primeiro (menor) elemento do conjunto em O(1).
   // Caso o conjunto esteja vazio, rentorna um ponteiro para set::end().
   Node* begin();
 
@@ -70,8 +72,11 @@ class set {
   ~set();
 
  private:
-  // Lista que armazena os elementos do conjunto.
-  list list_;
+  // Número de elementos no conjunto.
+  int size_;
+
+  // Ponteiro para o nó sentinela da lista encadeada.
+  Node* end_;
 
   friend class Teste;
 };

@@ -16,6 +16,13 @@ using std::priority_queue;
 using std::string;
 using std::stringstream;
 
+// Implementa um nó da lista encadeada.
+struct Node {
+  LType key;  // Valor da chave do nó.
+  Node* prev;  // Ponteiro para o nó anterior.
+  Node* next;  // Ponteiro para o próximo nó.
+};
+
 // Classe base dos testes.
 class Teste : public testing::Test {
  protected:
@@ -26,55 +33,61 @@ class Teste : public testing::Test {
     } else if (x == end(s)) {
       return "set::end()";
     } else {
-      return s.list_[x];
+      return x->key;
     }
   }
 
   // Retorna o número de elementos no conjunto.
   int size(set& s) {
-    return s.list_.size();
+    return s.size_;
   }
 
   // Insere k em s.
   // Precondição: k não está em s.
   void insert(SType k, set* s) {
-    Node* i = s->list_.begin();
-    while (i != s->list_.end() && s->list_[i] < k) {
-      i = s->list_.next(i);
+    Node* x = s->end_->next;
+    while (x != s->end_ && x->key < k) {
+      x = x->next;
     }
-    if (i == s->list_.end() || s->list_[i] != k) {
-      s->list_.insert(i, k);
+    if (x == s->end_ || x->key != k) {
+      Node* node = new Node;
+      node->key = k;
+      node->prev = x->prev;
+      node->next = x;
+      x->prev->next = node;
+      x->prev = node;
+      s->size_++;
     }
   }
 
   // Retorna o primeiro elemento do conjunto.
   Node* begin(set& s) {
-    return s.list_.begin();
+    return s.end_->next;
   }
 
   // Retorna o "marcador de fim" do conjunto.
   Node* end(set& s) {
-    return s.list_.end();
+    return s.end_;
   }
 
   // Retorna o elemento seguinte a 'x' no conjunto.
   Node* next(Node* x, set& s) {
-    return s.list_.next(x);
+    return x->next;
   }
 
   // Retorna o elemento anterior a 'x' no conjunto.
   Node* prev(Node* x, set& s) {
-    return s.list_.prev(x);
+    return x->prev;
   }
 
   // Retorna um ponteiro para o elemento k de s.
   Node* find(SType k, set& s) {
-    for (Node* i = s.list_.begin(); i != s.list_.end(); i = s.list_.next(i)) {
-      if (s.list_[i] == k) {
+    for (Node* i = s.end_->next; i != s.end_; i = i->next) {
+      if (i->key == k) {
         return i;
       }
     }
-    return s.list_.end();
+    return s.end_;
   }
 
   // Retorna uma string contendo os elementos do conjunto
