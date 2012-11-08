@@ -8,7 +8,7 @@
 #include <string>
 
 #include "gtest/gtest.h"
-#include "ordered_set/src/set.h"
+#include "ordered_set_with_bst/src/set.h"
 
 using std::string;
 using std::stringstream;
