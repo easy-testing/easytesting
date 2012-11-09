@@ -2,7 +2,7 @@
 
 #include <unordered_set>
 
-#include "hash_set/src/set.h"
+#include "unordered_set_with_list/src/unordered_set.h"
 #include "list/src/list.h"
 
 // Implementa um nó da lista encadeada.
@@ -12,14 +12,14 @@ struct Node {
   Node* next;  // Ponteiro para o próximo nó.
 };
 
-set::set() {
+unordered_set::unordered_set() {
   size_ = 0;  // Inicialmente, o conjunto não tem elementos.
-  capacity_ = 1024; // Inicia com uma tabela com 2^10 linhas.
+  capacity_ = 1024;  // Inicia com uma tabela com 2^10 linhas.
   table_ = new list[capacity_];
 }
 
 // Retorna o primeiro elemento da primeira lista não vazia.
-Node* set::begin() {
+Node* unordered_set::begin() {
   for (int i = 0; i < capacity_; i++) {
     if (!table_[i].empty()) {
       return table_[i].begin();
@@ -30,14 +30,14 @@ Node* set::begin() {
 
 // Retorna o "marcador de fim" do conjunto, ou seja,
 // O sentinela da última lista da tabela.
-Node* set::end() {
+Node* unordered_set::end() {
   return table_[capacity_ - 1].end();
 }
 
 // Se x não é o último elemento da lista que o contém, retorna o elemento
 // seguinte a x nesta lista. Caso contrário, retorna o primeiro elemento da
 // próxima lista não vazia da tabela.
-Node* set::next(Node* x) {
+Node* unordered_set::next(Node* x) {
   int j = hash(x->key);
   if (x->next != table_[j].end()) {
     return x->next;
@@ -54,7 +54,7 @@ Node* set::next(Node* x) {
 // Se x não é o primeiro elemento da lista que o contém, retorna o elemento
 // anterior a x nesta lista. Caso contrário, retorna o último elemento da
 // primeira lista não vazia anterior a lista de x .
-Node* set::prev(Node* x) {
+Node* unordered_set::prev(Node* x) {
   int j = hash(x->key);
   if (x != table_[j].begin()) {
     return x->prev;
@@ -68,19 +68,19 @@ Node* set::prev(Node* x) {
   }
 }
 
-SType set::operator[](Node* x) {
+SType unordered_set::operator[](Node* x) {
   return x->key;
 }
 
-bool set::empty() {
+bool unordered_set::empty() {
   return size_ == 0;
 }
 
-int set::size() {
+int unordered_set::size() {
   return size_;
 }
 
-Node* set::find(SType k) {
+Node* unordered_set::find(SType k) {
   // Procura pelo elemento k na lista onde k pode estar.
   int j = hash(k);
   Node* i;
@@ -92,7 +92,7 @@ Node* set::find(SType k) {
   return end();
 }
 
-void set::insert(SType k) {
+void unordered_set::insert(SType k) {
   if (size_ == capacity_) {
     rehash(capacity_ * 2);
   }
@@ -104,7 +104,7 @@ void set::insert(SType k) {
   }
 }
 
-void set::erase(SType k) {
+void unordered_set::erase(SType k) {
   Node* x = find(k);
   if (x != end()) {
     int j = hash(k);
@@ -113,30 +113,30 @@ void set::erase(SType k) {
   }
 }
 
-void set::clear() {
+void unordered_set::clear() {
   for (int i = 0; i < capacity_; i++) {
     table_[i].clear();
   }
   size_ = 0;
 }
 
-void set::operator=(set& s) {
+void unordered_set::operator=(unordered_set& s) {
   for (int i = 0; i < capacity_; i++) {
     table_[i] = s.table_[i];
   }
   size_ = s.size_;
 }
 
-set::~set() {
+unordered_set::~unordered_set() {
   delete [] table_;
 }
 
-int set::hash(SType k) {
+int unordered_set::hash(SType k) {
   std::unordered_set<SType>::hasher fh;
   return fh(k) % capacity_;
 }
 
-void set::rehash(int m) {
+void unordered_set::rehash(int m) {
   // Armazena a tabela atual.
   list* old_table = table_;
   int old_capacity = capacity_;

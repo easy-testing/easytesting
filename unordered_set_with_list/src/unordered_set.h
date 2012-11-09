@@ -1,7 +1,7 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_HASH_SET_SRC_SET_H_
-#define TRUNK_HASH_SET_SRC_SET_H_
+#ifndef TRUNK_UNORDERED_SET_WITH_LIST_SRC_UNORDERED_SET_H_
+#define TRUNK_UNORDERED_SET_WITH_LIST_SRC_UNORDERED_SET_H_
 
 #include <cmath>
 #include <cstdlib>
@@ -17,10 +17,10 @@
 // O valor de SType deve ser definido em tempo de compilação.
 // Para simplificar as funções de complexidade,
 // denota-se n = size_ e m = capacity_.
-class set {
+class unordered_set {
  public:
   // Cria um conjunto vazio em O(1).
-  set();
+  unordered_set();
 
   // Testa se o cojunto está vazio em O(1).
   bool empty();
@@ -29,27 +29,31 @@ class set {
   int size();
 
   // Retorna um ponteiro para o primeiro elemento do conjunto em O(m).
-  // Caso o conjunto esteja vazio, rentorna um ponteiro para set::end().
+  // Caso o conjunto esteja vazio,
+  // rentorna um ponteiro para unordered_set::end().
   Node* begin();
 
   // Retorna um ponteiro para o "marcador de fim" do conjunto em O(1).
   Node* end();
 
   // Retorna o elemento seguinte ao indicado por x no conjunto em O(m).
-  // Se x aponta para o último elemento do conjunto, retorna set::end();
+  // Se x aponta para o último elemento do conjunto,
+  // retorna unordered_set::end();
   // Precondição: x aponta para um dos elementos do conjunto.
   Node* next(Node* x);
 
   // Retorna o elemento anterior ao indicado por x no conjunto em O(m).
-  // Se x aponta para o primeiro elemento do conjunto, retorna set::end();
-  // Precondição: x aponta para um dos elementos do cojunto, ou para set::end().
+  // Se x aponta para o primeiro elemento do conjunto,
+  // retorna unordered_set::end();
+  // Precondição: x aponta para um dos elementos do cojunto,
+  // ou para unordered_set::end().
   Node* prev(Node* x);
 
   // Retorna o valor do elemento indicado por x em (1).
   SType operator[](Node* x);
 
   // Retorna um ponteiro para o elemento k em O(1),
-  // ou um ponteiro para set::end() caso k não pertença ao conjunto.
+  // ou um ponteiro para unordered_set::end() caso k não pertença ao conjunto.
   // OBS: Note que esta função NÃO retorna bool. Para testar se um elemento 'a'
   // pertence a um conjunto 'c', você deve escrever "if (c.find(a) != c.end())".
   Node* find(SType k);
@@ -67,10 +71,10 @@ class set {
 
   // Faz com que o conjunto corrente contenha exatamente os mesmos elementos
   // do cojunto s em O(n + m).
-  void operator=(set& s);
+  void operator=(unordered_set& s);
 
   // Libera toda a memória alocada para o conjunto em O(n).
-  ~set();
+  ~unordered_set();
 
  private:
   // Função que calcula o hash dos elementos.
@@ -91,4 +95,4 @@ class set {
   friend class Teste;
 };
 
-#endif  // TRUNK_HASH_SET_SRC_SET_H_
+#endif  // TRUNK_UNORDERED_SET_WITH_LIST_SRC_UNORDERED_SET_H_
