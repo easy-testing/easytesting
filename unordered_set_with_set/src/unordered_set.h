@@ -1,7 +1,7 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_UNORDERED_SET_SRC_SET_H_
-#define TRUNK_UNORDERED_SET_SRC_SET_H_
+#ifndef TRUNK_UNORDERED_SET_WITH_SET_SRC_UNORDERED_SET_H_
+#define TRUNK_UNORDERED_SET_WITH_SET_SRC_UNORDERED_SET_H_
 
 #include <cmath>
 #include <cstdlib>
@@ -96,4 +96,4 @@ class unordered_set{
   friend class Teste;
 };
 
-#endif  // TRUNK_UNORDERED_SET_SRC_SET_H_
+#endif  // TRUNK_UNORDERED_SET_WITH_SET_SRC_UNORDERED_SET_H_

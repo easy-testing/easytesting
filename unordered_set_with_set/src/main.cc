@@ -3,7 +3,8 @@
 // Lista sobre Conjuntos.
 //
 // Questão 1.
-// Implemente em unordered_set.h e unordered_set.cc o TAD unordered_set, utilizando árvores binárias de busca.
+// Implemente em unordered_set.h e unordered_set.cc o TAD unordered_set,
+// utilizando árvores binárias de busca.
 //
 // Questão 2.
 // Escreva uma função "void Imprimir(unordered_set& s)" que recebe
@@ -11,13 +12,15 @@
 //
 // Questão 3.
 // Escreva uma função
-// "void Intersecao(unordered_set& a, unordered_set& b, unordered_set* inter)" que recebe dois conjuntos
-// 'a' e 'b' e atribui a 'inter' o resultado da interseção de 'a' e 'b'.
+// "void Intersecao(unordered_set& a, unordered_set& b, unordered_set* inter)"
+// que recebe dois conjuntos 'a' e 'b' e atribui a 'inter'
+// o resultado da interseção de 'a' e 'b'.
 //
 // Questão 4.
 // Escreva uma função
-// "void Uniao(unordered_set& a, unordered_set& b, unordered_set* uniao)" que recebe dois conjuntos
-// 'a' e 'b' e atribui a 'uniao' o resultado da união de 'a' e 'b'.
+// "void Uniao(unordered_set& a, unordered_set& b, unordered_set* uniao)"
+// que recebe dois conjuntos 'a' e 'b' e atribui a 'uniao'
+// o resultado da união de 'a' e 'b'.
 //
 // Questão 5.
 // Escreva um programa que gerencia os fornecedores para compra de peças
@@ -50,7 +53,6 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include <unordered_set>
 
 #include "unordered_set_with_set/src/unordered_set.h"
 
@@ -95,7 +97,7 @@ void Uniao(unordered_set& a, unordered_set& b, unordered_set* uniao) {
 int main() {
   unordered_set pecas[100];  // pecas[i] contém os fornecedores da peça i + 1.
   unordered_set candidatos;  // Conjunto de fornecedores.
-  unordered_set todas_as_pecas;  // Conjunto das peças vendidas por algum fornecedor.
+  unordered_set todas_as_pecas;  // Peças vendidas por algum fornecedor.
 
   // Inicializa o cojunto de fornecedores candidatos e o vetor de fornecedores
   // de cada peça.

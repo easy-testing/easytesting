@@ -14,7 +14,7 @@ struct Node {
 
 unordered_set::unordered_set() {
   size_ = 0;  // Inicialmente, o conjunto não tem elementos.
-  capacity_ = 1024; // Inicia com uma tabela com 2^10 linhas.
+  capacity_ = 1024;  // Inicia com uma tabela com 2^10 linhas.
   table_ = new set[capacity_];
 }
 
