@@ -3,7 +3,7 @@ cc = g++ -std=c++0x
 # PATH raiz para includes
 path = ..
 # Nome da lista de exercicios
-program = set
+program = unordered_set
 # Tipo dos elementos do vetor no main
 type_main = std::string
 # Tipo dos elementos do vetor nos testes
