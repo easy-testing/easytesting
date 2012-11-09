@@ -53,7 +53,11 @@
 
 #include "ordered_set_with_list/src/set.h"
 
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::ifstream;
+using std::string;
 
 // Questão 2.
 void Imprimir(set& c) {
