@@ -3,21 +3,24 @@
 // Lista sobre Conjuntos.
 //
 // Questão 1.
-// Implemente em set.h e set.cc o TAD set, utilizando árvores binárias de busca.
+// Implemente em unordered_set.h e unordered_set.cc o TAD unordered_set,
+// utilizando árvores binárias de busca.
 //
 // Questão 2.
-// Escreva uma função "void Imprimir(set& s)" que recebe
+// Escreva uma função "void Imprimir(unordered_set& s)" que recebe
 // como parâmetro um conjunto s e imprime os elementos de s na tela.
 //
 // Questão 3.
 // Escreva uma função
-// "void Intersecao(set& a, set& b, set* inter)" que recebe dois conjuntos
-// 'a' e 'b' e atribui a 'inter' o resultado da interseção de 'a' e 'b'.
+// "void Intersecao(unordered_set& a, unordered_set& b, unordered_set* inter)"
+// que recebe dois conjuntos 'a' e 'b' e atribui a 'inter'
+// o resultado da interseção de 'a' e 'b'.
 //
 // Questão 4.
 // Escreva uma função
-// "void Uniao(set& a, set& b, set* uniao)" que recebe dois conjuntos
-// 'a' e 'b' e atribui a 'uniao' o resultado da união de 'a' e 'b'.
+// "void Uniao(unordered_set& a, unordered_set& b, unordered_set* uniao)"
+// que recebe dois conjuntos 'a' e 'b' e atribui a 'uniao'
+// o resultado da união de 'a' e 'b'.
 //
 // Questão 5.
 // Escreva um programa que gerencia os fornecedores para compra de peças
@@ -40,9 +43,9 @@
 // pedindo o número de uma nova peça até que o usuário digite zero ou até
 // que o conjunto de fornecedores candidatos seja vazio.
 //
-// DICA: crie um conjunto "set candidatos" que contém
+// DICA: crie um conjunto "unordered_set candidatos" que contém
 // inicialmente o nome de todos os fornecedores e um vetor
-// "set pecas[100]" com o conjunto de fornecedores para cada
+// "unordered_set pecas[100]" com o conjunto de fornecedores para cada
 // peça. A cada iteração em que uma peça 'p' for digitada, você deve fazer a
 // interseção do conjunto 'candidatos' com o conjunto 'pecas[p - 1]'.
 
@@ -50,9 +53,8 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include <unordered_set>
 
-#include "hash_set/src/set.h"
+#include "unordered_set_with_list/src/unordered_set.h"
 
 using std::cin;
 using std::cout;
@@ -61,7 +63,7 @@ using std::ifstream;
 using std::string;
 
 // Questão 2.
-void Imprimir(set& c) {
+void Imprimir(unordered_set& c) {
   cout << "{ ";
   for (Node* i = c.begin(); i != c.end(); i = c.next(i)) {
     cout << c[i] << " ";
@@ -70,7 +72,7 @@ void Imprimir(set& c) {
 }
 
 // Questão 3.
-void Intersecao(set& a, set& b, set* inter) {
+void Intersecao(unordered_set& a, unordered_set& b, unordered_set* inter) {
   // Percorre todos os elementos do cojunto 'a' e insere em 'inter' todos
   // aqueles que também estão no cojunto 'b'.
   inter->clear();
@@ -82,7 +84,7 @@ void Intersecao(set& a, set& b, set* inter) {
 }
 
 // Questão 4.
-void Uniao(set& a, set& b, set* uniao) {
+void Uniao(unordered_set& a, unordered_set& b, unordered_set* uniao) {
   // Inicialmente, faz 'uniao' ficar igual a 'b'.
   *uniao = b;
   // Em seguida, insere em 'uniao' também os elementos em a.
@@ -93,9 +95,9 @@ void Uniao(set& a, set& b, set* uniao) {
 
 // Questão 5.
 int main() {
-  set pecas[100];  // pecas[i] contém os fornecedores da peça i + 1.
-  set candidatos;  // Conjunto de fornecedores.
-  set todas_as_pecas;  // Conjunto das peças vendidas por algum fornecedor.
+  unordered_set pecas[100];  // pecas[i] contém os fornecedores da peça i + 1.
+  unordered_set candidatos;  // Conjunto de fornecedores.
+  unordered_set todas_as_pecas;  // Peças vendidas por algum fornecedor.
 
   // Inicializa o cojunto de fornecedores candidatos e o vetor de fornecedores
   // de cada peça.
@@ -131,7 +133,7 @@ int main() {
     cout << "Filtrar por peca [1, 100]: ";
     cin >> num_peca;
     if (num_peca >= 1 && num_peca <= 100) {
-      set inter;
+      unordered_set inter;
       Intersecao(pecas[num_peca - 1], candidatos, &inter);
       candidatos = inter;
     }
