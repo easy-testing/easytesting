@@ -4,7 +4,7 @@
 #define TRUNK_COMPLEXO_POLAR_SRC_COMPLEXO_H_
 
 // Representa um número complexo.
-struct Complexo {
+class Complexo {
  private:
   // Módulo do número compelxo.
   double mod_;
