@@ -4,7 +4,7 @@
 #define TRUNK_COMPLEXO_EUCLIDIANO_SRC_COMPLEXO_H_
 
 // Representa um número complexo.
-struct Complexo {
+class Complexo {
  private:
   // Parte real;
   double real_;
