@@ -1,4 +1,4 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2013 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef TRUNK_ORDERED_SET_WITH_ARRAY_TEST_SET_TEST_H_
 #define TRUNK_ORDERED_SET_WITH_ARRAY_TEST_SET_TEST_H_
