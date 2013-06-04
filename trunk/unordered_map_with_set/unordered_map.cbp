@@ -46,11 +46,11 @@
 		</Compiler>
 		<Unit filename="../gtest/gtest.cc" />
 		<Unit filename="../gtest/gtest.h" />
-		<Unit filename="../ordered_set_with_linked_list/src/set.cc" />
-		<Unit filename="../ordered_set_with_linked_list/src/set.h" />
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
 		</Unit>
+		<Unit filename="src/set.cc" />
+		<Unit filename="src/set.h" />
 		<Unit filename="src/unordered_map.cc" />
 		<Unit filename="src/unordered_map.h" />
 		<Unit filename="test/unordered_map_test.cc">
