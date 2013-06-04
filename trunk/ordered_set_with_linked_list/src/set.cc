@@ -4,7 +4,8 @@
 
 // Implementa um nó da lista encadeada.
 struct Node {
-  LType key;  // Valor da chave do nó.
+  KType key;  // Chave do nó.
+  SType value; // Valor do nó
   Node* prev;  // Ponteiro para o nó anterior.
   Node* next;  // Ponteiro para o próximo nó.
 };
@@ -40,11 +41,15 @@ Node* set::prev(Node* x) {
   return x->prev;
 }
 
-SType set::operator[](Node* x) {
+KType set::operator[](Node* x) {
   return x->key;
 }
 
-Node* set::find(SType k) {
+SType set::value(Node* x) {
+  return x->value;
+}
+
+Node* set::find(KType k) {
   for (Node* i = begin(); i != end(); i = next(i)) {
     if (i->key == k) {
       return i;
@@ -55,7 +60,7 @@ Node* set::find(SType k) {
   return end();  // k é maior que todos os elementos contidos no conjunto.
 }
 
-void set::insert(SType k) {
+void set::insert(KType k, SType v) {
   // Encontra o primeiro elemento que não é menor que k na lista encadeada.
   Node* x = begin();
   while (x != end() && x->key < k) {
@@ -66,6 +71,7 @@ void set::insert(SType k) {
     // Cria um novo nó e define o valor dos seus campos.
     Node* node = new Node;
     node->key = k;
+    node->value = v;
     node->prev = x->prev;
     node->next = x;
     // Ajusta o valor dos ponteiros dos nós adjacentes ao novo nó.
@@ -75,7 +81,7 @@ void set::insert(SType k) {
   }
 }
 
-void set::erase(SType k) {
+void set::erase(KType k) {
   Node* x = find(k);
   if (x != end()) {
     x->prev->next = x->next;
@@ -94,7 +100,7 @@ void set::clear() {
 void set::operator=(set& s) {
   clear();
   for (Node* i = s.begin(); i != s.end(); i = s.next(i)) {
-    insert(s[i]);
+    insert(s[i], s.value(i));
   }
 }
 
