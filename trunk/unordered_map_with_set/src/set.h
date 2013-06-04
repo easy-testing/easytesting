@@ -45,21 +45,24 @@ class set {
   Node* prev(Node* x);
 
   // Retorna o valor do elemento indicado por x em (1).
-  SType operator[](Node* x);
+  KType operator[](Node* x);
+
+  SType value(Node* x);
+
 
   // Retorna um ponteiro para o elemento k em O(n),
   // ou um ponteiro para set::end() caso k não pertença ao conjunto.
   // OBS: Note que esta função NÃO retorna bool. Para testar se um elemento 'a'
   // pertence a um conjunto 'c', você deve escrever "if (c.find(a) != c.end())".
-  Node* find(SType k);
+  Node* find(KType k);
 
   // Insere k no conjunto em O(n).
   // Caso k já pertença ao conjunto, um novo elemento NÃO é inserido no
   // conjunto.
-  void insert(SType k);
+  void insert(KType k, SType v);
 
   // Remove k do conjunto (caso lá ele esteja) em O(n).
-  void erase(SType k);
+  void erase(KType k);
 
   // Remove todos os elementos do conjunto.
   void clear();
