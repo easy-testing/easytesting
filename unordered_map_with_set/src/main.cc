@@ -20,6 +20,6 @@ int main() {
   unordered_map mymap;
   mymap.insert("foo", 10);
   mymap.insert("bar", 20);
-  std::cout << "mymap['foo'] is " << mymap["bar"] << '\n';
+  std::cout << "mymap['bar'] is " << mymap["bar"] << '\n';
   return 0;
 }
