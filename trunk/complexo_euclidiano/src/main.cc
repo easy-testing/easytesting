@@ -50,10 +50,9 @@ int LerOpcaoDoTeclado() {
   cout << "4.  Dividir\n";
   cout << "5.  Modulo\n";
   cout << "6.  Conjugado\n";
-  cout << "7.  Sair\n\n\n";
   cout << "Digite o numero da opcao desejada: ";
   cin >> op;
-  while (!(op >= 1 && op <= 7)) {
+  while (!(op >= 1 && op <= 6)) {
     cout << "Opcao Invalida! Digite o numero da opcao desejada: ";
     cin >> op;
   }

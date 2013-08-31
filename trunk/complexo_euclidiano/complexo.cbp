@@ -33,6 +33,12 @@
 			<Add option="-fexceptions" />
 			<Add directory=".." />
 		</Compiler>
+		<Unit filename="gtest/gtest.cc">
+			<Option target="EasyTesting" />
+		</Unit>
+		<Unit filename="gtest/gtest.h">
+			<Option target="EasyTesting" />
+		</Unit>
 		<Unit filename="src/complexo.cc" />
 		<Unit filename="src/complexo.h" />
 		<Unit filename="src/main.cc">
@@ -42,12 +48,6 @@
 			<Option target="EasyTesting" />
 		</Unit>
 		<Unit filename="test/complexo_test.h">
-			<Option target="EasyTesting" />
-		</Unit>
-		<Unit filename="../gtest/gtest.cc">
-			<Option target="EasyTesting" />
-		</Unit>
-		<Unit filename="../gtest/gtest.h">
 			<Option target="EasyTesting" />
 		</Unit>
 		<Extensions>
