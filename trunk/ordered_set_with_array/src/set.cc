@@ -2,13 +2,6 @@
 
 #include "ordered_set_with_array/src/set.h"
 
-// Implementa um nó da lista encadeada.
-struct Node {
-  LType key;  // Valor da chave do nó.
-  Node* prev;  // Ponteiro para o nó anterior.
-  Node* next;  // Ponteiro para o próximo nó.
-};
-
 set::set() {
   size_ = 0;
 }

@@ -3,7 +3,7 @@
 // Lista sobre Conjuntos.
 //
 // Questão 1.
-// Implemente em set.h e set.cc o TAD set, utilizando árvores binárias de busca.
+// Implemente em set.h e set.cc o TAD set, utilizando listas encadeadas.
 //
 // Questão 2.
 // Escreva uma função "void Imprimir(set& s)" que recebe

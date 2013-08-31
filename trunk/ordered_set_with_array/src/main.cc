@@ -3,7 +3,7 @@
 // Lista sobre Conjuntos.
 //
 // Questão 1.
-// Implemente em set.h e set.cc o TAD set, utilizando árvores binárias de busca.
+// Implemente em set.h e set.cc o TAD set, utilizando arrays.
 //
 // Questão 2.
 // Escreva um programa para testar o conjunto que você implementou nas questões
