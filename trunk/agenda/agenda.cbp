@@ -34,6 +34,12 @@
 			<Add directory=".." />
 			<Add directory="." />
 		</Compiler>
+		<Unit filename="gtest/gtest.cc">
+			<Option target="Easytesting" />
+		</Unit>
+		<Unit filename="gtest/gtest.h">
+			<Option target="Easytesting" />
+		</Unit>
 		<Unit filename="src/agenda.h" />
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
@@ -42,12 +48,6 @@
 			<Option target="Easytesting" />
 		</Unit>
 		<Unit filename="test/agenda_test.h">
-			<Option target="Easytesting" />
-		</Unit>
-		<Unit filename="../gtest/gtest.cc">
-			<Option target="Easytesting" />
-		</Unit>
-		<Unit filename="../gtest/gtest.h">
 			<Option target="Easytesting" />
 		</Unit>
 		<Extensions>
