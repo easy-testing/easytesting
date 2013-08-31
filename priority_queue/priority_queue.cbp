@@ -36,8 +36,12 @@
 			<Add directory="." />
 			<Add directory=".." />
 		</Compiler>
-		<Unit filename="../gtest/gtest.cc" />
-		<Unit filename="../gtest/gtest.h" />
+		<Unit filename="gtest/gtest.cc">
+			<Option target="EasyTesting" />
+		</Unit>
+		<Unit filename="gtest/gtest.h">
+			<Option target="EasyTesting" />
+		</Unit>
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
 		</Unit>
