@@ -44,10 +44,17 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-std=c++0x" />
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 			<Add directory=".." />
 		</Compiler>
+		<Unit filename="gtest/gtest.cc">
+			<Option target="EasyTesting" />
+		</Unit>
+		<Unit filename="gtest/gtest.h">
+			<Option target="EasyTesting" />
+		</Unit>
 		<Unit filename="src/deque.cc" />
 		<Unit filename="src/deque.h" />
 		<Unit filename="src/main1.cc">
@@ -60,12 +67,6 @@
 			<Option target="EasyTesting" />
 		</Unit>
 		<Unit filename="test/deque_test.h">
-			<Option target="EasyTesting" />
-		</Unit>
-		<Unit filename="../gtest/gtest.cc">
-			<Option target="EasyTesting" />
-		</Unit>
-		<Unit filename="../gtest/gtest.h">
 			<Option target="EasyTesting" />
 		</Unit>
 		<Extensions>
