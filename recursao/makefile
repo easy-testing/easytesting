@@ -36,7 +36,7 @@ $(program)_test.o:
 	$(cc) -I $(path) -c test/$(program)_test.cc 
 
 gtest.o:
-	$(cc) -I $(path) -c ../gtest/gtest.cc
+	$(cc) -I $(path) -c gtest/gtest.cc
 
 clean:
 	@rm -f main.o $(program).o $(program)_test.o gtest.o a.out
