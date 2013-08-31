@@ -12,7 +12,7 @@ type_test = std::string
 # Gera o binarios do programa e dos testes
 all:
 	$(cc) -D LType=$(type_main) -D SType=$(type_main) -I $(path) ../ordered_set_with_linked_list/src/set.cc src/$(program).cc src/main.cc -o main
-	$(cc) -D LType=$(type_test) -D SType=$(type_test) -I $(path) ../ordered_set_with_linked_list/src/set.cc src/$(program).cc test/$(program)_test.cc ../gtest/gtest.cc -o easy_testing
+	$(cc) -D LType=$(type_test) -D SType=$(type_test) -I $(path) ../ordered_set_with_linked_list/src/set.cc src/$(program).cc test/$(program)_test.cc gtest/gtest.cc -o easy_testing
 	@echo "--------------------------------------------------------------"
 	@echo "main: executa o programa em main.cc."
 	@echo "easy_testing: executa os testes dos exercícios."
