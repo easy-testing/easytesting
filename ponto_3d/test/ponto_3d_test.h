@@ -26,15 +26,15 @@ class Teste : public testing::Test {
     return output.str();
   }
 
-  double SetX(double val, Ponto3D* p) {
+  void SetX(double val, Ponto3D* p) {
     p->v_[0] = val;
   }
 
-  double SetY(double val, Ponto3D* p) {
+  void SetY(double val, Ponto3D* p) {
     p->v_[1] = val;
   }
 
-  double SetZ(double val, Ponto3D* p) {
+  void SetZ(double val, Ponto3D* p) {
     p->v_[2] = val;
   }
 
