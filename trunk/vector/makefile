@@ -12,7 +12,7 @@ type_t = float
 # Gera o binarios do programa e dos testes
 all:
 	$(cc) -D VType=$(type_m) -I $(path) src/$(program).cc src/main.cc -o main
-	$(cc) -D VType=$(type_t) -I $(path) src/$(program).cc test/$(program)_test.cc ../gtest/gtest.cc -o easy_testing
+	$(cc) -D VType=$(type_t) -I $(path) src/$(program).cc test/$(program)_test.cc gtest/gtest.cc -o easy_testing
 	@echo "--------------------------------------------------------------"
 	@echo "main: executa o programa em main.cc."
 	@echo "easy_testing: executa os testes dos exercícios."
