@@ -14,9 +14,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add option="-TType=std::string" />
 					<Add option="-DSType=std::string" />
-					<Add option="-DLType=std::string" />
 				</Compiler>
 			</Target>
 			<Target title="Main">
@@ -26,9 +24,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add option="-TType=std::string" />
 					<Add option="-DSType=std::string" />
-					<Add option="-DLType=std::string" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
