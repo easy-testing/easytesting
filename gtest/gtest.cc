@@ -2758,8 +2758,8 @@ AssertionResult IsSubstringImpl(
   if (IsSubstringPred(needle, haystack) == expected_to_be_substring)
     return AssertionSuccess();
 
-  //const bool is_wide_string = sizeof(needle[0]) > 1;
-  //const char* const begin_string_quote = is_wide_string ? "L\"" : "\"";
+  const bool is_wide_string = sizeof(needle[0]) > 1;
+  const char* const begin_string_quote = is_wide_string ? "L\"" : "\"";
   return AssertionFailure(
       Message()
 // NOTE(tfn): apaguei mesagem em ingles.
@@ -3985,22 +3985,22 @@ static internal::String FormatTestCaseCount(int test_case_count) {
 // representation.  Both kNonFatalFailure and kFatalFailure are translated
 // to "Failure", as the user usually doesn't care about the difference
 // between the two when viewing the test result.
-//static const char * TestPartResultTypeToString(TestPartResult::Type type) {
-//  switch (type) {
-//    case TestPartResult::kSuccess:
-//      return "Success";
-//
-//    case TestPartResult::kNonFatalFailure:
-//    case TestPartResult::kFatalFailure:
-//#ifdef _MSC_VER
-//      return "error: ";
-//#else
-//      return "Failure";
-//#endif
-//  }
-//
-//  return "Unknown result type";
-//}
+static const char * TestPartResultTypeToString(TestPartResult::Type type) {
+  switch (type) {
+    case TestPartResult::kSuccess:
+      return "Success";
+
+    case TestPartResult::kNonFatalFailure:
+    case TestPartResult::kFatalFailure:
+#ifdef _MSC_VER
+      return "error: ";
+#else
+      return "Failure";
+#endif
+  }
+
+  return "Unknown result type";
+}
 
 // Prints a TestPartResult to a String.
 static internal::String PrintTestPartResultToString(
