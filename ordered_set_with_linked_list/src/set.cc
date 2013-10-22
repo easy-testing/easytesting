@@ -4,101 +4,63 @@
 
 // Implementa um nó da lista encadeada.
 struct Node {
-  LType key;  // Valor da chave do nó.
+  SType key;  // Valor da chave do nó.
   Node* prev;  // Ponteiro para o nó anterior.
   Node* next;  // Ponteiro para o próximo nó.
 };
 
 set::set() {
-  size_ = 0;
-  end_ = new Node;
-  end_->next = end_;
-  end_->prev = end_;
+  // TODO.
 }
 
 bool set::empty() {
-  return size_ == 0;
+  return false;  // TODO.
 }
 
 int set::size() {
-  return size_;
+  return 0;  // TODO.
 }
 
 Node* set::begin() {
-  return end_->next;
+  return NULL;  // TODO.
 }
 
 Node* set::end() {
-  return end_;
+  return NULL;  // TODO.
 }
 
 Node* set::next(Node* x) {
-  return x->next;
+  return NULL;  // TODO.
 }
 
 Node* set::prev(Node* x) {
-  return x->prev;
+  return NULL;  // TODO.
 }
 
 SType set::operator[](Node* x) {
-  return x->key;
+  return SType();  // TODO.
 }
 
 Node* set::find(SType k) {
-  for (Node* i = begin(); i != end(); i = next(i)) {
-    if (i->key == k) {
-      return i;
-    } else if (i->key > k) {
-      return end();
-    }
-  }
-  return end();  // k é maior que todos os elementos contidos no conjunto.
+  return NULL;  // TODO.
 }
 
 void set::insert(SType k) {
-  // Encontra o primeiro elemento que não é menor que k na lista encadeada.
-  Node* x = begin();
-  while (x != end() && x->key < k) {
-    x = next(x);
-  }
-  // Caso k já não esteja no conjunto, cria um novo nó para armazenar k.
-  if (x == end() || x->key != k) {
-    // Cria um novo nó e define o valor dos seus campos.
-    Node* node = new Node;
-    node->key = k;
-    node->prev = x->prev;
-    node->next = x;
-    // Ajusta o valor dos ponteiros dos nós adjacentes ao novo nó.
-    x->prev->next = node;
-    x->prev = node;
-    size_++;
-  }
+  // TODO.
 }
 
 void set::erase(SType k) {
-  Node* x = find(k);
-  if (x != end()) {
-    x->prev->next = x->next;
-    x->next->prev = x->prev;
-    delete x;
-    size_--;
-  }
+  // TODO.
 }
 
 void set::clear() {
-  while (!empty()) {
-    erase(begin()->key);
-  }
+  // TODO.
 }
 
 void set::operator=(set& s) {
-  clear();
-  for (Node* i = s.begin(); i != s.end(); i = s.next(i)) {
-    insert(s[i]);
-  }
+  // TODO.
 }
 
 set::~set() {
-  clear();
-  delete end_;
+  // TODO.
 }
