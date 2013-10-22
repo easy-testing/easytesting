@@ -35,6 +35,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 			<Add directory=".." />
+			<Add directory="." />
 		</Compiler>
 		<Unit filename="gtest/gtest.cc">
 			<Option target="EasyTesting" />
