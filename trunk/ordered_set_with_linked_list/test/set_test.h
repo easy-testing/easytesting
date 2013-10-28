@@ -309,17 +309,17 @@ TEST_F(Teste, Testa_funcao_prev_do_end) {
       << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_operador_at) {
+TEST_F(Teste, Testa_funcao_key) {
   set s;
   insert("1", &s);
-  SType atual = s[begin(s)];
+  SType atual = s.key(begin(s));
   SType esperado = "1";
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: SType& set::operator[](Node* x)\n"
+    << "Erro na funcao: SType& set::key(Node* x)\n"
     << "-------------------------------------------------------------------\n"
     << " s = " << ToString(s) << "\n"
-    << " \"s[s.begin()]\" retornou: " << atual << "\n"
+    << " \"s.key(s.begin())\" retornou: " << atual << "\n"
     << " Valor esperado: " << esperado << "\n"
     << "-------------------------------------------------------------------\n";
 }
