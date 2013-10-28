@@ -29,48 +29,48 @@ class set {
   // Retorna o número de elementos no conjunto em O(1).
   int size();
 
-  // Retorna um ponteiro para o primeiro elemento do conjunto em O(1).
+  // Retorna um ponteiro para o primeiro elemento do conjunto em O(log n).
   // Caso o conjunto esteja vazio, rentorna um ponteiro para set::end().
   Node* begin();
 
   // Retorna um ponteiro para o "marcador de fim" do conjunto em O(1).
   Node* end();
 
-  // Retorna o elemento seguinte ao indicado por x no conjunto em O(1).
+  // Retorna o elemento seguinte ao indicado por x no conjunto em O(log n).
   // Se x aponta para o último elemento do conjunto, retorna set::end();
   // Precondição: x aponta para um dos elementos do conjunto.
   Node* next(Node* x);
 
-  // Retorna o elemento anterior ao indicado por x no conjunto em O(1).
+  // Retorna o elemento anterior ao indicado por x no conjunto em O(log n).
   // Se x aponta para o primeiro elemento do conjunto, retorna set::end();
   // Precondição: x aponta para um dos elementos do cojunto, ou para set::end().
   Node* prev(Node* x);
 
-  // Retorna o valor do elemento indicado por x em (1).
-  SType operator[](Node* x);
+  // Retorna a chave do elemento indicado por x em (1).
+  SType key(Node* x);
 
-  // Retorna um ponteiro para o elemento k em O(n),
+  // Retorna um ponteiro para o elemento k em O(log n),
   // ou um ponteiro para set::end() caso k não pertença ao conjunto.
   // OBS: Note que esta função NÃO retorna bool. Para testar se um elemento 'a'
   // pertence a um conjunto 'c', você deve escrever "if (c.find(a) != c.end())".
   Node* find(SType k);
 
-  // Insere k no conjunto em O(n).
+  // Insere k no conjunto em O(log n).
   // Caso k já pertença ao conjunto, um novo elemento NÃO é inserido no
   // conjunto.
   void insert(SType k);
 
-  // Remove k do conjunto (caso lá ele esteja) em O(n).
+  // Remove k do conjunto (caso lá ele esteja) em O(log n).
   void erase(SType k);
 
-  // Remove todos os elementos do conjunto.
+  // Remove todos os elementos do conjunto em O(n.log n).
   void clear();
 
   // Faz com que o conjunto corrente contenha exatamente os mesmos elementos
-  // do cojunto s em O(n + m), onde m = s.size().
+  // do cojunto s em O(n.log n + m.log m), onde m = s.size().
   void operator=(set& s);
 
-  // Libera toda a memória alocada para o conjunto em O(n).
+  // Libera toda a memória alocada para o conjunto em O(n.log n).
   ~set();
 
  private:

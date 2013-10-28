@@ -44,8 +44,8 @@ class set {
   // Precondição: x aponta para um dos elementos do cojunto, ou para set::end().
   Node* prev(Node* x);
 
-  // Retorna o valor do elemento indicado por x em (1).
-  SType operator[](Node* x);
+  // Retorna a chave do elemento indicado por x em (1).
+  SType key(Node* x);
 
   // Retorna um ponteiro para o elemento k em O(n),
   // ou um ponteiro para set::end() caso k não pertença ao conjunto.
@@ -61,7 +61,7 @@ class set {
   // Remove k do conjunto (caso lá ele esteja) em O(n).
   void erase(SType k);
 
-  // Remove todos os elementos do conjunto.
+  // Remove todos os elementos do conjunto em O(n).
   void clear();
 
   // Faz com que o conjunto corrente contenha exatamente os mesmos elementos

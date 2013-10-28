@@ -63,7 +63,7 @@ using std::string;
 void Imprimir(set& c) {
   cout << "{ ";
   for (Node* i = c.begin(); i != c.end(); i = c.next(i)) {
-    cout << c[i] << " ";
+    cout << c.key(i) << " ";
   }
   cout << "} = " << c.size() << endl;
 }
@@ -74,8 +74,8 @@ void Intersecao(set& a, set& b, set* inter) {
   // aqueles que também estão no cojunto 'b'.
   inter->clear();
   for (Node* i = a.begin(); i != a.end(); i = a.next(i)) {
-    if (b.find(a[i]) != b.end()) {
-      inter->insert(a[i]);
+    if (b.find(a.key(i)) != b.end()) {
+      inter->insert(a.key(i));
     }
   }
 }
@@ -86,7 +86,7 @@ void Uniao(set& a, set& b, set* uniao) {
   *uniao = b;
   // Em seguida, insere em 'uniao' também os elementos em a.
   for (Node* i = a.begin(); i != a.end(); i = a.next(i)) {
-    uniao->insert(a[i]);
+    uniao->insert(a.key(i));
   }
 }
 

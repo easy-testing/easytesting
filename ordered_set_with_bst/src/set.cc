@@ -167,7 +167,7 @@ Node* set::prev(Node* x) {
   }
 }
 
-SType set::operator[](Node* x) {
+SType set::key(Node* x) {
   return x->key;
 }
 
