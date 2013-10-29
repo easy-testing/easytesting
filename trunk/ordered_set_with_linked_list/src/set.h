@@ -11,9 +11,9 @@
 struct Node;
 
 // Implementa um conjunto de elementos utilizando listas encadeadas.
-// Nesta implementão, os elementos do conjunto são ordenados na lista
+// NOTA1: Nesta implementão, os elementos do conjunto estão ordenados na lista
 // encadeada do menor para o maior.
-// O tipo dos elementos contidos no conjunto é definido por SType.
+// NOTA2: O tipo dos elementos contidos no conjunto é definido por SType.
 // O valor de SType é um #define declarado em tempo de compilação.
 // Para simplificar as funções de complexidade, denota-se n = size_.
 class set {

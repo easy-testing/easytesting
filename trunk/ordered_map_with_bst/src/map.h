@@ -5,19 +5,22 @@
 
 #include<string>
 
-// Define como os elementos do conjunto serão organizados na memória.
+// Define como os elementos do conjunto associativo serão organizados na memória.
 // É declarado aqui, mas só é implementado em map.cc para não violar o
 // encapsulamento.
 struct Node;
 
-// Implementa um conjunto utilizando árvores binárias de busca.
-// NOTA: O cálculo da complexidade das funções assume que a árvore está
+// Implementa um conjunto associativo (também conhecido como mapa) utilizando
+// árvores binárias de busca. Num conjunto associativo, todas as chaves dos
+// elementos estão associadas a um valor específico. As chaves não se repetem,
+// mas os valores associados as chaves podem se repetir.
+// NOTA1: O cálculo da complexidade das funções assume que a árvore está
 // balanceada, ou seja, considera-se que a altura da arvore é O(log n), onde n
-// é a cardinalidade do conjunto. Entretanto, isto não é garantido nesta
-// implentação.
-// O tipo dos elementos contidos no conjunto é definido por SType.
-// O valor de SType deve ser definido em tempo de compilação.
-// Para simplificar as funções de complexidade, denota-se n = size_.
+// é a cardinalidade do conjunto (i.e. n = size_). Entretanto, isto não é
+// garantido nesta implentação.
+// NOTA2: O tipo das chaves dos elementos contidos no conjunto é definido por
+// KType. Já o tipo dos valores associados a cada chave é definido por VType.
+// O valor de KType e o de VType é um #define declarado em tempo de compilação.
 class map {
  public:
   // Cria um conjunto vazio em O(1).
@@ -29,30 +32,31 @@ class map {
   // Retorna o número de elementos no conjunto em O(1).
   int size();
 
-  // Retorna um ponteiro para o primeiro elemento do conjunto em O(1).
+  // Retorna um ponteiro para o primeiro elemento do conjunto em O(log n).
   // Caso o conjunto esteja vazio, rentorna um ponteiro para map::end().
   Node* begin();
 
   // Retorna um ponteiro para o "marcador de fim" do conjunto em O(1).
   Node* end();
 
-  // Retorna o elemento seguinte ao indicado por x no conjunto em O(1).
+  // Retorna o elemento seguinte ao indicado por x no conjunto em O(log n).
   // Se x aponta para o último elemento do conjunto, retorna map::end();
   // Precondição: x aponta para um dos elementos do conjunto.
   Node* next(Node* x);
 
-  // Retorna o elemento anterior ao indicado por x no conjunto em O(1).
+  // Retorna o elemento anterior ao indicado por x no conjunto em O(log n).
   // Se x aponta para o primeiro elemento do conjunto, retorna map::end();
   // Precondição: x aponta para um dos elementos do cojunto, ou para map::end().
   Node* prev(Node* x);
 
-  // Retorna o valor do elemento que tem a chave igual a x em O(logN).
-  VType operator[](SType x);
+  // Retorna o valor associado a chave k em O(log n).
+  // Precondição: k pertence ao conjunto.
+  VType operator[](SType k);
 
-  // Retorna o valor da chave do nó x
+  // Retorna a chave do nó x em O(1).
   SType key(Node* x);
 
-  // Retorna o valor do nó x
+  // Retorna o valor do nó x em O(1).
   VType value(Node* x);
 
   // Retorna um ponteiro para o elemento k em O(n),
@@ -61,22 +65,22 @@ class map {
   // pertence a um conjunto 'c', você deve escrever "if (c.find(a) != c.end())".
   Node* find(SType k);
 
-  // Insere k no conjunto em O(n).
+  // Insere k no conjunto em O(log n).
   // Caso k já pertença ao conjunto, um novo elemento NÃO é inserido no
   // conjunto.
   void insert(SType k, VType v);
 
-  // Remove k do conjunto (caso lá ele esteja) em O(n).
+  // Remove k do conjunto (caso lá ele esteja) em O(log n).
   void erase(SType k);
 
-  // Remove todos os elementos do conjunto.
+  // Remove todos os elementos do conjunto em O(n.log n).
   void clear();
 
   // Faz com que o conjunto corrente contenha exatamente os mesmos elementos
-  // do cojunto s em O(n + m), onde m = s.size().
+  // do cojunto s em O(n.log n + m.log m), onde m = s.size().
   void operator=(map& s);
 
-  // Libera toda a memória alocada para o conjunto em O(n).
+  // Libera toda a memória alocada para o conjunto em O(n.log n).
   ~map();
 
  private:

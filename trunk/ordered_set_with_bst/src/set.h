@@ -11,13 +11,12 @@
 struct Node;
 
 // Implementa um conjunto utilizando árvores binárias de busca.
-// NOTA: O cálculo da complexidade das funções assume que a árvore está
+// NOTA1: O cálculo da complexidade das funções assume que a árvore está
 // balanceada, ou seja, considera-se que a altura da arvore é O(log n), onde n
-// é a cardinalidade do conjunto. Entretanto, isto não é garantido nesta
-// implentação.
-// O tipo dos elementos contidos no conjunto é definido por SType.
-// O valor de SType deve ser definido em tempo de compilação.
-// Para simplificar as funções de complexidade, denota-se n = size_.
+// é a cardinalidade do conjunto (i.e. n = size_). Entretanto, isto não é
+// garantido nesta implentação.
+// NOTA2: O tipo dos elementos contidos no conjunto é definido por SType.
+// O valor de SType é um #define declarado em tempo de compilação.
 class set {
  public:
   // Cria um conjunto vazio em O(1).
