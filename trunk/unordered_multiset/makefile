@@ -2,7 +2,7 @@
 cc = g++ # PATH raiz para includes
 path = ..
 # Nome da lista de exercicios
-program = unordered_set
+program = unordered_multiset
 # Tipo dos elementos do vetor no main
 type_main = std::string
 # Tipo dos elementos do vetor nos testes
