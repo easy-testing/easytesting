@@ -8,7 +8,7 @@
 #include <string>
 
 #include "gtest/gtest.h"
-#include "ordered_map_with_bst/src/map.h"
+#include "ordered_map/src/map.h"
 
 using std::string;
 using std::stringstream;
@@ -33,6 +33,17 @@ class Teste : public testing::Test {
       return "map::end()";
     } else {
       return x->key;
+    }
+  }
+
+  // Retorna o valor do elemento x de s;
+  VType value(Node* x, map& s) {
+    if (x == NULL) {
+      return NULL;
+    } else if (x == end(s)) {
+      return NULL;
+    } else {
+      return x->value;
     }
   }
 
@@ -574,6 +585,22 @@ TEST_F(Teste, Testa_funcao_insert_com_elemento_repetido) {
       << " s = { 1 2 3 } \n"
       << " \"s.insert(2)\" resultou em: s = " << atual << "\n"
       << " Resultado esperado: s = " << esperado << "\n"
+      << "------------------------------------------------------------------\n";
+}
+
+TEST_F(Teste, Testa_funcao_insert_com_atualizacao_de_valor) {
+  map s;
+  insert("2", 2, &s);
+  s.insert("2", 20);
+  VType atual = value(s.find("2"), s);
+  VType esperado = 20;
+  ASSERT_EQ(esperado, atual)
+      << "------------------------------------------------------------------\n"
+      << "Erro na funcao: void map::insert(SType k, Vtype v) *\n"
+      << "------------------------------------------------------------------\n"
+      << " s = { \"2\":2 } \n"
+      << " \"s.insert(\"2\",20)\" resultou em: s[\"2\"] = " << atual << "\n"
+      << " Resultado esperado: s[\"2\"] = " << esperado << "\n"
       << "------------------------------------------------------------------\n";
 }
 
