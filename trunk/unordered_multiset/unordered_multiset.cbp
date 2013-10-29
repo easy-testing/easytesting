@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="set" />
+		<Option title="unordered_multiset" />
 		<Option makefile="makefile" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
@@ -39,8 +39,6 @@
 			<Add directory=".." />
 			<Add directory="." />
 		</Compiler>
-		<Unit filename="../ordered_set_with_linked_list/src/set.cc" />
-		<Unit filename="../ordered_set_with_linked_list/src/set.h" />
 		<Unit filename="gtest/gtest.cc">
 			<Option target="EasyTesting" />
 		</Unit>
@@ -50,12 +48,12 @@
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
 		</Unit>
-		<Unit filename="src/unordered_set.cc" />
-		<Unit filename="src/unordered_set.h" />
-		<Unit filename="test/unordered_set_test.cc">
+		<Unit filename="src/unordered_multiset.cc" />
+		<Unit filename="src/unordered_multiset.h" />
+		<Unit filename="test/unordered_multiset_test.cc">
 			<Option target="EasyTesting" />
 		</Unit>
-		<Unit filename="test/unordered_set_test.h">
+		<Unit filename="test/unordered_multiset_test.h">
 			<Option target="EasyTesting" />
 		</Unit>
 		<Extensions>
