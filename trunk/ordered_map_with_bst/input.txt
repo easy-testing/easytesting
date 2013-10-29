@@ -1,0 +1,2 @@
+science is what we understand well enough to explain to a computer
+art is everything else we do

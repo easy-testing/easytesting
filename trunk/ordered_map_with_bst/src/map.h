@@ -67,7 +67,7 @@ class map {
 
   // Insere k no conjunto em O(log n).
   // Caso k já pertença ao conjunto, um novo elemento NÃO é inserido no
-  // conjunto.
+  // conjunto, e seu valor é atualizado para v.
   void insert(SType k, VType v);
 
   // Remove k do conjunto (caso lá ele esteja) em O(log n).
