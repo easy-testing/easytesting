@@ -1,6 +1,6 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#include "unordered_set_with_set/src/unordered_set.h"
+#include "unordered_set/src/unordered_set.h"
 
 #include "ordered_set_with_linked_list/src/set.h"
 
