@@ -44,7 +44,7 @@ class Teste : public testing::Test {
   // Insere k em s.
   // Precondição: k não está em s.
   void insert(SType k, unordered_set* s) {
-    int j = s->hash(k);
+    int j = hash(k, s->capacity_);
     s->table_[j].insert(k);
     s->size_++;
   }
@@ -66,7 +66,7 @@ class Teste : public testing::Test {
 
   // Retorna o elemento seguinte a 'x' no conjunto.
   Node* next(Node* x, unordered_set& s) {
-    int j = s.hash(x->key);
+    int j = hash(x->key, s.capacity_);
     if (x->next != s.table_[j].end()) {
       return x->next;
     } else {
@@ -81,7 +81,7 @@ class Teste : public testing::Test {
 
   // Retorna o elemento anterior a 'x' no conjunto.
   Node* prev(Node* x, unordered_set& s) {
-    int j = s.hash(x->key);
+    int j = hash(x->key, s.capacity_);
     if (x != s.table_[j].begin()) {
       return x->prev;
     } else {
@@ -97,7 +97,7 @@ class Teste : public testing::Test {
   // Retorna um ponteiro para o elemento k de s.
   Node* find(SType k, unordered_set& s) {
     // Procura pelo elemento k na lista onde k pode estar.
-    int j = s.hash(k);
+    int j = hash(k, s.capacity_);
     for (Node* i = s.table_[j].begin();
           i != s.table_[j].end();
           i = s.table_[j].next(i)) {
@@ -412,17 +412,17 @@ TEST_F(Teste, Testa_funcao_prev_com_anterior_em_outra_lista) {
       << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_operador_at) {
+TEST_F(Teste, Testa_funcao_keys) {
   unordered_set s;
   insert("1", &s);
-  SType atual = s[begin(s)];
+  SType atual = s.key(begin(s));
   SType esperado = "1";
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: SType& unordered_set::operator[](Node* x)\n"
+    << "Erro na funcao: SType& unordered_set::key(Node* x)\n"
     << "-------------------------------------------------------------------\n"
     << " s = " << ToString(s) << "\n"
-    << " \"s[s.begin()]\" retornou: " << atual << "\n"
+    << " \"s.key(s.begin())\" retornou: " << atual << "\n"
     << " Valor esperado: " << esperado << "\n"
     << "-------------------------------------------------------------------\n";
 }

@@ -4,7 +4,7 @@
 //
 // Questão 1.
 // Implemente em unordered_set.h e unordered_set.cc o TAD unordered_set,
-// utilizando árvores binárias de busca.
+// utilizando tabela hash.
 //
 // Questão 2.
 // Escreva uma função "void Imprimir(unordered_set& s)" que recebe
@@ -66,7 +66,7 @@ using std::string;
 void Imprimir(unordered_set& c) {
   cout << "{ ";
   for (Node* i = c.begin(); i != c.end(); i = c.next(i)) {
-    cout << c[i] << " ";
+    cout << c.key(i) << " ";
   }
   cout << "} = " << c.size() << endl;
 }
@@ -77,8 +77,8 @@ void Intersecao(unordered_set& a, unordered_set& b, unordered_set* inter) {
   // aqueles que também estão no cojunto 'b'.
   inter->clear();
   for (Node* i = a.begin(); i != a.end(); i = a.next(i)) {
-    if (b.find(a[i]) != b.end()) {
-      inter->insert(a[i]);
+    if (b.find(a.key(i)) != b.end()) {
+      inter->insert(a.key(i));
     }
   }
 }
@@ -89,7 +89,7 @@ void Uniao(unordered_set& a, unordered_set& b, unordered_set* uniao) {
   *uniao = b;
   // Em seguida, insere em 'uniao' também os elementos em a.
   for (Node* i = a.begin(); i != a.end(); i = a.next(i)) {
-    uniao->insert(a[i]);
+    uniao->insert(a.key(i));
   }
 }
 
