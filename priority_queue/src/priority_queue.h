@@ -5,49 +5,48 @@
 
 #include <string>
 
-// Define como os elementos da fila de prioridades ser√£o organizados na mem√≥ria.
-// √â declarado aqui, mas s√≥ √© implementado em priority_queue.cc para n√£o violar
+// Define como os elementos da fila de prioridades ser„o organizados na memÛria.
+// … declarado aqui, mas sÛ È implementado em priority_queue.cc para n„o violar
 // o encapsulamento.
 struct Node;
 
-// Implementa uma fila de prioridades utilizando √°rvores bin√°rias de busca.
-// Podem haver elementos repetitos.
-// NOTA: O c√°lculo da complexidade das fun√ß√µes assume que a √°rvore est√°
-// balanceada, ou seja, considera-se que a altura da arvore √© O(log n), onde n
-// √© a cardinalidade do conjunto. Entretanto, isto n√£o √© garantido nesta
-// implenta√ß√£o. Para simplificar as fun√ß√µes de complexidade,
-// denota-se n = size_.
+// Implementa uma fila de prioridades utilizando ·rvores bin·rias de busca.
+// NOTA1: Podem haver elementos repetitos.
+// NOTA2: O c·lculo da complexidade das funÁıes assume que a ·rvore est·
+// balanceada, ou seja, considera-se que a altura da arvore È O(log n), onde n
+// È a cardinalidade da fila (i.e. n = size_). Entretanto, isto n„o È garantido
+// nesta implentaÁ„o.
 class priority_queue {
  public:
   // Cria uma fila de prioridades vazia em O(1).
   priority_queue();
 
-  // Testa se a fila est√° vazia em O(1).
+  // Testa se a fila est· vazia em O(1).
   bool empty();
 
-  // Retorna o n√∫mero de elementos na fila em O(1).
+  // Retorna o n˙mero de elementos na fila em O(1).
   int size();
 
   // Retorna o menor elemento da fila em O(log n).
-  // Precondi√ß√£o: a fila n√£o est√° vazia.
+  // PrecondiÁ„o: a fila n„o est· vazia.
   SType top();
 
   // Insere k na fila de prioridades em O(log n).
   void push(SType k);
 
   // Remove o menor elemento da fila em O(log n).
-  // Precondi√ß√£o: a fila n√£o est√° vazia.
+  // PrecondiÁ„o: a fila n„o est· vazia.
   void pop();
 
-  // Libera a mem√≥ria alocada para todos os elementos da fila.
+  // Libera a memÛria alocada para todos os elementos da fila em O(n.log n).
   ~priority_queue();
 
  private:
-  // N√∫mero de elementos na fila.
+  // N˙mero de elementos na fila.
   int size_;
 
-  // Ponteiro para a raiz da √°rvore.
-  // "root_ == NULL" se o conjunto √© vazio.
+  // Ponteiro para a raiz da ·rvore.
+  // "root_ == NULL" se o conjunto È vazio.
   Node* root_;
 
   friend class Teste;
