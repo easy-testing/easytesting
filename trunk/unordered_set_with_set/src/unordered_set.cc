@@ -1,11 +1,12 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
 #include "unordered_set_with_set/src/unordered_set.h"
+
 #include "ordered_set_with_linked_list/src/set.h"
 
 // Implementa um nó da lista encadeada.
 struct Node {
-  LType key;  // Valor da chave do nó.
+  SType key;  // Valor da chave do nó.
   Node* prev;  // Ponteiro para o nó anterior.
   Node* next;  // Ponteiro para o próximo nó.
 };
