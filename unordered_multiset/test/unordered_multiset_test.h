@@ -1,7 +1,7 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_UNORDERED_TEST_UNORDERED_SET_TEST_H_
-#define TRUNK_UNORDERED_TEST_UNORDERED_SET_TEST_H_
+#ifndef TRUNK_UNORDERED_MULTISET_TEST_UNORDERED_MULTISET_TEST_H_
+#define TRUNK_UNORDERED_MULTISET_TEST_UNORDERED_MULTISET_TEST_H_
 
 #include <cmath>
 #include <cstdlib>
@@ -10,7 +10,7 @@
 #include <string>
 
 #include "gtest/gtest.h"
-#include "unordered_set/src/unordered_set.h"
+#include "unordered_multiset/src/unordered_multiset.h"
 
 using std::string;
 using std::stringstream;
@@ -674,4 +674,4 @@ TEST_F(Teste, Testa_operador_de_atribuicao_a_conjunto_nao_vazio) {
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // TRUNK_UNORDERED_TEST_UNORDERED_SET_TEST_H_
+#endif  // TRUNK_UNORDERED_MULTISET_TEST_UNORDERED_MULTISET_TEST_H_
