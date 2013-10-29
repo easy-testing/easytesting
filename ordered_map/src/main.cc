@@ -13,13 +13,25 @@
 // Exemplo de saída:
 // doce 1
 // lar 2
+//
+// Você pode assumir que os arquivos contém apenas caracteres que são letras
+// (a-z e A-Z), números (0-9), e caracteres de pontuação (",", ".", "?", etc.).
+// Você pode assumir que o texto não tem acentos nem "ç".
+// Após ler cada palavra, você deve (i) transformar todas as letras maiúsculas em
+// minúsculas e (ii) apagar todos os caracteres que não são letras ou números. Por
+// exemplo, depois de ler "Guarda-Chuva?", você deve transformá-la em "guardachuva",
+// antes de inseri-la no índice invertido. Desta forma, a mesma palavra apresentada com
+// letras minúsculas ou maiúsculas, ou que estão adjacentes a pontuação, não serão
+// diferenciadas.
+
 
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <ctype.h>
 
-#include "ordered_map_with_bst/src/map.h"
+#include "ordered_map/src/map.h"
 
 using std::cin;
 using std::cout;
@@ -27,6 +39,15 @@ using std::endl;
 using std::ifstream;
 using std::string;
 
+string CleanString(string s) {
+  string result;
+  for ( int i=0;i<(int)s.length();i++ ) {
+    if ( isalnum(s[i]) ) {
+      result.push_back(tolower(s[i]));
+    }
+  }
+  return result;
+}
 int main() {
   map words;
 
@@ -35,6 +56,7 @@ int main() {
   Node *word;
   string str;
   while (fin >> str) {
+    str = CleanString(str);
     word = words.find(str);
     if ( word == words.end() ) {
       words.insert(str, 1);
