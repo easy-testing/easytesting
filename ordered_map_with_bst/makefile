@@ -1,5 +1,5 @@
 # Compilador utilizado
-cc = g++ -std=c++0x
+cc = g++ 
 # PATH raiz para includes
 path = ..
 # Nome da lista de exercicios
