@@ -17,7 +17,7 @@ using std::stringstream;
 
 // Implementa um nó da lista encadeada.
 struct Node {
-  LType key;  // Valor da chave do nó.
+  SType key;  // Valor da chave do nó.
   Node* prev;  // Ponteiro para o nó anterior.
   Node* next;  // Ponteiro para o próximo nó.
 };

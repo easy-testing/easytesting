@@ -15,7 +15,6 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add option="-TType=std::string" />
-					<Add option="-DLType=std::string" />
 					<Add option="-DSType=std::string" />
 				</Compiler>
 			</Target>
@@ -27,7 +26,6 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-TType=std::string" />
-					<Add option="-DLType=std::string" />
 					<Add option="-DSType=std::string" />
 				</Compiler>
 				<Linker>
