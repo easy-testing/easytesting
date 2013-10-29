@@ -200,6 +200,8 @@ void map::insert(SType k, VType v) {
     z->parent = z->left = z->right = NULL;
     TreeInsert(root_, z);
     size_++;
+  } else {
+    find(k)->value = v;
   }
 }
 
