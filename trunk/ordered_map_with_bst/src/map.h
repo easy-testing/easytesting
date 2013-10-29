@@ -19,8 +19,8 @@ struct Node;
 // é a cardinalidade do conjunto (i.e. n = size_). Entretanto, isto não é
 // garantido nesta implentação.
 // NOTA2: O tipo das chaves dos elementos contidos no conjunto é definido por
-// KType. Já o tipo dos valores associados a cada chave é definido por VType.
-// O valor de KType e o de VType é um #define declarado em tempo de compilação.
+// SType. Já o tipo dos valores associados a cada chave é definido por VType.
+// O valor de SType e o de VType é um #define declarado em tempo de compilação.
 class map {
  public:
   // Cria um conjunto vazio em O(1).
@@ -65,12 +65,11 @@ class map {
   // pertence a um conjunto 'c', você deve escrever "if (c.find(a) != c.end())".
   Node* find(SType k);
 
-  // Insere k no conjunto em O(log n).
-  // Caso k já pertença ao conjunto, um novo elemento NÃO é inserido no
-  // conjunto, e seu valor é atualizado para v.
+  // Insere k no conjunto, associado ao valor v, em O(log n).
+  // Caso k já pertença ao conjunto, o valor associado a k é atualizado para v.
   void insert(SType k, VType v);
 
-  // Remove k do conjunto (caso lá ele esteja) em O(log n).
+  // Remove o elemento cuja chave é k (caso exista) em O(log n).
   void erase(SType k);
 
   // Remove todos os elementos do conjunto em O(n.log n).

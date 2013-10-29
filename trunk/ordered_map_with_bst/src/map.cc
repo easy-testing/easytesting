@@ -193,15 +193,16 @@ Node* map::find(SType k) {
 }
 
 void map::insert(SType k, VType v) {
-  if (find(k) == end()) {
+  Node* x = find(k);
+  if (x != end()) {
+    x->value = v;
+  } else {
     Node* z = new Node;
     z->key = k;
     z->value = v;
     z->parent = z->left = z->right = NULL;
     TreeInsert(root_, z);
     size_++;
-  } else {
-    find(k)->value = v;
   }
 }
 
