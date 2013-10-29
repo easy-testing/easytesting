@@ -13,7 +13,6 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-std=c++0x" />
 					<Add option="-g" />
 					<Add option="-TType=std::string" />
 					<Add option="-DLType=std::string" />
@@ -27,7 +26,6 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add option="-std=c++0x" />
 					<Add option="-TType=std::string" />
 					<Add option="-DLType=std::string" />
 					<Add option="-DSType=std::string" />
@@ -38,7 +36,6 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-std=c++0x" />
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 			<Add directory=".." />

@@ -1,6 +1,5 @@
 # Compilador utilizado
-cc = g++ -std=c++0x
-# PATH raiz para includes
+cc = g++ # PATH raiz para includes
 path = ..
 # Nome da lista de exercicios
 program = unordered_set
