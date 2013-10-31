@@ -49,9 +49,9 @@ class map {
   // Precondição: x aponta para um dos elementos do cojunto, ou para map::end().
   Node* prev(Node* x);
 
-  // Retorna o valor associado a chave k em O(log n).
+  // Retorna uma referência ao valor associado a chave k em O(log n).
   // Precondição: k pertence ao conjunto.
-  VType operator[](SType k);
+  VType& operator[](SType k);
 
   // Retorna a chave do nó x em O(1).
   SType key(Node* x);
@@ -59,7 +59,7 @@ class map {
   // Retorna o valor do nó x em O(1).
   VType value(Node* x);
 
-  // Retorna um ponteiro para o elemento k em O(n),
+  // Retorna um ponteiro para o elemento k em O(log n),
   // ou um ponteiro para map::end() caso k não pertença ao conjunto.
   // OBS: Note que esta função NÃO retorna bool. Para testar se um elemento 'a'
   // pertence a um conjunto 'c', você deve escrever "if (c.find(a) != c.end())".

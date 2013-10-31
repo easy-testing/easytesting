@@ -130,8 +130,9 @@ Node* TreeDelete(Node*& root, Node* z) {
       y->parent->right = x;
     }
   }
-    if (y->key != z->key) {
+  if (y->key != z->key) {
     z->key = y->key;
+    z->value = y->value;
   }
   return y;
 }
@@ -168,7 +169,7 @@ Node* map::prev(Node* x) {
   }
 }
 
-VType map::operator[](SType x) {
+VType& map::operator[](SType x) {
   return find(x)->value;
 }
 
