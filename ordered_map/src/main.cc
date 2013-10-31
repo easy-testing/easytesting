@@ -22,7 +22,31 @@
 // exemplo, depois de ler "Guarda-Chuva?", você deve transformá-la em "guardachuva",
 // antes de inseri-la no índice invertido. Desta forma, a mesma palavra apresentada com
 // letras minúsculas ou maiúsculas, ou que estão adjacentes a pontuação, não serão
-// diferenciadas.
+// diferenciadas. Por exemplo, para o texto:
+//
+// -------------------------
+// La vem o pato.
+// Pata aqui, pata acola.
+// La vem o pato,
+// Para ver o que e que ha.
+// -------------------------
+//
+// O seu programa deve imprimir:
+//
+// -------------------------
+// acola 1
+// aqui 1
+// e 1
+// ha 1
+// la 2
+// o 3
+// para 1
+// pata 2
+// pato 2
+// que 2
+// vem 2
+// ver 1
+// -------------------------
 
 
 #include <cstdlib>
@@ -48,12 +72,11 @@ string CleanString(string s) {
   }
   return result;
 }
+
 int main() {
   map words;
-
   ifstream fin("input.txt");
-
-  Node *word;
+  Node* word;
   string str;
   while (fin >> str) {
     str = CleanString(str);
@@ -64,10 +87,8 @@ int main() {
       words.insert(str, words.value(word)+1);
     }
   }
-
   for (Node* i = words.begin(); i != words.end(); i = words.next(i)) {
     std::cout << words.key(i) << ' ' << words.value(i) << std::endl;
   }
-
   return 0;
 }
