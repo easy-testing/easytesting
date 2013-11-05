@@ -40,7 +40,7 @@ Node* set::prev(Node* x) {
   return x->prev;
 }
 
-SType set::operator[](Node* x) {
+SType set::key(Node* x) {
   return x->key;
 }
 
@@ -93,8 +93,10 @@ void set::clear() {
 
 void set::operator=(set& s) {
   clear();
-  for (Node* i = s.begin(); i != s.end(); i = s.next(i)) {
-    insert(s[i]);
+  if (!s.empty()) {
+    for (Node* i = s.end_->prev; i != s.end_; i = i->prev) {
+      insert(i->key);
+    }
   }
 }
 

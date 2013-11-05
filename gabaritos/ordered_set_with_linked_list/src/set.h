@@ -11,9 +11,9 @@
 struct Node;
 
 // Implementa um conjunto de elementos utilizando listas encadeadas.
-// Nesta implementão, os elementos do conjunto são ordenados na lista
+// NOTA1: Nesta implementão, os elementos do conjunto estão ordenados na lista
 // encadeada do menor para o maior.
-// O tipo dos elementos contidos no conjunto é definido por SType.
+// NOTA2: O tipo dos elementos contidos no conjunto é definido por SType.
 // O valor de SType é um #define declarado em tempo de compilação.
 // Para simplificar as funções de complexidade, denota-se n = size_.
 class set {
@@ -44,8 +44,8 @@ class set {
   // Precondição: x aponta para um dos elementos do cojunto, ou para set::end().
   Node* prev(Node* x);
 
-  // Retorna o valor do elemento indicado por x em (1).
-  SType operator[](Node* x);
+  // Retorna a chave do elemento indicado por x em (1).
+  SType key(Node* x);
 
   // Retorna um ponteiro para o elemento k em O(n),
   // ou um ponteiro para set::end() caso k não pertença ao conjunto.
@@ -61,7 +61,7 @@ class set {
   // Remove k do conjunto (caso lá ele esteja) em O(n).
   void erase(SType k);
 
-  // Remove todos os elementos do conjunto.
+  // Remove todos os elementos do conjunto em O(n).
   void clear();
 
   // Faz com que o conjunto corrente contenha exatamente os mesmos elementos
