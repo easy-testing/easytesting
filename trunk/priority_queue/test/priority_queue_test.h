@@ -16,6 +16,7 @@ using std::stringstream;
 // Define como os elementos da árvore serão organizados na memória.
 struct Node {
   SType key;  // Valor da chave do nó.
+  int copies;  // Número de cópia da chave na fila.
   Node* left;  // Ponteiro para o nó a esquerda.
   Node* right;  // Ponteiro para o nó a direita.
   Node* parent;  // Ponteiro para o nó acima.
@@ -46,62 +47,39 @@ class Teste : public testing::Test {
     return NULL;
   }
 
-  // Dado o nó x, retorna o sucessor de x, ou seja, o nó cuja chave é o menor
-  // elemento maior que a chave de x. Caso x seja o maior elemento da árvore,
-  // retorna o nó sentinela.
-  Node* next(Node* x) {
-    if (x->right != NULL) {
-      x = x->right;
-      while (x->left != NULL) {
-        x = x->left;
-      }
-      return x;
-    } else {
-      Node* y = x->parent;
-      while (y != NULL && x == y->right) {
-        x = y;
-        y = y->parent;
-      }
-      return y;
-    }
-  }
-
   // Retorna o número de elementos na fila de prioridades.
   int size(const priority_queue& s) {
     return s.size_;
   }
 
-  // Insere uma FOLHA z na árvore cujo nó raiz é 'root' de forma consistente.
-  // NOTA: Esta função NÃO aloca a memória para z.
-  void TreePush(Node*& root, Node* z) {
-    // Procura qual vai ser o pai y de z na árvore.
+  Node* Push(SType k, priority_queue* s) {
     Node* y = NULL;
-    Node* x = root;
+    Node* x = s->root_;
     while (x != NULL) {
       y = x;
-      if (z->key < x->key) {
+      if (k == x->key) {
+        x->copies++;
+        return x;
+      } else if (k < x->key) {
         x = x->left;
       } else {
         x = x->right;
       }
     }
-    // Insere z em baixo do nó y.
+    Node* z = new Node;
+    z->key = k;
+    z->copies = 1;
     z->parent = y;
+    z->left = z->right = NULL;
     if (y == NULL) {
-      root = z;  // z se torna a raiz da árvore.
+      s->root_ = z;
     } else if (z->key < y->key) {
       y->left = z;
     } else  {
       y->right = z;
     }
-  }
-
-  void Push(SType k, priority_queue* c) {
-    Node* z = new Node;
-    z->key = k;
-    z->left = z->right = z->parent = NULL;
-    TreePush(c->root_, z);
-    c->size_++;
+    s->size_++;
+    return z;
   }
 
   // Cria uma fila de prioridades com três elementos.
@@ -111,14 +89,26 @@ class Teste : public testing::Test {
     Push(x3, s);
   }
 
-  // Retorna uma string contendo os elementos da fila de prioridades s
-  // no formato [ c1 c2 c3 c4 ]
+  // Retorna uma string contendo os elementos da árvore no formato
+  // { <k1,v1> <k2,v2> ... <kn,vn> }.
+  string TreeToString(Node* root) {
+    if (root == NULL) {
+      return "";
+    } else {
+      stringstream out;
+      out << TreeToString(root->left);
+      for (int i = 0; i < root->copies; ++i) {
+        out << root->key << " ";
+      }
+      out << TreeToString(root->right);
+      return out.str();
+    }
+  }
+
   string ToString(priority_queue& s) {
     stringstream out;
     out << "[ ";
-    for (Node* i = begin(s); i != end(s); i = next(i)) {
-      out << i->key << " ";
-    }
+    out << TreeToString(s.root_);
     out << "]";
     return out.str();
   }
