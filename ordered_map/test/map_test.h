@@ -25,65 +25,12 @@ struct Node {
 // Classe base dos testes.
 class Teste : public testing::Test {
  protected:
-  // Retorna o valor da chave do elemento x;
-  SType key(Node* x) {
-    return x->key;
+  Node* root(map& s) {
+    return s.root_;
   }
 
-  // Retorna o valor do elemento x;
-  VType value(Node* x) {
-    return x->value;
-  }
-
-  // Retorna o número de elementos no conjunto.
   int size(map& s) {
     return s.size_;
-  }
-
-  // Insere uma FOLHA z na árvore cujo nó raiz é 'root' de forma consistente.
-  // NOTA: Esta função NÃO aloca a memória para z.
-  void TreeInsert(Node*& root, Node* z) {
-    // Procura qual vai ser o pai y de z na árvore.
-    Node* y = NULL;
-    Node* x = root;
-    while (x != NULL) {
-      y = x;
-      if (z->key < x->key) {
-        x = x->left;
-      } else {
-        x = x->right;
-      }
-    }
-    // Insere z em baixo do nó y.
-    z->parent = y;
-    if (y == NULL) {
-      root = z;  // z se torna a raiz da árvore.
-    } else if (z->key < y->key) {
-      y->left = z;
-    } else  {
-      y->right = z;
-    }
-  }
-
-  Node* insert(SType k, VType v, map* s) {
-    Node* z = new Node;
-    z->key = k;
-    z->value = v;
-    z->left = z->right = z->parent = NULL;
-    TreeInsert(s->root_, z);
-    s->size_++;
-    return z;
-  }
-
-  // Retorna um ponteiro para o primeiro elemento do conjunto.
-  Node* begin(const map& s) {
-    Node* x = s.root_;
-    if (x != NULL) {
-      while (x->left != NULL) {
-        x = x->left;
-      }
-    }
-    return x;
   }
 
   // Retorna um ponteiro para o elemento seguinte ao último elemento
@@ -92,66 +39,33 @@ class Teste : public testing::Test {
     return NULL;
   }
 
-  // Dado o nó x, retorna o sucessor de x, ou seja, o nó cuja chave é o menor
-  // elemento maior que a chave de x. Caso x seja o maior elemento da árvore,
-  // retorna o nó sentinela.
-  Node* next(Node* x, map& s) {
-    if (x->right != NULL) {
-      x = x->right;
-      while (x->left != NULL) {
-        x = x->left;
-      }
-      return x;
-    } else {
-      Node* y = x->parent;
-      while (y != NULL && x == y->right) {
-        x = y;
-        y = y->parent;
-      }
-      return y;
-    }
-  }
-
-  // Dado o nó x, retorna o antecessor de x, ou seja, o nó cuja chave é o menor
-  // elemento maior que a chave de x. Caso x seja o menor elemento da árvore,
-  // retorna o nó sentinela.
-  Node* prev(Node* x, map& s) {
-    if (x == end(s)) {
-      x = s.root_;
-      while (x->right != NULL) {
-        x = x->right;
-      }
-      return x;
-    } else if (x->left != NULL) {
-      x = x->left;
-      while (x->right != NULL) {
-        x = x->right;
-      }
-      return x;
-    } else {
-      Node* y = x->parent;
-      while (y != NULL && x == y->left) {
-        x = y;
-        y = y->parent;
-      }
-      return y;
-    }
-  }
-
-  // Retorna um ponteiro para o elemento k de s.
-  Node* find(SType k, map& s) {
-    Node* x = s.root_;
-    while (x != NULL && k != x->key) {
+  Node* insert(SType k, VType v, map* s) {
+    Node* y = NULL;
+    Node* x = s->root_;
+    while (x != NULL) {
+      y = x;
       if (k < x->key) {
         x = x->left;
       } else {
         x = x->right;
       }
     }
-    return x;
+    Node* z = new Node;
+    z->key = k;
+    z->value = v;
+    z->parent = y;
+    z->left = z->right = NULL;
+    if (y == NULL) {
+      s->root_ = z;
+    } else if (z->key < y->key) {
+      y->left = z;
+    } else  {
+      y->right = z;
+    }
+    s->size_++;
+    return z;
   }
 
-  // Retorna uma string contendo o par <chave,valor> do nó x.
   string ToString(Node* x) {
     stringstream out;
     if (x == NULL) {
@@ -162,14 +76,22 @@ class Teste : public testing::Test {
     return out.str();
   }
 
-  // Retorna uma string contendo os elementos do conjunto
-  // no formato { <k1,v1> <k2,v2> ... <kn,vn> } e ordenados do menor para o maior.
+  // Retorna uma string contendo os elementos da árvore no formato
+  // { <k1,v1> <k2,v2> ... <kn,vn> }.
+  string TreeToString(Node* root) {
+    if (root != NULL) {
+      stringstream out;
+      if (root->left != NULL) out << TreeToString(root->left);
+      out << ToString(root) << " ";
+      if (root->right != NULL) out << TreeToString(root->right);
+      return out.str();
+    }
+  }
+
   string ToString(map& s) {
     stringstream out;
     out << "{ ";
-    for (Node* i = begin(s); i != end(s); i = next(i, s)) {
-      out << ToString(i) << " ";
-    }
+    out << TreeToString(s.root_);
     out << "}";
     return out.str();
   }
@@ -177,17 +99,17 @@ class Teste : public testing::Test {
 
 TEST_F(Teste, Testa_construtor_vazio) {
   map atual;
+  ASSERT_EQ(end(atual), root(atual))
+    << "-------------------------------------------------------------------\n"
+    << "Erro no construtor: map::map()\n"
+    << "-------------------------------------------------------------------\n"
+    << " Em um conjunto vazio, root_ = NULL\n"
+    << "-------------------------------------------------------------------\n";
   ASSERT_EQ(0, size(atual))
     << "-------------------------------------------------------------------\n"
     << "Erro no construtor: map::map()\n"
     << "-------------------------------------------------------------------\n"
     << " Em um conjunto vazio, size_ = 0\n"
-    << "-------------------------------------------------------------------\n";
-  ASSERT_EQ(begin(atual), end(atual))
-    << "-------------------------------------------------------------------\n"
-    << "Erro no construtor: map::map()\n"
-    << "-------------------------------------------------------------------\n"
-    << " Em um conjunto vazio, map::begin() == map::end()\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -247,7 +169,7 @@ TEST_F(Teste, Testa_funcao_size_em_conjunto_nao_vazio) {
 
 TEST_F(Teste, Testa_funcao_begin_em_conjunto_vazio) {
   map s;
-  ASSERT_EQ(begin(s), s.begin())
+  ASSERT_EQ(end(s), s.begin())
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: Node* map::begin() \n"
       << "------------------------------------------------------------------\n"
@@ -258,9 +180,9 @@ TEST_F(Teste, Testa_funcao_begin_em_conjunto_vazio) {
 
 TEST_F(Teste, Testa_funcao_begin_em_conjunto_nao_vazio) {
   map s;
-  insert("A", 1, &s);
+  Node* a = insert("A", 1, &s);
   Node* atual = s.begin();
-  Node* esperado = begin(s);
+  Node* esperado = a;
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: Node* map::begin() \n"
@@ -299,10 +221,10 @@ TEST_F(Teste, Testa_funcao_end_em_conjunto_nao_vazio) {
 
 TEST_F(Teste, Testa_funcao_next_do_primeiro_elemento) {
   map s;
-  insert("A", 1, &s);
-  insert("B", 2, &s);
-  Node* atual = s.next(begin(s));
-  Node* esperado = next(begin(s), s);
+  Node* a = insert("A", 1, &s);
+  Node* b = insert("B", 2, &s);
+  Node* atual = s.next(a);
+  Node* esperado = b;
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: Node* map::next(Node* x) \n"
@@ -316,8 +238,8 @@ TEST_F(Teste, Testa_funcao_next_do_primeiro_elemento) {
 
 TEST_F(Teste, Testa_funcao_next_do_ultimo_elemento) {
   map s;
-  insert("A", 1, &s);
-  Node* atual = s.next(begin(s));
+  Node* a = insert("A", 1, &s);
+  Node* atual = s.next(a);
   Node* esperado = NULL;
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
@@ -332,9 +254,9 @@ TEST_F(Teste, Testa_funcao_next_do_ultimo_elemento) {
 
 TEST_F(Teste, Testa_funcao_next_com_o_proximo_abaixo) {
   map s;
-  Node* c = insert("C", 3, &s);
+  insert("C", 3, &s);
   Node* a = insert("A", 1, &s);
-  Node* d = insert("D", 4, &s);
+  insert("D", 4, &s);
   Node* b = insert("B", 2, &s);
   Node* atual = s.next(a);
   Node* esperado = b;
@@ -353,8 +275,8 @@ TEST_F(Teste, Testa_funcao_next_com_o_proximo_abaixo) {
 TEST_F(Teste, Testa_funcao_next_com_o_proximo_acima) {
   map s;
   Node* c = insert("C", 3, &s);
-  Node* a = insert("A", 1, &s);
-  Node* d = insert("D", 4, &s);
+  insert("A", 1, &s);
+  insert("D", 4, &s);
   Node* b = insert("B", 2, &s);
   Node* atual = s.next(b);
   Node* esperado = c;
@@ -372,9 +294,9 @@ TEST_F(Teste, Testa_funcao_next_com_o_proximo_acima) {
 
 TEST_F(Teste, Testa_funcao_prev_do_primeiro_elemento) {
   map s;
-  insert("A", 1, &s);
+  Node* a = insert("A", 1, &s);
   insert("B", 2, &s);
-  Node* atual = s.prev(begin(s));
+  Node* atual = s.prev(a);
   Node* esperado = end(s);
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
@@ -397,7 +319,7 @@ TEST_F(Teste, Testa_funcao_prev_do_end) {
       << "Erro na funcao: Node* map::prev(Node* x) \n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(s) << "\n"
-      << " \"s.next(s.end())\" retornou: ponteiro para "
+      << " \"s.prev(s.end())\" retornou: ponteiro para "
       << ToString(atual) << "\n"
       << " Valor esperado: ponteiro para " << ToString(esperado) << "\n"
       << "------------------------------------------------------------------\n";
@@ -406,17 +328,17 @@ TEST_F(Teste, Testa_funcao_prev_do_end) {
 TEST_F(Teste, Testa_funcao_prev_com_o_anterior_abaixo) {
   map s;
   Node* c = insert("C", 3, &s);
-  Node* a = insert("A", 1, &s);
-  Node* d = insert("D", 4, &s);
+  insert("A", 1, &s);
+  insert("D", 4, &s);
   Node* b = insert("B", 2, &s);
   Node* atual = s.prev(c);
   Node* esperado = b;
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* map::next(Node* x) \n"
+      << "Erro na funcao: Node* map::prev(Node* x) \n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(s) << "\n"
-      << " \"s.next(s.find('C'))\" retornou: ponteiro para "
+      << " \"s.prev(s.find('C'))\" retornou: ponteiro para "
       << ToString(atual) << "\n"
       << " Valor esperado: ponteiro para " << ToString(esperado) << "\n"
       << " DICA: Verifique o caso onde o proximo esta abaixo de 'x'.\n"
@@ -425,18 +347,18 @@ TEST_F(Teste, Testa_funcao_prev_com_o_anterior_abaixo) {
 
 TEST_F(Teste, Testa_funcao_prev_com_o_proximo_acima) {
   map s;
-  Node* c = insert("C", 3, &s);
+  insert("C", 3, &s);
   Node* a = insert("A", 1, &s);
-  Node* d = insert("D", 4, &s);
+  insert("D", 4, &s);
   Node* b = insert("B", 2, &s);
   Node* atual = s.prev(b);
   Node* esperado = a;
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* map::next(Node* x) \n"
+      << "Erro na funcao: Node* map::prev(Node* x) \n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(s) << "\n"
-      << " \"s.next(s.find('B'))\" retornou: ponteiro para "
+      << " \"s.prev(s.find('B'))\" retornou: ponteiro para "
       << ToString(atual) << "\n"
       << " Valor esperado: ponteiro para " << ToString(esperado) << "\n"
       << " DICA: Verifique o caso onde o proximo esta abaixo de 'x'.\n"
@@ -445,9 +367,9 @@ TEST_F(Teste, Testa_funcao_prev_com_o_proximo_acima) {
 
 TEST_F(Teste, Testa_funcao_find_de_elemento_no_conjunto) {
   map s;
-  Node* c = insert("C", 3, &s);
-  Node* a = insert("A", 1, &s);
-  Node* d = insert("D", 4, &s);
+  insert("C", 3, &s);
+  insert("A", 1, &s);
+  insert("D", 4, &s);
   Node* b = insert("B", 2, &s);
   Node* atual = s.find("B");
   Node* esperado = b;
@@ -463,10 +385,10 @@ TEST_F(Teste, Testa_funcao_find_de_elemento_no_conjunto) {
 
 TEST_F(Teste, Testa_funcao_find_de_elemento_fora_do_conjunto) {
   map s;
-  Node* c = insert("C", 3, &s);
-  Node* a = insert("A", 1, &s);
-  Node* d = insert("D", 4, &s);
-  Node* b = insert("B", 2, &s);
+  insert("C", 3, &s);
+  insert("A", 1, &s);
+  insert("D", 4, &s);
+  insert("B", 2, &s);
   Node* atual = s.find("X");
   Node* esperado = end(s);
   ASSERT_EQ(esperado, atual)
