@@ -1,22 +1,33 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#include <unordered_set>
+#include "unordered_map/src/unordered_map.h"
 
-#include "unordered_map_with_set/src/unordered_map.h"
-#include "unordered_map_with_set/src/set.h"
+#include "ordered_map/src/map.h"
 
 // Implementa um nó da lista encadeada.
 struct Node {
-  KType key;  // Chave do nó.
-  SType value; // Valor do nó
+  SType key;  // Chave do nó.
+  VType value; // Valor do nó
   Node* prev;  // Ponteiro para o nó anterior.
   Node* next;  // Ponteiro para o próximo nó.
 };
 
+int hash(int key, int m) {
+  return key % m;
+}
+
+int hash(std::string key, int m) {
+  int hashVal = 0;
+  for (int i = 0; i < key.length(); i++) {
+    hashVal = 37 * hashVal + key[i];
+  }
+  return hashVal % m;
+ }
+
 unordered_map::unordered_map() {
   size_ = 0;  // Inicialmente, o conjunto não tem elementos.
   capacity_ = 1024;  // Inicia com uma tabela com 2^10 linhas.
-  table_ = new set[capacity_];
+  table_ = new map[capacity_];
 }
 
 // Retorna o primeiro elemento do primeiro subconjunto não vazio.
@@ -39,7 +50,7 @@ Node* unordered_map::end() {
 // seguinte a x neste subconjunto. Caso contrário,
 // retorna o primeiro elemento do próximo subconjunto não vazio da tabela.
 Node* unordered_map::next(Node* x) {
-  int j = hash(x->key);
+  int j = hash(x->key, capacity_);
   if (x->next != table_[j].end()) {
     return x->next;
   } else {
@@ -55,9 +66,9 @@ Node* unordered_map::next(Node* x) {
 // Se x não é o primeiro elemento do subconjunto que o contém,
 // retorna o elemento anterior a x neste subconjunto. Caso contrário,
 // retorna o último elemento do primeiro subconjunto não vazio anterior
-// ao subconjunto de x .
+// ao subconjunto de x.
 Node* unordered_map::prev(Node* x) {
-  int j = hash(x->key);
+  int j = hash(x->key, capacity_);
   if (x != table_[j].begin()) {
     return x->prev;
   } else {
@@ -70,15 +81,15 @@ Node* unordered_map::prev(Node* x) {
   }
 }
 
-SType unordered_map::operator[](KType x) {
+VType& unordered_map::operator[](SType x) {
   return find(x)->value;
 }
 
-KType unordered_map::key(Node* x) {
+SType unordered_map::key(Node* x) {
   return x->key;
 }
 
-SType unordered_map::value(Node* x) {
+VType unordered_map::value(Node* x) {
   return x->value;
 }
 
@@ -90,8 +101,8 @@ int unordered_map::size() {
   return size_;
 }
 
-Node* unordered_map::find(KType k) {
-  int j = hash(k);
+Node* unordered_map::find(SType k) {
+  int j = hash(k, capacity_);
   Node* x = table_[j].find(k);
   if (x != table_[j].end()) {
     return x;
@@ -100,11 +111,11 @@ Node* unordered_map::find(KType k) {
   }
 }
 
-void unordered_map::insert(KType k, SType v) {
+void unordered_map::insert(SType k, VType v) {
   if (size_ == capacity_) {
     rehash(capacity_ * 2);
   }
-  int j = hash(k);
+  int j = hash(k, capacity_);
   Node* x = table_[j].find(k);
   if (x == table_[j].end()) {
     table_[j].insert(k,v);
@@ -112,8 +123,8 @@ void unordered_map::insert(KType k, SType v) {
   }
 }
 
-void unordered_map::erase(KType k) {
-  int j = hash(k);
+void unordered_map::erase(SType k) {
+  int j = hash(k, capacity_);
   Node* x = table_[j].find(k);
   if (x != table_[j].end()) {
     table_[j].erase(k);
@@ -129,34 +140,29 @@ void unordered_map::clear() {
 }
 
 void unordered_map::operator=(unordered_map& s) {
-  for (int i = 0; i < capacity_; i++) {
-    table_[i] = s.table_[i];
+  clear();
+  for (Node* i = s.begin(); i != s.end(); i = s.next(i)) {
+    insert(i->key, i->value);
   }
-  size_ = s.size_;
 }
 
 unordered_map::~unordered_map() {
   delete [] table_;
 }
 
-int unordered_map::hash(KType k) {
-  std::unordered_set<KType>::hasher fh;
-  return fh(k) % capacity_;
-}
-
 void unordered_map::rehash(int m) {
   // Armazena a tabela atual.
-  set* old_table = table_;
+  map* old_table = table_;
   int old_capacity = capacity_;
   // Cria uma nova tabela vazia com 'm' linhas.
-  table_ = new set[m];
+  table_ = new map[m];
   capacity_ = m;
   // Insere todos os elementos na nova tabela.
   for (int i = 0; i < old_capacity; i++) {
     for (Node* j = old_table[i].begin();
          j != old_table[i].end();
          j = old_table[i].next(j)) {
-      insert(old_table[i][j], value(j));
+      insert(j->key, j->value);
     }
   }
   delete [] old_table;

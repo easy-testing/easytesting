@@ -131,10 +131,10 @@ void unordered_set::clear() {
 }
 
 void unordered_set::operator=(unordered_set& s) {
-  for (int i = 0; i < capacity_; i++) {
-    table_[i] = s.table_[i];
+  clear();
+  for (Node* i = s.begin(); i != s.end(); i = s.next(i)) {
+    insert(i->key);
   }
-  size_ = s.size_;
 }
 
 unordered_set::~unordered_set() {
