@@ -11,9 +11,17 @@ struct Node {
   Node* next;  // Ponteiro para o próximo nó.
 };
 
-int hash(SType k, int m) {
-  return m - 1;
+int hash(int key, int m) {
+  return key % m;
 }
+
+int hash(std::string key, int m) {
+  int hashVal = 0;
+  for (int i = 0; i < key.length(); i++) {
+    hashVal = 37 * hashVal + key[i];
+  }
+  return hashVal % m;
+ }
 
 unordered_set::unordered_set() {
   size_ = 0;  // Inicialmente, o conjunto não tem elementos.
