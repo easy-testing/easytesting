@@ -13,11 +13,8 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-std=c++0x" />
 					<Add option="-g" />
 					<Add option="-TType=std::string" />
-					<Add option="-DKType=std::string" />
-					<Add option="-DSType=int" />
 				</Compiler>
 			</Target>
 			<Target title="Main">
@@ -27,10 +24,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add option="-std=c++0x" />
 					<Add option="-TType=std::string" />
-					<Add option="-DKType=std::string" />
-					<Add option="-DSType=int" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -38,14 +32,17 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-std=c++0x" />
 			<Add option="-Wall" />
 			<Add option="-fexceptions -fpermissive" />
+			<Add option="-DSType=std::string" />
+			<Add option="-DVType=int" />
 			<Add directory=".." />
 			<Add directory="." />
 		</Compiler>
 		<Unit filename="../gtest/gtest.cc" />
 		<Unit filename="../gtest/gtest.h" />
+		<Unit filename="../ordered_set_with_linked_list/src/set.cc" />
+		<Unit filename="../ordered_set_with_linked_list/src/set.h" />
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
 		</Unit>

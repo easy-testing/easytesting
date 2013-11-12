@@ -15,8 +15,8 @@ int hash(SType k, int m);
 
 // Implementa um conjunto utilizando tabela hash.
 // NOTA1: O cálculo da complexidade das funções assume que a função de hash
-// utilizada é uniforme simples e que capacity_ > size_. Entretanto,
-// a primeira condição não é garantido nesta implentação.
+// utilizada é uniforme simples e que capacity_ >= size_. Entretanto,
+// a primeira condição não é garantida nesta implentação.
 // Denota-se n = size_ e m = capacity_.
 // NOTA2: O tipo dos elementos contidos no conjunto é definido por SType.
 // O valor de SType é um #define declarado em tempo de compilação.

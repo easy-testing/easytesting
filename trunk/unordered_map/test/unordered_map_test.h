@@ -10,15 +10,15 @@
 #include <string>
 
 #include "gtest/gtest.h"
-#include "unordered_map_with_set/src/unordered_map.h"
+#include "unordered_map/src/unordered_map.h"
 
 using std::string;
 using std::stringstream;
 
 // Implementa um nó da lista encadeada.
 struct Node {
-  KType key;  // Chave do nó.
-  SType value; // Valor do nó
+  SType key;  // Chave do nó.
+  VType value; // Valor do nó
   Node* prev;  // Ponteiro para o nó anterior.
   Node* next;  // Ponteiro para o próximo nó.
 };
@@ -27,7 +27,7 @@ struct Node {
 class Teste : public testing::Test {
  protected:
   // Retorna o valor da chave do elemento x de s;
-  KType key(Node* x, unordered_map& s) {
+  SType key(Node* x, unordered_map& s) {
     if (x == NULL) {
       return "NULL";
     } else if (x == end(s)) {
@@ -44,7 +44,7 @@ class Teste : public testing::Test {
 
   // Insere k em s.
   // Precondição: k não está em s.
-  void insert(KType k, SType v, unordered_map* s) {
+  void insert(SType k, VType v, unordered_map* s) {
     int j = s->hash(k);
     s->table_[j].insert(k,v);
     s->size_++;
@@ -96,7 +96,7 @@ class Teste : public testing::Test {
   }
 
   // Retorna um ponteiro para o elemento k de s.
-  Node* find(KType k, unordered_map& s) {
+  Node* find(SType k, unordered_map& s) {
     // Procura pelo elemento k na lista onde k pode estar.
     int j = s.hash(k);
     for (Node* i = s.table_[j].begin();
@@ -288,8 +288,8 @@ TEST_F(Teste, Testa_funcao_next_com_o_proximo_acima) {
   insert("1", 1, &s);
   insert("4", 4, &s);
   insert("2", 2, &s);
-  KType atual = key(next(find("2", s), s), s);
-  KType esperado = "3";
+  SType atual = key(next(find("2", s), s), s);
+  SType esperado = "3";
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: Node* unordered_map::next(Node* x) \n"
@@ -307,8 +307,8 @@ TEST_F(Teste, Testa_funcao_next_com_o_proximo_abaixo) {
   insert("1", 1, &s);
   insert("4", 4, &s);
   insert("2", 2, &s);
-  KType atual = key(next(find("2", s), s), s);
-  KType esperado = "3";
+  SType atual = key(next(find("2", s), s), s);
+  SType esperado = "3";
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: Node* unordered_map::next(Node* x) \n"
@@ -376,8 +376,8 @@ TEST_F(Teste, Testa_funcao_prev_com_o_anterior_acima) {
   insert("1", 1, &s);
   insert("4", 4, &s);
   insert("3", 3, &s);
-  KType atual = key(prev(find("3", s), s), s);
-  KType esperado = "2";
+  SType atual = key(prev(find("3", s), s), s);
+  SType esperado = "2";
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: Node* unordered_map::prev(Node* x) \n"
@@ -395,8 +395,8 @@ TEST_F(Teste, Testa_funcao_prev_com_o_anterior_abaixo) {
   insert("1", 1, &s);
   insert("4", 4, &s);
   insert("2", 2, &s);
-  KType atual = key(prev(find("3", s), s), s);
-  KType esperado = "2";
+  SType atual = key(prev(find("3", s), s), s);
+  SType esperado = "2";
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: Node* unordered_map::prev(Node* x) \n"
@@ -411,11 +411,11 @@ TEST_F(Teste, Testa_funcao_prev_com_o_anterior_abaixo) {
 TEST_F(Teste, Testa_operador_at) {
   unordered_map s;
   insert("1", 1, &s);
-  SType atual = s[key(begin(s), s)];
-  SType esperado = 1;
+  VType atual = s[key(begin(s), s)];
+  VType esperado = 1;
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: KType& unordered_map::operator[](Node* x)\n"
+    << "Erro na funcao: SType& unordered_map::operator[](Node* x)\n"
     << "-------------------------------------------------------------------\n"
     << " s = " << ToString(s) << "\n"
     << " \"s[s.begin()]\" retornou: " << atual << "\n"
@@ -425,11 +425,11 @@ TEST_F(Teste, Testa_operador_at) {
 
 TEST_F(Teste, Testa_funcao_find_em_conjunto_vazio) {
   unordered_map s;
-  KType atual = key(s.find("3"), s);
-  KType esperado = key(s.end(), s);
+  SType atual = key(s.find("3"), s);
+  SType esperado = key(s.end(), s);
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: Node* unordered_map::find(KType k) \n"
+    << "Erro na funcao: Node* unordered_map::find(SType k) \n"
     << "-------------------------------------------------------------------\n"
     << " s = " << ToString(s) << "\n"
     << " \"s.find(3)\" retornou: um ponteiro para " << atual << "\n"
@@ -443,11 +443,11 @@ TEST_F(Teste, Testa_funcao_find_retornando_true) {
   insert("1", 1, &s);
   insert("4", 4, &s);
   insert("3", 3, &s);
-  KType atual = key(s.find("3"), s);
-  KType esperado = "3";
+  SType atual = key(s.find("3"), s);
+  SType esperado = "3";
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: Node* unordered_map::find(KType k) \n"
+    << "Erro na funcao: Node* unordered_map::find(SType k) \n"
     << "-------------------------------------------------------------------\n"
     << " s = " << ToString(s) << "\n"
     << " \"s.find(3)\" retornou: um ponteiro para " << atual << "\n"
@@ -461,11 +461,11 @@ TEST_F(Teste, Testa_funcao_find_retornando_false) {
   insert("1", 1, &s);
   insert("5", 5, &s);
   insert("4", 4, &s);
-  KType atual = key(s.find("3"), s);
-  KType esperado = key(s.end(), s);
+  SType atual = key(s.find("3"), s);
+  SType esperado = key(s.end(), s);
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: Node* unordered_map::find(KType k) \n"
+    << "Erro na funcao: Node* unordered_map::find(SType k) \n"
     << "-------------------------------------------------------------------\n"
     << " s = " << ToString(s) << "\n"
     << " \"s.find(3)\" retornou: um ponteiro para " << atual << "\n"
@@ -480,7 +480,7 @@ TEST_F(Teste, Testa_incremento_do_size_na_funcao_insert) {
   int esperado = 1;
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::insert(KType k) *\n"
+      << "Erro na funcao: void unordered_map::insert(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = { } \n"
       << " \"s.insert(9)\" resultou em: s.size() == " << atual << "\n"
@@ -495,7 +495,7 @@ TEST_F(Teste, Testa_funcao_insert_em_conjunto_vazio) {
   string esperado = "{ 9 }";
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::insert(KType k) *\n"
+      << "Erro na funcao: void unordered_map::insert(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = { } \n"
       << " \"s.insert(9)\" resultou em: s = " << atual << "\n"
@@ -513,7 +513,7 @@ TEST_F(Teste, Testa_funcao_insert_em_conjunto_nao_vazio) {
   string esperado("{ 1 2 3 4 }");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::insert(KType k) *\n"
+      << "Erro na funcao: void unordered_map::insert(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = { 1 3 4 } \n"
       << " \"s.insert(2)\" resultou em: s = " << atual << "\n"
@@ -531,7 +531,7 @@ TEST_F(Teste, Testa_funcao_insert_com_elemento_repetido) {
   string esperado("{ 1 2 3 }");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::insert(KType k) *\n"
+      << "Erro na funcao: void unordered_map::insert(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = { 1 2 3 } \n"
       << " \"s.insert(2)\" resultou em: s = " << atual << "\n"
@@ -547,7 +547,7 @@ TEST_F(Teste, Testa_decremento_do_size_na_funcao_erase) {
   int esperado = 0;
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::insert(KType k) *\n"
+      << "Erro na funcao: void unordered_map::insert(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = { 9 } \n"
       << " \"s.erase(9)\" resultou em: s.size() == " << atual << "\n"
@@ -563,7 +563,7 @@ TEST_F(Teste, Testa_funcao_erase_em_conjunto_unitario) {
   string esperado = "{ }";
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::erase(KType k) *\n"
+      << "Erro na funcao: void unordered_map::erase(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = { 9 } \n"
       << " \"s.erase(9)\" resultou em: s = " << atual << "\n"
@@ -582,7 +582,7 @@ TEST_F(Teste, Testa_funcao_erase_em_conjunto_com_mais_de_um_elemento) {
   string esperado("{ 1 3 4 }");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::erase(KType k) *\n"
+      << "Erro na funcao: void unordered_map::erase(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = { 1 2 3 4} \n"
       << " \"s.erase(2)\" resultou em: s = " << atual << "\n"
@@ -601,7 +601,7 @@ TEST_F(Teste, Testa_erase_de_elemento_que_nao_pertence_ao_conjunto) {
   string esperado("{ 1 2 3 4 }");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::erase(KType k) *\n"
+      << "Erro na funcao: void unordered_map::erase(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = { 1 2 3 4 } \n"
       << " \"s.erase(5)\" resultou em: s = " << atual << "\n"
@@ -619,7 +619,7 @@ TEST_F(Teste, Testa_funcao_erase_em_no_sem_filhos) {
   string esperado("{ 1 2 }");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::erase(KType k) *\n"
+      << "Erro na funcao: void unordered_map::erase(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = { 1 2 3 } \n"
       << " \"s.erase(3)\" resultou em: s = " << atual << "\n"
@@ -638,7 +638,7 @@ TEST_F(Teste, Testa_funcao_erase_em_no_sem_subarvore_direita) {
   string esperado("{ 1 }");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::erase(KType k) *\n"
+      << "Erro na funcao: void unordered_map::erase(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = { 1 2 } \n"
       << " \"s.erase(2)\" resultou em: s = " << atual << "\n"
@@ -657,7 +657,7 @@ TEST_F(Teste, Testa_funcao_erase_em_no_sem_subarvore_esquerda) {
   string esperado("{ 3 }");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::erase(KType k) *\n"
+      << "Erro na funcao: void unordered_map::erase(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = { 1 2 } \n"
       << " \"s.erase(2)\" resultou em: s = " << atual << "\n"
@@ -678,7 +678,7 @@ TEST_F(Teste, Testa_funcao_erase_em_no_com_os_dois_filhos) {
   string esperado("{ 1 3 4 }");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::erase(KType k) *\n"
+      << "Erro na funcao: void unordered_map::erase(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = { 1 2 3 4} \n"
       << " \"s.erase(2)\" resultou em: s = " << atual << "\n"
