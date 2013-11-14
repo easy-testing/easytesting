@@ -45,8 +45,8 @@ class map {
   Node* next(Node* x);
 
   // Retorna o elemento anterior ao indicado por x no conjunto em O(log n).
-  // Se x aponta para o primeiro elemento do conjunto, retorna map::end();
-  // Precondição: x aponta para um dos elementos do cojunto, ou para map::end().
+  // Nota: x pode apontar para map::end().
+  // Precondição: existe pelo menos um elemento do conjunto antes de x.
   Node* prev(Node* x);
 
   // Retorna uma referência ao valor associado a chave k em O(log n).

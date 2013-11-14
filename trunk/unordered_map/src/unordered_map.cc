@@ -54,6 +54,8 @@ Node* unordered_map::next(Node* x) {
   if (x->next != table_[j].end()) {
     return x->next;
   } else {
+    // Retorna o primeiro elemento da primeira linha da tabela não vazia cujo
+    // índice é maior que j.
     for (int i = j + 1; i < capacity_; i++) {
       if (!table_[i].empty()) {
         return table_[i].begin();
@@ -68,16 +70,22 @@ Node* unordered_map::next(Node* x) {
 // retorna o último elemento do primeiro subconjunto não vazio anterior
 // ao subconjunto de x.
 Node* unordered_map::prev(Node* x) {
-  int j = hash(x->key, capacity_);
-  if (x != table_[j].begin()) {
-    return x->prev;
+  int j;
+  if (x == end()) {
+    j = capacity_;
+    printf("%d\n", j);
   } else {
-    for (int i = j - 1; i >= 0; i--) {
-      if (!table_[i].empty()) {
-        return table_[i].end()->prev;
-      }
+    j = hash(x->key, capacity_);
+    if (x != table_[j].begin()) {
+      return x->prev;
     }
-    return end();
+  }
+  // Retorna o último elemento da primeira linha da tabela não vazia cujo
+  // índice é menor que j.
+  for (int i = j - 1; i >= 0; i--) {
+    if (!table_[i].empty()) {
+      return table_[i].prev(table_[i].end());
+    }
   }
 }
 
@@ -117,7 +125,9 @@ void unordered_map::insert(SType k, VType v) {
   }
   int j = hash(k, capacity_);
   Node* x = table_[j].find(k);
-  if (x == table_[j].end()) {
+  if (x != table_[j].end()) {
+    x->value = v;
+  } else {
     table_[j].insert(k,v);
     size_++;
   }
@@ -151,7 +161,7 @@ unordered_map::~unordered_map() {
 }
 
 void unordered_map::rehash(int m) {
-  // Armazena a tabela atual.
+  // Armazena temporariamente a tabela atual.
   map* old_table = table_;
   int old_capacity = capacity_;
   // Cria uma nova tabela vazia com 'm' linhas.

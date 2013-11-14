@@ -1,26 +1,22 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 //
-// Lista sobre Maps
+// Lista sobre conjuntos associativos
 //
 // Questão 1.
+// Implemente em map.h e map.cc o TAD map, utilizando árvores binárias de busca.
+//
+// Questão 2.
 // Leia um arquivo contendo apenas palavras, e imprima as palavras em ordem
 // crescente de lexicografia, seguidas do número de ocorrências da palavra no
 // texto.
-//
-// Exemplo de entrada:
-// lar doce lar
-//
-// Exemplo de saída:
-// doce 1
-// lar 2
 //
 // Você pode assumir que os arquivos contém apenas caracteres que são letras
 // (a-z e A-Z), números (0-9), e caracteres de pontuação (",", ".", "?", etc.).
 // Você pode assumir que o texto não tem acentos nem "ç".
 // Após ler cada palavra, você deve (i) transformar todas as letras maiúsculas em
 // minúsculas e (ii) apagar todos os caracteres que não são letras ou números. Por
-// exemplo, depois de ler "Guarda-Chuva?", você deve transformá-la em "guardachuva",
-// antes de inseri-la no índice invertido. Desta forma, a mesma palavra apresentada com
+// exemplo, depois de ler "Guarda-Chuva?", você deve transformá-la em "guardachuva",s
+// antes de inseri-la no conjunto. Desta forma, a mesma palavra apresentada com
 // letras minúsculas ou maiúsculas, ou que estão adjacentes a pontuação, não serão
 // diferenciadas. Por exemplo, para o texto:
 //
@@ -65,8 +61,8 @@ using std::string;
 
 string CleanString(string s) {
   string result;
-  for ( int i=0;i<(int)s.length();i++ ) {
-    if ( isalnum(s[i]) ) {
+  for (int i = 0; i < (int) s.length(); i++) {
+    if (isalnum(s[i])) {
       result.push_back(tolower(s[i]));
     }
   }
@@ -81,14 +77,14 @@ int main() {
   while (fin >> str) {
     str = CleanString(str);
     word = words.find(str);
-    if ( word == words.end() ) {
+    if (word == words.end() ) {
       words.insert(str, 1);
     } else {
-      words.insert(str, words.value(word)+1);
+      words[str] = words[str] + 1;
     }
   }
   for (Node* i = words.begin(); i != words.end(); i = words.next(i)) {
-    std::cout << words.key(i) << ' ' << words.value(i) << std::endl;
+    cout << words.key(i) << ' ' << words.value(i) << endl;
   }
   return 0;
 }
