@@ -79,7 +79,9 @@ class Teste : public testing::Test {
   // Retorna uma string contendo os elementos da árvore no formato
   // { <k1,v1> <k2,v2> ... <kn,vn> }.
   string TreeToString(Node* root) {
-    if (root != NULL) {
+    if (root == NULL) {
+      return "";
+    } else {
       stringstream out;
       if (root->left != NULL) out << TreeToString(root->left);
       out << ToString(root) << " ";
@@ -292,23 +294,6 @@ TEST_F(Teste, Testa_funcao_next_com_o_proximo_acima) {
       << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_funcao_prev_do_primeiro_elemento) {
-  map s;
-  Node* a = insert("A", 1, &s);
-  insert("B", 2, &s);
-  Node* atual = s.prev(a);
-  Node* esperado = end(s);
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* map::prev(Node* x) \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(s) << "\n"
-      << " \"s.prev(s.begin())\" retornou: ponteiro para "
-      << ToString(atual) << "\n"
-      << " Valor esperado: ponteiro para " << ToString(esperado) << "\n"
-      << "------------------------------------------------------------------\n";
-}
-
 TEST_F(Teste, Testa_funcao_prev_do_end) {
   map s;
   Node* a = insert("A", 1, &s);
@@ -401,7 +386,7 @@ TEST_F(Teste, Testa_funcao_find_de_elemento_fora_do_conjunto) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_operador_at_para_atribuicao) {
+TEST_F(Teste, Testa_operador_at) {
   map atual;
   insert("A", 1, &atual);
   insert("B", 2, &atual);
