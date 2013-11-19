@@ -7,7 +7,7 @@
 // Implementa um nó da lista encadeada.
 struct Node {
   SType key;  // Chave do nó.
-  VType value; // Valor do nó
+  VType value; // Valor do nó.
   Node* prev;  // Ponteiro para o nó anterior.
   Node* next;  // Ponteiro para o próximo nó.
 };
@@ -73,7 +73,6 @@ Node* unordered_map::prev(Node* x) {
   int j;
   if (x == end()) {
     j = capacity_;
-    printf("%d\n", j);
   } else {
     j = hash(x->key, capacity_);
     if (x != table_[j].begin()) {
