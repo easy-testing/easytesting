@@ -35,7 +35,7 @@ void Imprimir(deque& d) {
   cout << "]" << endl;
 }
 
-// Concatena dois deques ordenados q1 e q2 em um único deque ordenado r.
+// Mescla dois deques ordenados q1 e q2 em um único deque ordenado r.
 void Merge(deque& q1, deque& q2, deque* r) {
   int n = q1.size() + q2.size();
   for (int i = 0; i < n; i++) {
