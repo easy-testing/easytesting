@@ -61,7 +61,10 @@ void deque::pop_front() {
 }
 
 void deque::push_back(LType k) {
-  Node* k_node = new Node({k, end_->prev, end_});
+  Node* k_node = new Node;
+  k_node->key = k;
+  k_node->prev = end_->prev;
+  k_node->next = end_;
   end_->prev->next = k_node;
   end_->prev = k_node;
   size_++;
