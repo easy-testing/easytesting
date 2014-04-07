@@ -12,7 +12,7 @@
 
 #include <iostream>
 
-#include "iteracao/src/iteracao.h"
+#include "repeticao/src/repeticao.h"
 
 using namespace std;
 
