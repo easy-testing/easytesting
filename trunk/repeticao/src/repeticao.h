@@ -23,9 +23,11 @@ int mmc(int a, int b);
 int fib(int n);
 
 // Retorna o resto da divisão inteira de a por b.
+// Você não deve usar os operadores % e / para implementar este funcão.
 int resto(int a, int b);
 
 // Retorna o resultado da divisão inteira de a por b.
+// Você não deve usar os operadores % e / para implementar este funcão.
 int div_(int a, int b);
 
 // Retorna a soma dos digitos de um inteiro positivo n.
