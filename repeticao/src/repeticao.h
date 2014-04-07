@@ -1,7 +1,7 @@
 // Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_ITERACAO_SRC_ITERACAO_H_
-#define TRUNK_ITERACAO_SRC_ITERACAO_H_
+#ifndef TRUNK_REPETICAO_SRC_REPETICAO_H_
+#define TRUNK_REPETICAO_SRC_REPETICAO_H_
 
 // Retorna o valor do fatorial de n.
 int fat(int n);

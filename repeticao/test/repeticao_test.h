@@ -1,13 +1,13 @@
 // copyright 2010 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_ITERACAO_TEST_ITERACAO_TEST_H_
-#define TRUNK_ITERACAO_TEST_ITERACAO_TEST_H_
+#ifndef TRUNK_REPETICAO_TEST_REPETICAO_TEST_H_
+#define TRUNK_REPETICAO_TEST_REPETICAO_TEST_H_
 
 #include <sstream>
 #include <string>
 
 #include "gtest/gtest.h"
-#include "iteracao/src/iteracao.h"
+#include "repeticao/src/repeticao.h"
 
 using std::string;
 using std::stringstream;
@@ -223,4 +223,4 @@ TEST(Teste, Testa_da_Soma_dos_digitos) {
 }
 }  // end namespace
 
-#endif  // TRUNK_ITERACAO_TEST_ITERACAO_TEST_H_
+#endif  // TRUNK_REPETICAO_TEST_REPETICAO_TEST_H_
