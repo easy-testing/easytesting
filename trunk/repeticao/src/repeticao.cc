@@ -81,10 +81,3 @@ int dig(int n) {
   return soma;
 }
 
-double sqrt_(double n) {
-  double x = n;
-  while (fabs(x * x - n) >= 0.001) {
-    x = x - (x * x - n) / (2 * x);
-  }
-  return x;
-}
