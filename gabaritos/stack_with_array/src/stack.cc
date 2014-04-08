@@ -15,33 +15,43 @@ void stack::reserve(int m) {
 }
 
 stack::stack() {
-  // TODO.
+  size_ = 0;
+  capacity_ = 16;
+  array_ = new SType[capacity_];
 }
 
 bool stack::empty() {
-  return false;  // TODO.
+  return size_ == 0;
 }
 
 int stack::size() {
-  return 0;  // TODO.
+  return size_;
 }
 
 SType stack::top() {
-  return SType();  // TODO.
+  return array_[size_ - 1];
 }
 
 void stack::push(SType k) {
-  // TODO.
+  if (size_ == capacity_) {
+    reserve(2 * capacity_);
+  }
+  array_[size_] = k;
+  size_++;
 }
 
 void stack::pop() {
-  // TODO.
+  size_--;
 }
 
 void stack::operator=(stack& p) {
-  // TODO.
+  reserve(p.capacity_);
+  size_ = p.size_;
+  for (int i = 0; i < p.size_; i++) {
+    array_[i] = p.array_[i];
+  }
 }
 
 stack::~stack() {
-  // TODO.
+  delete [] array_;
 }
