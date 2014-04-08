@@ -1,6 +1,6 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#include "stack/src/stack.h"
+#include "stack_with_linked_list/src/stack.h"
 
 // Implementa um nó da lista encadeada.
 struct Node {
