@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Trabalho Prático 1}
+%\author{feliperviegas }
+\date{April 2014}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\begin{document}
+
+\maketitle
+
+\section{Descrição do Problema}
+    Neste trabalho aplicaremos os conceitos de Programação de Computadores para implementar um jogo baseado em laçamento de projéteis. O jogo funciona da seguinte maneira, dois jogadores são desafiados a lançar objetos uns aos outros e aquele que acertar o seu oponente primeiro vence. 
+    
+    Para descobrir se o jogador conseguiu acertar o seu oponente vamos utilizar a fórmula~\ref{eq} de lançamento descrita abaixo. Os objetos sempre são lançados a partir da posição do jogador. 
+    
+    Os dois jogadores nunca jogam simultaneamente, cada jogador tem a sua chance para acertar o seu oponente. Para lançar o objeto, o jogador deve dizer a velocidade inicial do lançamento e o ângulo de inclinação. Se o jogador acertar o chão, ele passa a vez, o segundo jogador tem a sua chance e assim por diante. O jogo só termina quando um jogador acertar o adversário. 
+
+\section{Lançamento Inclinado}
+    O lançamento inclinado estuda o movimento de um corpo no vácuo, cuja trajetória de lançamento forma um ângulo em relação à horizontal, como podemos observar na Figura~\ref{fig1}. Neste trabalho, estamos interessados em descobrir qual a distância máxima percorrida pelo objeto, dado a sua velocidade inicial e o ângulo de lançamento, fórmula~\ref{eq}.
+
+\begin{center}
+\includegraphics[scale=0.6]{img/fig.png}
+\label{fig1}
+\end{center}
+    
+\begin{equation}
+d\_{max} = \frac{v_o^2 \times sen(2\times \theta)}{g}
+\label{eq}
+\end{equation}
+
+Onde $v_o$ é a velocidade inicial do objeto no tempo zero, $\theta$ é o ângulo de lançamento e $g$ é a aceleração da gravidade, vamos considerar a aceleração ao nível do mar ($g = 9.80665 m/s^2$).
+
+
+
+\section{Etapas do Trabalho}
+Você deve ler de um arquivo de texto contendo o cenário inicial do jogo. Este arquivo deve possuir:
+\begin{itemize}
+    \item 100 caracteres.
+    \item Caracteres permitidos são letras (maiúsculas ou minúsculas), para representar os jogadores e $\_$ para representar o chão.
+    \item Os dois jogadores podem estar organizados de qualquer forma, não existe restrição para a posição dos jogadores.
+\end{itemize}
+    %40 caracteres
+    Exemplo de entrada:
+    
+    \begin{center}
+    $\_\_\_\_J\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_M\_$
+    \end{center}
+
+    Você deve ler o arquivo de entrada para carregar o cenário inicial. Cada caractere representa um intervalo de distância igual a $10$ metros. No exemplo acima, a distância máxima do cenário é de $400$ metros ($40$ caracteres), onde o primeiro caractere representa os $10$ primeiros metros (intervalo de $0$ a $10$ metros), o segundo caractere representa o intervalo de $10$ a $20$ metros, e assim por diante. No cenário com $100$ caracteres, a distância máxima permitida é de $1000$ metros.
+    
+    A cada jogada, o jogador deve digitar a velocidade inicial e o ângulo de inclinação do objeto e usar a fórmula de lançamento para calcular a distância máxima percorrida pelo objeto. Você vai usar esta distância para descobrir em qual caractere o objeto caiu, e assim, imprimir o caractere $*$ naquele local. O jogador vence quando acertar o adversário, ou seja, quando a distância máxima estiver no intervalo correspondente ao caractere (letra) do adversário.
+    
+%Quando um objeto for lançado você deve imprimir o local que ele caiu. Você vai representar o objeto com o caractere \textit{0} (zero). A fórmula de Lançamento Inclinado vai retornar a distância máxima de queda do objeto, você vai usar esta distância para descobrir em qual caractere o objeto caiu, e assim,  substituir este caractere pelo caractere \textit{0} (zero). 
+
+Voltando ao exemplo acima, se o jogador $J$ lançar um objeto com uma velocidade inicial de $20 m/s$ e um ângulo de inclinação de $80^{\circ}$, pela fórmula de inclinação, a distância máxima percorrida pelo objeto é de $31.38$ metros, somando com a posição de $J$ ($50$ metros), temos que o objeto caiu a uma distância de $81.38$ metros. Esta distância está no intervalo de $80$ a $90$ metros, que corresponde ao oitavo caractere. Assim na oitavo posição, o código deve imprimir o caractere $*$, indicando a posição onde o objeto caiu, como no exemplo abaixo. 
+
+\begin{center}
+    $\_\_\_\_J\_\_*\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_M\_$
+\end{center}
+
+Como o jogador $J$ não acertou, passamos a vez para o jogador $M$. Imagine que o jogador $M$ passou os mesmos valores de velocidade e ângulo, note que o lançamento do objeto é sempre direcionado a posição do oponente. O código deve imprimir cenário abaixo.
+
+\begin{center}
+    $\_\_\_\_J\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_*\_\_M\_$
+\end{center}
+
+
+Perceba que o objeto lançado por $J$ já desapareceu do cenário. Ou seja, \textbf{apenas o último objeto lançado aparece no cenário.}
+
+
+\section{Dicas}
+\begin{itemize}
+\item \textit{isalpha()} é uma função da biblioteca \textit{ctype.h} que verifica se o caractere é uma letra.
+\item \textit{sin()} é uma função da biblioteca \textit{math.h} que calcula o seno. Deve ser passado como parâmetro da função o ângulo em radianos ($1^{\circ} = 1 \times \frac{\pi}{180}$ radianos). 
+\end{itemize}
+
+\end{document}
