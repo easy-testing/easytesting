@@ -1,44 +1,23 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_STACK_WITH_LINKED_LIST_TEST_STACK_TEST_H_
-#define TRUNK_STACK_WITH_LINKED_LIST_TEST_STACK_TEST_H_
+#ifndef TRUNK_STACK_WITH_ARRAY_TEST_STACK_TEST_H_
+#define TRUNK_STACK_WITH_ARRAY_TEST_STACK_TEST_H_
 
 #include <sstream>
 #include <string>
 
 #include "gtest/gtest.h"
-#include "stack_with_linked_list/src/stack.h"
+#include "stack_with_array/src/stack.h"
 
 using std::string;
 using std::stringstream;
 
-// Implementa um nó da lista encadeada.
-struct Node {
-  SType key;  // Valor da chave do nó.
-  Node* prev;  // Ponteiro para o nó anterior.
-  Node* next;  // Ponteiro para o próximo nó.
-};
-
 // Classe base dos testes.
 class Teste : public testing::Test {
  protected:
-  // Cria uma nó cuja chave é k, o nó anterior é l, e o nó posterior é r.
-  Node* NewNode(string k, Node* l, Node* r) {
-    Node* aux = new Node;
-    aux->key = k;
-    aux->prev = l;
-    aux->next = r;
-    return aux;
-  }
-
   // Retorna um ponteiro para o primeiro elemento da pilha.
-  Node* begin(const stack& p) {
-    return p.end_->next;
-  }
-
-  // Retorna um ponteiro para o elemento seguinte ao último elemento da pilha.
-  Node* end(const stack& p) {
-    return p.end_;
+  SType* array(const stack& p) {
+    return p.array_;
   }
 
   // Retorna o número de elementos na pilha.
@@ -50,8 +29,8 @@ class Teste : public testing::Test {
   string ToString(const stack& p) {
     stringstream sout;
     sout << "[ ";
-    for (Node* i = begin(p) ; i != end(p) ; i = i->next) {
-      sout << i->key << " ";
+    for (int i = p.size_ - 1; i >= 0; i--) {
+      sout << p.array_[i] << " ";
     }
     sout << "]";
     return sout.str();
@@ -59,11 +38,12 @@ class Teste : public testing::Test {
 
   // Preenche a pilha d com 3 números. 'd' deve ser uma pilha vazia.
   void CriaPilha(SType x1, SType x2, SType x3, stack* d) {
-    d->end_->next = NewNode(x1, d->end_, NULL);
-    d->end_->next->next = NewNode(x2, d->end_->next, NULL);
-    d->end_->next->next->next = d->end_->prev =
-        NewNode(x3, d->end_->next->next, d->end_);
     d->size_ = 3;
+    d->capacity_ = 3;
+    d->array_ = new SType[d->capacity_];
+    d->array_[2] = x1;
+    d->array_[1] = x2;
+    d->array_[0] = x3;
   }
 };
 
@@ -74,18 +54,6 @@ TEST_F(Teste, Testa_construtor_vazio) {
     << "Erro no construtor: stack::stack()\n"
     << "-------------------------------------------------------------------\n"
     << " Número de elementos na pilha maior que zero.\n"
-    << "-------------------------------------------------------------------\n";
-  ASSERT_EQ(end(atual)->next, end(atual))
-    << "-------------------------------------------------------------------\n"
-    << "Erro no construtor: stack::stack()\n"
-    << "-------------------------------------------------------------------\n"
-    << " Em uma lista encadeada vazia, end_->next = end_.\n"
-    << "-------------------------------------------------------------------\n";
-  ASSERT_EQ(end(atual)->prev, end(atual))
-    << "-------------------------------------------------------------------\n"
-    << "Erro no construtor: stack::stack()\n"
-    << "-------------------------------------------------------------------\n"
-    << " Em uma lista encadeada vazia, end_->prev_ = end_.\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -223,11 +191,11 @@ TEST_F(Teste, Testa_operador_Assign) {
   CriaPilha("12", "14", "15", &esperado);
   stack atual;
   atual = esperado;
-  ASSERT_NE(end(esperado), end(atual))
+  ASSERT_NE(array(esperado), array(atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: void stack::operator=(stack& p)\n"
     << "-------------------------------------------------------------------\n"
-    << " Não basta apenas copiar o ponteiro para \"end_\". \n"
+    << " Não basta apenas copiar o ponteiro para \"array_\". \n"
     << " Você tem que copiar todos os elementos de p para a pilha corrente.\n"
     << "-------------------------------------------------------------------\n";
   ASSERT_EQ(ToString(esperado), ToString(atual))
@@ -240,4 +208,4 @@ TEST_F(Teste, Testa_operador_Assign) {
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // TRUNK_STACK_WITH_LINKED_LIST_TEST_STACK_TEST_H_
+#endif  // TRUNK_STACK_WITH_ARRAY_TEST_STACK_TEST_H_

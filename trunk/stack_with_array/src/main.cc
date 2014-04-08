@@ -1,4 +1,4 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 //
 // Lista de exercícios sobre listas encadeadas - pilha.
 //
@@ -25,7 +25,7 @@
 #include <iostream>
 #include <string>
 
-#include "stack_with_linked_list/src/stack.h"
+#include "stack_with_array/src/stack.h"
 
 using std::cout;
 using std::endl;
