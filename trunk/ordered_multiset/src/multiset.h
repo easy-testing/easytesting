@@ -5,9 +5,9 @@
 
 #include<string>
 
-// Define como os elementos do conjunto associativo serão organizados na memória.
-// É declarado aqui, mas só é implementado em map.cc para não violar o
-// encapsulamento.
+// Define como os elementos do conjunto associativo serão organizados
+// na memória. É declarado aqui, mas só é implementado em map.cc para
+// não violar o encapsulamento.
 struct Node;
 
 // Implementa um conjunto associativo (também conhecido como mapa) utilizando

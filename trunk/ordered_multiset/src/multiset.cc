@@ -5,7 +5,7 @@
 // Define como os elementos da árvore serão organizados na memória.
 struct Node {
   SType key;  // Valor da chave do nó.
-  VType value; // Valor do nó
+  VType value;  // Valor do nó
   Node* left;  // Ponteiro para o nó a esquerda.
   Node* right;  // Ponteiro para o nó a direita.
   Node* parent;  // Ponteiro para o nó acima.
