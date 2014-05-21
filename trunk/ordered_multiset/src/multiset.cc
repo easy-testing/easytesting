@@ -1,6 +1,6 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#include "ordered_map/src/map.h"
+#include "ordered_multiset/src/multiset.h"
 
 // Define como os elementos da árvore serão organizados na memória.
 struct Node {
