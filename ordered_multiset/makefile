@@ -1,9 +1,9 @@
 # Compilador utilizado
-cc = g++ 
+cc = g++
 # PATH raiz para includes
 path = ..
 # Nome da lista de exercicios
-program = map
+program = multiset
 # Tipo da chave dos elementos do vetor no main
 type_main = std::string
 # Tipo da chave dos elementos do vetor nos testes
