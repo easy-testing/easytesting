@@ -133,11 +133,11 @@ TEST_F(Teste, Testa_funcao_empty_em_multiconjunto_nao_vazio) {
   insert("A", 1, &s);
   insert("C", 3, &s);
   ASSERT_FALSE(s.empty())
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: bool multiset::empty() \n"
-      << "------------------------------------------------------------------\n"
-      << " o multiconjunto tem pelo menos um elemento e a funcao retornou TRUE.\n"
-      << "------------------------------------------------------------------\n";
+    << "------------------------------------------------------------------\n"
+    << "Erro na funcao: bool multiset::empty() \n"
+    << "------------------------------------------------------------------\n"
+    << " Para um multiconjunto nao vazio a funcao retornou TRUE.          \n"
+    << "------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_funcao_size_em_multiconjunto_vazio) {

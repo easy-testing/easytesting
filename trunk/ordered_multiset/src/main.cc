@@ -3,7 +3,8 @@
 // Lista sobre multiconjuntos associativos
 //
 // Questão 1.
-// Implemente em multiset.h e multiset.cc o TAD multiset, utilizando árvores binárias de busca.
+// Implemente em multiset.h e multiset.cc o TAD multiset,
+// utilizando árvores binárias de busca.
 //
 // Questão 2.
 // Leia um arquivo contendo apenas palavras, e imprima as palavras em ordem
