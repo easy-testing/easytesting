@@ -60,20 +60,22 @@ class multiset {
   // Retorna um ponteiro para o elemento k em O(log n),
   // ou um ponteiro para multiset::end() caso k não pertença ao multiconjunto.
   // OBS: Note que esta função NÃO retorna bool. Para testar se um elemento 'a'
-  // pertence a um multiconjunto 'c', você deve escrever "if (c.find(a) != c.end())".
+  // pertence a um multiconjunto 'c', você deve escrever
+  // "if (c.find(a) != c.end())".
   Node* find(SType k);
 
   // Insere k no multiconjunto em O(log n).
   void insert(SType k);
 
-  // Remove uma ocorrência de k do multiconjunto (caso lá ele esteja) em O(log n).
+  // Remove uma ocorrência de k do multiconjunto (caso lá ele esteja)
+  // em O(log n).
   void erase(SType k);
 
   // Remove todos os elementos do multiconjunto em O(n.log n).
   void clear();
 
-  // Faz com que o multiconjunto corrente contenha exatamente os mesmos elementos
-  // do cojunto s em O(n.log n + m.log m), onde m = s.size().
+  // Faz com que o multiconjunto corrente contenha exatamente os mesmos
+  // elementos do cojunto s em O(n.log n + m.log m), onde m = s.size().
   void operator=(multiset& s);
 
   // Libera toda a memória alocada para o multiconjunto em O(n.log n).
