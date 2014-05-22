@@ -5,7 +5,7 @@
 // Define como os elementos da árvore serão organizados na memória.
 struct Node {
   SType key;  // Valor da chave do nó.
-  VType value;  // Valor do nó
+  int count;  // Número de ocorrências da chave.
   Node* left;  // Ponteiro para o nó a esquerda.
   Node* right;  // Ponteiro para o nó a direita.
   Node* parent;  // Ponteiro para o nó acima.
@@ -132,36 +132,36 @@ Node* TreeDelete(Node*& root, Node* z) {
   }
   if (y->key != z->key) {
     z->key = y->key;
-    z->value = y->value;
+    z->count = y->count;
   }
   return y;
 }
 
-// Implementação das funções do TAD map.
+// Implementação das funções do TAD multiset.
 ////////////////////////////////////////////////////////////////////////////////
 
-map::map() {
+multiset::multiset() {
   root_ = NULL;
   size_= 0;
 }
 
-Node* map::begin() {
+Node* multiset::begin() {
   if (empty()) {
-    return NULL;
+    return end();
   } else {
     return TreeMinimum(root_);
   }
 }
 
-Node* map::end() {
+Node* multiset::end() {
   return NULL;
 }
 
-Node* map::next(Node* x) {
+Node* multiset::next(Node* x) {
   return TreeSuccessor(x);
 }
 
-Node* map::prev(Node* x) {
+Node* multiset::prev(Node* x) {
   if (x == end()) {
     return TreeMaximum(root_);
   } else {
@@ -169,65 +169,72 @@ Node* map::prev(Node* x) {
   }
 }
 
-VType& map::operator[](SType x) {
-  return find(x)->value;
-}
-
-SType map::key(Node* x) {
-  return x->key;
-}
-
-VType map::value(Node* x) {
-  return x->value;
-}
-
-bool map::empty() {
-  return size_ == 0;
-}
-
-int map::size() {
-  return size_;
-}
-
-Node* map::find(SType k) {
-  return TreeSearch(root_, k);
-}
-
-void map::insert(SType k, VType v) {
+int multiset::count(SType k) {
   Node* x = find(k);
-  if (x != end()) {
-    x->value = v;
+  if (x == end()) {
+    return 0;
   } else {
-    Node* z = new Node;
-    z->key = k;
-    z->value = v;
-    z->parent = z->left = z->right = NULL;
-    TreeInsert(root_, z);
-    size_++;
+    return x->count;
   }
 }
 
-void map::erase(SType k) {
+SType multiset::key(Node* x) {
+  return x->key;
+}
+
+bool multiset::empty() {
+  return size_ == 0;
+}
+
+int multiset::size() {
+  return size_;
+}
+
+Node* multiset::find(SType k) {
+  return TreeSearch(root_, k);
+}
+
+void multiset::insert(SType k) {
+  Node* x = find(k);
+  if (x != end()) {
+    x->count++;
+  } else {
+    Node* z = new Node;
+    z->key = k;
+    z->count = 1;
+    z->parent = z->left = z->right = NULL;
+    TreeInsert(root_, z);
+  }
+  size_++;
+}
+
+void multiset::erase(SType k) {
   Node* z = find(k);
-  if (z != NULL) {
-    delete TreeDelete(root_, z);
+  if (z != end()) {
+    if (z->count > 1) {
+      z->count--;
+    } else {
+      delete TreeDelete(root_, z);
+    }
     size_--;
   }
 }
 
-void map::clear() {
+void multiset::clear() {
   while (!empty()) {
     erase(begin()->key);
   }
 }
 
-void map::operator=(map& s) {
+void multiset::operator=(multiset& s) {
   clear();
   for (Node* i = s.begin(); i != s.end(); i = s.next(i)) {
-    insert(i->key, i->value);
+    for (int j = 0; j < i->count; j++) {
+      insert(i->key);
+    }
   }
 }
 
-map::~map() {
+multiset::~multiset() {
   clear();
 }
