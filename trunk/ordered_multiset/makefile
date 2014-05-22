@@ -13,8 +13,8 @@ value_type = int
 
 # Gera o binarios do programa e dos testes
 all:
-	$(cc) -D SType=$(type_main) -D VType=$(value_type) -I $(path) src/$(program).cc src/main.cc -o main
-	$(cc) -D SType=$(type_test) -D VType=$(value_type) -I $(path) src/$(program).cc test/$(program)_test.cc ../gtest/gtest.cc -o easy_testing
+	$(cc) -D SType=$(type_main) -I $(path) src/$(program).cc src/main.cc -o main
+	$(cc) -D SType=$(type_test) -I $(path) src/$(program).cc test/$(program)_test.cc ../gtest/gtest.cc -o easy_testing
 	@echo "--------------------------------------------------------------"
 	@echo "main: executa o programa em main.cc."
 	@echo "easy_testing: executa os testes dos exercícios."

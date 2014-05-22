@@ -1,9 +1,9 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 //
-// Lista sobre conjuntos associativos
+// Lista sobre multiconjuntos associativos
 //
 // Questão 1.
-// Implemente em map.h e map.cc o TAD map, utilizando árvores binárias de busca.
+// Implemente em multiset.h e multiset.cc o TAD multiset, utilizando árvores binárias de busca.
 //
 // Questão 2.
 // Leia um arquivo contendo apenas palavras, e imprima as palavras em ordem
@@ -16,7 +16,7 @@
 // Após ler cada palavra, você deve (i) transformar todas as letras maiúsculas
 // em minúsculas e (ii) apagar todos os caracteres que não são letras ou
 // números. Por exemplo, depois de ler "Guarda-Chuva?", você deve transformá-la
-// em "guardachuva" antes de inseri-la no conjunto. Desta forma, a mesma
+// em "guardachuva" antes de inseri-la no multiconjunto. Desta forma, a mesma
 // palavra apresentada com letras minúsculas ou maiúsculas, ou que estão
 // adjacentes a pontuação, não serão diferenciadas. Por exemplo, para o texto:
 //
@@ -50,7 +50,7 @@
 #include <iostream>
 #include <string>
 
-#include "ordered_map/src/map.h"
+#include "ordered_multiset/src/multiset.h"
 
 using std::cin;
 using std::cout;
@@ -69,21 +69,15 @@ string CleanString(string s) {
 }
 
 int main() {
-  map words;
-  ifstream fin("input.txt");
-  Node* word;
+  multiset words;
   string str;
+  ifstream fin("input.txt");
   while (fin >> str) {
     str = CleanString(str);
-    word = words.find(str);
-    if (word == words.end()) {
-      words.insert(str, 1);
-    } else {
-      words[str] = words[str] + 1;
-    }
+    words.insert(str);
   }
   for (Node* i = words.begin(); i != words.end(); i = words.next(i)) {
-    cout << words.key(i) << ' ' << words.value(i) << endl;
+    cout << words.key(i) << ' ' << words.count(words.key(i)) << endl;
   }
   return 0;
 }
