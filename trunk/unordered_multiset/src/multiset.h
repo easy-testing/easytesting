@@ -1,28 +1,32 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_ORDERED_MULTISET_SRC_MULTISET_H_
-#define TRUNK_ORDERED_MULTISET_SRC_MULTISET_H_
+#ifndef TRUNK_UNORDERED_MULTISET_SRC_UNORDERED_MULTISET_H_
+#define TRUNK_UNORDERED_MULTISET_SRC_UNORDERED_MULTISET_H_
 
-#include<string>
+#include <string>
 
-// Define como os elementos do multimulticonjunto serão organizados
-// na memória. É declarado aqui, mas só é implementado em multiset.cc para
+#include "ordered_multiset/src/multiset.h"
+
+// Função que calcula o hash dos elementos para uma tabela com m linhas.
+// É declarado aqui, mas só é implementado em unordered_set.cc para
 // não violar o encapsulamento.
-struct Node;
+int hash(SType k, int m);
 
 // Implementa um multiconjunto  (também conhecido com repetição) utilizando
-// árvores binárias de busca. Num multiconjunto, podem ocorrer mais de uma
+// tabelas de dispersão. Num multiconjunto, podem ocorrer mais de uma
 // ocorrência do mesmo elemento.
-// NOTA1: O cálculo da complexidade das funções assume que a árvore está
-// balanceada, ou seja, considera-se que a altura da arvore é O(log n), onde n
-// é a cardinalidade do multiconjunto (i.e. n = size_). Entretanto, isto não é
-// garantido nesta implentação.
-// NOTA2: O tipo das chaves dos elementos contidos no multiconjunto é definido
-// por SType. O valor de SType é um #define declarado em tempo de compilação.
-class multiset {
+// NOTA1: Nesta implementão, os elementos do conjunto estão ordenados na lista
+// encadeada do menor para o maior.
+// NOTA2: O tipo das chaves dos elementos contidos no conjunto é definido por
+// SType. Já o tipo dos valores associados a cada chave é definido por VType.
+// O valor de SType e o de VType é um #define declarado em tempo de compilação.
+// Nota3: O cálculo das complexidades assume que a função de hasing
+// é uniformemente simples, mas isto não é garantido nesta implementação.
+// No entanto, esta implementação garante que o fator de carga é constante.
+class unordered_multiset {
  public:
   // Cria um multiconjunto vazio em O(1).
-  multiset();
+  unordered_multiset();
 
   // Testa se o cojunto está vazio em O(1).
   bool empty();
@@ -32,7 +36,7 @@ class multiset {
 
   // Retorna um ponteiro para o primeiro elemento do multiconjunto em O(log n).
   // Caso o multiconjunto esteja vazio, rentorna um ponteiro
-  // para multiset::end().
+  // para unordered_multiset::end().
   Node* begin();
 
   // Retorna um ponteiro para o "marcador de fim" do multiconjunto em O(1).
@@ -40,13 +44,13 @@ class multiset {
 
   // Retorna o elemento seguinte (diferente) ao indicado por x no
   // multiconjunto em O(log n). Se x aponta para o último elemento do
-  // multiconjunto, retorna multiset::end();
+  // multiconjunto, retorna unordered_multiset::end();
   // Precondição: x aponta para um dos elementos do multiconjunto.
   Node* next(Node* x);
 
   // Retorna o elemento anterior (diferente) ao indicado por x no
   // multiconjunto em O(log n).
-  // Nota: x pode apontar para multiset::end().
+  // Nota: x pode apontar para unordered_multiset::end().
   // Precondição: existe pelo menos um elemento do multiconjunto (diferente)
   // antes de x.
   Node* prev(Node* x);
@@ -58,7 +62,7 @@ class multiset {
   SType key(Node* x);
 
   // Retorna um ponteiro para o elemento k em O(log n),
-  // ou um ponteiro para multiset::end() caso k não pertença ao multiconjunto.
+  // ou um ponteiro para unordered_multiset::end() caso k não pertença ao multiconjunto.
   // OBS: Note que esta função NÃO retorna bool. Para testar se um elemento 'a'
   // pertence a um multiconjunto 'c', você deve escrever
   // "if (c.find(a) != c.end())".
@@ -76,19 +80,25 @@ class multiset {
 
   // Faz com que o multiconjunto corrente contenha exatamente os mesmos
   // elementos do cojunto s em O(n.log n + m.log m), onde m = s.size().
-  void operator=(multiset& s);
+  void operator=(unordered_multiset& s);
 
   // Libera toda a memória alocada para o multiconjunto em O(n.log n).
-  ~multiset();
+  ~unordered_multiset();
 
  private:
-  // Número de elementos no multiconjunto.
+  // Função que altera o número de linhas da tabela para 'm' e re-distribui os
+  // elementos em O(m + n).
+  void rehash(int m);
+
+  // Número de elementos no multicojunto.
   int size_;
 
-  // Ponteiro para a raiz da árvore.
-  // "root_ == NULL" se o multiconjunto é vazio.
-  Node* root_;
+  // Número de subconjuntos no vetor table_.
+  int capacity_;
+
+  // Vetor de subconjuntos que guarda os elementos do multicojunto.
+  multiset* table_;
 
   friend class Teste;
 };
-#endif  // TRUNK_ORDERED_MULTISET_SRC_MULTISET_H_
+#endif  // TRUNK_UNORDERED_MULTISET_SRC_UNORDERED_MULTISET_H_

@@ -1,14 +1,14 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_ORDERED_MULTISET_TEST_MULTISET_TEST_H_
-#define TRUNK_ORDERED_MULTISET_TEST_MULTISET_TEST_H_
+#ifndef TRUNK_UNORDERED_MULTISET_TEST_UNORDERED_MULTISET_TEST_H_
+#define TRUNK_UNORDERED_MULTISET_TEST_UNORDERED_MULTISET_TEST_H_
 
 #include <cstdlib>
 #include <sstream>
 #include <string>
 
 #include "gtest/gtest.h"
-#include "ordered_multiset/src/multiset.h"
+#include "unordered_multiset/src/multiset.h"
 
 using std::string;
 using std::stringstream;
@@ -25,45 +25,27 @@ struct Node {
 // Classe base dos testes.
 class Teste : public testing::Test {
  protected:
-  Node* root(multiset& s) {
-    return s.root_;
+  multiset* table(unordered_multiset& s) {
+    return s.table_;
   }
 
-  int size(multiset& s) {
+  int size(unordered_multiset& s) {
     return s.size_;
   }
 
   // Retorna um ponteiro para o elemento seguinte ao último elemento
   // do multiconjunto.
-  Node* end(const multiset& s) {
+  Node* end(const unordered_multiset& s) {
     return NULL;
   }
 
-  Node* insert(SType k, int count, multiset* s) {
-    Node* y = NULL;
-    Node* x = s->root_;
-    while (x != NULL) {
-      y = x;
-      if (k < x->key) {
-        x = x->left;
-      } else {
-        x = x->right;
-      }
+  Node* insert(SType k, int count, unordered_multiset* s) {
+    int j = hash(k, s->capacity_);
+    for (int i = 0; i < count; i++) {
+      s->table_[j].insert(k);
+      s->size_++;
     }
-    Node* z = new Node;
-    z->key = k;
-    z->count = count;
-    z->parent = y;
-    z->left = z->right = NULL;
-    if (y == NULL) {
-      s->root_ = z;
-    } else if (z->key < y->key) {
-      y->left = z;
-    } else  {
-      y->right = z;
-    }
-    s->size_ += count;
-    return z;
+    return s->table_[j].find(k);
   }
 
   string ToString(Node* x) {
@@ -76,77 +58,69 @@ class Teste : public testing::Test {
     return out.str();
   }
 
-  // Retorna uma string contendo os elementos da árvore no formato
-  // {k1, k2, ..., kn}.
-  string TreeToString(Node* root) {
-    if (root == NULL) {
-      return "";
-    } else {
-      stringstream out;
-      if (root->left != NULL) out << TreeToString(root->left);
-      for (int i = 0; i < root->count; i++) {
-        out << ToString(root) << " ";
-      }
-      if (root->right != NULL) out << TreeToString(root->right);
-      return out.str();
-    }
-  }
-
-  string ToString(multiset& s) {
+  string ToString(unordered_multiset& s) {
     stringstream out;
     out << "{ ";
-    out << TreeToString(s.root_);
+    for (int i = 0; i < s.capacity_; i++) {
+      for (Node* j = s.table_[i].begin();
+           j != s.table_[i].end();
+           j = s.table_[i].next(j)) {
+        for (int k = 0; k < j->count; k++) {
+          out << ToString(j) << " ";
+        }
+      }
+    }
     out << "}";
     return out.str();
   }
 };
 
 TEST_F(Teste, Testa_construtor_vazio) {
-  multiset atual;
-  ASSERT_EQ(end(atual), root(atual))
+  unordered_multiset atual;
+  ASSERT_NE(static_cast<multiset*>(NULL), table(atual))
     << "-------------------------------------------------------------------\n"
-    << "Erro no construtor: multiset::multiset()\n"
+    << "Erro no construtor: unordered_multiset::unordered_multiset()\n"
     << "-------------------------------------------------------------------\n"
-    << " Em um multiconjunto vazio, root_ = NULL\n"
+    << " Em um multiconjunto vazio, table != NULL\n"
     << "-------------------------------------------------------------------\n";
   ASSERT_EQ(0, size(atual))
     << "-------------------------------------------------------------------\n"
-    << "Erro no construtor: multiset::multiset()\n"
+    << "Erro no construtor: unordered_multiset::unordered_multiset()\n"
     << "-------------------------------------------------------------------\n"
     << " Em um multiconjunto vazio, size_ = 0\n"
     << "-------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_funcao_empty_em_multiconjunto_vazio) {
-  multiset s;
+  unordered_multiset s;
   ASSERT_TRUE(s.empty())
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: bool multiset::empty() \n"
+      << "Erro na funcao: bool unordered_multiset::empty() \n"
       << "------------------------------------------------------------------\n"
       << " o multiconjunto esta vazio e a funcao retornou FALSE.\n"
       << "------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_funcao_empty_em_multiconjunto_nao_vazio) {
-  multiset s;
+  unordered_multiset s;
   insert("B", 2, &s);
   insert("A", 1, &s);
   insert("C", 3, &s);
   ASSERT_FALSE(s.empty())
     << "------------------------------------------------------------------\n"
-    << "Erro na funcao: bool multiset::empty() \n"
+    << "Erro na funcao: bool unordered_multiset::empty() \n"
     << "------------------------------------------------------------------\n"
     << " Para um multiconjunto nao vazio a funcao retornou TRUE.          \n"
     << "------------------------------------------------------------------\n";
 }
 
 TEST_F(Teste, Testa_funcao_size_em_multiconjunto_vazio) {
-  multiset s;
+  unordered_multiset s;
   int esperado = 0;
   int atual = s.size();
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: int multiset::size()\n"
+    << "Erro na funcao: int unordered_multiset::size()\n"
     << "-------------------------------------------------------------------\n"
     << " s = " << ToString(s) << "\n"
     << " \"s.sise()\" retornou: " << atual << "\n"
@@ -155,7 +129,7 @@ TEST_F(Teste, Testa_funcao_size_em_multiconjunto_vazio) {
 }
 
 TEST_F(Teste, Testa_funcao_size_em_multiconjunto_nao_vazio) {
-  multiset s;
+  unordered_multiset s;
   insert("B", 2, &s);
   insert("A", 1, &s);
   insert("C", 3, &s);
@@ -163,7 +137,7 @@ TEST_F(Teste, Testa_funcao_size_em_multiconjunto_nao_vazio) {
   int esperado = 6;
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: int multiset::size()\n"
+    << "Erro na funcao: int unordered_multiset::size()\n"
     << "-------------------------------------------------------------------\n"
     << " s = " << ToString(s) << "\n"
     << " \"s.sise()\" retornou: " << atual << "\n"
@@ -172,10 +146,10 @@ TEST_F(Teste, Testa_funcao_size_em_multiconjunto_nao_vazio) {
 }
 
 TEST_F(Teste, Testa_funcao_begin_em_multiconjunto_vazio) {
-  multiset s;
+  unordered_multiset s;
   ASSERT_EQ(end(s), s.begin())
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* multiset::begin() \n"
+      << "Erro na funcao: Node* unordered_multiset::begin() \n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(s) << "\n"
       << " s.begin() nao retornou s.end().\n"
@@ -183,13 +157,13 @@ TEST_F(Teste, Testa_funcao_begin_em_multiconjunto_vazio) {
 }
 
 TEST_F(Teste, Testa_funcao_begin_em_multiconjunto_nao_vazio) {
-  multiset s;
+  unordered_multiset s;
   Node* a = insert("A", 1, &s);
   Node* atual = s.begin();
   Node* esperado = a;
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* multiset::begin() \n"
+      << "Erro na funcao: Node* unordered_multiset::begin() \n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(s) << "\n"
       << " \"s.begin()\" retornou: ponteiro para " << ToString(atual) << "\n"
@@ -198,10 +172,10 @@ TEST_F(Teste, Testa_funcao_begin_em_multiconjunto_nao_vazio) {
 }
 
 TEST_F(Teste, Testa_funcao_end_em_multiconjunto_vazio) {
-  multiset s;
+  unordered_multiset s;
   ASSERT_EQ(end(s), s.end())
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* multiset::end() \n"
+      << "Erro na funcao: Node* unordered_multiset::end() \n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(s) << "\n"
       << " s.end() nao retornou s.begin().\n"
@@ -209,13 +183,13 @@ TEST_F(Teste, Testa_funcao_end_em_multiconjunto_vazio) {
 }
 
 TEST_F(Teste, Testa_funcao_end_em_multiconjunto_nao_vazio) {
-  multiset s;
+  unordered_multiset s;
   insert("A", 1, &s);
   Node* atual = s.end();
   Node* esperado = end(s);
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* multiset::end() \n"
+      << "Erro na funcao: Node* unordered_multiset::end() \n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(s) << "\n"
       << " \"s.end()\" retornou: ponteiro para " << ToString(atual) << "\n"
@@ -224,14 +198,14 @@ TEST_F(Teste, Testa_funcao_end_em_multiconjunto_nao_vazio) {
 }
 
 TEST_F(Teste, Testa_funcao_next_do_primeiro_elemento) {
-  multiset s;
+  unordered_multiset s;
   Node* a = insert("A", 1, &s);
   Node* b = insert("B", 2, &s);
   Node* atual = s.next(a);
   Node* esperado = b;
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* multiset::next(Node* x) \n"
+      << "Erro na funcao: Node* unordered_multiset::next(Node* x) \n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(s) << "\n"
       << " \"s.next(s.begin())\" retornou: ponteiro para "
@@ -241,13 +215,13 @@ TEST_F(Teste, Testa_funcao_next_do_primeiro_elemento) {
 }
 
 TEST_F(Teste, Testa_funcao_next_do_ultimo_elemento) {
-  multiset s;
+  unordered_multiset s;
   Node* a = insert("A", 1, &s);
   Node* atual = s.next(a);
   Node* esperado = NULL;
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* multiset::next(Node* x) \n"
+      << "Erro na funcao: Node* unordered_multiset::next(Node* x) \n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(s) << "\n"
       << " \"s.next(s.begin())\" retornou: ponteiro para "
@@ -257,7 +231,7 @@ TEST_F(Teste, Testa_funcao_next_do_ultimo_elemento) {
 }
 
 TEST_F(Teste, Testa_funcao_next_com_o_proximo_abaixo) {
-  multiset s;
+  unordered_multiset s;
   insert("C", 3, &s);
   Node* a = insert("A", 1, &s);
   insert("D", 4, &s);
@@ -266,7 +240,7 @@ TEST_F(Teste, Testa_funcao_next_com_o_proximo_abaixo) {
   Node* esperado = b;
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* multiset::next(Node* x) \n"
+      << "Erro na funcao: Node* unordered_multiset::next(Node* x) \n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(s) << "\n"
       << " \"s.next(s.find('A'))\" retornou: ponteiro para "
@@ -277,7 +251,7 @@ TEST_F(Teste, Testa_funcao_next_com_o_proximo_abaixo) {
 }
 
 TEST_F(Teste, Testa_funcao_next_com_o_proximo_acima) {
-  multiset s;
+  unordered_multiset s;
   Node* c = insert("C", 3, &s);
   insert("A", 1, &s);
   insert("D", 4, &s);
@@ -286,7 +260,7 @@ TEST_F(Teste, Testa_funcao_next_com_o_proximo_acima) {
   Node* esperado = c;
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* multiset::next(Node* x) \n"
+      << "Erro na funcao: Node* unordered_multiset::next(Node* x) \n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(s) << "\n"
       << " \"s.next(s.find('B'))\" retornou: ponteiro para "
@@ -297,13 +271,13 @@ TEST_F(Teste, Testa_funcao_next_com_o_proximo_acima) {
 }
 
 TEST_F(Teste, Testa_funcao_prev_do_end) {
-  multiset s;
+  unordered_multiset s;
   Node* a = insert("A", 1, &s);
   Node* atual = s.prev(end(s));
   Node* esperado = a;
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* multiset::prev(Node* x) \n"
+      << "Erro na funcao: Node* unordered_multiset::prev(Node* x) \n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(s) << "\n"
       << " \"s.prev(s.end())\" retornou: ponteiro para "
@@ -313,7 +287,7 @@ TEST_F(Teste, Testa_funcao_prev_do_end) {
 }
 
 TEST_F(Teste, Testa_funcao_prev_com_o_anterior_abaixo) {
-  multiset s;
+  unordered_multiset s;
   Node* c = insert("C", 3, &s);
   insert("A", 1, &s);
   insert("D", 4, &s);
@@ -322,7 +296,7 @@ TEST_F(Teste, Testa_funcao_prev_com_o_anterior_abaixo) {
   Node* esperado = b;
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* multiset::prev(Node* x) \n"
+      << "Erro na funcao: Node* unordered_multiset::prev(Node* x) \n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(s) << "\n"
       << " \"s.prev(s.find('C'))\" retornou: ponteiro para "
@@ -333,7 +307,7 @@ TEST_F(Teste, Testa_funcao_prev_com_o_anterior_abaixo) {
 }
 
 TEST_F(Teste, Testa_funcao_prev_com_o_proximo_acima) {
-  multiset s;
+  unordered_multiset s;
   insert("C", 3, &s);
   Node* a = insert("A", 1, &s);
   insert("D", 4, &s);
@@ -342,7 +316,7 @@ TEST_F(Teste, Testa_funcao_prev_com_o_proximo_acima) {
   Node* esperado = a;
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* multiset::prev(Node* x) \n"
+      << "Erro na funcao: Node* unordered_multiset::prev(Node* x) \n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(s) << "\n"
       << " \"s.prev(s.find('B'))\" retornou: ponteiro para "
@@ -353,7 +327,7 @@ TEST_F(Teste, Testa_funcao_prev_com_o_proximo_acima) {
 }
 
 TEST_F(Teste, Testa_funcao_find_de_elemento_no_multiconjunto) {
-  multiset s;
+  unordered_multiset s;
   insert("C", 1, &s);
   insert("A", 1, &s);
   insert("D", 1, &s);
@@ -362,7 +336,7 @@ TEST_F(Teste, Testa_funcao_find_de_elemento_no_multiconjunto) {
   Node* esperado = b;
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: Node* multiset::find(SType k) \n"
+    << "Erro na funcao: Node* unordered_multiset::find(SType k) \n"
     << "-------------------------------------------------------------------\n"
     << " s = " << ToString(s) << "\n"
     << " 's.find(\"B\")' retornou: ponteiro para " << ToString(atual) << "\n"
@@ -371,7 +345,7 @@ TEST_F(Teste, Testa_funcao_find_de_elemento_no_multiconjunto) {
 }
 
 TEST_F(Teste, Testa_funcao_find_de_elemento_fora_do_multiconjunto) {
-  multiset s;
+  unordered_multiset s;
   insert("C", 1, &s);
   insert("A", 1, &s);
   insert("D", 1, &s);
@@ -380,7 +354,7 @@ TEST_F(Teste, Testa_funcao_find_de_elemento_fora_do_multiconjunto) {
   Node* esperado = end(s);
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: Node* multiset::find(SType k) \n"
+    << "Erro na funcao: Node* unordered_multiset::find(SType k) \n"
     << "-------------------------------------------------------------------\n"
     << " s = " << ToString(s) << "\n"
     << " 's.find(\"E\")' retornou: ponteiro para " << ToString(atual) << "\n"
@@ -389,12 +363,12 @@ TEST_F(Teste, Testa_funcao_find_de_elemento_fora_do_multiconjunto) {
 }
 
 TEST_F(Teste, Testa_count_em_multiconjunto_vazio) {
-  multiset s;
+  unordered_multiset s;
   int atual = s.count("4");
   int esperado = 0;
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: int multiset::count(SType k) \n"
+    << "Erro na funcao: int unordered_multiset::count(SType k) \n"
     << "-------------------------------------------------------------------\n"
     << " s = { }\n"
     << " \"s.count(4)\" retornou: " << atual << "\n"
@@ -403,7 +377,7 @@ TEST_F(Teste, Testa_count_em_multiconjunto_vazio) {
 }
 
 TEST_F(Teste, Testa_count_com_mais_de_um_elemento) {
-  multiset s;
+  unordered_multiset s;
   insert("2", 1, &s);
   insert("1", 3, &s);
   insert("3", 2, &s);
@@ -411,7 +385,7 @@ TEST_F(Teste, Testa_count_com_mais_de_um_elemento) {
   int esperado = 3;
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: int multiset::count(SType k) \n"
+    << "Erro na funcao: int unordered_multiset::count(SType k) \n"
     << "-------------------------------------------------------------------\n"
     << " s = " << ToString(s) << "\n"
     << " \"s.count(1)\" retornou: " << atual << "\n"
@@ -420,7 +394,7 @@ TEST_F(Teste, Testa_count_com_mais_de_um_elemento) {
 }
 
 TEST_F(Teste, Testa_count_sem_o_elemento) {
-  multiset s;
+  unordered_multiset s;
   insert("2", 1, &s);
   insert("4", 2, &s);
   insert("3", 1, &s);
@@ -428,7 +402,7 @@ TEST_F(Teste, Testa_count_sem_o_elemento) {
   int esperado = 0;
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: int multiset::count(SType k) \n"
+    << "Erro na funcao: int unordered_multiset::count(SType k) \n"
     << "-------------------------------------------------------------------\n"
     << " s = " << ToString(s) << "\n"
     << " \"s.count(1)\" retornou: " << atual << "\n"
@@ -437,13 +411,13 @@ TEST_F(Teste, Testa_count_sem_o_elemento) {
 }
 
 TEST_F(Teste, Testa_incremento_do_size_na_funcao_insert_sem_repeticao) {
-  multiset s;
+  unordered_multiset s;
   s.insert("A");
   int atual = size(s);
   int esperado = 1;
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void multiset::insert(SType k) *\n"
+      << "Erro na funcao: void unordered_multiset::insert(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = { } \n"
       << " 's.insert(\"A\")' resultou em: s.size() == " << atual << "\n"
@@ -452,14 +426,14 @@ TEST_F(Teste, Testa_incremento_do_size_na_funcao_insert_sem_repeticao) {
 }
 
 TEST_F(Teste, Testa_incremento_do_size_na_funcao_insert_com_repeticao) {
-  multiset s;
+  unordered_multiset s;
   insert("A", 2, &s);
   s.insert("A");
   int atual = size(s);
   int esperado = 3;
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void multiset::insert(SType k) *\n"
+      << "Erro na funcao: void unordered_multiset::insert(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = {A, A} \n"
       << " 's.insert(\"A\")' resultou em: s.size() == " << atual << "\n"
@@ -468,13 +442,13 @@ TEST_F(Teste, Testa_incremento_do_size_na_funcao_insert_com_repeticao) {
 }
 
 TEST_F(Teste, Testa_funcao_insert_em_multiconjunto_vazio) {
-  multiset atual;
+  unordered_multiset atual;
   atual.insert("A");
-  multiset esperado;
+  unordered_multiset esperado;
   insert("A", 1, &esperado);
   ASSERT_EQ(ToString(esperado), ToString(atual))
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void multiset::insert(SType k) *\n"
+      << "Erro na funcao: void unordered_multiset::insert(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = { } \n"
       << " 's.insert(\"A\")' resultou em: s = " << ToString(atual) << "\n"
@@ -483,15 +457,15 @@ TEST_F(Teste, Testa_funcao_insert_em_multiconjunto_vazio) {
 }
 
 TEST_F(Teste, Testa_funcao_insert_em_multiconjunto_nao_vazio) {
-  multiset atual;
+  unordered_multiset atual;
   insert("D", 1, &atual);
   insert("A", 1, &atual);
   insert("C", 1, &atual);
-  multiset original;
+  unordered_multiset original;
   insert("D", 1, &original);
   insert("A", 1, &original);
   insert("C", 1, &original);
-  multiset esperado;
+  unordered_multiset esperado;
   insert("D", 1, &esperado);
   insert("A", 1, &esperado);
   insert("C", 1, &esperado);
@@ -499,7 +473,7 @@ TEST_F(Teste, Testa_funcao_insert_em_multiconjunto_nao_vazio) {
   atual.insert("B");
   ASSERT_EQ(ToString(esperado), ToString(atual))
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void multiset::insert(SType k) *\n"
+      << "Erro na funcao: void unordered_multiset::insert(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(original) << "\n"
       << " 's.insert(\"B\")' resultou em: s = " << ToString(atual) << "\n"
@@ -508,17 +482,17 @@ TEST_F(Teste, Testa_funcao_insert_em_multiconjunto_nao_vazio) {
 }
 
 TEST_F(Teste, Testa_funcao_insert_com_elemento_ja_dentro) {
-  multiset atual;
+  unordered_multiset atual;
   insert("D", 1, &atual);
   insert("A", 1, &atual);
   insert("C", 1, &atual);
   insert("B", 1, &atual);
-  multiset original;
+  unordered_multiset original;
   insert("D", 1, &original);
   insert("A", 1, &original);
   insert("C", 1, &original);
   insert("B", 1, &original);
-  multiset esperado;
+  unordered_multiset esperado;
   insert("D", 1, &esperado);
   insert("A", 1, &esperado);
   insert("C", 1, &esperado);
@@ -526,7 +500,7 @@ TEST_F(Teste, Testa_funcao_insert_com_elemento_ja_dentro) {
   atual.insert("B");
   ASSERT_EQ(ToString(esperado), ToString(atual))
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void multiset::insert(SType k) *\n"
+      << "Erro na funcao: void unordered_multiset::insert(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(original) << "\n"
       << " 's.insert(\"B\")' resultou em: s = " << ToString(atual) << "\n"
@@ -535,14 +509,14 @@ TEST_F(Teste, Testa_funcao_insert_com_elemento_ja_dentro) {
 }
 
 TEST_F(Teste, Testa_decremento_do_size_na_funcao_erase) {
-  multiset s;
+  unordered_multiset s;
   insert("A", 1, &s);
   s.erase("A");
   int atual = size(s);
   int esperado = 0;
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void multiset::insert(SType k) *\n"
+      << "Erro na funcao: void unordered_multiset::insert(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = { A } \n"
       << " \"s.erase(\"A\")\" resultou em: s.size() == " << atual << "\n"
@@ -551,15 +525,15 @@ TEST_F(Teste, Testa_decremento_do_size_na_funcao_erase) {
 }
 
 TEST_F(Teste, Testa_funcao_erase_em_multiconjunto_unitario) {
-  multiset atual;
+  unordered_multiset atual;
   insert("A", 1, &atual);
-  multiset original;
+  unordered_multiset original;
   insert("A", 1, &original);
-  multiset esperado;
+  unordered_multiset esperado;
   atual.erase("A");
   ASSERT_EQ(ToString(esperado), ToString(atual))
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void multiset::erase(SType k) *\n"
+      << "Erro na funcao: void unordered_multiset::erase(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(original) << " \n"
       << " 's.erase(\"A\")\' resultou em: s = " << ToString(atual) << "\n"
@@ -567,40 +541,40 @@ TEST_F(Teste, Testa_funcao_erase_em_multiconjunto_unitario) {
       << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_funcao_erase_da_ultima_ocorrencia_de_um_elemento) {
-  multiset atual;
-  insert("A", 1, &atual);
-  atual.erase("A");
-  ASSERT_EQ("NULL", ToString(root(atual)))
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void multiset::erase(SType k) *\n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << "{ A }" << " \n"
-      << " 's.erase(\"A\")\' resultou em: s = " << ToString(atual) << "\n"
-      << " DICA: Se o número de ocorrencias de um elemento e igual a zero,  \n"
-      << " voce tem que apagar o no onde ele esta.                          \n"
-      << "------------------------------------------------------------------\n";
-}
+//TEST_F(Teste, Testa_funcao_erase_da_ultima_ocorrencia_de_um_elemento) {
+//  unordered_multiset atual;
+//  insert("A", 1, &atual);
+//  atual.erase("A");
+//  ASSERT_EQ("NULL", ToString(root(atual)))
+//      << "------------------------------------------------------------------\n"
+//      << "Erro na funcao: void unordered_multiset::erase(SType k) *\n"
+//      << "------------------------------------------------------------------\n"
+//      << " s = " << "{ A }" << " \n"
+//      << " 's.erase(\"A\")\' resultou em: s = " << ToString(atual) << "\n"
+//      << " DICA: Se o número de ocorrencias de um elemento e igual a zero,  \n"
+//      << " voce tem que apagar o no onde ele esta.                          \n"
+//      << "------------------------------------------------------------------\n";
+//}
 
 TEST_F(Teste, Testa_funcao_erase_de_no_com_dois_filhos) {
-  multiset atual;
+  unordered_multiset atual;
   insert("B", 1, &atual);
   insert("A", 1, &atual);
   insert("D", 1, &atual);
   insert("C", 1, &atual);
-  multiset original;
+  unordered_multiset original;
   insert("B", 1, &original);
   insert("A", 1, &original);
   insert("D", 1, &original);
   insert("C", 1, &original);
-  multiset esperado;
+  unordered_multiset esperado;
   insert("A", 1, &esperado);
   insert("D", 1, &esperado);
   insert("C", 1, &esperado);
   atual.erase("B");
   ASSERT_EQ(ToString(esperado), ToString(atual))
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void multiset::erase(SType k) *\n"
+      << "Erro na funcao: void unordered_multiset::erase(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(original) << " \n"
       << " 's.erase(\"B\")\' resultou em: s = " << ToString(atual) << "\n"
@@ -610,24 +584,24 @@ TEST_F(Teste, Testa_funcao_erase_de_no_com_dois_filhos) {
 
 
 TEST_F(Teste, Testa_funcao_erase_de_no_sem_subarvore_direita) {
-  multiset atual;
+  unordered_multiset atual;
   insert("B", 1, &atual);
   insert("A", 1, &atual);
   insert("D", 1, &atual);
   insert("C", 1, &atual);
-  multiset original;
+  unordered_multiset original;
   insert("B", 1, &original);
   insert("A", 1, &original);
   insert("D", 1, &original);
   insert("C", 1, &original);
-  multiset esperado;
+  unordered_multiset esperado;
   insert("B", 1, &esperado);
   insert("A", 1, &esperado);
   insert("C", 1, &esperado);
   atual.erase("D");
   ASSERT_EQ(ToString(esperado), ToString(atual))
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void multiset::erase(SType k) *\n"
+      << "Erro na funcao: void unordered_multiset::erase(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(original) << " \n"
       << " 's.erase(\"B\")\' resultou em: s = " << ToString(atual) << "\n"
@@ -636,24 +610,24 @@ TEST_F(Teste, Testa_funcao_erase_de_no_sem_subarvore_direita) {
 }
 
 TEST_F(Teste, Testa_funcao_erase_em_no_sem_subarvore_esquerda) {
-  multiset atual;
+  unordered_multiset atual;
   insert("B", 1, &atual);
   insert("A", 1, &atual);
   insert("D", 1, &atual);
   insert("C", 1, &atual);
-  multiset original;
+  unordered_multiset original;
   insert("B", 1, &original);
   insert("A", 1, &original);
   insert("D", 1, &original);
   insert("C", 1, &original);
-  multiset esperado;
+  unordered_multiset esperado;
   insert("B", 1, &esperado);
   insert("D", 1, &esperado);
   insert("C", 1, &esperado);
   atual.erase("A");
   ASSERT_EQ(ToString(esperado), ToString(atual))
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void multiset::erase(SType k) *\n"
+      << "Erro na funcao: void unordered_multiset::erase(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(original) << " \n"
       << " 's.erase(\"A\")\' resultou em: s = " << ToString(atual) << "\n"
@@ -662,17 +636,17 @@ TEST_F(Teste, Testa_funcao_erase_em_no_sem_subarvore_esquerda) {
 }
 
 TEST_F(Teste, Testa_erase_de_elemento_que_nao_pertence_ao_multiconjunto) {
-  multiset atual;
+  unordered_multiset atual;
   insert("B", 1, &atual);
   insert("A", 1, &atual);
   insert("D", 1, &atual);
   insert("C", 1, &atual);
-  multiset original;
+  unordered_multiset original;
   insert("B", 1, &original);
   insert("A", 1, &original);
   insert("D", 1, &original);
   insert("C", 1, &original);
-  multiset esperado;
+  unordered_multiset esperado;
   insert("B", 1, &esperado);
   insert("A", 1, &esperado);
   insert("D", 1, &esperado);
@@ -680,7 +654,7 @@ TEST_F(Teste, Testa_erase_de_elemento_que_nao_pertence_ao_multiconjunto) {
   atual.erase("X");
   ASSERT_EQ(ToString(esperado), ToString(atual))
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void multiset::erase(SType k) *\n"
+      << "Erro na funcao: void unordered_multiset::erase(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(original) << " \n"
       << " 's.erase(\"B\")\' resultou em: s = " << ToString(atual) << "\n"
@@ -689,17 +663,17 @@ TEST_F(Teste, Testa_erase_de_elemento_que_nao_pertence_ao_multiconjunto) {
 }
 
 TEST_F(Teste, Testa_erase_de_elemento_repetido) {
-  multiset atual;
+  unordered_multiset atual;
   insert("B", 1, &atual);
   insert("A", 3, &atual);
   insert("D", 1, &atual);
   insert("C", 1, &atual);
-  multiset original;
+  unordered_multiset original;
   insert("B", 1, &original);
   insert("A", 3, &original);
   insert("D", 1, &original);
   insert("C", 1, &original);
-  multiset esperado;
+  unordered_multiset esperado;
   insert("B", 1, &esperado);
   insert("A", 2, &esperado);
   insert("D", 1, &esperado);
@@ -707,7 +681,7 @@ TEST_F(Teste, Testa_erase_de_elemento_repetido) {
   atual.erase("A");
   ASSERT_EQ(ToString(esperado), ToString(atual))
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void multiset::erase(SType k) *\n"
+      << "Erro na funcao: void unordered_multiset::erase(SType k) *\n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(original) << " \n"
       << " 's.erase(\"B\")\' resultou em: s = " << ToString(atual) << "\n"
@@ -716,19 +690,19 @@ TEST_F(Teste, Testa_erase_de_elemento_repetido) {
 }
 
 TEST_F(Teste, Testa_Clear) {
-  multiset atual;
+  unordered_multiset atual;
   insert("B", 2, &atual);
   insert("A", 1, &atual);
   insert("C", 3, &atual);
-  multiset original;
+  unordered_multiset original;
   insert("B", 2, &original);
   insert("A", 1, &original);
   insert("C", 3, &original);
-  multiset esperado;
+  unordered_multiset esperado;
   atual.clear();
   ASSERT_EQ(ToString(esperado), ToString(atual))
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void multiset::clear() \n"
+      << "Erro na funcao: void unordered_multiset::clear() \n"
       << "------------------------------------------------------------------\n"
       << " s = " << ToString(original) << " \n"
       << " 's.clear()\' resultou em: s = " << ToString(atual) << "\n"
@@ -737,19 +711,19 @@ TEST_F(Teste, Testa_Clear) {
 }
 
 TEST_F(Teste, Testa_operador_de_atribuicao_a_multiconjunto_vazio) {
-  multiset original;
+  unordered_multiset original;
   insert("B", 2, &original);
   insert("A", 1, &original);
   insert("C", 3, &original);
-  multiset esperado;
+  unordered_multiset esperado;
   insert("B", 2, &esperado);
   insert("A", 1, &esperado);
   insert("C", 3, &esperado);
-  multiset atual;
+  unordered_multiset atual;
   atual = original;
   ASSERT_EQ(ToString(esperado), ToString(atual))
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: void multiset::operator=(multiset& s)\n"
+    << "Erro na funcao: void unordered_multiset::operator=(unordered_multiset& s)\n"
     << "-------------------------------------------------------------------\n"
     << " u = " << "{ }" << " \n"
     << " s = " << ToString(original) << "\n"
@@ -759,20 +733,20 @@ TEST_F(Teste, Testa_operador_de_atribuicao_a_multiconjunto_vazio) {
 }
 
 TEST_F(Teste, Testa_operador_de_atribuicao_a_multiconjunto_nao_vazio) {
-  multiset original;
+  unordered_multiset original;
   insert("B", 2, &original);
   insert("A", 1, &original);
   insert("C", 3, &original);
-  multiset esperado;
+  unordered_multiset esperado;
   insert("B", 2, &esperado);
   insert("A", 1, &esperado);
   insert("C", 3, &esperado);
-  multiset atual;
+  unordered_multiset atual;
   insert("D", 2, &atual);
   atual = original;
   ASSERT_EQ(ToString(esperado), ToString(atual))
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: void multiset::operator=(multiset& s)\n"
+    << "Erro na funcao: void unordered_multiset::operator=(unordered_multiset& s)\n"
     << "-------------------------------------------------------------------\n"
     << " u = " << "{ D D }" << " \n"
     << " s = " << ToString(original) << "\n"
@@ -781,4 +755,4 @@ TEST_F(Teste, Testa_operador_de_atribuicao_a_multiconjunto_nao_vazio) {
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // TRUNK_ORDERED_MULTISET_TEST_MULTISET_TEST_H_
+#endif  // TRUNK_UNORDERED_MULTISET_TEST_UNORDERED_MULTISET_TEST_H_

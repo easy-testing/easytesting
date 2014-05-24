@@ -14,13 +14,14 @@ struct Node;
 // árvores binárias de busca. Num conjunto associativo, todas as chaves dos
 // elementos estão associadas a um valor específico. As chaves não se repetem,
 // mas os valores associados as chaves podem se repetir.
-// NOTA1: O cálculo da complexidade das funções assume que a árvore está
-// balanceada, ou seja, considera-se que a altura da arvore é O(log n), onde n
-// é a cardinalidade do conjunto (i.e. n = size_). Entretanto, isto não é
-// garantido nesta implentação.
+// NOTA1: Nesta implementão, os elementos do conjunto estão ordenados na lista
+// encadeada do menor para o maior.
 // NOTA2: O tipo das chaves dos elementos contidos no conjunto é definido por
 // SType. Já o tipo dos valores associados a cada chave é definido por VType.
 // O valor de SType e o de VType é um #define declarado em tempo de compilação.
+// Nota3: O cálculo das complexidades assume que a função de hasing
+// é uniformemente simples, mas isto não é garantido nesta implementação.
+// No entanto, esta implementação garante que o fator de carga é constante.
 class map {
  public:
   // Cria um conjunto vazio em O(1).

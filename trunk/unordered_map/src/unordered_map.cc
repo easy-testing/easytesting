@@ -17,7 +17,7 @@ int hash(int key, int m) {
 }
 
 int hash(std::string key, int m) {
-  int hashVal = 0;
+  long int hashVal = 0;
   for (int i = 0; i < key.length(); i++) {
     hashVal = 37 * hashVal + key[i];
   }
