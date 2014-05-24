@@ -8,7 +8,7 @@
 #include <string>
 
 #include "gtest/gtest.h"
-#include "unordered_multiset/src/multiset.h"
+#include "unordered_multiset/src/unordered_multiset.h"
 
 using std::string;
 using std::stringstream;
@@ -541,20 +541,20 @@ TEST_F(Teste, Testa_funcao_erase_em_multiconjunto_unitario) {
       << "------------------------------------------------------------------\n";
 }
 
-//TEST_F(Teste, Testa_funcao_erase_da_ultima_ocorrencia_de_um_elemento) {
+//  TEST_F(Teste, Testa_funcao_erase_da_ultima_ocorrencia_de_um_elemento) {
 //  unordered_multiset atual;
 //  insert("A", 1, &atual);
 //  atual.erase("A");
 //  ASSERT_EQ("NULL", ToString(root(atual)))
-//      << "------------------------------------------------------------------\n"
-//      << "Erro na funcao: void unordered_multiset::erase(SType k) *\n"
-//      << "------------------------------------------------------------------\n"
-//      << " s = " << "{ A }" << " \n"
-//      << " 's.erase(\"A\")\' resultou em: s = " << ToString(atual) << "\n"
-//      << " DICA: Se o número de ocorrencias de um elemento e igual a zero,  \n"
-//      << " voce tem que apagar o no onde ele esta.                          \n"
-//      << "------------------------------------------------------------------\n";
-//}
+//    << "------------------------------------------------------------------\n"
+//    << "Erro na funcao: void unordered_multiset::erase(SType k) *\n"
+//    << "------------------------------------------------------------------\n"
+//    << " s = " << "{ A }" << " \n"
+//    << " 's.erase(\"A\")\' resultou em: s = " << ToString(atual) << "\n"
+//    << " DICA: Se o número de ocorrencias de um elemento e igual a zero,  \n"
+//    << " voce tem que apagar o no onde ele esta.                          \n"
+//    << "------------------------------------------------------------------\n";
+//  }
 
 TEST_F(Teste, Testa_funcao_erase_de_no_com_dois_filhos) {
   unordered_multiset atual;
@@ -723,7 +723,8 @@ TEST_F(Teste, Testa_operador_de_atribuicao_a_multiconjunto_vazio) {
   atual = original;
   ASSERT_EQ(ToString(esperado), ToString(atual))
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: void unordered_multiset::operator=(unordered_multiset& s)\n"
+    << "Erro na funcao:"
+    << " void unordered_multiset::operator=(unordered_multiset& s)         \n"
     << "-------------------------------------------------------------------\n"
     << " u = " << "{ }" << " \n"
     << " s = " << ToString(original) << "\n"
@@ -746,7 +747,8 @@ TEST_F(Teste, Testa_operador_de_atribuicao_a_multiconjunto_nao_vazio) {
   atual = original;
   ASSERT_EQ(ToString(esperado), ToString(atual))
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: void unordered_multiset::operator=(unordered_multiset& s)\n"
+    << "Erro na funcao:"
+    << " void unordered_multiset::operator=(unordered_multiset& s)         \n"
     << "-------------------------------------------------------------------\n"
     << " u = " << "{ D D }" << " \n"
     << " s = " << ToString(original) << "\n"

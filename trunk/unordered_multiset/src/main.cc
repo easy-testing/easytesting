@@ -3,8 +3,8 @@
 // Lista sobre multiconjuntos associativos
 //
 // Questão 1.
-// Implemente em unordered_multiset.h e unordered_multiset.cc o TAD unordered_multiset,
-// utilizando tabela de dispersão.
+// Implemente em unordered_multiset.h e unordered_multiset.cc o TAD
+// unordered_multiset, utilizando tabela de dispersão.
 //
 // Questão 2.
 // Leia um arquivo contendo apenas palavras, e imprima as palavras em ordem
@@ -51,7 +51,7 @@
 #include <iostream>
 #include <string>
 
-#include "unordered_multiset/src/multiset.h"
+#include "unordered_multiset/src/unordered_multiset.h"
 
 using std::cin;
 using std::cout;

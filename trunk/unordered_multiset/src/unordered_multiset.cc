@@ -1,6 +1,6 @@
 // Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
 
-#include "unordered_multiset/src/multiset.h"
+#include "unordered_multiset/src/unordered_multiset.h"
 
 // Define como os elementos da árvore serão organizados na memória.
 struct Node {
@@ -21,7 +21,7 @@ int hash(std::string key, int m) {
     hashVal = 37 * hashVal + key[i];
   }
   return hashVal % m;
- }
+}
 
 unordered_multiset::unordered_multiset() {
   size_ = 0;  // Inicialmente, o multiconjunto não tem elementos.
