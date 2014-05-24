@@ -62,7 +62,8 @@ class unordered_multiset {
   SType key(Node* x);
 
   // Retorna um ponteiro para o elemento k em O(log n),
-  // ou um ponteiro para unordered_multiset::end() caso k não pertença ao multiconjunto.
+  // ou um ponteiro para unordered_multiset::end() caso k não pertença ao
+  // multiconjunto.
   // OBS: Note que esta função NÃO retorna bool. Para testar se um elemento 'a'
   // pertence a um multiconjunto 'c', você deve escrever
   // "if (c.find(a) != c.end())".
