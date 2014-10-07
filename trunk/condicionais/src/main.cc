@@ -1,4 +1,4 @@
-// Copyright 2012 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 //
 // Lista de exercícios sobre Condicionais.
 //
@@ -11,7 +11,8 @@
 // (ii) lê o valor dos parâmetros e (iii) exibe o resultado da função.
 //
 #include <iostream>
-#include "condicionais/src/condicionais.h"
+
+#include "src/condicionais.h"
 
 using std::cin;
 using std::cout;
@@ -70,9 +71,9 @@ int main() {
 
         if (equilatero(x, y, z)) {
             cout << "\nResultados: Triangulo equilatero.\n" << endl;
-        } else  if (isosceles(a, b, c)) {
+        } else  if (isosceles(x, y, z)) {
             cout << "\nResultados: Triangulo isosceles.\n" << endl;
-        } else  if (escaleno(a, b, c)) {
+        } else  if (escaleno(x, y, z)) {
             cout << "\nResultados: Triangulo escaleno.\n" << endl;
         } else {
             cout << "\nResultados: Nao e um Triangulo.\n" << endl;

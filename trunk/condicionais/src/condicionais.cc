@@ -1,5 +1,7 @@
-// Copyright 2012 Universidade Federal de Minas Gerais (UFMG)
-#include "condicionais/src/condicionais.h"
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
+
+#include "src/condicionais.h"
+
 #include <cmath>
 #include <string>
 
