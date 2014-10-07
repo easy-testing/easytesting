@@ -1,4 +1,4 @@
-// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 //
 // Lista de exercícios sobre Tipos Abstratos de Dados.
 // Aplicação: Números Complexos - Coordenadas Polares.
@@ -47,9 +47,11 @@
 #include <cmath>
 #include <iostream>
 
-#include "complexo_polar/src/complexo.h"
+#include "src/complexo.h"
 
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
 // Recebe o valor dos coeficientes a, b, c (a.x^2 + b.x + c) e retorna através
 // de r1 e r2 raízes (possivelmente complexas) desta equação.

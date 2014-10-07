@@ -1,9 +1,9 @@
-// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_COMPLEXO_POLAR_TEST_COMPLEXO_TEST_H_
-#define TRUNK_COMPLEXO_POLAR_TEST_COMPLEXO_TEST_H_
+#ifndef TEST_COMPLEXO_TEST_H_
+#define TEST_COMPLEXO_TEST_H_
 
-#include "complexo_polar/src/complexo.h"
+#include "src/complexo.h"
 
 #include <cmath>
 #include <sstream>
@@ -534,4 +534,4 @@ TEST_F(Teste, Dividir_Numeros_Complexos_sinais_contrarios) {
     << " Resposta esperada:  " << ToString(esperado) << "\n"
     << "-------------------------------------------------------------------\n";
 }
-#endif  // TRUNK_COMPLEXO_POLAR_TEST_COMPLEXO_TEST_H_
+#endif  // TEST_COMPLEXO_TEST_H_
