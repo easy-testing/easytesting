@@ -1,4 +1,4 @@
-// Copyright 2012 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 //
 // Lista de exercício sobre estruturas de dados heterogêneas - Registros.
 //
@@ -17,11 +17,16 @@
 #include <iostream>
 #include <string>
 
-#include "agenda/src/agenda.h"
+#include "src/agenda.h"
 
 #define MAX 1000
 
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::ifstream;
+using std::ofstream;
+using std::string;
 
 // Mosta as opções da agenda.
 void MostrarMenu() {
