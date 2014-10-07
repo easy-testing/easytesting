@@ -1,4 +1,4 @@
-// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 //
 // Lista de exercícios sobre Tipos Abstratos de Dados.
 // Aplicação: Números Complexos - Coordenadas Euclidianas.
@@ -28,9 +28,11 @@
 #include <iostream>
 #include <sstream>
 
-#include "complexo_euclidiano/src/complexo.h"
+#include "src/complexo.h"
 
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
 void Imprimir(Complexo z) {
   cout << z.real();
