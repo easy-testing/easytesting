@@ -1,7 +1,7 @@
 # Compilador utilizado
 cc = g++
 # PATH raiz para includes
-path = ../
+path = .
 # Nome da lista de exercicios
 program = agenda
 
@@ -27,14 +27,16 @@ test: clean $(program).o $(program)_test.o gtest.o
 	@rm -f $(program).o $(program)_test.o gtest.o a.out
 
 main.o:
-	$(cc) -I $(path) -c src/main.cc 
-
+	$(cc) -I $(path) -c src/main.cc
 
 $(program)_test.o:
-	$(cc) -I $(path) -c test/$(program)_test.cc 
+	$(cc) -I $(path) -c test/$(program)_test.cc
 
 gtest.o:
 	$(cc) -I $(path) -c gtest/gtest.cc
 
 clean:
 	@rm -f main easy_testing main.o $(program).o $(program)_test.o gtest.o a.out
+
+zip:
+	zip -r $(CURDIR).zip . -x ".*"
