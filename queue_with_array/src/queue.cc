@@ -16,7 +16,7 @@ void queue::reserve(int m) {
 }
 
 queue::queue() {
-  first_ = size_ = 1;
+  first_ = size_ = 0;
   capacity_ = 16;
   array_ = new QType[capacity_];
 }

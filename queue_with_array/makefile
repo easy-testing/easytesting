@@ -20,3 +20,6 @@ all:
 
 clean:
 	@rm -f main easy_testing
+
+zip:
+	zip -r $(CURDIR).zip . -x ".*"
