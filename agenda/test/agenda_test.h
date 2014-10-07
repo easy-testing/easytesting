@@ -1,14 +1,14 @@
-// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_AGENDA_TEST_AGENDA_TEST_H_
-#define TRUNK_AGENDA_TEST_AGENDA_TEST_H_
+#ifndef TEST_AGENDA_TEST_H_
+#define TEST_AGENDA_TEST_H_
 
 #include <cmath>
 #include <sstream>
 #include <string>
 
 #include "gtest/gtest.h"
-#include "agenda/src/agenda.h"
+#include "src/agenda.h"
 
 using std::string;
 using std::stringstream;
@@ -20,4 +20,4 @@ TEST(Teste, Nenhum_teste_disponivel) {
 
 }  // Fim do namespace vazio.
 
-#endif  // TRUNK_AGENDA_TEST_AGENDA_TEST_H_
+#endif  // TEST_AGENDA_TEST_H_
