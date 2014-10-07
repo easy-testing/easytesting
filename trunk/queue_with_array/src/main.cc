@@ -3,7 +3,7 @@
 // Lista de exercícios sobre listas encadeadas - fila.
 //
 // Questão 1.
-// Implemente em queue.h e queue.cc o TAD queue, utilizando listas encadeadas.
+// Implemente em queue.h e queue.cc o TAD queue, utilizando arrays.
 //
 // Questão 2.
 // Escreva uma função "void Imprimir(queue& q)" que recebe
@@ -29,7 +29,7 @@
 #include <iostream>
 #include <string>
 
-#include "queue/src/queue.h"
+#include "src/queue.h"
 
 using std::cin;
 using std::cout;
