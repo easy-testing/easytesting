@@ -1,7 +1,7 @@
-// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_COMPLEXO_POLAR_SRC_COMPLEXO_H_
-#define TRUNK_COMPLEXO_POLAR_SRC_COMPLEXO_H_
+#ifndef SRC_COMPLEXO_H_
+#define SRC_COMPLEXO_H_
 
 // Representa um número complexo.
 class Complexo {
@@ -62,4 +62,4 @@ class Complexo {
   friend class Teste;
 };
 
-#endif  // TRUNK_COMPLEXO_POLAR_SRC_COMPLEXO_H_
+#endif  // SRC_COMPLEXO_H_
