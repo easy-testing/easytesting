@@ -1,4 +1,4 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef TRUNK_QUEUE_TEST_QUEUE_TEST_H_
 #define TRUNK_QUEUE_TEST_QUEUE_TEST_H_
@@ -7,7 +7,7 @@
 #include <string>
 
 #include "gtest/gtest.h"
-#include "queue/src/queue.h"
+#include "src/queue.h"
 
 using std::string;
 using std::stringstream;
@@ -22,48 +22,37 @@ struct Node {
 // Classe base dos testes.
 class Teste : public testing::Test {
  protected:
-  // Cria uma nó cuja chave é k, o nó anterior é l, e o nó posterior é r.
-  Node* NewNode(QType k, Node* l, Node* r) {
-    Node* aux = new Node;
-    aux->key = k;
-    aux->prev = l;
-    aux->next = r;
-    return aux;
-  }
-
   // Retorna um ponteiro para o primeiro elemento da fila.
-  Node* begin(const queue& q) {
-    return q.end_->next;
+  QType* array(const queue& p) {
+    return p.array_;
   }
 
-  // Retorna um ponteiro para o elemento seguinte ao último elemento da fila.
-  Node* end(const queue& q) {
-    return q.end_;
-  }
 
-  // Retorna o número de elementos na fila.
-  int size(const queue& q) {
-    return q.size_;
+  // Retorna o número de elementos na pilha.
+  int size(const queue& p) {
+    return p.size_;
   }
 
   // Retorna uma string no formato [a b c d ... ].
-  string ToString(const queue& q) {
+  string ToString(const queue& p) {
     stringstream sout;
     sout << "[ ";
-    for (Node* i = begin(q) ; i != end(q) ; i = i->next) {
-      sout << i->key << " ";
+    for (int i = 0; i < p.size_; i++) {
+      sout << p.array_[(i + p.first_) % p.capacity_] << " ";
     }
     sout << "]";
     return sout.str();
   }
 
   // Preenche a fila d com 3 números. 'd' deve ser uma fila vazia.
-  void CriaFila(QType x1, QType x2, QType x3, queue* d) {
-    d->end_->next = NewNode(x1, d->end_, NULL);
-    d->end_->next->next = NewNode(x2, d->end_->next, NULL);
-    d->end_->next->next->next = d->end_->prev =
-        NewNode(x3, d->end_->next->next, d->end_);
+  void CriaFila(QType x1, QType x2, QType x3, int first, queue* d) {
     d->size_ = 3;
+    d->capacity_ = 3;
+    d->first_ = first;
+    d->array_ = new QType[d->capacity_];
+    d->array_[(0 + first) % 3] = x1;
+    d->array_[(1 + first) % 3] = x2;
+    d->array_[(2 + first) % 3] = x3;
   }
 };
 
@@ -73,19 +62,7 @@ TEST_F(Teste, Testa_construtor_vazio) {
     << "-------------------------------------------------------------------\n"
     << "Erro no construtor: queue::queue()\n"
     << "-------------------------------------------------------------------\n"
-    << " Número de elementos na fila maior que zero.\n"
-    << "-------------------------------------------------------------------\n";
-  ASSERT_EQ(end(atual)->next, end(atual))
-    << "-------------------------------------------------------------------\n"
-    << "Erro no construtor: queue::queue()\n"
-    << "-------------------------------------------------------------------\n"
-    << " Em uma lista encadeada vazia, end_->next = end_.\n"
-    << "-------------------------------------------------------------------\n";
-  ASSERT_EQ(end(atual)->prev, end(atual))
-    << "-------------------------------------------------------------------\n"
-    << "Erro no construtor: queue::queue()\n"
-    << "-------------------------------------------------------------------\n"
-    << " Em uma lista encadeada vazia, end_->prev_ = end_.\n"
+    << " Numero de elementos na fila maior que zero.\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -103,9 +80,9 @@ TEST_F(Teste, Testa_Size_para_fila_vazia) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Size_para_fila_nao_vazia) {
+TEST_F(Teste, Testa_Size_parad_fila_nao_vazia) {
   queue q;
-  CriaFila("a", "b", "c", &q);
+  CriaFila("a", "b", "c", 1, &q);
   int esperado = 3;
   int atual = q.size();
   ASSERT_EQ(esperado, atual)
@@ -130,7 +107,7 @@ TEST_F(Teste, Testa_Empty_com_fila_vazia) {
 
 TEST_F(Teste, Testa_Empty_com_fila_nao_vazia) {
   queue q;
-  CriaFila("12", "14", "15", &q);
+  CriaFila("12", "14", "15", 1, &q);
   ASSERT_FALSE(q.empty())
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: bool queue::empty() \n"
@@ -141,7 +118,7 @@ TEST_F(Teste, Testa_Empty_com_fila_nao_vazia) {
 
 TEST_F(Teste, Testa_Front) {
   queue q;
-  CriaFila("12", "14", "15", &q);
+  CriaFila("12", "14", "15", 1, &q);
   QType atual = q.front();
   QType esperado = "12";
   ASSERT_EQ(esperado, atual)
@@ -156,7 +133,7 @@ TEST_F(Teste, Testa_Front) {
 
 TEST_F(Teste, Testa_Back) {
   queue q;
-  CriaFila("12", "14", "15", &q);
+  CriaFila("12", "14", "15", 1, &q);
   QType atual = q.back();
   QType esperado = "15";
   ASSERT_EQ(esperado, atual)
@@ -186,7 +163,7 @@ TEST_F(Teste, Testa_Push_em_fila_vazia) {
 
 TEST_F(Teste, Testa_Push_em_fila_nao_vazia) {
   queue q;
-  CriaFila("1", "2", "3", &q);
+  CriaFila("1", "2", "3", 1, &q);
   q.push("4");
   string atual = ToString(q);
   string esperado("[ 1 2 3 4 ]");
@@ -218,7 +195,7 @@ TEST_F(Teste, Testa_Pop_em_fila_unitaria) {
 
 TEST_F(Teste, Testa_Pop_em_fila_nao_vazia) {
   queue q;
-  CriaFila("2", "3", "4", &q);
+  CriaFila("2", "3", "4", 1, &q);
   q.pop();
   string atual = ToString(q);
   string esperado("[ 3 4 ]");
@@ -234,23 +211,23 @@ TEST_F(Teste, Testa_Pop_em_fila_nao_vazia) {
 
 TEST_F(Teste, Testa_operador_Assign) {
   queue esperado;
-  CriaFila("12", "14", "15", &esperado);
+  CriaFila("12", "14", "15", 1, &esperado);
   queue atual;
   atual = esperado;
-  ASSERT_NE(end(esperado), end(atual))
+  ASSERT_NE(array(esperado), array(atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: void queue::operator=(queue& p)\n"
     << "-------------------------------------------------------------------\n"
-    << " Não basta apenas copiar o ponteiro para \"end_\". \n"
-    << " Você tem que copiar todos os elementos de l para a fila corrente.\n"
+    << " Nao basta apenas copiar o ponteiro para \"array_\". \n"
+    << " Voce tem que copiar todos os elementos de p para a fila corrente.\n"
     << "-------------------------------------------------------------------\n";
   ASSERT_EQ(ToString(esperado), ToString(atual))
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: void queue::operator=(queue& p)\n"
     << "-------------------------------------------------------------------\n"
-    << " q = " << ToString(esperado) << "\n"
-    << " \"f = q\" resultou em: f = " << ToString(atual) << "\n"
-    << " Resultado esperado: f = " << ToString(esperado) << "\n"
+    << " p = " << ToString(esperado) << "\n"
+    << " \"u = p\" resultou em: u = " << ToString(atual) << "\n"
+    << " Resultado esperado: u = " << ToString(esperado) << "\n"
     << "-------------------------------------------------------------------\n";
 }
 

@@ -1,7 +1,7 @@
 # Compilador utilizado
 cc = g++
 # PATH raiz para includes
-path = ..
+path = .
 # Nome da lista de exercicios
 program = queue
 # Tipo dos elementos do vetor no main
@@ -11,8 +11,8 @@ type_test = std::string
 
 # Gera o binarios do programa e dos testes
 all:
-	$(cc) -D QType=$(type_main) -I $(path) src/$(program).cc src/main.cc -o main
-	$(cc) -D QType=$(type_test) -I $(path) src/$(program).cc test/$(program)_test.cc gtest/gtest.cc -o easy_testing
+	$(cc) -D QType=$(type_main) -I$(path) src/$(program).cc src/main.cc -o main
+	$(cc) -D QType=$(type_test) -I$(path) src/$(program).cc test/$(program)_test.cc gtest/gtest.cc -o easy_testing
 	@echo "--------------------------------------------------------------"
 	@echo "main: executa o programa em main.cc."
 	@echo "easy_testing: executa os testes dos exercícios."

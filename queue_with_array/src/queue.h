@@ -1,16 +1,11 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef TRUNK_QUEUE_SRC_QUEUE_H_
 #define TRUNK_QUEUE_SRC_QUEUE_H_
 
 #include <string>
 
-// Define como os elementos da fila serão organizados na memória.
-// É declarado aqui, mas só é implementado em queue.cc para não violar o
-// encapsulamento.
-struct Node;
-
-// Implementa uma fila de elementos utilizando listas encadeadas.
+// Implementa uma fila de elementos utilizando arrays circulares.
 // O tipo dos elementos contidos na fila é definido por QType.
 // O valor de QType deve ser definido em tempo de compilação.
 class queue {
@@ -48,11 +43,21 @@ class queue {
   void operator=(queue& q);
 
  private:
+  // Função que altera o número máximo de elementos na pilha
+  // para pelo menos 'm' em O(m).
+  void reserve(int m);
+
+  // Índice do primeiro elemento na fila.
+  int first_;
+
   // Número de elementos na fila.
   int size_;
 
-  // Ponteiro para o nó sentinela da lista encadeada.
-  Node* end_;
+  // Número de elementos no vetor array_.
+  int capacity_;
+
+  // Vetor com os elementos da pilha.
+  QType* array_;
 
   friend class Teste;
 };

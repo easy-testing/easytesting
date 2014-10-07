@@ -1,19 +1,24 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#include "queue/src/queue.h"
+#include "src/queue.h"
 
-// Implementa um nó da lista encadeada.
-struct Node {
-  QType key;  // Valor da chave do nó.
-  Node* prev;  // Ponteiro para o nó anterior.
-  Node* next;  // Ponteiro para o próximo nó.
-};
+void queue::reserve(int m) {
+  if (m > capacity_) {
+    QType* aux = new QType[m];
+    for (int i = 0; i < size_; i++) {
+      aux[i] = array_[(i + first_) % capacity_];
+    }
+    first_ = 0;
+    capacity_ = m;
+    delete [] array_;
+    array_ = aux;
+  }
+}
 
 queue::queue() {
-  size_ = 0;
-  end_ = new Node;
-  end_->next = end_;
-  end_->prev = end_;
+  first_ = size_ = 1;
+  capacity_ = 16;
+  array_ = new QType[capacity_];
 }
 
 bool queue::empty() {
@@ -25,49 +30,35 @@ int queue::size() {
 }
 
 QType queue::front() {
-  return end_->next->key;
+  return array_[first_];
 }
 
 QType queue::back() {
-  return end_->prev->key;
+  return array_[(first_ + size_ - 1) % capacity_];
 }
 
 void queue::push(QType k) {
-  // Cria um novo nó e define o valor dos seus campos.
-  Node* node = new Node;
-  node->key = k;
-  node->prev = end_->prev;
-  node->next = end_;
-  // Ajusta o valor dos ponteiros dos nós adjacentes ao novo nó.
-  end_->prev->next = node;
-  end_->prev = node;
+  if (size_ == capacity_) {
+    reserve(2 * capacity_);
+  }
+  array_[(first_ + size_) % capacity_] = k;
   size_++;
 }
 
 void queue::pop() {
-  Node* first = end_->next;  // Ponteiro para o primeiro elemento na fila.
-  first->prev->next = first->next;
-  first->next->prev = first->prev;
-  delete first;
+  first_ = (first_ + 1) % capacity_;
   size_--;
 }
 
 void queue::operator=(queue& q) {
-  // Apaga todos os elementos na fila corrente.
-  while (!empty()) {
-    pop();
-  }
-  // Insere os elementos de q na fila corrente.
-  for (Node* i = q.end_->next; i != q.end_; i = i->next) {
-    push(i->key);
+  reserve(q.capacity_);
+  size_ = q.size_;
+  first_ = 0;
+  for (int i = 0; i < q.size_; i++) {
+    array_[i] = q.array_[(i + q.first_) % q.capacity_];
   }
 }
 
 queue::~queue() {
-  // Primeiramente, remove todos os elementos da fila.
-  while (!empty()) {
-    pop();  // A função pop() libera a memórima de cada nó removido da fila;
-  }
-  // Em seguida, libera a memória alocada ao sentinela.
-  delete end_;
+  delete [] array_;
 }
