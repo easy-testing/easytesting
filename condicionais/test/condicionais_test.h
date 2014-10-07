@@ -1,13 +1,13 @@
-// copyright 2012 Universidade Federal de Minas Gerais (UFMG)
+// copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_CONDICIONAIS_TEST_CONDICIONAIS_TEST_H_
-#define TRUNK_CONDICIONAIS_TEST_CONDICIONAIS_TEST_H_
+#ifndef TEST_CONDICIONAIS_TEST_H_
+#define TEST_CONDICIONAIS_TEST_H_
 
 #include <cmath>
 #include <sstream>
 #include <string>
 
-#include "condicionais/src/condicionais.h"
+#include "src/condicionais.h"
 #include "gtest/gtest.h"
 
 namespace Teste {
@@ -150,6 +150,7 @@ TEST(Teste, Testa_signo) {
     << "   Resultado retornado: " << resposta << "\n\n"
     << "-------------------------------------------------------------------\n";
 }
-}  // end namespace
 
-#endif  // TRUNK_CONDICIONAIS_TEST_CONDICIONAIS_TEST_H_
+}  // namespace Teste
+
+#endif  // TEST_CONDICIONAIS_TEST_H_
