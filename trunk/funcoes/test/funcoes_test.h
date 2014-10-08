@@ -1,13 +1,13 @@
-// copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_FUNCOES_TEST_FUNCOES_TEST_H_
-#define TRUNK_FUNCOES_TEST_FUNCOES_TEST_H_
+#ifndef TEST_FUNCOES_TEST_H_
+#define TEST_FUNCOES_TEST_H_
 
 #include <cmath>
 #include <sstream>
 #include <string>
 
-#include "funcoes/src/funcoes.h"
+#include "src/funcoes.h"
 #include "gtest/gtest.h"
 
 namespace Teste {
@@ -316,6 +316,6 @@ TEST(Teste, Testa_hipotenusa_triagulo_escaleno) {
     << "-------------------------------------------------------------------\n";
 }
 
-}  // end namespace
+}  // namespace Teste
 
-#endif  // TRUNK_FUNCOES_TEST_FUNCOES_TEST_H_
+#endif  // TEST_FUNCOES_TEST_H_
