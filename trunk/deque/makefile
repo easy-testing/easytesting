@@ -1,7 +1,7 @@
 # Compilador utilizado
 cc = g++
 # PATH raiz para includes
-path = ..
+path = .
 # Nome da lista de exercicios
 program = deque
 # Tipo dos elementos do vetor no main1
@@ -24,3 +24,6 @@ all:
 
 clean:
 	@rm -f main easy_testing
+
+zip:
+	zip -r $(CURDIR).zip . -x ".*"

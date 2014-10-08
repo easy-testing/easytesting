@@ -1,6 +1,6 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#include "deque/test/deque_test.h"
+#include "test/deque_test.h"
 
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);

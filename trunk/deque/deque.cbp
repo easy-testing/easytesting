@@ -8,52 +8,49 @@
 		<Build>
 			<Target title="EasyTesting">
 				<Option output="bin/easytesting/deque" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/easytesting" />
 				<Option object_output="obj/easytesting/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-g" />
+					<Add option="-DLType=std::string" />
+				</Compiler>
+			</Target>
+			<Target title="Main2">
+				<Option output="bin/main/deque" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/main/" />
+				<Option object_output="obj/main/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
 					<Add option="-DLType=std::string" />
 				</Compiler>
 			</Target>
 			<Target title="Main1">
-				<Option output="bin/main/deque" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/main1/" />
+				<Option output="deque" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-O2" />
 					<Add option="-DLType=float" />
 				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
-			</Target>
-			<Target title="Main2">
-				<Option output="bin/main/deque" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/main2/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-O2" />
-					<Add option="-DLType=std::string" />
-				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-std=c++0x" />
 			<Add option="-Wall" />
-			<Add option="-fexceptions" />
-			<Add directory=".." />
+			<Add directory="." />
 		</Compiler>
 		<Unit filename="gtest/gtest.cc">
 			<Option target="EasyTesting" />
 		</Unit>
 		<Unit filename="gtest/gtest.h">
 			<Option target="EasyTesting" />
+		</Unit>
+		<Unit filename="input1.txt">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="input2.txt">
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="src/deque.cc" />
 		<Unit filename="src/deque.h" />
