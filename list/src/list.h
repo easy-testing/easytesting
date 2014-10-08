@@ -1,7 +1,7 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_LIST_SRC_LIST_H_
-#define TRUNK_LIST_SRC_LIST_H_
+#ifndef SRC_LIST_H_
+#define SRC_LIST_H_
 
 #include <string>
 
@@ -75,4 +75,4 @@ class list {
   friend class Teste;
 };
 
-#endif  // TRUNK_LIST_SRC_LIST_H_
+#endif  // SRC_LIST_H_

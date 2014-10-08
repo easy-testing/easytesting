@@ -1,12 +1,12 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_LIST_TEST_LIST_TEST_H_
-#define TRUNK_LIST_TEST_LIST_TEST_H_
+#ifndef TEST_LIST_TEST_H_
+#define TEST_LIST_TEST_H_
 
 #include <sstream>
 #include <string>
 
-#include "list/src/list.h"
+#include "src/list.h"
 #include "gtest/gtest.h"
 
 using std::string;
@@ -383,4 +383,4 @@ TEST_F(Teste, Testa_Clear) {
       << "------------------------------------------------------------------\n";
 }
 
-#endif  // TRUNK_LIST_TEST_LIST_TEST_H_
+#endif  // TEST_LIST_TEST_H_

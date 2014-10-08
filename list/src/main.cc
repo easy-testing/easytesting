@@ -1,4 +1,4 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 //
 // Lista de exercícios sobre listas encadeadas - lista.
 //
@@ -23,9 +23,12 @@
 #include <iostream>
 #include <string>
 
-#include "list/src/list.h"
+#include "src/list.h"
 
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::string;
 
 void Print(list& l) {
   cout << "[";
