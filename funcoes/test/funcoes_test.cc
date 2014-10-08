@@ -1,6 +1,6 @@
-// copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#include "funcoes/test/funcoes_test.h"
+#include "test/funcoes_test.h"
 
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);

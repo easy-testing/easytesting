@@ -27,8 +27,9 @@
 				</Compiler>
 			</Target>
 			<Target title="Main1">
-				<Option output="deque" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="" />
+				<Option output="bin/main/deque" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/main/" />
+				<Option object_output="obj/main/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
