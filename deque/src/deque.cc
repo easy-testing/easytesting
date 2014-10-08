@@ -1,6 +1,6 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#include "deque/src/deque.h"
+#include "src/deque.h"
 
 // Implementa um nó da lista encadeada.
 struct Node {

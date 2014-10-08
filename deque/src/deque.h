@@ -1,7 +1,7 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_DEQUE_SRC_DEQUE_H_
-#define TRUNK_DEQUE_SRC_DEQUE_H_
+#ifndef SRC_DEQUE_H_
+#define SRC_DEQUE_H_
 
 #include <string>
 
@@ -62,5 +62,5 @@ class deque {
   friend class Teste;
 };
 
-#endif  // TRUNK_DEQUE_SRC_DEQUE_H_
+#endif  // SRC_DEQUE_H_
 

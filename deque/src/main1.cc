@@ -1,4 +1,4 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 //
 // Lista de exercícios sobre listas encadeadas - deque.
 //
@@ -20,7 +20,7 @@
 #include <fstream>
 #include <iostream>
 
-#include "deque/src/deque.h"
+#include "src/deque.h"
 
 using namespace std;
 
@@ -81,3 +81,4 @@ int main() {
   Imprimir(d);
   return 0;
 }
+
