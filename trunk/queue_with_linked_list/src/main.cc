@@ -1,4 +1,4 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 //
 // Lista de exercícios sobre listas encadeadas - fila.
 //
@@ -29,7 +29,7 @@
 #include <iostream>
 #include <string>
 
-#include "queue/src/queue.h"
+#include "src/queue.h"
 
 using std::cin;
 using std::cout;

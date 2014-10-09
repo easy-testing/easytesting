@@ -1,13 +1,13 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_QUEUE_TEST_QUEUE_TEST_H_
-#define TRUNK_QUEUE_TEST_QUEUE_TEST_H_
+#ifndef TEST_QUEUE_TEST_H_
+#define TEST_QUEUE_TEST_H_
 
 #include <sstream>
 #include <string>
 
 #include "gtest/gtest.h"
-#include "queue/src/queue.h"
+#include "src/queue.h"
 
 using std::string;
 using std::stringstream;
@@ -254,4 +254,4 @@ TEST_F(Teste, Testa_operador_Assign) {
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // TRUNK_QUEUE_TEST_QUEUE_TEST_H_
+#endif  // TEST_QUEUE_TEST_H_
