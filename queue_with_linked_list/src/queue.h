@@ -1,7 +1,7 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_QUEUE_SRC_QUEUE_H_
-#define TRUNK_QUEUE_SRC_QUEUE_H_
+#ifndef SRC_QUEUE_H_
+#define SRC_QUEUE_H_
 
 #include <string>
 
@@ -57,4 +57,4 @@ class queue {
   friend class Teste;
 };
 
-#endif  // TRUNK_QUEUE_SRC_QUEUE_H_
+#endif  // SRC_QUEUE_H_
