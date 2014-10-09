@@ -1,7 +1,7 @@
-// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_MATRIZES_SRC_MATRIZES_H_
-#define TRUNK_MATRIZES_SRC_MATRIZES_H_
+#ifndef SRC_MATRIZES_H_
+#define SRC_MATRIZES_H_
 
 #define MAX 100  // Dimensão máxima de uma matriz.
 
@@ -34,4 +34,4 @@ void MultMatriz(int n, float a[][MAX], float b[][MAX], float p[][MAX]);
 // |   ...     ...     ...     ...   ...|
 void MostraMatriz(int n, int m, float a[][MAX]);
 
-#endif  // TRUNK_MATRIZES_SRC_MATRIZES_H_
+#endif  // SRC_MATRIZES_H_

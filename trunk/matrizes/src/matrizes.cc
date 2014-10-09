@@ -1,10 +1,11 @@
-// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#include "matrizes/src/matrizes.h"
+#include "src/matrizes.h"
 
 #include <iostream>
 
-using namespace std;
+using std::cout;
+using std::endl;
 
 float MediaMatriz(int n, float a[][MAX]) {
   float soma = 0;

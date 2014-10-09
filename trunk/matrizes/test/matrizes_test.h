@@ -1,13 +1,13 @@
-// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_MATRIZES_TEST_MATRIZES_TEST_H_
-#define TRUNK_MATRIZES_TEST_MATRIZES_TEST_H_
+#ifndef TEST_MATRIZES_TEST_H_
+#define TEST_MATRIZES_TEST_H_
 
 #include <sstream>
 #include <string>
 
 #include "gtest/gtest.h"
-#include "matrizes/src/matrizes.h"
+#include "src/matrizes.h"
 
 using std::string;
 using std::stringstream;
@@ -373,6 +373,6 @@ TEST_F(Teste, Testa_MultMatriz_com_resultado_resultado_nulo) {
     << "\n"
     << "-------------------------------------------------------------------\n";
 }
-}  // Fim do namespace vazio.
+}  // namespace Teste.
 
-#endif  // TRUNK_MATRIZES_TEST_MATRIZES_TEST_H_
+#endif  // TEST_MATRIZES_TEST_H_
