@@ -1,6 +1,6 @@
-// Copyright 2013 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#include "ordered_set_with_array/src/set.h"
+#include "src/set.h"
 
 set::set() {
   size_ = 0;

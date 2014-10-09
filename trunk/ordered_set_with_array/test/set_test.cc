@@ -1,6 +1,6 @@
-// Copyright 2013 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#include "ordered_set_with_array/test/set_test.h"
+#include "test/set_test.h"
 
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);
