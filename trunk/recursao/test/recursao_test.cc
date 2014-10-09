@@ -1,6 +1,6 @@
-// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#include "recursao/test/recursao_test.h"
+#include "test/recursao_test.h"
 
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);

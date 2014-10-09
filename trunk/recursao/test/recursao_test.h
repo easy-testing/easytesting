@@ -1,13 +1,13 @@
-// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_RECURSAO_TEST_RECURSAO_TEST_H_
-#define TRUNK_RECURSAO_TEST_RECURSAO_TEST_H_
+#ifndef TEST_RECURSAO_TEST_H_
+#define TEST_RECURSAO_TEST_H_
 
 #include <sstream>
 #include <string>
 
 #include "gtest/gtest.h"
-#include "recursao/src/recursao.h"
+#include "src/recursao.h"
 
 using std::string;
 using std::stringstream;
@@ -221,6 +221,6 @@ TEST(Teste, Testa_da_Soma_dos_digitos) {
     << "-------------------------------------------------------------------\n";
   }
 }
-}  // end namespace
+}  // namespace Teste
 
-#endif  // TRUNK_RECURSAO_TEST_RECURSAO_TEST_H_
+#endif  // TEST_RECURSAO_TEST_H_

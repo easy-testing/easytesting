@@ -1,4 +1,4 @@
-// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 //
 // Lista de exercícios sobre algoritmos recursivos.
 //
@@ -12,9 +12,11 @@
 
 #include <iostream>
 
-#include "recursao/src/recursao.h"
+#include "src/recursao.h"
 
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
 // Retorna um numero inteiro indicando a opcao escolhida pelo usuario
 int LerOpcaoDoMenu() {
