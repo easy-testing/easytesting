@@ -1,4 +1,4 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef TRUNK_ORDERED_SET_WITH_BST_TEST_SET_TEST_H_
 #define TRUNK_ORDERED_SET_WITH_BST_TEST_SET_TEST_H_
@@ -8,7 +8,7 @@
 #include <string>
 
 #include "gtest/gtest.h"
-#include "ordered_set_with_bst/src/set.h"
+#include "src/set.h"
 
 using std::string;
 using std::stringstream;
@@ -25,7 +25,7 @@ struct Node {
 class Teste : public testing::Test {
  protected:
   // Retorna o valor da chave do elemento x de s;
-  SType key(Node* x, set& s) {
+  SType key(Node* x, const set& s) {
     if (x == NULL) {
       return "NULL";
     } else if (x == end(s)) {
@@ -36,13 +36,13 @@ class Teste : public testing::Test {
   }
 
   // Retorna o número de elementos no conjunto.
-  int size(set& s) {
+  int size(const set& s) {
     return s.size_;
   }
 
   // Insere uma FOLHA z na árvore cujo nó raiz é 'root' de forma consistente.
   // NOTA: Esta função NÃO aloca a memória para z.
-  void TreeInsert(Node*& root, Node* z) {
+  void TreeInsert(Node*& root, Node* z) {  // NOLINT
     // Procura qual vai ser o pai y de z na árvore.
     Node* y = NULL;
     Node* x = root;
@@ -93,7 +93,7 @@ class Teste : public testing::Test {
   // Dado o nó x, retorna o sucessor de x, ou seja, o nó cuja chave é o menor
   // elemento maior que a chave de x. Caso x seja o maior elemento da árvore,
   // retorna o nó sentinela.
-  Node* next(Node* x, set& s) {
+  Node* next(Node* x, const set& s) {
     if (x->right != NULL) {
       x = x->right;
       while (x->left != NULL) {
@@ -113,7 +113,7 @@ class Teste : public testing::Test {
   // Dado o nó x, retorna o antecessor de x, ou seja, o nó cuja chave é o menor
   // elemento maior que a chave de x. Caso x seja o menor elemento da árvore,
   // retorna o nó sentinela.
-  Node* prev(Node* x, set& s) {
+  Node* prev(Node* x, const set& s) {
     if (x == end(s)) {
       x = s.root_;
       while (x->right != NULL) {
@@ -137,7 +137,7 @@ class Teste : public testing::Test {
   }
 
   // Retorna um ponteiro para o elemento k de s.
-  Node* find(SType k, set& s) {
+  Node* find(SType k, const set& s) {
     Node* x = s.root_;
     while (x != NULL && k != x->key) {
       if (k < x->key) {
@@ -151,7 +151,7 @@ class Teste : public testing::Test {
 
   // Retorna uma string contendo os elementos do conjunto
   // no formato { c1 c2 c3 c4 } e ordenados do maior para o menor.
-  string ToString(set& s) {
+  string ToString(const set& s) {
     stringstream out;
     out << "{ ";
     for (Node* i = begin(s); i != end(s); i = next(i, s)) {

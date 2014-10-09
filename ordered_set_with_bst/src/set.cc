@@ -1,6 +1,6 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#include "ordered_set_with_bst/src/set.h"
+#include "src/set.h"
 
 // Define como os elementos da árvore serão organizados na memória.
 struct Node {
@@ -78,7 +78,7 @@ Node* TreePredecessor(Node* x) {
 
 // Insere uma FOLHA z na árvore cujo nó raiz é 'root' de forma consistente.
 // NOTA: Esta função NÃO aloca a memória para z.
-void TreeInsert(Node*& root, Node* z) {
+void TreeInsert(Node*& root, Node* z) {  // NOLINT
   // Procura qual vai ser o pai y de z na árvore.
   Node* y = NULL;
   Node* x = root;
@@ -103,7 +103,7 @@ void TreeInsert(Node*& root, Node* z) {
 
 // Desconecta o nó z da árvore de forma consistente e depois retorna z.
 // NOTA: Esta função NÃO desaloca a memória alocada para z.
-Node* TreeDelete(Node*& root, Node* z) {
+Node* TreeDelete(Node*& root, Node* z) {  // NOLINT
   Node* y;  // Nó que será desconectado da árvore.
   if (z->left == NULL || z->right == NULL) {
     y = z;
@@ -143,7 +143,7 @@ set::set() {
   size_= 0;
 }
 
-Node* set::begin() {
+Node* set::begin() const {
   if (empty()) {
     return NULL;
   } else {
@@ -151,15 +151,15 @@ Node* set::begin() {
   }
 }
 
-Node* set::end() {
+Node* set::end() const {
   return NULL;
 }
 
-Node* set::next(Node* x) {
+Node* set::next(Node* x) const {
   return TreeSuccessor(x);
 }
 
-Node* set::prev(Node* x) {
+Node* set::prev(Node* x) const {
   if (x == end()) {
     return TreeMaximum(root_);
   } else {
@@ -167,19 +167,19 @@ Node* set::prev(Node* x) {
   }
 }
 
-SType set::key(Node* x) {
+SType set::key(Node* x) const {
   return x->key;
 }
 
-bool set::empty() {
+bool set::empty() const {
   return size_ == 0;
 }
 
-int set::size() {
+int set::size() const {
   return size_;
 }
 
-Node* set::find(SType k) {
+Node* set::find(SType k) const {
   return TreeSearch(root_, k);
 }
 
@@ -207,7 +207,7 @@ void set::clear() {
   }
 }
 
-void set::operator=(set& s) {
+void set::operator=(const set& s) {
   clear();
   for (Node* i = s.begin(); i != s.end(); i = s.next(i)) {
     insert(i->key);

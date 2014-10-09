@@ -1,4 +1,4 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef TRUNK_ORDERED_SET_WITH_BST_SRC_SET_H_
 #define TRUNK_ORDERED_SET_WITH_BST_SRC_SET_H_
@@ -23,36 +23,36 @@ class set {
   set();
 
   // Testa se o cojunto está vazio em O(1).
-  bool empty();
+  bool empty() const;
 
   // Retorna o número de elementos no conjunto em O(1).
-  int size();
+  int size() const;
 
   // Retorna um ponteiro para o primeiro elemento do conjunto em O(log n).
   // Caso o conjunto esteja vazio, rentorna um ponteiro para set::end().
-  Node* begin();
+  Node* begin() const;
 
   // Retorna um ponteiro para o "marcador de fim" do conjunto em O(1).
-  Node* end();
+  Node* end() const;
 
   // Retorna o elemento seguinte ao indicado por x no conjunto em O(log n).
   // Se x aponta para o último elemento do conjunto, retorna set::end();
   // Precondição: x aponta para um dos elementos do conjunto.
-  Node* next(Node* x);
+  Node* next(Node* x) const;
 
   // Retorna o elemento anterior ao indicado por x no conjunto em O(log n).
   // Se x aponta para o primeiro elemento do conjunto, retorna set::end();
   // Precondição: x aponta para um dos elementos do cojunto, ou para set::end().
-  Node* prev(Node* x);
+  Node* prev(Node* x) const;
 
   // Retorna a chave do elemento indicado por x em (1).
-  SType key(Node* x);
+  SType key(Node* x) const;
 
   // Retorna um ponteiro para o elemento k em O(log n),
   // ou um ponteiro para set::end() caso k não pertença ao conjunto.
   // OBS: Note que esta função NÃO retorna bool. Para testar se um elemento 'a'
   // pertence a um conjunto 'c', você deve escrever "if (c.find(a) != c.end())".
-  Node* find(SType k);
+  Node* find(SType k) const;
 
   // Insere k no conjunto em O(log n).
   // Caso k já pertença ao conjunto, um novo elemento NÃO é inserido no
@@ -67,7 +67,7 @@ class set {
 
   // Faz com que o conjunto corrente contenha exatamente os mesmos elementos
   // do cojunto s em O(n.log n + m.log m), onde m = s.size().
-  void operator=(set& s);
+  void operator=(const set& s);
 
   // Libera toda a memória alocada para o conjunto em O(n.log n).
   ~set();
