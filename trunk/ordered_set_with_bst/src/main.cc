@@ -1,4 +1,4 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 //
 // Lista sobre Conjuntos.
 //
@@ -6,18 +6,19 @@
 // Implemente em set.h e set.cc o TAD set, utilizando árvores binárias de busca.
 //
 // Questão 2.
-// Escreva uma função "void Imprimir(set& s)" que recebe
+// Escreva uma função "void Imprimir(const set& s)" que recebe
 // como parâmetro um conjunto s e imprime os elementos de s na tela.
 //
 // Questão 3.
 // Escreva uma função
-// "void Intersecao(set& a, set& b, set* inter)" que recebe dois conjuntos
-// 'a' e 'b' e atribui a 'inter' o resultado da interseção de 'a' e 'b'.
+// "void Intersecao(const set& a, const set& b, set* inter)" que recebe dois
+// conjuntos 'a' e 'b' e atribui a 'inter' o resultado da interseção
+// de 'a' e 'b'.
 //
 // Questão 4.
 // Escreva uma função
-// "void Uniao(set& a, set& b, set* uniao)" que recebe dois conjuntos
-// 'a' e 'b' e atribui a 'uniao' o resultado da união de 'a' e 'b'.
+// "void Uniao(const set& a, const set& b, set* uniao)" que recebe dois
+// conjuntos 'a' e 'b' e atribui a 'uniao' o resultado da união de 'a' e 'b'.
 //
 // Questão 5.
 // Escreva um programa que gerencia os fornecedores para compra de peças
@@ -26,8 +27,8 @@
 //
 // O sistema deve ler de um arquivo o nome dos fornecedores de peças e a lista
 // das peças que cada fornecedor vende. Tome como EXEMPLO o
-// arquivo "fornecedores.txt". A  primeira linha deste arquivo contém o número n
-// de fornecedores. As n linhas seguintes contêm uma string com o nome de um
+// arquivo "fornecedores.txt". A  primeira linha deste arquivo contém o número
+// n de fornecedores. As n linhas seguintes contêm uma string com o nome de um
 // fornecedor, seguida de um número 'm' (de peças que o fornecedor vende),
 // que por sua vez é seguido de 'm' números naturais, cada um deles referente a
 // uma das peças vendidas pelo fornecedor.
@@ -51,7 +52,7 @@
 #include <iostream>
 #include <string>
 
-#include "ordered_set_with_bst/src/set.h"
+#include "src/set.h"
 
 using std::cin;
 using std::cout;
@@ -60,7 +61,7 @@ using std::ifstream;
 using std::string;
 
 // Questão 2.
-void Imprimir(set& c) {
+void Imprimir(const set& c) {
   cout << "{ ";
   for (Node* i = c.begin(); i != c.end(); i = c.next(i)) {
     cout << c.key(i) << " ";
@@ -69,7 +70,7 @@ void Imprimir(set& c) {
 }
 
 // Questão 3.
-void Intersecao(set& a, set& b, set* inter) {
+void Intersecao(const set& a, const set& b, set* inter) {
   // Percorre todos os elementos do cojunto 'a' e insere em 'inter' todos
   // aqueles que também estão no cojunto 'b'.
   inter->clear();
@@ -81,7 +82,7 @@ void Intersecao(set& a, set& b, set* inter) {
 }
 
 // Questão 4.
-void Uniao(set& a, set& b, set* uniao) {
+void Uniao(const set& a, const set& b, set* uniao) {
   // Inicialmente, faz 'uniao' ficar igual a 'b'.
   *uniao = b;
   // Em seguida, insere em 'uniao' também os elementos em a.
