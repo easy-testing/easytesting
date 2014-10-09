@@ -1,7 +1,7 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_ORDERED_SET_WITH_LINKED_LIST_SRC_SET_H_
-#define TRUNK_ORDERED_SET_WITH_LINKED_LIST_SRC_SET_H_
+#ifndef LIST_SRC_SET_H_
+#define LIST_SRC_SET_H_
 
 #include <string>
 
@@ -84,4 +84,4 @@ class set {
   friend class Teste;
 };
 
-#endif  // TRUNK_ORDERED_SET_WITH_LINKED_LIST_SRC_SET_H_
+#endif  // SRC_SET_H_

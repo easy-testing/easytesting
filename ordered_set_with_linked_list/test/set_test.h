@@ -1,7 +1,7 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_ORDERED_SET_WITH_LINKED_LIST_TEST_SET_TEST_H_
-#define TRUNK_ORDERED_SET_WITH_LINKED_LIST_TEST_SET_TEST_H_
+#ifndef TEST_SET_TEST_H_
+#define TEST_SET_TEST_H_
 
 #include <cmath>
 #include <cstdlib>
@@ -10,7 +10,7 @@
 #include <string>
 
 #include "gtest/gtest.h"
-#include "ordered_set_with_linked_list/src/set.h"
+#include "src/set.h"
 
 using std::priority_queue;
 using std::string;
@@ -571,5 +571,5 @@ TEST_F(Teste, Testa_operador_de_atribuicao_a_conjunto_nao_vazio) {
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // TRUNK_ORDERED_SET_WITH_LINKED_LIST_TEST_SET_TEST_H_
+#endif  // TEST_SET_TEST_H_
 
