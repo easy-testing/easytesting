@@ -13,8 +13,6 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-g" />
-					<Add option="-TType=std::string" />
 					<Add option="-DSType=std::string" />
 					<Add option="-DVType=int" />
 				</Compiler>
@@ -25,20 +23,13 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-O2" />
-					<Add option="-TType=std::string" />
 					<Add option="-DSType=std::string" />
 					<Add option="-DVType=int" />
 				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-fexceptions" />
-			<Add directory=".." />
 			<Add directory="." />
 		</Compiler>
 		<Unit filename="gtest/gtest.cc">

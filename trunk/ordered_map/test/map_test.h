@@ -1,14 +1,14 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_ORDERED_MAP_WITH_BST_TEST_MAP_TEST_H_
-#define TRUNK_ORDERED_MAP_WITH_BST_TEST_MAP_TEST_H_
+#ifndef TEST_MAP_TEST_H_
+#define TEST_MAP_TEST_H_
 
 #include <cstdlib>
 #include <sstream>
 #include <string>
 
 #include "gtest/gtest.h"
-#include "ordered_map/src/map.h"
+#include "src/map.h"
 
 using std::string;
 using std::stringstream;
@@ -694,4 +694,4 @@ TEST_F(Teste, Testa_operador_de_atribuicao_a_conjunto_nao_vazio) {
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // TRUNK_ORDERED_MAP_WITH_BST_TEST_MAP_TEST_H_
+#endif  // TEST_MAP_TEST_H_
