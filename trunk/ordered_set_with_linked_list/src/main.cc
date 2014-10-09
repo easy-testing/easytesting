@@ -1,4 +1,4 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 //
 // Lista sobre Conjuntos.
 //
@@ -51,7 +51,7 @@
 #include <iostream>
 #include <string>
 
-#include "ordered_set_with_linked_list/src/set.h"
+#include "src/set.h"
 
 using std::cin;
 using std::cout;
