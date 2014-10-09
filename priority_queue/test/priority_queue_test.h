@@ -1,14 +1,14 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_PRIORITY_QUEUE_TEST_PRIORITY_QUEUE_TEST_H_
-#define TRUNK_PRIORITY_QUEUE_TEST_PRIORITY_QUEUE_TEST_H_
+#ifndef TEST_PRIORITY_QUEUE_TEST_H_
+#define TEST_PRIORITY_QUEUE_TEST_H_
 
 #include <cstdlib>
 #include <sstream>
 #include <string>
 
 #include "gtest/gtest.h"
-#include "priority_queue/src/priority_queue.h"
+#include "src/priority_queue.h"
 
 using std::string;
 using std::stringstream;
@@ -331,4 +331,4 @@ TEST_F(Teste, Testa_Pop_em_no_com_subarvore_direita) {
       << "------------------------------------------------------------------\n";
 }
 
-#endif  // TRUNK_PRIORITY_QUEUE_TEST_PRIORITY_QUEUE_TEST_H_
+#endif  // TEST_PRIORITY_QUEUE_TEST_H_

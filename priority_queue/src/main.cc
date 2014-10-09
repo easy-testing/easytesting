@@ -1,4 +1,4 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 //
 // Lista sobre Filas de Prioridade.
 //
@@ -16,9 +16,9 @@
 #include <fstream>
 #include <iostream>
 
-#include "priority_queue/src/priority_queue.h"
+#include "src/priority_queue.h"
 
-using namespace std;
+using std::cout;
 
 void Print(int n, float v[]) {
   cout << "{";

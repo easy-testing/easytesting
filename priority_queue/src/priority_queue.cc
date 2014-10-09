@@ -1,21 +1,21 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#include "priority_queue/src/priority_queue.h"
+#include "src/priority_queue.h"
 
-// Define como os elementos da árvore serão organizados na memória.
+// Define como os elementos da Ã¡rvore serÃ£o organizados na memÃ³ria.
 struct Node {
-  SType key;  // Valor da chave do nó.
-  int copies;  // Número de cópia da chave na fila.
-  Node* left;  // Ponteiro para o nó a esquerda.
-  Node* right;  // Ponteiro para o nó a direita.
-  Node* parent;  // Ponteiro para o nó acima.
+  SType key;  // Valor da chave do nÃ³.
+  int copies;  // NÃºmero de cÃ³pia da chave na fila.
+  Node* left;  // Ponteiro para o nÃ³ a esquerda.
+  Node* right;  // Ponteiro para o nÃ³ a direita.
+  Node* parent;  // Ponteiro para o nÃ³ acima.
 };
 
-// Implementação das funções auxiliares que operam sobre os nós da árvore.
+// ImplementaÃ§Ã£o das funÃ§Ãµes auxiliares que operam sobre os nÃ³s da Ã¡rvore.
 ////////////////////////////////////////////////////////////////////////////////
 
-// Retorna o nó da árvore x cuja chave é k em O(log n),
-// ou NULL caso k não esteja na árvore x.
+// Retorna o nÃ³ da Ã¡rvore x cuja chave Ã© k em O(log n),
+// ou NULL caso k nÃ£o esteja na Ã¡rvore x.
 Node* TreeSearch(Node* x, SType k) {
   while (x != NULL && k != x->key) {
     if (k < x->key) {
@@ -27,8 +27,8 @@ Node* TreeSearch(Node* x, SType k) {
   return x;
 }
 
-// Retorna o nó com o menor elemento da árvore x em O(log n).
-// Precondição: x não é uma árvore vazia.
+// Retorna o nÃ³ com o menor elemento da Ã¡rvore x em O(log n).
+// PrecondiÃ§Ã£o: x nÃ£o Ã© uma Ã¡rvore vazia.
 Node* TreeMinimum(Node* x) {
   while (x->left != NULL) {
     x = x->left;
@@ -36,10 +36,10 @@ Node* TreeMinimum(Node* x) {
   return x;
 }
 
-// Insere uma FOLHA z na árvore cujo nó raiz é 'root' de forma consistente.
-// NOTA: Esta função NÃO aloca a memória para z.
+// Insere uma FOLHA z na Ã¡rvore cujo nÃ³ raiz Ã© 'root' de forma consistente.
+// NOTA: Esta funÃ§Ã£o NÃƒO aloca a memÃ³ria para z.
 void TreeInsert(Node*& root, Node* z) {
-  // Procura qual vai ser o pai y de z na árvore.
+  // Procura qual vai ser o pai y de z na Ã¡rvore.
   Node* y = NULL;
   Node* x = root;
   while (x != NULL) {
@@ -50,10 +50,10 @@ void TreeInsert(Node*& root, Node* z) {
       x = x->right;
     }
   }
-  // Insere z em baixo do nó y.
+  // Insere z em baixo do nÃ³ y.
   z->parent = y;
   if (y == NULL) {
-    root = z;  // z se torna a raiz da árvore.
+    root = z;  // z se torna a raiz da Ã¡rvore.
   } else if (z->key < y->key) {
     y->left = z;
   } else  {
@@ -61,11 +61,11 @@ void TreeInsert(Node*& root, Node* z) {
   }
 }
 
-// Desconecta o nó z da árvore de forma consistente e depois retorna z.
-// Precondição: A subárvore esquerda de z é vazia.
-// NOTA: Esta função NÃO desaloca a memória alocada para z.
+// Desconecta o nÃ³ z da Ã¡rvore de forma consistente e depois retorna z.
+// PrecondiÃ§Ã£o: A subÃ¡rvore esquerda de z Ã© vazia.
+// NOTA: Esta funÃ§Ã£o NÃƒO desaloca a memÃ³ria alocada para z.
 Node* TreeDeleteMin(Node*& root, Node* z) {
-  Node* x = z->right;  // Nó que vai ser o novo filho do pai de z.
+  Node* x = z->right;  // NÃ³ que vai ser o novo filho do pai de z.
   if (x != NULL) {
     x->parent = z->parent;
   }
@@ -77,7 +77,7 @@ Node* TreeDeleteMin(Node*& root, Node* z) {
   return z;
 }
 
-// Implementação das funções do TAD set.
+// ImplementaÃ§Ã£o das funÃ§Ãµes do TAD set.
 ////////////////////////////////////////////////////////////////////////////////
 
 priority_queue::priority_queue() {
