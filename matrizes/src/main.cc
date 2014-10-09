@@ -1,4 +1,4 @@
-// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 //
 // Lista de exercícios sobre estruturas de dados homogêneas - matrizes.
 //
@@ -48,9 +48,11 @@
 #include <fstream>
 #include <iostream>
 
-#include "matrizes/src/matrizes.h"
+#include "src/matrizes.h"
 
-using namespace std;
+using std::cin;
+using std::cout;
+using std::ifstream;
 
 void ImprimirVetor(int n, float v[]) {
   cout << "{ ";
