@@ -1,6 +1,6 @@
-// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#include "repeticao/src/repeticao.h"
+#include "src/iteracao.h"
 
 #include <cmath>
 
