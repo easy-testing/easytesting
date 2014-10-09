@@ -1,9 +1,9 @@
 # Compilador utilizado
 cc = g++
 # PATH raiz para includes
-path = ../
+path = .
 # Nome da lista de exercicios
-program = repeticao
+program = iteracao
 
 # Gera o binario do programa e de testes e mantem dependencias
 all: clean main.o $(program).o $(program)_test.o gtest.o
@@ -40,3 +40,6 @@ gtest.o:
 
 clean:
 	@rm -f main.o $(program).o $(program)_test.o gtest.o a.out
+
+zip:
+	zip -r $(CURDIR).zip . -x ".*"

@@ -1,7 +1,7 @@
-// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_REPETICAO_SRC_REPETICAO_H_
-#define TRUNK_REPETICAO_SRC_REPETICAO_H_
+#ifndef SRC_ITERACAO_H_
+#define SRC_ITERACAO_H_
 
 // Retorna o valor do fatorial de n.
 int fat(int n);
@@ -34,4 +34,4 @@ int div_(int a, int b);
 // Por exemplo: dig(123) retorna 6.
 int dig(int n);
 
-#endif  // TRUNK_ITERACAO_SRC_ITERACAO_H_
+#endif  // SRC_ITERACAO_H_
