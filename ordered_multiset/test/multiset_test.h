@@ -1,14 +1,14 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_ORDERED_MULTISET_TEST_MULTISET_TEST_H_
-#define TRUNK_ORDERED_MULTISET_TEST_MULTISET_TEST_H_
+#ifndef TEST_MULTISET_TEST_H_
+#define TEST_MULTISET_TEST_H_
 
 #include <cstdlib>
 #include <sstream>
 #include <string>
 
 #include "gtest/gtest.h"
-#include "ordered_multiset/src/multiset.h"
+#include "src/multiset.h"
 
 using std::string;
 using std::stringstream;
@@ -781,4 +781,4 @@ TEST_F(Teste, Testa_operador_de_atribuicao_a_multiconjunto_nao_vazio) {
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // TRUNK_ORDERED_MULTISET_TEST_MULTISET_TEST_H_
+#endif  // TEST_MULTISET_TEST_H_
