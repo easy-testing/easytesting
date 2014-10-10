@@ -1,7 +1,7 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_UNORDERED_map_WITH_SET_TEST_UNORDERED_map_TEST_H_
-#define TRUNK_UNORDERED_map_WITH_SET_TEST_UNORDERED_map_TEST_H_
+#ifndef TRUNK_UNORDERED_MAP_TEST_UNORDERED_MAP_TEST_H_
+#define TRUNK_UNORDERED_MAP_TEST_UNORDERED_MAP_TEST_H_
 
 #include <cmath>
 #include <cstdlib>
@@ -10,38 +10,38 @@
 #include <string>
 
 #include "gtest/gtest.h"
-#include "unordered_map/src/unordered_map.h"
+#include "src/unordered_map.h"
 
 using std::string;
 using std::stringstream;
 
-// Implementa um nó da lista encadeada.
+// Implementa um nÃ³ da lista encadeada.
 struct Node {
-  SType key;  // Chave do nó.
-  VType value; // Valor do nó
-  Node* prev;  // Ponteiro para o nó anterior.
-  Node* next;  // Ponteiro para o próximo nó.
+  SType key;  // Chave do nÃ³.
+  VType value;  // Valor do nÃ³
+  Node* prev;  // Ponteiro para o nÃ³ anterior.
+  Node* next;  // Ponteiro para o prÃ³ximo nÃ³.
 };
 
 // Classe base dos testes.
 class Teste : public testing::Test {
  protected:
-  map* table(unordered_map& s) {
+  map* table(const unordered_map& s) {
     return s.table_;
   }
 
-  int size(unordered_map& s) {
+  int size(const unordered_map& s) {
     return s.size_;
   }
 
   // Retorna o "marcador de fim" do conjunto.
-  Node* end(unordered_map& s) {
+  Node* end(const unordered_map& s) {
     return s.table_[s.capacity_ - 1].end();
   }
 
   Node* insert(SType k, VType v, unordered_map* s) {
     int j = hash(k, s->capacity_);
-    s->table_[j].insert(k,v);
+    s->table_[j].insert(k, v);
     s->size_++;
     return s->table_[j].find(k);
   }
@@ -56,7 +56,7 @@ class Teste : public testing::Test {
     return out.str();
   }
 
-  string ToString(unordered_map& s) {
+  string ToString(const unordered_map& s) {
     stringstream out;
     out << "{ ";
     for (int i = 0; i < s.capacity_; i++) {
@@ -627,4 +627,4 @@ TEST_F(Teste, Testa_operador_de_atribuicao_a_conjunto_nao_vazio) {
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // TRUNK_UNORDERED_map_WITH_SET_TEST_UNORDERED_map_TEST_H_
+#endif  // TRUNK_UNORDERED_MAP_TEST_UNORDERED_MAP_TEST_H_

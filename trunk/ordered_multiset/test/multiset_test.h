@@ -1,7 +1,7 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TEST_MULTISET_TEST_H_
-#define TEST_MULTISET_TEST_H_
+#ifndef TRUNK_ORDERED_MULTISET_TEST_MULTISET_TEST_H_
+#define TRUNK_ORDERED_MULTISET_TEST_MULTISET_TEST_H_
 
 #include <cstdlib>
 #include <sstream>
@@ -25,11 +25,11 @@ struct Node {
 // Classe base dos testes.
 class Teste : public testing::Test {
  protected:
-  Node* root(multiset& s) {
+  Node* root(const multiset& s) {
     return s.root_;
   }
 
-  int size(multiset& s) {
+  int size(const multiset& s) {
     return s.size_;
   }
 
@@ -92,7 +92,7 @@ class Teste : public testing::Test {
     }
   }
 
-  string ToString(multiset& s) {
+  string ToString(const multiset& s) {
     stringstream out;
     out << "{ ";
     out << TreeToString(s.root_);
@@ -781,4 +781,4 @@ TEST_F(Teste, Testa_operador_de_atribuicao_a_multiconjunto_nao_vazio) {
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // TEST_MULTISET_TEST_H_
+#endif  // TRUNK_ORDERED_MULTISET_TEST_MULTISET_TEST_H_

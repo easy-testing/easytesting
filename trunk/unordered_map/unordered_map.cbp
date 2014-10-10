@@ -13,8 +13,8 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-g" />
-					<Add option="-TType=std::string" />
+					<Add option="-DSType=std::string" />
+					<Add option="-DVType=int" />
 				</Compiler>
 			</Target>
 			<Target title="Main">
@@ -23,24 +23,15 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-O2" />
-					<Add option="-TType=std::string" />
+					<Add option="-DSType=std::string" />
+					<Add option="-DVType=int" />
 				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-fexceptions -fpermissive" />
-			<Add option="-DSType=std::string" />
-			<Add option="-DVType=int" />
-			<Add directory=".." />
 			<Add directory="." />
 		</Compiler>
-		<Unit filename="../ordered_map/src/map.cc" />
-		<Unit filename="../ordered_map/src/map.h" />
 		<Unit filename="gtest/gtest.cc">
 			<Option target="EasyTesting" />
 		</Unit>
@@ -50,6 +41,8 @@
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
 		</Unit>
+		<Unit filename="src/map.cc" />
+		<Unit filename="src/map.h" />
 		<Unit filename="src/unordered_map.cc" />
 		<Unit filename="src/unordered_map.h" />
 		<Unit filename="test/unordered_map_test.cc">

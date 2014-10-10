@@ -1,4 +1,4 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef TRUNK_UNORDERED_map_WITH_SET_SRC_UNORDERED_map_H_
 #define TRUNK_UNORDERED_map_WITH_SET_SRC_UNORDERED_map_H_
@@ -7,7 +7,7 @@
 #include <cstdlib>
 #include <string>
 
-#include "ordered_map/src/map.h"
+#include "src/map.h"
 
 // Função que calcula o hash dos elementos para uma tabela com m linhas.
 // É declarado aqui, mas só é implementado em unordered_map.cc para
@@ -28,43 +28,43 @@ class unordered_map {
   unordered_map();
 
   // Testa se o cojunto está vazio em O(1).
-  bool empty();
+  bool empty() const;
 
   // Retorna o número de elementos no conjunto em O(1).
-  int size();
+  int size() const;
 
   // Retorna um ponteiro para o primeiro elemento do conjunto em O(m).
   // Caso o conjunto esteja vazio, rentorna um ponteiro para map::end().
-  Node* begin();
+  Node* begin() const;
 
   // Retorna um ponteiro para o "marcador de fim" do conjunto em O(1).
-  Node* end();
+  Node* end() const;
 
   // Retorna o elemento seguinte ao indicado por x no conjunto em O(m).
   // Se x aponta para o último elemento do conjunto, retorna map::end();
   // Precondição: x aponta para um dos elementos do conjunto.
-  Node* next(Node* x);
+  Node* next(Node* x) const;
 
   // Retorna o elemento anterior ao indicado por x no conjunto em O(m).
   // Nota: x pode apontar para unordered_map::end().
   // Precondição: existe pelo menos um elemento do conjunto antes de x.
-  Node* prev(Node* x);
+  Node* prev(Node* x) const;
 
   // Retorna uma referência ao valor associado a chave k em O(1).
   // Precondição: k pertence ao conjunto.
   VType& operator[](SType k);
 
   // Retorna a chave do nó x em O(1).
-  SType key(Node* x);
+  SType key(Node* x) const;
 
   // Retorna o valor do nó x em O(1).
-  VType value(Node* x);
+  VType value(Node* x) const;
 
   // Retorna um ponteiro para o elemento k em O(1),
   // ou um ponteiro para map::end() caso k não pertença ao conjunto.
   // OBS: Note que esta função NÃO retorna bool. Para testar se um elemento 'a'
   // pertence a um conjunto 'c', você deve escrever "if (c.find(a) != c.end())".
-  Node* find(SType k);
+  Node* find(SType k) const;
 
   // Insere k no conjunto, associado ao valor v, em O(1).
   // Caso k já pertença ao conjunto, o valor associado a k é atualizado para v.
@@ -78,7 +78,7 @@ class unordered_map {
 
   // Faz com que o conjunto corrente contenha exatamente os mesmos elementos
   // do cojunto s em O(n + m + n' + m'), onde n' = s.size_ e m' = s.capacity_.
-  void operator=(unordered_map& s);
+  void operator=(const unordered_map& s);
 
   // Libera toda a memória alocada para o conjunto em O(n + m).
   ~unordered_map();

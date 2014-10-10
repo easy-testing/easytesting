@@ -13,8 +13,6 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-g" />
-					<Add option="-TType=std::string" />
 					<Add option="-DSType=std::string" />
 					<Add option="-DVType=int" />
 				</Compiler>
@@ -25,24 +23,15 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-O2" />
-					<Add option="-TType=std::string" />
 					<Add option="-DSType=std::string" />
 					<Add option="-DVType=int" />
 				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-fexceptions" />
-			<Add directory=".." />
 			<Add directory="." />
 		</Compiler>
-		<Unit filename="../ordered_multiset/src/multiset.cc" />
-		<Unit filename="../ordered_multiset/src/multiset.h" />
 		<Unit filename="gtest/gtest.cc">
 			<Option target="EasyTesting" />
 		</Unit>
@@ -52,6 +41,8 @@
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
 		</Unit>
+		<Unit filename="src/multiset.cc" />
+		<Unit filename="src/multiset.h" />
 		<Unit filename="src/unordered_multiset.cc" />
 		<Unit filename="src/unordered_multiset.h" />
 		<Unit filename="test/unordered_multiset_test.cc">

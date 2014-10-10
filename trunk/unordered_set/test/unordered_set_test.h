@@ -1,4 +1,4 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef TRUNK_UNORDERED_SET_TEST_UNORDERED_SET_TEST_H_
 #define TRUNK_UNORDERED_SET_TEST_UNORDERED_SET_TEST_H_
@@ -10,7 +10,7 @@
 #include <string>
 
 #include "gtest/gtest.h"
-#include "unordered_set/src/unordered_set.h"
+#include "src/unordered_set.h"
 
 using std::string;
 using std::stringstream;
