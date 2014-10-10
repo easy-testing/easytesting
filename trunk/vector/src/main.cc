@@ -1,12 +1,12 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 //
-// Lista sobre vetores dinâmicos.
+// Lista sobre alocacão dinâmica - vetores dinâmicos.
 //
 // Questão 1.
 // Implemente em vector.h e vector.cc o TAD vector.
 //
 // Questão 2.
-// Implemente uma função "void FiltraPositivos(vector& v)" que recebe um
+// Implemente uma função "void FiltraPositivos(vector* v)" que recebe um
 // vetor dinâmico 'v' e remove de v todos os números que não são positivos.
 //
 // Questão 3.
@@ -19,16 +19,17 @@
 // não positivos de 'v' e (iv) imprime na tela apenas os números
 // positivos que estavam no arquivo ordenados do menor para o maior.
 
-// Questão 2.
 #include <iostream>
 #include <fstream>
-#include "vector/src/vector.h"
+
+#include "src/vector.h"
 
 using std::cout;
 using std::endl;
 using std::ifstream;
 
-void FiltraPositivos(vector& v) {
+// Questão 2.
+void FiltraPositivos(vector& v) {  // NOLINT
   for (int i = 0; i < v.size(); i++) {
     if (v[i] <= 0.0) {
       v.erase(i);
@@ -40,9 +41,9 @@ void FiltraPositivos(vector& v) {
 // Questão 3a.
 // Mescla dois vetores ordenados v1 e v2 em um único vetor ordenado v.
 // Precondição: v->size() == v1.size() + v2.size().
-void Merge(vector& v1, vector& v2, vector& v) {
-  int j1 = 0; // Contador de v1.
-  int j2 = 0; // Contador de v2.
+void Merge(vector& v1, vector& v2, vector& v) {  // NOLINT
+  int j1 = 0;  // Contador de v1.
+  int j2 = 0;  // Contador de v2.
   for (int i = 0; i < v.size(); i++) {
     if (j1 == v1.size()) {
       v[i] = v2[j2++];
@@ -57,7 +58,7 @@ void Merge(vector& v1, vector& v2, vector& v) {
 }
 
 // Questão 3b.
-void MergeSort(vector& v) {
+void MergeSort(vector& v) {  // NOLINT
   if (v.size() > 1) {
     vector v1(v.size() / 2);
     vector v2(v.size() / 2 + v.size() % 2);

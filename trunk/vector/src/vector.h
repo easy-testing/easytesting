@@ -1,4 +1,4 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef TRUNK_VECTOR_SRC_VECTOR_H_
 #define TRUNK_VECTOR_SRC_VECTOR_H_
@@ -13,10 +13,10 @@ class vector {
 
   // Cria um vetor com n elementos. O valor dos n elementos é indeterminado
   // (ou seja, pode ser qualquer valor).
-  vector(int n);
+  explicit vector(int n);
 
   // Retorna o número de elementos no vetor.
-  int size();
+  int size() const;
 
   // Altera o tamanho do vetor para n elementos.
   // Se n <= size_, o conteúdo do vetor é reduzido para os seus n primeiros
@@ -30,7 +30,7 @@ class vector {
   VType& operator[](int i);
 
   // Faz com que o vetor corrente fique igual ao vetor v.
-  void operator=(vector& v);
+  void operator=(const vector& v);
 
   // Insere o elemento x no final do vetor.
   // Esta operação aumenta o número de elementos do vetor em uma unidade.
@@ -67,7 +67,6 @@ class vector {
   ~vector();
 
  private:
-  vector(vector& v) {}
   // Número de elementos no vetor.
   int size_;
 

@@ -1,4 +1,4 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef TRUNK_STACK_WITH_LINKED_LIST_SRC_STACK_H_
 #define TRUNK_STACK_WITH_LINKED_LIST_SRC_STACK_H_
@@ -19,14 +19,14 @@ class stack {
   stack();
 
   // Testa se a pilha está vazia em O(1).
-  bool empty();
+  bool empty() const;
 
   // Retorna o número de elementos na pilha em O(1).
-  int size();
+  int size() const;
 
   // Retorna o elemento que está no topo da pilha em O(1).
   // Precondição: a pilha não pode estar vazia.
-  SType top();
+  SType top() const;
 
   // Insere k no topo da pilha em O(1).
   void push(SType k);
@@ -37,7 +37,7 @@ class stack {
 
   // Faz a pilha corrente ficar igual a p em O(n + m),
   // onde m = p.size() e n = size_.
-  void operator=(stack& p);
+  void operator=(const stack& p);
 
   // Libera a memória alocada para a pilha em O(n), onde n = size_.
   ~stack();

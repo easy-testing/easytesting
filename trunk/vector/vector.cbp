@@ -22,14 +22,13 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-DVType=double" />
+					<Add option="-DVType=float" />
 				</Compiler>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-fexceptions" />
-			<Add directory=".." />
+			<Add directory="." />
 		</Compiler>
 		<Unit filename="gtest/gtest.cc">
 			<Option target="EasyTesting" />

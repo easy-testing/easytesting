@@ -1,4 +1,4 @@
-// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef TRUNK_VETORES_TEST_VETORES_TEST_H_
 #define TRUNK_VETORES_TEST_VETORES_TEST_H_
@@ -8,7 +8,7 @@
 #include <string>
 
 #include "gtest/gtest.h"
-#include "vetores/src/vetores.h"
+#include "src/vetores.h"
 
 using std::string;
 using std::stringstream;
@@ -650,6 +650,6 @@ TEST_F(Teste, Testa_funcao_ProdutoEscalar_vetores_perpendiculares) {
   << "-------------------------------------------------------------------\n";
 }
 
-}  // Fim do namespace vazio.
+}  // namespace Teste
 
 #endif  // TRUNK_VETORES_TEST_VETORES_TEST_H_
