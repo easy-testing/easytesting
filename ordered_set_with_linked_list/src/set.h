@@ -21,6 +21,10 @@ template <class Type> class SetIterator {
     node_ = x;
   }
 
+  Node<Type>* node() const {
+    return node_;
+  }
+
  public:
   SetIterator(const SetIterator& it) {
     node_ = it.node_;
@@ -121,7 +125,7 @@ template <class Type> class set {
     // Caso k já não esteja no conjunto, cria um novo nó para armazenar k.
     if (it == end() || *it != k) {
       // Cria um novo nó e define o valor dos seus campos.
-      Node<Type>* x = it.node_;
+      Node<Type>* x = it.node();
       Node<Type>* node = new Node<Type>;
       node->key = k;
       node->prev = x->prev;
@@ -154,12 +158,15 @@ template <class Type> class set {
 
   // Faz com que o conjunto corrente contenha exatamente os mesmos elementos
   // do cojunto s em O(n + m), onde m = s.size().
+  // Insere de traz para frente para que a insersão seja em O(1).
   void operator=(const set& s) {
     clear();
     if (!s.empty()) {
-      for (Node<Type>* i = s.end_->prev; i != s.end_; i = i->prev) {
-        insert(i->key);
-      }
+      iterator i = s.end();
+      do {
+        i--;
+        insert(*i);
+      } while (i != s.begin());
     }
   }
 
