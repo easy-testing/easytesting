@@ -2,43 +2,47 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="vetores" />
+		<Option title="set" />
+		<Option makefile="makefile" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="Easytesting">
-				<Option output="bin/debug/vetores" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/debug/" />
+			<Target title="EasyTesting">
+				<Option output="bin/easytesting/set" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/easytesting/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DSType=std::string" />
+				</Compiler>
 			</Target>
 			<Target title="Main">
-				<Option output="bin/release/vetores" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/release/" />
+				<Option output="bin/main/set" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/main/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add directory=".." />
 			<Add directory="." />
 		</Compiler>
 		<Unit filename="gtest/gtest.cc">
-			<Option target="Easytesting" />
+			<Option target="EasyTesting" />
 		</Unit>
 		<Unit filename="gtest/gtest.h">
-			<Option target="Easytesting" />
+			<Option target="EasyTesting" />
 		</Unit>
 		<Unit filename="src/main.cc">
 			<Option target="Main" />
 		</Unit>
-		<Unit filename="src/vetores.cc" />
-		<Unit filename="src/vetores.h" />
-		<Unit filename="test/vetores_test.cc">
-			<Option target="Easytesting" />
+		<Unit filename="src/set.h" />
+		<Unit filename="test/set_test.cc">
+			<Option target="EasyTesting" />
 		</Unit>
-		<Unit filename="test/vetores_test.h">
-			<Option target="Easytesting" />
+		<Unit filename="test/set_test.h">
+			<Option target="EasyTesting" />
 		</Unit>
 		<Extensions>
 			<code_completion />

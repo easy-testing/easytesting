@@ -15,10 +15,7 @@ struct Node;
 // encadeada do menor para o maior.
 // NOTA2: O tipo dos elementos contidos no conjunto é definido por SType.
 // O valor de SType é um #define declarado em tempo de compilação.
-// Para simplificar as funções de complexidade, denota-se n = size_.
-// Nota3: O cálculo das complexidades assume que a função de hasing
-// é uniformemente simples, mas isto não é garantido nesta implementação.
-// No entanto, esta implementação garante que o fator de carga é constante.
+// NOTA3: Para simplificar as funções de complexidade, denota-se n = size_.
 class set {
  public:
   // Cria um conjunto vazio em O(1).
