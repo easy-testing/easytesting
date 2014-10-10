@@ -1,7 +1,7 @@
 // copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TEST_CONDICIONAIS_TEST_H_
-#define TEST_CONDICIONAIS_TEST_H_
+#ifndef TRUNK_CONDICIONAIS_TEST_CONDICIONAIS_TEST_H_
+#define TRUNK_CONDICIONAIS_TEST_CONDICIONAIS_TEST_H_
 
 #include <cmath>
 #include <sstream>
@@ -153,4 +153,4 @@ TEST(Teste, Testa_signo) {
 
 }  // namespace Teste
 
-#endif  // TEST_CONDICIONAIS_TEST_H_
+#endif  // TRUNK_CONDICIONAIS_TEST_CONDICIONAIS_TEST_H_

@@ -1,7 +1,7 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef SRC_RECURSAO_H_
-#define SRC_RECURSAO_H_
+#ifndef TRUNK_RECURSAO_SRC_RECURSAO_H_
+#define TRUNK_RECURSAO_SRC_RECURSAO_H_
 
 // Retorna o valor do fatorial de n.
 int fat(int n);
@@ -32,4 +32,4 @@ int div_(int a, int b);
 // Por exemplo: dig(123) retorna 6.
 int dig(int n);
 
-#endif  // SRC_RECURSAO_H_
+#endif  // TRUNK_RECURSAO_SRC_RECURSAO_H_

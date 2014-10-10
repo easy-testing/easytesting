@@ -19,15 +19,15 @@ Complexo::Complexo(double a, double b) {
   imag_ = b;
 }
 
-double Complexo::real() {
+double Complexo::real() const {
   return real_;
 }
 
-double Complexo::imag() {
+double Complexo::imag() const {
   return imag_;
 }
 
-bool Complexo::operator==(Complexo x) {
+bool Complexo::operator==(Complexo x) const {
   return real_ == x.real_ && imag_ == x.imag_;
 }
 
@@ -36,21 +36,21 @@ void Complexo::operator=(Complexo x) {
   imag_ = x.imag_;
 }
 
-double Complexo::modulo() {
+double Complexo::modulo() const {
   return sqrt(real_*real_ + imag_*imag_);
 }
 
-Complexo Complexo::conjugado() {
+Complexo Complexo::conjugado() const {
   Complexo c(real_, -imag_);
   return c;
 }
 
-Complexo Complexo::simetrico() {
+Complexo Complexo::simetrico() const {
   Complexo c(-real_, -imag_);
   return c;
 }
 
-Complexo Complexo::inverso() {
+Complexo Complexo::inverso() const {
   double mod2 = modulo() * modulo();
   Complexo i(real_ / mod2, -imag_ / mod2);
   return i;

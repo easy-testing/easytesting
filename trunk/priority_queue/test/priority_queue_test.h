@@ -1,7 +1,7 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TEST_PRIORITY_QUEUE_TEST_H_
-#define TEST_PRIORITY_QUEUE_TEST_H_
+#ifndef TRUNK_PRIORITY_QUEUE_TEST_PRIORITY_QUEUE_TEST_H_
+#define TRUNK_PRIORITY_QUEUE_TEST_PRIORITY_QUEUE_TEST_H_
 
 #include <cstdlib>
 #include <sstream>
@@ -105,7 +105,7 @@ class Teste : public testing::Test {
     }
   }
 
-  string ToString(priority_queue& s) {
+  string ToString(const priority_queue& s) {
     stringstream out;
     out << "[ ";
     out << TreeToString(s.root_);
@@ -331,4 +331,28 @@ TEST_F(Teste, Testa_Pop_em_no_com_subarvore_direita) {
       << "------------------------------------------------------------------\n";
 }
 
-#endif  // TEST_PRIORITY_QUEUE_TEST_H_
+TEST_F(Teste, Testa_operador_de_atribuicao) {
+  priority_queue esperado;
+  Push("14", &esperado);
+  Push("12", &esperado);
+  Push("15", &esperado);
+  priority_queue atual;
+  atual = esperado;
+  ASSERT_NE(root(esperado), root(atual))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao: void priority_queue::operator=(priority_queue& p)\n"
+    << "-------------------------------------------------------------------\n"
+    << " Não basta apenas copiar o ponteiro para \"root_\". \n"
+    << " Você tem que copiar todos os elementos de p para a fila corrente.\n"
+    << "-------------------------------------------------------------------\n";
+  ASSERT_EQ(ToString(esperado), ToString(atual))
+    << "-------------------------------------------------------------------\n"
+    << "Erro na funcao: void priority_queue::operator=(priority_queue& p)\n"
+    << "-------------------------------------------------------------------\n"
+    << " q = " << ToString(esperado) << "\n"
+    << " \"f = q\" resultou em: f = " << ToString(atual) << "\n"
+    << " Resultado esperado: f = " << ToString(esperado) << "\n"
+    << "-------------------------------------------------------------------\n";
+}
+
+#endif  // TRUNK_PRIORITY_QUEUE_TEST_PRIORITY_QUEUE_TEST_H_

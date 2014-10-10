@@ -1,7 +1,7 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef SRC_DEQUE_H_
-#define SRC_DEQUE_H_
+#ifndef TRUNK_DEQUE_SRC_DEQUE_H_
+#define TRUNK_DEQUE_SRC_DEQUE_H_
 
 #include <string>
 
@@ -21,18 +21,18 @@ class deque {
   ~deque();
 
   // Testa se o deque esta vazio em O(1).
-  bool empty();
+  bool empty() const;
 
   // Retorna o número de elementos no deque em O(1).
-  int size();
+  int size() const;
 
   // Retorna o valor da chave do primeiro elemento do deque em O(1).
   // Precondição: o deque não pode estar vazio.
-  LType front();
+  LType front() const;
 
   // Retorna o valor da chave do último elemento do deque em O(1).
   // Precondição: o deque não pode estar vazio.
-  LType back();
+  LType back() const;
 
   // Insere k no início do deque em O(1).
   void push_front(LType k);
@@ -50,7 +50,7 @@ class deque {
 
   // Faz o deque corrente ficar igual a d em O(n + m),
   // onde m = d.size() e n é o número de elementos no deque corrente.
-  void operator=(deque& d);
+  void operator=(const deque& d);
 
  private:
   // Número de elementos no deque.
@@ -62,5 +62,5 @@ class deque {
   friend class Teste;
 };
 
-#endif  // SRC_DEQUE_H_
+#endif  // TRUNK_DEQUE_SRC_DEQUE_H_
 

@@ -13,8 +13,6 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-g" />
-					<Add option="-TType=std::string" />
 					<Add option="-DSType=std::string" />
 				</Compiler>
 			</Target>
@@ -24,19 +22,12 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-O2" />
-					<Add option="-TType=std::string" />
 					<Add option="-DSType=std::string" />
 				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-fexceptions" />
-			<Add directory=".." />
 			<Add directory="." />
 		</Compiler>
 		<Unit filename="gtest/gtest.cc">
@@ -53,7 +44,9 @@
 		<Unit filename="test/set_test.cc">
 			<Option target="EasyTesting" />
 		</Unit>
-		<Unit filename="test/set_test.h" />
+		<Unit filename="test/set_test.h">
+			<Option target="EasyTesting" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />

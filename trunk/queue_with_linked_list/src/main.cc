@@ -6,7 +6,7 @@
 // Implemente em queue.h e queue.cc o TAD queue, utilizando listas encadeadas.
 //
 // Questão 2.
-// Escreva uma função "void Imprimir(queue& q)" que recebe
+// Escreva uma função "void Imprimir(queue& p)" que recebe
 // como parâmetro uma fila q e imprime os elemento de q na tela.
 // Pós-condição: a fila 'q' não é alterada.
 //
@@ -40,7 +40,9 @@ using std::string;
 ////////////////////////////////////////////////////////////////////////////////
 
 // Retira os elementos da fila q na tela.
-void Imprimir(queue& q) {
+void Imprimir(const queue& p) {
+  queue q;
+  q = p;
   cout << "[ ";
   for (int i = 0; i < q.size(); i++) {
     cout << q.front() << " ";

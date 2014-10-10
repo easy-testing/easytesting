@@ -36,9 +36,11 @@ void PriorityQueueSort(int n, float v[]) {
   for (int i = 0; i < n; i++) {
     q.push(v[i]);
   }
+  priority_queue qq;
+  qq = q;
   for (int i = 0; i < n; i++) {
-    v[i] = q.top();
-    q.pop();
+    v[i] = qq.top();
+    qq.pop();
   }
 }
 

@@ -1,6 +1,6 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#include "stack_with_array/test/stack_test.h"
+#include "test/stack_test.h"
 
 int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);

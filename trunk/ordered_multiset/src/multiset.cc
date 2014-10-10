@@ -79,7 +79,7 @@ Node* TreePredecessor(Node* x) {
 
 // Insere uma FOLHA z na árvore cujo nó raiz é 'root' de forma consistente.
 // NOTA: Esta função NÃO aloca a memória para z.
-void TreeInsert(Node*& root, Node* z) {
+void TreeInsert(Node*& root, Node* z) {  // NOLINT
   // Procura qual vai ser o pai y de z na árvore.
   Node* y = NULL;
   Node* x = root;
@@ -104,7 +104,7 @@ void TreeInsert(Node*& root, Node* z) {
 
 // Desconecta o nó z da árvore de forma consistente e depois retorna z.
 // NOTA: Esta função NÃO desaloca a memória alocada para z.
-Node* TreeDelete(Node*& root, Node* z) {
+Node* TreeDelete(Node*& root, Node* z) {  // NOLINT
   Node* y;  // Nó que será desconectado da árvore.
   if (z->left == NULL || z->right == NULL) {
     y = z;
@@ -145,7 +145,7 @@ multiset::multiset() {
   size_= 0;
 }
 
-Node* multiset::begin() {
+Node* multiset::begin() const {
   if (empty()) {
     return end();
   } else {
@@ -153,15 +153,15 @@ Node* multiset::begin() {
   }
 }
 
-Node* multiset::end() {
+Node* multiset::end() const {
   return NULL;
 }
 
-Node* multiset::next(Node* x) {
+Node* multiset::next(Node* x) const {
   return TreeSuccessor(x);
 }
 
-Node* multiset::prev(Node* x) {
+Node* multiset::prev(Node* x) const {
   if (x == end()) {
     return TreeMaximum(root_);
   } else {
@@ -169,7 +169,7 @@ Node* multiset::prev(Node* x) {
   }
 }
 
-int multiset::count(SType k) {
+int multiset::count(SType k) const {
   Node* x = find(k);
   if (x == end()) {
     return 0;
@@ -178,19 +178,19 @@ int multiset::count(SType k) {
   }
 }
 
-SType multiset::key(Node* x) {
+SType multiset::key(Node* x) const {
   return x->key;
 }
 
-bool multiset::empty() {
+bool multiset::empty() const {
   return size_ == 0;
 }
 
-int multiset::size() {
+int multiset::size() const {
   return size_;
 }
 
-Node* multiset::find(SType k) {
+Node* multiset::find(SType k) const {
   return TreeSearch(root_, k);
 }
 
@@ -226,7 +226,7 @@ void multiset::clear() {
   }
 }
 
-void multiset::operator=(multiset& s) {
+void multiset::operator=(const multiset& s) {
   clear();
   for (Node* i = s.begin(); i != s.end(); i = s.next(i)) {
     for (int j = 0; j < i->count; j++) {

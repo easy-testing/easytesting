@@ -7,7 +7,7 @@
 #include <string>
 
 #include "gtest/gtest.h"
-#include "stack_with_array/src/stack.h"
+#include "src/stack.h"
 
 using std::string;
 using std::stringstream;

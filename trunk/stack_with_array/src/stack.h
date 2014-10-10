@@ -6,46 +6,46 @@
 #include <string>
 
 // Implementa uma pilha de elementos utilizando arrays.
-// O tipo dos elementos contidos na pilha é definido por SType.
-// O valor de SType deve ser definido em tempo de compilação.
+// O tipo dos elementos contidos na pilha Ã© definido por SType.
+// O valor de SType deve ser definido em tempo de compilaÃ§Ã£o.
 class stack {
  public:
   // Cria uma pilha vazia em O(1).
   stack();
 
-  // Testa se a pilha está vazia em O(1).
-  bool empty();
+  // Testa se a pilha estÃ¡ vazia em O(1).
+  bool empty() const;
 
-  // Retorna o número de elementos na pilha em O(1).
-  int size();
+  // Retorna o nÃºmero de elementos na pilha em O(1).
+  int size() const;
 
-  // Retorna o elemento que está no topo da pilha em O(1).
-  // Precondição: a pilha não pode estar vazia.
-  SType top();
+  // Retorna o elemento que estÃ¡ no topo da pilha em O(1).
+  // PrecondiÃ§Ã£o: a pilha nÃ£o pode estar vazia.
+  SType top() const;
 
   // Insere k no topo da pilha em O(1).
   void push(SType k);
 
-  // Remove o elemento que está no topo da pilha em O(1).
-  // Precondição: a pilha não pode estar vazia.
+  // Remove o elemento que estÃ¡ no topo da pilha em O(1).
+  // PrecondiÃ§Ã£o: a pilha nÃ£o pode estar vazia.
   void pop();
 
   // Faz a pilha corrente ficar igual a p em O(n + m),
   // onde m = p.size() e n = size().
-  void operator=(stack& p);
+  void operator=(const stack& p);
 
-// Libera a memória alocada para a pilha em O(1).
+// Libera a memÃ³ria alocada para a pilha em O(1).
   ~stack();
 
  private:
-  // Função que altera o número máximo de elementos na pilha
+  // FunÃ§Ã£o que altera o nÃºmero mÃ¡ximo de elementos na pilha
   // para pelo menos 'm' em O(m).
   void reserve(int m);
 
-  // Número de elementos na pilha.
+  // NÃºmero de elementos na pilha.
   int size_;
 
-  // Número de elementos no vetor array_.
+  // NÃºmero de elementos no vetor array_.
   int capacity_;
 
   // Vetor com os elementos da pilha.

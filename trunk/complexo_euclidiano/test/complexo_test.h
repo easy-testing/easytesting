@@ -1,7 +1,7 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TEST_COMPLEXO_TEST_H_
-#define TEST_COMPLEXO_TEST_H_
+#ifndef TRUNK_COMPLEXO_EUCLIDIANO_TEST_COMPLEXO_TEST_H_
+#define TRUNK_COMPLEXO_EUCLIDIANO_TEST_COMPLEXO_TEST_H_
 
 #include "src/complexo.h"
 
@@ -532,4 +532,4 @@ TEST_F(Teste, Dividir_Numeros_Complexos_sinais_contrarios) {
     << " Resposta esperada:  " << ToString(esperado) << "\n"
     << "-------------------------------------------------------------------\n";
 }
-#endif  // TEST_COMPLEXO_TEST_H_
+#endif  // TRUNK_COMPLEXO_EUCLIDIANO_TEST_COMPLEXO_TEST_H_

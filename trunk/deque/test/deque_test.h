@@ -1,7 +1,7 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TEST_DEQUE_TEST_H_
-#define TEST_DEQUE_TEST_H_
+#ifndef TRUNK_DEQUE_TEST_DEQUE_TEST_H_
+#define TRUNK_DEQUE_TEST_DEQUE_TEST_H_
 
 #include <sstream>
 #include <string>
@@ -316,4 +316,4 @@ TEST_F(Teste, Testa_operador_Assign) {
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // TEST_DEQUE_TEST_H_
+#endif  // TRUNK_DEQUE_TEST_DEQUE_TEST_H_

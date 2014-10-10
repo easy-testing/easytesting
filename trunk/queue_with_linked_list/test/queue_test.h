@@ -1,7 +1,7 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TEST_QUEUE_TEST_H_
-#define TEST_QUEUE_TEST_H_
+#ifndef TRUNK_QUEUE_WITH_LINKED_LIST_TEST_QUEUE_TEST_H_
+#define TRUNK_QUEUE_WITH_LINKED_LIST_TEST_QUEUE_TEST_H_
 
 #include <sstream>
 #include <string>
@@ -232,7 +232,7 @@ TEST_F(Teste, Testa_Pop_em_fila_nao_vazia) {
       << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_operador_Assign) {
+TEST_F(Teste, Testa_operador_de_atribuicao) {
   queue esperado;
   CriaFila("12", "14", "15", &esperado);
   queue atual;
@@ -254,4 +254,4 @@ TEST_F(Teste, Testa_operador_Assign) {
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // TEST_QUEUE_TEST_H_
+#endif  // TRUNK_QUEUE_WITH_LINKED_LIST_TEST_QUEUE_TEST_H_

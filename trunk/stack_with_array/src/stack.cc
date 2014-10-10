@@ -1,6 +1,6 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#include "stack_with_array/src/stack.h"
+#include "src/stack.h"
 
 void stack::reserve(int m) {
   if (m > capacity_) {
@@ -20,15 +20,15 @@ stack::stack() {
   array_ = new SType[capacity_];
 }
 
-bool stack::empty() {
+bool stack::empty() const {
   return size_ == 0;
 }
 
-int stack::size() {
+int stack::size() const {
   return size_;
 }
 
-SType stack::top() {
+SType stack::top() const {
   return array_[size_ - 1];
 }
 
@@ -44,7 +44,7 @@ void stack::pop() {
   size_--;
 }
 
-void stack::operator=(stack& p) {
+void stack::operator=(const stack& p) {
   reserve(p.capacity_);
   size_ = p.size_;
   for (int i = 0; i < p.size_; i++) {

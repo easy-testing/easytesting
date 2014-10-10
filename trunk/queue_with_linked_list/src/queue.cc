@@ -16,19 +16,19 @@ queue::queue() {
   end_->prev = end_;
 }
 
-bool queue::empty() {
+bool queue::empty() const {
   return size_ == 0;
 }
 
-int queue::size() {
+int queue::size() const {
   return size_;
 }
 
-QType queue::front() {
+QType queue::front() const {
   return end_->next->key;
 }
 
-QType queue::back() {
+QType queue::back() const {
   return end_->prev->key;
 }
 
@@ -52,7 +52,7 @@ void queue::pop() {
   size_--;
 }
 
-void queue::operator=(queue& q) {
+void queue::operator=(const queue& q) {
   // Apaga todos os elementos na fila corrente.
   while (!empty()) {
     pop();

@@ -47,12 +47,6 @@
 		<Unit filename="gtest/gtest.h">
 			<Option target="EasyTesting" />
 		</Unit>
-		<Unit filename="input1.txt">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="input2.txt">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
 		<Unit filename="src/deque.cc" />
 		<Unit filename="src/deque.h" />
 		<Unit filename="src/main1.cc">

@@ -16,35 +16,35 @@ list::list() {
   end_->prev = end_;
 }
 
-bool list::empty() {
+bool list::empty() const {
   return size_ == 0;
 }
 
-int list::size() {
+int list::size() const {
   return size_;
 }
 
-Node* list::begin() {
+Node* list::begin() const {
   return end_->next;
 }
 
-Node* list::end() {
+Node* list::end() const {
   return end_;
 }
 
-Node* list::next(Node* x) {
+Node* list::next(Node* x) const {
   return x->next;
 }
 
-Node* list::prev(Node* x) {
+Node* list::prev(Node* x) const {
   return x->prev;
 }
 
-LType& list::operator[](Node* x) {
+LType list::key(Node* x) const {
   return x->key;
 }
 
-void list::operator=(list& l) {
+void list::operator=(const list& l) {
   clear();
   merge(l);
 }
@@ -74,9 +74,9 @@ void list::clear() {
   }
 }
 
-void list::merge(list& l) {
+void list::merge(const list& l) {
   for (Node* i = l.begin(); i != l.end(); i = l.next(i)) {
-    insert(end(), l[i]);
+    insert(end(), l.key(i));
   }
 }
 

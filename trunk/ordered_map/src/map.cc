@@ -5,7 +5,7 @@
 // Define como os elementos da árvore serão organizados na memória.
 struct Node {
   SType key;  // Valor da chave do nó.
-  VType value; // Valor do nó
+  VType value;  // Valor do nó
   Node* left;  // Ponteiro para o nó a esquerda.
   Node* right;  // Ponteiro para o nó a direita.
   Node* parent;  // Ponteiro para o nó acima.
@@ -79,7 +79,7 @@ Node* TreePredecessor(Node* x) {
 
 // Insere uma FOLHA z na árvore cujo nó raiz é 'root' de forma consistente.
 // NOTA: Esta função NÃO aloca a memória para z.
-void TreeInsert(Node*& root, Node* z) {
+void TreeInsert(Node*& root, Node* z) {  // NOLINT
   // Procura qual vai ser o pai y de z na árvore.
   Node* y = NULL;
   Node* x = root;
@@ -104,7 +104,7 @@ void TreeInsert(Node*& root, Node* z) {
 
 // Desconecta o nó z da árvore de forma consistente e depois retorna z.
 // NOTA: Esta função NÃO desaloca a memória alocada para z.
-Node* TreeDelete(Node*& root, Node* z) {
+Node* TreeDelete(Node*& root, Node* z) {  // NOLINT
   Node* y;  // Nó que será desconectado da árvore.
   if (z->left == NULL || z->right == NULL) {
     y = z;
@@ -145,7 +145,7 @@ map::map() {
   size_= 0;
 }
 
-Node* map::begin() {
+Node* map::begin() const {
   if (empty()) {
     return NULL;
   } else {
@@ -153,15 +153,15 @@ Node* map::begin() {
   }
 }
 
-Node* map::end() {
+Node* map::end() const {
   return NULL;
 }
 
-Node* map::next(Node* x) {
+Node* map::next(Node* x) const {
   return TreeSuccessor(x);
 }
 
-Node* map::prev(Node* x) {
+Node* map::prev(Node* x) const {
   if (x == end()) {
     return TreeMaximum(root_);
   } else {
@@ -173,23 +173,23 @@ VType& map::operator[](SType x) {
   return find(x)->value;
 }
 
-SType map::key(Node* x) {
+SType map::key(Node* x) const {
   return x->key;
 }
 
-VType map::value(Node* x) {
+VType map::value(Node* x) const {
   return x->value;
 }
 
-bool map::empty() {
+bool map::empty() const {
   return size_ == 0;
 }
 
-int map::size() {
+int map::size() const {
   return size_;
 }
 
-Node* map::find(SType k) {
+Node* map::find(SType k) const {
   return TreeSearch(root_, k);
 }
 
@@ -221,7 +221,7 @@ void map::clear() {
   }
 }
 
-void map::operator=(map& s) {
+void map::operator=(const map& s) {
   clear();
   for (Node* i = s.begin(); i != s.end(); i = s.next(i)) {
     insert(i->key, i->value);

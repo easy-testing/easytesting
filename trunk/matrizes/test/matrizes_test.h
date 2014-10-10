@@ -1,7 +1,7 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TEST_MATRIZES_TEST_H_
-#define TEST_MATRIZES_TEST_H_
+#ifndef TRUNK_MATRIZES_TEST_MATRIZES_TEST_H_
+#define TRUNK_MATRIZES_TEST_MATRIZES_TEST_H_
 
 #include <sstream>
 #include <string>
@@ -375,4 +375,4 @@ TEST_F(Teste, Testa_MultMatriz_com_resultado_resultado_nulo) {
 }
 }  // namespace Teste.
 
-#endif  // TEST_MATRIZES_TEST_H_
+#endif  // TRUNK_MATRIZES_TEST_MATRIZES_TEST_H_

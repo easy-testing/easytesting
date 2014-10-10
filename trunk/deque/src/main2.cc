@@ -40,14 +40,18 @@
 
 #include "src/deque.h"
 
-using namespace std;
+using std::cout;
+using std::endl;
+using std::ifstream;
+using std::string;
 
 // Questão 2.
-void ImprimeDeque(deque& d) {
+void Imprimir(const deque& q) {
+  deque d;
+  d = q;
   cout << "[ ";
   for (int i = 0; i < d.size(); i++) {
     cout << d.front() << " ";
-    d.push_back(d.front());
     d.pop_front();
   }
   cout << "]" << endl;

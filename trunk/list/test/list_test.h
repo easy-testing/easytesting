@@ -1,7 +1,7 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TEST_LIST_TEST_H_
-#define TEST_LIST_TEST_H_
+#ifndef TRUNK_LIST_TEST_LIST_TEST_H_
+#define TRUNK_LIST_TEST_LIST_TEST_H_
 
 #include <sstream>
 #include <string>
@@ -216,34 +216,18 @@ TEST_F(Teste, Testa_Prev) {
       << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_operador_At_para_acesso) {
+TEST_F(Teste, Testa_Key) {
   list l;
   CriaLista("12", "14", "15", &l);
-  LType atual = l[l.begin()];
+  LType atual = l.key(l.begin());
   LType esperado = "12";
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: LType& list::operator[](Node* x)\n"
+    << "Erro na funcao: LType& list::key(Node* x)\n"
     << "-------------------------------------------------------------------\n"
     << " l = " << "[ 12 14 15 ]" << "\n"
     << " \"l[l.begin()]\" retornou: " << atual << "\n"
     << " Valor esperado: " << esperado << "\n"
-    << "-------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Testa_operador_At_para_atribuicao) {
-  list l;
-  CriaLista("12", "14", "15", &l);
-  l[l.begin()] = "-1";
-  string atual = ToString(l);
-  string esperado = "[ -1 14 15 ]";
-  ASSERT_EQ(esperado, atual)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: LType& list::operator[](Node* x)\n"
-    << "-------------------------------------------------------------------\n"
-    << " l = " << "[ 12 14 15 ]" << "\n"
-    << " \"l[l.begin()] = -1\" resultou em: l = " << atual << "\n"
-    << " Resultado esperado: l = " << esperado << "\n"
     << "-------------------------------------------------------------------\n";
 }
 
@@ -383,4 +367,4 @@ TEST_F(Teste, Testa_Clear) {
       << "------------------------------------------------------------------\n";
 }
 
-#endif  // TEST_LIST_TEST_H_
+#endif  // TRUNK_LIST_TEST_LIST_TEST_H_
