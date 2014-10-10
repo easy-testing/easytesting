@@ -1,7 +1,7 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_ORDERED_SET_WITH_LINKED_LIST_TEST_SET_TEST_H_
-#define TRUNK_ORDERED_SET_WITH_LINKED_LIST_TEST_SET_TEST_H_
+#ifndef BRANCHES_TEMPLATED_ORDERED_SET_WITH_LINKED_LIST_TEST_SET_TEST_H_
+#define BRANCHES_TEMPLATED_ORDERED_SET_WITH_LINKED_LIST_TEST_SET_TEST_H_
 
 #include <cmath>
 #include <cstdlib>
@@ -16,18 +16,11 @@ using std::priority_queue;
 using std::string;
 using std::stringstream;
 
-// Implementa um nó da lista encadeada.
-struct Node {
-  SType key;  // Valor da chave do nó.
-  Node* prev;  // Ponteiro para o nó anterior.
-  Node* next;  // Ponteiro para o próximo nó.
-};
-
 // Classe base dos testes.
 class Teste : public testing::Test {
  protected:
   // Retorna o valor da chave do elemento x de s;
-  SType key(Node* x, const set& s) {
+  SType key(Node<string>* x, const set<string>& s) {
     if (x == NULL) {
       return "NULL";
     } else if (x == end(s)) {
@@ -38,19 +31,19 @@ class Teste : public testing::Test {
   }
 
   // Retorna o número de elementos no conjunto.
-  int size(const set& s) {
+  int size(const set<string>& s) {
     return s.size_;
   }
 
   // Insere k em s.
   // Precondição: k não está em s.
-  void insert(SType k, set* s) {
-    Node* x = s->end_->next;
+  void insert(string k, set<string>* s) {
+    Node<string>* x = s->end_->next;
     while (x != s->end_ && x->key < k) {
       x = x->next;
     }
     if (x == s->end_ || x->key != k) {
-      Node* node = new Node;
+      Node<string>* node = new Node<string>;
       node->key = k;
       node->prev = x->prev;
       node->next = x;
@@ -61,28 +54,33 @@ class Teste : public testing::Test {
   }
 
   // Retorna o primeiro elemento do conjunto.
-  Node* begin(const set& s) {
+  Node<string>* node(const set<string>::iterator& it) {
+    return it.node_;
+  }
+
+  // Retorna o primeiro elemento do conjunto.
+  Node<string>* begin(const set<string>& s) {
     return s.end_->next;
   }
 
   // Retorna o "marcador de fim" do conjunto.
-  Node* end(const set& s) {
+  Node<string>* end(const set<string>& s) {
     return s.end_;
   }
 
   // Retorna o elemento seguinte a 'x' no conjunto.
-  Node* next(Node* x, const set& s) {
+  Node<string>* next(Node<string>* x, const set<string>& s) {
     return x->next;
   }
 
   // Retorna o elemento anterior a 'x' no conjunto.
-  Node* prev(Node* x, const set& s) {
+  Node<string>* prev(Node<string>* x, const set<string>& s) {
     return x->prev;
   }
 
   // Retorna um ponteiro para o elemento k de s.
-  Node* find(SType k, const set& s) {
-    for (Node* i = s.end_->next; i != s.end_; i = i->next) {
+  Node<string>* find(string k, const set<string>& s) {
+    for (Node<string>* i = s.end_->next; i != s.end_; i = i->next) {
       if (i->key == k) {
         return i;
       }
@@ -92,10 +90,10 @@ class Teste : public testing::Test {
 
   // Retorna uma string contendo os elementos do conjunto
   // no formato { c1 c2 c3 c4 } e ordenados do maior para o menor.
-  string ToString(const set& s) {
+  string ToString(const set<string>& s) {
     stringstream out;
     out << "{ ";
-    for (Node* i = begin(s); i != end(s); i = next(i, s)) {
+    for (Node<string>* i = begin(s); i != end(s); i = next(i, s)) {
       out << key(i, s) << " ";
     }
     out << "}";
@@ -104,7 +102,7 @@ class Teste : public testing::Test {
 };
 
 TEST_F(Teste, Testa_construtor_vazio) {
-  set atual;
+  set<string> atual;
   ASSERT_EQ(0, size(atual))
     << "-------------------------------------------------------------------\n"
     << "Erro no construtor: set::set()\n"
@@ -120,7 +118,7 @@ TEST_F(Teste, Testa_construtor_vazio) {
 }
 
 TEST_F(Teste, Testa_funcao_empty_em_conjunto_vazio) {
-  set s;
+  set<string> s;
   ASSERT_TRUE(s.empty())
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: bool set::empty() \n"
@@ -130,7 +128,7 @@ TEST_F(Teste, Testa_funcao_empty_em_conjunto_vazio) {
 }
 
 TEST_F(Teste, Testa_funcao_empty_em_conjunto_nao_vazio) {
-  set s;
+  set<string> s;
   insert("2", &s);
   insert("1", &s);
   insert("3", &s);
@@ -143,7 +141,7 @@ TEST_F(Teste, Testa_funcao_empty_em_conjunto_nao_vazio) {
 }
 
 TEST_F(Teste, Testa_funcao_size_em_conjunto_vazio) {
-  set s;
+  set<string> s;
   int esperado = 0;
   int atual = s.size();
   ASSERT_EQ(esperado, atual)
@@ -157,7 +155,7 @@ TEST_F(Teste, Testa_funcao_size_em_conjunto_vazio) {
 }
 
 TEST_F(Teste, Testa_funcao_size_em_conjunto_nao_vazio) {
-  set s;
+  set<string> s;
   insert("2", &s);
   insert("1", &s);
   insert("3", &s);
@@ -174,8 +172,8 @@ TEST_F(Teste, Testa_funcao_size_em_conjunto_nao_vazio) {
 }
 
 TEST_F(Teste, Testa_funcao_begin_em_conjunto_vazio) {
-  set s;
-  ASSERT_EQ(begin(s), s.begin())
+  set<string> s;
+  ASSERT_EQ(begin(s), node(s.begin()))
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: Node* set::begin() \n"
       << "------------------------------------------------------------------\n"
@@ -185,10 +183,10 @@ TEST_F(Teste, Testa_funcao_begin_em_conjunto_vazio) {
 }
 
 TEST_F(Teste, Testa_funcao_begin_em_conjunto_nao_vazio) {
-  set s;
+  set<string> s;
   insert("1", &s);
-  Node* atual = s.begin();
-  Node* esperado = begin(s);
+  Node<string>* atual = node(s.begin());
+  Node<string>* esperado = begin(s);
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: Node* set::begin() \n"
@@ -200,8 +198,8 @@ TEST_F(Teste, Testa_funcao_begin_em_conjunto_nao_vazio) {
 }
 
 TEST_F(Teste, Testa_funcao_end_em_conjunto_vazio) {
-  set s;
-  ASSERT_EQ(end(s), s.end())
+  set<string> s;
+  ASSERT_EQ(end(s), node(s.end()))
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: Node* set::end() \n"
       << "------------------------------------------------------------------\n"
@@ -211,10 +209,10 @@ TEST_F(Teste, Testa_funcao_end_em_conjunto_vazio) {
 }
 
 TEST_F(Teste, Testa_funcao_end_em_conjunto_nao_vazio) {
-  set s;
+  set<string> s;
   insert("1", &s);
-  Node* atual = s.end();
-  Node* esperado = end(s);
+  Node<string>* atual = node(s.end());
+  Node<string>* esperado = end(s);
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
       << "Erro na funcao: Node* set::end() \n"
@@ -225,109 +223,10 @@ TEST_F(Teste, Testa_funcao_end_em_conjunto_nao_vazio) {
       << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_funcao_next_do_primeiro_de_dois_elementos) {
-  set s;
-  insert("1", &s);
-  insert("2", &s);
-  Node* atual = s.next(begin(s));
-  Node* esperado = next(begin(s), s);
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* set::next(Node* x) \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(s) << "\n"
-      << " \"s.next(s.begin())\" retornou: ponteiro para "
-      << key(atual, s) << "\n"
-      << " Valor esperado: ponteiro para " << key(esperado, s) << "\n"
-      << "------------------------------------------------------------------\n";
-}
-
-
-TEST_F(Teste, Testa_funcao_next_do_ultimo_elemento_do_conjunto) {
-  set s;
-  insert("1", &s);
-  Node* atual = s.next(begin(s));
-  Node* esperado = s.next(begin(s));
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* set::next(Node* x) \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(s) << "\n"
-      << " \"s.next(s.begin())\" retornou: ponteiro para "
-      << key(atual, s) << "\n"
-      << " Valor esperado: ponteiro para " << key(esperado, s) << "\n"
-      << "------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Testa_funcao_prev_do_segundo_de_dois_elementos) {
-  set s;
-  insert("1", &s);
-  insert("2", &s);
-  Node* atual = s.prev(next(begin(s), s));
-  Node* esperado = begin(s);
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* set::prev(Node* x) \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(s) << "\n"
-      << " \"s.prev(s.find(2))\" retornou: ponteiro para "
-      << key(atual, s) << "\n"
-      << " Valor esperado: ponteiro para " << key(esperado, s) << "\n"
-      << "------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Testa_funcao_prev_do_primeiro_elemento_do_conjunto) {
-  set s;
-  insert("1", &s);
-  Node* atual = s.prev(begin(s));
-  Node* esperado = end(s);
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* set::prev(Node* x) \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(s) << "\n"
-      << " \"s.prev(s.begin())\" retornou: ponteiro para "
-      << key(atual, s) << "\n"
-      << " Valor esperado: ponteiro para " << key(esperado, s) << "\n"
-      << "------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Testa_funcao_prev_do_end) {
-  set s;
-  insert("1", &s);
-  insert("2", &s);
-  Node* atual = s.prev(end(s));
-  Node* esperado = prev(end(s), s);
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* set::prev(Node* x) \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(s) << "\n"
-      << " \"s.prev(s.end())\" retornou: ponteiro para "
-      << key(atual, s) << "\n"
-      << " Valor esperado: ponteiro para " << key(esperado, s) << "\n"
-      << "------------------------------------------------------------------\n";
-}
-
-TEST_F(Teste, Testa_funcao_key) {
-  set s;
-  insert("1", &s);
-  SType atual = s.key(begin(s));
-  SType esperado = "1";
-  ASSERT_EQ(esperado, atual)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: SType& set::key(Node* x)\n"
-    << "-------------------------------------------------------------------\n"
-    << " s = " << ToString(s) << "\n"
-    << " \"s.key(s.begin())\" retornou: " << atual << "\n"
-    << " Valor esperado: " << esperado << "\n"
-    << "-------------------------------------------------------------------\n";
-}
-
 TEST_F(Teste, Testa_funcao_find_em_conjunto_vazio) {
-  set s;
-  SType atual = key(s.find("3"), s);
-  SType esperado = key(s.end(), s);
+  set<string> s;
+  SType atual = key(node(s.find("3")), s);
+  SType esperado = key(node(s.end()), s);
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: Node* set::find(SType k) \n"
@@ -339,12 +238,12 @@ TEST_F(Teste, Testa_funcao_find_em_conjunto_vazio) {
 }
 
 TEST_F(Teste, Testa_funcao_find_retornando_true) {
-  set s;
+  set<string> s;
   insert("2", &s);
   insert("1", &s);
   insert("4", &s);
   insert("3", &s);
-  SType atual = key(s.find("3"), s);
+  SType atual = key(node(s.find("3")), s);
   SType esperado = "3";
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
@@ -357,13 +256,13 @@ TEST_F(Teste, Testa_funcao_find_retornando_true) {
 }
 
 TEST_F(Teste, Testa_funcao_find_retornando_false) {
-  set s;
+  set<string> s;
   insert("2", &s);
   insert("1", &s);
   insert("5", &s);
   insert("4", &s);
-  SType atual = key(s.find("3"), s);
-  SType esperado = key(s.end(), s);
+  SType atual = key(node(s.find("3")), s);
+  SType esperado = key(node(s.end()), s);
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: Node* set::find(SType k) \n"
@@ -375,7 +274,7 @@ TEST_F(Teste, Testa_funcao_find_retornando_false) {
 }
 
 TEST_F(Teste, Testa_incremento_do_size_na_funcao_insert) {
-  set s;
+  set<string> s;
   s.insert("9");
   int atual = size(s);
   int esperado = 1;
@@ -390,7 +289,7 @@ TEST_F(Teste, Testa_incremento_do_size_na_funcao_insert) {
 }
 
 TEST_F(Teste, Testa_funcao_insert_em_conjunto_vazio) {
-  set s;
+  set<string> s;
   s.insert("9");
   string atual = ToString(s);
   string esperado = "{ 9 }";
@@ -405,7 +304,7 @@ TEST_F(Teste, Testa_funcao_insert_em_conjunto_vazio) {
 }
 
 TEST_F(Teste, Testa_funcao_insert_em_conjunto_nao_vazio) {
-  set s;
+  set<string> s;
   insert("4", &s);
   insert("1", &s);
   insert("3", &s);
@@ -423,7 +322,7 @@ TEST_F(Teste, Testa_funcao_insert_em_conjunto_nao_vazio) {
 }
 
 TEST_F(Teste, Testa_funcao_insert_com_elemento_repetido) {
-  set s;
+  set<string> s;
   insert("2", &s);
   insert("1", &s);
   insert("3", &s);
@@ -441,7 +340,7 @@ TEST_F(Teste, Testa_funcao_insert_com_elemento_repetido) {
 }
 
 TEST_F(Teste, Testa_decremento_do_size_na_funcao_erase) {
-  set s;
+  set<string> s;
   insert("9", &s);
   s.erase("9");
   int atual = size(s);
@@ -457,7 +356,7 @@ TEST_F(Teste, Testa_decremento_do_size_na_funcao_erase) {
 }
 
 TEST_F(Teste, Testa_funcao_erase_em_conjunto_unitario) {
-  set s;
+  set<string> s;
   s.insert("9");
   s.erase("9");
   string atual = ToString(s);
@@ -473,7 +372,7 @@ TEST_F(Teste, Testa_funcao_erase_em_conjunto_unitario) {
 }
 
 TEST_F(Teste, Testa_funcao_erase_em_conjunto_com_mais_de_um_elemento) {
-  set s;
+  set<string> s;
   insert("2", &s);
   insert("1", &s);
   insert("4", &s);
@@ -492,7 +391,7 @@ TEST_F(Teste, Testa_funcao_erase_em_conjunto_com_mais_de_um_elemento) {
 }
 
 TEST_F(Teste, Testa_erase_de_elemento_que_nao_pertence_ao_conjunto) {
-  set s;
+  set<string> s;
   insert("2", &s);
   insert("1", &s);
   insert("4", &s);
@@ -511,7 +410,7 @@ TEST_F(Teste, Testa_erase_de_elemento_que_nao_pertence_ao_conjunto) {
 }
 
 TEST_F(Teste, Testa_Clear) {
-  set s;
+  set<string> s;
   insert("2", &s);
   insert("1", &s);
   insert("3", &s);
@@ -529,11 +428,11 @@ TEST_F(Teste, Testa_Clear) {
 }
 
 TEST_F(Teste, Testa_operador_de_atribuicao_a_conjunto_vazio) {
-  set s;
+  set<string> s;
   insert("2", &s);
   insert("1", &s);
   insert("3", &s);
-  set u;
+  set<string> u;
   u = s;
   string atual = ToString(u);
   string esperado = "{ 1 2 3 }";
@@ -549,11 +448,11 @@ TEST_F(Teste, Testa_operador_de_atribuicao_a_conjunto_vazio) {
 }
 
 TEST_F(Teste, Testa_operador_de_atribuicao_a_conjunto_nao_vazio) {
-  set s;
+  set<string> s;
   insert("2", &s);
   insert("1", &s);
   insert("3", &s);
-  set u;
+  set<string> u;  // NOLINT
   insert("5", &u);
   insert("4", &u);
   insert("6", &u);
@@ -571,5 +470,5 @@ TEST_F(Teste, Testa_operador_de_atribuicao_a_conjunto_nao_vazio) {
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // TRUNK_ORDERED_SET_WITH_LINKED_LIST_TEST_SET_TEST_H_
+#endif  // BRANCHES_TEMPLATED_ORDERED_SET_WITH_LINKED_LIST_TEST_SET_TEST_H_
 

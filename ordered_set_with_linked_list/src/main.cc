@@ -61,41 +61,43 @@ using std::ifstream;
 using std::string;
 
 // Questão 2.
-void Imprimir(const set& c) {
+void Imprimir(const set<string>& c) {
   cout << "{ ";
-  for (Node* i = c.begin(); i != c.end(); i = c.next(i)) {
-    cout << c.key(i) << " ";
+  for (set<string>::iterator i = c.begin(); i != c.end(); i++) {
+    cout << *i << " ";
   }
   cout << "} = " << c.size() << endl;
 }
 
 // Questão 3.
-void Intersecao(const set& a, const set& b, set* inter) {
+void Intersecao(const set<string>& a,
+                const set<string>& b,
+                set<string>* inter) {
   // Percorre todos os elementos do cojunto 'a' e insere em 'inter' todos
   // aqueles que também estão no cojunto 'b'.
   inter->clear();
-  for (Node* i = a.begin(); i != a.end(); i = a.next(i)) {
-    if (b.find(a.key(i)) != b.end()) {
-      inter->insert(a.key(i));
+  for (set<string>::iterator i = a.begin(); i != a.end(); i++) {
+    if (b.find(*i) != b.end()) {
+      inter->insert(*i);
     }
   }
 }
 
 // Questão 4.
-void Uniao(const set& a, const set& b, set* uniao) {
+void Uniao(const set<string>& a, const set<string>& b, set<string>* uniao) {
   // Inicialmente, faz 'uniao' ficar igual a 'b'.
   *uniao = b;
   // Em seguida, insere em 'uniao' também os elementos em a.
-  for (Node* i = a.begin(); i != a.end(); i = a.next(i)) {
-    uniao->insert(a.key(i));
+  for (set<string>::iterator i = a.begin(); i != a.end(); i++) {
+    uniao->insert(*i);
   }
 }
 
 // Questão 5.
 int main() {
-  set pecas[100];  // pecas[i] contém os fornecedores da peça i + 1.
-  set candidatos;  // Conjunto de fornecedores.
-  set todas_as_pecas;  // Conjunto das peças vendidas por algum fornecedor.
+  set<string> pecas[100];  // pecas[i] contém os fornecedores da peça i + 1.
+  set<string> candidatos;  // Conjunto de fornecedores.
+  set<string> todas_as_pecas;  // Conjunto com todas as peças vendidas.
 
   // Inicializa o cojunto de fornecedores candidatos e o vetor de fornecedores
   // de cada peça.
@@ -131,7 +133,7 @@ int main() {
     cout << "Filtrar por peca [1, 100]: ";
     cin >> num_peca;
     if (num_peca >= 1 && num_peca <= 100) {
-      set inter;
+      set<string> inter;
       Intersecao(pecas[num_peca - 1], candidatos, &inter);
       candidatos = inter;
     }
