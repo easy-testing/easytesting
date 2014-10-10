@@ -1,13 +1,13 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#include "unordered_map/src/unordered_map.h"
+#include "src/unordered_map.h"
 
-#include "ordered_map/src/map.h"
+#include "src/map.h"
 
 // Implementa um nó da lista encadeada.
 struct Node {
   SType key;  // Chave do nó.
-  VType value; // Valor do nó.
+  VType value;  // Valor do nó.
   Node* prev;  // Ponteiro para o nó anterior.
   Node* next;  // Ponteiro para o próximo nó.
 };
@@ -17,12 +17,12 @@ int hash(int key, int m) {
 }
 
 int hash(std::string key, int m) {
-  long int hashVal = 0;
+  long int hashVal = 0;  // NOLINT
   for (int i = 0; i < key.length(); i++) {
     hashVal = 37 * hashVal + key[i];
   }
   return hashVal % m;
- }
+}
 
 unordered_map::unordered_map() {
   size_ = 0;  // Inicialmente, o conjunto não tem elementos.
@@ -31,7 +31,7 @@ unordered_map::unordered_map() {
 }
 
 // Retorna o primeiro elemento do primeiro subconjunto não vazio.
-Node* unordered_map::begin() {
+Node* unordered_map::begin() const {
   for (int i = 0; i < capacity_; i++) {
     if (!table_[i].empty()) {
       return table_[i].begin();
@@ -42,14 +42,14 @@ Node* unordered_map::begin() {
 
 // Retorna o "marcador de fim" do conjunto, ou seja,
 // O sentinela do último subconjunto da tabela.
-Node* unordered_map::end() {
+Node* unordered_map::end() const {
   return table_[capacity_ - 1].end();
 }
 
 // Se x não é o último elemento do subconjunto que o contém, retorna o elemento
 // seguinte a x neste subconjunto. Caso contrário,
 // retorna o primeiro elemento do próximo subconjunto não vazio da tabela.
-Node* unordered_map::next(Node* x) {
+Node* unordered_map::next(Node* x) const {
   int j = hash(x->key, capacity_);
   if (x->next != table_[j].end()) {
     return x->next;
@@ -69,7 +69,7 @@ Node* unordered_map::next(Node* x) {
 // retorna o elemento anterior a x neste subconjunto. Caso contrário,
 // retorna o último elemento do primeiro subconjunto não vazio anterior
 // ao subconjunto de x.
-Node* unordered_map::prev(Node* x) {
+Node* unordered_map::prev(Node* x) const {
   int j;
   if (x == end()) {
     j = capacity_;
@@ -92,23 +92,23 @@ VType& unordered_map::operator[](SType x) {
   return find(x)->value;
 }
 
-SType unordered_map::key(Node* x) {
+SType unordered_map::key(Node* x) const {
   return x->key;
 }
 
-VType unordered_map::value(Node* x) {
+VType unordered_map::value(Node* x) const {
   return x->value;
 }
 
-bool unordered_map::empty() {
+bool unordered_map::empty() const {
   return size_ == 0;
 }
 
-int unordered_map::size() {
+int unordered_map::size() const {
   return size_;
 }
 
-Node* unordered_map::find(SType k) {
+Node* unordered_map::find(SType k) const {
   int j = hash(k, capacity_);
   Node* x = table_[j].find(k);
   if (x != table_[j].end()) {
@@ -127,7 +127,7 @@ void unordered_map::insert(SType k, VType v) {
   if (x != table_[j].end()) {
     x->value = v;
   } else {
-    table_[j].insert(k,v);
+    table_[j].insert(k, v);
     size_++;
   }
 }
@@ -148,7 +148,7 @@ void unordered_map::clear() {
   size_ = 0;
 }
 
-void unordered_map::operator=(unordered_map& s) {
+void unordered_map::operator=(const unordered_map& s) {
   clear();
   for (Node* i = s.begin(); i != s.end(); i = s.next(i)) {
     insert(i->key, i->value);

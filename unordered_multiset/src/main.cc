@@ -1,4 +1,4 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 //
 // Lista sobre multiconjuntos associativos
 //
@@ -51,7 +51,7 @@
 #include <iostream>
 #include <string>
 
-#include "unordered_multiset/src/unordered_multiset.h"
+#include "src/unordered_multiset.h"
 
 using std::cin;
 using std::cout;

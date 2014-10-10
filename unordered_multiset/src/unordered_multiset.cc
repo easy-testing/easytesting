@@ -1,6 +1,6 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#include "unordered_multiset/src/unordered_multiset.h"
+#include "src/unordered_multiset.h"
 
 // Define como os elementos da árvore serão organizados na memória.
 struct Node {
@@ -16,7 +16,7 @@ int hash(int key, int m) {
 }
 
 int hash(std::string key, int m) {
-  long int hashVal = 0;
+  long int hashVal = 0;  // NOLINT
   for (int i = 0; i < key.length(); i++) {
     hashVal = 37 * hashVal + key[i];
   }
@@ -30,7 +30,7 @@ unordered_multiset::unordered_multiset() {
 }
 
 // Retorna o primeiro elemento do primeiro subconjunto não vazio.
-Node* unordered_multiset::begin() {
+Node* unordered_multiset::begin() const {
   for (int i = 0; i < capacity_; i++) {
     if (!table_[i].empty()) {
       return table_[i].begin();
@@ -41,14 +41,14 @@ Node* unordered_multiset::begin() {
 
 // Retorna o "marcador de fim" do conjunto, ou seja,
 // O sentinela do último subconjunto da tabela.
-Node* unordered_multiset::end() {
+Node* unordered_multiset::end() const {
   return table_[capacity_ - 1].end();
 }
 
 // Se x não é o último elemento do subconjunto que o contém, retorna o elemento
 // seguinte a x neste subconjunto. Caso contrário,
 // retorna o primeiro elemento do próximo subconjunto não vazio da tabela.
-Node* unordered_multiset::next(Node* x) {
+Node* unordered_multiset::next(Node* x) const {
   int j = hash(x->key, capacity_);
   if (x->right != table_[j].end()) {
     return x->right;
@@ -68,7 +68,7 @@ Node* unordered_multiset::next(Node* x) {
 // retorna o elemento anterior a x neste subconjunto. Caso contrário,
 // retorna o último elemento do primeiro subconjunto não vazio anterior
 // ao subconjunto de x.
-Node* unordered_multiset::prev(Node* x) {
+Node* unordered_multiset::prev(Node* x) const {
   int j;
   if (x == end()) {
     j = capacity_;
@@ -87,7 +87,7 @@ Node* unordered_multiset::prev(Node* x) {
   }
 }
 
-int unordered_multiset::count(SType k) {
+int unordered_multiset::count(SType k) const {
   Node* x = find(k);
   if (x == end()) {
     return 0;
@@ -96,19 +96,19 @@ int unordered_multiset::count(SType k) {
   }
 }
 
-SType unordered_multiset::key(Node* x) {
+SType unordered_multiset::key(Node* x) const {
   return x->key;
 }
 
-bool unordered_multiset::empty() {
+bool unordered_multiset::empty() const {
   return size_ == 0;
 }
 
-int unordered_multiset::size() {
+int unordered_multiset::size() const {
   return size_;
 }
 
-Node* unordered_multiset::find(SType k) {
+Node* unordered_multiset::find(SType k) const {
   int j = hash(k, capacity_);
   Node* x = table_[j].find(k);
   if (x != table_[j].end()) {
@@ -143,7 +143,7 @@ void unordered_multiset::clear() {
   size_ = 0;
 }
 
-void unordered_multiset::operator=(unordered_multiset& s) {
+void unordered_multiset::operator=(const unordered_multiset& s) {
   clear();
   for (Node* i = s.begin(); i != s.end(); i = s.next(i)) {
     for (int j = 0; j < i->count; j++) {

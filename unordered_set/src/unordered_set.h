@@ -1,11 +1,11 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef TRUNK_UNORDERED_SET_SRC_UNORDERED_SET_H_
 #define TRUNK_UNORDERED_SET_SRC_UNORDERED_SET_H_
 
 #include <string>
 
-#include "ordered_set_with_linked_list/src/set.h"
+#include "src/set.h"
 
 // Função que calcula o hash dos elementos para uma tabela com m linhas.
 // É declarado aqui, mas só é implementado em unordered_set.cc para

@@ -1,4 +1,4 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef TRUNK_UNORDERED_MULTISET_TEST_UNORDERED_MULTISET_TEST_H_
 #define TRUNK_UNORDERED_MULTISET_TEST_UNORDERED_MULTISET_TEST_H_
@@ -8,7 +8,7 @@
 #include <string>
 
 #include "gtest/gtest.h"
-#include "unordered_multiset/src/unordered_multiset.h"
+#include "src/unordered_multiset.h"
 
 using std::string;
 using std::stringstream;
@@ -25,11 +25,11 @@ struct Node {
 // Classe base dos testes.
 class Teste : public testing::Test {
  protected:
-  multiset* table(unordered_multiset& s) {
+  multiset* table(const unordered_multiset& s) {
     return s.table_;
   }
 
-  int size(unordered_multiset& s) {
+  int size(const unordered_multiset& s) {
     return s.size_;
   }
 
@@ -58,7 +58,7 @@ class Teste : public testing::Test {
     return out.str();
   }
 
-  string ToString(unordered_multiset& s) {
+  string ToString(const unordered_multiset& s) {
     stringstream out;
     out << "{ ";
     for (int i = 0; i < s.capacity_; i++) {

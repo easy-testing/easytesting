@@ -1,24 +1,24 @@
-// Copyright 2013 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 //
 // Lista sobre conjuntos associativos
 //
-// Questão 1.
+// QuestÃ£o 1.
 // Implemente em unordered_map.h e unordered_map.cc o TAD unordered_map,
 // utilizando tabela hash.
 //
-// Questão 2.
+// QuestÃ£o 2.
 // Leia um arquivo contendo apenas palavras, e imprima as palavras,
-// seguidas do número de ocorrências da palavra no texto.
+// seguidas do nÃºmero de ocorrÃªncias da palavra no texto.
 //
-// Você pode assumir que os arquivos contém apenas caracteres que são letras
-// (a-z e A-Z), números (0-9), e caracteres de pontuação (",", ".", "?", etc.).
-// Você pode assumir que o texto não tem acentos nem "ç".
-// Após ler cada palavra, você deve (i) transformar todas as letras maiúsculas em
-// minúsculas e (ii) apagar todos os caracteres que não são letras ou números. Por
-// exemplo, depois de ler "Guarda-Chuva?", você deve transformá-la em "guardachuva",
-// antes de inseri-la no conjunto. Desta forma, a mesma palavra apresentada com
-// letras minúsculas ou maiúsculas, ou que estão adjacentes a pontuação, não serão
-// diferenciadas. Por exemplo, para o texto:
+// VocÃª pode assumir que os arquivos contÃ©m apenas caracteres que sÃ£o letras
+// (a-z e A-Z), nÃºmeros (0-9), e caracteres de pontuaÃ§Ã£o (",", ".", "?", etc.).
+// VocÃª pode assumir que o texto nÃ£o tem acentos nem "Ã§".
+// ApÃ³s ler cada palavra, vocÃª deve (i) transformar todas as letras maiÃºsculas
+// em minÃºsculas e (ii) apagar todos os caracteres que nÃ£o sÃ£o letras ou
+// nÃºmeros. Por exemplo, depois de ler "Guarda-Chuva?", vocÃª deve transformÃ¡-la
+// em "guardachuva", antes de inseri-la no conjunto. Desta forma, a mesma
+// palavra apresentada com letras minÃºsculas ou maiÃºsculas, ou que estÃ£o
+// adjacentes a pontuaÃ§Ã£o, nÃ£o serÃ£o diferenciadas. Por exemplo, para o texto:
 //
 // -------------------------
 // La vem o pato.
@@ -44,14 +44,11 @@
 // ver 1
 // -------------------------
 
-
-#include <cstdlib>
 #include <fstream>
 #include <iostream>
 #include <string>
-#include <ctype.h>
 
-#include "unordered_map/src/unordered_map.h"
+#include "src/unordered_map.h"
 
 using std::cin;
 using std::cout;
@@ -61,7 +58,7 @@ using std::string;
 
 string CleanString(string s) {
   string result;
-  for (int i = 0; i < (int) s.length(); i++) {
+  for (int i = 0; i < s.length(); i++) {
     if (isalnum(s[i])) {
       result.push_back(tolower(s[i]));
     }
@@ -77,7 +74,7 @@ int main() {
   while (fin >> str) {
     str = CleanString(str);
     word = words.find(str);
-    if (word == words.end() ) {
+    if (word == words.end()) {
       words.insert(str, 1);
     } else {
       words[str] = words[str] + 1;

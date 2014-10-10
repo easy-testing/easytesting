@@ -1,7 +1,7 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_ORDERED_MULTISET_SRC_MULTISET_H_
-#define TRUNK_ORDERED_MULTISET_SRC_MULTISET_H_
+#ifndef TRUNK_UNORDERED_MULTISET_SRC_MULTISET_H_
+#define TRUNK_UNORDERED_MULTISET_SRC_MULTISET_H_
 
 #include<string>
 
@@ -91,4 +91,4 @@ class multiset {
 
   friend class Teste;
 };
-#endif  // TRUNK_ORDERED_MULTISET_SRC_MULTISET_H_
+#endif  // TRUNK_UNORDERED_MULTISET_SRC_MULTISET_H_
