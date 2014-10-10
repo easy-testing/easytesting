@@ -1,6 +1,6 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#include "vector/src/vector.h"
+#include "src/vector.h"
 
 #include <cstdlib>
 
@@ -14,7 +14,7 @@ vector::vector(int n) {
   array_ = new VType[size_];
 }
 
-int vector::size() {
+int vector::size() const {
   return size_;
 }
 
@@ -32,7 +32,7 @@ VType& vector::operator[](int i) {
   return array_[i];
 }
 
-void vector::operator=(vector& v) {
+void vector::operator=(const vector& v) {
   resize(v.size_);
   for (int i = 0; i < size_; i++) {
     array_[i] = v.array_[i];

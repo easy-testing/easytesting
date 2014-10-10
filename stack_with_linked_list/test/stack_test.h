@@ -1,4 +1,4 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef TRUNK_STACK_WITH_LINKED_LIST_TEST_STACK_TEST_H_
 #define TRUNK_STACK_WITH_LINKED_LIST_TEST_STACK_TEST_H_
@@ -7,7 +7,7 @@
 #include <string>
 
 #include "gtest/gtest.h"
-#include "stack_with_linked_list/src/stack.h"
+#include "src/stack.h"
 
 using std::string;
 using std::stringstream;

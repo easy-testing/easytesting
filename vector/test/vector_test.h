@@ -1,33 +1,32 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef TRUNK_VECTOR_TEST_VECTOR_TEST_H_
 #define TRUNK_VECTOR_TEST_VECTOR_TEST_H_
 
 #include <sstream>
 #include <string>
-#include "vector/src/vector.h"
+
 #include "gtest/gtest.h"
+#include "src/vector.h"
 
 using std::string;
 using std::stringstream;
 
 // Classe base dos testes.
 class Teste : public testing::Test {
-  protected:
-    string ToString(const vector& v) {
-      stringstream s;
-      s << "{ ";
-      for (int i = 0; i < v.size_; i++) {
-        s << v.array_[i] << " ";
-      }
+ protected:
+  string ToString(const vector& v) {
+    stringstream s;
+    s << "{ ";
+    for (int i = 0; i < v.size_; i++) {
+      s << v.array_[i] << " ";
+    }
       s << "}";
       return s.str();
     }
-
     int size(const vector& v) {
       return v.size_;
     }
-
     VType* array(const vector& v) {
       return v.array_;
     }

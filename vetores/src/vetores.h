@@ -1,4 +1,4 @@
-// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
 #ifndef TRUNK_VETORES_SRC_VETORES_H_
 #define TRUNK_VETORES_SRC_VETORES_H_

@@ -1,4 +1,4 @@
-// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 //
 // Lista de exercício sobre estruturas de dados homogêneas - Vetores.
 //
@@ -13,9 +13,11 @@
 #include <fstream>
 #include <iostream>
 
-#include "vetores/src/vetores.h"
+#include "src/vetores.h"
 
-using namespace std;
+using std::cout;
+using std::endl;
+using std::ifstream;
 
 // Lê uma sequência de números de um arquivo, armazena em um vetor e os imprime
 // na tela.

@@ -1,11 +1,11 @@
-// Copyright 2010 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#include "vetores/src/vetores.h"
+#include "src/vetores.h"
 
 #include <cmath>
 #include <iostream>
 
-using namespace std;
+using std::cout;
 
 float Media(float v[], int n) {
   float soma = 0;

@@ -1,6 +1,6 @@
-// Copyright 2011 Universidade Federal de Minas Gerais (UFMG)
+// Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#include "stack_with_linked_list/src/stack.h"
+#include "src/stack.h"
 
 // Implementa um nó da lista encadeada.
 struct Node {
@@ -16,15 +16,15 @@ stack::stack() {
   end_->prev = end_;
 }
 
-bool stack::empty() {
+bool stack::empty() const {
   return size_ == 0;
 }
 
-int stack::size() {
+int stack::size() const {
   return size_;
 }
 
-SType stack::top() {
+SType stack::top() const {
   return end_->next->key;
 }
 
@@ -50,7 +50,7 @@ void stack::pop() {
   size_--;
 }
 
-void stack::operator=(stack& p) {
+void stack::operator=(const stack& p) {
   // Apaga todos os elementos na pilha corrente.
   while (!empty()) {
     pop();
