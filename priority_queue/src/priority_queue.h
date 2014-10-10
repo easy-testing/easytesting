@@ -1,7 +1,7 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef SRC_PRIORITY_QUEUE_H_
-#define SRC_PRIORITY_QUEUE_H_
+#ifndef TRUNK_PRIORITY_QUEUE_SRC_PRIORITY_QUEUE_H_
+#define TRUNK_PRIORITY_QUEUE_SRC_PRIORITY_QUEUE_H_
 
 #include <string>
 
@@ -22,14 +22,14 @@ class priority_queue {
   priority_queue();
 
   // Testa se a fila está vazia em O(1).
-  bool empty();
+  bool empty() const;
 
   // Retorna o número de elementos na fila em O(1).
-  int size();
+  int size() const;
 
   // Retorna o menor elemento da fila em O(log n).
   // Precondição: a fila não está vazia.
-  SType top();
+  SType top() const;
 
   // Insere k na fila de prioridades em O(log n).
   void push(SType k);
@@ -37,6 +37,10 @@ class priority_queue {
   // Remove o menor elemento da fila em O(log n).
   // Precondição: a fila não está vazia.
   void pop();
+
+  // Faz a fila corrente ficar igual a q em O(n + m),
+  // onde m = q.size() e n é o número de elementos na fila corrente.
+  void operator=(const priority_queue& q);
 
   // Libera a memória alocada para todos os elementos da fila em O(n.log n).
   ~priority_queue();
@@ -52,4 +56,4 @@ class priority_queue {
   friend class Teste;
 };
 
-#endif  // SRC_PRIORITY_QUEUE_H_
+#endif  // TRUNK_PRIORITY_QUEUE_SRC_PRIORITY_QUEUE_H_

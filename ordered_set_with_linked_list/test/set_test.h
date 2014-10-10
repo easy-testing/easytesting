@@ -1,7 +1,7 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TEST_SET_TEST_H_
-#define TEST_SET_TEST_H_
+#ifndef TRUNK_ORDERED_SET_WITH_LINKED_LIST_TEST_SET_TEST_H_
+#define TRUNK_ORDERED_SET_WITH_LINKED_LIST_TEST_SET_TEST_H_
 
 #include <cmath>
 #include <cstdlib>
@@ -27,7 +27,7 @@ struct Node {
 class Teste : public testing::Test {
  protected:
   // Retorna o valor da chave do elemento x de s;
-  SType key(Node* x, set& s) {
+  SType key(Node* x, const set& s) {
     if (x == NULL) {
       return "NULL";
     } else if (x == end(s)) {
@@ -38,7 +38,7 @@ class Teste : public testing::Test {
   }
 
   // Retorna o número de elementos no conjunto.
-  int size(set& s) {
+  int size(const set& s) {
     return s.size_;
   }
 
@@ -61,27 +61,27 @@ class Teste : public testing::Test {
   }
 
   // Retorna o primeiro elemento do conjunto.
-  Node* begin(set& s) {
+  Node* begin(const set& s) {
     return s.end_->next;
   }
 
   // Retorna o "marcador de fim" do conjunto.
-  Node* end(set& s) {
+  Node* end(const set& s) {
     return s.end_;
   }
 
   // Retorna o elemento seguinte a 'x' no conjunto.
-  Node* next(Node* x, set& s) {
+  Node* next(Node* x, const set& s) {
     return x->next;
   }
 
   // Retorna o elemento anterior a 'x' no conjunto.
-  Node* prev(Node* x, set& s) {
+  Node* prev(Node* x, const set& s) {
     return x->prev;
   }
 
   // Retorna um ponteiro para o elemento k de s.
-  Node* find(SType k, set& s) {
+  Node* find(SType k, const set& s) {
     for (Node* i = s.end_->next; i != s.end_; i = i->next) {
       if (i->key == k) {
         return i;
@@ -92,7 +92,7 @@ class Teste : public testing::Test {
 
   // Retorna uma string contendo os elementos do conjunto
   // no formato { c1 c2 c3 c4 } e ordenados do maior para o menor.
-  string ToString(set& s) {
+  string ToString(const set& s) {
     stringstream out;
     out << "{ ";
     for (Node* i = begin(s); i != end(s); i = next(i, s)) {
@@ -571,5 +571,5 @@ TEST_F(Teste, Testa_operador_de_atribuicao_a_conjunto_nao_vazio) {
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // TEST_SET_TEST_H_
+#endif  // TRUNK_ORDERED_SET_WITH_LINKED_LIST_TEST_SET_TEST_H_
 

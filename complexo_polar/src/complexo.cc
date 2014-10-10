@@ -19,15 +19,15 @@ Complexo::Complexo(double a, double b) {
   arg_ = atan2(b, a);
 }
 
-double Complexo::real() {
+double Complexo::real() const {
   return mod_ * cos(arg_);
 }
 
-double Complexo::imag() {
+double Complexo::imag() const {
   return mod_ * sin(arg_);
 }
 
-bool Complexo::operator==(Complexo x) {
+bool Complexo::operator==(Complexo x) const {
   return fabs(x.mod_ - mod_) <= 1E-6 &&
          fabs(sin(x.arg_) - sin(arg_)) <= 1E-6 &&
          fabs(cos(x.arg_) - cos(arg_)) <= 1E-6;
@@ -38,25 +38,25 @@ void Complexo::operator=(Complexo x) {
   arg_ = x.arg_;
 }
 
-double Complexo::modulo() {
+double Complexo::modulo() const {
   return mod_;
 }
 
-Complexo Complexo::conjugado() {
+Complexo Complexo::conjugado() const {
   Complexo c;
   c.mod_ = mod_;
   c.arg_ = -arg_;
   return c;
 }
 
-Complexo Complexo::simetrico() {
+Complexo Complexo::simetrico() const {
   Complexo c;
   c.mod_ = mod_;
   c.arg_ = arg_ + M_PI;
   return c;
 }
 
-Complexo Complexo::inverso() {
+Complexo Complexo::inverso() const {
   Complexo i;
   i.mod_ = 1.0 / mod_;
   i.arg_ = -arg_;

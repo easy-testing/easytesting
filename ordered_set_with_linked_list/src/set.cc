@@ -16,35 +16,35 @@ set::set() {
   end_->prev = end_;
 }
 
-bool set::empty() {
+bool set::empty() const {
   return size_ == 0;
 }
 
-int set::size() {
+int set::size() const {
   return size_;
 }
 
-Node* set::begin() {
+Node* set::begin() const {
   return end_->next;
 }
 
-Node* set::end() {
+Node* set::end() const {
   return end_;
 }
 
-Node* set::next(Node* x) {
+Node* set::next(Node* x) const {
   return x->next;
 }
 
-Node* set::prev(Node* x) {
+Node* set::prev(Node* x) const {
   return x->prev;
 }
 
-SType set::key(Node* x) {
+SType set::key(Node* x) const {
   return x->key;
 }
 
-Node* set::find(SType k) {
+Node* set::find(SType k) const {
   for (Node* i = begin(); i != end(); i = next(i)) {
     if (i->key == k) {
       return i;
@@ -91,7 +91,7 @@ void set::clear() {
   }
 }
 
-void set::operator=(set& s) {
+void set::operator=(const set& s) {
   clear();
   if (!s.empty()) {
     for (Node* i = s.end_->prev; i != s.end_; i = i->prev) {

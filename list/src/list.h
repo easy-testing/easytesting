@@ -1,7 +1,7 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef SRC_LIST_H_
-#define SRC_LIST_H_
+#ifndef TRUNK_LIST_SRC_LIST_H_
+#define TRUNK_LIST_SRC_LIST_H_
 
 #include <string>
 
@@ -20,32 +20,32 @@ class list {
   list();
 
   // Retorna o número de elementos na lista em O(1).
-  int size();
+  int size() const;
 
   // Testa se a lista está vazia em O(1).
-  bool empty();
+  bool empty() const;
 
   // Retorna um ponteiro para o primeiro elemento da lista em O(1).
   // Caso a lista esteja vazia, rentorna um ponteiro para list::end().
-  Node* begin();
+  Node* begin() const;
 
   // Retorna um ponteiro para o "marcador de fim" da lista em O(1).
   // Nota: list::end() não é considerado um elemento da lista.
-  Node* end();
+  Node* end() const;
 
   // Retorna o elemento seguinte ao indicado por x na lista em (1).
   // Precondição: x aponta para um dos elementos da lista.
-  Node* next(Node* x);
+  Node* next(Node* x) const;
 
   // Retorna o elemento anterior ao indicado por x na lista em (1).
   // Precondição: x aponta para um dos elementos da lista.
-  Node* prev(Node* x);
+  Node* prev(Node* x) const;
 
   // Retorna o valor do elemento indicado por x em (1).
-  LType& operator[](Node* x);
+  LType key(Node* x) const;
 
   // Faz a lista corrente ficar igual a l em O(n + m), onde m = l.size().
-  void operator=(list& l);
+  void operator=(const list& l);
 
   // Insere k antes do elemento indicado por x em O(1).
   void insert(Node* x, LType k);
@@ -60,7 +60,7 @@ class list {
 
   // Concatena os elementos de l no final da lista corrente em O(m),
   // onde m = l.size().
-  void merge(list& l);
+  void merge(const list& l);
 
   // Libera toda a memória alocada para a lista em O(n).
   ~list();
@@ -75,4 +75,4 @@ class list {
   friend class Teste;
 };
 
-#endif  // SRC_LIST_H_
+#endif  // TRUNK_LIST_SRC_LIST_H_

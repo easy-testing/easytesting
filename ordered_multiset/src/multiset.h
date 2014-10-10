@@ -25,44 +25,44 @@ class multiset {
   multiset();
 
   // Testa se o cojunto está vazio em O(1).
-  bool empty();
+  bool empty() const;
 
   // Retorna o número de elementos no multiconjunto em O(1).
-  int size();
+  int size() const;
 
   // Retorna um ponteiro para o primeiro elemento do multiconjunto em O(log n).
   // Caso o multiconjunto esteja vazio, rentorna um ponteiro
   // para multiset::end().
-  Node* begin();
+  Node* begin() const;
 
   // Retorna um ponteiro para o "marcador de fim" do multiconjunto em O(1).
-  Node* end();
+  Node* end() const;
 
   // Retorna o elemento seguinte (diferente) ao indicado por x no
   // multiconjunto em O(log n). Se x aponta para o último elemento do
   // multiconjunto, retorna multiset::end();
   // Precondição: x aponta para um dos elementos do multiconjunto.
-  Node* next(Node* x);
+  Node* next(Node* x) const;
 
   // Retorna o elemento anterior (diferente) ao indicado por x no
   // multiconjunto em O(log n).
   // Nota: x pode apontar para multiset::end().
   // Precondição: existe pelo menos um elemento do multiconjunto (diferente)
   // antes de x.
-  Node* prev(Node* x);
+  Node* prev(Node* x) const;
 
   // Retorna o número de ocorrências do elemento k em O(log n).
-  int count(SType k);
+  int count(SType k) const;
 
   // Retorna a chave do nó x em O(1).
-  SType key(Node* x);
+  SType key(Node* x) const;
 
   // Retorna um ponteiro para o elemento k em O(log n),
   // ou um ponteiro para multiset::end() caso k não pertença ao multiconjunto.
   // OBS: Note que esta função NÃO retorna bool. Para testar se um elemento 'a'
   // pertence a um multiconjunto 'c', você deve escrever
   // "if (c.find(a) != c.end())".
-  Node* find(SType k);
+  Node* find(SType k) const;
 
   // Insere k no multiconjunto em O(log n).
   void insert(SType k);
@@ -76,7 +76,7 @@ class multiset {
 
   // Faz com que o multiconjunto corrente contenha exatamente os mesmos
   // elementos do cojunto s em O(n.log n + m.log m), onde m = s.size().
-  void operator=(multiset& s);
+  void operator=(const multiset& s);
 
   // Libera toda a memória alocada para o multiconjunto em O(n.log n).
   ~multiset();

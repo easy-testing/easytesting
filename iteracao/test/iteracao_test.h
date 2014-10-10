@@ -1,7 +1,7 @@
 // copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TEST_ITERACAO_TEST_H_
-#define TEST_ITERACAO_TEST_H_
+#ifndef TRUNK_ITERACAO_TEST_ITERACAO_TEST_H_
+#define TRUNK_ITERACAO_TEST_ITERACAO_TEST_H_
 
 #include <sstream>
 #include <string>
@@ -223,4 +223,4 @@ TEST(Teste, Testa_da_Soma_dos_digitos) {
 }
 }  // namespace Teste
 
-#endif  // TEST_ITERACAO_TEST_H_
+#endif  // TRUNK_ITERACAO_TEST_ITERACAO_TEST_H_

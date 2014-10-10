@@ -60,13 +60,13 @@ void Imprimir(Contato contato) {
 
 // Abre o arquivo onde os dados da agenda são salvos e coloca os contatos em
 // 'genda'.
-void LerAgendaDoArquivo(int& n, Contato agenda[]) {
+void LerAgendaDoArquivo(int* n, Contato agenda[]) {
   ifstream fin("agenda.txt");
-  n = 0;
-  while (getline(fin, agenda[n].nome)) {
-    getline(fin, agenda[n].telefone);
-    getline(fin, agenda[n].aniversario);
-    n++;
+  *n = 0;
+  while (getline(fin, agenda[*n].nome)) {
+    getline(fin, agenda[*n].telefone);
+    getline(fin, agenda[*n].aniversario);
+    (*n)++;
   }
 }
 
@@ -120,20 +120,20 @@ Contato ConsultarContatoPorNome(string nome, int n, Contato agenda[]) {
 }
 
 // Insere um contato na agenda.
-void InserirContatoNaAgenda(Contato c, int& n, Contato agenda[]) {
-  agenda[n].nome = c.nome;
-  agenda[n].telefone = c.telefone;
-  agenda[n].aniversario = c.aniversario;
-  ++n;
+void InserirContatoNaAgenda(Contato c, int* n, Contato agenda[]) {
+  agenda[*n].nome = c.nome;
+  agenda[*n].telefone = c.telefone;
+  agenda[*n].aniversario = c.aniversario;
+  ++(*n);
 }
 
 // Remove um contato da agenda.
 // Precondição: o contato a ser apagado está na agenda.
-void ApagarContato(string nome, int& n, Contato agenda[]) {
-  for (int i = 0; i < n; ++i) {
+void ApagarContato(string nome, int* n, Contato agenda[]) {
+  for (int i = 0; i < *n; ++i) {
     if (agenda[i].nome == nome) {
-      agenda[i] = agenda[n - 1];
-      n--;
+      agenda[i] = agenda[*n - 1];
+      (*n)--;
       return;
     }
   }
@@ -160,14 +160,14 @@ void SalvarAgenda(int n, Contato agenda[]) {
 int main() {
   Contato agenda[MAX];
   int n;
-  LerAgendaDoArquivo(n, agenda);
+  LerAgendaDoArquivo(&n, agenda);
   int op;
   do {
     MostrarMenu();
     op = LerOpcao();
     switch (op) {
       case 1: {
-        InserirContatoNaAgenda(LerContatoDoTeclado(), n, agenda);
+        InserirContatoNaAgenda(LerContatoDoTeclado(), &n, agenda);
         cout << "Contato inserido com sucesso.\n";
         break;
       } case 2: {
@@ -183,7 +183,7 @@ int main() {
         if (d.nome == "") {
           cout << "Contato nao existe.\n";
         } else {
-          ApagarContato(d.nome, n, agenda);
+          ApagarContato(d.nome, &n, agenda);
           cout << "Contato apagado com sucesso! " << endl;
         }
         break;

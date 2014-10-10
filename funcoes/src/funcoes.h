@@ -1,7 +1,7 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef SRC_FUNCOES_H_
-#define SRC_FUNCOES_H_
+#ifndef TRUNK_FUNCOES_SRC_FUNCOES_H_
+#define TRUNK_FUNCOES_SRC_FUNCOES_H_
 
 // Calcula a média de a, b e c.
 float media(float a, float b, float c);
@@ -34,4 +34,4 @@ float volume_cilindro(float r, float h);
 // cujos lados conhecidos são b e c.
 float hipotenusa(float b, float c);
 
-#endif  // SRC_FUNCOES_H_
+#endif  // TRUNK_FUNCOES_SRC_FUNCOES_H_

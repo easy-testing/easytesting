@@ -1,7 +1,7 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TEST_MAP_TEST_H_
-#define TEST_MAP_TEST_H_
+#ifndef TRUNK_ORDERED_MAP_TEST_MAP_TEST_H_
+#define TRUNK_ORDERED_MAP_TEST_MAP_TEST_H_
 
 #include <cstdlib>
 #include <sstream>
@@ -13,27 +13,27 @@
 using std::string;
 using std::stringstream;
 
-// Define como os elementos da árvore serão organizados na memória.
+// Define como os elementos da Ã¡rvore serÃ£o organizados na memÃ³ria.
 struct Node {
-  SType key;  // Valor da chave do nó.
-  VType value; // Valor do nó
-  Node* left;  // Ponteiro para o nó a esquerda.
-  Node* right;  // Ponteiro para o nó a direita.
-  Node* parent;  // Ponteiro para o nó acima.
+  SType key;  // Valor da chave do nÃ³.
+  VType value;  // Valor do nÃ³
+  Node* left;  // Ponteiro para o nÃ³ a esquerda.
+  Node* right;  // Ponteiro para o nÃ³ a direita.
+  Node* parent;  // Ponteiro para o nÃ³ acima.
 };
 
 // Classe base dos testes.
 class Teste : public testing::Test {
  protected:
-  Node* root(map& s) {
+  Node* root(const map& s) {
     return s.root_;
   }
 
-  int size(map& s) {
+  int size(const map& s) {
     return s.size_;
   }
 
-  // Retorna um ponteiro para o elemento seguinte ao último elemento
+  // Retorna um ponteiro para o elemento seguinte ao Ãºltimo elemento
   // do conjunto.
   Node* end(const map& s) {
     return NULL;
@@ -76,7 +76,7 @@ class Teste : public testing::Test {
     return out.str();
   }
 
-  // Retorna uma string contendo os elementos da árvore no formato
+  // Retorna uma string contendo os elementos da Ã¡rvore no formato
   // { <k1,v1> <k2,v2> ... <kn,vn> }.
   string TreeToString(Node* root) {
     if (root == NULL) {
@@ -90,7 +90,7 @@ class Teste : public testing::Test {
     }
   }
 
-  string ToString(map& s) {
+  string ToString(const map& s) {
     stringstream out;
     out << "{ ";
     out << TreeToString(s.root_);
@@ -694,4 +694,4 @@ TEST_F(Teste, Testa_operador_de_atribuicao_a_conjunto_nao_vazio) {
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // TEST_MAP_TEST_H_
+#endif  // TRUNK_ORDERED_MAP_TEST_MAP_TEST_H_

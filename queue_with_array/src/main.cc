@@ -6,7 +6,7 @@
 // Implemente em queue.h e queue.cc o TAD queue, utilizando arrays.
 //
 // Questão 2.
-// Escreva uma função "void Imprimir(queue& q)" que recebe
+// Escreva uma função "void Imprimir(queue& p)" que recebe
 // como parâmetro uma fila q e imprime os elemento de q na tela.
 // Pós-condição: a fila 'q' não é alterada.
 //
@@ -15,10 +15,10 @@
 // o cliente dá seu nome e sua idade. Os clientes são atendidos por ordem de
 // chegada. Entretanto, os clientes com 60 anos ou mais tem prioridade sobre
 // os outros clientes, ou seja, um cliente com menos de 60 anos só é atendido
-// se não houver nenhum cliente com 60 anos ou mais esperando na fila. O sistema
-// que você vai implementar deve apresentar duas opções: "(1) Entrar na fila" e
-// "(2) Próximo da fila". Na Primeira, o sistema deve cadastrar o nome e a
-// idade do cliente. Já na segunda opção, ele deve imprimir o nome do
+// se não houver nenhum cliente com 60 anos ou mais esperando na fila. O
+// sistema que você vai implementar deve apresentar duas opções: "(1) Entrar na
+// fila" e "(2) Próximo da fila". Na Primeira, o sistema deve cadastrar o nome
+// e a idade do cliente. Já na segunda opção, ele deve imprimir o nome do
 // próximo cliente que está esperando e retirá-lo da fila, ou se for o caso
 // imprimir uma mensagem indicando que a fila está vazia.
 // DICA: Use duas filas: uma para armazenar os nomes dos clientes
@@ -40,11 +40,12 @@ using std::string;
 ////////////////////////////////////////////////////////////////////////////////
 
 // Retira os elementos da fila q na tela.
-void Imprimir(queue& q) {
+void Imprimir(const queue& p) {
+  queue q;
+  q = p;
   cout << "[ ";
   for (int i = 0; i < q.size(); i++) {
     cout << q.front() << " ";
-    q.push(q.front());
     q.pop();
   }
   cout << "]" << endl;

@@ -1,7 +1,7 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef SRC_CONDICIONAIS_H_
-#define SRC_CONDICIONAIS_H_
+#ifndef TRUNK_CONDICIONAIS_SRC_CONDICIONAIS_H_
+#define TRUNK_CONDICIONAIS_SRC_CONDICIONAIS_H_
 
 #include <string>
 
@@ -29,4 +29,4 @@ bool escaleno(float a, float b, float c);
 // Recebe o dia e o mês de nascimento e retorna o signo de uma pessoa.
 std::string signo(int dia, int mes);
 
-#endif  // SRC_CONDICIONAIS_H_
+#endif  // TRUNK_CONDICIONAIS_SRC_CONDICIONAIS_H_

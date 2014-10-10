@@ -38,7 +38,7 @@ Node* TreeMinimum(Node* x) {
 
 // Insere uma FOLHA z na árvore cujo nó raiz é 'root' de forma consistente.
 // NOTA: Esta função NÃO aloca a memória para z.
-void TreeInsert(Node*& root, Node* z) {
+void TreeInsert(Node*& root, Node* z) {  // NOLINT
   // Procura qual vai ser o pai y de z na árvore.
   Node* y = NULL;
   Node* x = root;
@@ -64,7 +64,7 @@ void TreeInsert(Node*& root, Node* z) {
 // Desconecta o nó z da árvore de forma consistente e depois retorna z.
 // Precondição: A subárvore esquerda de z é vazia.
 // NOTA: Esta função NÃO desaloca a memória alocada para z.
-Node* TreeDeleteMin(Node*& root, Node* z) {
+Node* TreeDeleteMin(Node*& root, Node* z) {  // NOLINT
   Node* x = z->right;  // Nó que vai ser o novo filho do pai de z.
   if (x != NULL) {
     x->parent = z->parent;
@@ -77,6 +77,22 @@ Node* TreeDeleteMin(Node*& root, Node* z) {
   return z;
 }
 
+// Retorna um ponteira para uma nova árvore igual a root.
+// parent e o nó que deve ser o pai da nova árvore.
+Node* TreeCopy(Node* root, Node* parent) {
+  if (root == NULL) {
+    return NULL;
+  } else {
+    Node* z = new Node;
+    z->key = root->key;
+    z->copies = root->copies;
+    z->parent = parent;
+    z->left = TreeCopy(root->left, z);
+    z->right = TreeCopy(root->right, z);
+    return z;
+  }
+}
+
 // Implementação das funções do TAD set.
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -85,15 +101,15 @@ priority_queue::priority_queue() {
   size_= 0;
 }
 
-bool priority_queue::empty() {
+bool priority_queue::empty() const {
   return size_ == 0;
 }
 
-int priority_queue::size() {
+int priority_queue::size() const {
   return size_;
 }
 
-SType priority_queue::top() {
+SType priority_queue::top() const {
   return TreeMinimum(root_)->key;
 }
 
@@ -119,6 +135,15 @@ void priority_queue::pop() {
     delete TreeDeleteMin(root_, z);
   }
   size_--;
+}
+
+void priority_queue::operator=(const priority_queue& q) {
+  // Apaga todos os elementos na fila corrente.
+  while (!empty()) {
+    pop();
+  }
+  // Faz root_ igual a uma cópia q.root_.
+  root_ = TreeCopy(q.root_, NULL);
 }
 
 priority_queue::~priority_queue() {

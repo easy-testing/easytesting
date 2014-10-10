@@ -1,7 +1,7 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_QUEUE_TEST_QUEUE_TEST_H_
-#define TRUNK_QUEUE_TEST_QUEUE_TEST_H_
+#ifndef TRUNK_QUEUE_WITH_ARRAY_TEST_QUEUE_TEST_H_
+#define TRUNK_QUEUE_WITH_ARRAY_TEST_QUEUE_TEST_H_
 
 #include <sstream>
 #include <string>
@@ -231,4 +231,4 @@ TEST_F(Teste, Testa_operador_Assign) {
     << "-------------------------------------------------------------------\n";
 }
 
-#endif  // TRUNK_QUEUE_TEST_QUEUE_TEST_H_
+#endif  // TRUNK_QUEUE_WITH_ARRAY_TEST_QUEUE_TEST_H_

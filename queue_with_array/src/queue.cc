@@ -21,19 +21,19 @@ queue::queue() {
   array_ = new QType[capacity_];
 }
 
-bool queue::empty() {
+bool queue::empty() const {
   return size_ == 0;
 }
 
-int queue::size() {
+int queue::size() const {
   return size_;
 }
 
-QType queue::front() {
+QType queue::front() const {
   return array_[first_];
 }
 
-QType queue::back() {
+QType queue::back() const {
   return array_[(first_ + size_ - 1) % capacity_];
 }
 
@@ -50,7 +50,7 @@ void queue::pop() {
   size_--;
 }
 
-void queue::operator=(queue& q) {
+void queue::operator=(const queue& q) {
   reserve(q.capacity_);
   size_ = q.size_;
   first_ = 0;

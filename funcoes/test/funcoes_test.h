@@ -1,7 +1,7 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TEST_FUNCOES_TEST_H_
-#define TEST_FUNCOES_TEST_H_
+#ifndef TRUNK_FUNCOES_TEST_FUNCOES_TEST_H_
+#define TRUNK_FUNCOES_TEST_FUNCOES_TEST_H_
 
 #include <cmath>
 #include <sstream>
@@ -318,4 +318,4 @@ TEST(Teste, Testa_hipotenusa_triagulo_escaleno) {
 
 }  // namespace Teste
 
-#endif  // TEST_FUNCOES_TEST_H_
+#endif  // TRUNK_FUNCOES_TEST_FUNCOES_TEST_H_

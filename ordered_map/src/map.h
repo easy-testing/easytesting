@@ -1,13 +1,13 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef SRC_MAP_H_
-#define SRC_MAP_H_
+#ifndef TRUNK_ORDERED_MAP_SRC_MAP_H_
+#define TRUNK_ORDERED_MAP_SRC_MAP_H_
 
 #include<string>
 
-// Define como os elementos do conjunto associativo serão organizados na memória.
-// É declarado aqui, mas só é implementado em map.cc para não violar o
-// encapsulamento.
+// Define como os elementos do conjunto associativo serão organizados na
+// memória. É declarado aqui, mas só é implementado em map.cc para não
+// violar o encapsulamento.
 struct Node;
 
 // Implementa um conjunto associativo (também conhecido como mapa) utilizando
@@ -28,43 +28,43 @@ class map {
   map();
 
   // Testa se o cojunto está vazio em O(1).
-  bool empty();
+  bool empty() const;
 
   // Retorna o número de elementos no conjunto em O(1).
-  int size();
+  int size() const;
 
   // Retorna um ponteiro para o primeiro elemento do conjunto em O(log n).
   // Caso o conjunto esteja vazio, rentorna um ponteiro para map::end().
-  Node* begin();
+  Node* begin() const;
 
   // Retorna um ponteiro para o "marcador de fim" do conjunto em O(1).
-  Node* end();
+  Node* end() const;
 
   // Retorna o elemento seguinte ao indicado por x no conjunto em O(log n).
   // Se x aponta para o último elemento do conjunto, retorna map::end();
   // Precondição: x aponta para um dos elementos do conjunto.
-  Node* next(Node* x);
+  Node* next(Node* x) const;
 
   // Retorna o elemento anterior ao indicado por x no conjunto em O(log n).
   // Nota: x pode apontar para map::end().
   // Precondição: existe pelo menos um elemento do conjunto antes de x.
-  Node* prev(Node* x);
+  Node* prev(Node* x) const;
 
   // Retorna uma referência ao valor associado a chave k em O(log n).
   // Precondição: k pertence ao conjunto.
   VType& operator[](SType k);
 
   // Retorna a chave do nó x em O(1).
-  SType key(Node* x);
+  SType key(Node* x) const;
 
   // Retorna o valor do nó x em O(1).
-  VType value(Node* x);
+  VType value(Node* x) const;
 
   // Retorna um ponteiro para o elemento k em O(log n),
   // ou um ponteiro para map::end() caso k não pertença ao conjunto.
   // OBS: Note que esta função NÃO retorna bool. Para testar se um elemento 'a'
   // pertence a um conjunto 'c', você deve escrever "if (c.find(a) != c.end())".
-  Node* find(SType k);
+  Node* find(SType k) const;
 
   // Insere k no conjunto, associado ao valor v, em O(log n).
   // Caso k já pertença ao conjunto, o valor associado a k é atualizado para v.
@@ -78,7 +78,7 @@ class map {
 
   // Faz com que o conjunto corrente contenha exatamente os mesmos elementos
   // do cojunto s em O(n.log n + m.log m), onde m = s.size().
-  void operator=(map& s);
+  void operator=(const map& s);
 
   // Libera toda a memória alocada para o conjunto em O(n.log n).
   ~map();
@@ -93,4 +93,4 @@ class map {
 
   friend class Teste;
 };
-#endif  // SRC_MAP_H_
+#endif  // TRUNK_ORDERED_MAP_SRC_MAP_H_

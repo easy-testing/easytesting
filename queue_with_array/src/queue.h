@@ -1,7 +1,7 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_QUEUE_SRC_QUEUE_H_
-#define TRUNK_QUEUE_SRC_QUEUE_H_
+#ifndef TRUNK_QUEUE_WITH_ARRAY_SRC_QUEUE_H_
+#define TRUNK_QUEUE_WITH_ARRAY_SRC_QUEUE_H_
 
 #include <string>
 
@@ -18,18 +18,18 @@ class queue {
   ~queue();
 
   // Testa se a fila está vazia em O(1).
-  bool empty();
+  bool empty() const;
 
   // Retorna o número de elementos na fila em O(1).
-  int size();
+  int size() const;
 
   // Retorna o elemento que está no início da fila em O(1).
   // Precondição: a fila não pode estar vazia.
-  QType front();
+  QType front() const;
 
   // Retorna o elemento que está no final da fila em O(1).
   // Precondição: a fila não pode estar vazia.
-  QType back();
+  QType back() const;
 
   // Insere k no final da fila em O(1).
   void push(QType k);
@@ -40,7 +40,7 @@ class queue {
 
   // Faz a fila corrente ficar igual a q em O(n + m),
   // onde m = q.size() e n é o número de elementos na fila corrente.
-  void operator=(queue& q);
+  void operator=(const queue& q);
 
  private:
   // Função que altera o número máximo de elementos na pilha
@@ -62,4 +62,4 @@ class queue {
   friend class Teste;
 };
 
-#endif  // TRUNK_QUEUE_SRC_QUEUE_H_
+#endif  // TRUNK_QUEUE_WITH_ARRAY_SRC_QUEUE_H_

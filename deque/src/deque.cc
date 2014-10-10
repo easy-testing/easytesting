@@ -25,19 +25,19 @@ deque::~deque() {
   delete end_;
 }
 
-bool deque::empty() {
+bool deque::empty() const {
   return size_ == 0;
 }
 
-int deque::size() {
+int deque::size() const {
   return size_;
 }
 
-LType deque::front() {
+LType deque::front() const {
   return end_->next->key;
 }
 
-LType deque::back() {
+LType deque::back() const {
   return end_->prev->key;
 }
 
@@ -77,7 +77,7 @@ void deque::pop_back() {
   size_--;
 }
 
-void deque::operator=(deque& d) {
+void deque::operator=(const deque& d) {
   // Apaga todos os elementos no deque corrente.
   while (!empty()) {
     pop_front();
