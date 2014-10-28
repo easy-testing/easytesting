@@ -13,9 +13,9 @@ type_test = std::string
 
 # Gera o binarios do programa e dos testes
 all:
-	$(cc) -D LType=$(type_main1) -I $(path) src/$(program).cc src/main1.cc -o main1
-	$(cc) -D LType=$(type_main2) -I $(path) src/$(program).cc src/main2.cc -o main2
-	$(cc) -D LType=$(type_test) -I $(path) src/$(program).cc test/$(program)_test.cc gtest/gtest.cc -o easy_testing
+	$(cc) -D DType=$(type_main1) -I $(path) src/$(program).cc src/main1.cc -o main1
+	$(cc) -D DType=$(type_main2) -I $(path) src/$(program).cc src/main2.cc -o main2
+	$(cc) -D DType=$(type_test) -I $(path) src/$(program).cc test/$(program)_test.cc gtest/gtest.cc -o easy_testing
 	@echo "--------------------------------------------------------------"
 	@echo "main1: executa o programa em main1.cc."
 	@echo "main2: executa o programa em main2.cc."

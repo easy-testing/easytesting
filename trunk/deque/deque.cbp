@@ -13,7 +13,7 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-DLType=std::string" />
+					<Add option="-DDType=std::string" />
 				</Compiler>
 			</Target>
 			<Target title="Main2">
@@ -23,7 +23,7 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-DLType=std::string" />
+					<Add option="-DDType=std::string" />
 				</Compiler>
 			</Target>
 			<Target title="Main1">
@@ -33,7 +33,7 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-DLType=float" />
+					<Add option="-DDType=float" />
 				</Compiler>
 			</Target>
 		</Build>

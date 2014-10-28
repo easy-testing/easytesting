@@ -28,21 +28,21 @@ class deque {
 
   // Retorna o valor da chave do primeiro elemento do deque em O(1).
   // Precondição: o deque não pode estar vazio.
-  LType front() const;
+  DType front() const;
 
   // Retorna o valor da chave do último elemento do deque em O(1).
   // Precondição: o deque não pode estar vazio.
-  LType back() const;
+  DType back() const;
 
   // Insere k no início do deque em O(1).
-  void push_front(LType k);
+  void push_front(DType k);
 
   // Remove o primeiro elemento do deque em O(1).
   // Precondição: o deque não pode estar vazio.
   void pop_front();
 
   // Insere k no final do deque em O(1).
-  void push_back(LType k);
+  void push_back(DType k);
 
   // Remove o último elemento do deque em O(1).
   // Precondição: o deque não pode estar vazio.
