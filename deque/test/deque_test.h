@@ -14,7 +14,7 @@ using std::stringstream;
 
 // Implementa um nó da lista encadeada.
 struct Node {
-  LType key;  // Valor da chave do nó.
+  DType key;  // Valor da chave do nó.
   Node* prev;  // Ponteiro para o nó anterior.
   Node* next;  // Ponteiro para o próximo nó.
 };
@@ -23,7 +23,7 @@ struct Node {
 class Teste : public testing::Test {
  protected:
   // Cria uma nó cuja chave é k, o nó anterior é l, e o nó posterior é r.
-  Node* NewNode(LType k, Node* l, Node* r) {
+  Node* NewNode(DType k, Node* l, Node* r) {
     Node* aux = new Node;
     aux->key = k;
     aux->prev = l;
@@ -58,7 +58,7 @@ class Teste : public testing::Test {
   }
 
   // Preenche o deque d com 3 números. 'd' deve ser umo deque vazio.
-  void Criadeque(LType x1, LType x2, LType x3, deque* d) {
+  void Criadeque(DType x1, DType x2, DType x3, deque* d) {
     d->end_->next = NewNode(x1, d->end_, NULL);
     d->end_->next->next = NewNode(x2, d->end_->next, NULL);
     d->end_->next->next->next = d->end_->prev =
@@ -142,8 +142,8 @@ TEST_F(Teste, Testa_Empty_com_deque_nao_vazio) {
 TEST_F(Teste, Testa_Front) {
   deque d;
   Criadeque("12", "14", "15", &d);
-  LType atual = d.front();
-  LType esperado = "12";
+  DType atual = d.front();
+  DType esperado = "12";
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: VType deque::front()\n"
@@ -157,8 +157,8 @@ TEST_F(Teste, Testa_Front) {
 TEST_F(Teste, Testa_Back) {
   deque d;
   Criadeque("12", "14", "15", &d);
-  LType atual = d.back();
-  LType esperado = "15";
+  DType atual = d.back();
+  DType esperado = "15";
   ASSERT_EQ(esperado, atual)
     << "-------------------------------------------------------------------\n"
     << "Erro na funcao: VType deque::back()\n"
@@ -176,7 +176,7 @@ TEST_F(Teste, Testa_Push_Front_em_deque_vazio) {
   string esperado("[ 10 ]");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void deque::push_front(LType k) *\n"
+      << "Erro na funcao: void deque::push_front(DType k) *\n"
       << "------------------------------------------------------------------\n"
       << "d = [ ] \n"
       << "\"d.push(10)\" resultou em: d = " << atual << "\n"
@@ -192,7 +192,7 @@ TEST_F(Teste, Testa_Push_Front_em_deque_nao_vazio) {
   string esperado("[ 4 1 2 3 ]");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void deque::push_front(LType k) *\n"
+      << "Erro na funcao: void deque::push_front(DType k) *\n"
       << "------------------------------------------------------------------\n"
       << "d = [ 1 2 3 ] \n"
       << "\"d.push(4)\" resultou em: d = " << atual << "\n"
@@ -207,7 +207,7 @@ TEST_F(Teste, Testa_Push_Back_em_deque_vazio) {
   string esperado("[ 10 ]");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void deque::push_back(LType k) *\n"
+      << "Erro na funcao: void deque::push_back(DType k) *\n"
       << "------------------------------------------------------------------\n"
       << "d = [ ] \n"
       << "\"d.push(10)\" resultou em: d = " << atual << "\n"
@@ -223,7 +223,7 @@ TEST_F(Teste, Testa_Push_Back_em_deque_nao_vazio) {
   string esperado("[ 1 2 3 4 ]");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void deque::push_back(LType k) *\n"
+      << "Erro na funcao: void deque::push_back(DType k) *\n"
       << "------------------------------------------------------------------\n"
       << "d = [ 1 2 3 ] \n"
       << "\"d.push(4)\" resultou em: d = " << atual << "\n"
@@ -255,7 +255,7 @@ TEST_F(Teste, Testa_Pop_Front_em_deque_nao_vazio) {
   string esperado("[ 3 4 ]");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void deque::pop_front(LType k) *\n"
+      << "Erro na funcao: void deque::pop_front(DType k) *\n"
       << "------------------------------------------------------------------\n"
       << "d = [ 2 3 4 ] \n"
       << "\"d.pop()\" resultou em: d = " << atual << "\n"
@@ -286,7 +286,7 @@ TEST_F(Teste, Testa_Pop_Back_em_deque_nao_vazio) {
   string esperado("[ 2 3 ]");
   ASSERT_EQ(esperado, atual)
       << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void deque::pop_back(LType k) *\n"
+      << "Erro na funcao: void deque::pop_back(DType k) *\n"
       << "------------------------------------------------------------------\n"
       << "d = [ 2 3 4 ] \n"
       << "\"d.pop()\" resultou em: d = " << atual << "\n"

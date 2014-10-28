@@ -4,7 +4,7 @@
 
 // Implementa um nó da lista encadeada.
 struct Node {
-  LType key;  // Valor da chave do nó.
+  DType key;  // Valor da chave do nó.
   Node* prev;  // Ponteiro para o nó anterior.
   Node* next;  // Ponteiro para o próximo nó.
 };
@@ -33,15 +33,15 @@ int deque::size() const {
   return size_;
 }
 
-LType deque::front() const {
+DType deque::front() const {
   return end_->next->key;
 }
 
-LType deque::back() const {
+DType deque::back() const {
   return end_->prev->key;
 }
 
-void deque::push_front(LType k) {
+void deque::push_front(DType k) {
   Node* i = end_->next;  // Ponteiro para o primeiro elemento na fila.
   Node* node = new Node;
   node->key = k;
@@ -60,7 +60,7 @@ void deque::pop_front() {
   size_--;
 }
 
-void deque::push_back(LType k) {
+void deque::push_back(DType k) {
   Node* k_node = new Node;
   k_node->key = k;
   k_node->prev = end_->prev;
