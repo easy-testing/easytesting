@@ -1,0 +1,137 @@
+# Projeto Easytesting #
+
+**Autores:** Thiago Noronha, Gabriel Guedes e Matheus Pacheco
+
+## Sumário ##
+
+
+
+## Introdução ##
+
+Com a adoção de várias universidades federais ao programa de  Reestruturação e Expansão das Universidades Federais - REUNI, espera-se um grande aumento no número de alunos por turma nas disciplinas de ensino de programação de computadores. Com o aumento da relação aluno/professor, torna-se necessário desenvolver ferramentas e metodologias para garantir a qualidade do ensino. Este trabalho pretende auxiliar o ensino de linguagens de programação com uma metodologia de correção automática de listas de exercícios através de conjuntos de teste de unidade[1.](http://pt.wikipedia.org/wiki/Teste_de_unidade)
+
+
+## Objetivos ##
+
+Os objetivos deste trabalho são:
+  * Auxiliar os alunos a identificar erros, dando dicas claras e objetivas e sem a necessidade da presença do professor.
+  * Desenvolver um método de correção rápido e de qualidade, verificando a presença ou não dos erros mais comuns.
+  * Agilizar a correção de listas de exercícios por professores e monitores.
+  * Este trabalho NÃO visa criar um método de avaliação automática ou de identificação de cópias de exercícios.
+
+## Metodologia ##
+
+Na abordagem baseada em testes de unidade, os exercícios programados pelos alunos são testados função por função. Para cada aspecto testado numa dada função, é possivel exibir uma mensagem específica, de modo que o aluno poderá receber indicações precisas sobre a possível localização do erro. As figuras abaixo mostram um exemplo de teste para identificar um erro comum entre iniciantes na programação, que é exceder o tamanho do vetor num laço.
+
+
+**Figura 1:** Uma função que calcula a média dos valores de um vetor.
+
+<img src='http://easytesting.googlecode.com/files/wiki1.png' width='600px' />
+
+**Figura 2:** Um teste unitário para a função acima. Ele verifica se ela
+esta acessando a posição n do vetor, um erro comum para programadores iniciantes.
+
+<img src='http://easytesting.googlecode.com/files/wiki2.png' width='600px' />
+
+**Figura 3:** O resultado do teste, exibido ao aluno quando ele executa o programa que contém todos os testes, caso a função que ele implementou contenha o erro descrito.Este tipo de análise não é possivel nos sistemas de juiz online tradicionais, que são as ferramentas normalmente usadas para correção automática de exercícios.
+
+<img src='http://easytesting.googlecode.com/files/wiki3.png' width='600px' />
+
+
+
+### Pontos Positivos ###
+
+  * Os alunos conseguiram identificar e corrigir erros através das mensagens direcionadas.
+  * Não foi necessário treinamento aos alunos para utilizar o sistema.
+  * Os testes sanam as duvidas mais simples dos alunos, tendo o professor mais tempo para trabalhar as dúvidas mais complexas.
+
+
+### Pontos negativos ###
+
+  * Este método não permite o teste da função main. Para isso o modelo de juizes online é adequado.
+  * Os casos de teste não cobrem todas as possibilidades de erros nas funções. Porém, o desenvolvimento incremental faz com que o sistema cubra uma variedade cada vez maior de erros em suas novas versões.
+  * Não é permitido aos alunos alterar a interface das funções. Mas isso não é um problema em nas disciplinas básicas de programação.
+
+## Resultados ##
+
+A metodologia proposta foi aplica em turmas de ensino de programação de computadores da UFMG com 75 a 150 alunos nos anos de 2010
+e 2011. Verificou-se que o método auxiliou no aprendizado de técnicas de programação e foi um agente motivador para o aprendizado dos
+Alunos. As mensagens de erro direcionadas, exibidas aos alunos quando os testes falham, permitiram que os próprios alunos muitas vezes
+identificassem os erros imediatamente, não sendo necessário recorrer ao monitor ou professor da disciplina. Desta forma, estes últimos
+puderam se concentrar em auxiliar os alunos apenas nas dúvidas mais complexas e assim conseguiram atender de forma eficiente a
+demanda do grande número de alunos por turma.
+
+
+## Conteúdos Abordados ##
+
+Este projeto aborda diferentes temas ligados a programação básica lecionados pelos professores. A lista desses temas se encontra abaixo:
+
+
+
+#### Programação Básica Nível 1 ####
+
+
+| **Tópico** | **Assuntos abordados** | **Requisitos** |
+|:------------|:-----------------------|:---------------|
+| Funções |   Codificação de funções simples. Parâmteros passados por valor.       | Nenhum |
+| Condicionais | Estruturas de controle if-else, switch-case, operador condicional ?:| Funções |
+| [Iteração](http://code.google.com/p/easytesting/downloads/detail?name=iteracao-v0.9.zip&can=2&q=) | Estruturas de controle for, while, do-while.  | Condicionais |
+| [Recursão](http://code.google.com/p/easytesting/downloads/detail?name=recursao-v0.9.zip&can=2&q=) | Codificação de funções recursivas. | Condicionais|
+| [Vetores](http://code.google.com/p/easytesting/downloads/detail?name=vetores-v0.9.zip&can=2&q=) | Funções que realizam operações envolvendo arranjos. | [Iteração](http://code.google.com/p/easytesting/downloads/detail?name=iteracao-v0.9.zip&can=2&q=)|
+| [Matrizes](http://code.google.com/p/easytesting/downloads/detail?name=matrizes-v0.9.zip&can=2&q=) | Funções que realizam operações envolvendo arranjos de arranjos.  | [Iteração](http://code.google.com/p/easytesting/downloads/detail?name=iteracao-v0.9.zip&can=2&q=)|
+| [Registros](http://code.google.com/p/easytesting/downloads/detail?name=registros-v0.9.zip&can=2&q=)| Introdução aos tipos abstratos de dados( TADs ) e suas funções associadas.  | [Iteração](http://code.google.com/p/easytesting/downloads/detail?name=iteracao-v0.9.zip&can=2&q=)|
+| [Números Complexos](http://code.google.com/p/easytesting/downloads/detail?name=complexo-v0.9.zip&can=2&q=)| Codificação de TAD para números complexos e operações associadas. | [Registros](http://code.google.com/p/easytesting/downloads/detail?name=registros-v0.9.zip&can=2&q=)|
+| [Complexos Polares](http://code.google.com/p/easytesting/downloads/detail?name=complexo_polar-v0.9.zip&can=2&q=)| Codificação de TAD para números complexos na forma polar e operações associadas.  | [Registros](http://code.google.com/p/easytesting/downloads/detail?name=registros-v0.9.zip&can=2&q=)|
+| TAD para Polinômios | Codificação de TAD para polinômios complexos e operações associadas.  | [Registros](http://code.google.com/p/easytesting/downloads/detail?name=registros-v0.9.zip&can=2&q=), [Vetores](http://code.google.com/p/easytesting/downloads/detail?name=vetores-v0.9.zip&can=2&q=) |
+
+
+
+#### Programação Básica Nível 2 ####
+
+
+
+| **Tópico** | **Assuntos abordados** | **Requisitos** |
+|:------------|:-----------------------|:---------------|
+| [List](http://code.google.com/p/easytesting/downloads/detail?name=list-v0.9.zip&can=2&q=) |   TAD lista encadeada.       | Nível 1 |
+| Array Set | TAD conjunto (implementado usando vetores).  | Nível 1 |
+| [Linear Set](http://code.google.com/p/easytesting/downloads/detail?name=linear_set-v0.9.zip&can=2&q=) | TAD conjunto (implementado usando listas encadeadas).  | List |
+| [Hash Set](http://code.google.com/p/easytesting/downloads/detail?name=hash_set-v0.8.zip&can=2&q=) | TAD conjunto (implementado usando Linear sets). | Linear set|
+| [Ordered Set](http://code.google.com/p/easytesting/downloads/detail?name=ordered_set-v0.9.zip&can=2&q=) | TAD Conjunto ordenado (implementado usando árvores binárias).  |Binary tree|
+| [Queue](http://code.google.com/p/easytesting/downloads/detail?name=queue-v0.9.zip&can=2&q=)| TAD fila.  | List|
+| [Stack](http://code.google.com/p/easytesting/downloads/detail?name=queue-v0.9.zip&can=2&q=) | TAD pilha.  | List |
+
+
+## Como Utilizar ##
+
+O projeto de cada lista de exercícios é composto por um grupo de arquivos:
+
+  * gtest.h
+  * gtest.cc
+  * xxx\_test.cc
+  * xxx\_test.h
+  * xxx.h
+  * xxx.cc
+  * main.cc
+  * alguns ainda possuem mais um arquivo auxiliar
+
+"xxx" está substituindo o nome do projeto. Gtest.cc e .h são arquivos de teste criados pelo Google (Google Test) para auxiliar a criação dos testes de unidade. Os arquivos xxx.h e .cc são os gabaritos das listas de exercícios, que serão testados pelo programa Easytesting e os arquivos xxx\_test.cc e .h são os testes de unidade criados para cada lista de exercícios.
+No projeto existem duas opções de compilação, _Easytesting_ e _Main_ . A Figura 1 abaixo indica como é feita a alteração dessas opções utilizando o IDE Code::Blocks:
+
+https://sites.google.com/site/matheuspachecao100/BuildTarget.png?attredirects=0&d=1
+Figura 1
+
+O modo de compilação _Easytesting_ irá compilar e executar o teste da lista de exercícios. O modo _Main_ irá compilar o arquivo main.cc do exercício do aluno.
+
+Ao escolher o modo _Easytesting_ e executar, o programa abrirá uma tela indicando os testes executados e os resultados de cada teste realizado. Para cada erro detectado haverá uma mensagem indicando - o. Assim será possível que o aluno descubra o erro e corrija o programa.
+
+https://sites.google.com/site/matheuspachecao100/Testes_corretos.png?attredirects=0&d=1
+
+Figura 2 - Testes sem indicação de erros
+
+https://sites.google.com/site/matheuspachecao100/Testes_com_erro.png?attredirects=0&d=1
+
+Figura 3 - Testes com indicação de erro
+
+## Referências ##
+
+[1.](http://pt.wikipedia.org/wiki/Teste_de_unidade) -> Link para a página do wikipedia que traz explicações sobre Testes de Unidade
