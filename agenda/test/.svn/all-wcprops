@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/750/trunk/agenda/test
+END
+agenda_test.cc
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/729/trunk/agenda/test/agenda_test.cc
+END
+agenda_test.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/750/trunk/agenda/test/agenda_test.h
+END

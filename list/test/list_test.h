@@ -1,13 +1,10 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_LIST_TEST_LIST_TEST_H_
-#define TRUNK_LIST_TEST_LIST_TEST_H_
 
+#include "../doctest/doctest.h"
 #include <sstream>
 #include <string>
-
 #include "src/list.h"
-#include "gtest/gtest.h"
 
 using std::string;
 using std::stringstream;
@@ -20,7 +17,7 @@ struct Node {
 };
 
 // Classe base dos testes.
-class Teste : public testing::Test {
+class Teste {
  protected:
   // Cria uma nó cuja chave é k, o nó anterior é l, e o nó posterior é r.
   Node* NewNode(LType k, Node* l, Node* r) {
@@ -50,7 +47,7 @@ class Teste : public testing::Test {
   string ToString(const list& l) {
     stringstream sout;
     sout << "[ ";
-    for (Node* i = begin(l) ; i != end(l) ; i = i->next) {
+    for (Node* i = begin(l); i != end(l); i = i->next) {
       sout << i->key << " ";
     }
     sout << "]";
@@ -67,21 +64,21 @@ class Teste : public testing::Test {
   }
 };
 
-TEST_F(Teste, Testa_construtor_vazio) {
+TEST_CASE_FIXTURE(Teste, "Testa construtor vazio") {
   list atual;
-  ASSERT_EQ(0, size(atual))
+  DOCTEST_CHECK_EQ(0, size(atual))
     << "-------------------------------------------------------------------\n"
     << "Erro no construtor: list::list()\n"
     << "-------------------------------------------------------------------\n"
     << " Número de elementos na lista maior que zero.\n"
     << "-------------------------------------------------------------------\n";
-  ASSERT_EQ(end(atual)->next, end(atual))
+  DOCTEST_CHECK_EQ(end(atual)->next, end(atual))
     << "-------------------------------------------------------------------\n"
     << "Erro no construtor: list::list()\n"
     << "-------------------------------------------------------------------\n"
     << " Em uma lista encadeada vazia, end_->next = end_.\n"
     << "-------------------------------------------------------------------\n";
-  ASSERT_EQ(end(atual)->prev, end(atual))
+  DOCTEST_CHECK_EQ(end(atual)->prev, end(atual))
     << "-------------------------------------------------------------------\n"
     << "Erro no construtor: list::list()\n"
     << "-------------------------------------------------------------------\n"
@@ -89,13 +86,13 @@ TEST_F(Teste, Testa_construtor_vazio) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Size_para_lista_vazia) {
+TEST_CASE_FIXTURE(Teste, "Testa Size para lista vazia") {
   list l;
   int esperado = 0;
   int atual = l.size();
-  ASSERT_EQ(esperado, atual)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: int list::size()\n"
+  DOCTEST_CHECK_EQ(esperado, atual) <<
+    "-------------------------------------------------------------------\n"
+    << "Erro na função: int list::size()\n"
     << "-------------------------------------------------------------------\n"
     << " l = " << ToString(l) << "\n"
     << " \"l.sise()\" retornou: " << atual << "\n"
@@ -103,14 +100,14 @@ TEST_F(Teste, Testa_Size_para_lista_vazia) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Size_para_lista_nao_vazia) {
+TEST_CASE_FIXTURE(Teste, "Testa Size para lista não vazia") {
   list l;
   CriaLista("a", "b", "c", &l);
   int esperado = 3;
   int atual = l.size();
-  ASSERT_EQ(esperado, atual)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: int list::size()\n"
+  DOCTEST_CHECK_EQ(esperado, atual) <<
+    "-------------------------------------------------------------------\n"
+    << "Erro na função: int list::size()\n"
     << "-------------------------------------------------------------------\n"
     << " l = " << ToString(l) << "\n"
     << " \"l.sise()\" retornou: " << atual << "\n"
@@ -118,112 +115,112 @@ TEST_F(Teste, Testa_Size_para_lista_nao_vazia) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Empty_com_lista_vazia) {
+TEST_CASE_FIXTURE(Teste, "Testa Empty com lista vazia") {
   list l;
-  ASSERT_TRUE(l.empty())
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: bool list::empty() \n"
-      << "------------------------------------------------------------------\n"
-      << " A lista esta vazia e a funcao retornou FALSE.\n"
-      << "------------------------------------------------------------------\n";
+  DOCTEST_CHECK(l.empty()) <<
+    "------------------------------------------------------------------\n"
+    << "Erro na função: bool list::empty() \n"
+    << "------------------------------------------------------------------\n"
+    << " A lista está vazia e a função retornou FALSE.\n"
+    << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Empty_com_lista_nao_vazia) {
+TEST_CASE_FIXTURE(Teste, "Testa Empty com lista não vazia") {
   list l;
   CriaLista("12", "14", "15", &l);
-  ASSERT_FALSE(l.empty())
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: bool list::empty() \n"
-      << "------------------------------------------------------------------\n"
-      << " A lista tem pelo menos um elemento e a funcao retornou TRUE.\n"
-      << "------------------------------------------------------------------\n";
+  DOCTEST_CHECK_FALSE(l.empty()) <<
+    "------------------------------------------------------------------\n"
+    << "Erro na função: bool list::empty() \n"
+    << "------------------------------------------------------------------\n"
+    << " A lista tem pelo menos um elemento e a função retornou TRUE.\n"
+    << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Begin_com_lista_vazia) {
+TEST_CASE_FIXTURE(Teste, "Testa Begin com lista vazia") {
   list l;
-  ASSERT_EQ(begin(l), l.begin())
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* list::begin() \n"
-      << "------------------------------------------------------------------\n"
-      << " begin() nao retorna end_ na lista vazia.\n"
-      << "------------------------------------------------------------------\n";
+  DOCTEST_CHECK_EQ(begin(l), l.begin()) <<
+    "------------------------------------------------------------------\n"
+    << "Erro na função: Node* list::begin() \n"
+    << "------------------------------------------------------------------\n"
+    << " begin() não retorna end_ na lista vazia.\n"
+    << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Begin_com_lista_nao_vazia) {
+TEST_CASE_FIXTURE(Teste, "Testa Begin com lista não vazia") {
   list l;
   CriaLista("1", "2", "3", &l);
   LType atual = l.begin()->key;
   LType esperado = "1";
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* list::begin() \n"
-      << "------------------------------------------------------------------\n"
-      << " l = " << ToString(l) << "\n"
-      << " \"l[l.begin()]\" retornou: " << atual << "\n"
-      << " Valor esperado: " << esperado << "\n"
-      << "------------------------------------------------------------------\n";
+  DOCTEST_CHECK_EQ(esperado, atual) <<
+    "------------------------------------------------------------------\n"
+    << "Erro na função: Node* list::begin() \n"
+    << "------------------------------------------------------------------\n"
+    << " l = " << ToString(l) << "\n"
+    << " \"l[l.begin()]\" retornou: " << atual << "\n"
+    << " Valor esperado: " << esperado << "\n"
+    << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_End_com_lista_vazia) {
+TEST_CASE_FIXTURE(Teste, "Testa End com lista vazia") {
   list l;
-  ASSERT_EQ(end(l), l.end())
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* list::end() \n"
-      << "------------------------------------------------------------------\n"
-      << " end() nao retorna end_ na lista vazia.\n"
-      << "------------------------------------------------------------------\n";
+  DOCTEST_CHECK_EQ(end(l), l.end()) <<
+    "------------------------------------------------------------------\n"
+    << "Erro na função: Node* list::end() \n"
+    << "------------------------------------------------------------------\n"
+    << " end() não retorna end_ na lista vazia.\n"
+    << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_End_com_lista_nao_vazia) {
+TEST_CASE_FIXTURE(Teste, "Testa End com lista não vazia") {
   list l;
   CriaLista("1", "2", "3", &l);
-  ASSERT_EQ(end(l), l.end())
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* list::end() \n"
-      << "------------------------------------------------------------------\n"
-      << " l = " << ToString(l) << "\n"
-      << " \"l.end()\" nao retornou o valor de \"l.end_\"\n"
-      << "------------------------------------------------------------------\n";
+  DOCTEST_CHECK_EQ(end(l), l.end()) <<
+    "------------------------------------------------------------------\n"
+    << "Erro na função: Node* list::end() \n"
+    << "------------------------------------------------------------------\n"
+    << " l = " << ToString(l) << "\n"
+    << " \"l.end()\" não retornou o valor de \"l.end_\"\n"
+    << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Next) {
+TEST_CASE_FIXTURE(Teste, "Testa Next") {
   list l;
   CriaLista("1", "2", "3", &l);
   LType atual = l.next(l.begin())->key;
   LType esperado = "2";
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* list::next(Node* x) \n"
-      << "------------------------------------------------------------------\n"
-      << " l = " << ToString(l) << "\n"
-      << " \"l[l.next(l.begin())]\" retornou: " << atual << "\n"
-      << " Valor esperado: " << esperado << "\n"
-      << "------------------------------------------------------------------\n";
+  DOCTEST_CHECK_EQ(esperado, atual) <<
+    "------------------------------------------------------------------\n"
+    << "Erro na função: Node* list::next(Node* x) \n"
+    << "------------------------------------------------------------------\n"
+    << " l = " << ToString(l) << "\n"
+    << " \"l[l.next(l.begin())]\" retornou: " << atual << "\n"
+    << " Valor esperado: " << esperado << "\n"
+    << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Prev) {
+TEST_CASE_FIXTURE(Teste, "Testa Prev") {
   list l;
   CriaLista("1", "2", "3", &l);
   LType atual = l.prev(l.end())->key;
   LType esperado = "3";
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* list::prev() \n"
-      << "------------------------------------------------------------------\n"
-      << " l = " << ToString(l) << "\n"
-      << " \"l[l.prev(l.end())]\" retornou: " << atual << "\n"
-      << " Valor esperado: " << esperado << "\n"
-      << "------------------------------------------------------------------\n";
+  DOCTEST_CHECK_EQ(esperado, atual) <<
+    "------------------------------------------------------------------\n"
+    << "Erro na função: Node* list::prev() \n"
+    << "------------------------------------------------------------------\n"
+    << " l = " << ToString(l) << "\n"
+    << " \"l[l.prev(l.end())]\" retornou: " << atual << "\n"
+    << " Valor esperado: " << esperado << "\n"
+    << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Key) {
+TEST_CASE_FIXTURE(Teste, "Testa Key") {
   list l;
   CriaLista("12", "14", "15", &l);
   LType atual = l.key(l.begin());
   LType esperado = "12";
-  ASSERT_EQ(esperado, atual)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: LType& list::key(Node* x)\n"
+  DOCTEST_CHECK_EQ(esperado, atual) <<
+    "-------------------------------------------------------------------\n"
+    << "Erro na função: LType& list::key(Node* x)\n"
     << "-------------------------------------------------------------------\n"
     << " l = " << "[ 12 14 15 ]" << "\n"
     << " \"l[l.begin()]\" retornou: " << atual << "\n"
@@ -231,21 +228,21 @@ TEST_F(Teste, Testa_Key) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_operador_de_atribuicao_a_lista_vazia) {
+TEST_CASE_FIXTURE(Teste, "Testa operador de atribuição a lista vazia") {
   list esperado;
   CriaLista("12", "14", "15", &esperado);
   list atual;
   atual = esperado;
-  ASSERT_NE(end(esperado), end(atual))
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: void list::operator=(list& l)\n"
+  DOCTEST_CHECK_NE(end(esperado), end(atual)) <<
+    "-------------------------------------------------------------------\n"
+    << "Erro na função: void list::operator=(list& l)\n"
     << "-------------------------------------------------------------------\n"
     << " Não basta apenas copiar o ponteiro para \"end_\". \n"
     << " Você tem que copiar todos os elementos de l para a lista corrente.\n"
     << "-------------------------------------------------------------------\n";
-  ASSERT_EQ(ToString(esperado), ToString(atual))
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: void list::operator=(list& l)\n"
+  DOCTEST_CHECK_EQ(ToString(esperado), ToString(atual)) <<
+    "-------------------------------------------------------------------\n"
+    << "Erro na função: void list::operator=(list& l)\n"
     << "-------------------------------------------------------------------\n"
     << " l = " << ToString(esperado) << "\n"
     << " \"u = l\" resultou em: u = " << ToString(atual) << "\n"
@@ -253,15 +250,15 @@ TEST_F(Teste, Testa_operador_de_atribuicao_a_lista_vazia) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_operador_de_atribuicao_a_lista_nao_vazia) {
+TEST_CASE_FIXTURE(Teste, "Testa operador de atribuição a lista não vazia") {
   list esperado;
   CriaLista("1", "2", "3", &esperado);
   list atual;
   CriaLista("4", "5", "6", &atual);
   atual = esperado;
-  ASSERT_EQ(ToString(esperado), ToString(atual))
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: void list::operator=(list& l)\n"
+  DOCTEST_CHECK_EQ(ToString(esperado), ToString(atual)) <<
+    "-------------------------------------------------------------------\n"
+    << "Erro na função: void list::operator=(list& l)\n"
     << "-------------------------------------------------------------------\n"
     << " l = " << ToString(esperado) << "\n"
     << " \"u = l\" resultou em: u = " << ToString(atual) << "\n"
@@ -269,70 +266,70 @@ TEST_F(Teste, Testa_operador_de_atribuicao_a_lista_nao_vazia) {
     << "-------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Insert_no_inicio_de_lista_vazia) {
+TEST_CASE_FIXTURE(Teste, "Testa Insert no início de lista vazia") {
   list l;
   l.insert(l.begin(), "10");
   string atual = ToString(l);
   string esperado("[ 10 ]");
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void list::insert(Node* x, LType k) *\n"
-      << "------------------------------------------------------------------\n"
-      << "l = [ ] \n"
-      << "\"l.insert(l.begin(), 10)\" resultou em: l = " << atual << "\n"
-      << "Resultado esperado: l = " << esperado << "\n"
-      << "------------------------------------------------------------------\n";
+  DOCTEST_CHECK_EQ(esperado, atual) <<
+    "------------------------------------------------------------------\n"
+    << "Erro na função: void list::insert(Node* x, LType k) *\n"
+    << "------------------------------------------------------------------\n"
+    << "l = [ ] \n"
+    << "\"l.insert(l.begin(), 10)\" resultou em: l = " << atual << "\n"
+    << "Resultado esperado: l = " << esperado << "\n"
+    << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Insert_no_meio_da_lista_nao_vazia) {
+TEST_CASE_FIXTURE(Teste, "Testa Insert no meio da lista não vazia") {
   list l;
   CriaLista("1", "3", "4", &l);
   l.insert(l.begin()->next, "2");
   string atual = ToString(l);
   string esperado("[ 1 2 3 4 ]");
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void list::insert(Node* x, LType k) *\n"
-      << "------------------------------------------------------------------\n"
-      << "l = [ 1 3 4 ] \n"
-      << "\"l.insert(<ponteiro para 3>, 2)\" resultou em: l = " << atual << "\n"
-      << "Resultado esperado: l = " << esperado << "\n"
-      << "------------------------------------------------------------------\n";
+  DOCTEST_CHECK_EQ(esperado, atual) <<
+    "------------------------------------------------------------------\n"
+    << "Erro na função: void list::insert(Node* x, LType k) *\n"
+    << "------------------------------------------------------------------\n"
+    << "l = [ 1 3 4 ] \n"
+    << "\"l.insert(<ponteiro para 3>, 2)\" resultou em: l = " << atual << "\n"
+    << "Resultado esperado: l = " << esperado << "\n"
+    << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Erase_em_lista_unitaria) {
+TEST_CASE_FIXTURE(Teste, "Testa Erase em lista unitária") {
   list l;
   l.insert(l.begin(), "10");
   l.erase(l.begin());
   string atual = ToString(l);
   string esperado("[ ]");
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void list::erase(Node* x) *\n"
-      << "------------------------------------------------------------------\n"
-      << "l = [ 10 ] \n"
-      << "\"l.erase(l.begin(l))\" resultou em: l = " << atual << "\n"
-      << "Resultado esperado: l = " << esperado << "\n"
-      << "------------------------------------------------------------------\n";
+  DOCTEST_CHECK_EQ(esperado, atual) <<
+    "------------------------------------------------------------------\n"
+    << "Erro na função: void list::erase(Node* x) *\n"
+    << "------------------------------------------------------------------\n"
+    << "l = [ 10 ] \n"
+    << "\"l.erase(l.begin(l))\" resultou em: l = " << atual << "\n"
+    << "Resultado esperado: l = " << esperado << "\n"
+    << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_erase_no_meio_da_lista_nao_vazia) {
+TEST_CASE_FIXTURE(Teste, "Testa Erase no meio da lista não vazia") {
   list l;
   CriaLista("1", "2", "3", &l);
   l.erase(l.begin()->next);
   string atual = ToString(l);
   string esperado("[ 1 3 ]");
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void list::erase(Node* x) *\n"
-      << "------------------------------------------------------------------\n"
-      << "l = [ 1 2 3 ] \n"
-      << "\"l.erase(<ponterio para 2>)\" resultou em: l = " << atual << "\n"
-      << "Resultado esperado: l = " << esperado << "\n"
-      << "------------------------------------------------------------------\n";
+  DOCTEST_CHECK_EQ(esperado, atual) <<
+    "------------------------------------------------------------------\n"
+    << "Erro na função: void list::erase(Node* x) *\n"
+    << "------------------------------------------------------------------\n"
+    << "l = [ 1 2 3 ] \n"
+    << "\"l.erase(<ponterio para 2>)\" resultou em: l = " << atual << "\n"
+    << "Resultado esperado: l = " << esperado << "\n"
+    << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Merge) {
+TEST_CASE_FIXTURE(Teste, "Testa Merge") {
   list l1;
   CriaLista("1", "2", "3", &l1);
   list l2;
@@ -340,31 +337,29 @@ TEST_F(Teste, Testa_Merge) {
   l1.merge(l2);
   string atual = ToString(l1);
   string esperado("[ 1 2 3 4 5 6 ]");
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void list::merge(list& l) \n"
-      << "------------------------------------------------------------------\n"
-      << "l1 = [ 1 2 3 ] \n"
-      << "l2 = [ 4 5 6 ] \n"
-      << "\"l1.merge(l2)\" resultou em: l1 = " << atual << "\n"
-      << "Resultado esperado: l1 = " << esperado << "\n"
-      << "------------------------------------------------------------------\n";
+  DOCTEST_CHECK_EQ(esperado, atual) <<
+    "------------------------------------------------------------------\n"
+    << "Erro na função: void list::merge(list& l) \n"
+    << "------------------------------------------------------------------\n"
+    << "l1 = [ 1 2 3 ] \n"
+    << "l2 = [ 4 5 6 ] \n"
+    << "\"l1.merge(l2)\" resultou em: l1 = " << atual << "\n"
+    << "Resultado esperado: l1 = " << esperado << "\n"
+    << "------------------------------------------------------------------\n";
 }
 
-TEST_F(Teste, Testa_Clear) {
+TEST_CASE_FIXTURE(Teste, "Testa Clear") {
   list l;
   CriaLista("1", "4", "7", &l);
   l.clear();
   string atual = ToString(l);
   string esperado("[ ]");
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void list::clear() \n"
-      << "------------------------------------------------------------------\n"
-      << "l = [ 1 4 7 ] \n"
-      << "\"l.clear()\" resultou em: l = " << atual << "\n"
-      << "Resultado esperado: l = " << esperado << "\n"
-      << "------------------------------------------------------------------\n";
+  DOCTEST_CHECK_EQ(esperado, atual) <<
+    "------------------------------------------------------------------\n"
+    << "Erro na função: void list::clear() \n"
+    << "------------------------------------------------------------------\n"
+    << "l = [ 1 4 7 ] \n"
+    << "\"l.clear()\" resultou em: l = " << atual << "\n"
+    << "Resultado esperado: l = " << esperado << "\n"
+    << "------------------------------------------------------------------\n";
 }
-
-#endif  // TRUNK_LIST_TEST_LIST_TEST_H_

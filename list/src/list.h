@@ -9,7 +9,7 @@
 // É declarado aqui, mas só é implementado em list.cc para não violar o
 // encapsulamento.
 struct Node;
-
+typedef char LType;
 // Implementa uma lista de elementos utilizando Listas Encadeadas.
 // O tipo dos elementos contidos na lista é definido por LType.
 // O valor de LType deve ser definido em tempo de compilação.
