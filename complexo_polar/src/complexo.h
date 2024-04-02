@@ -6,7 +6,7 @@
 // Representa um número complexo.
 class Complexo {
  private:
-  // Módulo do número compelxo.
+  // Módulo do número complexo.
   double mod_;
 
   // Argumento do número complexo em radianos.
@@ -37,6 +37,9 @@ class Complexo {
   // Retorna o módulo do número complexo corrente.
   double modulo() const;
 
+  // Retorna o módulo do número complexo corrente.
+  double argumento() const;
+
   // Retorna o conjugado do número complexo corrente.
   Complexo conjugado() const;
 
@@ -58,8 +61,16 @@ class Complexo {
   // Divide o número complexo corrente por 'y' e retorna o resultado.
   Complexo operator/(Complexo y);
 
-  // Usado apenas pelo testador da lista de exercício.
-  friend class Teste;
+  // Funções do tipo friend para serem usadas nos testes
+  friend double realTest(const Complexo& x);
+
+  friend double imagTest(const Complexo& x);
+
+  double moduloTest(const Complexo& x);
+
+  double argumentoTest(const Complexo& x);
+
+  friend bool igual(const Complexo& x, const Complexo& y);
 };
 
 #endif  // TRUNK_COMPLEXO_POLAR_SRC_COMPLEXO_H_

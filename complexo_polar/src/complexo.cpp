@@ -42,6 +42,10 @@ double Complexo::modulo() const {
   return mod_;
 }
 
+double Complexo::argumento() const {
+  return arg_;
+}
+
 Complexo Complexo::conjugado() const {
   Complexo c;
   c.mod_ = mod_;
