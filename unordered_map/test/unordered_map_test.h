@@ -9,7 +9,7 @@
 #include <sstream>
 #include <string>
 
-#include "gtest/gtest.h"
+#include "../doctest/doctest.h"
 #include "src/unordered_map.h"
 
 using std::string;
@@ -23,227 +23,223 @@ struct Node {
   Node* next;  // Ponteiro para o próximo nó.
 };
 
-// Classe base dos testes.
-class Teste : public testing::Test {
- protected:
-  map* table(const unordered_map& s) {
-    return s.table_;
-  }
+map* table(const unordered_map& s) {
+  return s.table_;
+}
 
-  int size(const unordered_map& s) {
-    return s.size_;
-  }
+int size(const unordered_map& s) {
+  return s.size_;
+}
 
-  // Retorna o "marcador de fim" do conjunto.
-  Node* end(const unordered_map& s) {
-    return s.table_[s.capacity_ - 1].end();
-  }
+// Retorna o "marcador de fim" do conjunto.
+Node* end(const unordered_map& s) {
+  return s.table_[s.capacity_ - 1].end();
+}
 
-  Node* insert(SType k, VType v, unordered_map* s) {
-    int j = hash(k, s->capacity_);
-    s->table_[j].insert(k, v);
-    s->size_++;
-    return s->table_[j].find(k);
-  }
+Node* insert(SType k, VType v, unordered_map* s) {
+  int j = hash(k, s->capacity_);
+  s->table_[j].insert(k, v);
+  s->size_++;
+  return s->table_[j].find(k);
+}
 
-  string ToString(Node* x) {
-    stringstream out;
-    if (x == NULL) {
-      out << "NULL";
-    } else {
-      out << "<" << x->key << "," << x->value << ">";
+string ToString(Node* x) {
+  stringstream out;
+  if (x == NULL) {
+    out << "NULL";
+  } else {
+    out << "<" << x->key << "," << x->value << ">";
+  }
+  return out.str();
+}
+
+string ToString(const unordered_map& s) {
+  stringstream out;
+  out << "{ ";
+  for (int i = 0; i < s.capacity_; i++) {
+    for (Node* j = s.table_[i].begin();
+          j != s.table_[i].end();
+          j = s.table_[i].next(j)) {
+      out << ToString(j) << " ";
     }
-    return out.str();
   }
+  out << "}";
+  return out.str();
+}
 
-  string ToString(const unordered_map& s) {
-    stringstream out;
-    out << "{ ";
-    for (int i = 0; i < s.capacity_; i++) {
-      for (Node* j = s.table_[i].begin();
-           j != s.table_[i].end();
-           j = s.table_[i].next(j)) {
-        out << ToString(j) << " ";
-      }
-    }
-    out << "}";
-    return out.str();
-  }
-};
-
-TEST_F(Teste, Testa_construtor_vazio) {
+TEST_CASE("Testa_construtor_vazio") {
   unordered_map atual;
   map* esperado = NULL;
-  ASSERT_NE(esperado, table(atual))
-    << "-------------------------------------------------------------------\n"
-    << "Erro no construtor: unordered_map::unordered_map()\n"
-    << "-------------------------------------------------------------------\n"
-    << " Mesmo em um conjunto vazio, table_ != NULL\n"
-    << "-------------------------------------------------------------------\n";
-  ASSERT_EQ(0, size(atual))
-    << "-------------------------------------------------------------------\n"
-    << "Erro no construtor: unordered_map::unordered_map()\n"
-    << "-------------------------------------------------------------------\n"
-    << " Em um conjunto vazio, size_ = 0\n"
-    << "-------------------------------------------------------------------\n";
+  CHECK_NE(esperado, table(atual));
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro no construtor: unordered_map::unordered_map()\n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO(" Mesmo em um conjunto vazio, table_ != NULL\n");
+  INFO("-------------------------------------------------------------------\n");
+  CHECK_EQ(0, size(atual));
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro no construtor: unordered_map::unordered_map()\n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO(" Em um conjunto vazio, size_ = 0\n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_funcao_empty_em_conjunto_vazio) {
+TEST_CASE("Testa_funcao_empty_em_conjunto_vazio") {
   unordered_map s;
-  ASSERT_TRUE(s.empty())
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: bool unordered_map::empty() \n"
-      << "------------------------------------------------------------------\n"
-      << " o conjunto esta vazio e a funcao retornou FALSE.\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_UNARY(s.empty());
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: bool unordered_map::empty() \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" o conjunto esta vazio e a funcao retornou FALSE.\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_funcao_empty_em_conjunto_nao_vazio) {
+TEST_CASE("Testa_funcao_empty_em_conjunto_nao_vazio") {
   unordered_map s;
   insert("B", 2, &s);
   insert("A", 1, &s);
   insert("C", 3, &s);
-  ASSERT_FALSE(s.empty())
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: bool unordered_map::empty() \n"
-      << "------------------------------------------------------------------\n"
-      << " o conjunto tem pelo menos um elemento e a funcao retornou TRUE.\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_UNARY_FALSE(s.empty());
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: bool unordered_map::empty() \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" o conjunto tem pelo menos um elemento e a funcao retornou TRUE.\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_funcao_size_em_conjunto_vazio) {
+TEST_CASE("Testa_funcao_size_em_conjunto_vazio") {
   unordered_map s;
   int esperado = 0;
   int atual = s.size();
-  ASSERT_EQ(esperado, atual)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: int unordered_map::size()\n"
-    << "-------------------------------------------------------------------\n"
-    << " s = " << ToString(s) << "\n"
-    << " \"s.sise()\" retornou: " << atual << "\n"
-    << " Valor esperado: " << esperado << "\n"
-    << "-------------------------------------------------------------------\n";
+  CHECK_EQ(esperado, atual);
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: int unordered_map::size()\n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO(" s = " << ToString(s) << "\n");
+  INFO(" \"s.sise()\" retornou: " << atual << "\n");
+  INFO(" Valor esperado: " << esperado << "\n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_funcao_size_em_conjunto_nao_vazio) {
+TEST_CASE("Testa_funcao_size_em_conjunto_nao_vazio") {
   unordered_map s;
   insert("B", 2, &s);
   insert("A", 1, &s);
   insert("C", 3, &s);
   int atual = s.size();
   int esperado = 3;
-  ASSERT_EQ(esperado, atual)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: int unordered_map::size()\n"
-    << "-------------------------------------------------------------------\n"
-    << " s = " << ToString(s) << "\n"
-    << " \"s.sise()\" retornou: " << atual << "\n"
-    << " Valor esperado: " << esperado << "\n"
-    << "-------------------------------------------------------------------\n";
+  CHECK_EQ(esperado, atual);
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: int unordered_map::size()\n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO(" s = " << ToString(s) << "\n");
+  INFO(" \"s.sise()\" retornou: " << atual << "\n");
+  INFO(" Valor esperado: " << esperado << "\n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_funcao_begin_em_conjunto_vazio) {
+TEST_CASE("Testa_funcao_begin_em_conjunto_vazio") {
   unordered_map s;
-  ASSERT_EQ(end(s), s.begin())
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* unordered_map::begin() \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(s) << "\n"
-      << " s.begin() nao retornou s.end().\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_EQ(end(s), s.begin());
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: Node* unordered_map::begin() \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" s = " << ToString(s) << "\n");
+    INFO(" s.begin() nao retornou s.end().\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_funcao_begin_em_conjunto_nao_vazio) {
+TEST_CASE("Testa_funcao_begin_em_conjunto_nao_vazio") {
   unordered_map s;
   Node* a = insert("A", 1, &s);
   Node* atual = s.begin();
   Node* esperado = a;
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* unordered_map::begin() \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(s) << "\n"
-      << " \"s.begin()\" retornou: ponteiro para " << ToString(atual) << "\n"
-      << " Valor esperado: ponteiro para " << ToString(esperado) << "\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_EQ(esperado, atual);
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: Node* unordered_map::begin() \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" s = " << ToString(s) << "\n");
+    INFO(" \"s.begin()\" retornou: ponteiro para " << ToString(atual) << "\n");
+    INFO(" Valor esperado: ponteiro para " << ToString(esperado) << "\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_funcao_end_em_conjunto_vazio) {
+TEST_CASE("Testa_funcao_end_em_conjunto_vazio") {
   unordered_map s;
-  ASSERT_EQ(end(s), s.end())
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* unordered_map::end() \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(s) << "\n"
-      << " s.end() nao retornou s.begin().\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_EQ(end(s), s.end());
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: Node* unordered_map::end() \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" s = " << ToString(s) << "\n");
+    INFO(" s.end() nao retornou s.begin().\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_funcao_end_em_conjunto_nao_vazio) {
+TEST_CASE("Testa_funcao_end_em_conjunto_nao_vazio") {
   unordered_map s;
   insert("A", 1, &s);
   Node* atual = s.end();
   Node* esperado = end(s);
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* unordered_map::end() \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(s) << "\n"
-      << " \"s.end()\" retornou: ponteiro para " << ToString(atual) << "\n"
-      << " Valor esperado: ponteiro para " << ToString(esperado) << "\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_EQ(esperado, atual);
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: Node* unordered_map::end() \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" s = " << ToString(s) << "\n");
+    INFO(" \"s.end()\" retornou: ponteiro para " << ToString(atual) << "\n");
+    INFO(" Valor esperado: ponteiro para " << ToString(esperado) << "\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_funcao_next_do_primeiro_elemento) {
+TEST_CASE("Testa_funcao_next_do_primeiro_elemento") {
   unordered_map s;
   Node* a = insert("A", 1, &s);
   Node* b = insert("B", 2, &s);
   Node* atual = s.next(a);
   Node* esperado = b;
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* unordered_map::next(Node* x) \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(s) << "\n"
-      << " \"s.next(s.begin())\" retornou: ponteiro para "
-      << ToString(atual) << "\n"
-      << " Valor esperado: ponteiro para " << ToString(esperado) << "\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_EQ(esperado, atual);
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: Node* unordered_map::next(Node* x) \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" s = " << ToString(s) << "\n");
+    INFO(" \"s.next(s.begin())\" retornou: ponteiro para ");
+    INFO(ToString(atual) << "\n");
+    INFO(" Valor esperado: ponteiro para " << ToString(esperado) << "\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_funcao_next_do_ultimo_elemento) {
+TEST_CASE("Testa_funcao_next_do_ultimo_elemento") {
   unordered_map s;
   Node* a = insert("A", 1, &s);
   Node* atual = s.next(a);
   Node* esperado = NULL;
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* unordered_map::next(Node* x) \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(s) << "\n"
-      << " \"s.next(s.begin())\" retornou: ponteiro para "
-      << ToString(atual) << "\n"
-      << " Valor esperado: ponteiro para " << ToString(esperado) << "\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_EQ(esperado, atual);
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: Node* unordered_map::next(Node* x) \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" s = " << ToString(s) << "\n");
+    INFO(" \"s.next(s.begin())\" retornou: ponteiro para ");
+    INFO(ToString(atual) << "\n");
+    INFO(" Valor esperado: ponteiro para " << ToString(esperado) << "\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_funcao_prev_do_endX) {
+TEST_CASE("Testa_funcao_prev_do_endX") {
   unordered_map s;
   Node* a = insert("A", 1, &s);
   Node* atual = s.prev(end(s));
   Node* esperado = a;
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* unordered_map::prev(Node* x) \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(s) << "\n"
-      << " \"s.prev(s.end())\" retornou: ponteiro para "
-      << ToString(atual) << "\n"
-      << " Valor esperado: ponteiro para " << ToString(esperado) << "\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_EQ(esperado, atual);
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: Node* unordered_map::prev(Node* x) \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" s = " << ToString(s) << "\n");
+    INFO(" \"s.prev(s.end())\" retornou: ponteiro para ");
+    INFO(ToString(atual) << "\n");
+    INFO(" Valor esperado: ponteiro para " << ToString(esperado) << "\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_funcao_prev_com_o_anterior_abaixo) {
+TEST_CASE("Testa_funcao_prev_com_o_anterior_abaixo") {
   unordered_map s;
   Node* c = insert("C", 3, &s);
   insert("A", 1, &s);
@@ -251,19 +247,19 @@ TEST_F(Teste, Testa_funcao_prev_com_o_anterior_abaixo) {
   Node* b = insert("B", 2, &s);
   Node* atual = s.prev(c);
   Node* esperado = b;
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* unordered_map::prev(Node* x) \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(s) << "\n"
-      << " \"s.prev(s.find('C'))\" retornou: ponteiro para "
-      << ToString(atual) << "\n"
-      << " Valor esperado: ponteiro para " << ToString(esperado) << "\n"
-      << " DICA: Verifique o caso onde o proximo esta abaixo de 'x'.\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_EQ(esperado, atual);
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: Node* unordered_map::prev(Node* x) \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" s = " << ToString(s) << "\n");
+    INFO(" \"s.prev(s.find('C'))\" retornou: ponteiro para ");
+    INFO(ToString(atual) << "\n");
+    INFO(" Valor esperado: ponteiro para " << ToString(esperado) << "\n");
+    INFO(" DICA: Verifique o caso onde o proximo esta abaixo de 'x'.\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_funcao_prev_com_o_proximo_acima) {
+TEST_CASE("Testa_funcao_prev_com_o_proximo_acima") {
   unordered_map s;
   insert("C", 3, &s);
   Node* a = insert("A", 1, &s);
@@ -271,19 +267,19 @@ TEST_F(Teste, Testa_funcao_prev_com_o_proximo_acima) {
   Node* b = insert("B", 2, &s);
   Node* atual = s.prev(b);
   Node* esperado = a;
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: Node* unordered_map::prev(Node* x) \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(s) << "\n"
-      << " \"s.prev(s.find('B'))\" retornou: ponteiro para "
-      << ToString(atual) << "\n"
-      << " Valor esperado: ponteiro para " << ToString(esperado) << "\n"
-      << " DICA: Verifique o caso onde o proximo esta abaixo de 'x'.\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_EQ(esperado, atual);
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: Node* unordered_map::prev(Node* x) \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" s = " << ToString(s) << "\n");
+    INFO(" \"s.prev(s.find('B'))\" retornou: ponteiro para ");
+    INFO(ToString(atual) << "\n");
+    INFO(" Valor esperado: ponteiro para " << ToString(esperado) << "\n");
+    INFO(" DICA: Verifique o caso onde o proximo esta abaixo de 'x'.\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_funcao_find_de_elemento_no_conjunto) {
+TEST_CASE("Testa_funcao_find_de_elemento_no_conjunto") {
   unordered_map s;
   insert("C", 3, &s);
   insert("A", 1, &s);
@@ -291,17 +287,17 @@ TEST_F(Teste, Testa_funcao_find_de_elemento_no_conjunto) {
   Node* b = insert("B", 2, &s);
   Node* atual = s.find("B");
   Node* esperado = b;
-  ASSERT_EQ(esperado, atual)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: Node* unordered_map::find(SType k) \n"
-    << "-------------------------------------------------------------------\n"
-    << " s = " << ToString(s) << "\n"
-    << " 's.find(\"B\")' retornou: ponteiro para " << ToString(atual) << "\n"
-    << " Valor esperado: ponteiro para " << ToString(esperado) << "\n"
-    << "-------------------------------------------------------------------\n";
+  CHECK_EQ(esperado, atual);
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: Node* unordered_map::find(SType k) \n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO(" s = " << ToString(s) << "\n");
+  INFO(" 's.find(\"B\")' retornou: ponteiro para " << ToString(atual) << "\n");
+  INFO(" Valor esperado: ponteiro para " << ToString(esperado) << "\n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_funcao_find_de_elemento_fora_do_conjunto) {
+TEST_CASE("Testa_funcao_find_de_elemento_fora_do_conjunto") {
   unordered_map s;
   insert("C", 3, &s);
   insert("A", 1, &s);
@@ -309,17 +305,17 @@ TEST_F(Teste, Testa_funcao_find_de_elemento_fora_do_conjunto) {
   insert("B", 2, &s);
   Node* atual = s.find("X");
   Node* esperado = end(s);
-  ASSERT_EQ(esperado, atual)
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: Node* unordered_map::find(SType k) \n"
-    << "-------------------------------------------------------------------\n"
-    << " s = " << ToString(s) << "\n"
-    << " 's.find(\"E\")' retornou: ponteiro para " << ToString(atual) << "\n"
-    << " Valor esperado: ponteiro para " << ToString(esperado) << "\n"
-    << "-------------------------------------------------------------------\n";
+  CHECK_EQ(esperado, atual);
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: Node* unordered_map::find(SType k) \n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO(" s = " << ToString(s) << "\n");
+  INFO(" 's.find(\"E\")' retornou: ponteiro para " << ToString(atual) << "\n");
+  INFO(" Valor esperado: ponteiro para " << ToString(esperado) << "\n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_operador_at) {
+TEST_CASE("Testa_operador_at") {
   unordered_map atual;
   insert("A", 1, &atual);
   insert("B", 2, &atual);
@@ -329,48 +325,48 @@ TEST_F(Teste, Testa_operador_at) {
   insert("A", 1, &esperado);
   insert("B", -2, &esperado);
   insert("C", 3, &esperado);
-  ASSERT_EQ(ToString(atual), ToString(esperado))
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: SType& unordered_map::operator[](Node* x)\n"
-    << "-------------------------------------------------------------------\n"
-    << " s = " << ToString(atual) << "\n"
-    << " \"s[\"B\"] = -2\" resultou em: s = " << ToString(atual) << "\n"
-    << " Valor esperado: " << ToString(esperado) << "\n"
-    << "-------------------------------------------------------------------\n";
+  CHECK_EQ(ToString(atual), ToString(esperado));
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: SType& unordered_map::operator[](Node* x)\n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO(" s = " << ToString(atual) << "\n");
+  INFO(" \"s[\"B\"] = -2\" resultou em: s = " << ToString(atual) << "\n");
+  INFO(" Valor esperado: " << ToString(esperado) << "\n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
 
-TEST_F(Teste, Testa_incremento_do_size_na_funcao_insert) {
+TEST_CASE("Testa_incremento_do_size_na_funcao_insert") {
   unordered_map s;
   s.insert("A", 1);
   int atual = size(s);
   int esperado = 1;
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::insert(SType k) \n"
-      << "------------------------------------------------------------------\n"
-      << " s = { } \n"
-      << " 's.insert(\"A\",1)' resultou em: s.size() == " << atual << "\n"
-      << " Resultado esperado: s.size() == " << esperado << "\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_EQ(esperado, atual);
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: void unordered_map::insert(SType k) \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" s = { } \n");
+    INFO(" 's.insert(\"A\",1)' resultou em: s.size() == " << atual << "\n");
+    INFO(" Resultado esperado: s.size() == " << esperado << "\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_funcao_insert_em_conjunto_vazio) {
+TEST_CASE("Testa_funcao_insert_em_conjunto_vazio") {
   unordered_map atual;
   atual.insert("A", 1);
   unordered_map esperado;
   insert("A", 1, &esperado);
-  ASSERT_EQ(ToString(esperado), ToString(atual))
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::insert(SType k) \n"
-      << "------------------------------------------------------------------\n"
-      << " s = { } \n"
-      << " 's.insert(\"A,1\")' resultou em: s = " << ToString(atual) << "\n"
-      << " Resultado esperado: s = " << ToString(esperado) << "\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_EQ(ToString(esperado), ToString(atual));
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: void unordered_map::insert(SType k) \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" s = { } \n");
+    INFO(" 's.insert(\"A,1\")' resultou em: s = " << ToString(atual) << "\n");
+    INFO(" Resultado esperado: s = " << ToString(esperado) << "\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_funcao_insert_em_conjunto_nao_vazio) {
+TEST_CASE("Testa_funcao_insert_em_conjunto_nao_vazio") {
   unordered_map atual;
   insert("D", 4, &atual);
   insert("A", 1, &atual);
@@ -385,17 +381,17 @@ TEST_F(Teste, Testa_funcao_insert_em_conjunto_nao_vazio) {
   insert("C", 3, &esperado);
   insert("B", 2, &esperado);
   atual.insert("B", 2);
-  ASSERT_EQ(ToString(esperado), ToString(atual))
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::insert(SType k) \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(original) << "\n"
-      << " 's.insert(\"B\",2)' resultou em: s = " << ToString(atual) << "\n"
-      << " Resultado esperado: s = " << ToString(esperado) << "\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_EQ(ToString(esperado), ToString(atual));
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: void unordered_map::insert(SType k) \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" s = " << ToString(original) << "\n");
+    INFO(" 's.insert(\"B\",2)' resultou em: s = " << ToString(atual) << "\n");
+    INFO(" Resultado esperado: s = " << ToString(esperado) << "\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_funcao_insert_com_atualizacao_de_valor) {
+TEST_CASE("Testa_funcao_insert_com_atualizacao_de_valor") {
   unordered_map atual;
   insert("D", 4, &atual);
   insert("A", 1, &atual);
@@ -412,50 +408,50 @@ TEST_F(Teste, Testa_funcao_insert_com_atualizacao_de_valor) {
   insert("C", 3, &esperado);
   insert("B", -2, &esperado);
   atual.insert("B", -2);
-  ASSERT_EQ(ToString(esperado), ToString(atual))
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::insert(SType k) \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(original) << "\n"
-      << " 's.insert(\"B\",-2)' resultou em: s = " << ToString(atual) << "\n"
-      << " Resultado esperado: s = " << ToString(esperado) << "\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_EQ(ToString(esperado), ToString(atual));
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: void unordered_map::insert(SType k) \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" s = " << ToString(original) << "\n");
+    INFO(" 's.insert(\"B\",-2)' resultou em: s = " << ToString(atual) << "\n");
+    INFO(" Resultado esperado: s = " << ToString(esperado) << "\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_decremento_do_size_na_funcao_erase) {
+TEST_CASE("Testa_decremento_do_size_na_funcao_erase") {
   unordered_map s;
   insert("A", 1, &s);
   s.erase("A");
   int atual = size(s);
   int esperado = 0;
-  ASSERT_EQ(esperado, atual)
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::insert(SType k) \n"
-      << "------------------------------------------------------------------\n"
-      << " s = { <A,1> } \n"
-      << " \"s.erase(A)\" resultou em: s.size() == " << atual << "\n"
-      << " Resultado esperado: s.size() == " << esperado << "\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_EQ(esperado, atual);
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: void unordered_map::insert(SType k) \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" s = { <A,1> } \n");
+    INFO(" \"s.erase(A)\" resultou em: s.size() == " << atual << "\n");
+    INFO(" Resultado esperado: s.size() == " << esperado << "\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_funcao_erase_em_conjunto_unitario) {
+TEST_CASE("Testa_funcao_erase_em_conjunto_unitario") {
   unordered_map atual;
   insert("A", 1, &atual);
   unordered_map original;
   insert("A", 1, &original);
   unordered_map esperado;
   atual.erase("A");
-  ASSERT_EQ(ToString(esperado), ToString(atual))
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::erase(SType k) \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(original) << " \n"
-      << " 's.erase(\"A\")\' resultou em: s = " << ToString(atual) << "\n"
-      << " Resultado esperado: s = " << ToString(esperado) << "\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_EQ(ToString(esperado), ToString(atual));
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: void unordered_map::erase(SType k) \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" s = " << ToString(original) << " \n");
+    INFO(" 's.erase(\"A\")\' resultou em: s = " << ToString(atual) << "\n");
+    INFO(" Resultado esperado: s = " << ToString(esperado) << "\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_funcao_erase_de_no_com_dois_filhos) {
+TEST_CASE("Testa_funcao_erase_de_no_com_dois_filhos") {
   unordered_map atual;
   insert("B", 2, &atual);
   insert("A", 1, &atual);
@@ -471,18 +467,18 @@ TEST_F(Teste, Testa_funcao_erase_de_no_com_dois_filhos) {
   insert("D", 4, &esperado);
   insert("C", 3, &esperado);
   atual.erase("B");
-  ASSERT_EQ(ToString(esperado), ToString(atual))
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::erase(SType k) \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(original) << " \n"
-      << " 's.erase(\"B\")\' resultou em: s = " << ToString(atual) << "\n"
-      << " Resultado esperado: s = " << ToString(esperado) << "\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_EQ(ToString(esperado), ToString(atual));
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: void unordered_map::erase(SType k) \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" s = " << ToString(original) << " \n");
+    INFO(" 's.erase(\"B\")\' resultou em: s = " << ToString(atual) << "\n");
+    INFO(" Resultado esperado: s = " << ToString(esperado) << "\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
 
-TEST_F(Teste, Testa_funcao_erase_de_no_sem_subarvore_direita) {
+TEST_CASE("Testa_funcao_erase_de_no_sem_subarvore_direita") {
   unordered_map atual;
   insert("B", 2, &atual);
   insert("A", 1, &atual);
@@ -498,17 +494,17 @@ TEST_F(Teste, Testa_funcao_erase_de_no_sem_subarvore_direita) {
   insert("A", 1, &esperado);
   insert("C", 3, &esperado);
   atual.erase("D");
-  ASSERT_EQ(ToString(esperado), ToString(atual))
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::erase(SType k) \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(original) << " \n"
-      << " 's.erase(\"B\")\' resultou em: s = " << ToString(atual) << "\n"
-      << " Resultado esperado: s = " << ToString(esperado) << "\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_EQ(ToString(esperado), ToString(atual));
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: void unordered_map::erase(SType k) \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" s = " << ToString(original) << " \n");
+    INFO(" 's.erase(\"B\")\' resultou em: s = " << ToString(atual) << "\n");
+    INFO(" Resultado esperado: s = " << ToString(esperado) << "\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_funcao_erase_em_no_sem_subarvore_esquerda) {
+TEST_CASE("Testa_funcao_erase_em_no_sem_subarvore_esquerda") {
   unordered_map atual;
   insert("B", 2, &atual);
   insert("A", 1, &atual);
@@ -524,17 +520,17 @@ TEST_F(Teste, Testa_funcao_erase_em_no_sem_subarvore_esquerda) {
   insert("D", 4, &esperado);
   insert("C", 3, &esperado);
   atual.erase("A");
-  ASSERT_EQ(ToString(esperado), ToString(atual))
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::erase(SType k) \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(original) << " \n"
-      << " 's.erase(\"A\")\' resultou em: s = " << ToString(atual) << "\n"
-      << " Resultado esperado: s = " << ToString(esperado) << "\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_EQ(ToString(esperado), ToString(atual));
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: void unordered_map::erase(SType k) \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" s = " << ToString(original) << " \n");
+    INFO(" 's.erase(\"A\")\' resultou em: s = " << ToString(atual) << "\n");
+    INFO(" Resultado esperado: s = " << ToString(esperado) << "\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_erase_de_elemento_que_nao_pertence_ao_conjunto) {
+TEST_CASE("Testa_erase_de_elemento_que_nao_pertence_ao_conjunto") {
   unordered_map atual;
   insert("B", 2, &atual);
   insert("A", 1, &atual);
@@ -551,17 +547,17 @@ TEST_F(Teste, Testa_erase_de_elemento_que_nao_pertence_ao_conjunto) {
   insert("D", 4, &esperado);
   insert("C", 3, &esperado);
   atual.erase("X");
-  ASSERT_EQ(ToString(esperado), ToString(atual))
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::erase(SType k) \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(original) << " \n"
-      << " 's.erase(\"B\")\' resultou em: s = " << ToString(atual) << "\n"
-      << " Resultado esperado: s = " << ToString(esperado) << "\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_EQ(ToString(esperado), ToString(atual));
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: void unordered_map::erase(SType k) \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" s = " << ToString(original) << " \n");
+    INFO(" 's.erase(\"B\")\' resultou em: s = " << ToString(atual) << "\n");
+    INFO(" Resultado esperado: s = " << ToString(esperado) << "\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_Clear) {
+TEST_CASE("Testa_Clear") {
   unordered_map atual;
   insert("B", 2, &atual);
   insert("A", 1, &atual);
@@ -572,17 +568,17 @@ TEST_F(Teste, Testa_Clear) {
   insert("C", 3, &original);
   unordered_map esperado;
   atual.clear();
-  ASSERT_EQ(ToString(esperado), ToString(atual))
-      << "------------------------------------------------------------------\n"
-      << "Erro na funcao: void unordered_map::clear() \n"
-      << "------------------------------------------------------------------\n"
-      << " s = " << ToString(original) << " \n"
-      << " 's.erase(\"B\")\' resultou em: s = " << ToString(atual) << "\n"
-      << " Resultado esperado: s = " << ToString(esperado) << "\n"
-      << "------------------------------------------------------------------\n";
+  CHECK_EQ(ToString(esperado), ToString(atual));
+    INFO("------------------------------------------------------------------\n");
+    INFO("Erro na funcao: void unordered_map::clear() \n");
+    INFO("------------------------------------------------------------------\n");
+    INFO(" s = " << ToString(original) << " \n");
+    INFO(" 's.erase(\"B\")\' resultou em: s = " << ToString(atual) << "\n");
+    INFO(" Resultado esperado: s = " << ToString(esperado) << "\n");
+    INFO("------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_operador_de_atribuicao_a_conjunto_vazio) {
+TEST_CASE("Testa_operador_de_atribuicao_a_conjunto_vazio") {
   unordered_map original;
   insert("B", 2, &original);
   insert("A", 1, &original);
@@ -593,18 +589,18 @@ TEST_F(Teste, Testa_operador_de_atribuicao_a_conjunto_vazio) {
   insert("C", 3, &esperado);
   unordered_map atual;
   atual = original;
-  ASSERT_EQ(ToString(esperado), ToString(atual))
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: void unordered_map::operator=(map& s)\n"
-    << "-------------------------------------------------------------------\n"
-    << " u = " << "{ }" << " \n"
-    << " s = " << ToString(original) << "\n"
-    << " \"u = s\" resultou em: u = " << ToString(atual) << "\n"
-    << " Resultado esperado: u = " << ToString(esperado) << "\n"
-    << "-------------------------------------------------------------------\n";
+  CHECK_EQ(ToString(esperado), ToString(atual));
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: void unordered_map::operator=(map& s)\n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO(" u = " << "{ }" << " \n");
+  INFO(" s = " << ToString(original) << "\n");
+  INFO(" \"u = s\" resultou em: u = " << ToString(atual) << "\n");
+  INFO(" Resultado esperado: u = " << ToString(esperado) << "\n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
-TEST_F(Teste, Testa_operador_de_atribuicao_a_conjunto_nao_vazio) {
+TEST_CASE("Testa_operador_de_atribuicao_a_conjunto_nao_vazio") {
   unordered_map original;
   insert("B", 2, &original);
   insert("A", 1, &original);
@@ -616,15 +612,15 @@ TEST_F(Teste, Testa_operador_de_atribuicao_a_conjunto_nao_vazio) {
   unordered_map atual;
   insert("D", 4, &atual);
   atual = original;
-  ASSERT_EQ(ToString(esperado), ToString(atual))
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: void unordered_map::operator=(map& s)\n"
-    << "-------------------------------------------------------------------\n"
-    << " u = " << "{ <D,4> }" << " \n"
-    << " s = " << ToString(original) << "\n"
-    << " \"u = s\" resultou em: u = " << ToString(atual) << "\n"
-    << " Resultado esperado: u = " << ToString(esperado) << "\n"
-    << "-------------------------------------------------------------------\n";
+  CHECK_EQ(ToString(esperado), ToString(atual));
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: void unordered_map::operator=(map& s)\n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO(" u = " << "{ <D,4> }" << " \n");
+  INFO(" s = " << ToString(original) << "\n");
+  INFO(" \"u = s\" resultou em: u = " << ToString(atual) << "\n");
+  INFO(" Resultado esperado: u = " << ToString(esperado) << "\n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
 #endif  // TRUNK_UNORDERED_MAP_TEST_UNORDERED_MAP_TEST_H_
