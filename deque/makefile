@@ -13,16 +13,16 @@ type_test = std::string
 
 # Gera o binarios do programa e dos testes
 all:
-	$(cc) -D DType=$(type_main1) -I $(path) src/$(program).cc src/main1.cc -o main1
-	$(cc) -D DType=$(type_main2) -I $(path) src/$(program).cc src/main2.cc -o main2
-	$(cc) -D DType=$(type_test) -I $(path) src/$(program).cc test/$(program)_test.cc gtest/gtest.cc -o easy_testing
+	$(cc) -D DType=$(type_main1) -I $(path) src/$(program).cpp src/main1.cpp -o main1
+	$(cc) -D DType=$(type_main2) -I $(path) src/$(program).cpp src/main2.cpp -o main2
+	$(cc) -D DType=$(type_test) -I $(path) src/$(program).cpp test/$(program)_test.cpp -o easy_testing
 	@echo "--------------------------------------------------------------"
-	@echo "main1: executa o programa em main1.cc."
-	@echo "main2: executa o programa em main2.cc."
+	@echo "main1: executa o programa em main1.cpp."
+	@echo "main2: executa o programa em main2.cpp."
 	@echo "easy_testing: executa os testes dos exercícios."
 	@echo "--------------------------------------------------------------"
 
-clean:
+clean:	
 	@rm -f main easy_testing
 
 zip:

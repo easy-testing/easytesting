@@ -58,8 +58,7 @@ class deque {
 
   // Ponteiro para o nó sentinela da lista encadeada.
   Node* end_;
-
-  friend class Teste;
+  
 };
 
 #endif  // TRUNK_DEQUE_SRC_DEQUE_H_
