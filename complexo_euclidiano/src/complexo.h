@@ -58,8 +58,13 @@ class Complexo {
   // Divide o número complexo corrente por 'y' e retorna o resultado.
   Complexo operator/(Complexo y);
 
-  // Usado apenas pelo testador da lista de exercício.
-  friend class Teste;
+
+  // Funções do tipo friend para serem usadas nos testes
+  friend double realTest(const Complexo& x);
+
+  friend double imagTest(const Complexo& x);
+
+  friend bool igual(const Complexo& x, const Complexo& y);
 };
 
 #endif  // TRUNK_COMPLEXO_EUCLIDIANO_SRC_COMPLEXO_H_
