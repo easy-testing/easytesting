@@ -8,7 +8,7 @@
 #include "src/multiset.h"
 
 // Função que calcula o hash dos elementos para uma tabela com m linhas.
-// É declarado aqui, mas só é implementado em unordered_set.cc para
+// É declarado aqui, mas só é implementado em unordered_set.cpp para
 // não violar o encapsulamento.
 int hash(SType k, int m);
 
@@ -100,6 +100,18 @@ class unordered_multiset {
   // Vetor de subconjuntos que guarda os elementos do multicojunto.
   multiset* table_;
 
-  friend class Teste;
+  //Classes Friend
+
+  friend multiset* table(const unordered_multiset& s);
+
+  friend int size(const unordered_multiset& s);
+
+  friend Node* end(const unordered_multiset& s);
+
+  friend Node* insert(SType k, int count, unordered_multiset* s);
+
+  friend std::string ToString(Node* x);
+
+  friend std::string ToString(const unordered_multiset& s);
 };
 #endif  // TRUNK_UNORDERED_MULTISET_SRC_UNORDERED_MULTISET_H_

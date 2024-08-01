@@ -33,18 +33,18 @@
 			<Add option="-fexceptions" />
 			<Add directory=".." />
 		</Compiler>
-		<Unit filename="gtest/gtest.cc">
+		<Unit filename="">
 			<Option target="EasyTesting" />
 		</Unit>
 		<Unit filename="gtest/gtest.h">
 			<Option target="EasyTesting" />
 		</Unit>
-		<Unit filename="src/main.cc">
+		<Unit filename="src/main.cpp">
 			<Option target="Main" />
 		</Unit>
-		<Unit filename="src/recursao.cc" />
+		<Unit filename="src/recursao.cpp" />
 		<Unit filename="src/recursao.h" />
-		<Unit filename="test/recursao_test.cc">
+		<Unit filename="test/recursao_test.cpp">
 			<Option target="EasyTesting" />
 		</Unit>
 		<Unit filename="test/recursao_test.h">

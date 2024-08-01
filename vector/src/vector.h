@@ -3,6 +3,8 @@
 #ifndef TRUNK_VECTOR_SRC_VECTOR_H_
 #define TRUNK_VECTOR_SRC_VECTOR_H_
 
+#include <string>
+
 // Implementa um vetor dinâmico de números reais.
 // O tipo dos elementos contidos no vetor é definido por VType.
 // O valor de VType deve ser definido em tempo de compilação.
@@ -73,7 +75,12 @@ class vector {
   // Vetor alocado dinamicamente.
   VType* array_;
 
-  friend class Teste;
+  // Funções Friend
+  friend int size(const vector& v);
+  
+  friend VType* array(const vector& v);
+
+  friend std::string ToString(const vector& v);
 };  // end class vector.
 
 #endif  // TRUNK_VECTOR_SRC_VECTOR_H_

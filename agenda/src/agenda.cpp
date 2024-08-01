@@ -48,7 +48,7 @@ void Imprimir(Contato contato) {
 }
 
 // Abre o arquivo onde os dados da agenda são salvos e coloca os contatos em
-// 'genda'.
+// 'Agenda'.
 void LerAgendaDoArquivo(int* n, Contato agenda[]) {
   ifstream fin("agenda.txt");
   *n = 0;

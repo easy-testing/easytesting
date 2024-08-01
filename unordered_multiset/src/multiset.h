@@ -6,7 +6,7 @@
 #include<string>
 
 // Define como os elementos do multimulticonjunto serão organizados
-// na memória. É declarado aqui, mas só é implementado em multiset.cc para
+// na memória. É declarado aqui, mas só é implementado em multiset.cpp para
 // não violar o encapsulamento.
 struct Node;
 

@@ -3,7 +3,7 @@
 // Lista de exercícios sobre listas encadeadas - pilha.
 //
 // Questão 1.
-// Implemente em stack.h e stack.cc o TAD stack, utilizando listas encadeadas.
+// Implemente em stack.h e stack.cpp o TAD stack, utilizando listas encadeadas.
 //
 // Questão 2.
 // Escreva uma função "void ImprimirInfixado(stack* exp)" que recebe

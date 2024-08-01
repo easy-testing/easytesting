@@ -17,7 +17,7 @@ using std::cout;
 using std::endl;
 
 int main() {
-
+  
   adicionarProduto("Arroz", 5.0, 10);
   adicionarProduto("Feijão", 4.0, 5);
   adicionarProduto("Macarrão", 2.5, 2);

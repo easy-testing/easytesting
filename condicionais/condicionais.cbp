@@ -24,18 +24,18 @@
 			<Add option="-Wall" />
 			<Add directory="." />
 		</Compiler>
-		<Unit filename="gtest/gtest.cc">
+		<Unit filename="">
 			<Option target="EasyTesting" />
 		</Unit>
 		<Unit filename="gtest/gtest.h">
 			<Option target="EasyTesting" />
 		</Unit>
-		<Unit filename="src/condicionais.cc" />
+		<Unit filename="src/condicionais.cpp" />
 		<Unit filename="src/condicionais.h" />
-		<Unit filename="src/main.cc">
+		<Unit filename="src/main.cpp">
 			<Option target="Main" />
 		</Unit>
-		<Unit filename="test/condicionais_test.cc">
+		<Unit filename="test/condicionais_test.cpp">
 			<Option target="EasyTesting" />
 		</Unit>
 		<Unit filename="test/condicionais_test.h">

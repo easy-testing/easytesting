@@ -3,7 +3,7 @@
 // Lista sobre multiconjuntos associativos
 //
 // Questão 1.
-// Implemente em unordered_multiset.h e unordered_multiset.cc o TAD
+// Implemente em unordered_multiset.h e unordered_multiset.cpp o TAD
 // unordered_multiset, utilizando tabela de dispersão.
 //
 // Questão 2.

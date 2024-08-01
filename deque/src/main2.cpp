@@ -3,16 +3,16 @@
 // Lista de exercícios sobre listas encadeadas - deque.
 //
 // Questão 1.
-// Vide main1.cc.
+// Vide main1.cpp.
 //
 // Questão 2.
-// Vide main1.cc.
+// Vide main1.cpp.
 //
 // Questão 3.
-// Vide main1.cc.
+// Vide main1.cpp.
 //
 // Questão 4.
-// Vide main1.cc.
+// Vide main1.cpp.
 //
 // Questão 5.
 // Escreva um programa que gerencia uma fila de eventos com duas prioridades.
@@ -70,7 +70,7 @@ int main() {
       string priority, name;
       fin >> priority >> name;
       if (priority == "high") {
-        event_queue.push_front(name);
+        event_queue.push(name);
       } else {  // priority == "low"
         event_queue.push_back(name);
       }

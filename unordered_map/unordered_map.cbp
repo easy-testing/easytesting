@@ -32,20 +32,20 @@
 			<Add option="-Wall" />
 			<Add directory="." />
 		</Compiler>
-		<Unit filename="gtest/gtest.cc">
+		<Unit filename="">
 			<Option target="EasyTesting" />
 		</Unit>
 		<Unit filename="gtest/gtest.h">
 			<Option target="EasyTesting" />
 		</Unit>
-		<Unit filename="src/main.cc">
+		<Unit filename="src/main.cpp">
 			<Option target="Main" />
 		</Unit>
-		<Unit filename="src/map.cc" />
+		<Unit filename="src/map.cpp" />
 		<Unit filename="src/map.h" />
-		<Unit filename="src/unordered_map.cc" />
+		<Unit filename="src/unordered_map.cpp" />
 		<Unit filename="src/unordered_map.h" />
-		<Unit filename="test/unordered_map_test.cc">
+		<Unit filename="test/unordered_map_test.cpp">
 			<Option target="EasyTesting" />
 		</Unit>
 		<Unit filename="test/unordered_map_test.h">

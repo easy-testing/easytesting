@@ -11,79 +11,76 @@ using std::vector;
 using namespace std;
 
 TEST_CASE("Testa a função limpaCarrinho") {
-  CarrinhoCompras carrinho;
 
-  carrinho.adicionarProduto("Arroz", 5.0, 10);
-  carrinho.adicionarProduto("Feijão", 4.0, 5);
-  carrinho.adicionarProduto("Macarrão", 2.5, 2);
+  adicionarProduto("Arroz", 5.0, 10);
+  adicionarProduto("Feijão", 4.0, 5);
+  adicionarProduto("Macarrão", 2.5, 2);
 
-  EXPECT_EQ(carrinho.getNumeroItens(), 3);
+  CHECK_EQ(getNumeroItens(), 3);
 
-  carrinho.limpaCarrinho();
+  limpaCarrinho();
 
-  CHECK_EQ(carrinho.getNumeroItens(), 0);
-  if (carrinho.getNumeroItens() != 0 ){
+  CHECK_EQ(getNumeroItens(), 0);
+  if (getNumeroItens() != 0 ){
 
     INFO("---------------------------------------------------");
     INFO("Erro na função: limpaCarrinho");
     INFO("---------------------------------------------------");
-    INFO("Resultado esperado : 0";
-    INFO("Resultado retornado : " << carrinho.getNumeroItens();
+    INFO("Resultado esperado : 0");
+    INFO("Resultado retornado : " << getNumeroItens());
     INFO("---------------------------------------------------");
   }
 }
 
 TEST_CASE("Testa a função adicionarProduto") {
-  CarrinhoCompras carrinho;
 
-  carrinho.adicionarProduto("Arroz", 5.0, 10);
+  std::vector<Produto> produtos;
 
-  EXPECT_EQ(carrinho.getNumeroItens(), 1);
+  adicionarProduto("Arroz", 5.0, 10);
 
-  EXPECT_EQ(carrinho.produtos[0].nome, "Arroz");
-  EXPECT_EQ(carrinho.produtos[0].preco, 5.0);
-  EXPECT_EQ(carrinho.produtos[0].quantidade, 10);
+  CHECK_EQ(getNumeroItens(), 1);
+
+  CHECK_EQ(produtos[0].nome, "Arroz");
+  CHECK_EQ(produtos[0].preco, 5.0);
+  CHECK_EQ(produtos[0].quantidade, 10);
 }
 
 TEST_CASE("Testa a função retirarProduto") {
-  CarrinhoCompras carrinho;
 
-  carrinho.adicionarProduto("Arroz", 5.0, 10);
+  adicionarProduto("Arroz", 5.0, 10);
 
-  carrinho.retirarProduto("Arroz");
+  retirarProduto("Arroz");
 
-  EXPECT_EQ(carrinho.getNumeroItens(), 0);
+  CHECK_EQ(getNumeroItens(), 0);
 }
 
 TEST_CASE("Testa a função getValorTotal") {
-  CarrinhoCompras carrinho;
 
-  carrinho.adicionarProduto("Arroz", 5.0, 10);
-  carrinho.adicionarProduto("Feijão", 4.0, 5);
-  carrinho.adicionarProduto("Macarrão", 2.5, 2);
+  adicionarProduto("Arroz", 5.0, 10);
+  adicionarProduto("Feijão", 4.0, 5);
+  adicionarProduto("Macarrão", 2.5, 2);
 
-  EXPECT_EQ(carrinho.getValorTotal(), 37.5);
+  CHECK_EQ(getValorTotal(), 37.5);
 }
 
 TEST_CASE("Testa a função getNumeroItens") {
-  CarrinhoCompras carrinho;
 
-  EXPECT_EQ(carrinho.getNumeroItens(), 0);
+  CHECK_EQ(getNumeroItens(), 0);
 
-  carrinho.adicionarProduto("Arroz", 5.0, 10);
+  adicionarProduto("Arroz", 5.0, 10);
 
-  EXPECT_EQ(carrinho.getNumeroItens(), 1);
+  CHECK_EQ(getNumeroItens(), 1);
 
-  carrinho.adicionarProduto("Feijão", 4.0, 5);
-  carrinho.adicionarProduto("Macarrão", 2.5, 2);
+  adicionarProduto("Feijão", 4.0, 5);
+  adicionarProduto("Macarrão", 2.5, 2);
 
-  EXPECT_EQ(carrinho.getNumeroItens(), 3);
+  CHECK_EQ(getNumeroItens(), 3);
 
-  carrinho.retirarProduto("Arroz");
+  retirarProduto("Arroz");
 
-  EXPECT_EQ(carrinho.getNumeroItens(), 2);
+  CHECK_EQ(getNumeroItens(), 2);
 
-  carrinho.limpaCarrinho();
+  limpaCarrinho();
 
-  EXPECT_EQ(carrinho.getNumeroItens(), 0);
+  CHECK_EQ(getNumeroItens(), 0);
 }

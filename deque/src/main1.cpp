@@ -3,7 +3,7 @@
 // Lista de exercícios sobre listas encadeadas - deque.
 //
 // Questão 1.
-// Implemente em deque.h e deque.cc o TAD deque, utilizando listas ligadas.
+// Implemente em deque.h e deque.cpp o TAD deque, utilizando listas ligadas.
 //
 // Questão 2.
 // Escreva uma função "void Imprimir(const deque& q)" que recebe como

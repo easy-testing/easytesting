@@ -126,7 +126,7 @@ TEST_CASE("Testa_Modulo_um_elemento_negativo") {
   float atual = Modulo(v, n);
   CHECK_EQ(esperado, atual);
   INFO("-------------------------------------------------------------------\n");
-  << "Erro na funcao \"float Modulo(float v[],int n)\".                  \n"
+  INFO("Erro na funcao \"float Modulo(float v[],int n)\".                  \n");
   INFO("-------------------------------------------------------------------\n");
   INFO("   v = " << MostrarVetor(v, n) << "\n");
   INFO("   n = " << n << "\n");
@@ -255,13 +255,13 @@ TEST_CASE("Testa_acesso_indevido_na_funcao_Variancia") {
   float esperado = 200008;
   float atual = Variancia(v, n);
   CHECK_NE(esperado, atual);
-  << "-------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float Variancia(float v[], int n)\".             \n"
-  << "-------------------------------------------------------------------\n"
-  << "  Sua funcao esta acessando um elemento do vetor nao               \n"
-  << "definido. Veja se ela esta acessando no maximo o elemento n - 1 de \n"
-  << "um vetor de n elementos.                                           \n"
-  << "-------------------------------------------------------------------\n";
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float Variancia(float v[], int n)\".             \n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO("  Sua funcao esta acessando um elemento do vetor nao               \n");
+  INFO("definido. Veja se ela esta acessando no maximo o elemento n - 1 de \n");
+  INFO("um vetor de n elementos.                                           \n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
 
@@ -271,14 +271,14 @@ TEST_CASE("Testa_funcao_Variancia_com_varios_numeros_iguais_a_zero") {
   float esperado = 0;
   float atual = Variancia(v, n);
   CHECK_EQ(esperado, atual);
-  << "-------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float Variancia(float v[], int n)\".             \n"
-  << "-------------------------------------------------------------------\n"
-  << "  v = " << MostrarVetor(v, n) << "\n"
-  << "  n = " << n << "\n"
-  << "Valor esperado: " << esperado << "\n"
-  << "Valor retornado: " << atual << "\n"
-  << "-------------------------------------------------------------------\n";
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float Variancia(float v[], int n)\".             \n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO("  v = " << MostrarVetor(v, n) << "\n");
+  INFO("  n = " << n << "\n");
+  INFO("Valor esperado: " << esperado << "\n");
+  INFO("Valor retornado: " << atual << "\n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_Variancia_com_numeros_positivos_distintos") {
@@ -287,14 +287,14 @@ TEST_CASE("Testa_funcao_Variancia_com_numeros_positivos_distintos") {
   float esperado = 8.4375;
   float atual = Variancia(v, n);
   CHECK_EQ(esperado, atual);
-  << "-------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float Variancia(float v[], int n)\".             \n"
-  << "-------------------------------------------------------------------\n"
-  << "  v = " << MostrarVetor(v, n) << "\n"
-  << "  n = " << n << "\n"
-  << "Valor esperado: " << esperado << "\n"
-  << "Valor retornado: " << atual << "\n"
-  << "-------------------------------------------------------------------\n";
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float Variancia(float v[], int n)\".             \n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO("  v = " << MostrarVetor(v, n) << "\n");
+  INFO("  n = " << n << "\n");
+  INFO("Valor esperado: " << esperado << "\n");
+  INFO("Valor retornado: " << atual << "\n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_Variancia_com_numeros_negativos_iguais") {
@@ -303,14 +303,14 @@ TEST_CASE("Testa_funcao_Variancia_com_numeros_negativos_iguais") {
   float esperado = 0;
   float atual = Variancia(v, n);
   CHECK_EQ(esperado, atual);
-  << "-------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float Variancia(float v[], int n)\".             \n"
-  << "-------------------------------------------------------------------\n"
-  << "  v = " << MostrarVetor(v, n) << "\n"
-  << "  n = " << n << "\n"
-  << "Valor esperado: " << esperado << "\n"
-  << "Valor retornado: " << atual << "\n"
-  << "-------------------------------------------------------------------\n";
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float Variancia(float v[], int n)\".             \n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO("  v = " << MostrarVetor(v, n) << "\n");
+  INFO("  n = " << n << "\n");
+  INFO("Valor esperado: " << esperado << "\n");
+  INFO("Valor retornado: " << atual << "\n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_Variancia_com_numeros_negativos_distintos") {
@@ -319,14 +319,14 @@ TEST_CASE("Testa_funcao_Variancia_com_numeros_negativos_distintos") {
   float esperado = 8.4375;
   float atual = Variancia(v, n);
   CHECK_EQ(esperado, atual);
-  << "------------------------------------------------------------------\n"
-  << "Erro na funcao:  \"float Variancia(float v[], int n)\".            \n"
-  << "------------------------------------------------------------------\n"
-  << "  v = " << MostrarVetor(v, n) << "\n"
-  << "  n = " << n << "\n"
-  << "Valor esperado: " << esperado << "\n"
-  << "Valor retornado: " << atual << "\n"
-  << "------------------------------------------------------------------\n";
+  INFO("------------------------------------------------------------------\n");
+  INFO("Erro na funcao:  \"float Variancia(float v[], int n)\".            \n");
+  INFO("------------------------------------------------------------------\n");
+  INFO("  v = " << MostrarVetor(v, n) << "\n");
+  INFO("  n = " << n << "\n");
+  INFO("Valor esperado: " << esperado << "\n");
+  INFO("Valor retornado: " << atual << "\n");
+  INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_acesso_indevido_na_funcao_Maior") {
@@ -335,13 +335,13 @@ TEST_CASE("Testa_acesso_indevido_na_funcao_Maior") {
   float esperado = 1000;
   float atual = Maior(v, n);
   CHECK_NE(esperado, atual);
-  << "------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float Maior(float v[], int n)\".                 \n"
-  << "------------------------------------------------------------------\n"
-  << "  Sua funcao esta acessando um elemento do vetor nao               \n"
-  << "definido. Veja se ela esta acessando no maximo o elemento n - 1 de \n"
-  << "um vetor de n elementos.                                           \n"
-  << "------------------------------------------------------------------\n";
+  INFO("------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float Maior(float v[], int n)\".                 \n");
+  INFO("------------------------------------------------------------------\n");
+  INFO("  Sua funcao esta acessando um elemento do vetor nao               \n");
+  INFO("definido. Veja se ela esta acessando no maximo o elemento n - 1 de \n");
+  INFO("um vetor de n elementos.                                           \n");
+  INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_Maior_com_numeros_positivos_distintos") {
@@ -350,14 +350,14 @@ TEST_CASE("Testa_funcao_Maior_com_numeros_positivos_distintos") {
   float esperado = 78.02;
   float atual = Maior(v, n);
   CHECK_EQ(esperado, atual);
-  << "------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float Maior(float v[], int n)\".                 \n"
-  << "------------------------------------------------------------------\n"
-  << "  v = " << MostrarVetor(v, n) << "\n"
-  << "  n = " << n << "\n"
-  << "Valor esperado: " << esperado << "\n"
-  << "Valor retornado: " << atual << "\n"
-  << "------------------------------------------------------------------\n";
+  INFO("------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float Maior(float v[], int n)\".                 \n");
+  INFO("------------------------------------------------------------------\n");
+  INFO("  v = " << MostrarVetor(v, n) << "\n");
+  INFO("  n = " << n << "\n");
+  INFO("Valor esperado: " << esperado << "\n");
+  INFO("Valor retornado: " << atual << "\n");
+  INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_Maior_com_numeros_positivos_com_repeticao") {
@@ -366,14 +366,14 @@ TEST_CASE("Testa_funcao_Maior_com_numeros_positivos_com_repeticao") {
   float esperado = 78.021;
   float atual = Maior(v, n);
   CHECK_EQ(esperado, atual);
-  << "------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float Maior(float v[], int n)\".                \n"
-  << "------------------------------------------------------------------\n"
-  << "  v = " << MostrarVetor(v, n) << "\n"
-  << "  n = " << n << "\n"
-  << "Valor esperado: " << esperado << "\n"
-  << "Valor retornado: " << atual << "\n"
-  << "------------------------------------------------------------------\n";
+  INFO("------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float Maior(float v[], int n)\".                \n");
+  INFO("------------------------------------------------------------------\n");
+  INFO("  v = " << MostrarVetor(v, n) << "\n");
+  INFO("  n = " << n << "\n");
+  INFO("Valor esperado: " << esperado << "\n");
+  INFO("Valor retornado: " << atual << "\n");
+  INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_Maior_com_numeros_negativos_distintos") {
@@ -382,14 +382,14 @@ TEST_CASE("Testa_funcao_Maior_com_numeros_negativos_distintos") {
   float esperado = -9.87;
   float atual = Maior(v, n);
   CHECK_EQ(esperado, atual);
-  << "------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float Maior(float v[], int n)\".                \n"
-  << "------------------------------------------------------------------\n"
-  << "  v = " << MostrarVetor(v, n) << "\n"
-  << "  n = " << n << "\n"
-  << "Valor esperado: " << esperado << "\n"
-  << "Valor retornado: " << atual << "\n"
-  << "------------------------------------------------------------------\n";
+  INFO("------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float Maior(float v[], int n)\".                \n");
+  INFO("------------------------------------------------------------------\n");
+  INFO("  v = " << MostrarVetor(v, n) << "\n");
+  INFO("  n = " << n << "\n");
+  INFO("Valor esperado: " << esperado << "\n");
+  INFO("Valor retornado: " << atual << "\n");
+  INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_Maior_com_numeros_negativos_com_repeticao") {
@@ -398,14 +398,14 @@ TEST_CASE("Testa_funcao_Maior_com_numeros_negativos_com_repeticao") {
   float esperado = -21.21;
   float atual = Maior(v, n);
   CHECK_EQ(esperado, atual);
-  << "------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float Maior(float v[], int n)\".                \n"
-  << "------------------------------------------------------------------\n"
-  << "  v = " << MostrarVetor(v, n) << "\n"
-  << "  n = " << n << "\n"
-  << "Valor esperado: " << esperado << "\n"
-  << "Valor retornado: " << atual << "\n"
-  << "------------------------------------------------------------------\n";
+  INFO("------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float Maior(float v[], int n)\".                \n");
+  INFO("------------------------------------------------------------------\n");
+  INFO("  v = " << MostrarVetor(v, n) << "\n");
+  INFO("  n = " << n << "\n");
+  INFO("Valor esperado: " << esperado << "\n");
+  INFO("Valor retornado: " << atual << "\n");
+  INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_Maior_com_numeros_positivos_e_negativos") {
@@ -414,14 +414,14 @@ TEST_CASE("Testa_funcao_Maior_com_numeros_positivos_e_negativos") {
   float esperado = 66.321;
   float atual = Maior(v, n);
   CHECK_EQ(esperado, atual);
-  << "------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float Maior(float v[], int n)\".                \n"
-  << "------------------------------------------------------------------\n"
-  << "  v = " << MostrarVetor(v, n) << "\n"
-  << "  n = " << n << "\n"
-  << "Valor esperado: " << esperado << "\n"
-  << "Valor retornado: " << atual << "\n"
-  << "------------------------------------------------------------------\n";
+  INFO("------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float Maior(float v[], int n)\".                \n");
+  INFO("------------------------------------------------------------------\n");
+  INFO("  v = " << MostrarVetor(v, n) << "\n");
+  INFO("  n = " << n << "\n");
+  INFO("Valor esperado: " << esperado << "\n");
+  INFO("Valor retornado: " << atual << "\n");
+  INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_acesso_indevido_na_funcao_Menor") {
@@ -430,13 +430,13 @@ TEST_CASE("Testa_acesso_indevido_na_funcao_Menor") {
   float esperado = -1000;
   float atual = Menor(v, n);
   CHECK_NE(esperado, atual);
-  << "------------------------------------------------------------------\n"
-  << "Erro na funcao: \"Menor(vetor,dimensao)\".                        \n"
-  << "------------------------------------------------------------------\n"
-  << "  Sua funcao esta acessando um elemento do vetor nao              \n"
-  << "definido. Veja se ela esta acessando no maximo o elemento n - 1 de\n"
-  << "um vetor de n elementos.                                          \n"
-  << "------------------------------------------------------------------\n";
+  INFO("------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"Menor(vetor,dimensao)\".                        \n");
+  INFO("------------------------------------------------------------------\n");
+  INFO("  Sua funcao esta acessando um elemento do vetor nao              \n");
+  INFO("definido. Veja se ela esta acessando no maximo o elemento n - 1 de\n");
+  INFO("um vetor de n elementos.                                          \n");
+  INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_Menor_com_numeros_positivos_distintos") {
@@ -445,14 +445,14 @@ TEST_CASE("Testa_funcao_Menor_com_numeros_positivos_distintos") {
   float esperado = 9.87;
   float atual = Menor(v, n);
   CHECK_EQ(esperado, atual);
-  << "------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float Menor(float v[], int n)\".                \n"
-  << "------------------------------------------------------------------\n"
-  << "  v = " << MostrarVetor(v, n) << "\n"
-  << "  n = " << n << "\n"
-  << "Valor esperado: " << esperado << "\n"
-  << "Valor retornado: " << atual << "\n"
-  << "------------------------------------------------------------------\n";
+  INFO("------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float Menor(float v[], int n)\".                \n");
+  INFO("------------------------------------------------------------------\n");
+  INFO("  v = " << MostrarVetor(v, n) << "\n");
+  INFO("  n = " << n << "\n");
+  INFO("Valor esperado: " << esperado << "\n");
+  INFO("Valor retornado: " << atual << "\n");
+  INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_Menor_com_numeros_positivos_com_repeticao") {
@@ -461,14 +461,14 @@ TEST_CASE("Testa_funcao_Menor_com_numeros_positivos_com_repeticao") {
   float esperado = 9.87;
   float atual = Menor(v, n);
   CHECK_EQ(esperado, atual);
-  << "------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float Menor(float v[], int n)\".                \n"
-  << "------------------------------------------------------------------\n"
-  << "  v = " << MostrarVetor(v, n) << "\n"
-  << "  n = " << n << "\n"
-  << "Valor esperado: " << esperado << "\n"
-  << "Valor retornado: " << atual << "\n"
-  << "------------------------------------------------------------------\n";
+  INFO("------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float Menor(float v[], int n)\".                \n");
+  INFO("------------------------------------------------------------------\n");
+  INFO("  v = " << MostrarVetor(v, n) << "\n");
+  INFO("  n = " << n << "\n");
+  INFO("Valor esperado: " << esperado << "\n");
+  INFO("Valor retornado: " << atual << "\n");
+  INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_Menor_com_numeros_negativos_distintos") {
@@ -477,14 +477,14 @@ TEST_CASE("Testa_funcao_Menor_com_numeros_negativos_distintos") {
   float esperado = -78.02;
   float atual = Menor(v, n);
   CHECK_EQ(esperado, atual);
-  << "------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float Menor(float v[], int n)\".                \n"
-  << "------------------------------------------------------------------\n"
-  << "  v = " << MostrarVetor(v, n) << "\n"
-  << "  n = " << n << "\n"
-  << "Valor esperado: " << esperado << "\n"
-  << "Valor retornado: " << atual << "\n"
-  << "------------------------------------------------------------------\n";
+  INFO("------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float Menor(float v[], int n)\".                \n");
+  INFO("------------------------------------------------------------------\n");
+  INFO("  v = " << MostrarVetor(v, n) << "\n");
+  INFO("  n = " << n << "\n");
+  INFO("Valor esperado: " << esperado << "\n");
+  INFO("Valor retornado: " << atual << "\n");
+  INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_Menor_com_numeros_negativos_com_repeticao") {
@@ -493,14 +493,14 @@ TEST_CASE("Testa_funcao_Menor_com_numeros_negativos_com_repeticao") {
   float esperado = -78.02;
   float atual = Menor(v, n);
   CHECK_EQ(esperado, atual);
-  << "------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float Menor(float v[], int n)\".                \n"
-  << "------------------------------------------------------------------\n"
-  << "  v = " << MostrarVetor(v, n) << "\n"
-  << "  n = " << n << "\n"
-  << "Valor esperado: " << esperado << "\n"
-  << "Valor retornado: " << atual << "\n"
-  << "------------------------------------------------------------------\n";
+  INFO("------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float Menor(float v[], int n)\".                \n");
+  INFO("------------------------------------------------------------------\n");
+  INFO("  v = " << MostrarVetor(v, n) << "\n");
+  INFO("  n = " << n << "\n");
+  INFO("Valor esperado: " << esperado << "\n");
+  INFO("Valor retornado: " << atual << "\n");
+  INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_Menor_com_numeros_positivos_e_negetivos") {
@@ -509,14 +509,14 @@ TEST_CASE("Testa_funcao_Menor_com_numeros_positivos_e_negetivos") {
   float esperado = -65;
   float atual = Menor(v, n);
   CHECK_EQ(esperado, atual);
-  << "------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float Menor(float v[], int n)\".                \n"
-  << "------------------------------------------------------------------\n"
-  << "  v = " << MostrarVetor(v, n) << "\n"
-  << "  n = " << n << "\n"
-  << "Valor esperado: " << esperado << "\n"
-  << "Valor retornado: " << atual << "\n"
-  << "------------------------------------------------------------------\n";
+  INFO("------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float Menor(float v[], int n)\".                \n");
+  INFO("------------------------------------------------------------------\n");
+  INFO("  v = " << MostrarVetor(v, n) << "\n");
+  INFO("  n = " << n << "\n");
+  INFO("Valor esperado: " << esperado << "\n");
+  INFO("Valor retornado: " << atual << "\n");
+  INFO("------------------------------------------------------------------\n");
 }
 
 
@@ -527,15 +527,15 @@ TEST_CASE("Testa_funcao_ProdutoEscalar_com_numeros_positivos") {
   float esperado = 73.081657;
   float atual = ProdutoEscalar(v, u, n);
   CHECK_EQ(esperado, atual);
-  << "-------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float ProdutoEscalar(float u[],float v[],int n)\"\n"
-  << "-------------------------------------------------------------------\n"
-  << "  v = " << MostrarVetor(v, n) << "\n"
-  << "  u = " << MostrarVetor(u, n) << "\n"
-  << "  n = " << n << "\n"
-  << "Valor esperado: " << esperado << "\n"
-  << "Valor retornado: " << atual << "\n"
-  << "------------------------------------------------------------------\n";
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float ProdutoEscalar(float u[],float v[],int n)\"\n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO("  v = " << MostrarVetor(v, n) << "\n");
+  INFO("  u = " << MostrarVetor(u, n) << "\n");
+  INFO("  n = " << n << "\n");
+  INFO("Valor esperado: " << esperado << "\n");
+  INFO("Valor retornado: " << atual << "\n");
+  INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_ProdutoEscalar_com_numeros_positivos_e_negativos") {
@@ -545,15 +545,15 @@ TEST_CASE("Testa_funcao_ProdutoEscalar_com_numeros_positivos_e_negativos") {
   float esperado = 32.555653;
   float atual = ProdutoEscalar(v, u, n);
   CHECK_EQ(esperado, atual);
-  << "-------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float ProdutoEscalar(float u[],float v[],int n)\"\n"
-  << "-------------------------------------------------------------------\n"
-  << "  v = " << MostrarVetor(v, n) << "\n"
-  << "  u = " << MostrarVetor(u, n) << "\n"
-  << "  n = " << n << "\n"
-  << "Valor esperado: " << esperado << "\n"
-  << "Valor retornado: " << atual << "\n"
-  << "------------------------------------------------------------------\n";
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float ProdutoEscalar(float u[],float v[],int n)\"\n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO("  v = " << MostrarVetor(v, n) << "\n");
+  INFO("  u = " << MostrarVetor(u, n) << "\n");
+  INFO("  n = " << n << "\n");
+  INFO("Valor esperado: " << esperado << "\n");
+  INFO("Valor retornado: " << atual << "\n");
+  INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_ProdutoEscalar_com_vetores_unitarios") {
@@ -563,15 +563,15 @@ TEST_CASE("Testa_funcao_ProdutoEscalar_com_vetores_unitarios") {
   float esperado = 1.54;
   float atual = ProdutoEscalar(v, u, n);
   CHECK_EQ(esperado, atual);
-  << "-------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float ProdutoEscalar(float u[],float v[],int n)\"\n"
-  << "-------------------------------------------------------------------\n"
-  << "  v = " << MostrarVetor(v, n) << "\n"
-  << "  u = " << MostrarVetor(u, n) << "\n"
-  << "  n = " << n << "\n"
-  << "Valor esperado: " << esperado << "\n"
-  << "Valor retornado: " << atual << "\n"
-  << "------------------------------------------------------------------\n";
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float ProdutoEscalar(float u[],float v[],int n)\"\n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO("  v = " << MostrarVetor(v, n) << "\n");
+  INFO("  u = " << MostrarVetor(u, n) << "\n");
+  INFO("  n = " << n << "\n");
+  INFO("Valor esperado: " << esperado << "\n");
+  INFO("Valor retornado: " << atual << "\n");
+  INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_ProdutoEscalar_com_vetores_nulos") {
@@ -581,15 +581,15 @@ TEST_CASE("Testa_funcao_ProdutoEscalar_com_vetores_nulos") {
   float esperado = 0;
   float atual = ProdutoEscalar(v, u, n);
   CHECK_EQ(esperado, atual);
-  << "-------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float ProdutoEscalar(float u[],float v[],int n)\"\n"
-  << "-------------------------------------------------------------------\n"
-  << "  v = " << MostrarVetor(v, n) << "\n"
-  << "  u = " << MostrarVetor(u, n) << "\n"
-  << "  n = " << n << "\n"
-  << "Valor esperado: " << esperado << "\n"
-  << "Valor retornado: " << atual << "\n"
-  << "------------------------------------------------------------------\n";
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float ProdutoEscalar(float u[],float v[],int n)\"\n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO("  v = " << MostrarVetor(v, n) << "\n");
+  INFO("  u = " << MostrarVetor(u, n) << "\n");
+  INFO("  n = " << n << "\n");
+  INFO("Valor esperado: " << esperado << "\n");
+  INFO("Valor retornado: " << atual << "\n");
+  INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_ProdutoEscalar_com_vetores_paralelos") {
@@ -599,15 +599,15 @@ TEST_CASE("Testa_funcao_ProdutoEscalar_com_vetores_paralelos") {
   float esperado = 110;
   float atual = ProdutoEscalar(v, u, n);
   CHECK_EQ(esperado, atual);
-  << "-------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float ProdutoEscalar(float u[],float v[],int n)\"\n"
-  << "-------------------------------------------------------------------\n"
-  << "  v = " << MostrarVetor(v, n) << "\n"
-  << "  u = " << MostrarVetor(u, n) << "\n"
-  << "  n = " << n << "\n"
-  << "Valor esperado: " << esperado << "\n"
-  << "Valor retornado: " << atual << "\n"
-  << "------------------------------------------------------------------\n";
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float ProdutoEscalar(float u[],float v[],int n)\"\n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO("  v = " << MostrarVetor(v, n) << "\n");
+  INFO("  u = " << MostrarVetor(u, n) << "\n");
+  INFO("  n = " << n << "\n");
+  INFO("Valor esperado: " << esperado << "\n");
+  INFO("Valor retornado: " << atual << "\n");
+  INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_ProdutoEscalar_com_vetores_opostos") {
@@ -617,15 +617,15 @@ TEST_CASE("Testa_funcao_ProdutoEscalar_com_vetores_opostos") {
   float esperado = -29;
   float atual = ProdutoEscalar(v, u, n);
   CHECK_EQ(esperado, atual);
-  << "-------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float ProdutoEscalar(float u[],float v[],int n)\"\n"
-  << "-------------------------------------------------------------------\n"
-  << "  v = " << MostrarVetor(v, n) << "\n"
-  << "  u = " << MostrarVetor(u, n) << "\n"
-  << "  n = " << n << "\n"
-  << "Valor esperado: " << esperado << "\n"
-  << "Valor retornado: " << atual << "\n"
-  << "------------------------------------------------------------------\n";
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float ProdutoEscalar(float u[],float v[],int n)\"\n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO("  v = " << MostrarVetor(v, n) << "\n");
+  INFO("  u = " << MostrarVetor(u, n) << "\n");
+  INFO("  n = " << n << "\n");
+  INFO("Valor esperado: " << esperado << "\n");
+  INFO("Valor retornado: " << atual << "\n");
+  INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_ProdutoEscalar_vetores_perpendiculares") {
@@ -635,15 +635,15 @@ TEST_CASE("Testa_funcao_ProdutoEscalar_vetores_perpendiculares") {
   float esperado = 0.0;
   float atual = ProdutoEscalar(v, u, n);
   CHECK_EQ(esperado, atual);
-  << "--------------------------------------------------------------------\n"
-  << "Erro na funcao: \"float ProdutoEscalar(float u[],float v[],int n)\".\n"
-  << "--------------------------------------------------------------------\n"
-  << "  v = " << MostrarVetor(v, n) << "\n"
-  << "  u = " << MostrarVetor(u, n) << "\n"
-  << "  n = " << n << "\n"
-  << "Valor esperado: " << esperado << "\n"
-  << "Valor retornado: " << atual << "\n"
-  << "-------------------------------------------------------------------\n";
+  INFO("--------------------------------------------------------------------\n");
+  INFO("Erro na funcao: \"float ProdutoEscalar(float u[],float v[],int n)\".\n");
+  INFO("--------------------------------------------------------------------\n");
+  INFO("  v = " << MostrarVetor(v, n) << "\n");
+  INFO("  u = " << MostrarVetor(u, n) << "\n");
+  INFO("  n = " << n << "\n");
+  INFO("Valor esperado: " << esperado << "\n");
+  INFO("Valor retornado: " << atual << "\n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
 

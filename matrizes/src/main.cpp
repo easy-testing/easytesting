@@ -3,7 +3,7 @@
 // Lista de exercícios sobre estruturas de dados homogêneas - matrizes.
 //
 // QUESTÃO 1:
-// Implemente em matrizes.cc as funções descritas em matrizes.h.
+// Implemente em matrizes.cpp as funções descritas em matrizes.h.
 //
 // QUESTÃO 2:
 // Escreva uma função

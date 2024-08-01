@@ -6,7 +6,7 @@
 #include <string>
 
 // Define como os elementos da lista encadeada serão organizados na memória.
-// É declarado aqui, mas só é implementado em list.cc para não violar o
+// É declarado aqui, mas só é implementado em list.cpp para não violar o
 // encapsulamento.
 struct Node;
 
@@ -78,7 +78,34 @@ class set {
   // Ponteiro para o nó sentinela da lista encadeada.
   Node* end_;
 
-  friend class Teste;
+  // Retorna o valor da chave do elemento x de s;
+  friend SType key(Node* x, const set& s);
+
+  // Retorna o número de elementos no conjunto.
+  friend int size(const set& s);
+
+  // Insere k em s.
+  // Precondição: k não está em s.
+  friend void insert(SType k, set* s);
+
+  // Retorna o primeiro elemento do conjunto.
+  friend Node* begin(const set& s);
+
+  // Retorna o "marcador de fim" do conjunto.
+  friend Node* end(const set& s);
+
+  // Retorna o elemento seguinte a 'x' no conjunto.
+  friend Node* next(Node* x, const set& s);
+
+  // Retorna o elemento anterior a 'x' no conjunto.
+  friend Node* prev(Node* x, const set& s);
+
+  // Retorna um ponteiro para o elemento k de s.
+  friend Node* find(SType k, const set& s);
+
+  // Retorna uma string contendo os elementos do conjunto
+  // no formato { c1 c2 c3 c4 } e ordenados do maior para o menor.
+  friend std::string ToString(const set& s);
 };
 
 #endif  // TRUNK_ORDERED_SET_WITH_LINKED_LIST_SRC_SET_H_

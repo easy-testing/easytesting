@@ -29,18 +29,18 @@
 			<Add option="-Wall" />
 			<Add directory="." />
 		</Compiler>
-		<Unit filename="gtest/gtest.cc">
+		<Unit filename="">
 			<Option target="EasyTesting" />
 		</Unit>
 		<Unit filename="gtest/gtest.h">
 			<Option target="EasyTesting" />
 		</Unit>
-		<Unit filename="src/list.cc" />
+		<Unit filename="src/list.cpp" />
 		<Unit filename="src/list.h" />
-		<Unit filename="src/main.cc">
+		<Unit filename="src/main.cpp">
 			<Option target="Main" />
 		</Unit>
-		<Unit filename="test/list_test.cc">
+		<Unit filename="test/list_test.cpp">
 			<Option target="EasyTesting" />
 		</Unit>
 		<Unit filename="test/list_test.h">

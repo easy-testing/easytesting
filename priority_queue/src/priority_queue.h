@@ -6,7 +6,7 @@
 #include <string>
 
 // Define como os elementos da fila de prioridades serão organizados na memória.
-// É declarado aqui, mas só é implementado em priority_queue.cc para não violar
+// É declarado aqui, mas só é implementado em priority_queue.cpp para não violar
 // o encapsulamento.
 struct Node;
 
@@ -53,7 +53,30 @@ class priority_queue {
   // "root_ == NULL" se o conjunto é vazio.
   Node* root_;
 
-  friend class Teste;
+  
+  // Retorna a raiz da árvore de s.
+  friend Node* root(const priority_queue& s);
+
+  // Retorna um ponteiro para o primeiro elemento da fila de prioridades.
+  friend Node* begin(const priority_queue& s);
+
+  // Retorna um ponteiro para o elemento seguinte ao último elemento
+  // da fila de prioridades.
+  friend Node* end(const priority_queue& s);
+
+  // Retorna o número de elementos na fila de prioridades.
+  friend int size(const priority_queue& s);
+
+  friend Node* Push(SType k, priority_queue* s);
+
+  // Cria uma fila de prioridades com três elementos.
+  friend void CriaFila(SType x1, SType x2, SType x3, priority_queue* s);
+
+  // Retorna uma string contendo os elementos da árvore no formato
+  // { <k1,v1> <k2,v2> ... <kn,vn> }.
+  friend std::string TreeToString(Node* root);
+
+  friend std::string ToString(const priority_queue& s);
 };
 
 #endif  // TRUNK_PRIORITY_QUEUE_SRC_PRIORITY_QUEUE_H_

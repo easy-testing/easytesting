@@ -3,7 +3,7 @@
 // Lista de exercícios sobre listas encadeadas - lista.
 //
 // Questão 1.
-// Implemente em list.h e list.cc o TAD list, utilizando listas encadeadas.
+// Implemente em list.h e list.cpp o TAD list, utilizando listas encadeadas.
 //
 // Questão 2.
 // Escreva uam função "void Print(list* l)" que recebe uma lista como

@@ -3,7 +3,7 @@
 // Lista de exercícios sobre funções em C++.
 //
 // QUESTÃO 1:
-// Implemente em funcoes.cc as funções descritas em funcoes.h.
+// Implemente em funcoes.cpp as funções descritas em funcoes.h.
 //
 // QUESTÃO 2:
 // Escreva um programa que (i) apresenta um menu com as funções que você

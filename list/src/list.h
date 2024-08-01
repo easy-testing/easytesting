@@ -6,7 +6,7 @@
 #include <string>
 
 // Define como os elementos da lista encadeada serão organizados na memória.
-// É declarado aqui, mas só é implementado em list.cc para não violar o
+// É declarado aqui, mas só é implementado em list.cpp para não violar o
 // encapsulamento.
 struct Node;
 typedef char LType;
@@ -72,7 +72,11 @@ class list {
   // Ponteiro para o nó sentinela da lista encadeada.
   Node* end_;
 
-  friend class Teste;
+  friend Node* beginTest(const stack& p);
+
+  friend Node* endTest(const stack& p);
+
+  friend int sizeTest(const stack& p);
 };
 
 #endif  // TRUNK_LIST_SRC_LIST_H_

@@ -9,28 +9,28 @@
 
 #include "src/map.h"
 
-// Função que calcula o hash dos elementos para uma tabela com m linhas.
-// É declarado aqui, mas só é implementado em unordered_map.cc para
-// não violar o encapsulamento.
+// Funï¿½ï¿½o que calcula o hash dos elementos para uma tabela com m linhas.
+// ï¿½ declarado aqui, mas sï¿½ ï¿½ implementado em unordered_map.cpp para
+// nï¿½o violar o encapsulamento.
 int hash(SType k, int m);
 
 // Implementa um conjunto utilizando associativo com tabela hash.
-// NOTA1: O cálculo da complexidade das funções assume que a função de hash
-// utilizada é uniforme simples e que capacity_ >= size_. Entretanto,
-// a primeira condição não é garantida nesta implentação.
+// NOTA1: O cï¿½lculo da complexidade das funï¿½ï¿½es assume que a funï¿½ï¿½o de hash
+// utilizada ï¿½ uniforme simples e que capacity_ >= size_. Entretanto,
+// a primeira condiï¿½ï¿½o nï¿½o ï¿½ garantida nesta implentaï¿½ï¿½o.
 // Denota-se n = size_ e m = capacity_.
-// NOTA2: O tipo das chaves dos elementos contidos no conjunto é definido por
-// SType. Já o tipo dos valores associados a cada chave é definido por VType.
-// O valor de SType e o de VType é um #define declarado em tempo de compilação.
+// NOTA2: O tipo das chaves dos elementos contidos no conjunto ï¿½ definido por
+// SType. Jï¿½ o tipo dos valores associados a cada chave ï¿½ definido por VType.
+// O valor de SType e o de VType ï¿½ um #define declarado em tempo de compilaï¿½ï¿½o.
 class unordered_map {
  public:
    // Cria um conjunto vazio em O(1).
   unordered_map();
 
-  // Testa se o cojunto está vazio em O(1).
+  // Testa se o cojunto estï¿½ vazio em O(1).
   bool empty() const;
 
-  // Retorna o número de elementos no conjunto em O(1).
+  // Retorna o nï¿½mero de elementos no conjunto em O(1).
   int size() const;
 
   // Retorna um ponteiro para o primeiro elemento do conjunto em O(m).
@@ -41,36 +41,36 @@ class unordered_map {
   Node* end() const;
 
   // Retorna o elemento seguinte ao indicado por x no conjunto em O(m).
-  // Se x aponta para o último elemento do conjunto, retorna map::end();
-  // Precondição: x aponta para um dos elementos do conjunto.
+  // Se x aponta para o ï¿½ltimo elemento do conjunto, retorna map::end();
+  // Precondiï¿½ï¿½o: x aponta para um dos elementos do conjunto.
   Node* next(Node* x) const;
 
   // Retorna o elemento anterior ao indicado por x no conjunto em O(m).
   // Nota: x pode apontar para unordered_map::end().
-  // Precondição: existe pelo menos um elemento do conjunto antes de x.
+  // Precondiï¿½ï¿½o: existe pelo menos um elemento do conjunto antes de x.
   Node* prev(Node* x) const;
 
-  // Retorna uma referência ao valor associado a chave k em O(1).
-  // Precondição: k pertence ao conjunto.
+  // Retorna uma referï¿½ncia ao valor associado a chave k em O(1).
+  // Precondiï¿½ï¿½o: k pertence ao conjunto.
   VType& operator[](SType k);
 
-  // Retorna a chave do nó x em O(1).
+  // Retorna a chave do nï¿½ x em O(1).
   SType key(Node* x) const;
 
-  // Retorna o valor do nó x em O(1).
+  // Retorna o valor do nï¿½ x em O(1).
   VType value(Node* x) const;
 
   // Retorna um ponteiro para o elemento k em O(1),
-  // ou um ponteiro para map::end() caso k não pertença ao conjunto.
-  // OBS: Note que esta função NÃO retorna bool. Para testar se um elemento 'a'
-  // pertence a um conjunto 'c', você deve escrever "if (c.find(a) != c.end())".
+  // ou um ponteiro para map::end() caso k nï¿½o pertenï¿½a ao conjunto.
+  // OBS: Note que esta funï¿½ï¿½o Nï¿½O retorna bool. Para testar se um elemento 'a'
+  // pertence a um conjunto 'c', vocï¿½ deve escrever "if (c.find(a) != c.end())".
   Node* find(SType k) const;
 
   // Insere k no conjunto, associado ao valor v, em O(1).
-  // Caso k já pertença ao conjunto, o valor associado a k é atualizado para v.
+  // Caso k jï¿½ pertenï¿½a ao conjunto, o valor associado a k ï¿½ atualizado para v.
   void insert(SType k, VType v);
 
-  // Remove o elemento cuja chave é k (caso exista) em O(1).
+  // Remove o elemento cuja chave ï¿½ k (caso exista) em O(1).
   void erase(SType k);
 
   // Remove todos os elementos do conjunto em O(n + m).
@@ -80,24 +80,36 @@ class unordered_map {
   // do cojunto s em O(n + m + n' + m'), onde n' = s.size_ e m' = s.capacity_.
   void operator=(const unordered_map& s);
 
-  // Libera toda a memória alocada para o conjunto em O(n + m).
+  // Libera toda a memï¿½ria alocada para o conjunto em O(n + m).
   ~unordered_map();
  private:
 
-  // Função que altera o número de linhas da tabela e re-distribui os
+  // Funï¿½ï¿½o que altera o nï¿½mero de linhas da tabela e re-distribui os
   // elementos em O(c).
   void rehash(int c);
 
-  // Número de elementos no cojunto.
+  // Nï¿½mero de elementos no cojunto.
   int size_;
 
-  // Número de subconjuntos no vetor table_.
+  // Nï¿½mero de subconjuntos no vetor table_.
   int capacity_;
 
   // Vetor de subconjuntos que guarda os elementos do cojunto.
   map* table_;
 
-  friend class Teste;
+  // FunÃ§Ãµes do tipo friend para serem usadas nos testes
+  friend map* table(const unordered_map& s);
+
+  friend int size(const unordered_map& s);
+
+// Retorna o "marcador de fim" do conjunto.
+  friend Node* end(const unordered_map& s);
+
+  friend Node* insert(SType k, VType v, unordered_map* s);
+
+  friend std::string ToString(Node* x);
+
+  friend std::string ToString(const unordered_map& s);
 };
 
 #endif  // TRUNK_UNORDERED_map_WITH_SET_SRC_UNORDERED_map_H_

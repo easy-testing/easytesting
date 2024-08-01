@@ -24,6 +24,14 @@ int stack::size() const {
   return size_;
 }
 
+Node* stack::end() const {
+  return end_;
+}
+
+Node* stack::begin() const {
+  return end_->next;
+}
+
 SType stack::top() const {
   return end_->next->key;
 }

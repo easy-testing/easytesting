@@ -6,7 +6,7 @@
 #include<string>
 
 // Define como os elementos do conjunto associativo serão organizados na
-// memória. É declarado aqui, mas só é implementado em map.cc para não
+// memória. É declarado aqui, mas só é implementado em map.cpp para não
 // violar o encapsulamento.
 struct Node;
 

@@ -3,7 +3,7 @@
 // Lista sobre alocacão dinâmica - vetores dinâmicos.
 //
 // Questão 1.
-// Implemente em vector.h e vector.cc o TAD vector.
+// Implemente em vector.h e vector.cpp o TAD vector.
 //
 // Questão 2.
 // Implemente uma função "void FiltraPositivos(vector* v)" que recebe um

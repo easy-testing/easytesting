@@ -31,20 +31,20 @@
 			<Add option="-fexceptions" />
 			<Add directory="." />
 		</Compiler>
-		<Unit filename="gtest/gtest.cc">
+		<Unit filename="">
 			<Option target="EasyTesting" />
 		</Unit>
 		<Unit filename="gtest/gtest.h">
 			<Option target="EasyTesting" />
 		</Unit>
-		<Unit filename="src/main.cc">
+		<Unit filename="src/main.cpp">
 			<Option target="Main" />
 		</Unit>
-		<Unit filename="src/set.cc" />
+		<Unit filename="src/set.cpp" />
 		<Unit filename="src/set.h" />
-		<Unit filename="src/unordered_set.cc" />
+		<Unit filename="src/unordered_set.cpp" />
 		<Unit filename="src/unordered_set.h" />
-		<Unit filename="test/unordered_set_test.cc">
+		<Unit filename="test/unordered_set_test.cpp">
 			<Option target="EasyTesting" />
 		</Unit>
 		<Unit filename="test/unordered_set_test.h">

@@ -59,7 +59,18 @@ class queue {
   // Vetor com os elementos da pilha.
   QType* array_;
 
-  friend class Teste;
+  // Retorna um ponteiro para o primeiro elemento da fila.
+  friend QType* array(const queue& p);
+
+
+  // Retorna o número de elementos na pilha.
+  friend int size(const queue& p);
+
+  // Retorna uma string no formato [a b c d ... ].
+  friend std::string ToString(const queue& p);
+
+  // Preenche a fila d com 3 números. 'd' deve ser uma fila vazia.
+  friend void CriaFila(QType x1, QType x2, QType x3, int first, queue* d);
 };
 
 #endif  // TRUNK_QUEUE_WITH_ARRAY_SRC_QUEUE_H_

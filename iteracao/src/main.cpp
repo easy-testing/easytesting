@@ -3,7 +3,7 @@
 // Lista de exercícios sobre algoritmos iterativos.
 //
 // QUESTÃO 1:
-// Implemente em iteracao.cc as funções descritas em iteracao.h.
+// Implemente em iteracao.cpp as funções descritas em iteracao.h.
 //
 // QUESTÃO 2:
 // Escreva um programa que (i) apresenta um menu com as funções que você

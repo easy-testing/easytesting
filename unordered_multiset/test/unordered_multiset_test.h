@@ -79,13 +79,13 @@ TEST_CASE("Testa_construtor_vazio") {
   INFO("Erro no construtor: unordered_multiset::unordered_multiset()\n");
   INFO("-------------------------------------------------------------------\n");
   INFO(" Em um multiconjunto vazio, table != NULL\n");
-  INFO("-------------------------------------------------------------------\n";);
+  INFO("-------------------------------------------------------------------\n");
   CHECK_EQ(0, size(atual));
   INFO("-------------------------------------------------------------------\n");
   INFO("Erro no construtor: unordered_multiset::unordered_multiset()\n");
   INFO("-------------------------------------------------------------------\n");
   INFO(" Em um multiconjunto vazio, size_ = 0\n");
-  INFO("-------------------------------------------------------------------\n";);
+  INFO("-------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_empty_em_multiconjunto_vazio") {
@@ -95,7 +95,7 @@ TEST_CASE("Testa_funcao_empty_em_multiconjunto_vazio") {
     INFO("Erro na funcao: bool unordered_multiset::empty() \n");
     INFO("------------------------------------------------------------------\n");
     INFO(" o multiconjunto esta vazio e a funcao retornou FALSE.\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_empty_em_multiconjunto_nao_vazio") {
@@ -108,7 +108,7 @@ TEST_CASE("Testa_funcao_empty_em_multiconjunto_nao_vazio") {
   INFO("Erro na funcao: bool unordered_multiset::empty() \n");
   INFO("------------------------------------------------------------------\n");
   INFO(" Para um multiconjunto nao vazio a funcao retornou TRUE.          \n");
-  INFO("------------------------------------------------------------------\n";);
+  INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_size_em_multiconjunto_vazio") {
@@ -122,7 +122,7 @@ TEST_CASE("Testa_funcao_size_em_multiconjunto_vazio") {
   INFO(" s = " << ToString(s) << "\n");
   INFO(" \"s.sise()\" retornou: " << atual << "\n");
   INFO(" Valor esperado: " << esperado << "\n");
-  INFO("-------------------------------------------------------------------\n";);
+  INFO("-------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_size_em_multiconjunto_nao_vazio") {
@@ -139,7 +139,7 @@ TEST_CASE("Testa_funcao_size_em_multiconjunto_nao_vazio") {
   INFO(" s = " << ToString(s) << "\n");
   INFO(" \"s.sise()\" retornou: " << atual << "\n");
   INFO(" Valor esperado: " << esperado << "\n");
-  INFO("-------------------------------------------------------------------\n";);
+  INFO("-------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_begin_em_multiconjunto_vazio") {
@@ -150,7 +150,7 @@ TEST_CASE("Testa_funcao_begin_em_multiconjunto_vazio") {
     INFO("------------------------------------------------------------------\n");
     INFO(" s = " << ToString(s) << "\n");
     INFO(" s.begin() nao retornou s.end().\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_begin_em_multiconjunto_nao_vazio") {
@@ -165,7 +165,7 @@ TEST_CASE("Testa_funcao_begin_em_multiconjunto_nao_vazio") {
     INFO(" s = " << ToString(s) << "\n");
     INFO(" \"s.begin()\" retornou: ponteiro para " << ToString(atual) << "\n");
     INFO(" Valor esperado: ponteiro para " << ToString(esperado) << "\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_end_em_multiconjunto_vazio") {
@@ -176,7 +176,7 @@ TEST_CASE("Testa_funcao_end_em_multiconjunto_vazio") {
     INFO("------------------------------------------------------------------\n");
     INFO(" s = " << ToString(s) << "\n");
     INFO(" s.end() nao retornou s.begin().\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_end_em_multiconjunto_nao_vazio") {
@@ -191,7 +191,7 @@ TEST_CASE("Testa_funcao_end_em_multiconjunto_nao_vazio") {
     INFO(" s = " << ToString(s) << "\n");
     INFO(" \"s.end()\" retornou: ponteiro para " << ToString(atual) << "\n");
     INFO(" Valor esperado: ponteiro para " << ToString(esperado) << "\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_next_do_primeiro_elemento") {
@@ -208,7 +208,7 @@ TEST_CASE("Testa_funcao_next_do_primeiro_elemento") {
     INFO(" \"s.next(s.begin())\" retornou: ponteiro para ");
     INFO(ToString(atual) << "\n");
     INFO(" Valor esperado: ponteiro para " << ToString(esperado) << "\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_next_do_ultimo_elemento") {
@@ -224,7 +224,7 @@ TEST_CASE("Testa_funcao_next_do_ultimo_elemento") {
     INFO(" \"s.next(s.begin())\" retornou: ponteiro para ");
     INFO(ToString(atual) << "\n");
     INFO(" Valor esperado: ponteiro para " << ToString(esperado) << "\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_next_com_o_proximo_abaixo") {
@@ -244,7 +244,7 @@ TEST_CASE("Testa_funcao_next_com_o_proximo_abaixo") {
     INFO(ToString(atual) << "\n");
     INFO(" Valor esperado: ponteiro para " << ToString(esperado) << "\n");
     INFO(" DICA: Verifique o caso onde o proximo esta abaixo de 'x'.\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_next_com_o_proximo_acima") {
@@ -264,7 +264,7 @@ TEST_CASE("Testa_funcao_next_com_o_proximo_acima") {
     INFO(ToString(atual) << "\n");
     INFO(" Valor esperado: ponteiro para " << ToString(esperado) << "\n");
     INFO(" DICA: Verifique o caso onde o proximo esta abaixo de 'x'.\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_prev_do_end") {
@@ -280,7 +280,7 @@ TEST_CASE("Testa_funcao_prev_do_end") {
     INFO(" \"s.prev(s.end())\" retornou: ponteiro para ");
     INFO(ToString(atual) << "\n");
     INFO(" Valor esperado: ponteiro para " << ToString(esperado) << "\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_prev_com_o_anterior_abaixo") {
@@ -300,7 +300,7 @@ TEST_CASE("Testa_funcao_prev_com_o_anterior_abaixo") {
     INFO(ToString(atual) << "\n");
     INFO(" Valor esperado: ponteiro para " << ToString(esperado) << "\n");
     INFO(" DICA: Verifique o caso onde o proximo esta abaixo de 'x'.\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_prev_com_o_proximo_acima") {
@@ -320,7 +320,7 @@ TEST_CASE("Testa_funcao_prev_com_o_proximo_acima") {
     INFO(ToString(atual) << "\n");
     INFO(" Valor esperado: ponteiro para " << ToString(esperado) << "\n");
     INFO(" DICA: Verifique o caso onde o proximo esta abaixo de 'x'.\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_find_de_elemento_no_multiconjunto") {
@@ -338,7 +338,7 @@ TEST_CASE("Testa_funcao_find_de_elemento_no_multiconjunto") {
   INFO(" s = " << ToString(s) << "\n");
   INFO(" 's.find(\"B\")' retornou: ponteiro para " << ToString(atual) << "\n");
   INFO(" Valor esperado: ponteiro para " << ToString(esperado) << "\n");
-  INFO("-------------------------------------------------------------------\n";);
+  INFO("-------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_find_de_elemento_fora_do_multiconjunto") {
@@ -356,7 +356,7 @@ TEST_CASE("Testa_funcao_find_de_elemento_fora_do_multiconjunto") {
   INFO(" s = " << ToString(s) << "\n");
   INFO(" 's.find(\"E\")' retornou: ponteiro para " << ToString(atual) << "\n");
   INFO(" Valor esperado: ponteiro para " << ToString(esperado) << "\n");
-  INFO("-------------------------------------------------------------------\n";);
+  INFO("-------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_count_em_multiconjunto_vazio") {
@@ -370,7 +370,7 @@ TEST_CASE("Testa_count_em_multiconjunto_vazio") {
   INFO(" s = { }\n");
   INFO(" \"s.count(4)\" retornou: " << atual << "\n");
   INFO(" Valor esperado: " << esperado << "\n");
-  INFO("-------------------------------------------------------------------\n";);
+  INFO("-------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_count_com_mais_de_um_elemento") {
@@ -387,7 +387,7 @@ TEST_CASE("Testa_count_com_mais_de_um_elemento") {
   INFO(" s = " << ToString(s) << "\n");
   INFO(" \"s.count(1)\" retornou: " << atual << "\n");
   INFO(" Valor esperado: " << esperado << "\n");
-  INFO("-------------------------------------------------------------------\n";);
+  INFO("-------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_count_sem_o_elemento") {
@@ -404,7 +404,7 @@ TEST_CASE("Testa_count_sem_o_elemento") {
   INFO(" s = " << ToString(s) << "\n");
   INFO(" \"s.count(1)\" retornou: " << atual << "\n");
   INFO(" Valor esperado: " << esperado << "\n");
-  INFO("-------------------------------------------------------------------\n";);
+  INFO("-------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_incremento_do_size_na_funcao_insert_sem_repeticao") {
@@ -419,7 +419,7 @@ TEST_CASE("Testa_incremento_do_size_na_funcao_insert_sem_repeticao") {
     INFO(" s = { } \n");
     INFO(" 's.insert(\"A\")' resultou em: s.size() == " << atual << "\n");
     INFO(" Resultado esperado: s.size() == " << esperado << "\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_incremento_do_size_na_funcao_insert_com_repeticao") {
@@ -435,7 +435,7 @@ TEST_CASE("Testa_incremento_do_size_na_funcao_insert_com_repeticao") {
     INFO(" s = {A, A} \n");
     INFO(" 's.insert(\"A\")' resultou em: s.size() == " << atual << "\n");
     INFO(" Resultado esperado: s.size() == " << esperado << "\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_insert_em_multiconjunto_vazio") {
@@ -450,7 +450,7 @@ TEST_CASE("Testa_funcao_insert_em_multiconjunto_vazio") {
     INFO(" s = { } \n");
     INFO(" 's.insert(\"A\")' resultou em: s = " << ToString(atual) << "\n");
     INFO(" Resultado esperado: s = " << ToString(esperado) << "\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_insert_em_multiconjunto_nao_vazio") {
@@ -475,7 +475,7 @@ TEST_CASE("Testa_funcao_insert_em_multiconjunto_nao_vazio") {
     INFO(" s = " << ToString(original) << "\n");
     INFO(" 's.insert(\"B\")' resultou em: s = " << ToString(atual) << "\n");
     INFO(" Resultado esperado: s = " << ToString(esperado) << "\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_insert_com_elemento_ja_dentro") {
@@ -502,7 +502,7 @@ TEST_CASE("Testa_funcao_insert_com_elemento_ja_dentro") {
     INFO(" s = " << ToString(original) << "\n");
     INFO(" 's.insert(\"B\")' resultou em: s = " << ToString(atual) << "\n");
     INFO(" Resultado esperado: s = " << ToString(esperado) << "\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_decremento_do_size_na_funcao_erase") {
@@ -518,7 +518,7 @@ TEST_CASE("Testa_decremento_do_size_na_funcao_erase") {
     INFO(" s = { A } \n");
     INFO(" \"s.erase(\"A\")\" resultou em: s.size() == " << atual << "\n");
     INFO(" Resultado esperado: s.size() == " << esperado << "\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_erase_em_multiconjunto_unitario") {
@@ -535,7 +535,7 @@ TEST_CASE("Testa_funcao_erase_em_multiconjunto_unitario") {
     INFO(" s = " << ToString(original) << " \n");
     INFO(" 's.erase(\"A\")\' resultou em: s = " << ToString(atual) << "\n");
     INFO(" Resultado esperado: s = " << ToString(esperado) << "\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 //  TEST_CASE("Testa_funcao_erase_da_ultima_ocorrencia_de_um_elemento") {
@@ -550,7 +550,7 @@ TEST_CASE("Testa_funcao_erase_em_multiconjunto_unitario") {
 //  INFO(" 's.erase(\"A\")\' resultou em: s = " << ToString(atual) << "\n");
 //  INFO(" DICA: Se o número de ocorrencias de um elemento e igual a zero,  \n");
 //  INFO(" voce tem que apagar o no onde ele esta.                          \n");
-//  INFO("------------------------------------------------------------------\n";);
+//  INFO("------------------------------------------------------------------\n");
 //  }
 
 TEST_CASE("Testa_funcao_erase_de_no_com_dois_filhos") {
@@ -576,7 +576,7 @@ TEST_CASE("Testa_funcao_erase_de_no_com_dois_filhos") {
     INFO(" s = " << ToString(original) << " \n");
     INFO(" 's.erase(\"B\")\' resultou em: s = " << ToString(atual) << "\n");
     INFO(" Resultado esperado: s = " << ToString(esperado) << "\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 
@@ -603,7 +603,7 @@ TEST_CASE("Testa_funcao_erase_de_no_sem_subarvore_direita") {
     INFO(" s = " << ToString(original) << " \n");
     INFO(" 's.erase(\"B\")\' resultou em: s = " << ToString(atual) << "\n");
     INFO(" Resultado esperado: s = " << ToString(esperado) << "\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_erase_em_no_sem_subarvore_esquerda") {
@@ -629,7 +629,7 @@ TEST_CASE("Testa_funcao_erase_em_no_sem_subarvore_esquerda") {
     INFO(" s = " << ToString(original) << " \n");
     INFO(" 's.erase(\"A\")\' resultou em: s = " << ToString(atual) << "\n");
     INFO(" Resultado esperado: s = " << ToString(esperado) << "\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_erase_de_elemento_que_nao_pertence_ao_multiconjunto") {
@@ -656,7 +656,7 @@ TEST_CASE("Testa_erase_de_elemento_que_nao_pertence_ao_multiconjunto") {
     INFO(" s = " << ToString(original) << " \n");
     INFO(" 's.erase(\"B\")\' resultou em: s = " << ToString(atual) << "\n");
     INFO(" Resultado esperado: s = " << ToString(esperado) << "\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_erase_de_elemento_repetido") {
@@ -683,7 +683,7 @@ TEST_CASE("Testa_erase_de_elemento_repetido") {
     INFO(" s = " << ToString(original) << " \n");
     INFO(" 's.erase(\"B\")\' resultou em: s = " << ToString(atual) << "\n");
     INFO(" Resultado esperado: s = " << ToString(esperado) << "\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_Clear") {
@@ -704,7 +704,7 @@ TEST_CASE("Testa_Clear") {
     INFO(" s = " << ToString(original) << " \n");
     INFO(" 's.clear()\' resultou em: s = " << ToString(atual) << "\n");
     INFO(" Resultado esperado: s = " << ToString(esperado) << "\n");
-    INFO("------------------------------------------------------------------\n";);
+    INFO("------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_operador_de_atribuicao_a_multiconjunto_vazio") {
@@ -727,7 +727,7 @@ TEST_CASE("Testa_operador_de_atribuicao_a_multiconjunto_vazio") {
   INFO(" s = " << ToString(original) << "\n");
   INFO(" \"u = s\" resultou em: u = " << ToString(atual) << "\n");
   INFO(" Resultado esperado: u = " << ToString(esperado) << "\n");
-  INFO("-------------------------------------------------------------------\n";);
+  INFO("-------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_operador_de_atribuicao_a_multiconjunto_nao_vazio") {
@@ -751,7 +751,7 @@ TEST_CASE("Testa_operador_de_atribuicao_a_multiconjunto_nao_vazio") {
   INFO(" s = " << ToString(original) << "\n");
   INFO(" \"u = s\" resultou em: u = " << ToString(atual) << "\n");
   INFO(" Resultado esperado: u = " << ToString(esperado) << "\n");
-  INFO("-------------------------------------------------------------------\n";);
+  INFO("-------------------------------------------------------------------\n");
 }
 
 #endif  // TRUNK_UNORDERED_MULTISET_TEST_UNORDERED_MULTISET_TEST_H_

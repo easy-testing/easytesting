@@ -4715,7 +4715,7 @@ namespace {
             });
 
             // The following settings are taken from google test, and more
-            // specifically from UnitTest::Run() inside of gtest.cc
+            // specifically from UnitTest::Run() inside of gtest.cpp
 
             // the user does not want to see pop-up dialogs about crashes
             prev_error_mode_1 = SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOALIGNMENTFAULTEXCEPT |

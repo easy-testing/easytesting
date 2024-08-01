@@ -3,7 +3,7 @@
 // Lista de exercícios sobre algoritmos recursivos.
 //
 // QUESTÃO 1:
-// Implemente em recursao.cc as funções descritas em recursao.h.
+// Implemente em recursao.cpp as funções descritas em recursao.h.
 //
 // QUESTÃO 2:
 // Escreva um programa que (i) apresenta um menu com as funções que você

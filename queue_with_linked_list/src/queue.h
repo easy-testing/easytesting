@@ -6,7 +6,7 @@
 #include <string>
 
 // Define como os elementos da fila serão organizados na memória.
-// É declarado aqui, mas só é implementado em queue.cc para não violar o
+// É declarado aqui, mas só é implementado em queue.cpp para não violar o
 // encapsulamento.
 struct Node;
 
@@ -54,7 +54,23 @@ class queue {
   // Ponteiro para o nó sentinela da lista encadeada.
   Node* end_;
 
-  friend class Teste;
+  
+  // Cria uma nó cuja chave é k, o nó anterior é l, e o nó posterior é r.
+  friend Node* NewNode(QType k, Node* l, Node* r);
+
+  // Retorna um ponteiro para o primeiro elemento da fila.
+  friend Node* begin(const queue& q);
+
+  // Retorna um ponteiro para o elemento seguinte ao último elemento da fila.
+  friend Node* end(const queue& q);
+
+  // Retorna o número de elementos na fila.
+  friend int size(const queue& q);
+  // Retorna uma string no formato [a b c d ... ].
+  friend std::string ToString(const queue& q);
+
+  // Preenche a fila d com 3 números. 'd' deve ser uma fila vazia.
+  friend void CriaFila(QType x1, QType x2, QType x3, queue* d);
 };
 
 #endif  // TRUNK_QUEUE_WITH_LINKED_LIST_SRC_QUEUE_H_

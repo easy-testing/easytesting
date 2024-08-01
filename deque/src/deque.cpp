@@ -25,6 +25,14 @@ deque::~deque() {
   delete end_;
 }
 
+Node* deque::end() const {
+  return end_;
+}
+
+Node* deque::begin() const {
+  return end_->next;
+}
+
 bool deque::empty() const {
   return size_ == 0;
 }
@@ -33,7 +41,7 @@ int deque::size() const {
   return size_;
 }
 
-DType deque::front() const {
+DType deque::front() const { 
   return end_->next->key;
 }
 
@@ -41,7 +49,7 @@ DType deque::back() const {
   return end_->prev->key;
 }
 
-void deque::push_front(DType k) {
+void deque::push(DType k) {
   Node* i = end_->next;  // Ponteiro para o primeiro elemento na fila.
   Node* node = new Node;
   node->key = k;

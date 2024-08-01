@@ -29,11 +29,10 @@ TEST_CASE("Testa_menor") {
 
 TEST_CASE("Testa_maior_entre_tres_numeros") {
   int entrada_x = 2;
-  int entrada_y = 3;
-  int entrada_z = 10;
+  int entrada_y = 10;
+  int entrada_z = 3;
   int resposta = maior(entrada_x, entrada_y, entrada_z);
   int esperado = 10;
-  CHECK_EQ(resposta, esperado);
   INFO("-------------------------------------------------------------------");
   INFO("Erro na funcao:  ");
   INFO("* int maior(int x, int y, int z); *");
@@ -43,6 +42,8 @@ TEST_CASE("Testa_maior_entre_tres_numeros") {
   INFO("   Resultado esperado:  " << esperado);
   INFO("   Resultado retornado: " << resposta);
   INFO("-------------------------------------------------------------------");
+  CHECK_EQ(resposta, esperado);
+
 }
 
 TEST_CASE("Testa_verifica_se_par") {

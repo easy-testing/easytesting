@@ -4,7 +4,7 @@
 // Aplicação: Números Complexos - Coordenadas Euclidianas.
 //
 // QUESTÃO 1:
-// Implemente em complexo.cc as funções descritas em complexo.h.
+// Implemente em complexo.cpp as funções descritas em complexo.h.
 //
 // QUESTÃO 2:
 // Escreva um programa que simula uma calculadora de números complexos.

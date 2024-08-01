@@ -6,7 +6,7 @@
 #include<string>
 
 // Define como os elementos do multimulticonjunto serão organizados
-// na memória. É declarado aqui, mas só é implementado em multiset.cc para
+// na memória. É declarado aqui, mas só é implementado em multiset.cpp para
 // não violar o encapsulamento.
 struct Node;
 
@@ -89,6 +89,22 @@ class multiset {
   // "root_ == NULL" se o multiconjunto é vazio.
   Node* root_;
 
-  friend class Teste;
+  friend Node* root(const multiset& s);
+
+  friend int size(const multiset& s);
+
+  // Retorna um ponteiro para o elemento seguinte ao último elemento
+  // do multiconjunto.
+  friend Node* end(const multiset& s);
+
+  friend Node* insert(SType k, int count, multiset* s);
+
+  friend std::string ToString(Node* x);
+
+  // Retorna uma string contendo os elementos da árvore no formato
+  // {k1, k2, ..., kn}.
+  friend std::string TreeToString(Node* root);
+
+  friend std::string ToString(const multiset& s);
 };
 #endif  // TRUNK_ORDERED_MULTISET_SRC_MULTISET_H_

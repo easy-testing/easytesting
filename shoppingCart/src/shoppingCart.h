@@ -2,6 +2,10 @@
 #include <string>
 #include <vector>
 
+#ifndef TRUNK_CARRINHO_SRC_CARRINHO_H_
+#define TRUNK_CARRINHO_SRC_CARRINHO_H_
+
+
 using std::string;
 using std::vector;    
 
@@ -22,3 +26,7 @@ float getValorTotal();
 int getNumeroItens();
 
 void listarItens();
+
+
+
+#endif  // TRUNK_CARRINHO_SRC_CARRINHO_H_

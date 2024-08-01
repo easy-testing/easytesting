@@ -125,17 +125,17 @@ string ToString(unordered_set& s) {
 TEST_CASE("Testa_construtor_vazio") {
   unordered_set atual;
   CHECK_EQ(0, size(atual));
-    << "-------------------------------------------------------------------\n"
-    << "Erro no construtor: unordered_set::unordered_set()\n"
-    << "-------------------------------------------------------------------\n"
-    << " Em um conjunto vazio, size_ = 0\n"
-    << "-------------------------------------------------------------------\n";
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro no construtor: unordered_set::unordered_set()\n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO(" Em um conjunto vazio, size_ = 0\n");
+  INFO("-------------------------------------------------------------------\n");
   CHECK_EQ(begin(atual), end(atual));
-    << "-------------------------------------------------------------------\n"
-    << "Erro no construtor: unordered_set::unordered_set()\n"
-    << "-------------------------------------------------------------------\n"
-    << " Em um conjunto vazio, unordered_set::begin() == unordered_set::end()\n"
-    << "-------------------------------------------------------------------\n";
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro no construtor: unordered_set::unordered_set()\n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO(" Em um conjunto vazio, unordered_set::begin() == unordered_set::end()\n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_empty_em_conjunto_vazio") {
@@ -166,13 +166,13 @@ TEST_CASE("Testa_funcao_size_em_conjunto_vazio") {
   int esperado = 0;
   int atual = s.size();
   CHECK_EQ(esperado, atual);
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: int unordered_set::size()\n"
-    << "-------------------------------------------------------------------\n"
-    << " s = " << ToString(s) << "\n"
-    << " \"s.sise()\" retornou: " << atual << "\n"
-    << " Valor esperado: " << esperado << "\n"
-    << "-------------------------------------------------------------------\n";
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: int unordered_set::size()\n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO(" s = " << ToString(s) << "\n");
+  INFO(" \"s.sise()\" retornou: " << atual << "\n");
+  INFO(" Valor esperado: " << esperado << "\n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_size_em_conjunto_nao_vazio") {
@@ -183,13 +183,13 @@ TEST_CASE("Testa_funcao_size_em_conjunto_nao_vazio") {
   int atual = s.size();
   int esperado = 3;
   CHECK_EQ(esperado, atual);
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: int unordered_set::size()\n"
-    << "-------------------------------------------------------------------\n"
-    << " s = " << ToString(s) << "\n"
-    << " \"s.sise()\" retornou: " << atual << "\n"
-    << " Valor esperado: " << esperado << "\n"
-    << "-------------------------------------------------------------------\n";
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: int unordered_set::size()\n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO(" s = " << ToString(s) << "\n");
+  INFO(" \"s.sise()\" retornou: " << atual << "\n");
+  INFO(" Valor esperado: " << esperado << "\n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_begin_em_conjunto_vazio") {
@@ -415,13 +415,13 @@ TEST_CASE("Testa_funcao_keys") {
   SType atual = s.key(begin(s));
   SType esperado = "1";
   CHECK_EQ(esperado, atual);
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: SType& unordered_set::key(Node* x)\n"
-    << "-------------------------------------------------------------------\n"
-    << " s = " << ToString(s) << "\n"
-    << " \"s.key(s.begin())\" retornou: " << atual << "\n"
-    << " Valor esperado: " << esperado << "\n"
-    << "-------------------------------------------------------------------\n";
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: SType& unordered_set::key(Node* x)\n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO(" s = " << ToString(s) << "\n");
+  INFO(" \"s.key(s.begin())\" retornou: " << atual << "\n");
+  INFO(" Valor esperado: " << esperado << "\n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_find_em_conjunto_vazio") {
@@ -429,13 +429,13 @@ TEST_CASE("Testa_funcao_find_em_conjunto_vazio") {
   SType atual = key(s.find("3"), s);
   SType esperado = key(s.end(), s);
   CHECK_EQ(esperado, atual);
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: Node* unordered_set::find(SType k) \n"
-    << "-------------------------------------------------------------------\n"
-    << " s = " << ToString(s) << "\n"
-    << " \"s.find(3)\" retornou: um ponteiro para " << atual << "\n"
-    << " Valor esperado: ponteiro para " << esperado << "\n"
-    << "-------------------------------------------------------------------\n";
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: Node* unordered_set::find(SType k) \n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO(" s = " << ToString(s) << "\n");
+  INFO(" \"s.find(3)\" retornou: um ponteiro para " << atual << "\n");
+  INFO(" Valor esperado: ponteiro para " << esperado << "\n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_find_retornando_true") {
@@ -447,13 +447,13 @@ TEST_CASE("Testa_funcao_find_retornando_true") {
   SType atual = key(s.find("3"), s);
   SType esperado = "3";
   CHECK_EQ(esperado, atual);
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: Node* unordered_set::find(SType k) \n"
-    << "-------------------------------------------------------------------\n"
-    << " s = " << ToString(s) << "\n"
-    << " \"s.find(3)\" retornou: um ponteiro para " << atual << "\n"
-    << " Valor esperado: ponteiro para " << esperado << "\n"
-    << "-------------------------------------------------------------------\n";
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: Node* unordered_set::find(SType k) \n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO(" s = " << ToString(s) << "\n");
+  INFO(" \"s.find(3)\" retornou: um ponteiro para " << atual << "\n");
+  INFO(" Valor esperado: ponteiro para " << esperado << "\n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_funcao_find_retornando_false") {
@@ -465,13 +465,13 @@ TEST_CASE("Testa_funcao_find_retornando_false") {
   SType atual = key(s.find("3"), s);
   SType esperado = key(s.end(), s);
   CHECK_EQ(esperado, atual);
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: Node* unordered_set::find(SType k) \n"
-    << "-------------------------------------------------------------------\n"
-    << " s = " << ToString(s) << "\n"
-    << " \"s.find(3)\" retornou: um ponteiro para " << atual << "\n"
-    << " Valor esperado: ponteiro para " << esperado << "\n"
-    << "-------------------------------------------------------------------\n";
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: Node* unordered_set::find(SType k) \n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO(" s = " << ToString(s) << "\n");
+  INFO(" \"s.find(3)\" retornou: um ponteiro para " << atual << "\n");
+  INFO(" Valor esperado: ponteiro para " << esperado << "\n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_incremento_do_size_na_funcao_insert") {
@@ -638,14 +638,14 @@ TEST_CASE("Testa_operador_de_atribuicao_a_conjunto_vazio") {
   string atual = ToString(u);
   string esperado = "{ 1 2 3 }";
   CHECK_EQ(esperado, atual);
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: void unordered_set::operator=(unordered_set& s)\n"
-    << "-------------------------------------------------------------------\n"
-    << " u = " << "{ }" << "\n"
-    << " s = " << esperado << "\n"
-    << " \"u = s\" resultou em: u = " << atual << "\n"
-    << " Resultado esperado: u = " << esperado << "\n"
-    << "-------------------------------------------------------------------\n";
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: void unordered_set::operator=(unordered_set& s)\n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO(" u = " << "{ }" << "\n");
+  INFO(" s = " << esperado << "\n");
+  INFO(" \"u = s\" resultou em: u = " << atual << "\n");
+  INFO(" Resultado esperado: u = " << esperado << "\n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
 TEST_CASE("Testa_operador_de_atribuicao_a_conjunto_nao_vazio") {
@@ -661,14 +661,14 @@ TEST_CASE("Testa_operador_de_atribuicao_a_conjunto_nao_vazio") {
   string atual = ToString(u);
   string esperado = "{ 1 2 3 }";
   CHECK_EQ(esperado, atual);
-    << "-------------------------------------------------------------------\n"
-    << "Erro na funcao: void unordered_set::operator=(unordered_set& s)\n"
-    << "-------------------------------------------------------------------\n"
-    << " u = " << "{ 4 5 6 }" << "\n"
-    << " s = " << esperado << "\n"
-    << " \"u = s\" resultou em: u = " << atual << "\n"
-    << " Resultado esperado: u = " << esperado << "\n"
-    << "-------------------------------------------------------------------\n";
+  INFO("-------------------------------------------------------------------\n");
+  INFO("Erro na funcao: void unordered_set::operator=(unordered_set& s)\n");
+  INFO("-------------------------------------------------------------------\n");
+  INFO(" u = " << "{ 4 5 6 }" << "\n");
+  INFO(" s = " << esperado << "\n");
+  INFO(" \"u = s\" resultou em: u = " << atual << "\n");
+  INFO(" Resultado esperado: u = " << esperado << "\n");
+  INFO("-------------------------------------------------------------------\n");
 }
 
 #endif  // TRUNK_UNORDERED_SET_TEST_UNORDERED_SET_TEST_H_

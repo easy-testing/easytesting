@@ -51,7 +51,11 @@ class stack {
   // Vetor com os elementos da pilha.
   SType* array_;
 
-  friend class Teste;
+  // Declare as funções individuais do namespace test_helpers como amigas da classe stack
+  friend std::string* array(const stack& p);
+  friend int size(const stack& p);
+  friend std::string ToString(const stack& p);
+  friend void CriaPilha(std::string x1, std::string x2, std::string x3, stack* d);
 };
 
 #endif  // TRUNK_STACK_WITH_ARRAY_SRC_STACK_H_

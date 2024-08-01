@@ -8,7 +8,7 @@
 #include "src/set.h"
 
 // Função que calcula o hash dos elementos para uma tabela com m linhas.
-// É declarado aqui, mas só é implementado em unordered_set.cc para
+// É declarado aqui, mas só é implementado em unordered_set.cpp para
 // não violar o encapsulamento.
 int hash(SType k, int m);
 
@@ -93,7 +93,34 @@ class unordered_set{
   // Vetor de subconjuntos que guarda os elementos do cojunto.
   set* table_;
 
-  friend class Teste;
+  //Classes Friend
+  // Retorna o valor da chave do elemento x de s;
+  friend SType key(Node* x, unordered_set& s);
+
+// Retorna o número de elementos no conjunto.
+  friend int size(unordered_set& s);
+
+// Insere k em s.
+// Precondição: k não está em s.
+  friend void insert(SType k, unordered_set* s);
+// Retorna o primeiro elemento do conjunto.
+  friend Node* begin(unordered_set& s);
+
+// Retorna o "marcador de fim" do conjunto.
+  friend Node* end(unordered_set& s);
+
+// Retorna o elemento seguinte a 'x' no conjunto.
+  friend Node* next(Node* x, unordered_set& s);
+
+// Retorna o elemento anterior a 'x' no conjunto.
+  friend Node* prev(Node* x, unordered_set& s);
+
+// Retorna um ponteiro para o elemento k de s.
+  friend Node* find(SType k, unordered_set& s); 
+
+// Retorna uma string contendo os elementos do conjunto
+// no formato { c1 c2 c3 c4 } e ordenados do maior para o menor.
+  friend std::string ToString(unordered_set& s);
 };
 
 #endif  // TRUNK_UNORDERED_SET_SRC_UNORDERED_SET_H_

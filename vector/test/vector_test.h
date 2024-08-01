@@ -8,7 +8,6 @@
 
 #include "../doctest/doctest.h"
 #include "src/vector.h"
-#include "../doctest/doctest.h"
 
 using std::string;
 using std::stringstream;
@@ -22,13 +21,13 @@ string ToString(const vector& v) {
   }
     s << "}";
     return s.str();
-  }
-  int size(const vector& v) {
-    return v.size_;
-  }
-  VType* array(const vector& v) {
-    return v.array_;
-  }
+}
+int size(const vector& v) {
+  return v.size_;
+}
+VType* array(const vector& v) {
+  return v.array_;
+}
 
 TEST_CASE("Testa_construtor_vazio") {
   vector atual;

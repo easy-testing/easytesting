@@ -3,7 +3,7 @@
 // Lista de exercício sobre estruturas de dados homogêneas - Vetores.
 //
 // QUESTÃO 1:
-// Implemente em vetores.cc as funções descritas em vetores.h.
+// Implemente em vetores.cpp as funções descritas em vetores.h.
 //
 // QUESTÃO 2:
 // Escreva um programa em C++ que lê um conjunto de números de um arquivo e

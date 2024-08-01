@@ -41,21 +41,21 @@
 			<Add option="-Wall" />
 			<Add directory="." />
 		</Compiler>
-		<Unit filename="gtest/gtest.cc">
+		<Unit filename="">
 			<Option target="EasyTesting" />
 		</Unit>
 		<Unit filename="gtest/gtest.h">
 			<Option target="EasyTesting" />
 		</Unit>
-		<Unit filename="src/deque.cc" />
+		<Unit filename="src/deque.cpp" />
 		<Unit filename="src/deque.h" />
-		<Unit filename="src/main1.cc">
+		<Unit filename="src/main1.cpp">
 			<Option target="Main1" />
 		</Unit>
-		<Unit filename="src/main2.cc">
+		<Unit filename="src/main2.cpp">
 			<Option target="Main2" />
 		</Unit>
-		<Unit filename="test/deque_test.cc">
+		<Unit filename="test/deque_test.cpp">
 			<Option target="EasyTesting" />
 		</Unit>
 		<Unit filename="test/deque_test.h">

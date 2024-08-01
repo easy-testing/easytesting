@@ -40,7 +40,7 @@ $(program)_test.o:
 	$(cc) -I $(path) -c test/$(program)_test.cpp -std=c++11  
 
 clean:
-	@rm -f main.o $(program).o $(program)_test.o a.out
+	@rm -f main.o $(program).o $(program)_test.o a.out main easy_testing
 
 zip:
 	zip -r $(CURDIR).zip . -x ".*"

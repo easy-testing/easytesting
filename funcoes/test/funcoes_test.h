@@ -1,7 +1,7 @@
 // Copyright 2014 Universidade Federal de Minas Gerais (UFMG)
 
-#ifndef TRUNK_FUNCOES_TEST_FUNCOES_TEST_H_
-#define TRUNK_FUNCOES_TEST_FUNCOES_TEST_H_
+#ifndef TRUNK_FUNCOES_TEST_CASEUNCOES_TEST_H_
+#define TRUNK_FUNCOES_TEST_CASEUNCOES_TEST_H_
 
 #include "../doctest/doctest.h"
 #include "src/funcoes.h"
@@ -242,4 +242,4 @@ namespace Teste {
   }
 }  // namespace Teste
 
-#endif  // TRUNK_FUNCOES_TEST_FUNCOES_TEST_H_
+#endif  // TRUNK_FUNCOES_TEST_CASEUNCOES_TEST_H_

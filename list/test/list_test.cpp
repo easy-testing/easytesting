@@ -6,14 +6,15 @@
 #include "../doctest/doctest.h"
 
 int main(int argc, char** argv) {
-    doctest::Context context(argc, argv);
+    doctest::Context context;
+
+    // Aplica as opções de linha de comando do Doctest
+    context.applyCommandLine(argc, argv);
 
     // Executa todos os testes
     int result = context.run();
 
-    if(context.shouldExit())
-        return result;
-
     // Retorna o resultado da execução dos testes
     return result;
 }
+  

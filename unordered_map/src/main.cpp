@@ -3,7 +3,7 @@
 // Lista sobre conjuntos associativos
 //
 // Questão 1.
-// Implemente em unordered_map.h e unordered_map.cc o TAD unordered_map,
+// Implemente em unordered_map.h e unordered_map.cpp o TAD unordered_map,
 // utilizando tabela hash.
 //
 // Questão 2.

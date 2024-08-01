@@ -3,7 +3,7 @@
 // Lista sobre Conjuntos.
 //
 // Questão 1.
-// Implemente em unordered_set.h e unordered_set.cc o TAD unordered_set,
+// Implemente em unordered_set.h e unordered_set.cpp o TAD unordered_set,
 // utilizando tabela hash.
 //
 // Questão 2.

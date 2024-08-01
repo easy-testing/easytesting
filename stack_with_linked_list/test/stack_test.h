@@ -30,25 +30,25 @@ Node* NewNode(string k, Node* l, Node* r) {
 }
 
 // Retorna um ponteiro para o primeiro elemento da pilha.
-Node* begin(const stack& p) {
-  return p.end_->next;
+Node* beginTest(const stack& p) {
+  return p.begin();
 }
 
 // Retorna um ponteiro para o elemento seguinte ao último elemento da pilha.
-Node* end(const stack& p) {
-  return p.end_;
+Node* endTest(const stack& p) {
+  return p.end();
 }
 
 // Retorna o número de elementos na pilha.
-int size(const stack& p) {
-  return p.size_;
+int sizeTest(const stack& p) {
+  return p.size();
 }
 
 // Retorna uma string no formato [a b c d ... ].
 string ToString(const stack& p) {
   stringstream sout;
   sout << "[ ";
-  for (Node* i = begin(p) ; i != end(p) ; i = i->next) {
+  for (Node* i = beginTest(p) ; i != endTest(p) ; i = i->next) {
     sout << i->key << " ";
   }
   sout << "]";
@@ -57,28 +57,31 @@ string ToString(const stack& p) {
 
 // Preenche a pilha d com 3 números. 'd' deve ser uma pilha vazia.
 void CriaPilha(SType x1, SType x2, SType x3, stack* d) {
-  d->end_->next = NewNode(x1, d->end_, NULL);
-  d->end_->next->next = NewNode(x2, d->end_->next, NULL);
-  d->end_->next->next->next = d->end_->prev =
-      NewNode(x3, d->end_->next->next, d->end_);
-  d->size_ = 3;
+  d->push(x3);
+  d->push(x2);
+  d->push(x1);
+  // d->end_->next = NewNode(x1, d->end_, NULL);
+  // d->end_->next->next = NewNode(x2, d->end_->next, NULL);
+  // d->end_->next->next->next = d->end_->prev =
+  //     NewNode(x3, d->end_->next->next, d->end_);
+  // d->size_ = 3;
 }
 
 TEST_CASE("Testa_construtor_vazio") {
   stack atual;
-  CHECK_EQ(0, size(atual));
+  CHECK_EQ(0, sizeTest(atual));
   INFO("-------------------------------------------------------------------\n");
   INFO("Erro no construtor: stack::stack()\n");
   INFO("-------------------------------------------------------------------\n");
   INFO(" Número de elementos na pilha maior que zero.\n");
   INFO("-------------------------------------------------------------------\n");
-  CHECK_EQ(end(atual)->next, end(atual));
+  CHECK_EQ(endTest(atual)->next, endTest(atual));
   INFO("-------------------------------------------------------------------\n");
   INFO("Erro no construtor: stack::stack()\n");
   INFO("-------------------------------------------------------------------\n");
   INFO(" Em uma lista encadeada vazia, end_->next = end_.\n");
   INFO("-------------------------------------------------------------------\n");
-  CHECK_EQ(end(atual)->prev, end(atual));
+  CHECK_EQ(endTest(atual)->prev, endTest(atual));
   INFO("-------------------------------------------------------------------\n");
   INFO("Erro no construtor: stack::stack()\n");
   INFO("-------------------------------------------------------------------\n");
@@ -220,7 +223,7 @@ TEST_CASE("Testa_operador_Assign") {
   CriaPilha("12", "14", "15", &esperado);
   stack atual;
   atual = esperado;
-  CHECK_NE(end(esperado), end(atual));
+  CHECK_NE(endTest(esperado), endTest(atual));
   INFO("-------------------------------------------------------------------\n");
   INFO("Erro na funcao: void stack::operator=(stack& p)\n");
   INFO("-------------------------------------------------------------------\n");

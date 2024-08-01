@@ -4,7 +4,7 @@
 // Aplicação: Números Complexos - Coordenadas Polares.
 //
 // QUESTÃO 1:
-// Implemente em complexo.cc as funções descritas em complexo.h.
+// Implemente em complexo.cpp as funções descritas em complexo.h.
 //
 // (i) Você vai precisar usar as funções math.h. Note que os ângulos passados
 // como parâmetro para as funções desta biblioteca são medidos em radianos

@@ -30,25 +30,25 @@ Node* NewNode(DType k, Node* l, Node* r) {
 }
 
 // Retorna um ponteiro para o primeiro elemento do deque.
-Node* begin(const deque& d) {
-  return d.end_->next;
+Node* beginTest(const deque& d) {
+  return d.begin();
 };
 
 // Retorna um ponteiro para o elemento seguinte ao último elemento do deque.
-Node* end(const deque& d) {
-  return d.end_;
+Node* endTest(const deque& d) {
+  return d.end();
 };
 
 // Retorna o número de elementos no deque.
-int size(const deque& d) {
-  return d.size_;
+int sizeTest(const deque& d) {
+  return d.size();
 };
-
+ 
 // Retorna uma string no formato [a b c d ... ].
 string ToString(const deque& d) {
   stringstream sout;
   sout << "[ ";
-  for (Node* i = begin(d) ; i != end(d) ; i = i->next) {
+  for (Node* i = beginTest(d) ; i != endTest(d) ; i = i->next) {
     sout << i->key << " ";
   }
   sout << "]";
@@ -57,28 +57,31 @@ string ToString(const deque& d) {
 
 // Preenche o deque d com 3 números. 'd' deve ser umo deque vazio.
 void Criadeque(DType x1, DType x2, DType x3, deque* d) {
-  d->end_->next = NewNode(x1, d->end_, NULL);
-  d->end_->next->next = NewNode(x2, d->end_->next, NULL);
-  d->end_->next->next->next = d->end_->prev =
-      NewNode(x3, d->end_->next->next, d->end_);
-  d->size_ = 3;
+  d->push(x3);
+  d->push(x2);
+  d->push(x1);
+  // d->end_->next = NewNode(x1, d->end_, NULL);
+  // d->end_->next->next = NewNode(x2, d->end_->next, NULL);
+  // d->end_->next->next->next = d->end_->prev =
+  //     NewNode(x3, d->end_->next->next, d->end_);
+  // d->size_ = 3;
 };
 
 TEST_CASE("Testa_construtor_vazio") {
   deque atual;
-  CHECK_EQ(0, size(atual));
+  CHECK_EQ(0, sizeTest(atual));
   INFO("-------------------------------------------------------------------\n");
   INFO("Erro no construtor: deque::deque()\n");
   INFO("-------------------------------------------------------------------\n");
   INFO(" Número de elementos no deque maior que zero.\n");
   INFO("-------------------------------------------------------------------\n";);
-  CHECK_EQ(end(atual)->next, end(atual));
+  CHECK_EQ(endTest(atual)->next, endTest(atual));
   INFO("-------------------------------------------------------------------\n");
   INFO("Erro no construtor: deque::deque()\n");
   INFO("-------------------------------------------------------------------\n");
   INFO(" Em uma lista encadeada vazia, end_->next = end_.\n");
   INFO("-------------------------------------------------------------------\n";);
-  CHECK_EQ(end(atual)->prev, end(atual));
+  CHECK_EQ(endTest(atual)->prev, endTest(atual));
   INFO("-------------------------------------------------------------------\n");
   INFO("Erro no construtor: deque::deque()\n");
   INFO("-------------------------------------------------------------------\n");
@@ -89,10 +92,10 @@ TEST_CASE("Testa_construtor_vazio") {
 TEST_CASE("Testa_Size_para_deque_vazio") {
   deque d;
   int esperado = 0;
-  int atual = d.size();
+  int atual = sizeTest(d);
   CHECK_EQ(esperado, atual);
   INFO("-------------------------------------------------------------------\n");
-  INFO("Erro na funcao: int deque::size()\n");
+  INFO("Erro na funcao: int deque::sizeTest()\n");
   INFO("-------------------------------------------------------------------\n");
   INFO(" d = " << ToString(d) << "\n");
   INFO(" \"d.sise()\" retornou: " << atual << "\n");
@@ -104,10 +107,10 @@ TEST_CASE("Testa_Size_para_deque_nao_vazio") {
   deque d;
   Criadeque("a", "b", "c", &d);
   int esperado = 3;
-  int atual = d.size();
+  int atual = sizeTest(d);
   CHECK_EQ(esperado, atual);
   INFO("-------------------------------------------------------------------\n");
-  INFO("Erro na funcao: int deque::size()\n");
+  INFO("Erro na funcao: int deque::sizeTest()\n");
   INFO("-------------------------------------------------------------------\n");
   INFO(" d = " << ToString(d) << "\n");
   INFO(" \"d.sise()\" retornou: " << atual << "\n");
@@ -166,14 +169,14 @@ TEST_CASE("Testa_Back") {
   INFO("-------------------------------------------------------------------\n";);
 }
 
-TEST_CASE("Testa_Push_Front_em_deque_vazio") {
+TEST_CASE("Testa_push_em_deque_vazio") {
   deque d;
-  d.push_front("10");
+  d.push("10");
   string atual = ToString(d);
   string esperado("[ 10 ]");
   CHECK_EQ(esperado, atual);
     INFO("------------------------------------------------------------------\n");
-    INFO("Erro na funcao: void deque::push_front(DType k) *\n");
+    INFO("Erro na funcao: void deque::push(DType k) *\n");
     INFO("------------------------------------------------------------------\n");
     INFO("d = [ ] \n");
     INFO("\"d.push(10)\" resultou em: d = " << atual << "\n");
@@ -181,15 +184,15 @@ TEST_CASE("Testa_Push_Front_em_deque_vazio") {
     INFO("------------------------------------------------------------------\n";);
 }
 
-TEST_CASE("Testa_Push_Front_em_deque_nao_vazio") {
+TEST_CASE("Testa_push_em_deque_nao_vazio") {
   deque d;
   Criadeque("1", "2", "3", &d);
-  d.push_front("4");
+  d.push("4");
   string atual = ToString(d);
   string esperado("[ 4 1 2 3 ]");
   CHECK_EQ(esperado, atual);
     INFO("------------------------------------------------------------------\n");
-    INFO("Erro na funcao: void deque::push_front(DType k) *\n");
+    INFO("Erro na funcao: void deque::push(DType k) *\n");
     INFO("------------------------------------------------------------------\n");
     INFO("d = [ 1 2 3 ] \n");
     INFO("\"d.push(4)\" resultou em: d = " << atual << "\n");
@@ -296,7 +299,7 @@ TEST_CASE("Testa_operador_Assign") {
   Criadeque("12", "14", "15", &esperado);
   deque atual;
   atual = esperado; 
-  CHECK_NE(end(esperado), end(atual));
+  CHECK_NE(endTest(esperado), endTest(atual));
   INFO("-------------------------------------------------------------------\n");
   INFO("Erro na funcao: void deque::operator=(deque& p)\n");
   INFO("-------------------------------------------------------------------\n");

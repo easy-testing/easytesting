@@ -6,7 +6,7 @@
 #include <string>
 
 // Defite como os elementos do deque serão organizados na memória.
-// É declarado aqui, mas só é implementado em deque.cc para não violar o
+// É declarado aqui, mas só é implementado em deque.cpp para não violar o
 // encapsulamento.
 struct Node;
 
@@ -26,6 +26,10 @@ class deque {
   // Retorna o número de elementos no deque em O(1).
   int size() const;
 
+  Node* begin() const;
+
+  Node* end() const;
+
   // Retorna o valor da chave do primeiro elemento do deque em O(1).
   // Precondição: o deque não pode estar vazio.
   DType front() const;
@@ -35,7 +39,7 @@ class deque {
   DType back() const;
 
   // Insere k no início do deque em O(1).
-  void push_front(DType k);
+  void push(DType k);
 
   // Remove o primeiro elemento do deque em O(1).
   // Precondição: o deque não pode estar vazio.
@@ -52,13 +56,19 @@ class deque {
   // onde m = d.size() e n é o número de elementos no deque corrente.
   void operator=(const deque& d);
 
+ 
  private:
   // Número de elementos no deque.
   int size_;
 
   // Ponteiro para o nó sentinela da lista encadeada.
   Node* end_;
-  
+
+  friend Node* beginTest(const deque& p);
+
+  friend Node* endTest(const deque& p);
+
+  friend int sizeTest(const deque& p);
 };
 
 #endif  // TRUNK_DEQUE_SRC_DEQUE_H_

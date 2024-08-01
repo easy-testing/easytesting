@@ -6,7 +6,7 @@
 #include<string>
 
 // Define como os elementos do conjunto serão organizados na memória.
-// É declarado aqui, mas só é implementado em set.cc para não violar o
+// É declarado aqui, mas só é implementado em set.cpp para não violar o
 // encapsulamento.
 struct Node;
 
@@ -80,6 +80,40 @@ class set {
   // "root_ == NULL" se o conjunto é vazio.
   Node* root_;
 
-  friend class Teste;
+  // Retorna o valor da chave do elemento x de s;
+  friend SType key(Node* x, const set& s);
+
+  // Retorna o número de elementos no conjunto.
+  friend int size(const set& s);
+
+  // Insere uma FOLHA z na árvore cujo nó raiz é 'root' de forma consistente.
+  // NOTA: Esta função NÃO aloca a memória para z.
+  friend void TreeInsertTest(Node*& root, Node* z);
+
+  friend void insert(SType k, set* s);
+
+  // Retorna um ponteiro para o primeiro elemento do conjunto.
+  friend Node* begin(const set& s);
+
+  // Retorna um ponteiro para o elemento seguinte ao último elemento
+  // do conjunto.
+  friend Node* end(const set& s);
+
+  // Dado o nó x, retorna o sucessor de x, ou seja, o nó cuja chave é o menor
+  // elemento maior que a chave de x. Caso x seja o maior elemento da árvore,
+  // retorna o nó sentinela.
+  friend Node* next(Node* x, const set& s);
+
+  // Dado o nó x, retorna o antecessor de x, ou seja, o nó cuja chave é o menor
+  // elemento maior que a chave de x. Caso x seja o menor elemento da árvore,
+  // retorna o nó sentinela.
+  friend Node* prev(Node* x, const set& s);
+
+  // Retorna um ponteiro para o elemento k de s.
+  friend Node* find(SType k, const set& s);
+
+  // Retorna uma string contendo os elementos do conjunto
+  // no formato { c1 c2 c3 c4 } e ordenados do maior para o menor.
+  friend std::string ToString(const set& s);
 };
 #endif  // TRUNK_ORDERED_SET_WITH_BST_SRC_SET_H_

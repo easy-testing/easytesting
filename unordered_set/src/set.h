@@ -6,7 +6,7 @@
 #include <string>
 
 // Define como os elementos da lista encadeada serão organizados na memória.
-// É declarado aqui, mas só é implementado em list.cc para não violar o
+// É declarado aqui, mas só é implementado em list.cpp para não violar o
 // encapsulamento.
 struct Node;
 

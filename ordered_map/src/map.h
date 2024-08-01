@@ -6,7 +6,7 @@
 #include<string>
 
 // Define como os elementos do conjunto associativo serão organizados na
-// memória. É declarado aqui, mas só é implementado em map.cc para não
+// memória. É declarado aqui, mas só é implementado em map.cpp para não
 // violar o encapsulamento.
 struct Node;
 
@@ -91,6 +91,22 @@ class map {
   // "root_ == NULL" se o conjunto é vazio.
   Node* root_;
 
-  friend class Teste;
+  friend Node* root(const map& s);
+
+  friend int size(const map& s);
+
+  // Retorna um ponteiro para o elemento seguinte ao último elemento
+  // do conjunto.
+  friend Node* end(const map& s);
+
+  friend Node* insert(SType k, VType v, map* s);
+
+  friend std::string ToString(Node* x);
+
+  // Retorna uma string contendo os elementos da árvore no formato
+  // { <k1,v1> <k2,v2> ... <kn,vn> }.
+  friend std::string TreeToString(Node* root);
+
+  friend std::string ToString(const map& s);
 };
 #endif  // TRUNK_ORDERED_MAP_SRC_MAP_H_

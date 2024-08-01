@@ -6,7 +6,7 @@
 #include <string>
 
 // Define como os elementos da pilha serão organizados na memória.
-// É declarado aqui, mas só é implementado em stack.cc para não violar o
+// É declarado aqui, mas só é implementado em stack.cpp para não violar o
 // encapsulamento.
 struct Node;
 
@@ -23,6 +23,10 @@ class stack {
 
   // Retorna o número de elementos na pilha em O(1).
   int size() const;
+
+  Node* begin() const;
+
+  Node* end() const;
 
   // Retorna o elemento que está no topo da pilha em O(1).
   // Precondição: a pilha não pode estar vazia.
@@ -49,7 +53,11 @@ class stack {
   // Ponteiro para o nó sentinela da lista encadeada.
   Node* end_;
 
-  friend class Teste;
+  friend Node* beginTest(const stack& p);
+
+  friend Node* endTest(const stack& p);
+
+  friend int sizeTest(const stack& p);
 };
 
 #endif  // TRUNK_STACK_WITH_LINKED_LIST_SRC_STACK_H_
