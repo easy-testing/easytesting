@@ -71,6 +71,7 @@ Gerenciamento de uma fila de eventos com duas prioridades, seguindo protocolos L
 Implementação de um menu para funções definidas em arquivos .cc e .h, leitura de parâmetros e exibição de resultados.
 
 ### [Lista](list)
+Programa que lê do teclado dois número naturais 'x' e 'd' e imprime na tela um numero 'y' que consiste no maior número que pode ser obtido removendo-se 'd' dígitos de 'x' utilizando lista encadeada.
 
 ### [Iteração](iteracao)
 Implementação de um menu para funções definidas, leitura de parâmetros e exibição de resultados.
