@@ -19,9 +19,6 @@
 // 1 e 10^9 dígitos, ou seja, x nao pode ser representado por uma variável
 // 'int'.
 
-Escreva um programa que lê do teclado dois número naturais 'x' e 'd' e
-imprime na tela um numero 'y' que consiste no maior número que pode ser
-obtido removendo-se 'd' dígitos de 'x'
 
 #include <fstream>
 #include <iostream>
