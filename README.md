@@ -51,7 +51,7 @@ As listas de exercícios são baseadas nos conteúdos das disciplinas e incluem:
 
 ## Conteúdo Abordado em Cada Lista
 
-### Estruturas de Dados Heterogêneas - Registros (agenda)
+### [ Estruturas de Dados Heterogêneas - Registros ](agenda)
 Gerenciamento de uma agenda persistente utilizando C++, com dados armazenados em 'agenda.txt'.
 
 ### Complexo Euclidiano
