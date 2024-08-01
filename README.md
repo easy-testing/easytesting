@@ -48,68 +48,83 @@ As listas de exercícios são baseadas nos conteúdos das disciplinas e incluem:
 22. **Conjuntos - Hash**
 23. **Alocação Dinâmica - Vetores Dinâmicos**
 24. **Vetores**
+25. **Carrinho de compras**
 
 ## Conteúdo Abordado em Cada Lista
 
-### [ Estruturas de Dados Heterogêneas - Registros ](agenda)
+### [Estruturas de Dados Heterogêneas - Registros](agenda)
 Gerenciamento de uma agenda persistente utilizando C++, com dados armazenados em 'agenda.txt'.
 
-### Complexo Euclidiano
+### [Complexo Euclidiano](complexo_euclidiano)
 Leitura de coeficientes de uma equação de segundo grau e impressão das raízes (possivelmente complexas).
 
-### Complexo Polar
+### [Complexo Polar](complexo_polar)
 Operações matemáticas com números complexos polares.
 
-### Condicionais
+### [Condicionais](condicionais)
 Implementação de um menu com funções definidas em arquivos .cpp e .h, leitura de parâmetros e exibição de resultados.
 
-### Listas Encadeadas - Deque
+### [Listas Encadeadas - Deque](deque)
 Gerenciamento de uma fila de eventos com duas prioridades, seguindo protocolos LIFO e FIFO.
 
-### Funções
+### [Funções](funcoes)
 Implementação de um menu para funções definidas em arquivos .cc e .h, leitura de parâmetros e exibição de resultados.
 
-### Iteração
+### [Lista](list)
+
+### [Iteração](iteracao)
 Implementação de um menu para funções definidas, leitura de parâmetros e exibição de resultados.
 
-### Matrizes
+### [Matrizes](matrizes)
 Leitura de uma matriz triangular inferior e um vetor de um arquivo, resolução e exibição de um sistema de equações.
 
-### Conjuntos Associativos - Árvore Binária de Busca
+### [Conjuntos Associativos - Árvore Binária de Busca](ordered_map)
 Leitura de um arquivo de palavras e impressão das palavras em ordem crescente com contagem de ocorrências.
 
-### Multiconjuntos Associativos - Árvore Binária de Busca
+### [Multiconjuntos Associativos - Árvore Binária de Busca](ordered_multiset)
 Similar ao anterior, mas lidando com multiconjuntos.
 
-### Conjuntos - Árvores Binárias de Busca e Listas Encadeadas
+### [Conjuntos - Árvores Binárias de Busca](ordered_set_with_bst)
 Gerenciamento de fornecedores de peças para uma montadora de carros.
 
-### Filas de Prioridade
+### [Conjuntos - Listas Encadeadas](ordered_set_with_linked_list)
+Gerenciamento de fornecedores de peças para uma montadora de carros.
+
+### [Filas de Prioridade](priority_queue)
 Ordenação de elementos de um vetor utilizando uma fila prioritária baseada em árvore binária de busca.
 
-### Listas Encadeadas - Array e Fila de Banco
+### [Listas Encadeadas - Array e Fila de Banco](queue_with_array)
 Gerenciamento de filas de clientes em um banco com prioridade para clientes idosos.
 
-### Recursividade
+### [Listas Encadeadas - Fila](queue_with_linked_list)
+Gerenciamento de filas de clientes em um banco com prioridade para clientes idosos.
+
+### [Recursividade](recursao)
 Implementação de funções recursivas com um menu de opções.
 
-### Alocação Dinâmica - Pilha e Listas Encadeadas
+### [Alocação Dinâmica - Pilha](stack_with_linked_list)
 Leitura de expressões em notação prefixada e impressão em notação infixada.
 
-### Conjuntos Associativos - Hash
+### [Alocação Dinâmica - Listas Encadeadas](queue_with_linked_list)
+Leitura de expressões em notação prefixada e impressão em notação infixada.
+
+### [Conjuntos Associativos - Hash](unordered_map)
 Leitura de um arquivo de palavras e impressão das palavras em ordem crescente utilizando tabela hash.
 
-### Multiconjuntos Associativos - Tabela de Dispersão
+### [Multiconjuntos Associativos - Tabela de Dispersão](unordered_multiset)
 Similar ao anterior, mas utilizando tabela de dispersão.
 
-### Conjuntos - Hash
+### [Conjuntos - Hash](unordered_set)
 Gerenciamento de fornecedores de peças para uma montadora de carros utilizando tabela hash.
 
-### Alocação Dinâmica - Vetores Dinâmicos
+### [Alocação Dinâmica - Vetores Dinâmicos](vector)
 Leitura de números reais de um arquivo, armazenamento em vetor, remoção de números negativos e impressão dos restantes em ordem crescente.
 
-### Vetores
+### [Vetores](vetores)
 Leitura de um conjunto de números de um arquivo e cálculo da média e desvio padrão.
+
+### [Carrinho de compras](shoppingCart)
+Cria uma estrutura de dados para gerenciar um carrinho de compras.
 
 ## Framework de Testes
 
